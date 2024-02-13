@@ -7,7 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	존재하지 않는 게시글 제목 입니다.
-	<a href="./">돌아가기</a>
+
 </body>
 </html>

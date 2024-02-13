@@ -89,6 +89,9 @@ public class FBoardContoller {
 		if(FBoardlist.isEmpty()) {
 			return "free_board/exceptionpage";
 		}
+		System.out.println("=================================");
+		System.out.println(FBoardlist.get(0).getTitle());
+		model.addAttribute("boardlist",FBoardlist);
 		return "free_board/Fboards";
 	}
 }

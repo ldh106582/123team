@@ -74,6 +74,7 @@ public class FBoardRepositoryImpl implements FBoardRepository{
 	}
 //	
 	public List<FBoard> getFBoardsByTitle(String title) {
+		System.out.println("도착");
 	    try {
 	        String SQL = "SELECT * FROM FBoard WHERE Title LIKE '%" + title + "%'";
 	        List<FBoard> boardlist = template.query(SQL, new FBoardRowMapper());

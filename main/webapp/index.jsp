@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <meta charset="UTF-8">
-<<<<<<< HEAD
 <html>
 <body>
 	
@@ -13,7 +12,6 @@
 	<a href="Fboards">게시판 목록 이동</a>
 <h2>Hello World!</h2>
 </body>
-=======
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- css -->
 <html>
@@ -36,7 +34,6 @@
 				<h1 class="text-center">반려동물과 함께하는 즐거운 공간</h1> 
 			</div>
 		</nav>
-		
 		<div class="intro2">
 			<div class="intro3">
 				<div class="intro4 text-center border border-dark">
@@ -112,6 +109,4 @@
 		</div>
 	</header>
 </body>
-
->>>>>>> origin/dohyeon
 </html>

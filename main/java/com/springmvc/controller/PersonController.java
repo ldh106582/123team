@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.springmvc.domain.Booking;
 import com.springmvc.domain.Person;
 import com.springmvc.domain.Pet;
 import com.springmvc.service.PersonService;
@@ -51,6 +52,10 @@ public class PersonController {
 		
 		// 조원들에게 넘겨줄 객체
 		Person id = personService.loginSucess(person);
+		
+		Booking booking = Booking.getintance();
+		booking.setName(id.getPersonName());
+		booking.setPhone(id.getPersonPhone());
 		
 		// 내가 가져갈 객체
 		String personId = person.getPersonId();

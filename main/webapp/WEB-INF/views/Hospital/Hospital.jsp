@@ -7,7 +7,14 @@
 <title>Insert title here</title>
 </head>
 <body>
-	존재하지 않는 게시글 제목 입니다.
-	<a href="./">돌아가기</a>
+	<a href="create">병원추가</a>
+	<a href="search">병원검색</a>
+	<a href="update">병원수정</a>
+	<a href="delete">병원삭제</a>
+
+
+
+	<a href="booking">병원예약</a>
+	
 </body>
 </html>

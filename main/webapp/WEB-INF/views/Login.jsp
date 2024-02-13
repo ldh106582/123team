@@ -35,7 +35,6 @@
 		</div>
 		<a class="p-2 col-md-2 float-right" href="./login/add"> 회원가입		
 		<a class="p-2 col-md-2 " href="#">아이디 찾기 </a> <a class="p-2 col-md-2"  href="#">비밀번호 찾기</a>
-		
 		</form:form>
 	</div>
 

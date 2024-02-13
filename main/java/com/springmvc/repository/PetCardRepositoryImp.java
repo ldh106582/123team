@@ -57,7 +57,7 @@ public class PetCardRepositoryImp implements PetCardRepository{
 			template.update(SQL, new Object[] {petId.getPetWeghit(),petId.getPetId()}, new PetCardDBConnector());
 			
 			String petSQL = "select * from PetCard where PetId=?";
-			 List<PetCard> listOfPetCard = template.queryForObject(petSQL, new Object[] {petId.petId(), petId.petWeghit()}, new PetCardDBConnector());
+			// List<PetCard> listOfPetCard = template.queryForObject(petSQL, new Object[] {petId.petId(), petId.petWeghit()}, new PetCardDBConnector());
 			listOfPetCard.add(petId);
 			
 		return listOfPetCard;
