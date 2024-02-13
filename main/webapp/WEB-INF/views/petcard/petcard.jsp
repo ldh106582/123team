@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,23 +17,27 @@
             <tr>
                 <div class="border">
                     <tr>
-                    <p><span> 이름 : ${pet.petName}
+                    <p><span> 이름 : ${petid.petName} </span></p>
+                	<div class="float-right float-top btn btn-danger border border-dark mr-3 text-dark text-white" style="padding-right:15px;">
+			        	<a class="text-white" href="/123team/pet/delete?petid=${petid.petId}" value="정보삭제">정보삭제 </a>
+			    	</div>
+				    <div class="float-right btn btn-success border border-dark mr-2 " style="padding-right:15px;">
+				        <a class="text-white" href="/123team/pet/petread?petId=${petid.petId}" value="정보수정">정보수정 </a>
+				    </div>
+	           	    <p> 종 : ${petid.petVarity}
+	                <p> 생년월일 : ${petid.petBirth} (나이 :<b id="petAge"></b>)</p>
+     
+                	<form:form modelAttribute="petWeight" action="./petcard?petid=${petid.petId}" method="post">
                     
-                <div class="float-right float-top btn btn-danger border border-dark mr-3 text-dark text-white" style="padding-right:15px;">
-			        <a class="text-white" href="/123team/pet/delete?petid=${pet.petId}" value="정보삭제">정보삭제 </a>
-			    </div>
-			
-			    <div class="float-right btn btn-success border border-dark mr-2 " style="padding-right:15px;">
-			        <a class="text-white" href="/123team/pet/petread?petId=${pet.petId}" value="정보수정">정보수정 </a>
-			    </div>
-			    
-           	    <p> 종 : ${pet.petVarity}
-                <p> 생년월일 : ${pet.petBirth} (나이 :<b id="petAge"></b>)</p>
-                <form action="./petcard?petid=${pet.petId}" method="post">
-                    <p>몸무게 : 
-                    <p> <input type="text" name="petWeghit" placeholder="몸무게를 입하세요"> kg </p>
+                    <c:forEach items="${listOfPetWeight}" var="petWeight">
+                    	<p> 입력날짜 : ${ petWeight.petWeghitDate }
+                    	<p> 몸무게 : ${ petWeight.petWeghit }
+                    </c:forEach>
+                    
+                    <p> <form:input type="date" path="petWeghitDate" />
+                    <p> <form:input type="text" path="petWeghit" /> kg </p>
                     <input class="bg-dark text-white border border-radios" type="submit" value="몸무게 입력"> 
-                </form>
+                </form:form>
              	</div>
 
 	            <br><br>
@@ -47,13 +52,15 @@
                         <h4 class="d-flex align-self-center" id="ChartName">진료</h4>
                         <button class="bg-info text-white rounded" id="ChartButton1" onclick="toggleDisplay('ChartDetails1', 'ChartButton1')">펼치기</button>
                         <div id="ChartDetails1"  style="display: none;">
-                      	 <c:forEach items="${petcards}" var="petcard">
+                        
+                      	 <c:forEach items="${listOfPetChard}" var="petcard">
                         	<div class="border">
                         		<p> 진료일자 : ${petcard.petChartDate}</p>
                         		<p> 진료명 : ${petcard.petChart}</p>
                         		<p> 진료내용 : ${petcard.petChartContent}</p>
                         	</div>
                        	</c:forEach>
+                       	
                             <form action="./hopitalpetcard?petCard=${pet.petId}" method="post">
                                 <p> 진료일자 : <input type="date" name="petChartDate" /></p>
                                 <p> 진료명 : <input type="text" name="petChart"/></p>
@@ -68,7 +75,7 @@
                         <h4 class="d-flex align-self-center" id="Vaccination">예방접종</h4>
                         <button class="bg-info text-white rounded" id="ChartButton2" onclick="toggleDisplay('ChartDetails2', 'ChartButton2')">펼치기</button>
                         <div id="ChartDetails2"  style="display: none;">
-                        <c:forEach items="${petcards}" var="petcard">
+                        <c:forEach items="${listOfpetVaccination}" var="petcard">
                         	<div class="border">
                         		<p> 예방접종일자 : ${petcard.petVaccinationDate}
                         		<p> 예방접종명 : ${petcard.petVaccination}
@@ -89,7 +96,7 @@
                         <h4 class="d-flex align-self-center" id="Surgery">수술</h4>
                         <button class="bg-info text-white rounded" id="ChartButton3" onclick="toggleDisplay('ChartDetails3', 'ChartButton3')">펼치기</button>
                         <div id="ChartDetails3"  style="display: none;">
-                        <c:forEach items="${petcards}" var="petcard">
+                        <c:forEach items="${listOfPetSurgery}" var="petcard">
                         	<div class="border">
                         		<p> 수술일자 : ${petcard.petSurgeryDate}</p>
                         		<p> 수술명 : ${petcard.petSurgeryName}</p>
@@ -110,12 +117,14 @@
                         <h4 class="d-flex align-self-center" id="SurgeryAfter">수술경과</h4>
                         <button class="bg-info text-white rounded" id="ChartButton4" onclick="toggleDisplay('ChartDetails4', 'ChartButton4')">펼치기</button>
                         <div id="ChartDetails4"  style="display: none;">
-                        <c:forEach items="${petcards}" var="petcard">
+                        
+                        <c:forEach items="${listOfPetSurgeryAfter}" var="petcard">
                         	<div class="border">
-                        		<p> 수술 후 기록일자  : ${petcard.petSurgeryDateAfter}</p>
-                        		<p> 수술 후 진료내용 : ${petcard.petSurgeryContentAfter}</p>
+                        		<p> 수술 후 기록일자  : ${petcard.petSurgeryAfterDate }</p>
+                        		<p> 수술 후 진료내용 : ${petcard.petSurgeryAfterContent }</p>
                         	</div>
                         </c:forEach>
+                        
                             <form action="./hopitalpetcard?petId=${pet.petId}" method="post">
                                 <p> 수술 후 기록일자 : <input type="date" name="petSurgeryDateAfter"></p>
                                 <p> 수술 후 진료내용 :  <input type="text" name="petSurgeryContentAfter" placeholder="수술 후 진료 사항을 작성해주세요"></p>
@@ -151,27 +160,6 @@
            element.style.display = 'none';
            button.innerText = '펼치기';
        }
-   }
-   
-// '수술 후 기록일자', '수술 후 진료내용'이 null이 아닌 경우에만 출력
-   if (petCard.petSurgeryDateAfter || petCard.petSurgeryContentAfter) {
-       // 새로운 div 요소 생성
-       var div = document.createElement('div');
-       div.classList.add('border');
-
-       // petSurgeryDateAfter 출력을 위한 p 요소 생성
-       var pDate = document.createElement('p');
-       pDate.textContent = '수술 후 기록일자 : ' + petCard.petSurgeryDateAfter;
-       div.appendChild(pDate);
-
-       // petSurgeryContentAfter 출력을 위한 p 요소 생성
-       var pContent = document.createElement('p');
-       pContent.textContent = '수술 후 진료내용 : ' + petCard.petSurgeryContentAfter;
-       div.appendChild(pContent);
-
-       // 생성한 div 요소를 문서에 추가
-       // 예: body 요소에 추가
-       document.body.appendChild(div);
    }
 
 </script>

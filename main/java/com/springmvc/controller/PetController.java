@@ -25,7 +25,6 @@ public class PetController
 	@GetMapping
 	public String GetCreatePet(@RequestParam("id") String personId, Model model) {
 		// 아이디값 출력잘됨
-		
 		System.out.println("petpersonId : " + personId);
 		model.addAttribute("personId", personId);
 		

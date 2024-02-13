@@ -10,7 +10,8 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 import com.springmvc.domain.Pet;
-import com.springmvc.domain.PetCard;
+import com.springmvc.domain.PetChart;
+import com.springmvc.domain.PetWeight;
 
 @Repository
 public class PetCardRepositoryImp implements PetCardRepository{
@@ -27,7 +28,7 @@ public class PetCardRepositoryImp implements PetCardRepository{
 	         this.template = new JdbcTemplate(dataSource);
 	     }
 
-	 List<PetCard> listOfPetCard = new ArrayList<PetCard>();
+	 List<PetWeight> listOfPetCard = new ArrayList<PetWeight>();
 	 
 	 // 1. 반려동물 이름과 id를 가져옴
 	@Override
@@ -41,43 +42,85 @@ public class PetCardRepositoryImp implements PetCardRepository{
 	
 	//  2. 반려동물 진료 기록 가져옴
 	@Override
-	public List<PetCard> getReadPetCard(String petId) {
+	public List<PetWeight> getReadPetCard(String petId) {
 		System.out.println("PetCard repository get ReadPetCard 도착!");
-		String SQL = "select * from PetCard where petId=?";
+		String SQL = "select * from PetChart where PetId=?";
 		System.out.println("PetCard repository get ReadPetCard SQL 도착!");
-	    List<PetCard> petName = template.query(SQL, new Object[] {petId}, new PetCardDBConnector());
+	    List<PetWeight> petName = template.query(SQL, new Object[] {petId}, new PetWeightDBConnector());
 	    System.out.println("petName Arr : " + petName );
 	    return petName;
 	}
 	
 	// 동물의 몸무게를 가져오는 함수
 	@Override
-	public List<PetCard> getWeghitPetCard(PetCard petId) {
-			String SQL = "insert into petCard(PetWeghit, PetId) value(?,?)";
-			template.update(SQL, new Object[] {petId.getPetWeghit(),petId.getPetId()}, new PetCardDBConnector());
-			
-			String petSQL = "select * from PetCard where PetId=?";
-			 List<PetCard> listOfPetCard = template.queryForObject(petSQL, new Object[] {petId.petId(), petId.petWeghit()}, new PetCardDBConnector());
-			listOfPetCard.add(petId);
-			
+	public List<PetWeight> getWeghitPetCard(String petId) {
+		
+		String SQL = "select * from PetWeight where petId=?";
+		List<PetWeight> listOfPetWeight = template.query(SQL, new Object[] {petId}, new PetWeightDBConnector());
 		return listOfPetCard;
 	}
-
+	
+	// 반려동물 진료 기록을 가져옴
 	@Override
-	public void setCreatPetCard(PetCard petCard) {
-		String SQL = "select count(*) from Pet where PetId=?";
-		int intNum = template.queryForObject(SQL, Integer.class, petCard.getPetId());
-		if(intNum != 0) {
-			String petCardSQL = "insert into PetCard(petCard, petWeghit, petChartDate, petChart, petChartContent, petSurgeryDate, petSurgeryName, petSurgeryContent, petSurgeryDateAfter, petSurgeryContentAfter, petVaccinationDate, petVaccination, petVaccinationCotent, petId) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-			 template.update(petCardSQL, petCard.getPetCard(), petCard.getPetWeghit(), petCard.getPetChartDate(), petCard.getPetChart(), petCard.getPetChartContent(), petCard.getPetSurgeryDate(), petCard.getPetSurgeryName(), petCard.getPetSurgeryContent(), petCard.getPetSurgeryDateAfter(), petCard.getPetSurgeryContentAfter(), petCard.getPetVaccinationDate(), petCard.getPetVaccination(), petCard.getPetVaccinationCotent(), petCard.getPetId());
-		} else {
-			System.out.println("petcard create 실패");
-		}
+	public List<PetChart> getChartPetCard(String petId) {
+		String SQL = "select * from PetChart where PetId=?";
+		List<PetChart> listOfPetChart = template.query(SQL, new Object[] {petId}, new PetChartDBConnector());
+		return listOfPetChart;
 	}
+	
+	// 예방 접종 기록을 가져옴
+	@Override
+	public List<PetVaccination> getVaccinationPetCard(String petId) {
+		String SQL = "select * from PetVaccination where PetId=?";
+		List<PetVaccination> listOfpetVaccination = template.query(SQL, new Object[] {petId}, new PetVaccinationDBConnector());
+		return listOfpetVaccination;
+	}
+	
+	// 반려동물의 수술 기록을 가져옴
+	@Override
+	public List<PetSurgery> getPetSurgery(String petId) {
+		String SQL = "select * from PetSurgery where PetId=?";
+		List<PetSurgery> listOfPetSurgery = template.query(SQL, new Object[] {petId}, new PetSurgeryDBConnector());
+		return listOfPetSurgery;
+	}
+	
+	// 동물의 입원 기록을 가져옴
+	@Override
+	public List<PetSurgeryAfter> getPetSurgeryAfter(String petId) {
+		String SQL = "select * from PetSurgeryAfter where PetId=?";
+		List<PetSurgeryAfter> listOfPetSurgeryAfter = template.query(SQL, new Object[] {petId}, new PetSurgeryAfterDBConnector());
+		return listOfPetSurgeryAfter;
+	}
+	
+	//동물의 정보를 가져오는 함수
+	@Override
+	public Pet getPetList(String petId) {
+		String SQL = "select * from Pet where PetId=?";
+		Pet petList = template.queryForObject(SQL, new Object[] {petId}, new PetDBConnector());
+
+	    return petList;
+	}
+	
+
+	
+
+
+
+	// 동물의 몸무게를 넣는 함수
+	@Override
+	public void setWeghitPetCard(PetWeight petWeight) {
+			String SQL = "insert into petCard(PetWeghitDate ,PetWeghit, PetId) value(?,?,?)";
+			template.update(SQL, new Object[] {petWeight.getPetWeghitDate(), petWeight.getPetWeghit(), petWeight.getPetId()}, new PetWeightDBConnector());
+	}
+
 
 
 	
-	// 반려동물 진료 기록 넣어줌
+	
+
+
+	
+
 	
 	
 	 
