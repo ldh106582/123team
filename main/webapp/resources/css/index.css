@@ -1,0 +1,94 @@
+@charset "UTF-8";
+
+.intro0{
+	width: 100%;
+	background-color: #e8f8ff;
+}
+
+.intro1{
+	margin: 3% auto;
+}
+
+.intro2{
+	width: 100%;
+}
+
+.intro3{
+	width: 50%;
+	margin: 0 auto
+}
+
+.intro4{
+	background-color: rgb(255, 255, 255);
+}
+
+.intro5>h4{
+	/* border: 1px solid red; */
+	padding: 3% 0% 0% 0%;
+}
+
+.intro6{
+	width: 100%;
+	display: flex;
+	justify-content: center;
+
+	/* border: 1px solid red; */
+	
+}
+
+.intro7{
+	width: 40%;
+	border: 2px solid blue;
+	margin: 1% 1%;
+	padding: 1%;
+	justify-content: center;
+}
+
+.intro8{
+	width: 100%;
+	/* border: 1px solid red; */
+}
+
+.intro9{
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin: 1% 0%;
+	/* border: 1px solid black; */
+}
+
+.intro10{
+	width: 48%;
+}
+
+.intro11{
+	width: 100%;
+	padding: 5%;
+	border: 1px solid red;
+}
+
+@keyframes slideshow {
+  0% { transform: translateX(100); }
+  100% { transform: translateX(-100%); } /* 이미지 10개 중 9개만큼 이동 */
+}
+
+.intro13{
+	display: flex;
+    animation: slideshow 10s linear infinite;
+    overflow: hidden;
+
+	padding: 1%;
+}
+
+.intro13 div {
+  display: flex;
+  width: 1000%; /* 이미지가 10개이므로 1000% */
+  height: 100%;
+}
+
+.img01{
+	width: 250px;  /* 원하는 너비로 변경 */
+    height: 250px; /* 원하는 높이로 변경 */
+    object-fit: cover;
+}
