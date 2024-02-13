@@ -1,19 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <meta charset="UTF-8">
-<<<<<<< HEAD
-<html>
-<body>
-	
-	<nav class="navbar navbar-dark bg-info">
-		<div class="container">
-			<h1>반려동물</h1>
-		</div>
-	</nav>
-	
-	<a href="Fboards">게시판 목록 이동</a>
-<h2>Hello World!</h2>
-</body>
-=======
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- css -->
 <html>
@@ -73,7 +59,7 @@
 					<div class="intro9">
 						<div class="intro10 border border-dark btn btn-primary p-3">
 							<i class="fa-solid fa-clipboard-user"></i>
-							<a href="./board" class="justify-center text-white">게시판 &raquo;</a>
+							<a href="Fboards" class="justify-center text-white">게시판 &raquo;</a>
 						</div>
 						<div class="intro10 border border-dark btn btn-primary p-3">
 							<i class="fa-solid fa-right-to-bracket"></i>
@@ -104,14 +90,8 @@
 			
 					</div>
 				</div>
-				<footer>
-
-
-				</footer>
 			</div>
 		</div>
 	</header>
 </body>
-
->>>>>>> origin/dohyeon
 </html>

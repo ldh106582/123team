@@ -89,6 +89,7 @@ public class FBoardContoller {
 		if(FBoardlist.isEmpty()) {
 			return "free_board/exceptionpage";
 		}
-		return "free_board/Fboards";
+		model.addAttribute("FBoardlist",FBoardlist);
+		return "redirect:/Fboards";
 	}
 }
