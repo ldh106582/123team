@@ -24,11 +24,14 @@ public class FBoardContoller {
 	
 	@Autowired
 	FBoardService fboardService;
-	
+
 //	게시판 이동
 	@RequestMapping
 	public String ViewBoardlist(Model model) {
 //		모든 게시글 가져오기
+		if(model.containsAttribute("FBoardlist")) {
+			return "free_board/Fboards";
+		}
 		model.addAttribute("FBoardlist",fboardService.getAllFBoards());
 		return "free_board/Fboards";
 	}
@@ -87,9 +90,10 @@ public class FBoardContoller {
 		System.out.println(title);
 		List<FBoard> FBoardlist = fboardService.getFBoardsByTitle(title);
 		if(FBoardlist.isEmpty()) {
+			//검색 결과가 없을때
 			return "free_board/exceptionpage";
 		}
 		model.addAttribute("FBoardlist",FBoardlist);
-		return "redirect:/Fboards";
+		return "free_board/Fboards";
 	}
 }

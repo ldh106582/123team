@@ -13,8 +13,8 @@ public class FBoardRowMapper implements RowMapper<FBoard>{
 	public FBoard mapRow(ResultSet rs, int rowNum) throws SQLException {
 		FBoard board = new FBoard();
 		board.setNum(rs.getInt(1));
-		board.setPersonId(rs.getString(2));
-		board.setPersonName(rs.getString(3));
+		board.setPersonName(rs.getString(2));
+		board.setPersonId(rs.getString(3));
 		board.setContext(rs.getString(4));
 		board.setTitle(rs.getString(5));
 		board.setHit(rs.getInt(6));

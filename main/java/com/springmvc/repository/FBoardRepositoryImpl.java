@@ -47,7 +47,11 @@ public class FBoardRepositoryImpl implements FBoardRepository{
 		
 		String SQL = "insert into FBoard values(?,?,?,?,?,?,?,?,?)";
 //		이름과 아이디 받아오기
-		template.update(SQL,null,"이름","아이디",board.getContext(),board.getTitle(),0,getRegistDay(),CreateBoardId(),board.getComment());
+		FBoard getboardNI = FBoard.getInstance();
+		System.out.println("==============아이디받아온값================");
+		System.out.println(getboardNI.getPersonId());
+		System.out.println("========================================");
+		template.update(SQL,null,getboardNI.getPersonName(),getboardNI.getPersonId(),board.getContext(),board.getTitle(),0,getRegistDay(),CreateBoardId(),board.getComment());
 	}
 //	날짜받기
 	public LocalDate getRegistDay()
@@ -72,9 +76,8 @@ public class FBoardRepositoryImpl implements FBoardRepository{
 		String SQL = "delete from FBoard where Boardid="+boardId;
 		template.update(SQL);
 	}
-//	
+//	게시글 제목으로 검색
 	public List<FBoard> getFBoardsByTitle(String title) {
-		System.out.println("도착");
 	    try {
 	        String SQL = "SELECT * FROM FBoard WHERE Title LIKE '%" + title + "%'";
 	        List<FBoard> boardlist = template.query(SQL, new FBoardRowMapper());
