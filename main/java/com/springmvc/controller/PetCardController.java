@@ -27,7 +27,7 @@ public class PetCardController {
 	
 	// 1. 반려동물 이름과 id를 가져옴 2. 반려동물 진료 기록 가져옴
 	@GetMapping("/petcard")
-	public String GetCreatPetCard(@RequestParam("petId") String petId, Model model, HttpSession session) {
+	public String GetCreatPetCard(@RequestParam("petId") PetCard petId, Model model, HttpSession session) {
 		
 		List<PetCard> petWeghit = petCardService.getWeghitPetCard(petId);
 		

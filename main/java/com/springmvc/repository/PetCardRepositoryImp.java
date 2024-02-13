@@ -52,9 +52,15 @@ public class PetCardRepositoryImp implements PetCardRepository{
 	
 	// 동물의 몸무게를 가져오는 함수
 	@Override
-	public List<PetCard> getWeghitPetCard(String petId) {
-			String SQL = "";
-		return null;
+	public List<PetCard> getWeghitPetCard(PetCard petId) {
+			String SQL = "insert into petCard(PetWeghit, PetId) value(?,?)";
+			template.update(SQL, new Object[] {petId.getPetWeghit(),petId.getPetId()}, new PetCardDBConnector());
+			
+			String petSQL = "select * from PetCard where PetId=?";
+			 List<PetCard> listOfPetCard = template.queryForObject(petSQL, new Object[] {petId.petId(), petId.petWeghit()}, new PetCardDBConnector());
+			listOfPetCard.add(petId);
+			
+		return listOfPetCard;
 	}
 
 	@Override

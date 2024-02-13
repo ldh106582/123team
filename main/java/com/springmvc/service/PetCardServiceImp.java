@@ -29,7 +29,7 @@ public class PetCardServiceImp implements PetCardService{
 	
 	// 동물의 몸무게를 가져오는 함수
 	@Override
-	public List<PetCard> getWeghitPetCard(String petId) {
+	public List<PetCard> getWeghitPetCard(PetCard petId) {
 		// TODO Auto-generated method stub
 		return petCardRepository.getWeghitPetCard(petId);
 	}

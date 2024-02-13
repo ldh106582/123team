@@ -9,6 +9,6 @@ public interface PetCardService {
 	Pet getCreatPetCard(String petId);
 	List<PetCard> getReadPetCard(String petId);
 	// 동물의 몸무게를 가져오는 함수
-	List<PetCard> getWeghitPetCard(String petId);
+	List<PetCard> getWeghitPetCard(PetCard petId);
 	// void setCreatPetCard(PetCard petCard);
 }
