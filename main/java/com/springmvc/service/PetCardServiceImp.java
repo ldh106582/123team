@@ -1,5 +1,6 @@
 package com.springmvc.service;
 
+import java.sql.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,11 +8,11 @@ import org.springframework.stereotype.Service;
 
 import com.springmvc.domain.Pet;
 import com.springmvc.domain.PetChart;
+import com.springmvc.domain.PetSurgery;
+import com.springmvc.domain.PetVaccination;
 import com.springmvc.domain.PetWeight;
 import com.springmvc.repository.PetCardRepository;
-import com.springmvc.repository.PetSurgery;
 import com.springmvc.repository.PetSurgeryAfter;
-import com.springmvc.repository.PetVaccination;
 
 @Service
 public class PetCardServiceImp implements PetCardService{
@@ -77,12 +78,52 @@ public class PetCardServiceImp implements PetCardService{
 	// 동물의 몸무게를 넣어주는 함수
 	@Override
 	public void setWeghitPetCard(PetWeight petWeight) {
-		// TODO Auto-generated method stub
+		
 		petCardRepository.setWeghitPetCard(petWeight);
 	}
+	
+	// 진료 기록을 넣어주는 함수
+	@Override
+	public void setChartPetCard(PetChart petChart) {
+		// TODO Auto-generated method stub
+		petCardRepository.setChartPetCard(petChart);
+	}
+	
+	// 예방접종 기록을 넣어주는 함수
+	@Override
+	public void setVaccinationPetCard(PetVaccination petVaccination) {
+		// TODO Auto-generated method stub
+		petCardRepository.setVaccinationPetCard(petVaccination);
+	}
+	
+	// 수술 기록을 넣어주는 함수
+	@Override
+	public void setPetSurgery(PetSurgery petSurgery) {
+		// TODO Auto-generated method stub
+		petCardRepository.setPetSurgery(petSurgery);
+	}
 
+	// 입원 기록을 넣어주는 함수
+	@Override
+	public void setPetSurgeryAfter(PetSurgeryAfter petSurgeryAfter) {
+		// TODO Auto-generated method stub
+		petCardRepository.setPetSurgeryAfter(petSurgeryAfter);
+	}
 
+	// 동물의 몸무게를 제거하는 함수
+	@Override
+	public void getDeleteWeghitPetCard(String petid) {
+		// TODO Auto-generated method stub
+		petCardRepository.getDeleteWeghitPetCard(petid);
+	}
 
+	@Override
+	public void getDeleteVaccinationPetCard(String petid) {
+		// TODO Auto-generated method stub
+		petCardRepository.getDeleteVaccinationPetCard(petid);
+	} 
+
+	// 동물의 백신기록을 제거하는 함수
 
 
 	

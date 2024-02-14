@@ -1,16 +1,29 @@
-package com.springmvc.repository;
+package com.springmvc.domain;
 
 import java.time.LocalDate;
 
 public class PetVaccination {
 	
+	private int petVaccinationNum;
 	private LocalDate petVaccinationDate;
 	private String petVaccination;
 	private String petVaccinationCotent;
+	private String petId;
+	
 	public PetVaccination() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+
+
+	public int getPetVaccinationNum() {
+		return petVaccinationNum;
+	}
+	public void setPetVaccinationNum(int petVaccinationNum) {
+		this.petVaccinationNum = petVaccinationNum;
+	}
+
+
 	public LocalDate getPetVaccinationDate() {
 		return petVaccinationDate;
 	}
@@ -29,6 +42,11 @@ public class PetVaccination {
 	public void setPetVaccinationCotent(String petVaccinationCotent) {
 		this.petVaccinationCotent = petVaccinationCotent;
 	}
-	
+	public String getPetId() {
+		return petId;
+	}
+	public void setPetId(String petId) {
+		this.petId = petId;
+	}
 	
 }

@@ -80,7 +80,7 @@ public class PersonRepositoryImp implements  PsersonRepository{
 				System.out.println("person 아이디가 없습니다.");
 		}
 	}
-
+	// delete 아이디를 삭제하는함수
 	@Override
 	public void SetDeletePerson(String personId) {
 		String SQL = "delete from Person where personId=?";

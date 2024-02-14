@@ -4,10 +4,10 @@ import java.util.List;
 
 import com.springmvc.domain.Pet;
 import com.springmvc.domain.PetChart;
+import com.springmvc.domain.PetSurgery;
+import com.springmvc.domain.PetVaccination;
 import com.springmvc.domain.PetWeight;
-import com.springmvc.repository.PetSurgery;
 import com.springmvc.repository.PetSurgeryAfter;
-import com.springmvc.repository.PetVaccination;
 
 public interface PetCardService {
 	Pet getCreatPetCard(String petId);
@@ -33,4 +33,22 @@ public interface PetCardService {
 	
 	// 동물의 몸무게를 넣어주는 함수
 	void setWeghitPetCard(PetWeight petWeight);
+	
+	// 진료 기록을 넣어주는 함수
+	void setChartPetCard(PetChart petChart);
+	
+	// 예방접종 기록을 넣어주는 함수
+	void setVaccinationPetCard(PetVaccination petVaccination);
+	
+	// 수술 기록을 넣어주는 함수
+	void setPetSurgery(PetSurgery petSurgery);
+	
+	// 입원 기록을 넣어주는 함수
+	void setPetSurgeryAfter(PetSurgeryAfter petSurgeryAfter);
+	
+	// 동물의 몸무게를 제거하는 함수
+	void getDeleteWeghitPetCard(String petid);
+	
+	// 동물의 백신기록을 제거하는 함수
+	void getDeleteVaccinationPetCard(String petid);
 }

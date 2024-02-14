@@ -2,9 +2,7 @@ package com.springmvc.repository;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
 import org.springframework.jdbc.core.RowMapper;
-
 import com.springmvc.domain.Person;
 
 public class PersomDBConnector implements RowMapper<Person>{
