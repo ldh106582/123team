@@ -10,9 +10,10 @@
 </head>
 <body>
 	<h1>게시판 페이지</h1>
-	<a>공지사항</a> || <a href="Fboards">자유게시판</a> || <a>체험단</a> {<a href="Fboards/add">게시글 작성</a>}
+	
+	<a href="#"><button>공지사항</button></a> || <a href="Fboards"><button>자유게시판</button></a> || <a><button>체험단</button></a> &emsp; <a href="Fboards/add"><button>게시글 작성</button></a>
 	<br>
-
+	
 	<c:set var="pageSize" value="5" /> <!-- 한 페이지에 표시할 게시글 수 -->
 	<c:set var="currentPage" value="${param.page ne null ? param.page : 1}" /> <!-- 현재 페이지 번호 -->
 	<c:set var="start" value="${(currentPage - 1) * pageSize}" /> <!-- 페이지의 시작 인덱스 -->
@@ -20,13 +21,18 @@
 	<%
 			int pagenum =0;
 			int totalPages=0;
+			int count = 0;
 		%>
 		
-	<c:forEach items="${FBoardlist}" var="fboard" varStatus="status">
+		<c:forEach items="${FBoardlist}" var="fboard" varStatus="status">
+		<%
+			++pagenum;
+			request.setAttribute("pagenum", pagenum);
+		%>
 		<c:if test="${status.index >= start && status.index < end}"> <!-- 현재 페이지에 해당하는 게시글만 표시 -->
 			<li>
 				<a href="Fboards/Fboard?boardId=${fboard.boardId}">
-				(${fboard.num})
+				(${pagenum})
 				제목 : ${fboard.title}
 				작성자ID : ${fboard.personId}
 				등록일 : ${fboard.registDay}
@@ -34,9 +40,6 @@
 				</a>
 			</li>
 		</c:if>
-		<%
-			++pagenum;
-		%>
 	</c:forEach>
 	<br>
 	
@@ -51,12 +54,12 @@
 	%>
 	
 	<c:forEach begin="1" end="${totalPages}" var="pageNum"> <!-- 페이지 번호 출력 -->
-		<a href="Fboards?page=${pageNum}">${pageNum}</a>
+		<a href="Fboards?page=${pageNum}"> [${pageNum}] </a>
 	</c:forEach>
 	
 	<br>
 	
-	<form action="Fboards/select">
+	<form action="/123team/Fboards/select">
 		<input type="text" name="title" placeholder="제목입력"/>
 		<button type="submit">검색</button>
 	</form>

@@ -12,15 +12,13 @@ public class FBoardRowMapper implements RowMapper<FBoard>{
 	@Override
 	public FBoard mapRow(ResultSet rs, int rowNum) throws SQLException {
 		FBoard board = new FBoard();
-		board.setNum(rs.getInt(1));
-		board.setPersonName(rs.getString(2));
-		board.setPersonId(rs.getString(3));
-		board.setContext(rs.getString(4));
-		board.setTitle(rs.getString(5));
-		board.setHit(rs.getInt(6));
-		board.setRegistDay(rs.getString(7));
-		board.setBoardId(rs.getString(8));
-		board.setComment(rs.getString(9));
+		board.setPersonName(rs.getString(1));
+		board.setPersonId(rs.getString(2));
+		board.setContext(rs.getString(3));
+		board.setTitle(rs.getString(4));
+		board.setHit(rs.getInt(5));
+		board.setRegistDay(rs.getString(6));
+		board.setBoardId(rs.getString(7));
 		return board;
 	}
 	

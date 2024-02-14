@@ -13,7 +13,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.springmvc.domain.BoardComment;
 import com.springmvc.domain.FBoard;
+
+import com.springmvc.service.BoardCommentService;
 import com.springmvc.service.FBoardService;
 
 
@@ -25,6 +28,9 @@ public class FBoardContoller {
 	@Autowired
 	FBoardService fboardService;
 
+	@Autowired
+	BoardCommentService boardCommentService;
+	
 //	게시판 이동
 	@RequestMapping
 	public String ViewBoardlist(Model model) {
@@ -39,9 +45,10 @@ public class FBoardContoller {
 //	게시글 하나만 보기
 	@GetMapping("/Fboard")
 	public String ViewBoard(@RequestParam("boardId") String boardId, Model model) {
-		System.out.println("-------------------------------------------------------------------------------------------");
-		System.out.println(boardId);
 		model.addAttribute("board",fboardService.getFBoardById(boardId));
+//		해당 게시글의 댓글 가져오기
+		model.addAttribute("Commentlist",boardCommentService.getCommentsById(boardId));
+		
 		return "free_board/Fboard";
 	}
 	
@@ -84,7 +91,7 @@ public class FBoardContoller {
 	}
 	
 //	게시물 검색
-	@GetMapping("/select")
+	@GetMapping("/selectbytitle")
 	public String selectboardbytitle(Model model,HttpServletRequest request) {
 		String title = (String) request.getParameter("title");
 		System.out.println(title);
@@ -96,4 +103,43 @@ public class FBoardContoller {
 		model.addAttribute("FBoardlist",FBoardlist);
 		return "free_board/Fboards";
 	}
+	
+//	게시글 댓글 작성
+	 @PostMapping("/Fboard")
+	 public String addComment(Model model,HttpServletRequest request) {
+		 boardCommentService.addComment(request.getParameter("boardId").toString(),request.getParameter("comment").toString());
+		 return "redirect:/Fboards/Fboard?boardId="+request.getParameter("boardId");
+	 }
+	 
+//	 댓글 수정 페이지로 보내기
+	 @GetMapping("/updatecomment")
+	 public String updatecommentform(@RequestParam("commentId") String commentId,@ModelAttribute("comment") BoardComment comment,Model model) {
+
+//		 댓글객체 들고오기
+		 BoardComment comments = boardCommentService.getCommentByCID(commentId);
+		 model.addAttribute("comment",comments);
+		 
+//		 보드객체 들고오기
+			/* model.addAttribute("fboard",fboardService.getFBoardById(boardId)); */
+
+		 
+		 return "board_comment/updateCommentForm";
+	 }
+	 
+		/*
+		 * // 수정한 정보 저장
+		 * 
+		 * @PostMapping("/updatecomment") public String
+		 * updatecomment(@ModelAttribute("comment") BoardComment comment,Model model) {
+		 * boardCommentService.addComment(comment.getComment()); return
+		 * "redirectredirect:/Fboards/Fboard?boardId="+comment.; }
+		 */
+	 
+//	 댓글 삭제
+	 @GetMapping("/deletecoment")
+	 public String deletecomment(@RequestParam("commentId") String commentId,@RequestParam("boardId") String boardId,Model model,HttpServletRequest request) {
+		 boardCommentService.deleteComment(commentId);
+		 return "redirect:/Fboards/Fboard?boardId="+boardId; 
+	 }
+	 
 }
