@@ -28,7 +28,7 @@
 				<div>
 					${comments.comment}
 				</div>
-				<a href="updatecomment?commentId=${comments.commentId}">댓글 수정</a>
+				<a href="updatecommentform?commentId=${comments.commentId}">댓글 수정</a>
 				<a href="deletecoment?commentId=${comments.commentId}&boardId=${board.boardId}">댓글 삭제</a>
 				<br>
 				--------------------------------------------------------------------------------
