@@ -40,7 +40,6 @@
 							<a href="#"> 동물카드 &raquo;</a>
 						</div>
 					</div>
-
 				</div>
 
 				<div class="intro8">
@@ -58,7 +57,7 @@
 					<div class="intro9">
 						<div class="intro10 border border-dark btn btn-primary p-3">
 							<i class="fa-solid fa-clipboard-user"></i>
-							<a href="./board" class="justify-center text-white">게시판 &raquo;</a>
+							<a href="Fboards" class="justify-center text-white">게시판 &raquo;</a>
 						</div>
 						<div class="intro10 border border-dark btn btn-primary p-3">
 							<i class="fa-solid fa-right-to-bracket"></i>
@@ -66,13 +65,13 @@
 						</div>
 					</div>
 				</div>
-
+<!-- 
 				<div class="intro11">
 					<div class="intro12">
 						<h4>위의 버튼을 이용해 여러분들이 원하는 페이지로 이동해주세요 </h4>
 					</div>
 				</div>
-				
+				 -->
 				<div class="intro13">
 					<div>
 						<img src="./이도현/dog.jpg" class="img01">
@@ -89,10 +88,6 @@
 			
 					</div>
 				</div>
-				<footer>
-
-
-				</footer>
 			</div>
 		</div>
 	</header>

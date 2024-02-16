@@ -12,7 +12,7 @@
 	<h1>게시글 등록 페이지</h1>
 	<form:form modelAttribute="board" method="POST">
 		제목 : <form:input path="title" name="title"/>
-		내용 : <form:textarea path="context" name="context"/>
+		내용 : <form:input path="context" name="context"/>
 		<input type="submit" value="등록">
 	</form:form>
 </body>

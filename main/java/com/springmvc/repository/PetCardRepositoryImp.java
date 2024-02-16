@@ -103,7 +103,6 @@ public class PetCardRepositoryImp implements PetCardRepository{
 
 	    return petList;
 	}
-
 	// 동물의 몸무게를 넣는 함수
 	 @Override
 	 public void setWeghitPetCard(PetWeight petWeight) { 

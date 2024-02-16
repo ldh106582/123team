@@ -14,7 +14,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+
 import com.springmvc.domain.Booking;
+
+import com.springmvc.domain.FBoard;
+
 import com.springmvc.domain.Person;
 import com.springmvc.domain.Pet;
 import com.springmvc.service.PersonService;
@@ -22,7 +26,7 @@ import com.springmvc.service.PersonService;
 @Controller
 @RequestMapping("/login")
 public class PersonController {
-
+	
 	@Autowired
 	private PersonService personService;
 	
@@ -56,6 +60,10 @@ public class PersonController {
 		Booking booking = Booking.getintance();
 		booking.setName(id.getPersonName());
 		booking.setPhone(id.getPersonPhone());
+		// 보드로 가져갈게요
+	 	FBoard fboard = FBoard.getInstance();
+	 	fboard.setPersonId(id.getPersonId());
+	 	fboard.setPersonName(id.getPersonName());
 		
 		// 내가 가져갈 객체
 		String personId = person.getPersonId();
