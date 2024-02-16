@@ -9,7 +9,6 @@ public interface PsersonRepository {
 
 	void setCreatPerson(Person person);
 	Person loginSucess(Person person);
-	Person GetUpdatePerson(String personId);
 	void SetUpdatePerson(Person person);
 	void SetDeletePerson(String personId);
 	List<Pet> getPetName(Person person);

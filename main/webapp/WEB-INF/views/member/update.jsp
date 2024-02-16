@@ -16,8 +16,8 @@
 		<fieldset>
 			<legend>회원수정 페이지 입니다.</legend>
 			
-			<div class="form-group row"> 아이디 : ${id.personId}
-			    <form:hidden path="personId" value="${fn:trim(id.personId)}"/>
+			<div class="form-group row"> 아이디 : ${personId.personId}
+			    <form:hidden path="personId" value="${fn:trim(personId.personId)}"/>
 			</div>
 			
 			<div class="form-group row"> 비밀번호 : 
@@ -25,27 +25,27 @@
 			</div>
 			
 			<div class="form-group row"> 이메일[선택] : 
-				<form:input  type="email" path="personEmail" value="${fn:trim(id.personEmail)}"/>
+				<form:input  type="email" path="personEmail" value="${fn:trim(personId.personEmail)}"/>
 			</div>
 			
 			<div class="form-group row"> 이름 : 
-				<form:input type="text" path="personName" value="${fn:trim(id.personName)}"/>
+				<form:input type="text" path="personName" value="${fn:trim(personId.personName)}"/>
 			</div>
 
 			<div class="form-group row"> 생년월일 : 
-				<form:input type="text" path="personBirth"  value=" ${fn:trim(id.personBirth)}" />
+				<form:input type="text" path="personBirth"  value=" ${fn:trim(personId.personBirth)}" />
 			</div>
 			
 			<div class="form-group row"> 주소 : 
-				<form:input path="personAddress" value="${fn:trim(id.personAddress)}" />
+				<form:input path="personAddress" value="${fn:trim(personId.personAddress)}" />
 			</div>
 			
-			<div class="form-group row"> 성별 : ${fn:trim(id.personSex)}
+			<div class="form-group row"> 성별 : ${fn:trim(personId.personSex)}
 				<form:hidden  path="personSex"/>
 			</div>
 			
 			<div class="form-group row"> 전화번호 : 
-				<form:input type="text" path="personPhone" value="${fn:trim(id.personPhone)}" />
+				<form:input type="text" path="personPhone" value="${fn:trim(personId.personPhone)}" />
 			</div>
 			
 			<div class="form-group row">

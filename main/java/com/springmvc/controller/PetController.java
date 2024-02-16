@@ -1,5 +1,6 @@
 package com.springmvc.controller;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,10 +24,14 @@ public class PetController
 	private PetService petService;
 	
 	@GetMapping
-	public String GetCreatePet(@RequestParam("id") String personId, Model model) {
+	public String GetCreatePet(@RequestParam("id") String personId, Model model, HttpServletRequest request) {
 		// 아이디값 출력잘됨
 		System.out.println("petpersonId : " + personId);
-		model.addAttribute("personId", personId);
+		
+		
+		
+		HttpSession session = request.getSession();
+		session.setAttribute("personId", personId);
 		
 		return "/pet/petcreate";
 	}

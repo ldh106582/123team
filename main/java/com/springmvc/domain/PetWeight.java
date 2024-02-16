@@ -11,7 +11,7 @@ public class PetWeight implements Serializable{
 
 	private int petWeightNum;
 	@DateTimeFormat(pattern="yyyy-MM-dd")
-	private java.sql.Date petWeightDate;
+	private LocalDate petWeightDate;
 	private String petWeight; // 몸무게
 	private String petId;
 	
@@ -29,12 +29,12 @@ public class PetWeight implements Serializable{
 		this.petWeightNum = petWeightNum;
 	}
 
-	public Date getPetWeightDate() {
+	public LocalDate getPetWeightDate() {
 		return petWeightDate;
 	}
 
 	public void setPetWeightDate(LocalDate petWeightDate) {
-		this.petWeightDate = java.sql.Date.valueOf(petWeightDate);
+		this.petWeightDate = petWeightDate;
 	}
 
 	public String getPetWeight() {

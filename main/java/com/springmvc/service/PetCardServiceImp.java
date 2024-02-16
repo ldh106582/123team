@@ -145,15 +145,63 @@ public class PetCardServiceImp implements PetCardService{
 		petCardRepository.getDeleteSurgeryAfterPetCard(petid, petSurgeryAfterNumInt);
 	}
 	
-	/*
-	 * // 몸무게 데이터를 수정하기 전 호출하는 함수
-	 * 
-	 * @Override public List<PetWeight> getWeghitUpdatePetCard(int weghitNum) { //
-	 * TODO Auto-generated method stub return
-	 * petCardRepository.getWeghitUpdatePetCard(weghitNum); }
-	 */
+	// 정보를 수정하기 전 동물의 정보를 보여주는 함수
+	@Override
+	public Pet getUpdatePetCard(String petId) {
+		// TODO Auto-generated method stub
+		return petCardRepository.getUpdatePetCard(petId);
+	}
+	
+	//  정보를 수정하기 전 몸무게 데이터를 보여주는 함수
+	@Override
+	public List<PetWeight> getUpdateWeightPetCard(String petId) {
+		// TODO Auto-generated method stub
+		return petCardRepository.getUpdateWeightPetCard(petId);
+	}
+	//  정보를 수정하기 전 진료 데이터를 보여주는 함수
+	@Override
+	public List<PetChart> getChartUpdatePetCard(String petId) {
+		// TODO Auto-generated method stub
+		return petCardRepository.getChartUpdatePetCard(petId);
+	}
+    //  정보를 수정하기 전 예방접종 데이터를 보여주는 함수
+	@Override
+	public List<PetVaccination> getVaccinationUpdatePetCard(String petId) {
+		// TODO Auto-generated method stub
+		return petCardRepository.getVaccinationUpdatePetCard(petId);
+	}
+	//  정보를 수정하기 전 수술 데이터를 보여주는 함수
+	@Override
+	public List<PetSurgery> getUpdatePetSurgery(String petId) {
+		// TODO Auto-generated method stub
+		return petCardRepository.getUpdatePetSurgery(petId);
+	}
+	//  정보를 수정하기 전 입원 데이터를 보여주는 함수
+	@Override
+	public List<PetSurgeryAfter> getUpdatePetSurgeryAfter(String petId) {
+		// TODO Auto-generated method stub
+		return petCardRepository.getUpdatePetSurgeryAfter(petId);
+	}
+	
+	// 동물의 몸무게 기록을 수정하는 함수
+	@Override
+	public void setUpdateWeightPetCard(PetWeight petWeight) {
+		// TODO Auto-generated method stub
+		petCardRepository.setUpdateWeightPetCard(petWeight);
+	} 
+	
+	// 동물의 진료 기록을 수정하는 함수
+
+	@Override
+	public void setUpdateChartPetCard(PetChart petChart) {
+		// TODO Auto-generated method stub
+		petCardRepository.setUpdateChartPetCard(petChart);
+	}
+
+
 	
 
+	
 
 	
 	

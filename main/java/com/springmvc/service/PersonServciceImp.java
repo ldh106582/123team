@@ -31,13 +31,6 @@ public class PersonServciceImp implements PersonService{
 	}
 
 	@Override
-	public Person GetUpdatePerson(String personId) {
-		// TODO Auto-generated method stub
-		return psersonRepository.GetUpdatePerson(personId);
-
-	}
-
-	@Override
 	public void SetUpdatePerson(Person person) {
 		// TODO Auto-generated method stub
 		psersonRepository.SetUpdatePerson(person);

@@ -45,21 +45,17 @@ public class PetCardRepositoryImp implements PetCardRepository{
 	//  2. 반려동물 진료 기록 가져옴
 	@Override
 	public List<PetWeight> getReadPetCard(String petId) {
-		System.out.println("PetCard repository get ReadPetCard 도착!");
 		String SQL = "select * from PetWeight inner join Pet on PetWeight.PetId =  Pet.PetId;";
-		System.out.println("PetCard repository get ReadPetCard SQL 도착!");
 	    List<PetWeight> petName = template.query(SQL, new Object[] {petId}, new PetWeightDBConnector());
-	    System.out.println("petName Arr : " + petName );
 	    return petName;
 	}
 	
 	// 동물의 몸무게를 가져오는 함수
 	@Override
 	public List<PetWeight> getWeghitPetCard(String petId) {
-		System.out.println("몸무게 가져오는 리파지 토리");
 		String SQL = "select * from PetWeight where petId=?";
 		List<PetWeight> listOfPetWeight = template.query(SQL, new Object[] {petId}, new PetWeightDBConnector());
-		System.out.println("listOfPetWeight : " + listOfPetWeight);
+
 		return listOfPetWeight;
 	}
 	
@@ -177,16 +173,73 @@ public class PetCardRepositoryImp implements PetCardRepository{
 		String SQL ="delete from PetSurgeryAfter where PetId=? and PetSurgeryAfterNum=?";
 		this.template.update(SQL, petid, petSurgeryAfterNumInt);
 	}
-	
-	// 몸무게 데이터를 수정하기 전 호출하는 함수
-	@Override
-	public List<PetWeight> getWeghitUpdatePetCard(int weghitNum) {
-		String SQL = "select * from PetWeight where PetWeightNum=?";
-		List<PetWeight> listOfPetWeight = template.query(SQL, new Object[] {weghitNum}, new PetWeightDBConnector());
 
-		return listOfPetWeight;
+	// 정보를 수정하기 전 동물의 정보를 보여주는 함수
+	@Override
+	public Pet getUpdatePetCard(String petId) {
+
+		String SQL = "select * from Pet where PetId=?";
+		Pet pet = template.queryForObject(SQL, new Object[] {petId}, new PetDBConnector());
+		return pet;
+	}
+	//  정보를 수정하기 전 몸무게 데이터를 보여주는 함수
+	@Override
+	public List<PetWeight> getUpdateWeightPetCard(String petId) {
+		String SQL = "select * from PetWeight where PetId=?";
+		List<PetWeight> petWeight = template.query(SQL, new Object[] {petId}, new PetWeightDBConnector());
+		System.out.println("petWeight update : " + petWeight);
+		return petWeight;
 	}
 
+	//  정보를 수정하기 전 진료 데이터를 보여주는 함수
+	@Override
+	public List<PetChart> getChartUpdatePetCard(String petId) {
+		String SQL = "select * from PetChart where PetId=?";
+		List<PetChart> PetChart = template.query(SQL, new Object[] {petId}, new PetChartDBConnector());
+		return PetChart;
+	}
+	//  정보를 수정하기 전 예방접종 데이터를 보여주는 함수
+	@Override
+	public List<PetVaccination> getVaccinationUpdatePetCard(String petId) {
+		String SQL = "select * from petVaccination where PetId=?";
+		List<PetVaccination> petVaccination = template.query(SQL, new Object[] {petId}, new PetVaccinationDBConnector());
+		return petVaccination;
+	}
+	//  정보를 수정하기 전 수술 데이터를 보여주는 함수
+	@Override
+	public List<PetSurgery> getUpdatePetSurgery(String petId) {
+		String SQL = "select * from PetSurgery where PetId=?";
+		List<PetSurgery> petSurgery = template.query(SQL, new Object[] {petId}, new PetSurgeryDBConnector());
+		return petSurgery;
+	}
+	//  정보를 수정하기 전 입원 데이터를 보여주는 함수
+	@Override
+	public List<PetSurgeryAfter> getUpdatePetSurgeryAfter(String petId) {
+		String SQL = "select * from PetSurgeryAfter where PetId=?";
+		List<PetSurgeryAfter> petSurgeryAfter = template.query(SQL, new Object[] {petId}, new PetSurgeryAfterDBConnector());
+		return petSurgeryAfter;
+	}
+
+	// 동물의 몸무게 기록을 수정하는 함수
+	@Override
+	public void setUpdateWeightPetCard(PetWeight petWeight) {
+		String SQL = "update PetWeight set PetWeightDate =?, PetWeight=? where PetWeightNum =?";
+		template.update(SQL, petWeight.getPetWeight(), petWeight.getPetWeightDate(), petWeight.getPetWeightNum());
+	}
+
+	// 동물의 진료 기록을 수정하는 함수
+	@Override
+	public void setUpdateChartPetCard(PetChart petChart) {
+		System.out.println(petChart.getPetChartNum());
+		String SQL = "update PetChart set  petChartDate =?, petChart=?, petChartContent =?  where PetChartNum  =?";
+		template.update(SQL, petChart.getPetChartDate(), petChart.getPetChart(), petChart.getPetChartContent(), petChart.getPetChartNum());
+		
+	}
+	
+
+	
+
+	
 
 
 

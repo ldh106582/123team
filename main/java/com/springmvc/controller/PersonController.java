@@ -46,49 +46,41 @@ public class PersonController {
 	
 	// 로그인 파라미터값 받아옴
 	@PostMapping
-	public String GetReadPerson(@ModelAttribute("success") Person person, Model model, Pet pet, HttpSession session) {
+	public String GetReadPerson(@ModelAttribute("success") Person person, Model model, Pet pet, HttpServletRequest request) {
 		System.out.println("아이디 확인"+person.getPersonId());
 		
 		// 조원들에게 넘겨줄 객체
 		Person id = personService.loginSucess(person);
 		
-		// 내가 가져갈 객체
-		String personId = person.getPersonId();
-		String personPw = person.getPersonPw();
+		HttpSession session = request.getSession();
 		
-		session.setAttribute("personId", personId);
-		session.setAttribute("personPw", personPw);
+		session.setAttribute("id", id);
 		
-		// pet이름 정보를 자겨옴
+		// pet이름 정보를 가져옴
 		List<Pet> petName = personService.getPetName(person);
-		model.addAttribute("petName", petName);
+		session.setAttribute("petName", petName);
 		// pet 아이디 정보를 가져옴
 		List<Pet> petId = personService.getPetId(pet);
-		model.addAttribute("petId", petId);
+		session.setAttribute("petId", petId);
 		
 		return "member/Mypage";
 	}
 	
 	// 회원 수정 페이지로 이동
 	@GetMapping("/update")
-	public String GetUpdatePerson(@ModelAttribute("addmemberupdate") Person person, @RequestParam("id") String personId ,Model model ) {
-		Person id = personService.GetUpdatePerson(personId);
-		System.out.println(id.getPersonId());
-		System.out.println(id.getPersonPw());
-		System.out.println(id.getPersonEmail());
-		System.out.println(id.getPersonAddress());
-		System.out.println(id.getPersonName());
-		System.out.println(id.getPersonBirth());
-		System.out.println(id.getPersonSex());
-		System.out.println(id.getPersonPhone());
+	public String GetUpdatePerson(@ModelAttribute("addmemberupdate") Person person,
+								  HttpServletRequest request) {
 		
-		model.addAttribute("id", id);
+		HttpSession session = request.getSession();
+		Person personId = (Person) session.getAttribute("personId");
+		session.setAttribute("personId", personId);
+		
 		return "member/update";
 	}
 	
 	// 회원 정보 수정 파라미터값 받아옴
 	@PostMapping("/update")
-	public String SetUpdatePerson(@ModelAttribute("addmemberupdate") Person person) {
+	public String SetUpdatePerson(@ModelAttribute("addmemberupdate") Person person,  HttpServletRequest request) {
 	    System.out.println("사용자 ID: " + person.getPersonId());
 	    personService.SetUpdatePerson(person);
 	    

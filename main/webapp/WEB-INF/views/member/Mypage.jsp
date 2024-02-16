@@ -11,16 +11,16 @@
 <body>
 	<p>로그인성공
 	
-	<p>아이디 : ${ id } 입니다!!
+	<p>아이디 : ${ id.personId } 입니다!!
 	
 	<c:forEach items="${ petName }" var="pet">
 		<a href="<c:url value="/login/petcard?petid=${pet.petId}"/>"  class="bte bte-secondary" role="button">나의 반려동물 : ${ pet.petName }</a>
 	</c:forEach>
 	
 	<br>
-	<a class="btn btn-Secondary" role="button" href= "./login/update?id=${ id }">회원수정 &raquo;</a>
-	<a class="btn btn-Secondary" role="button" id="delete" href= "./login/delete?id=${ id }">회원삭제 &raquo;</a>
-	<a class="btn btn-Secondary" role="button" href= "./pet?id=${ id }">반려동물 정보입력 &raquo;</a>
+	<a class="btn btn-Secondary" role="button" href= "./login/update?personId=${ personId }">회원수정 &raquo;</a>
+	<a class="btn btn-Secondary" role="button" id="delete" href= "./login/delete?id=${ personId }">회원삭제 &raquo;</a>
+	<a class="btn btn-Secondary" role="button" href= "./pet?id=${ personId }">반려동물 정보입력 &raquo;</a>
 	
 </body>
 <script>

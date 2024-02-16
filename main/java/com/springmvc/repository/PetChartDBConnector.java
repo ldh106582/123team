@@ -10,10 +10,7 @@ public class PetChartDBConnector implements RowMapper<PetChart> {
 		PetChart petChart = new PetChart();
 
 		petChart.setPetChartNum(rs.getInt(1));
-		java.sql.Date dbDate = rs.getDate(2);
-		if (dbDate != null) {
-			petChart.setPetChartDate(dbDate.toLocalDate());
-		}
+		petChart.setPetChartDate(rs.getDate(2).toLocalDate());
 		petChart.setPetChart(rs.getString(3));
 		petChart.setPetChartContent(rs.getString(4));
 		petChart.setPetId(rs.getString(5));

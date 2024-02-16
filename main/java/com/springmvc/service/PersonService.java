@@ -10,7 +10,6 @@ import com.springmvc.domain.Pet;
 public interface PersonService {
 	void setCreatPerson(Person person);
 	Person loginSucess(Person person);
-	Person GetUpdatePerson(String personId);
 	void SetUpdatePerson(Person person);
 	void SetDeletePerson(String personId);
 	// pet이름 가져오는 함수

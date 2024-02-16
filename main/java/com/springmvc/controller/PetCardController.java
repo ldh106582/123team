@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 import com.springmvc.domain.Pet;
 import com.springmvc.domain.PetChart;
 import com.springmvc.domain.PetSurgery;
@@ -34,6 +36,8 @@ public class PetCardController {
 	@Autowired
 	PetCardService petCardService;
 
+
+	
 	// 1. 반려동물 몸무게를 넣어줌
 	@GetMapping("/petcard")
 	public String SetCreatPetCard(@RequestParam("petid") String petId, Model model) {
@@ -294,28 +298,87 @@ public class PetCardController {
 
 		return "redirect:/login/petcard?petid=" + request.getParameter("petId");
 	}
+	
+	@GetMapping("/petcardupdate")
+	public String GetUpdatePetCard(@RequestParam("petId") String petId, HttpServletRequest request, Model model) {
+		
+		
+		// 정보를 수정하기 전 동물의 정보를 보여주는 함수
+		Pet pet = petCardService.getUpdatePetCard(petId);
+		model.addAttribute("pet", pet);
+		
+		//  정보를 수정하기 전 몸무게 데이터를 보여주는 함수
+		List<PetWeight> listOfPetWeight = petCardService.getUpdateWeightPetCard(petId);
+		System.out.println("listOfPetWeight Controller" + listOfPetWeight);
+		model.addAttribute("listOfPetWeight", listOfPetWeight);
+		
+		//  정보를 수정하기 전 진료 데이터를 보여주는 함수
+		List<PetChart> listOfPetChard = petCardService.getChartUpdatePetCard(petId);
+		model.addAttribute("listOfPetChard", listOfPetChard);
+		
+		//  정보를 수정하기 전 예방접종 데이터를 보여주는 함수
+		List<PetVaccination> listOfpetVaccination = petCardService.getVaccinationUpdatePetCard(petId);
+		model.addAttribute("listOfpetVaccination", listOfpetVaccination);
+		
+		//  정보를 수정하기 전 수술 데이터를 보여주는 함수
+		List<PetSurgery> listOfPetSurgery = petCardService.getUpdatePetSurgery(petId);
+		model.addAttribute("listOfPetSurgery", listOfPetSurgery);
+		
+		//  정보를 수정하기 전 입원 데이터를 보여주는 함수
+		List<PetSurgeryAfter> listOfPetSurgeryAfter = petCardService.getUpdatePetSurgeryAfter(petId);
+		model.addAttribute("listOfPetSurgeryAfter", listOfPetSurgeryAfter);
+		return "/petcard/PetCardUpdate";
+	}
 
-	// 몸무게 데이터를 수정하기 전 호출하는 함수
-	/*
-	 * @GetMapping("/petcardupdate") public String
-	 * GetUpdatePatCard(@RequestParam("weghitNum") int weghitNum, Model model) {
-	 * 
-	 * 
-	 * List<PetWeight> listOfPetWeight =
-	 * petCardService.getWeghitUpdatePetCard(weghitNum);
-	 * model.addAttribute("listOfPetWeight", listOfPetWeight);
-	 * 
-	 * 
-	 * return "/petcard/petcard"; }
-	 */
-
-	// 동물의 몸무게 데이터를 수정하는 함수
+	
 	@PostMapping("/petcardupdate")
-	public String SetUpdatePatCard(@RequestParam("weghitNum") int weghitNum, HttpServletRequest request) {
+	public String SetUpdateChartPetCard(@RequestParam("petChartNum") String petChartNum, 
+								   @RequestParam("petId") String petId,
+								   HttpServletRequest request,
+								   PetChart petChart) {
+	    
 		
-		int weghitNum = Integer.parseInt(request.getParameter("weghitNum"));
+		// 동물의 진료 기록을 수정하는 함수
+		petChart.setPetId(petId);
+		petChart.setPetChartNum(Integer.parseInt(petChartNum));
 		
-		return "redirect:/login/petcardupdate";
+	    petCardService.setUpdateChartPetCard(petChart);
+
+	    return "redirect:/login/petcardupdate";
+	}
+	
+	@GetMapping("/petWeightupdate")
+	public String GetUpdateWeghitPetCard(@RequestParam("petId") String petId, HttpServletRequest request, Model model) {
+		
+		// 정보를 수정하기 전 동물의 정보를 보여주는 함수
+		Pet pet = petCardService.getUpdatePetCard(petId);
+		model.addAttribute("pet", pet);
+		
+		//  정보를 수정하기 전 몸무게 데이터를 보여주는 함수
+		List<PetWeight> listOfPetWeight = petCardService.getUpdateWeightPetCard(petId);
+		System.out.println("listOfPetWeight Controller" + listOfPetWeight);
+		model.addAttribute("listOfPetWeight", listOfPetWeight);
+		
+		return "/petcard/PetCardUpdate";
+	}
+	
+	@PostMapping("/petWeightupdate")
+	public String SetUpdateWeightPetCard(@RequestParam("petWeightNum") String petWeightNum,
+										@RequestParam("petId") String petId,
+								   HttpServletRequest request,
+								   PetWeight petWeight) {
+		System.out.println("여기오나?");
+		// 동물의 몸무게 기록을 수정하는 함수
+		petWeight.setPetId(petId);
+		
+		petWeight.setPetWeightNum(Integer.parseInt(petWeightNum));
+		
+		String id = request.getParameter("petWeight");
+		System.out.println(id);
+		petCardService.setUpdateWeightPetCard(petWeight);
+	    
+
+	    return "redirect:/login/petcardupdate?petchartNum=" + request.getParameter("petchartNum")+ "&petId=" + petId;
 	}
 
 }
