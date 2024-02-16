@@ -35,7 +35,7 @@
 					
 					<div class="intro6">
 						<div class="intro7">
-							<a href="#"> 공지사항 &raquo;</a>
+							<a href="test"> 체험단 &raquo;</a>
 						</div>
 						<div class="intro7">
 							<a href="#"> 동물카드 &raquo;</a>

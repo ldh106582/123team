@@ -11,7 +11,7 @@
 <body>
 	<h1>게시판 페이지</h1>
 	
-	<a href="/123team/Nboards"><button>공지사항</button></a> || <a href="/123team/Fboards"><button>자유게시판</button></a> || <a href="#"><button>체험단</button></a> &emsp; <a href="Fboards/add"><button>게시글 작성</button></a>
+	<a href="/123team/Nboards"><button>공지사항</button></a> || <a href="/123team/Fboards"><button>자유게시판</button></a> &emsp; <a href="Fboards/add"><button>게시글 작성</button></a>
 	<br>
 	
 	<c:set var="pageSize" value="5" /> <!-- 한 페이지에 표시할 게시글 수 -->
