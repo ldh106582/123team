@@ -20,17 +20,58 @@
 			<div>${board.context}</div>
 			====================================================================================
 			<h5> 댓글</h5>
+			
 			<c:forEach items="${Commentlist}" var="comments">
 				<br>
 				작성자ID : ${comments.personId}  &emsp; &emsp;  작성일 : ${comments.registDay}
-				<div>
-					${comments.comment}
+				
+				<div id="${comments.commentId}">
+					<b id="willdelete${comments.commentId}">${comments.comment}</b>
 				</div>
-				<a href="updatecommentform?commentId=${comments.commentId}">댓글 수정</a>
-				<a href="deletecoment?commentId=${comments.commentId}&boardId=${board.boardId}">댓글 삭제</a>
+				<button onclick="editform('${comments.comment}','${comments.commentId}')">댓글 수정</button>
+				<a href="deletecoment?commentId=${comments.commentId}&boardId=${board.boardId}"><button>댓글 삭제</button></a>
 				<br>
 				--------------------------------------------------------------------------------
 			</c:forEach>
+			
+				<script type="text/javascript">
+					function editform(comment,commentId){
+						
+						var container = document.getElementById(commentId);
+						console.log(commentId);
+						var dew = "willdelete"+commentId;
+						var willdelete = document.getElementById(dew);
+						
+						console.log(dew);
+						container.removeChild(willdelete);
+						
+						var form = document.createElement("form");
+						form.setAttribute("action","/123team/Fboards/updatecomment");
+						form.setAttribute("method","POST");
+						
+						var inputh = document.createElement("input");
+						inputh.setAttribute("type","hidden");
+						inputh.setAttribute("name","commentId");
+						inputh.setAttribute("value",commentId);
+						
+						var inputt = document.createElement("input");
+						inputt.setAttribute("type","text");
+						inputt.setAttribute("name","comment");
+						inputt.setAttribute("value",comment);
+						
+						var inputs = document.createElement("input");
+						inputs.setAttribute("type","submit");
+						inputs.setAttribute("value","수정하기");
+						
+						form.appendChild(inputh);
+						form.appendChild(inputt);
+						form.appendChild(inputs);
+						
+						container.appendChild(form);
+						
+						
+					}
+				</script>
 			<br>
 			====================================================================================
 			<h5>댓글 작성</h5>
