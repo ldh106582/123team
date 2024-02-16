@@ -47,8 +47,21 @@ public interface PetCardService {
 	void setPetSurgeryAfter(PetSurgeryAfter petSurgeryAfter);
 	
 	// 동물의 몸무게를 제거하는 함수
-	void getDeleteWeghitPetCard(String petid);
+	void getDeleteWeghitPetCard(String petid, int petWeightNumInt);
+	
+	// 동물의 진료 기록을 삭제하는 함수
+	void getDeletePetCard(String petid, int petChartNumInt);
 	
 	// 동물의 백신기록을 제거하는 함수
-	void getDeleteVaccinationPetCard(String petid);
+	void getDeleteVaccinationPetCard(String petid, int petVaccinationNumInt);
+	
+	// 동물의 수술기록을 삭제하는 함수
+	void getDeleteSurgeryPetCard(String petid, int petSurgeryNumInt);
+	
+	// 동물의 입원 기록을 삭제하는 함수
+	void getDeleteSurgeryAfterPetCard(String petid, int petSurgeryAfterNumInt);
+	
+	 /* // 몸무게 데이터를 수정하기 전 호출하는 함수 List<PetWeight> getWeghitUpdatePetCard(int
+	 * weghitNum);
+	 */
 }

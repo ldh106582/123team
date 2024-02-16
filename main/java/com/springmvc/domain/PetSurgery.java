@@ -8,38 +8,37 @@ public class PetSurgery {
 	
 	private int petSurgeryNum;
 	@DateTimeFormat(pattern="yyyy-MM-dd")
-	private LocalDate PetSurgeryDate ;
-	private String PetSurgeryName ;
-	private String PetSurgeryContent ;
+	private LocalDate petSurgeryDate ;
+	private String petSurgeryName ;
+	private String petSurgeryContent ;
 	private String petId;
 	public PetSurgery() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public LocalDate getPetSurgeryDate() {
-		return PetSurgeryDate;
-	}
-	
 	public int getPetSurgeryNum() {
 		return petSurgeryNum;
 	}
 	public void setPetSurgeryNum(int petSurgeryNum) {
 		this.petSurgeryNum = petSurgeryNum;
 	}
+	public LocalDate getPetSurgeryDate() {
+		return petSurgeryDate;
+	}
 	public void setPetSurgeryDate(LocalDate petSurgeryDate) {
-		PetSurgeryDate = petSurgeryDate;
+		this.petSurgeryDate = petSurgeryDate;
 	}
 	public String getPetSurgeryName() {
-		return PetSurgeryName;
+		return petSurgeryName;
 	}
 	public void setPetSurgeryName(String petSurgeryName) {
-		PetSurgeryName = petSurgeryName;
+		this.petSurgeryName = petSurgeryName;
 	}
 	public String getPetSurgeryContent() {
-		return PetSurgeryContent;
+		return petSurgeryContent;
 	}
 	public void setPetSurgeryContent(String petSurgeryContent) {
-		PetSurgeryContent = petSurgeryContent;
+		this.petSurgeryContent = petSurgeryContent;
 	}
 	public String getPetId() {
 		return petId;
@@ -47,6 +46,7 @@ public class PetSurgery {
 	public void setPetId(String petId) {
 		this.petId = petId;
 	}
+
 	
 	
 }

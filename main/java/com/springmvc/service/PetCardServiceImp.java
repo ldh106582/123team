@@ -112,18 +112,47 @@ public class PetCardServiceImp implements PetCardService{
 
 	// 동물의 몸무게를 제거하는 함수
 	@Override
-	public void getDeleteWeghitPetCard(String petid) {
+	public void getDeleteWeghitPetCard(String petid, int petWeightNumInt) {
 		// TODO Auto-generated method stub
-		petCardRepository.getDeleteWeghitPetCard(petid);
+		petCardRepository.getDeleteWeghitPetCard(petid, petWeightNumInt);
 	}
 
+	// 동물의 진료 기록을 삭제하는 함수
 	@Override
-	public void getDeleteVaccinationPetCard(String petid) {
+	public void getDeletePetCard(String petid, int petChartNumInt) {
 		// TODO Auto-generated method stub
-		petCardRepository.getDeleteVaccinationPetCard(petid);
-	} 
+		petCardRepository.getDeletePetCard(petid, petChartNumInt);
+	}
 
 	// 동물의 백신기록을 제거하는 함수
+	@Override
+	public void getDeleteVaccinationPetCard(String petid, int petVaccinationNumInt) {
+		// TODO Auto-generated method stub
+		petCardRepository.getDeleteVaccinationPetCard(petid, petVaccinationNumInt);
+	}
+	
+	// 동물의 수술기록을 삭제하는 함수
+	@Override
+	public void getDeleteSurgeryPetCard(String petid, int petSurgeryNumInt) {
+		// TODO Auto-generated method stub
+		petCardRepository.getDeleteSurgeryPetCard(petid, petSurgeryNumInt);
+	}
+	
+	// 동물의 입원 기록을 삭제하는 함수
+	@Override
+	public void getDeleteSurgeryAfterPetCard(String petid, int petSurgeryAfterNumInt) {
+		// TODO Auto-generated method stub
+		petCardRepository.getDeleteSurgeryAfterPetCard(petid, petSurgeryAfterNumInt);
+	}
+	
+	/*
+	 * // 몸무게 데이터를 수정하기 전 호출하는 함수
+	 * 
+	 * @Override public List<PetWeight> getWeghitUpdatePetCard(int weghitNum) { //
+	 * TODO Auto-generated method stub return
+	 * petCardRepository.getWeghitUpdatePetCard(weghitNum); }
+	 */
+	
 
 
 	

@@ -143,19 +143,54 @@ public class PetCardRepositoryImp implements PetCardRepository{
 
 	// 동물의 몸무게를 제거하는 함수
 	@Override
-	public void getDeleteWeghitPetCard(String petid) {
+	public void getDeleteWeghitPetCard(String petid, int petWeightNumInt) {
 		String SQL ="delete from PetWeight where PetId=? and PetWeightNum=?";
-		this.template.update(SQL, petid);
+		this.template.update(SQL, petid, petWeightNumInt);
 		
 	}
 	
+	// 동물의 진료 기록을 삭제하는 함수
+	@Override
+	public void getDeletePetCard(String petid, int petChartNumInt) {
+		String SQL ="delete from PetChart where PetId=? and PetChartNum=?";
+		this.template.update(SQL, petid, petChartNumInt);
+	} 
+	
 	// 동물의 백신기록을 제거하는 함수
 	@Override
-	public void getDeleteVaccinationPetCard(String petid) {
-		String SQL ="delete from petVaccination where PetId=?";
-		this.template.update(SQL, petid);
+	public void getDeleteVaccinationPetCard(String petid, int petVaccinationNumInt) {
+		String SQL ="delete from petVaccination where PetId=? and PetVaccinationNum=?";
+		this.template.update(SQL, petid, petVaccinationNumInt);
 		
-	} 
+	}
+	// 동물의 수술기록을 삭제하는 함수
+	@Override
+	public void getDeleteSurgeryPetCard(String petid, int petSurgeryNumInt) {
+		String SQL ="delete from PetSurgery where PetId=? and PetSurgeryNum=?";
+		this.template.update(SQL, petid, petSurgeryNumInt);
+		
+	}
+	
+	// 동물의 입원 기록을 삭제하는 함수
+	@Override
+	public void getDeleteSurgeryAfterPetCard(String petid, int petSurgeryAfterNumInt) {
+		String SQL ="delete from PetSurgeryAfter where PetId=? and PetSurgeryAfterNum=?";
+		this.template.update(SQL, petid, petSurgeryAfterNumInt);
+	}
+	
+	// 몸무게 데이터를 수정하기 전 호출하는 함수
+	@Override
+	public List<PetWeight> getWeghitUpdatePetCard(int weghitNum) {
+		String SQL = "select * from PetWeight where PetWeightNum=?";
+		List<PetWeight> listOfPetWeight = template.query(SQL, new Object[] {weghitNum}, new PetWeightDBConnector());
+
+		return listOfPetWeight;
+	}
+
+
+
+
+	
 	
 
 	

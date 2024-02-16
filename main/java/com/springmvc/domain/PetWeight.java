@@ -9,7 +9,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @SuppressWarnings("serial")
 public class PetWeight implements Serializable{
 
-	private int PetWeightNum;
+	private int petWeightNum;
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private java.sql.Date petWeightDate;
 	private String petWeight; // 몸무게
@@ -21,13 +21,12 @@ public class PetWeight implements Serializable{
 	}
 	
 	
-
 	public int getPetWeightNum() {
-		return PetWeightNum;
+		return petWeightNum;
 	}
 
 	public void setPetWeightNum(int petWeightNum) {
-		PetWeightNum = petWeightNum;
+		this.petWeightNum = petWeightNum;
 	}
 
 	public Date getPetWeightDate() {
