@@ -7,13 +7,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript">
-
-</script>
 </head>
 <body>		
 			<a href="update?boardId=${board.boardId}">게시글 수정</a>
 			<a href="delete?boardId=${board.boardId}">게시글 삭제</a>
+			&emsp;&emsp;&emsp; <a href="/123team/Fboards">돌아가기</a>
 			<br>
 			===================================================================================
 			<br>

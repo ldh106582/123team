@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.springmvc.domain.FBoard;
+import com.springmvc.domain.NBoard;
 import com.springmvc.domain.Person;
 import com.springmvc.domain.Pet;
 import com.springmvc.service.PersonService;
@@ -57,7 +58,11 @@ public class PersonController {
 	 	FBoard fboard = FBoard.getInstance();
 	 	fboard.setPersonId(id.getPersonId());
 	 	fboard.setPersonName(id.getPersonName());
-		
+	 	
+	 	NBoard nboard = NBoard.getInstance();
+	 	nboard.setPersonId(id.getPersonId());
+	 	nboard.setPersonName(id.getPersonName());
+	 	
 		// 내가 가져갈 객체
 		String personId = person.getPersonId();
 		String personPw = person.getPersonPw();
