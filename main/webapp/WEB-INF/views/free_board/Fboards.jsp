@@ -54,7 +54,7 @@
 	%>
 	
 	<c:forEach begin="1" end="${totalPages}" var="pageNum"> <!-- 페이지 번호 출력 -->
-		<a href="Fboards?page=${pageNum}"> [${pageNum}] </a>
+		<a href="/123team/Fboards/Fboards?page=${pageNum}"> [${pageNum}] </a>
 	</c:forEach>
 	
 	<br>
