@@ -309,13 +309,5 @@ public class PetCardController {
 	 * return "/petcard/petcard"; }
 	 */
 
-	// 동물의 몸무게 데이터를 수정하는 함수
-	@PostMapping("/petcardupdate")
-	public String SetUpdatePatCard(@RequestParam("weghitNum") int weghitNum, HttpServletRequest request) {
-		
-		int weghitNum = Integer.parseInt(request.getParameter("weghitNum"));
-		
-		return "redirect:/login/petcardupdate";
-	}
 
 }

@@ -53,25 +53,15 @@ public class PetCardRepositoryImp implements PetCardRepository{
 	    return petName;
 	}
 	
-	// 동물의 몸무게를 가져오는 함수
-	@Override
-	public List<PetCard> getWeghitPetCard(PetCard petId) {
-			String SQL = "insert into petCard(PetWeghit, PetId) value(?,?)";
-			template.update(SQL, new Object[] {petId.getPetWeghit(),petId.getPetId()}, new PetCardDBConnector());
-			
-			String petSQL = "select * from PetCard where PetId=?";
-			// List<PetCard> listOfPetCard = template.queryForObject(petSQL, new Object[] {petId.petId(), petId.petWeghit()}, new PetCardDBConnector());
-			listOfPetCard.add(petId);
-			
-		return listOfPetCard;
-
-	public List<PetWeight> getWeghitPetCard(String petId) {
-		System.out.println("몸무게 가져오는 리파지 토리");
-		String SQL = "select * from PetWeight where petId=?";
-		List<PetWeight> listOfPetWeight = template.query(SQL, new Object[] {petId}, new PetWeightDBConnector());
-		System.out.println("listOfPetWeight : " + listOfPetWeight);
-		return listOfPetWeight;
-	}
+   // 동물의 몸무게를 가져오는 함수
+   @Override
+   public List<PetWeight> getWeghitPetCard(String petId) {
+      System.out.println("몸무게 가져오는 리파지 토리");
+      String SQL = "select * from PetWeight where petId=?";
+      List<PetWeight> listOfPetWeight = template.query(SQL, new Object[] {petId}, new PetWeightDBConnector());
+      System.out.println("listOfPetWeight : " + listOfPetWeight);
+      return listOfPetWeight;
+    }
 	
 	// 반려동물 진료 기록을 가져옴
 	@Override
