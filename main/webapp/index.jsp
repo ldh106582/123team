@@ -72,6 +72,7 @@
 					</div>
 				</div>
 				 -->
+			<!-- 	 
 				<div class="intro13">
 					<div>
 						<img src="./이도현/dog.jpg" class="img01">
@@ -85,9 +86,9 @@
 						<img src="./이도현/cat2.jpg" class="img01">
 						<img src="./이도현/dog3.jpg" class="img01">
 						<img src="./이도현/cat4.jpg" class="img01">
-			
 					</div>
 				</div>
+				 -->
 			</div>
 		</div>
 	</header>

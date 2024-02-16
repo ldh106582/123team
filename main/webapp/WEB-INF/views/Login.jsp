@@ -8,25 +8,46 @@
 <title>로그인</title>
 </head>
 <body>
+	<nav class="navbar navbar-expand navbar-dark bg-dark">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="./">Home</a>
+			</div>
+			<div class="collapse navbar-collapse" id="navbarNav">
+		      <ul class="navbar-nav">
+		        <li class="nav-item">
+		          <a class="nav-link active" href="./hospital">병원</a>
+		        </li>
+		        <li class="nav-item">
+		          <a class="nav-link" href="./product">동물상품</a>
+		        </li>
+		        <li class="nav-item">
+		          <a class="nav-link" href="Fboards">게시판</a>
+		        </li>
+		        <li class="nav-item">
+		          <a class="nav-link" href="./login">로그인</a>
+		        </li>
+			</div>
+		</div>
+	</nav>
 
 	<div class="jumbotron">
 		<div class="container">
 			<h2>로그인 페이지</h2>
 		</div>
 	</div>
-	
 	<div class="container col-md-4">
 		<div class="text-center">
 			<h3>주인의 아이디 / 비밀번호 입력해주세요</h3>
 		</div>
 
 	<form:form class="form-signin" modelAttribute="success" method="POST">
-		<div class="form-group row col-12 text-center"> 아이디 : 
-			<form:input class="form-control" type="text" path="personId" />
+		<div class="form-group row col-12 text-center"> 
+			<form:input class="form-control" type="text" path="personId" id="floatingInput"/>
 		</div>
 
-		<div class="form-group row col-12"> 비밀번호 : 
-			<form:input class="form-control" type="password" path="personPw"/>
+		<div class="form-group row col-12">  
+			<form:input class="form-control" type="password" path="personPw" id="floatingPassword"/>
 		</div>
 
 		
@@ -38,5 +59,8 @@
 		</form:form>
 	</div>
 
+	<footer class="container">
+		
+	</footer>
 </body>
 </html>
