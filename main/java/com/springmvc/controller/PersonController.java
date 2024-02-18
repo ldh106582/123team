@@ -66,15 +66,12 @@ public class PersonController {
 			}
 		}
 		
-
-		
 		// pet이름 정보를 가져옴
 		List<Pet> petName = personService.getPetName(person);
 		session.setAttribute("petName", petName);
 		// pet 아이디 정보를 가져옴
 		List<Pet> petId = personService.getPetId(pet);
 		session.setAttribute("petId", petId);
-		// petcard에 사용할 정보
 
 		
 		return "redirect:/login";

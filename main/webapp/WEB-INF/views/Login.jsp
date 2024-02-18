@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,14 +20,14 @@
 		<div class="text-center">
 			<h3>주인의 아이디 / 비밀번호 입력해주세요</h3>
 		</div>
-
+	
 	<form:form class="form-signin" modelAttribute="success" method="POST">
 		<div class="form-group row col-12 text-center"> 아이디 : 
-			<form:input class="form-control" type="text" path="personId" />
+			<form:input class="form-control" type="text" path="personId" id="id" />
 		</div>
-
+		
 		<div class="form-group row col-12"> 비밀번호 : 
-			<form:input class="form-control" type="password" path="personPw"/>
+			<form:input class="form-control" type="password" path="personPw" id="pw"/>
 		</div>
 
 		
@@ -41,6 +42,22 @@
 
 </body>
 <script>
-
+var firstLoad = true;
+	document.getElementById("login").onsubmit = function(e){
+		var id = document.getElementById('id').value;
+		var pw = document.getElementById('pw').value;
+		
+		if(id == "" || pw == ""){
+			alert("아이디와 비밀번호를 입력해주세요.")
+			e.preventDefault();
+		}
+	}
+	window.onload = function(){
+		var error = "아이디와 비밀번호를 확인해주세요";
+		if(error && !firstLoad){
+			alert(error);
+		}
+		firstLoad = false;
+	}
 </script>
 </html>

@@ -412,10 +412,17 @@ public class PetCardController {
 	    return "/login";
 	}
 	
-	/*
-	 * @GetMapping("/petcardBack") public String finishpetcard(@RequestParam("Id")
-	 * String Id) {
-	 * 
-	 * return "petcard/petcard"; }
-	 */
+	@GetMapping("/back")
+	public String petcardback(@RequestParam("petId") String petId, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		
+		List<Pet> pet = (List<Pet>) session.getAttribute("petId");
+		List<PetWeight> listOfPetWeight = (List<PetWeight>) session.getAttribute("listOfPetWeight");
+		List<PetChart> listOfPetChard = (List<PetChart>) session.getAttribute("listOfPetChard");
+		List<PetVaccination> listOfpetVaccination = (List<PetVaccination>) session.getAttribute("listOfpetVaccination");
+		List<PetSurgery> listOfPetSurgery = (List<PetSurgery>) session.getAttribute("listOfPetSurgery");
+		List<PetSurgeryAfter> listOfPetSurgeryAfter = (List<PetSurgeryAfter>) session.getAttribute("listOfPetSurgeryAfter");
+
+		return "/petcard/petcard";
+	}
 }

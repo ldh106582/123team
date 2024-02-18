@@ -44,7 +44,6 @@ public class PetController
 		
 		Pet petname = petService.setcreatepet(pet);
 		
-		
 		model.addAttribute("petname", petname.getPetName());
 		
 		return "/member/Mypage";

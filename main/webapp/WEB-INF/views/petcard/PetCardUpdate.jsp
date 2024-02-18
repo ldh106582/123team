@@ -25,8 +25,8 @@
 	           	    <p> 종 : ${pet.petVarity} </p>
 	                <p id="petbirth"> 생년월일 : ${pet.petBirth} (나이 : <b id="petAge"> </b>)</p>
 					<div class="btn btn-success border border-dark mr-2 " style="padding-right:15px;">
-						<a class="text-white" href="/123team/login/petcard?petid=${pet.petId}">기록수정완료 </a>
-	             	</div>
+						<a class="text-white" href="/login/back?petId=${pet.petId }">기록수정완료 </a> 	             	
+					</div>
              	</div>
 
 	            <br><br>
