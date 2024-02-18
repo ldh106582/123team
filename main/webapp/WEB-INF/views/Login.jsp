@@ -31,7 +31,7 @@
 
 		
 		<div class="form-group row col-12">
-			<input type="submit" class="btn btn-lg btn-success btn-block"/>
+			<input type="submit" class="btn btn-lg btn-success btn-block" value="로그인" id="login"/>
 		</div>
 		<a class="p-2 col-md-2 float-right" href="./login/add"> 회원가입		
 		<a class="p-2 col-md-2 " href="#">아이디 찾기 </a> <a class="p-2 col-md-2"  href="#">비밀번호 찾기</a>
@@ -40,4 +40,7 @@
 	</div>
 
 </body>
+<script>
+
+</script>
 </html>

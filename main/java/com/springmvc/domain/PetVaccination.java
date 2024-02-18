@@ -2,9 +2,12 @@ package com.springmvc.domain;
 
 import java.time.LocalDate;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class PetVaccination {
 	
 	private int petVaccinationNum;
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private LocalDate petVaccinationDate;
 	private String petVaccination;
 	private String petVaccinationCotent;

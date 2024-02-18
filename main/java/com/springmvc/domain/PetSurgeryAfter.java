@@ -29,8 +29,6 @@ public class PetSurgeryAfter implements Serializable {
 		this.petSurgeryAfterNum = petSurgeryAfterNum;
 	}
 
-
-
 	public LocalDate getPetSurgeryDateAfter() {
 		return petSurgeryDateAfter;
 	}

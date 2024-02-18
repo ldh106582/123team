@@ -183,20 +183,43 @@ public class PetCardServiceImp implements PetCardService{
 		return petCardRepository.getUpdatePetSurgeryAfter(petId);
 	}
 	
-	// 동물의 몸무게 기록을 수정하는 함수
+	
+	
+	// 동물의 진료 기록을 수정하는 함수
+
 	@Override
 	public void setUpdateWeightPetCard(PetWeight petWeight) {
 		// TODO Auto-generated method stub
 		petCardRepository.setUpdateWeightPetCard(petWeight);
-	} 
+	}
 	
 	// 동물의 진료 기록을 수정하는 함수
-
 	@Override
 	public void setUpdateChartPetCard(PetChart petChart) {
 		// TODO Auto-generated method stub
 		petCardRepository.setUpdateChartPetCard(petChart);
 	}
+	
+	//  동물의 예방접종 기록을 수정하는 함수
+	@Override
+	public void setUpdateVaccinationPetCard(PetVaccination petVaccination) {
+		// TODO Auto-generated method stub
+		petCardRepository.setUpdateVaccinationPetCard(petVaccination);
+	}
+
+	@Override
+	public void setUpdateSergeryionPetCard(PetSurgery petSurgery) {
+		// TODO Auto-generated method stub
+		petCardRepository.setUpdateSergeryionPetCard(petSurgery);
+	}
+
+	@Override
+	public void setUpdateSergeryAfterPetCard(PetSurgeryAfter petSurgeryAfter) {
+		// TODO Auto-generated method stub
+		petCardRepository.setUpdateSergeryAfterPetCard(petSurgeryAfter);
+	}
+	
+	
 
 
 	

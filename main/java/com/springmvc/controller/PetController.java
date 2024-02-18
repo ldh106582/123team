@@ -28,8 +28,6 @@ public class PetController
 		// 아이디값 출력잘됨
 		System.out.println("petpersonId : " + personId);
 		
-		
-		
 		HttpSession session = request.getSession();
 		session.setAttribute("personId", personId);
 		

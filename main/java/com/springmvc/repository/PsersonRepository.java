@@ -13,4 +13,6 @@ public interface PsersonRepository {
 	void SetDeletePerson(String personId);
 	List<Pet> getPetName(Person person);
 	List<Pet> getPetId(Pet pet);
+	// petcard에 사용할 정보
+
 }

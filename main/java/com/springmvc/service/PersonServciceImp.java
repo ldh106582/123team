@@ -15,7 +15,6 @@ public class PersonServciceImp implements PersonService{
 	@Autowired
 	PsersonRepository psersonRepository;
 
-	
 	@Override
 	public void setCreatPerson(Person person) 
 	{
@@ -53,8 +52,10 @@ public class PersonServciceImp implements PersonService{
 		// TODO Auto-generated method stub
 		return psersonRepository.getPetId(pet);
 	}
+	// petcard에 사용할 정보
+
 	
-	
+
 	
 
 }

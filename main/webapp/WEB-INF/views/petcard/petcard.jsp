@@ -10,11 +10,6 @@
 <!-- 폰트어썸 -->
 <script src="https://kit.fontawesome.com/ddd0a6fba1.js" crossorigin="anonymous"></script>
 
-<style>
-*{
-background-color()
-}
-</style>
 <title>나의 동물 현황</title>
 </head>
 <body>
@@ -24,21 +19,23 @@ background-color()
     <table class="table" border="1">
         <tbody>
             <tr>
-                <div class="border">
-                    <tr>
-                    <p><span> 이름 : ${petid.petName} </span></p>
-                	<div class="float-right float-top btn btn-danger border border-dark mr-3 text-dark text-white" style="padding-right:15px;">
-			        	<a class="text-white" href="/123team/pet/delete?petid=${petid.petId}" value="정보삭제">정보삭제 </a>
-			    	</div>
-				    <div class="float-right btn btn-success border border-dark mr-2 " style="padding-right:15px;">
-				        <a class="text-white" href="/123team/pet/petread?petId=${petid.petId}" value="정보수정">정보수정 </a>
-				    </div>
-	           	    <p> 종 : ${petid.petVarity} </p>
-	                <p id="petbirth"> 생년월일 : ${petid.petBirth} (나이 : <b id="petAge"> </b>)</p>
-                    
-					<a href="/123team/login/petcardupdate?petId=${petid.petId}" class="bg-success text-white border border-radios p-1 mr-1 mb-0">진료기록수정 </a>
-             	</div>
-
+	           <c:forEach items="${petId}" var="petId">
+	                <div class="border">
+	                    <tr>
+	                    <p><span> 이름 : ${petId.petName} </span></p>
+	                	<div class="float-right float-top btn btn-danger border border-dark mr-3 text-dark text-white" style="padding-right:15px;">
+				        	<a class="text-white" href="/123team/pet/delete?petid=${petId.petId}" value="정보삭제">정보삭제 </a>
+				    	</div>
+					    <div class="float-right btn btn-success border border-dark mr-2 " style="padding-right:15px;">
+					        <a class="text-white" href="/123team/pet/petread?petId=${petId.petId}" value="정보수정">정보수정 </a>
+					    </div>
+		           	    <p> 종 : ${petId.petVarity} </p>
+		                <p id="petbirth"> 생년월일 : ${petId.petBirth} (나이 : <b id="petAge"> </b>)</p>
+	                    <div class="btn btn-success border border-dark mr-2 " style="padding-right:15px;">
+							<a class="text-white" href="/123team/login/petcardupdate?petId=${petId.petId}">진료기록수정 </a>
+	             		</div>
+	             	</div>
+				</c:forEach>
 	            <br><br>
 	            <td>
 	                <div> 
@@ -46,34 +43,36 @@ background-color()
 	                </div>
 	            </td>
 	            </tr>
-	                <tr>
-	                    <td>
+                <tr>
+                   <td>
 
-                        <h4 class="d-flex align-self-center" id="ChartName">나의 동물 몸무게</h4>
-                        <button class="bg-info text-white rounded" id="ChartButton0" onclick="toggleDisplay('ChartDetails0', 'ChartButton0')">펼치기</button>
-                        <div id="ChartDetails0"  style="display: none;">
-                        
-                        <c:forEach items="${listOfPetWeight}" var="petWeight">
-                            <div class="border m-2" style=" position: relative;">
-                                <p class="ml-2 mt-2"> 입력날짜 : ${ petWeight.petWeightDate } </p>
-                                <input class="ml-2" id="editDateField1" type="date" name="petWeightDate" style="display: none;"/>
-                                <p class="m-2 mt-2"> 몸무게 : ${ petWeight.petWeight }	</p>
-                                <input class="m-2" id="editWeightField1" type="text" name="petWeightNum" style="display: none;"/>
-    
-                                <div class="col-sm-1" style="position: absolute; top: 35%; transform: translateX(980%);">
-                                    <a href="${pageContext.request.contextPath}/login/deleteWeghit?petId=${petid.petId}&petWeightNum=${petWeight.petWeightNum}" class="p-3 border text-secondary"> <i class="fa-solid fa-trash-can"></i> </a>
-                                </div>
-                            </div>
-                        </c:forEach>
+                      <h4 class="d-flex align-self-center" id="ChartName">나의 동물 몸무게</h4>
+                      <button class="bg-info text-white rounded" id="ChartButton0" onclick="toggleDisplay('ChartDetails0', 'ChartButton0')">펼치기</button>
+                      <div id="ChartDetails0"  style="display: none;">
+                      
+                      <c:forEach items="${listOfPetWeight}" var="petWeight">
+                          <div class="border m-2" style=" position: relative;">
+                              <p class="ml-2 mt-2"> 입력날짜 : ${ petWeight.petWeightDate } </p>
+                              <input class="ml-2" id="editDateField1" type="date" name="petWeightDate" style="display: none;"/>
+                              <p class="m-2 mt-2"> 몸무게 : ${ petWeight.petWeight }	</p>
+                              <input class="m-2" id="editWeightField1" type="text" name="petWeightNum" style="display: none;"/>
+  
+                              <div class="col-sm-1" style="position: absolute; top: 35%; transform: translateX(980%);">
+                                  <a href="${pageContext.request.contextPath}/login/deleteWeghit?petId=${petid.petId}&petWeightNum=${petWeight.petWeightNum}" class="p-3 border text-secondary"> <i class="fa-solid fa-trash-can"></i> </a>
+                              </div>
+                          </div>
+                      </c:forEach>
 
-                        <form action="${pageContext.request.contextPath}/login/petcard" method="post">
-                            <input type="hidden" name="petId" value="${petid.petId}" />
-                            <p class="m-2"> 몸무게 기록 : <input type="date" name="petChartDate" /></p>
-                            <p class="m-2"> 몸무게 : <input type="text" name="petChart"/></p>
-                            <input class="bg-warning rounded m-2" type="submit" value="몸무게기록하기" />
-                        </form>
-
-
+                      <form action="${pageContext.request.contextPath}/login/petcard" method="post">
+                          <input type="hidden" name="petId" value="${petid.petId}" />
+                          <p class="m-2"> 몸무게 기록 : <input type="date" name="petChartDate" /></p>
+                          <p class="m-2"> 몸무게 : <input type="text" name="petChart"/></p>
+                          <input class="bg-warning rounded m-2" type="submit" value="몸무게기록하기" />
+                      </form>
+                    </td>
+                </tr>
+				<tr>
+					<td>
                         <h4 class="d-flex align-self-center" id="ChartName">진료</h4>
                         <button class="bg-info text-white rounded" id="ChartButton1" onclick="toggleDisplay('ChartDetails1', 'ChartButton1')">펼치기</button>
                         <div id="ChartDetails1"  style="display: none;">
@@ -90,7 +89,6 @@ background-color()
                                 <div class="col-sm-1" style="position: absolute; top: 35%; transform: translateX(980%);">
                                     <a href="${pageContext.request.contextPath}/login/deletetPetChart?petId=${petid.petId}&petChartNum=${petcard.petChartNum}" class="p-3 border text-secondary" ><i class="fa-solid fa-trash-can"></i></a>
                                 </div>
-                                
                         	</div>
                        	</c:forEach>
                        	
@@ -201,17 +199,21 @@ background-color()
 	 </div>>
 </body>
 <script>
-	window.onload = function(){
-		var birthday = new Date("${pet.petBirth}");
-		var age = calculateAge(birthday);
-		document.getElementById('petAge').innerText = age;
-	};
+window.onload = function(){
+	var birthday = new Date("${pet.petBirth}");
+	var dateString = birthday.toString();
+	document.getElementById('dateString').innerText = dateString;
 	
-	function calculateAge(birthday){
-	    var diff_ms = Date.now() - birthday.getTime();
-	    var age_dt = new Date(diff_ms);
-	    return Math.abs(age_dt.getUTCFullYear()-1970);
-	}
+	var age = calculateAge(birthday);
+	document.getElementById("petAge").innerText = age;
+	
+};
+
+function calculateAge(birthday){
+    var diff_ms = Date.now() - birthday.getTime();
+    var age_dt = new Date(diff_ms);
+    return Math.abs(age_dt.getUTCFullYear()-1970);
+}
 	
 	function toggleDisplay(contentId, buttonId) {
 	   var element = document.getElementById(contentId);

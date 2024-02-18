@@ -46,15 +46,27 @@ public class PersonController {
 	
 	// 로그인 파라미터값 받아옴
 	@PostMapping
-	public String GetReadPerson(@ModelAttribute("success") Person person, Model model, Pet pet, HttpServletRequest request) {
-		System.out.println("아이디 확인"+person.getPersonId());
+	public String GetReadPerson(@ModelAttribute("success") Person person, Model model, 
+								Pet pet, HttpServletRequest request) {
 		
+		System.out.println("아이디 확인"+person.getPersonId());
 		// 조원들에게 넘겨줄 객체
 		Person id = personService.loginSucess(person);
-		
 		HttpSession session = request.getSession();
 		
-		session.setAttribute("id", id);
+		if(id != null) 
+		{
+			if(id.getPersonId().equals(person.getPersonId()) && id.getPersonPw().equals(person.getPersonPw())) 
+			{
+				session.setAttribute("personId", id.getPersonId());
+				session.setAttribute("personPw", id.getPersonPw());
+				session.setAttribute("id", id);
+				
+				return "member/Mypage";
+			}
+		}
+		
+
 		
 		// pet이름 정보를 가져옴
 		List<Pet> petName = personService.getPetName(person);
@@ -62,8 +74,10 @@ public class PersonController {
 		// pet 아이디 정보를 가져옴
 		List<Pet> petId = personService.getPetId(pet);
 		session.setAttribute("petId", petId);
+		// petcard에 사용할 정보
+
 		
-		return "member/Mypage";
+		return "redirect:/login";
 	}
 	
 	// 회원 수정 페이지로 이동
@@ -94,5 +108,6 @@ public class PersonController {
 		personService.SetDeletePerson(personId);
 		return "redirect:/login";
 	}
+	
 	
 }

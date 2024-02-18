@@ -132,7 +132,7 @@ public class PetCardRepositoryImp implements PetCardRepository{
 	// 동물의 입원기록을 넣는 함수
 	@Override
 	public void setPetSurgeryAfter(PetSurgeryAfter petSurgeryAfter) {
-		String SQL ="insert into PetSurgeryAfter(PetSurgeryAfterNum ,PetSurgeryDateAfter , PetSurgeryContentAfter, PetId ) values(?,?,?,?)";
+		String SQL ="insert into PetSurgeryAfter(PetSurgeryAfterNum ,PetSurgeryAfterDate , PetSurgeryAfterContent, PetId ) values(?,?,?,?)";
 		 template.update(SQL, new Object[] {petSurgeryAfter.getPetSurgeryAfterNum(), petSurgeryAfter.getPetSurgeryAfterDate(), petSurgeryAfter.getPetSurgeryAfterContent(),  petSurgeryAfter.getPetId()});
 		
 	}
@@ -219,12 +219,12 @@ public class PetCardRepositoryImp implements PetCardRepository{
 		List<PetSurgeryAfter> petSurgeryAfter = template.query(SQL, new Object[] {petId}, new PetSurgeryAfterDBConnector());
 		return petSurgeryAfter;
 	}
-
-	// 동물의 몸무게 기록을 수정하는 함수
+	
+	// 동물의 진료 기록을 수정하는 함수
 	@Override
 	public void setUpdateWeightPetCard(PetWeight petWeight) {
-		String SQL = "update PetWeight set PetWeightDate =?, PetWeight=? where PetWeightNum =?";
-		template.update(SQL, petWeight.getPetWeight(), petWeight.getPetWeightDate(), petWeight.getPetWeightNum());
+		String SQL = "update PetWeight set  PetWeightDate=?, PetWeight=? where PetWeightNum  = ?";
+		template.update(SQL,petWeight.getPetWeightDate(), petWeight.getPetWeight(), petWeight.getPetWeightNum()) ;
 	}
 
 	// 동물의 진료 기록을 수정하는 함수
@@ -236,17 +236,26 @@ public class PetCardRepositoryImp implements PetCardRepository{
 		
 	}
 	
+	//  동물의 예방접종 기록을 수정하는 함수
+		@Override
+		public void setUpdateVaccinationPetCard(PetVaccination petVaccination) {
+		    String SQL = "update PetVaccination set petVaccinationDate =?, petVaccination=?, petVaccinationCotent =?  where petVaccinationNum  =?";
+		    template.update(SQL, petVaccination.getPetVaccinationDate(), petVaccination.getPetVaccination(), petVaccination.getPetVaccinationCotent(), petVaccination.getPetVaccinationNum());
+		}
 
-	
+		@Override
+		public void setUpdateSergeryionPetCard(PetSurgery petSurgery) {
+			 String SQL = "update PetSurgery set PetSurgeryDate =?, PetSurgeryName=?, PetSurgeryContent =?  where PetSurgeryNum  =?";
+			    template.update(SQL, petSurgery.getPetSurgeryDate(), petSurgery.getPetSurgeryName(), petSurgery.getPetSurgeryContent(), petSurgery.getPetSurgeryNum());
+			
+		}
 
-	
-
-
-
-	
-	
-
-	
+		@Override
+		public void setUpdateSergeryAfterPetCard(PetSurgeryAfter petSurgeryAfter) {
+			String SQL = "update PetSurgeryAfter set PetSurgeryAfterDate =?, PetSurgeryAfterContent=? where PetSurgeryAfterNum  =?";
+		    template.update(SQL, petSurgeryAfter.getPetSurgeryAfterDate(), petSurgeryAfter.getPetSurgeryAfterContent(), petSurgeryAfter.getPetSurgeryAfterNum());
+			
+		}
 	
 }
 

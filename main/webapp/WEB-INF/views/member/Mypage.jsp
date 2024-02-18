@@ -21,7 +21,10 @@
 	<a class="btn btn-Secondary" role="button" href= "./login/update?personId=${ personId }">회원수정 &raquo;</a>
 	<a class="btn btn-Secondary" role="button" id="delete" href= "./login/delete?id=${ personId }">회원삭제 &raquo;</a>
 	<a class="btn btn-Secondary" role="button" href= "./pet?id=${ personId }">반려동물 정보입력 &raquo;</a>
-	
+	<% if(session.getAttribute("personId") != null) { %>
+		<a class="btn btn-Secondary" role="button" href="/123team/login" id="logout"  >로그아웃 &raquo;</a>
+		
+	<%}%>
 </body>
 <script>
     document.getElementById('delete').addEventListener("click", function(e){
@@ -29,5 +32,12 @@
             e.preventDefault();
         }
     });
+    
+    document.getElementById('logout').addEventListener("click", function(e){
+    	if(!confirm("로그아웃 하시겠습니까??")){
+    		e.preventDefault();
+    	}
+    });
+    
 </script>
 </html>

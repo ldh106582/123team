@@ -79,10 +79,17 @@ public interface PetCardService {
 	//  정보를 수정하기 전 입원 데이터를 보여주는 함수
 	List<PetSurgeryAfter> getUpdatePetSurgeryAfter(String petId);
 	
-	// 동물의 몸무게 기록을 수정하는 함수
+	// 동물의 진료 기록을 수정하는 함수
 	void setUpdateWeightPetCard(PetWeight petWeight);
-	
 	
 	// 동물의 진료 기록을 수정하는 함수
 	void setUpdateChartPetCard(PetChart petChart);
+	
+	//  동물의 예방접종 기록을 수정하는 함수
+	void setUpdateVaccinationPetCard(PetVaccination petVaccination);
+	
+	void setUpdateSergeryionPetCard(PetSurgery petSurgery);
+	
+	//
+	void setUpdateSergeryAfterPetCard(PetSurgeryAfter petSurgeryAfter);
 }
