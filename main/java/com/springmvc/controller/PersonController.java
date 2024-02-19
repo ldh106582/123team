@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.springmvc.domain.ENBoard;
 import com.springmvc.domain.FBoard;
 import com.springmvc.domain.NBoard;
 import com.springmvc.domain.Person;
@@ -62,6 +63,9 @@ public class PersonController {
 	 	NBoard nboard = NBoard.getInstance();
 	 	nboard.setPersonId(id.getPersonId());
 	 	nboard.setPersonName(id.getPersonName());
+	 	
+	 	ENBoard enboard = ENBoard.getInstance();
+	 	enboard.setPersonId(id.getPersonId());
 	 	
 		// 내가 가져갈 객체
 		String personId = person.getPersonId();
