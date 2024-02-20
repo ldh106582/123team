@@ -5,9 +5,11 @@ import java.sql.Date;
 
 @SuppressWarnings("serial")
 public class Product implements Serializable{
+	
+	private String personId;
 	private String productId;
 	private String productName;
-	private String ProductCategoty;
+	private String productCategoty;
 	private int productPrice;
 	private Date releaseDate;
 	private String productDescribe;
@@ -30,10 +32,10 @@ public class Product implements Serializable{
 		this.productName = productName;
 	}
 	public String getProductCategoty() {
-		return ProductCategoty;
+		return productCategoty;
 	}
 	public void setProductCategoty(String productCategoty) {
-		ProductCategoty = productCategoty;
+		productCategoty = productCategoty;
 	}
 	public int getProductPrice() {
 		return productPrice;
@@ -64,6 +66,12 @@ public class Product implements Serializable{
 	}
 	public void setProductUnitstock(int productUnitstock) {
 		this.productUnitstock = productUnitstock;
+	}
+	public String getPersonId() {
+		return personId;
+	}
+	public void setPersonId(String personId) {
+		this.personId = personId;
 	}
 	
 	

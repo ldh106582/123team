@@ -2,11 +2,9 @@ package com.springmvc.repository;
 
 import java.util.List;
 
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 
-@Service
+@Repository
 public class ProductRepsoitoryImpl implements ProductRepsoitory {
 	
-	
-
 }

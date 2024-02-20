@@ -54,7 +54,7 @@
 						</div>
 						<div class="intro10 border border-dark btn btn-primary p-3">
 							<i class="fa-sharp fa-solid fa-gifts"></i>
-							<a href="./product" class="justify-center text-white">동물상품 &raquo;</a>
+							<a href="products" class="justify-center text-white">동물상품 &raquo;</a>
 						</div>
 					</div>
 					

@@ -1,10 +1,10 @@
-package com.springmvc.repository;
+package com.springmvc.service;
 
 import java.util.List;
 
 import com.springmvc.domain.Product;
 
-public interface ProductRepository {
+public interface ProductService {
 
 	List<Product> getProductsList();
 

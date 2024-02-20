@@ -10,29 +10,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-<nav class="navbar navbar-expand navbar-dark bg-success">
-        <div class="container">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="/123team">Home</a>
-            </div>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-              <ul class="navbar-nav">
-                <li class="nav-item">
-                  <a class="nav-link" href="/123team/hospital">병원</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/123team/product">동물상품</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link active" href="/123team/Fboards">게시판</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/123team/login">로그인</a>
-                </li>
-            </div>
-        </div>
-    </nav>
- 
+
+  <%@  include file="../module/header.jsp" %>
 	<h1>게시글 등록 페이지</h1>
 	<form:form modelAttribute="board" method="POST">
 		제목 : <form:input path="title" name="title"/>
