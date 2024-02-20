@@ -26,6 +26,7 @@ public class ProductController {
 	@GetMapping("/product")
 	public String getProduct(@RequestParam("productId") String productId,Model model) {
 		model.addAttribute("product",productService.getProductById(productId));
-		return "all_products/product";
+		System.out.println("도착");
+		return "all_product/product";
 	}
 }

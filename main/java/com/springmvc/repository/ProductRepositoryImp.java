@@ -24,6 +24,12 @@ public class ProductRepositoryImp implements ProductRepository{
 	public List<Product> getProductsList() {
 		String SQL = "select * from Product";
 		List<Product> list = template.query(SQL, new ProductRowMapper());
+		
+		System.out.println("sdsss"+list.get(0).getProductCategory());
+		
+		if(list.isEmpty()) {
+			System.out.println("tlqkf 왜 없노");
+		}
 		return list;
 	}
 

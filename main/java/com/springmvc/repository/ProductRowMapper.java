@@ -15,14 +15,14 @@ public class ProductRowMapper implements RowMapper<Product> {
 		p.setProductId(rs.getString(1));
 		p.setProductName(rs.getString(2));
 		p.setProductPrice(rs.getInt(3));
-		p.setProductCategoty(rs.getString(4));
+		p.setProductCategory(rs.getString(4));
 		p.setProductDescribe(rs.getString(5));
 		p.setReleaseDate(rs.getDate(6));
 		p.setProductUnitstock(rs.getInt(7));
 		p.setProductImage(rs.getString(8));
 		p.setPersonId(rs.getString(9));
 		
-		return null;
+		return p;
 	}
 
 }
