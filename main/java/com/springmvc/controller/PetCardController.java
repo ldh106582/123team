@@ -42,7 +42,7 @@ public class PetCardController {
 
 		HttpSession session = request.getSession();
 		List<Pet> petid = (List<Pet>) session.getAttribute("petId");
-
+		session.setAttribute("petId", petid.get(0));
 		
 		// 폼 데이터를 바인딩하는 데 사용되는 객체를 생성하고 모델에 추가
 		PetWeight petWeight = new PetWeight();
@@ -312,6 +312,7 @@ public class PetCardController {
 		HttpSession session = request.getSession();
 		session.setAttribute("petId", petId);
 		Pet pet = petCardService.getUpdatePetCard(petId);
+		System.out.println("pet : " + pet.getPetName());
 		model.addAttribute("pet", pet);
 		
 		//  정보를 수정하기 전 몸무게 데이터를 보여주는 함수
@@ -411,18 +412,30 @@ public class PetCardController {
 		
 	    return "/login";
 	}
-	
+	//  다시 돌아가는 데이터 모음
 	@GetMapping("/back")
-	public String petcardback(@RequestParam("petId") String petId, HttpServletRequest request) {
-		HttpSession session = request.getSession();
+	public String petcardback(@RequestParam("petid") String petid, HttpServletRequest request, Model model) {
+	
+		System.out.println("back오나?");
+		List<Pet> petId = petCardService.petcardback(petid);
+		model.addAttribute("petId", petId.get(0));
 		
-		List<Pet> pet = (List<Pet>) session.getAttribute("petId");
-		List<PetWeight> listOfPetWeight = (List<PetWeight>) session.getAttribute("listOfPetWeight");
-		List<PetChart> listOfPetChard = (List<PetChart>) session.getAttribute("listOfPetChard");
-		List<PetVaccination> listOfpetVaccination = (List<PetVaccination>) session.getAttribute("listOfpetVaccination");
-		List<PetSurgery> listOfPetSurgery = (List<PetSurgery>) session.getAttribute("listOfPetSurgery");
-		List<PetSurgeryAfter> listOfPetSurgeryAfter = (List<PetSurgeryAfter>) session.getAttribute("listOfPetSurgeryAfter");
-
+		List<PetWeight> listOfPetWeight  = petCardService.petcardWheightback(petid);
+		model.addAttribute("listOfPetWeight", listOfPetWeight);
+		
+		List<PetChart> listOfPetChard  = petCardService.petcardChartback(petid);
+		model.addAttribute("listOfPetChard", listOfPetChard);
+		
+		List<PetVaccination> listOfpetVaccination = petCardService.petcardVaccinationback(petid);
+		model.addAttribute("listOfpetVaccination", listOfpetVaccination);
+		
+		List<PetSurgery> listOfPetSurgery = petCardService.petcardSurgeryback(petid);
+		model.addAttribute("listOfPetSurgery", listOfPetSurgery);
+		
+		List<PetSurgeryAfter> listOfPetSurgeryAfter = petCardService.petcardSurgeryAfterback(petid);
+		model.addAttribute("listOfPetSurgeryAfter", listOfPetSurgeryAfter);
+		
 		return "/petcard/petcard";
 	}
+
 }

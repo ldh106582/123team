@@ -7,13 +7,13 @@ import org.springframework.stereotype.Service;
 
 import com.springmvc.domain.Person;
 import com.springmvc.domain.Pet;
-import com.springmvc.repository.PsersonRepository;
+import com.springmvc.repository.PersonRepository;
 
 @Service
 public class PersonServciceImp implements PersonService{
 
 	@Autowired
-	PsersonRepository psersonRepository;
+	PersonRepository psersonRepository;
 
 	@Override
 	public void setCreatPerson(Person person) 
@@ -52,7 +52,12 @@ public class PersonServciceImp implements PersonService{
 		// TODO Auto-generated method stub
 		return psersonRepository.getPetId(pet);
 	}
-	// petcard에 사용할 정보
+	// update에서 사용할 정보
+	@Override
+	public Person findPersonById(Person person) {
+		// TODO Auto-generated method stub
+		return psersonRepository.findPersonById(person);
+	}
 
 	
 

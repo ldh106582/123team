@@ -14,7 +14,7 @@ import com.springmvc.domain.Person;
 import com.springmvc.domain.Pet;
 
 @Repository
-public class PersonRepositoryImp implements  PsersonRepository{
+public class PersonRepositoryImp implements  PersonRepository{
 
 	 public PersonRepositoryImp() {
 		super();
@@ -46,7 +46,7 @@ public class PersonRepositoryImp implements  PsersonRepository{
 		int rowNum = template.queryForObject(SQL, Integer.class, person.getPersonId());
 		if(rowNum != 0) {
 			SQL = "select * from Person where PersonId=?";
-			personID = template.queryForObject(SQL, new Object[] {person.getPersonId()}, new PersomDBConnector());
+			personID = template.queryForObject(SQL, new Object[] {person.getPersonId()}, new PersonDBConnector());
 		}
 		if(personID == null) {
 			System.out.println("아이디가 없습니다.");
@@ -91,11 +91,25 @@ public class PersonRepositoryImp implements  PsersonRepository{
 	public List<Pet> getPetId(Pet pet) {
 		List<Pet> petList = new ArrayList<Pet>();
 		String SQLPersonId = "select * from Pet where personId=?";
-		List<Pet> pets = template.query(SQLPersonId, new Object[] {pet.getPersonId()}, new PetDBConnector());
-		petList.addAll(pets);
+		petList = template.query(SQLPersonId, new Object[] {pet.getPersonId()}, new PetDBConnector());
 		
 		return petList;
 	}
+	// update에서 사용할 정보
+	@Override
+	public Person findPersonById(Person person) {
+		String SQL = "select count(*) from Person where PersonId=?";
+		Integer perCount = template.queryForObject(SQL, Integer.class, person.getPersonId());
+		System.out.println("perCount : " + perCount);
+		if(perCount != 0) {
+			String personSQL = "select * from Person where personId=?";
+			person = template.queryForObject(personSQL, new Object[] {person.getPersonId()}, new PersonDBConnector());
+		} else {
+			System.out.println("데이터가 없습니다.");
+		}
+		return person;
+	}
+	
 	
 
 	

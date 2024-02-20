@@ -7,7 +7,8 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <!-- 폰트어썸 -->
 <script src="https://kit.fontawesome.com/ddd0a6fba1.js" crossorigin="anonymous"></script>
-
+<!-- js -->
+<link href="<c:url value="/resources/js/PetCardUpdate.js"/>" rel="stylesheet">
 <meta charset="UTF-8">
 <title>펫카드 수정페이지</title>
 </head>
@@ -25,7 +26,7 @@
 	           	    <p> 종 : ${pet.petVarity} </p>
 	                <p id="petbirth"> 생년월일 : ${pet.petBirth} (나이 : <b id="petAge"> </b>)</p>
 					<div class="btn btn-success border border-dark mr-2 " style="padding-right:15px;">
-						<a class="text-white" href="/login/back?petId=${pet.petId }">기록수정완료 </a> 	             	
+						<a class="text-white" href="/123team/login/back?petid=${ pet.petId }">기록수정완료 </a> 	             	
 					</div>
              	</div>
 
@@ -145,30 +146,28 @@
 	 </div>
 </body>
 <script>
-	window.onload = function(){
-		var birthday = new Date("${pet.petBirth}");
-		var age = calculateAge(birthday);
-		document.getElementById('petAge').innerText = age;
-	};
+window.onload = function(){
+	var birthday = new Date("${pet.petBirth}");
+	var age = calculateAge(birthday);
+	document.getElementById('petAge').innerText = age;
+};
 
-	function calculateAge(birthday){
-	    var diff_ms = Date.now() - birthday.getTime();
-	    var age_dt = new Date(diff_ms);
-	    return Math.abs(age_dt.getUTCFullYear()-1970);
+function calculateAge(birthday){
+    var diff_ms = Date.now() - birthday.getTime();
+    var age_dt = new Date(diff_ms);
+    return Math.abs(age_dt.getUTCFullYear()-1970);
+}
+
+function toggleDisplay(contentId, buttonId) {
+	   var element = document.getElementById(contentId);
+	   var button = document.getElementById(buttonId);
+	   if (element.style.display === 'none') {
+	       element.style.display = 'block';
+	       button.innerText = '내용 닫기';
+	   } else {
+	       element.style.display = 'none';
+	       button.innerText = '펼치기';
+	   }
 	}
-
-	function toggleDisplay(contentId, buttonId) {
-		   var element = document.getElementById(contentId);
-		   var button = document.getElementById(buttonId);
-		   if (element.style.display === 'none') {
-		       element.style.display = 'block';
-		       button.innerText = '내용 닫기';
-		   } else {
-		       element.style.display = 'none';
-		       button.innerText = '펼치기';
-		   }
-		}
-
-
 </script>
 </html>

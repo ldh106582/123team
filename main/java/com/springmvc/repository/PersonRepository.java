@@ -5,7 +5,7 @@ import java.util.List;
 import com.springmvc.domain.Person;
 import com.springmvc.domain.Pet;
 
-public interface PsersonRepository {
+public interface PersonRepository {
 
 	void setCreatPerson(Person person);
 	Person loginSucess(Person person);
@@ -13,6 +13,6 @@ public interface PsersonRepository {
 	void SetDeletePerson(String personId);
 	List<Pet> getPetName(Person person);
 	List<Pet> getPetId(Pet pet);
-	// petcard에 사용할 정보
-
+	// update에서 사용할 정보
+	Person findPersonById(Person person);
 }

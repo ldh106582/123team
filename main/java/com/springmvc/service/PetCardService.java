@@ -90,6 +90,18 @@ public interface PetCardService {
 	
 	void setUpdateSergeryionPetCard(PetSurgery petSurgery);
 	
-	//
 	void setUpdateSergeryAfterPetCard(PetSurgeryAfter petSurgeryAfter);
+	
+	//  다시 돌아가는 데이터 모음
+	List<Pet> petcardback(String petid);
+	
+	List<PetWeight> petcardWheightback(String petid);
+	
+	List<PetChart> petcardChartback(String petid);
+	
+	List<PetVaccination> petcardVaccinationback(String petid);
+	
+	List<PetSurgery> petcardSurgeryback(String petid);
+	
+	List<PetSurgeryAfter> petcardSurgeryAfterback(String petid);
 }

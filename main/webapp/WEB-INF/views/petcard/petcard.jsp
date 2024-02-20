@@ -9,7 +9,8 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <!-- 폰트어썸 -->
 <script src="https://kit.fontawesome.com/ddd0a6fba1.js" crossorigin="anonymous"></script>
-
+<!-- js -->
+<link href="<c:url value="/resources/js/petcard.js"/>" rel="stylesheet">
 <title>나의 동물 현황</title>
 </head>
 <body>
@@ -19,7 +20,7 @@
     <table class="table" border="1">
         <tbody>
             <tr>
-	           <c:forEach items="${petId}" var="petId">
+
 	                <div class="border">
 	                    <tr>
 	                    <p><span> 이름 : ${petId.petName} </span></p>
@@ -35,7 +36,7 @@
 							<a class="text-white" href="/123team/login/petcardupdate?petId=${petId.petId}">진료기록수정 </a>
 	             		</div>
 	             	</div>
-				</c:forEach>
+
 	            <br><br>
 	            <td>
 	                <div> 
@@ -187,8 +188,8 @@
                         
                             <form action="${pageContext.request.contextPath}/login/petcard" method="post">
                             	<input type="hidden" name="petId" value="${petid.petId}" />
-                                <p class="m-2"> 수술 후 기록일자 : <input type="date" name="petSurgeryDateAfter"></p>
-                                <p class="m-2"> 수술 후 진료내용 :  <input type="text" name="petSurgeryContentAfter" placeholder="수술 후 진료 사항을 작성해주세요"></p>
+                                <p class="m-2"> 수술 후 기록일자 : <input type="date" name="PetSurgeryAfterDate"></p>
+                                <p class="m-2"> 수술 후 진료내용 :  <input type="text" name="PetSurgeryAfterContent" placeholder="수술 후 진료 사항을 작성해주세요"></p>
                                 <input class="bg-warning rounded" type="submit" value="입원 기록 제출" />
                             </form>
                         </div>
@@ -196,17 +197,16 @@
                 </tr>
             </tbody>
         </table>
-	 </div>>
+	 </div>
 </body>
 <script>
 window.onload = function(){
-	var birthday = new Date("${pet.petBirth}");
+	var birthday = new Date("${petId.petBirth}");
 	var dateString = birthday.toString();
-	document.getElementById('dateString').innerText = dateString;
+	//document.getElementById('dateString').text = dateString;
 	
 	var age = calculateAge(birthday);
 	document.getElementById("petAge").innerText = age;
-	
 };
 
 function calculateAge(birthday){
@@ -226,7 +226,5 @@ function calculateAge(birthday){
 	       button.innerText = '펼치기';
 	   }
 	}
-
-
 </script>
 </html>

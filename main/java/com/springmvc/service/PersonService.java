@@ -16,6 +16,6 @@ public interface PersonService {
 	List<Pet> getPetName(Person person);
 	// pet아이디를 가져오는 함수
 	List<Pet> getPetId(Pet pet);
-	// petcard에 사용할 정보
-
+	// update에서 사용할 정보
+	Person findPersonById(Person person);
 }

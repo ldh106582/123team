@@ -219,6 +219,45 @@ public class PetCardServiceImp implements PetCardService{
 		petCardRepository.setUpdateSergeryAfterPetCard(petSurgeryAfter);
 	}
 	
+	// 아래는 다시 돌아가는 것들 모음
+	@Override
+	public List<Pet> petcardback(String petid) {
+		// TODO Auto-generated method stub
+		return petCardRepository.petcardback(petid);
+	}
+
+	@Override
+	public List<PetWeight> petcardWheightback(String petid) {
+		// TODO Auto-generated method stub
+		return petCardRepository.petcardWheightback(petid);
+	}
+
+	@Override
+	public List<PetChart> petcardChartback(String petid) {
+		// TODO Auto-generated method stub
+		return petCardRepository.petcardChartback(petid);
+	}
+
+	@Override
+	public List<PetVaccination> petcardVaccinationback(String petid) {
+		// TODO Auto-generated method stub
+		return petCardRepository.petcardVaccinationback(petid);
+	}
+
+	@Override
+	public List<PetSurgery> petcardSurgeryback(String petid) {
+		// TODO Auto-generated method stub
+		return petCardRepository.petcardSurgeryback(petid);
+	}
+
+	@Override
+	public List<PetSurgeryAfter> petcardSurgeryAfterback(String petid) {
+		// TODO Auto-generated method stub
+		return petCardRepository.petcardSurgeryAfterback(petid);
+	}
+	
+	
+	
 	
 
 

@@ -62,17 +62,18 @@ public class PersonController {
 				session.setAttribute("personPw", id.getPersonPw());
 				session.setAttribute("id", id);
 				
+				// pet이름 정보를 가져옴
+				List<Pet> petName = personService.getPetName(person);
+				System.out.println("petName : " + petName.get(0));
+				session.setAttribute("petName", petName);
+				
+				// pet 아이디 정보를 가져옴
+				List<Pet> petId = personService.getPetId(pet);
+				session.setAttribute("petId", petId);
+				
 				return "member/Mypage";
 			}
 		}
-		
-		// pet이름 정보를 가져옴
-		List<Pet> petName = personService.getPetName(person);
-		session.setAttribute("petName", petName);
-		// pet 아이디 정보를 가져옴
-		List<Pet> petId = personService.getPetId(pet);
-		session.setAttribute("petId", petId);
-
 		
 		return "redirect:/login";
 	}
@@ -80,11 +81,14 @@ public class PersonController {
 	// 회원 수정 페이지로 이동
 	@GetMapping("/update")
 	public String GetUpdatePerson(@ModelAttribute("addmemberupdate") Person person,
-								  HttpServletRequest request) {
+								  HttpServletRequest request, Model model) {
 		
 		HttpSession session = request.getSession();
-		Person personId = (Person) session.getAttribute("personId");
-		session.setAttribute("personId", personId);
+		String personId = (String) session.getAttribute("personId");
+
+		Person u_person = personService.findPersonById(person);
+		model.addAttribute("u_person", u_person);
+		 session.setAttribute("id", person);
 		
 		return "member/update";
 	}
@@ -106,5 +110,11 @@ public class PersonController {
 		return "redirect:/login";
 	}
 	
+	//통합회원가입 페이지로 이동
+	@GetMapping("/Allmember")
+	public String GetallMember() {
+		
+		return "/member/AllManager";
+	}
 	
 }

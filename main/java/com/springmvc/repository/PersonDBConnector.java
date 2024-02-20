@@ -5,7 +5,7 @@ import java.sql.SQLException;
 import org.springframework.jdbc.core.RowMapper;
 import com.springmvc.domain.Person;
 
-public class PersomDBConnector implements RowMapper<Person>{
+public class PersonDBConnector implements RowMapper<Person>{
 	public Person mapRow(ResultSet rs, int rowNum) throws SQLException{
 	      Person person = new Person();
 	        person.setPersonId(rs.getString(1).trim());         // PersonId

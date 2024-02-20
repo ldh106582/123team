@@ -251,12 +251,54 @@ public class PetCardRepositoryImp implements PetCardRepository{
 		}
 
 		@Override
-		public void setUpdateSergeryAfterPetCard(PetSurgeryAfter petSurgeryAfter) {
-			String SQL = "update PetSurgeryAfter set PetSurgeryAfterDate =?, PetSurgeryAfterContent=? where PetSurgeryAfterNum  =?";
+		public void setUpdateSergeryAfterPetCard(PetSurgeryAfter petSurgeryAfter) 
+		{
+		    String SQL = "update PetSurgeryAfter set petSurgeryDateAfter =?, petSurgeryContentAfter=? where PetSurgeryAfterNum  =?";
 		    template.update(SQL, petSurgeryAfter.getPetSurgeryAfterDate(), petSurgeryAfter.getPetSurgeryAfterContent(), petSurgeryAfter.getPetSurgeryAfterNum());
-			
 		}
-	
+
+		@Override
+		public List<Pet> petcardback(String petid) {
+			String SQL = "select * from Pet where PetId=?";
+			List<Pet> pet = template.query(SQL, new Object[] {petid}, new PetDBConnector());
+			return pet;
+		}
+
+		@Override
+		public List<PetWeight> petcardWheightback(String petid) {
+			String SQL = "select * from PetWeight where PetId=?";
+			List<PetWeight> listOfPetWeight  = template.query(SQL, new Object[] {petid}, new PetWeightDBConnector());
+			return listOfPetWeight;
+		}
+
+		@Override
+		public List<PetChart> petcardChartback(String petid) {
+			String SQL = "select * from PetChart where PetId=?";
+			List<PetChart> listOfPetChard   = template.query(SQL, new Object[] {petid}, new PetChartDBConnector());
+			return listOfPetChard;
+		}
+
+		@Override
+		public List<PetVaccination> petcardVaccinationback(String petid) {
+			String SQL = "select * from petVaccination where PetId=?";
+			List<PetVaccination> listOfpetVaccination = template.query(SQL, new Object[] {petid}, new PetVaccinationDBConnector());
+			return listOfpetVaccination;
+		}
+
+		@Override
+		public List<PetSurgery> petcardSurgeryback(String petid) {
+			String SQL = "select * from PetSurgery where PetId=?";
+			List<PetSurgery> listOfPetSurgery = template.query(SQL, new Object[] {petid}, new PetSurgeryDBConnector());
+			return listOfPetSurgery;
+		}
+
+		@Override
+		public List<PetSurgeryAfter> petcardSurgeryAfterback(String petid) {
+			String SQL = "select * from petVaccination where PetId=?";
+			List<PetSurgeryAfter> listOfPetSurgeryAfter  = template.query(SQL, new Object[] {petid}, new PetSurgeryAfterDBConnector());
+			return listOfPetSurgeryAfter;
+		}
+		
 }
 
 
