@@ -65,14 +65,13 @@
 						</div>
 					</div>
 				</div>
-<!-- 
+
 				<div class="intro11">
 					<div class="intro12">
 						<h4>위의 버튼을 이용해 여러분들이 원하는 페이지로 이동해주세요 </h4>
 					</div>
 				</div>
-				 -->
-			<!-- 	 
+	 
 				<div class="intro13">
 					<div>
 						<img src="./이도현/dog.jpg" class="img01">
@@ -88,7 +87,6 @@
 						<img src="./이도현/cat4.jpg" class="img01">
 					</div>
 				</div>
-				 -->
 			</div>
 		</div>
 	</header>

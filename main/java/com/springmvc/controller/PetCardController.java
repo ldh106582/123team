@@ -68,7 +68,7 @@ public class PetCardController {
 		Pet petid = petCardService.getPetList(petId);
 		model.addAttribute("petid", petid);
 
-		return "/petcard/petcard";
+		return "petcard/petcard";
 	}
 
 	// petcard 예방접종 create
