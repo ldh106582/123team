@@ -20,6 +20,7 @@ import com.springmvc.domain.FBoard;
 import com.springmvc.domain.NBoard;
 import com.springmvc.domain.Person;
 import com.springmvc.domain.Pet;
+import com.springmvc.domain.userinfo;
 import com.springmvc.service.PersonService;
 
 @Controller
@@ -57,6 +58,10 @@ public class PersonController {
 		Person id = personService.loginSucess(person);
 		
 		// 보드로 가져갈게요
+		
+		userinfo.getInstance().setPersonId(id.getPersonId());
+		userinfo.getInstance().setPersonName(id.getPersonName());
+		
 	 	FBoard fboard = FBoard.getInstance();
 	 	fboard.setPersonId(id.getPersonId());
 	 	fboard.setPersonName(id.getPersonName());
