@@ -24,7 +24,6 @@
 				<h1 class="text-center">반려동물과 함께하는 즐거운 공간</h1> 
 			</div>
 		</nav>
-		
 		<div class="intro2">
 			<div class="intro3">
 				<div class="intro4 text-center border border-dark">
@@ -43,7 +42,6 @@
 							<a href="#"> 동물카드 &raquo;</a>
 						</div>
 					</div>
-
 				</div>
 
 				<div class="intro8">
@@ -75,6 +73,7 @@
 						<h4>위의 버튼을 이용해 여러분들이 원하는 페이지로 이동해주세요 </h4>
 					</div>
 				</div>
+
 				
 				
 				<div class="intro13 m-3 col-12">
@@ -86,8 +85,9 @@
 						<img src="<c:url value='/resources/pet/dog4.jpg'/>" class="img01">
 						<img src="<c:url value='/resources/pet/dog5.jpg'/>" class="img01">
 						<img src="<c:url value='/resources/pet/dog6.jpg'/>" class="img01">
-					</div>
-				</div>
+	 
+
+				
 			</div>
 		</div>
 	</header>

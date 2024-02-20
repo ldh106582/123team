@@ -17,6 +17,7 @@ public class userinfo {
 
 	private String personId;
 	private String personName;
+	private String type;
 	
 	public String getPersonId() {
 		return personId;
@@ -33,4 +34,13 @@ public class userinfo {
 	public void setPersonName(String personName) {
 		this.personName = personName;
 	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+	
 }

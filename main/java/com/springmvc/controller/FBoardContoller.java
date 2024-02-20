@@ -104,6 +104,10 @@ public class FBoardContoller {
 			//검색 결과가 없을때
 			return "free_board/exceptionpage";
 		}
+
+		System.out.println("=================================");
+		System.out.println(FBoardlist.get(0).getTitle());
+
 		model.addAttribute("FBoardlist",FBoardlist);
 		request.setAttribute("size", FBoardlist.size());
 		return "free_board/Fboards";

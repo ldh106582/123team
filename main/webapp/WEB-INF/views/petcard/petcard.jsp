@@ -1,10 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="mypagetest.css">
 <!-- 부트스트랩 -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <!-- 폰트어썸 -->
@@ -12,6 +14,11 @@
 <!-- js -->
 <link href="<c:url value="/resources/js/petcard.js"/>" rel="stylesheet">
 <title>나의 동물 현황</title>
+<style>
+*{
+	background-color()
+}
+</style>
 </head>
 <body>
     <div class="container mt-3">
@@ -37,10 +44,107 @@
 	             		</div>
 	             	</div>
 
-	            <br><br>
-	            <td>
-	                <div> 
-	                    <h4> 동물 진찰 기록부 </h4>
+
+<title>나의 동물 현황</title>
+</head>
+<body>
+   <nav class="navbar navbar-expand navbar-dark bg-dark">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/123team">Home</a>
+            </div>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link " href="/123team/hospital">병원</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/123team/product">동물상품</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/123team/Fboards">게시판</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/123team/login">로그인</a>
+                </li>
+            </div>
+        </div>
+    </nav>
+
+    <div id="wrap" class="wrap naverid ">
+        <header class="header" role="banner">
+            <div class="header_subindex">
+                <!--로고/Mypage-->
+                <div class="gnb_area">
+                    <a href="#" class="text-decoration-none" >
+                        <h1 class="">Petcard</h2>
+                    </a>
+                </div>
+            </div>
+            <!--프로필-->
+            <div class="profile_area">
+                <div class="profile_inner">
+                    <div class="profile">
+                        
+                        <p class="useid">정영회</p>
+                        <p class="usemail">dudghl530@naver.com</p>
+                    </div>
+                </div>
+            </div>
+            <div id="headerLeft" class="header_left" aria-hidden="false">
+                <ul class="left_menu" role="menu">
+                    <li>
+                        <a href="" class="left_item" role="menuitem">
+                            <div class="menu_text on">내정보</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./pet?id=${ id }" class="left_item" role="menuitem" >
+                            <div class="menu_text ">반려동물 정보</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" class="left_item" role="menuitem" >
+                            <div class="menu_text ">반려동물 정보 수정</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" class="left_item" role="menuitem" >
+                            <div class="menu_text ">로그아웃</div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </header>
+        <div id="container" class="container ">
+            <!-- container -->
+            <div id="content" class="content">
+                <div class="subindex_wrap" role="main">
+                    <div id="headerTop" class="path_area" aria-hidden="false"></div>
+                </div>
+                <div class="subindex_item">
+                    <div class="head_title">
+                        <h2 class="subindex_title">진료 기록 수정</h3>
+                    </div>
+               		<div class="subindex_greenbox">
+	                    <ul class="subindex_row">
+	                        <li>
+	                            <div class="row_item other ">
+	                                <a href="./login/update?id=${ id }" class="text-decoration-none "><span class="item_text">내 정보 수정</span></a>
+	                            </div>
+	                        </li>
+	                        <li>
+	                            <div class="row_item other">
+	                                <a href="./login/delete?id=${ id }" class="text-decoration-none" id="delete"><span class="item_text">회원 탈퇴</span></a>
+	                            </div>
+	                        </li>
+	                    </ul>
+              		</div>
+            	</div>
+	            <!--동물 진찰 기록부-->
+	            <div class="subindex_item">
+	                <div class="head_title">
+	                    <h2 class="subindex_title">동물 정보</h2>
 	                </div>
 	            </td>
 	            </tr>
@@ -198,6 +302,10 @@
             </tbody>
         </table>
 	 </div>
+
+	<footer class="footer">
+	    
+	</footer>   
 </body>
 <script>
 window.onload = function(){

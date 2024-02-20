@@ -13,15 +13,18 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import com.springmvc.domain.EApplication;
 import com.springmvc.domain.ENBoard;
 import com.springmvc.domain.FBoard;
 import com.springmvc.domain.NBoard;
+import com.springmvc.domain.Booking;
+import com.springmvc.domain.FBoard;
 import com.springmvc.domain.Person;
 import com.springmvc.domain.Pet;
+import com.springmvc.domain.ProductMember;
 import com.springmvc.domain.userinfo;
 import com.springmvc.service.PersonService;
+import com.springmvc.service.ProductMemberService;
 
 @Controller
 @RequestMapping("/login")
@@ -45,7 +48,7 @@ public class PersonController {
 	
 	// 로그인 페이지로 이동
 	@GetMapping
-	public String SetReadPerson(@ModelAttribute("success") Person person) { 
+	public String SetReadPerson(@ModelAttribute("success")Person person, HttpServletRequest request) { 
 		return "Login";
 	}
 	
@@ -59,6 +62,9 @@ public class PersonController {
 		Person id = personService.loginSucess(person);
 		HttpSession session = request.getSession();
 		
+		Booking booking = Booking.getintance();
+		booking.setName(id.getPersonName());
+		booking.setPhone(id.getPersonPhone());
 		// 보드로 가져갈게요
 		
 		userinfo.getInstance().setPersonId(id.getPersonId());
