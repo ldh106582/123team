@@ -8,6 +8,7 @@
     <title>상품관리자 회원가입 페이지입니다.</title>
 </head>
 <body>
+
 	    <nav class="navbar navbar-expand navbar-danger bg-danger p-3">
 	        <div class="container ">
 	            <div class="navbar-header">
@@ -67,7 +68,7 @@
             <div class="form-group row">
                 <label class="col-sm-2 control-label"> 개인번호 </label>  
                 <div class="col-4">
-                    <form:input type="text" path="personphone" class="control-label"/>
+                    <form:input type="text" path="personPhone" class="control-label"/>
                 </div>
             </div>
             <div class="form-group row">
@@ -86,25 +87,30 @@
             <div class="form-group row">
                 <label class="col-sm-2 control-label"> 회사번호 </label>  
                 <div class="col-4">
-                    <form:input type="text" path="companyphone" class="control-label"/>
+                    <form:input type="text" path="companyPhone" class="control-label"/>
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-sm-2 control-label"> 사업자등록증 </label>  
                 <div class="col-4">
-                    <input type="file" path="companyregistrationimg" class="control-label"/>
+                    <input type="file" name="companyregistrationimg" class="control-label"/>
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-sm-2 control-label"> 통신판매신고증 </label>  
                 <div class="col-4">
-                    <input type="file" path="companybusinessreportimg" class="control-label"/>
+                    <input type="file" name="companybusinessreportimg" class="control-label"/>
                 </div>
             </div>
             
             <div class="form-group row">
                 <input type="submit" class="btn btn-primary"/>
             </div>  
+<%
+String type = request.getParameter("type");
+System.out.println("type +: " + type);
+session.setAttribute("type", type);
+%> 
         </fieldset>
 	    </form:form>
 	    </div>

@@ -10,13 +10,13 @@ public class ProductMember implements Serializable {
 	private String personPw;
 	private String personEmail;
 	private String personName;
-	private String personphone;
+	private String personPhone;
 	private String companyName;
 	private String companyAddress;
-	private String companyphone;
-	private String  companyregistration;
-	private String  companybusinessreport;
-	private String division;
+	private String companyPhone;
+	private String companyregistration;
+	private String companybusinessreport;
+	private String type;
 	private MultipartFile companyregistrationimg;
 	private MultipartFile companybusinessreportimg;
 	
@@ -24,6 +24,7 @@ public class ProductMember implements Serializable {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+
 	public String getPersonId() {
 		return personId;
 	}
@@ -31,79 +32,101 @@ public class ProductMember implements Serializable {
 	public void setPersonId(String personId) {
 		this.personId = personId;
 	}
+
 	public String getPersonPw() {
 		return personPw;
 	}
+
 	public void setPersonPw(String personPw) {
 		this.personPw = personPw;
 	}
+
 	public String getPersonEmail() {
 		return personEmail;
 	}
+
 	public void setPersonEmail(String personEmail) {
 		this.personEmail = personEmail;
 	}
+
 	public String getPersonName() {
 		return personName;
 	}
+
 	public void setPersonName(String personName) {
 		this.personName = personName;
 	}
-	public String getPersonphone() {
-		return personphone;
+
+	public String getPersonPhone() {
+		return personPhone;
 	}
-	public void setPersonphone(String personphone) {
-		this.personphone = personphone;
+
+	public void setPersonPhone(String personPhone) {
+		this.personPhone = personPhone;
 	}
+
 	public String getCompanyName() {
 		return companyName;
 	}
+
 	public void setCompanyName(String companyName) {
 		this.companyName = companyName;
 	}
+
 	public String getCompanyAddress() {
 		return companyAddress;
 	}
+
 	public void setCompanyAddress(String companyAddress) {
 		this.companyAddress = companyAddress;
 	}
-	public String getCompanyphone() {
-		return companyphone;
+
+	public String getCompanyPhone() {
+		return companyPhone;
 	}
-	public void setCompanyphone(String companyphone) {
-		this.companyphone = companyphone;
+
+	public void setCompanyPhone(String companyPhone) {
+		this.companyPhone = companyPhone;
 	}
+
 	public String getCompanyregistration() {
 		return companyregistration;
 	}
+
 	public void setCompanyregistration(String companyregistration) {
 		this.companyregistration = companyregistration;
 	}
+
 	public String getCompanybusinessreport() {
 		return companybusinessreport;
 	}
+
 	public void setCompanybusinessreport(String companybusinessreport) {
 		this.companybusinessreport = companybusinessreport;
 	}
-	public String getDivision() {
-		return division;
+
+	public String getType() {
+		return type;
 	}
-	public void setDivision(String division) {
-		this.division = division;
+
+	public void setType(String type) {
+		this.type = type;
 	}
+
 	public MultipartFile getCompanyregistrationimg() {
 		return companyregistrationimg;
 	}
+
 	public void setCompanyregistrationimg(MultipartFile companyregistrationimg) {
 		this.companyregistrationimg = companyregistrationimg;
 	}
+
 	public MultipartFile getCompanybusinessreportimg() {
 		return companybusinessreportimg;
 	}
+
 	public void setCompanybusinessreportimg(MultipartFile companybusinessreportimg) {
 		this.companybusinessreportimg = companybusinessreportimg;
 	}
-
-	
 	
 }

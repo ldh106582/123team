@@ -26,8 +26,12 @@ public class ProductMemberRepositoryImpl implements ProductMemberRepository {
 	
 	@Override
 	public void getaddProductManager(ProductMember productMember) {
-		String SQL = "insert into ProductMember(PersonId, PersonPw, PersonEmail, PersonName, PersonPhone, CompanyName, CompanyAddress, CompanyPhone,  Companyregistration, Companybusinessreport, division ) values(?,?,?,?,?,?,?,?,?,?)";
-		template.update(SQL, new Object[] {productMember}, new ProductDBConnector());
-	}
+		String SQL = "insert into ProductMember(PersonId, PersonPw, PersonEmail, PersonName, PersonPhone, CompanyName, CompanyAddress, CompanyPhone, Companyregistration, Companybusinessreport, Type) values(?,?,?,?,?,?,?,?,?,?,?)";
+		template.update(SQL, new Object[] {productMember.getPersonId(), productMember.getPersonPw(), productMember.getPersonEmail(),
+						productMember.getPersonName(), productMember.getPersonPhone(), productMember.getCompanyName(), productMember.getCompanyAddress(),
+						productMember.getCompanyPhone(), productMember.getCompanyregistration(), productMember.getCompanybusinessreport(),
+						productMember.getType()});
 	
+	}
 }
+	

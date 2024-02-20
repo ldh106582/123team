@@ -42,13 +42,13 @@
         <div class="mt-5" >
             <div class="col ">
                 <div class="col-12 row m-0 text-center justify-content-center">
-                    <a href="./hopital" class="p-4  border border-dark col-5 m-1 bg-info text-white rounded">병원관리자 회원가입</a>
-                    <a href="/login/Member" class="p-4  border border-dark col-5 m-1 bg-danger text-white rounded">상품관리자 회원가입</a>
+                    <a href="/managerlogin/Member?type=h" class="p-4  border border-dark col-5 m-1 bg-info text-white rounded">병원관리자 회원가입</a>
+                    <a href="/managerlogin/Member?type=p" class="p-4  border border-dark col-5 m-1 bg-danger text-white rounded">상품관리자 회원가입</a>
                 </div>
                 
                 <div class="col row m-0 text-center justify-content-center">
                     <a class="p-4  border border-dark col-5 m-1 bg-success text-white rounded">체험단관리자 회원가입</a>
-                    <a class="p-4  border border-dark col-5 m-1 rounded">통합관리자 회원가입</a>
+                    <a href="/managerlogin/Member?type=all" class="p-4  border border-dark col-5 m-1 rounded">통합관리자 회원가입</a>
                 </div>
             </div>
         </div>
