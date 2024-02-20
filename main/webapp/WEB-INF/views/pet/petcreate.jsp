@@ -3,7 +3,10 @@
 <!DOCTYPE html>
 <html>
 <head>
+<!-- 부트스트랩 -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<!-- js -->
+<%-- <link href="<c:url value="/resources/js/petcreate.js"/>" rel="stylesheet"> --%>
 <meta charset="UTF-8">
 <title>반려동물 회원가입</title>
 </head>
@@ -125,8 +128,8 @@
 			
             <div class="form-group row"> 반려동물성별 :
                 <div class="col-4">
-				    <input class="col-3" type="radio" name="petSex" vlaue="남자"/>남자
-                    <input class="col-3" type="radio" name="petSex" vlaue="여자"/>여자
+				    <input class="col-3" type="radio" name="petSex" value="남자"/>남자
+                    <input class="col-3" type="radio" name="petSex" value="여자"/>여자
                 </div>
             </div>
 
@@ -147,42 +150,42 @@
 </body>
 <script type="text/javascript">
 
-	window.onload = function() {
-	    document.getElementById('cat').style.display = "none";
-	    document.getElementById('bird').style.display = "none";
-	    document.getElementById('rabbit').style.display = "none";
-	    document.getElementById('guineapig').style.display = "none";
-	    document.getElementById('reptile').style.display = "none";
-    }
-    
-    document.getElementById('pet').addEventListener('change', function(){
-        document.getElementById('dog').style.display = "none";
-        document.getElementById('cat').style.display = "none";
-        document.getElementById('bird').style.display = "none";
-        document.getElementById('rabbit').style.display = "none";
-        document.getElementById('guineapig').style.display = "none";
-        document.getElementById('reptile').style.display = "none";
+window.onload = function() {
+    document.getElementById('cat').style.display = "none";
+    document.getElementById('bird').style.display = "none";
+    document.getElementById('rabbit').style.display = "none";
+    document.getElementById('guineapig').style.display = "none";
+    document.getElementById('reptile').style.display = "none";
+}
 
-    if (this.value == "dog") {
-        document.getElementById('dog').style.display = "block";
-    } else if(this.value == "cat"){
-        document.getElementById('cat').style.display = "block";
-    } else if(this.value == "bird") {
-        document.getElementById('bird').style.display = "block";
-    } else if (this.value == "rabbit"){
-        document.getElementById('rabbit').style.display = "block";
-    } else if(this.value == "guineapig"){
-        document.getElementById('guineapig').style.display = "block";
-    } else if(this.value == "reptile") {
-        document.getElementById('reptile').style.display = "block";
-    }
+document.getElementById('pet').addEventListener('change', function(){
+    document.getElementById('dog').style.display = "none";
+    document.getElementById('cat').style.display = "none";
+    document.getElementById('bird').style.display = "none";
+    document.getElementById('rabbit').style.display = "none";
+    document.getElementById('guineapig').style.display = "none";
+    document.getElementById('reptile').style.display = "none";
+
+if (this.value == "dog") {
+    document.getElementById('dog').style.display = "block";
+} else if(this.value == "cat"){
+    document.getElementById('cat').style.display = "block";
+} else if(this.value == "bird") {
+    document.getElementById('bird').style.display = "block";
+} else if (this.value == "rabbit"){
+    document.getElementById('rabbit').style.display = "block";
+} else if(this.value == "guineapig"){
+    document.getElementById('guineapig').style.display = "block";
+} else if(this.value == "reptile") {
+    document.getElementById('reptile').style.display = "block";
+}
 });
-    
-    document.getElementById('pet').addEventListener('change', function () {
-        ['dog', 'cat', 'bird', 'rabbit', 'guineapig', 'reptile'].forEach(function(id) {
-            document.getElementById(id).style.display = 'none';
-        });
-        document.getElementById(this.value).style.display = 'block';
+
+document.getElementById('pet').addEventListener('change', function () {
+    ['dog', 'cat', 'bird', 'rabbit', 'guineapig', 'reptile'].forEach(function(id) {
+        document.getElementById(id).style.display = 'none';
     });
+    document.getElementById(this.value).style.display = 'block';
+});
 </script>
 </html>

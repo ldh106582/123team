@@ -3,7 +3,10 @@
 <!DOCTYPE html>
 <html>
 <head>
+<!-- 부트스트팹 -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<!-- js -->
+<link href="<c:url value="/resources/js/petupdate.js"/>" rel="stylesheet">
 <meta charset="UTF-8">
 <title>펫 정보 수정 페이지</title>
 </head>
@@ -177,5 +180,5 @@ window.onload = function() {
         document.getElementById('reptile').style.display = "block";
     }
 });
-   </script>
+</script>
 </html>

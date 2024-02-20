@@ -10,6 +10,8 @@
 <script src="https://kit.fontawesome.com/8759f784cf.js" crossorigin="anonymous"></script>
 <!-- css -->
 <link href="<c:url value="/resources/css/index.css"/>" rel="stylesheet">
+<!-- 이미지 -->
+<link href="<c:url value="/resources/pet/"/>" rel="stylesheet">
 </head>
 <style>
 
@@ -74,20 +76,16 @@
 					</div>
 				</div>
 				
-				<div class="intro13">
-					<div>
-						<img src="./이도현/dog.jpg" class="img01">
-						<img src="./이도현/cat1.jpg" class="img01">
-						<img src="./이도현/dog2.jpg" class="img01">
-						<img src="./이도현/cat3.jpg" class="img01">
-						<img src="./이도현/dog4.jpg" class="img01">
-						<img src="./이도현/cat5.jpg" class="img01">
-						<img src="./이도현/dog6.jpg" class="img01">
-						<img src="./이도현/dog1.jpg" class="img01">
-						<img src="./이도현/cat2.jpg" class="img01">
-						<img src="./이도현/dog3.jpg" class="img01">
-						<img src="./이도현/cat4.jpg" class="img01">
-			
+				
+				<div class="intro13 m-3 col-12">
+					<div class="m-2">
+						<img src="<c:url value='/resources/pet/dog.jpg'/>" class="img01">
+						<img src="<c:url value='/resources/pet/dog1.jpg'/>" class="img01">
+						<img src="<c:url value='/resources/pet/dog2.jpg'/>" class="img01">
+						<img src="<c:url value='/resources/pet/dog3.jpg'/>" class="img01">
+						<img src="<c:url value='/resources/pet/dog4.jpg'/>" class="img01">
+						<img src="<c:url value='/resources/pet/dog5.jpg'/>" class="img01">
+						<img src="<c:url value='/resources/pet/dog6.jpg'/>" class="img01">
 					</div>
 				</div>
 			</div>

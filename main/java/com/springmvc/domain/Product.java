@@ -1,16 +1,18 @@
 package com.springmvc.domain;
 
 import java.io.Serializable;
+import java.sql.Date;
 
 @SuppressWarnings("serial")
 public class Product implements Serializable{
 	private String productId;
 	private String productName;
-	private int productCost;
+	private String ProductCategoty;
+	private int productPrice;
+	private Date releaseDate;
 	private String productDescribe;
 	private String productImage;
 	private int productUnitstock;
-	private String productCategory;
 	public Product() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -27,11 +29,23 @@ public class Product implements Serializable{
 	public void setProductName(String productName) {
 		this.productName = productName;
 	}
-	public int getProductCost() {
-		return productCost;
+	public String getProductCategoty() {
+		return ProductCategoty;
 	}
-	public void setProductCost(int productCost) {
-		this.productCost = productCost;
+	public void setProductCategoty(String productCategoty) {
+		ProductCategoty = productCategoty;
+	}
+	public int getProductPrice() {
+		return productPrice;
+	}
+	public void setProductPrice(int productPrice) {
+		this.productPrice = productPrice;
+	}
+	public Date getReleaseDate() {
+		return releaseDate;
+	}
+	public void setReleaseDate(Date releaseDate) {
+		this.releaseDate = releaseDate;
 	}
 	public String getProductDescribe() {
 		return productDescribe;
@@ -51,12 +65,7 @@ public class Product implements Serializable{
 	public void setProductUnitstock(int productUnitstock) {
 		this.productUnitstock = productUnitstock;
 	}
-	public String getProductCategory() {
-		return productCategory;
-	}
-	public void setProductCategory(String productCategory) {
-		this.productCategory = productCategory;
-	}
+	
 	
 	
 }
