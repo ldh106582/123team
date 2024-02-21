@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.springmvc.domain.BoardComment;
 import com.springmvc.domain.EApplication;
 import com.springmvc.domain.ENBoard;
+import com.springmvc.domain.userinfo;
 import com.springmvc.service.BoardCommentService;
 import com.springmvc.service.ENBoardService;
 
@@ -150,14 +151,14 @@ public class ENBoardController {
 //	 예약 목록 보기
 	 @GetMapping("/applist")
 	 public String applist(Model model) {
-		 String personId = EApplication.getInstance().getPersonId();
+		 String personId = userinfo.getInstance().getPersonId();
 		 model.addAttribute("applist",enboardService.getAllApps(personId));
 		 return "experience_board/apps";
 	 }
 //	 체험단 신청
 	 @PostMapping("/addapp")
 	 public String bookex(HttpServletRequest request) {
-		 EApplication application = EApplication.getInstance();
+		 EApplication application = new EApplication();
 		 application.setAnimal(request.getParameter("animal"));
 		 application.setExperience(request.getParameter("experience"));
 		 application.setRegistDay(request.getParameter("registDay"));

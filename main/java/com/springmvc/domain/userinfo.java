@@ -18,6 +18,7 @@ public class userinfo {
 	private String personId;
 	private String personName;
 	
+	
 	public String getPersonId() {
 		return personId;
 	}

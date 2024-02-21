@@ -5,15 +5,6 @@ public class NBoard {
 	public NBoard () {
 		
 	}
-	
-	public static NBoard getInstance(){
-		if(instance == null){
-			instance = new NBoard();
-		}
-		return instance;
-	}
-	
-	private static NBoard instance;
 	private String personName;
 	private String personId;
 	private String context;
@@ -61,11 +52,6 @@ public class NBoard {
 	public void setPersonName(String personName) {
 		this.personName = personName;
 	}
-
-	public static void setInstance(NBoard instance) {
-		NBoard.instance = instance;
-	}
-
 	public String getBoardId() {
 		return boardId;
 	}

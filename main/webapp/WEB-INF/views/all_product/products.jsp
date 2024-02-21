@@ -11,6 +11,7 @@
 <body>
  <%@  include file="../module/header.jsp" %>
  <h1>상품 페이지</h1>
+ <a href="products/add"><button>상품추가</button></a>
  <c:forEach items="${productList}" var="product">
  	<p>
  	사진 : ${product.productImage}

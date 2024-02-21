@@ -1,5 +1,6 @@
 package com.springmvc.repository;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.sql.DataSource;
@@ -9,6 +10,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.springmvc.domain.Product;
+import com.springmvc.domain.userinfo;
 
 @Repository
 public class ProductRepositoryImp implements ProductRepository{
@@ -24,12 +26,6 @@ public class ProductRepositoryImp implements ProductRepository{
 	public List<Product> getProductsList() {
 		String SQL = "select * from Product";
 		List<Product> list = template.query(SQL, new ProductRowMapper());
-		
-		System.out.println("sdsss"+list.get(0).getProductCategory());
-		
-		if(list.isEmpty()) {
-			System.out.println("tlqkf 왜 없노");
-		}
 		return list;
 	}
 
@@ -46,4 +42,36 @@ public class ProductRepositoryImp implements ProductRepository{
 		}
 		return p;
 	}
+
+	@Override
+	public void addProduct(Product product) {
+		String SQL = "insert into Product values(?,?,?,?,?,?,?,?,?)";
+		
+		template.update(SQL,getProductId(),product.getProductName(),product.getProductPrice(),product.getProductCategory(),product.getProductDescribe(),getReleaseDate(),product.getProductUnitStock(),product.getProductImage(),userinfo.getInstance().getPersonId());
+	}
+
+//	날짜받기
+	public LocalDate getReleaseDate()
+	{
+		return LocalDate.now();
+	}
+//	ProductId 생성
+	public String getProductId() {
+		String str = Long.toString(System.currentTimeMillis()) ;
+		return str;
+	}
+
+	@Override
+	public void updateProduct(Product product, String productId) {
+		String SQL = "update Product set ProductName=?,ProductPrice=?,ProductCategory=?,ProductDscription=?,ProductUnitStock=?,ProductImage=? where ProductId='"+productId+"'";
+		template.update(SQL,product.getProductName(),product.getProductPrice(),product.getProductCategory(),product.getProductCategory(),product.getProductUnitStock(),product.getProductImage());
+	}
+
+	@Override
+	public void deleteProduct(String producId) {
+		String SQL = "DELETE FROM Product where ProductId='"+producId+"'";
+		template.update(SQL);
+		
+	}
+	
 }

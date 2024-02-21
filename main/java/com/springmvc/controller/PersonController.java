@@ -64,20 +64,6 @@ public class PersonController {
 		userinfo.getInstance().setPersonId(id.getPersonId());
 		userinfo.getInstance().setPersonName(id.getPersonName());
 		
-	 	FBoard fboard = FBoard.getInstance();
-	 	fboard.setPersonId(id.getPersonId());
-	 	fboard.setPersonName(id.getPersonName());
-	 	
-	 	NBoard nboard = NBoard.getInstance();
-	 	nboard.setPersonId(id.getPersonId());
-	 	nboard.setPersonName(id.getPersonName());
-	 	
-	 	ENBoard enboard = ENBoard.getInstance();
-	 	enboard.setPersonId(id.getPersonId());
-	 	
-	 	EApplication eApplication = EApplication.getInstance();
-	 	eApplication.setPersonId(id.getPersonId());
-	 	
 		// 내가 가져갈 객체
 		String personId = person.getPersonId();
 		String personPw = person.getPersonPw();

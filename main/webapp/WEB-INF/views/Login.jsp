@@ -47,7 +47,6 @@
 		</div>
 	
 		<form:form class="form-signin mx-auto mt-5" modelAttribute="success" method="POST" style="max-width: 400px;">
-	
 			<div class="form-group text-center">아이디를 입력하세요
 				<form:input class="form-control border border-dark " type="text" path="personId" id="id" />
 			</div>
@@ -57,7 +56,6 @@
 			<div class="form-group mt-3">
 				<input type="submit" class="btn btn-lg btn-success btn-block" value="로그인" id="login"/>
 			</div>
-	
 		</form:form>
 	
 		<div class="mt-5 text-center">

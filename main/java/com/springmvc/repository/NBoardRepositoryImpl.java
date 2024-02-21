@@ -10,6 +10,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.springmvc.domain.NBoard;
+import com.springmvc.domain.userinfo;
 
 @Repository
 public class NBoardRepositoryImpl implements NBoardRepository{
@@ -50,7 +51,7 @@ public class NBoardRepositoryImpl implements NBoardRepository{
 		
 		String SQL = "insert into NBoard values(?,?,?,?,?,?)";
 //		이름과 아이디 받아오기
-		NBoard getboardNI = NBoard.getInstance();
+		userinfo getboardNI = userinfo.getInstance();
 		System.out.println("==============아이디받아온값================");
 		System.out.println(getboardNI.getPersonId());
 		

@@ -5,9 +5,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 <body>
  <%@  include file="../module/header.jsp" %>
+ 	<p>
 	상품ID : ${product.productId}
 	<p>
 	상품명 : ${product.productName}
@@ -22,8 +24,8 @@
 	<p>
 	상품사진 : ${product.productImage}
 	<p>
-	재고수 : ${product.productUnitstock}
+	재고수 : ${product.productUnitStock}
 	<p>
-	  <a href="#"><button>상품주문</button></a>
+	  <a href="carts/addCart"><button>상품주문</button></a> || <a href="update?productId=${product.productId}"><button>상품수정</button></a>  <a href="delete?productId=${product.productId}"><button>상품삭제</button></a>
 </body>
 </html>

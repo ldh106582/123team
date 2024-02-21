@@ -65,14 +65,5 @@ public class ENBoard {
 		this.personId = managerId;
 	}
 	
-	public static ENBoard getInstance(){
-		if(instance == null){
-			instance = new ENBoard();
-		}
-		return instance;
-	}
-	
-	private static ENBoard instance;
-
 	
 }

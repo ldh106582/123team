@@ -41,13 +41,6 @@ public class EApplication {
 		this.personId = personId;
 	}
 	
-	public static EApplication getInstance(){
-		if(instance == null){
-			instance = new EApplication();
-		}
-		return instance;
-	}
-	
 	public String getTitle() {
 		return title;
 	}
@@ -61,6 +54,4 @@ public class EApplication {
 	public void setEid(String eid) {
 		this.eid = eid;
 	}
-
-	private static EApplication instance;
 }

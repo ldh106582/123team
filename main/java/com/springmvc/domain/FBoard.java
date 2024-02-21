@@ -5,15 +5,6 @@ public class FBoard {
 	public FBoard () {
 		
 	}
-	
-	public static FBoard getInstance(){
-		if(instance == null){
-			instance = new FBoard();
-		}
-		return instance;
-	}
-	
-	private static FBoard instance;
 	private String title;
 	private String context;
 	private String registDay;
