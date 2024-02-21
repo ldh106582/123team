@@ -39,11 +39,13 @@ public class PersonRepositoryImp implements  PersonRepository{
 		template.update(SQL, person.getPersonId(), person.getPersonPw(), person.getPersonEmail(), person.getPersonAddress(), person.getPersonName(), person.getPersonBirth(),  person.getPersonSex(), person.getPersonPhone());
 	}
 
+	//update전 person 데이터를 보여줌
 	@Override
 	public Person loginSucess(Person person) {
 		Person personID = null;
 		String SQL =  "select count(*) from Person where PersonId=?";
 		int rowNum = template.queryForObject(SQL, Integer.class, person.getPersonId());
+		System.out.println("personUpdate : " + rowNum);
 		if(rowNum != 0) {
 			SQL = "select * from Person where PersonId=?";
 			personID = template.queryForObject(SQL, new Object[] {person.getPersonId()}, new PersonDBConnector());
@@ -64,6 +66,7 @@ public class PersonRepositoryImp implements  PersonRepository{
 				System.out.println("person 아이디가 없습니다.");
 		}
 	}
+	
 	// delete 아이디를 삭제하는함수
 	@Override
 	public void SetDeletePerson(String personId) {
@@ -95,21 +98,41 @@ public class PersonRepositoryImp implements  PersonRepository{
 		
 		return petList;
 	}
+	
 	// update에서 사용할 정보
 	@Override
-	public Person findPersonById(Person person) {
+	public Person findPersonById(String personId) {
+		System.out.println("person 리파지토리 : " + personId);
 		String SQL = "select count(*) from Person where PersonId=?";
-		Integer perCount = template.queryForObject(SQL, Integer.class, person.getPersonId());
+		Integer perCount = template.queryForObject(SQL, Integer.class, personId);
+		
 		System.out.println("perCount : " + perCount);
+		Person person = null;
 		if(perCount != 0) {
+			
 			String personSQL = "select * from Person where personId=?";
-			person = template.queryForObject(personSQL, new Object[] {person.getPersonId()}, new PersonDBConnector());
+			person = template.queryForObject(personSQL, new Object[] {personId}, new PersonDBConnector());
 		} else {
 			System.out.println("데이터가 없습니다.");
 		}
 		return person;
 	}
 	
+	// 전체 id db에 값을 넣어줌
+	@Override
+	public void setAllMember(Person person) {
+		String SQL = "insert into all_member(PersonId)" + "values(?)";
+		template.update(SQL, person.getPersonId());
+	}
+
+	// 전체 id db에 값을 삭제해줌
+	@Override
+	public void getAllMember(Person person) {
+		String SQL = "delete from all_member where PersonId=?";
+		this.template.update(SQL, person.getPersonId());
+	}
+	
+
 	
 
 	

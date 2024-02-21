@@ -4,17 +4,27 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.springmvc.domain.ProductMember;
-import com.springmvc.repository.ProductMemberRepository;
+import com.springmvc.repository.ManagerRepository;
 
 @Service
-public class ProductMemberServiceImp implements ProductMemberService{
+public class ManagerServiceImp implements ManagerService{
 	@Autowired
-	ProductMemberRepository productMemberRepository;
+	ManagerRepository productMemberRepository;
 	
 	@Override
 	public void getaddProductManager(ProductMember productMember) {
 		// TODO Auto-generated method stub
 		productMemberRepository.getaddProductManager(productMember);
 	}
+	
+	// 전체 id db에 값을 넣어줌
+	
+	@Override
+	public void setAllMember(ProductMember productMember) {
+		// TODO Auto-generated method stub
+		productMemberRepository.setAllMember(productMember);
+	}
 
+
+	
 }

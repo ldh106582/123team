@@ -39,7 +39,7 @@ System.out.println("싱글톤 : " + type);
             </div>
         </div>
     </nav>
-<% if("p".equals(type)) { %>
+<% if("p".equals(type) && "p" == type) { %>
 	<div class="jumbotron">
 		<div class="container">
 			<h2>로그인 페이지</h2>

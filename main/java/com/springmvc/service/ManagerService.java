@@ -2,7 +2,8 @@ package com.springmvc.service;
 
 import com.springmvc.domain.ProductMember;
 
-public interface ProductMemberService {
+public interface ManagerService {
 	void getaddProductManager(ProductMember productMember);
-	// 
+	// 전체 id db에 값을 넣어줌
+	void setAllMember(ProductMember productMember);
 }

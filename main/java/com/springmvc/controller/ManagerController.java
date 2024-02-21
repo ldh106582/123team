@@ -17,26 +17,35 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import com.springmvc.domain.ProductMember;
 import com.springmvc.domain.userinfo;
-import com.springmvc.service.ProductMemberService;
+import com.springmvc.service.ManagerService;
 
 
 @Controller
 @RequestMapping("/managerlogin")
-public class ProductMemberController 
+public class ManagerController 
 {
 	@Autowired
-	ProductMemberService productMemberService;
+	ManagerService managerService;
 	
 	@GetMapping("/Member")
-	public String showMemberPage(@ModelAttribute("productMember") ProductMember productMember) {
+	public String showMemberPage(@ModelAttribute("productMember") ProductMember productMember,
+								@RequestParam("type") String type) {
 	System.out.println("Member 페이지 요청 도착");
-	return "/member/AddProductMember";
+	System.out.println("싱글톤 type : " + type);
+	productMember.setType(type);
+
+	userinfo.getInstance().setType(productMember.getType());
+	
+	return "/member/AddManager";
 	}
 	
 	@PostMapping("/productmanager")
 	public String GetaddProductManager(@ModelAttribute("productMember") ProductMember productMember,
 										HttpServletRequest request, Model model,
 										BindingResult result) {
+		userinfo userInfo = userinfo.getInstance();
+
+	
 	    // 사업자등록증을 받아주는 함수
 		MultipartFile saveCompanyRegistrationimg = productMember.getCompanyregistrationimg();
 	    String companyregistrationName = saveCompanyRegistrationimg.getOriginalFilename();
@@ -45,32 +54,23 @@ public class ProductMemberController
 
 	    try {
 	    	saveCompanyRegistrationimg.transferTo(saveCompanyRegistration);
-	        productMember.setCompanyregistration(companyregistrationName);
+	    	productMember.setCompanyregistration(companyregistrationName);
 	       
 	    } catch (Exception e) {
 	        throw new RuntimeException("사업자등록증 업로드를 실패했습니다.", e);
 	    }
-
-	    MultipartFile savecompanybusinessreportimg = productMember.getCompanyregistrationimg();
-	    String companybusinessreportName = savecompanybusinessreportimg.getOriginalFilename();
-	    String companybusinessreportPath = request.getSession().getServletContext().getRealPath("/resources/images");
-	    File savecompanybusinessreport = new File(companybusinessreportPath, companybusinessreportName);
-
-	    try {
-	        savecompanybusinessreportimg.transferTo(savecompanybusinessreport);
-	        productMember.setCompanybusinessreport(companybusinessreportName);
-	    } catch (Exception e) {
-	        throw new RuntimeException("통신판매업신고증 업로드를 실패했습니다.", e);
-	    }
 	    
+	    // 세션생성
 	    HttpSession session = request.getSession();
 	    String type = (String)session.getAttribute("type");
-	    System.out.println("s_type : " + type);
+	    System.out.println(type);
 	    productMember.setType(type);
-		userinfo.getInstance().setPersonId(productMember.getPersonId());
-		userinfo.getInstance().setType(productMember.getType());
+	  
 	    
-		productMemberService.getaddProductManager(productMember);
+	    //  회원가입 시 전체 데이터를 넣어주는 함수
+		managerService.getaddProductManager(productMember);
+		//전체 id db에 값을 넣어줌
+		managerService.setAllMember(productMember);
 		session.setAttribute("productMember", productMember.getType());
 		model.addAttribute("productMember", productMember);
 		
@@ -92,4 +92,6 @@ public class ProductMemberController
 		System.out.println(productMember.getPersonPw());
 		return "Product";
 	}
+	
+	
 }

@@ -14,5 +14,9 @@ public interface PersonRepository {
 	List<Pet> getPetName(Person person);
 	List<Pet> getPetId(Pet pet);
 	// update에서 사용할 정보
-	Person findPersonById(Person person);
+	Person findPersonById(String personId);
+	// 전체 id db에 값을 넣어줌
+	void setAllMember(Person person);
+	// 전체 id db에 값을 삭제해줌
+	void getAllMember(Person person);
 }

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ page import="com.springmvc.domain.*" %>
+<%@ page import="com.springmvc.controller.*" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,7 +36,7 @@
 
     <div class="jumbotron">
         <div class="container">
-            <legend><h2>상품관리자 회원가입 페이지입니다.</h2></legend>
+            <legend id="id"><h2>상품관리자 회원가입 페이지입니다.</h2></legend>
         </div>
     </div>
     <div class="container">
@@ -42,12 +44,12 @@
      <fieldset>
         <div class="form-group row">
             <label class="col-sm-2 control-label"> 아이디 </label>  
-            <div class="col-4">
-                <form:input id="id" type="text" path="personId" class="control-label"/>
+            <div class="col-3">
+                <form:input id="userId" type="text" path="personId" class="control-label"/>
             </div>
-            <div class="col-2"> 
-                 <button id="idConfirmBtn" class="btn btn-secondary">중복확인</button>
-            </div>
+			<div id="confirm" class="col-2"> 
+			    <button onclick="idDuplicateCheck(event)" id="idConfirmBtn" class="btn btn-secondary">중복확인</button>
+			</div>
         </div>    
         <div class="form-group row">
             <label class="col-sm-2 control-label"> 비밀번호 </label>  
@@ -95,44 +97,62 @@
         <div class="form-group row">
             <label class="col-sm-2 control-label"> 사업자등록증 </label>  
             <div class="col-4">
-                <input type="file" name="companyregistrationimg" class="control-label"/>
+                <input type="file" name="companyregistrationimg" class="control-label" required="required"/>
             </div>
         </div>
-        <div class="form-group row">
-            <label class="col-sm-2 control-label"> 통신판매신고증 </label>  
-            <div class="col-4">
-                <input type="file" name="companybusinessreportimg" class="control-label"/>
-            </div>
-        </div>
+        <%
+        
+        String type = request.getParameter("type");
+        userinfo user = userinfo.getInstance();
+        System.out.println("jsp페이지 : " + type);
+        session.setAttribute("type", type);
+        
+        
+        %>
         
         <div class="form-group row">
             <input type="submit" class="btn btn-primary"/>
-        </div>  
-
+        </div> 
+		</div>
     </fieldset>
     </form:form>
-    </div>
+
 </body>
 <!-- js -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
-$(document).ready(function(){
-    $("#idConfirmBtn").click(function(event){
-        event.preventDefault(); // 기본 동작 중지
-        var personid = $("#id").val();
-        $.ajax({
-            url: "./ajax/idconfirm",
-            type: "post",
-            data: {personid: personid},
-            success: function(response){
-                alert("사용할 수 있는 아이디입니다.");
-            },
-            error: function(request, satatus, error){
-                alert("이미 사용하는 아이디입니다.");
-            }
-        });
-    });
-});
+function idDuplicateCheck(event){
+	 event.preventDefault();
+	 
+	var userName = document.getElementById("userId").value;
+	
+	if(userName === "") {
+		alert("아이디를 입력해주세요");
+		return;
+	}
+	
+	$.ajax({
+		type: 'get',
+		url: './join/idcheck',
+		contentType: 'application/json;',
+		dataType: 'text',
+		data: {
+			"userId":userName, 
+		},
+		success : function(result) {
+			if(result === "true"){
+			isIdCheck = true;
+			alert("사용 가능한 아이디 입니다.")
+			} else {
+				isIdCheck = false;
+				alert("이미 사용중인 아이디 입니다.")
+			}
+		},
+		error : function(request, status, error){
+			console.log(request);
+		}
+	});
+}
 </script>
 
 </html>

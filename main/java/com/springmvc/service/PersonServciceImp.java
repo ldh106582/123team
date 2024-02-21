@@ -54,13 +54,23 @@ public class PersonServciceImp implements PersonService{
 	}
 	// update에서 사용할 정보
 	@Override
-	public Person findPersonById(Person person) {
+	public Person findPersonById(String personId) {
 		// TODO Auto-generated method stub
-		return psersonRepository.findPersonById(person);
+		return psersonRepository.findPersonById(personId);
 	}
 
-	
+	// 전체 id db에 값을 넣어줌
+	@Override
+	public void setAllMember(Person person) {
+		// TODO Auto-generated method stub
+		psersonRepository.setAllMember(person);
+	}
+	// 전체 id db에 값을 삭제해줌
+	@Override
+	public void getAllMember(Person person) {
+		// TODO Auto-generated method stub
+		psersonRepository.getAllMember(person);
+	} 
 
-	
 
 }

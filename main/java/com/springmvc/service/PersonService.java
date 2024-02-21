@@ -17,5 +17,9 @@ public interface PersonService {
 	// pet아이디를 가져오는 함수
 	List<Pet> getPetId(Pet pet);
 	// update에서 사용할 정보
-	Person findPersonById(Person person);
+	Person findPersonById(String personId);
+	// 전체 id db에 값을 넣어줌
+	void setAllMember(Person person);
+	// product 관리자 아이디확인 함수
+	void getAllMember(Person person);
 }

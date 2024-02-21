@@ -15,10 +15,8 @@ public class ProductMember implements Serializable {
 	private String companyAddress;
 	private String companyPhone;
 	private String companyregistration;
-	private String companybusinessreport;
 	private String type;
 	private MultipartFile companyregistrationimg;
-	private MultipartFile companybusinessreportimg;
 	
 	public ProductMember() {
 		super();
@@ -97,14 +95,6 @@ public class ProductMember implements Serializable {
 		this.companyregistration = companyregistration;
 	}
 
-	public String getCompanybusinessreport() {
-		return companybusinessreport;
-	}
-
-	public void setCompanybusinessreport(String companybusinessreport) {
-		this.companybusinessreport = companybusinessreport;
-	}
-
 	public String getType() {
 		return type;
 	}
@@ -120,13 +110,4 @@ public class ProductMember implements Serializable {
 	public void setCompanyregistrationimg(MultipartFile companyregistrationimg) {
 		this.companyregistrationimg = companyregistrationimg;
 	}
-
-	public MultipartFile getCompanybusinessreportimg() {
-		return companybusinessreportimg;
-	}
-
-	public void setCompanybusinessreportimg(MultipartFile companybusinessreportimg) {
-		this.companybusinessreportimg = companybusinessreportimg;
-	}
-	
 }

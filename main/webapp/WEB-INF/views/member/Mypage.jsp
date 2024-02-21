@@ -61,24 +61,24 @@
     <div id="headerLeft" class="header_left" aria-hidden="false">
         <ul class="left_menu" role="menu">
             <li>
-                <a href="" class="left_item" role="menuitem">
-                    <div class="menu_text">내정보</div>
-                </a>
+               <a href="" class="left_item" role="menuitem">
+                   <div class="menu_text">내정보</div>
+               </a>
             </li>
             <li>
-                <a href="./login/petcard" class="left_item" role="menuitem" >
-                    <div class="menu_text ">펫 카드</div>
-                </a>
+               <a href="./login/petcard" class="left_item" role="menuitem" >
+                   <div class="menu_text ">펫 카드</div>
+               </a>
             </li>
             <li>
-                <a href="./pet?id=${ id }" class="left_item" role="menuitem" >
-                    <div class="menu_text ">반려동물 정보</div>
-                </a>
+               <a href="./pet?id=${ id }" class="left_item" role="menuitem" >
+                   <div class="menu_text ">반려동물 회원가입</div>
+               </a>
             </li>
             <li>
-                <a href="" class="left_item" role="menuitem" >
-                    <div class="menu_text ">로그아웃</div>
-                </a>
+               <a href="" class="left_item" role="menuitem" >
+                   <div class="menu_text ">로그아웃</div>
+               </a>
             </li>
         </ul>
     </div>
