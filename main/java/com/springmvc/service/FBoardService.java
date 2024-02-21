@@ -11,4 +11,5 @@ public interface FBoardService {
 	void updateFBoard(FBoard board,String boardId);
 	void deleteFBoard(String boardId);
 	List<FBoard> getFBoardsByTitle(String title);
+	List<FBoard> getAllMyFBoardsById(String myId);
 }

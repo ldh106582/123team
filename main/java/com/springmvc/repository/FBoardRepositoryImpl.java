@@ -96,4 +96,10 @@ public class FBoardRepositoryImpl implements FBoardRepository{
 	        return null; 
 	    }
 	}
+	@Override
+	public List<FBoard> getAllMyFBoardsById(String myid) {
+		 String SQL = "SELECT * FROM FBoard WHERE PersonId='"+myid+"'";
+		 List<FBoard> boardlist = template.query(SQL, new FBoardRowMapper());
+		return boardlist;
+	}
 }

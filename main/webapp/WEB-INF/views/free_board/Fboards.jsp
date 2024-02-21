@@ -1,3 +1,4 @@
+<%@page import="com.springmvc.domain.userinfo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -13,7 +14,9 @@
  <%@  include file="../module/header.jsp" %>
  
 	<h1>게시판 페이지</h1>
-	
+	<%
+ 				request.setAttribute("loginId", userinfo.getInstance().getPersonId());
+ 	%>
 	<a href="/123team/Nboards"><button>공지사항</button></a> || <a href="/123team/Fboards"><button>자유게시판</button></a> || <a href="/123team/ENboards"><button>체험단</button></a>&emsp; <a href="Fboards/add"><button>게시글 작성</button></a>
 	<br>
 	<% 
@@ -47,6 +50,7 @@
 			</li>
 		</c:if>
 	</c:forEach>
+	${nothing}
 	<br>
 	
 	<%
@@ -72,6 +76,8 @@
 		<input type="text" name="title" placeholder="제목입력"/>
 		<button type="submit">검색</button>
 	</form>
-	
+	<c:if test="${loginId != null}">
+	<a href="Fboards?myId=${loginId}"><button>내 게시글만 보기</button></a>
+	</c:if>
 </body>
 </html>

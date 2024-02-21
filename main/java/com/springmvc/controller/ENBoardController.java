@@ -46,7 +46,6 @@ public class ENBoardController {
 //	체험공고글 하나만 보기
 	@GetMapping("/ENboard")
 	public String ViewBoard(@RequestParam("boardId") String boardId, Model model) {
-		
 		model.addAttribute("board",enboardService.getENBoardById(boardId));
 //		해당 공지글 댓글 가져오기
 		model.addAttribute("Commentlist",boardCommentService.getCommentsById(boardId));
@@ -187,7 +186,7 @@ public class ENBoardController {
 	 public String manageapps(Model model,HttpServletRequest request) {
 		 model.addAttribute("applists",enboardService.getPermisionList());
 		 if(enboardService.getPermisionList().isEmpty()) {
-			 request.setAttribute("empty", "승인할 것이 없어요");
+			 request.setAttribute("nothing", "승인할 것이 없어요");
 		 }
 		 return "experience_board/manageapps";
 	 }

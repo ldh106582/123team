@@ -38,6 +38,19 @@ public class FBoardContoller {
 		if(model.containsAttribute("FBoardlist")) {
 			return "free_board/Fboards";
 		}
+		
+		if(request.getParameter("myId")!=null) {
+			String myId = request.getParameter("myId");
+			List<FBoard> FBoardlist = fboardService.getAllMyFBoardsById(myId);
+			if(FBoardlist.isEmpty()) {
+				request.setAttribute("nothing", "내가 작성한 게시물이 없어요");
+				request.setAttribute("size",5);
+				return "free_board/Fboards";
+			}
+			model.addAttribute("FBoardlist",FBoardlist);
+			request.setAttribute("size", FBoardlist.size());
+			return "free_board/Fboards";
+		}
 		model.addAttribute("FBoardlist",fboardService.getAllFBoards());
 		request.setAttribute("size", 5);
 		return "free_board/Fboards";

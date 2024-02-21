@@ -37,4 +37,8 @@ public class FBoardServiceImpl implements FBoardService{
 	public List<FBoard> getFBoardsByTitle(String title) {
 		return fboardRepository.getFBoardsByTitle(title);
 	}
+	@Override
+	public List<FBoard> getAllMyFBoardsById(String myId) {
+		return fboardRepository.getAllMyFBoardsById(myId);
+	}
 }

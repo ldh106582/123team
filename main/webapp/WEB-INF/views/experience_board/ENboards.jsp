@@ -1,3 +1,4 @@
+<%@page import="com.springmvc.domain.userinfo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -13,13 +14,17 @@
 <body>
  <%@  include file="../module/header.jsp" %>
  
-	
+	<%
+		request.setAttribute("loginId", userinfo.getInstance().getPersonId());
+	%>
 	<h1>체험단 공고글 페이지</h1>
 	
 	<a href="/123team/Nboards"><button>공지사항</button></a> || <a href="/123team/Fboards"><button>자유게시판</button></a> || <a href="/123team/ENboards"><button>체험단</button></a>
 	&emsp;<a href="ENboards/add"><button>게시글 작성</button></a> || <a href="ENboards/manageapps"><button>신청 관리</button></a>
 	<br>
+	<c:if test="${loginId != null}">
 	<a href="/123team/ENboards/applist"><button>내 체험단 신청 목록</button></a>
+	</c:if>
 	<% 
 		int size = (Integer) request.getAttribute("size");
 		request.setAttribute("sise", size);
