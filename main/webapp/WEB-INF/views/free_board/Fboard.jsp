@@ -69,7 +69,7 @@
         </div>
     </div>
     
-    
+    <%--  참고용 주석
 			<a href="update?boardId=${board.boardId}">게시글 수정</a>
 			<a href="delete?boardId=${board.boardId}">게시글 삭제</a>
 			&emsp;&emsp;&emsp; <a href="/123team/Fboards">돌아가기</a>
@@ -142,6 +142,6 @@
 				<input type="text" name="comment">
 				<input type="submit" value="등록">
 			</form>
-			
+			 --%>
 </body>
 </html>
