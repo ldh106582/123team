@@ -13,7 +13,6 @@ public class ENBoard {
 	private String boardId;
 	private String animal;
 	private String experience;
-	
 	private String personId;
 	
 	public String getTitle() {
@@ -65,14 +64,5 @@ public class ENBoard {
 		this.personId = managerId;
 	}
 	
-	public static ENBoard getInstance(){
-		if(instance == null){
-			instance = new ENBoard();
-		}
-		return instance;
-	}
-	
-	private static ENBoard instance;
-
 	
 }

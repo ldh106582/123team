@@ -39,7 +39,7 @@ System.out.println("싱글톤 : " + type);
             </div>
         </div>
     </nav>
-<% if("p".equals(type) && "p" == type) { %>
+
 	<div class="jumbotron">
 		<div class="container">
 			<h2>로그인 페이지</h2>
@@ -48,71 +48,35 @@ System.out.println("싱글톤 : " + type);
 
 	
 	<div class="container">
-	<div class="container col-md-5">
-		<div class="text-center">
-			<h4>아이디 / 비밀번호 입력해주세요</h4>
-		</div>
-
-		<form:form class="form-signin mx-auto mt-5" modelAttribute="productlogin" method="POST" style="max-width: 400px;">
-
-			<div class="form-group text-center">아이디를 입력하세요
-				<form:input class="form-control border border-dark " type="text" path="personId" id="id" />
+		<div class="container col-md-5">
+			<div class="text-center">
+				<h4>아이디 / 비밀번호 입력해주세요</h4>
 			</div>
-			<div class="form-group text-center mt-3">비밀번호를 입력하세요
-				<form:input class="form-control border border-dark" type="password" path="personPw" id="pw"/>
-			</div>
-			<div class="form-group mt-3">
-				<input type="submit" class="btn btn-lg btn-success btn-block" value="로그인" id="login"/>
-			</div>
-		</form:form>
 	
-		<div class="mt-5 text-center">
-			<a href="#">아이디 찾기</a> | 
-			<a href="#">비밀번호 찾기</a> | 
-			<a href="./login/add">회원가입</a>
-		</div>
+			<form:form class="form-signin mx-auto mt-5" modelAttribute="success" method="POST" style="max-width: 400px;">
 	
-	</div>
-
-
-	<footer class="container">
+				<div class="form-group text-center">아이디를 입력하세요
+					<form:input class="form-control border border-dark " type="text" path="personId" id="id" />
+				</div>
+				<div class="form-group text-center mt-3">비밀번호를 입력하세요
+					<form:input class="form-control border border-dark" type="password" path="personPw" id="pw"/>
+				</div>
+				<div class="form-group mt-3">
+					<input type="submit" class="btn btn-lg btn-success btn-block" value="로그인" id="login"/>
+				</div>
+			</form:form>
 		
-	</footer>
-<% } else { %>
-	<div class="jumbotron">
-		<div class="container">
-			<h2>로그인 페이지</h2>
-		</div>
-	</div>
-
-	
-	<div class="container">
-	<div class="container col-md-5">
-		<div class="text-center">
-			<h4>아이디 / 비밀번호 입력해주세요</h4>
-		</div>
-
-		<form:form class="form-signin mx-auto mt-5" modelAttribute="success" method="POST" style="max-width: 400px;">
-
-			<div class="form-group text-center">아이디를 입력하세요
-				<form:input class="form-control border border-dark " type="text" path="personId" id="id" />
+			<div class="mt-5 text-center">
+				<a href="#">아이디 찾기</a> | 
+				<a href="#">비밀번호 찾기</a> | 
+				<a href="./login/add">회원가입</a>
 			</div>
-			<div class="form-group text-center mt-3">비밀번호를 입력하세요
-				<form:input class="form-control border border-dark" type="password" path="personPw" id="pw"/>
+			
+			<br>
+			<div class="col-md-12 justify-content-center" style="display: flex;">
+				<a href="./login/Allmember" class="col-md-4 btn btn-outline-danger p-2 mr-2">통합회원가입</a>
+				<a href="./managerlogin/AllLog" class="col-md-4 btn btn-outline-info p-2 ml-2">관리자 로그인</a>
 			</div>
-			<div class="form-group mt-3">
-				<input type="submit" class="btn btn-lg btn-success btn-block" value="로그인" id="login"/>
-			</div>
-		</form:form>
-	
-		<div class="mt-5 text-center">
-			<a href="#">아이디 찾기</a> | 
-			<a href="#">비밀번호 찾기</a> | 
-			<a href="./login/add">회원가입</a>
-		</div>
-	
-		<div class="row justify-content-center m-5">
-			<a href="./login/Allmember" class="col-6 btn btn-outline-dark p-3">관리자회원가입</a>
 		</div>
 	</div>
 
@@ -120,29 +84,27 @@ System.out.println("싱글톤 : " + type);
 	<footer class="container">
 		
 	</footer>
-<% } %>
 </body>
 <!-- js -->
 <script>
-var firstLoad = true;
-
-window.addEventListener('load', function() {
-    document.getElementById("login").onsubmit = function(e){
-        var id = document.getElementById('id').value;
-        var spw = document.getElementById('pw').value;
-        if(id == "" || pw == ""){
-            alert("아이디와 비밀번호를 입력해주세요.")
+window.onload = function() {
+    var form = document.querySelector("form.form-signin");
+	
+    form.addEventListener("submit", function(e){
+        var id = document.getElementById("id").value;
+        var pw = document.getElementById("pw").value;
+        if(id === "" || pw === ""){
+            alert("아이디와 비밀번호를 입력해주세요.");
             e.preventDefault();
         }
-    }
-});
-window.addEventListener('load', function(){
+    });
+	
     var error = "아이디와 비밀번호를 확인해주세요";
-    
+    var firstLoad = true;
     if(error && !firstLoad){
         alert(error);
     }
     firstLoad = false;
-});
+};
 </script>
 </html>

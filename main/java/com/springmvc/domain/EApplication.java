@@ -9,6 +9,7 @@ public class EApplication {
 	private String personId;
 	private String title;
 	private String eid;
+	private String mid;
 	
 	public String getExperience() {
 		return experience;
@@ -41,13 +42,6 @@ public class EApplication {
 		this.personId = personId;
 	}
 	
-	public static EApplication getInstance(){
-		if(instance == null){
-			instance = new EApplication();
-		}
-		return instance;
-	}
-	
 	public String getTitle() {
 		return title;
 	}
@@ -61,6 +55,10 @@ public class EApplication {
 	public void setEid(String eid) {
 		this.eid = eid;
 	}
-
-	private static EApplication instance;
+	public String getMid() {
+		return mid;
+	}
+	public void setMid(String mid) {
+		this.mid = mid;
+	}
 }

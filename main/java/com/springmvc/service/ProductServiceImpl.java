@@ -24,4 +24,20 @@ public class ProductServiceImpl implements ProductService{
 		return productRepository.getProductById(productId);
 	}
 
+	@Override
+	public void addProduct(Product product) {
+		productRepository.addProduct(product);
+		
+	}
+
+	@Override
+	public void updateProduct(Product product, String productId) {
+		productRepository.updateProduct(product,productId);
+	}
+
+	@Override
+	public void deleteProduct(String producId) {
+		productRepository.deleteProduct(producId);
+	}
+
 }

@@ -1,17 +1,20 @@
 package com.springmvc.repository;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.sql.DataSource;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
-
+import com.springmvc.controller.ManagerController;
+import com.springmvc.domain.Manager;
 import com.springmvc.domain.Person;
 import com.springmvc.domain.Pet;
+import com.springmvc.domain.ProductMember;
 
 @Repository
 public class PersonRepositoryImp implements  PersonRepository{
@@ -101,21 +104,20 @@ public class PersonRepositoryImp implements  PersonRepository{
 	
 	// update에서 사용할 정보
 	@Override
-	public Person findPersonById(String personId) {
-		System.out.println("person 리파지토리 : " + personId);
+	public Person findPersonById(String id) {
 		String SQL = "select count(*) from Person where PersonId=?";
-		Integer perCount = template.queryForObject(SQL, Integer.class, personId);
+		Integer perCount = template.queryForObject(SQL, Integer.class, id);
 		
 		System.out.println("perCount : " + perCount);
-		Person person = null;
+		Person personId = null;
 		if(perCount != 0) {
 			
 			String personSQL = "select * from Person where personId=?";
-			person = template.queryForObject(personSQL, new Object[] {personId}, new PersonDBConnector());
+			personId = template.queryForObject(personSQL, new Object[] {id}, new PersonDBConnector());
 		} else {
 			System.out.println("데이터가 없습니다.");
 		}
-		return person;
+		return personId;
 	}
 	
 	// 전체 id db에 값을 넣어줌
@@ -131,9 +133,5 @@ public class PersonRepositoryImp implements  PersonRepository{
 		String SQL = "delete from all_member where PersonId=?";
 		this.template.update(SQL, person.getPersonId());
 	}
-	
-
-	
-
 	
 }

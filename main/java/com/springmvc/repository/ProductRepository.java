@@ -10,4 +10,10 @@ public interface ProductRepository {
 
 	Product getProductById(String productId);
 
+	void addProduct(Product product);
+
+	void updateProduct(Product product, String productId);
+
+	void deleteProduct(String producId);
+
 }

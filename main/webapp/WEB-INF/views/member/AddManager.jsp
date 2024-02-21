@@ -107,7 +107,6 @@
         System.out.println("jsp페이지 : " + type);
         session.setAttribute("type", type);
         
-        
         %>
         
         <div class="form-group row">

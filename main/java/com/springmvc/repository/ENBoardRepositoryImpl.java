@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import com.springmvc.domain.EApplication;
 import com.springmvc.domain.ENBoard;
+import com.springmvc.domain.userinfo;
 
 @Repository
 public class ENBoardRepositoryImpl implements ENBoardRepository{
@@ -53,7 +54,7 @@ public class ENBoardRepositoryImpl implements ENBoardRepository{
 		
 		String SQL = "insert into ENBoard values(?,?,?,?,?,?,?,?)";
 //		이름과 아이디 받아오기
-		ENBoard getboardNI = ENBoard.getInstance();
+		userinfo getboardNI = userinfo.getInstance();
 		System.out.println(getboardNI.getPersonId());
 		template.update(SQL,board.getContext(),board.getTitle(),0,getRegistDay(),board.getExperience(),board.getAnimal(),CreateBoardId(),getboardNI.getPersonId());
 	}
@@ -103,8 +104,9 @@ public class ENBoardRepositoryImpl implements ENBoardRepository{
 // 체험단 예약
 	@Override
 	public void addbook(EApplication application) {
-		String SQL = "insert into EApllication values(?,?,?,?,?,?,?)";
-		template.update(SQL,application.getExperience(),application.getAnimal(),application.getRegistDay(),"처리중",application.getPersonId(),application.getTitle(),CreateEId());
+		String SQL = "insert into EApllication values(?,?,?,?,?,?,?,?)";
+		userinfo getboardNI = userinfo.getInstance();
+		template.update(SQL,application.getExperience(),application.getAnimal(),application.getRegistDay(),"처리중",application.getTitle(),getboardNI.getPersonId(),CreateEId(),application.getMid());
 	}
 	
 //	체험단Id 생성
@@ -120,8 +122,6 @@ public class ENBoardRepositoryImpl implements ENBoardRepository{
 		List<EApplication> ealist = template.query(SQL, new EApplicationRowMapper());
 		return ealist;
 	}
-
-
 	
 //	예약 삭제
 	@Override
@@ -140,7 +140,7 @@ public class ENBoardRepositoryImpl implements ENBoardRepository{
 
 	@Override
 	public List<EApplication> getPermisionList() {
-		String SQL = "Select * from EApllication where state='처리중'";
+		String SQL = "Select * from EApllication where state='처리중' and Mid='"+userinfo.getInstance().getPersonId()+"'";
 		List<EApplication> list  =template.query(SQL, new EApplicationRowMapper());
 		return list;
 	}
