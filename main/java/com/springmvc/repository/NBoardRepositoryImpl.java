@@ -29,6 +29,7 @@ public class NBoardRepositoryImpl implements NBoardRepository{
 		List<NBoard> listofBoards = template.query(SQL, new NBoardRowMapper());
 		return listofBoards;
 	}
+	
 //  공지글 하나만 보기
 	@Override
 	public NBoard getNBoardById(String boardid) {
@@ -103,5 +104,7 @@ public class NBoardRepositoryImpl implements NBoardRepository{
 	        return null; 
 	    }
 	}
-	
+
+
+
 }

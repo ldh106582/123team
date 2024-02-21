@@ -19,7 +19,7 @@ public class EApplicationRowMapper implements RowMapper<EApplication>{
 		application.setPersonId(rs.getString(5));
 		application.setTitle(rs.getString(6));
 		application.setEid(rs.getString(7));
-		
+		application.setMid(rs.getString(8));
 		return application;
 	}
 	

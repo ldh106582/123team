@@ -104,9 +104,9 @@ public class ENBoardRepositoryImpl implements ENBoardRepository{
 // 체험단 예약
 	@Override
 	public void addbook(EApplication application) {
-		String SQL = "insert into EApllication values(?,?,?,?,?,?,?)";
+		String SQL = "insert into EApllication values(?,?,?,?,?,?,?,?)";
 		userinfo getboardNI = userinfo.getInstance();
-		template.update(SQL,application.getExperience(),application.getAnimal(),application.getRegistDay(),"처리중",getboardNI.getPersonId(),application.getTitle(),CreateEId());
+		template.update(SQL,application.getExperience(),application.getAnimal(),application.getRegistDay(),"처리중",application.getTitle(),getboardNI.getPersonId(),CreateEId(),application.getMid());
 	}
 	
 //	체험단Id 생성
@@ -122,8 +122,6 @@ public class ENBoardRepositoryImpl implements ENBoardRepository{
 		List<EApplication> ealist = template.query(SQL, new EApplicationRowMapper());
 		return ealist;
 	}
-
-
 	
 //	예약 삭제
 	@Override
@@ -142,7 +140,7 @@ public class ENBoardRepositoryImpl implements ENBoardRepository{
 
 	@Override
 	public List<EApplication> getPermisionList() {
-		String SQL = "Select * from EApllication where state='처리중'";
+		String SQL = "Select * from EApllication where state='처리중' and Mid='"+userinfo.getInstance().getPersonId()+"'";
 		List<EApplication> list  =template.query(SQL, new EApplicationRowMapper());
 		return list;
 	}

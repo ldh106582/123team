@@ -1,3 +1,6 @@
+<%@page import="com.springmvc.repository.NBoardRepositoryImpl"%>
+<%@page import="java.util.List"%>
+<%@page import="com.springmvc.domain.NBoard"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <meta charset="UTF-8">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -72,10 +75,9 @@
 
 				<div class="intro11">
 					<div class="intro12">
-						<h4>위의 버튼을 이용해 여러분들이 원하는 페이지로 이동해주세요 </h4>
+						공지사항
 					</div>
 				</div>
-				
 				
 				<div class="intro13 m-3 col-12">
 					<div class="m-2">

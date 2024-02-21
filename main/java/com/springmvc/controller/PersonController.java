@@ -57,16 +57,10 @@ public class PersonController {
 		System.out.println("아이디 확인"+person.getPersonId());
 		// 조원들에게 넘겨줄 객체
 		Person id = personService.loginSucess(person);
-		HttpSession session = request.getSession();
-		
-		// 보드로 가져갈게요
-		
 		userinfo.getInstance().setPersonId(id.getPersonId());
 		userinfo.getInstance().setPersonName(id.getPersonName());
 		
-		// 내가 가져갈 객체
-		String personId = person.getPersonId();
-		String personPw = person.getPersonPw();
+		HttpSession session = request.getSession();
 		if(id != null) 
 		{
 			if(id.getPersonId().equals(person.getPersonId()) && id.getPersonPw().equals(person.getPersonPw())) 
@@ -77,7 +71,7 @@ public class PersonController {
 				
 				// pet이름 정보를 가져옴
 				List<Pet> petName = personService.getPetName(person);
-				System.out.println("petName : " + petName.get(0));
+				System.out.println("petName : " + petName);
 				session.setAttribute("petName", petName);
 				
 				// pet 아이디 정보를 가져옴
@@ -86,9 +80,18 @@ public class PersonController {
 				
 				return "member/Mypage";
 			}
+		
+		// 보드로 가져갈게요
+		
+		
+		
+		// 내가 가져갈 객체
+		String personId = person.getPersonId();
+		String personPw = person.getPersonPw();
+		
 		}
 		
-		return "redirect:/login";
+		return "/login";
 	}
 	
 	// 회원 수정 페이지로 이동

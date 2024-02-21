@@ -13,7 +13,6 @@ public class ENBoard {
 	private String boardId;
 	private String animal;
 	private String experience;
-	
 	private String personId;
 	
 	public String getTitle() {

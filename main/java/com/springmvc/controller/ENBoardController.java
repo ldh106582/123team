@@ -159,6 +159,7 @@ public class ENBoardController {
 	 @PostMapping("/addapp")
 	 public String bookex(HttpServletRequest request) {
 		 EApplication application = new EApplication();
+		 application.setMid(request.getParameter("mid"));
 		 application.setAnimal(request.getParameter("animal"));
 		 application.setExperience(request.getParameter("experience"));
 		 application.setRegistDay(request.getParameter("registDay"));

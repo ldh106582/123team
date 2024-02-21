@@ -9,6 +9,7 @@ public class EApplication {
 	private String personId;
 	private String title;
 	private String eid;
+	private String mid;
 	
 	public String getExperience() {
 		return experience;
@@ -53,5 +54,11 @@ public class EApplication {
 	}
 	public void setEid(String eid) {
 		this.eid = eid;
+	}
+	public String getMid() {
+		return mid;
+	}
+	public void setMid(String mid) {
+		this.mid = mid;
 	}
 }

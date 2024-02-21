@@ -1,5 +1,6 @@
 package com.springmvc.domain;
 
+
 public class NBoard {
 	
 	public NBoard () {
@@ -12,7 +13,7 @@ public class NBoard {
 	private int hit;
 	private String registDay;
 	private String boardId;
-
+	
 	public String getTitle() {
 		return title;
 	}
@@ -58,4 +59,5 @@ public class NBoard {
 	public void setBoardId(String BoardId) {
 		this.boardId = BoardId;
 	}
+	
 }
