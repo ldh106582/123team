@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="mypagetest.css">
+<link rel="stylesheet" href="resources/css/petcard.css">
 <!-- 부트스트랩 -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <!-- 폰트어썸 -->
@@ -14,11 +14,20 @@
 <!-- js -->
 <link href="<c:url value="/resources/js/petcard.js"/>" rel="stylesheet">
 <title>나의 동물 현황</title>
-<style>
-*{
+<style type="text/css">
+	*{
+	font-family: 'KCC-Ganpan';
 	background-color()
 }
+
+@font-face {
+    font-family: 'KCC-Ganpan';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/KCC-Ganpan.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
 </style>
+
 </head>
 <body>
     <div class="container mt-3">
@@ -49,27 +58,28 @@
 </head>
 <body>
    <nav class="navbar navbar-expand navbar-dark bg-dark">
-        <div class="container">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="/123team">Home</a>
-            </div>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-              <ul class="navbar-nav">
-                <li class="nav-item">
-                  <a class="nav-link " href="/123team/hospital">병원</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/123team/product">동물상품</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/123team/Fboards">게시판</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/123team/login">로그인</a>
-                </li>
-            </div>
-        </div>
-    </nav>
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="./">Home</a>
+			</div>
+			<div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+				<ul class="navbar-nav">
+					<li class="nav-item">
+						<a class="nav-link" href="./hospital"><img width="24" height="24" src="https://img.icons8.com/doodle/48/hospital--v1.png" alt="hospital--v1"/>병원</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="./product"><img width="24" height="24" src="https://img.icons8.com/external-photo3ideastudio-lineal-color-photo3ideastudio/24/external-pet-shop-pet-shop-photo3ideastudio-lineal-color-photo3ideastudio.png" alt="external-pet-shop-pet-shop-photo3ideastudio-lineal-color-photo3ideastudio"/>동물상품</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="Fboards"><img width="24" height="24" src="https://img.icons8.com/external-flaticons-lineal-color-flat-icons/24/external-board-police-flaticons-lineal-color-flat-icons-2.png" alt="external-board-police-flaticons-lineal-color-flat-icons-2"/>게시판</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="./login"><img width="24" height="24" src="https://img.icons8.com/stickers/24/unlock.png" alt="unlock"/>로그인</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
 
     <div id="wrap" class="wrap naverid ">
         <header class="header" role="banner">

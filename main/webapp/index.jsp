@@ -14,11 +14,20 @@
 <link href="<c:url value="/resources/css/index.css"/>" rel="stylesheet">
 <!-- 이미지 -->
 <link href="<c:url value="/resources/pet/"/>" rel="stylesheet">
-</head>
-<style>
+<style type="text/css">
+	*{
+	font-family: 'KCC-Ganpan';
+	background-color()
+}
 
-
+@font-face {
+    font-family: 'KCC-Ganpan';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/KCC-Ganpan.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
 </style>
+</head>
 <body>
 	<header class="intro0">
 		<nav class="intro1 head navbar navbar-secondary m-0">
