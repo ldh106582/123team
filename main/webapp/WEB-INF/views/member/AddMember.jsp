@@ -120,6 +120,8 @@
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
+var IdCheck = false;
+
 function idDuplicateCheck(event) {
     event.preventDefault(); // 폼의 기본 동작 방지
 
@@ -147,10 +149,15 @@ function idDuplicateCheck(event) {
                 alert("이미 사용중인 아이디입니다.")
             }
         },
-        error: function (request, status, error) {
-            console.log(request);
+       		 if(!IdCheck){
+	        	alert("아이디 중복은 필수 입니다")
+	        	e.preventDefault();
+        }
+          	 error: function (request, status, error) {
+                 console.log(request);
         }
     });
-}
+};
+
 </script>
 </html>

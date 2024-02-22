@@ -58,8 +58,31 @@ public class ManagerRepositoryImpl implements ManagerRepository {
 	        String ManagerSQL ="select * from all_member where PersonId=?";
 	        // RowMapper 객체를 정의해야 합니다. RowMapper는 인터페이스이므로 익명 클래스를 사용할 수 있습니다.
 	        managerId = template.queryForObject(ManagerSQL, new Object[] {manager.getPersonId()}, new managerDBController());
+<<<<<<< HEAD
+=======
+	        System.out.println(managerId.getPersonId());
+	        System.out.println(managerId.getType());
+>>>>>>> 6bb23d73a8eea6e8d359f8841e52b0b8f361839d
 	        
 	    }
 	    return managerId;
 	}
+<<<<<<< HEAD
+=======
+	// 전체 id db 데이터를 삭제하는 함수
+	@Override
+	public void AllmanagerDelete(String managerId) {
+		String SQL = "delete from ProductMember where PersonId = ?";
+		template.update(SQL, managerId);
+	}
+	// Member 데이터를 삭제하는 함수
+	@Override
+	public void P_managerDelete(String managerId) {
+		String SQL = "delete from all_member where PersonId = ?";
+		template.update(SQL, managerId);
+	}
+	
+	
+	
+>>>>>>> 6bb23d73a8eea6e8d359f8841e52b0b8f361839d
 }

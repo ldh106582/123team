@@ -13,8 +13,12 @@ public class managerDBController implements RowMapper<Manager> {
 	{
 		Manager manager = new Manager();
 		manager.setPersonId(rs.getString(1));
+<<<<<<< HEAD
 		manager.setPersonPw(rs.getString(2));
 		manager.setType(rs.getString(3));
+=======
+		manager.setType(rs.getString(2));
+>>>>>>> 6bb23d73a8eea6e8d359f8841e52b0b8f361839d
 		return manager;
 	}
 }
