@@ -1,8 +1,8 @@
-<%@page import="java.util.List"%>
-<%@ page import="java.sql.*" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <meta charset="UTF-8">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page import="java.util.List"%>
+<%@ page import="java.sql.*" %>
 <!-- css -->
 <html>
 <head>
@@ -26,6 +26,7 @@
 				<h1 class="text-center">반려동물과 함께하는 즐거운 공간</h1> 
 			</div>
 		</nav>
+		
 		<div class="intro2">
 			<div class="intro3">
 				<div class="intro4 text-center border border-dark">
@@ -44,6 +45,7 @@
 							<a href="#"> 동물카드 &raquo;</a>
 						</div>
 					</div>
+
 				</div>
 
 				<div class="intro8">
@@ -68,30 +70,9 @@
 							<a href="./login" class=" justify-center text-white">로그인 &raquo;</a>
 						</div>
 					</div>
-
+				</div>
 				<div class="intro11">
 					<div class="intro12">
-
-						<h4>위의 버튼을 이용해 여러분들이 원하는 페이지로 이동해주세요 </h4>
-					</div>
-				</div>
-
-
-				
-				
-				<div class="intro13 m-3 col-12">
-					<div class="m-2">
-						<img src="<c:url value='/resources/pet/dog.jpg'/>" class="img01">
-						<img src="<c:url value='/resources/pet/dog1.jpg'/>" class="img01">
-						<img src="<c:url value='/resources/pet/dog2.jpg'/>" class="img01">
-						<img src="<c:url value='/resources/pet/dog3.jpg'/>" class="img01">
-						<img src="<c:url value='/resources/pet/dog4.jpg'/>" class="img01">
-						<img src="<c:url value='/resources/pet/dog5.jpg'/>" class="img01">
-						<img src="<c:url value='/resources/pet/dog6.jpg'/>" class="img01">
-	 
-
-				
-
 						<div class="intro10 border border-dark btn btn-primary p-3">
 							<i class="fa-solid fa-clipboard-user"></i>
 							<a href="Fboards" class="justify-center text-white">공지사항 &raquo;</a>
@@ -157,6 +138,7 @@
 						      }
 						   }
 						%>
+					</div>
 				</div>
 			</div>
 		</div>

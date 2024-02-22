@@ -19,8 +19,6 @@ import com.springmvc.domain.FBoard;
 import com.springmvc.service.BoardCommentService;
 import com.springmvc.service.FBoardService;
 
-
-
 @Controller
 @RequestMapping("/Fboards")
 public class FBoardContoller {
@@ -36,6 +34,19 @@ public class FBoardContoller {
 	public String ViewBoardlist(Model model,HttpServletRequest request) {
 //		모든 게시글 가져오기
 		if(model.containsAttribute("FBoardlist")) {
+			return "free_board/Fboards";
+		}
+		
+		if(request.getParameter("myId")!=null) {
+			String myId = request.getParameter("myId");
+			List<FBoard> FBoardlist = fboardService.getAllMyFBoardsById(myId);
+			if(FBoardlist.isEmpty()) {
+				request.setAttribute("nothing", "내가 작성한 게시물이 없어요");
+				request.setAttribute("size",5);
+				return "free_board/Fboards";
+			}
+			model.addAttribute("FBoardlist",FBoardlist);
+			request.setAttribute("size", FBoardlist.size());
 			return "free_board/Fboards";
 		}
 		model.addAttribute("FBoardlist",fboardService.getAllFBoards());

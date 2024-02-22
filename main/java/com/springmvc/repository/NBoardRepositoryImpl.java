@@ -46,6 +46,7 @@ public class NBoardRepositoryImpl implements NBoardRepository{
 		}
 		return board;
 	}
+	
 // 공지글 작성
 	@Override
 	public void setNBoard(NBoard board) {

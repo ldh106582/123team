@@ -25,6 +25,6 @@
  	</div>
  	
  </c:forEach>
- 
+ ${nothing}
 </body>
 </html>
