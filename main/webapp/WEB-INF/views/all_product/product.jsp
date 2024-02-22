@@ -26,6 +26,6 @@
 	<p>
 	재고수 : ${product.productUnitStock}
 	<p>
-	  <a href="/123team/products/addCart"><button>상품주문</button></a> || <a href="update?productId=${product.productId}"><button>상품수정</button></a>  <a href="delete?productId=${product.productId}"><button>상품삭제</button></a>
+	  <a href="/123team/products/creatCart?product=${product}"><button>장바구니 담기</button></a> || <a href="update?productId=${product.productId}"><button>상품수정</button></a>  <a href="delete?productId=${product.productId}"><button>상품삭제</button></a>
 </body>
 </html>

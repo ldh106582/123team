@@ -9,5 +9,6 @@
  <%@  include file="../module/headerdanger.jsp" %>
  
  <p>장바구니 도착
+ ${c_shoppingCart.productId }
 </body>
 </html>

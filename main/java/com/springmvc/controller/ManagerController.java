@@ -95,6 +95,7 @@ public class ManagerController
 	    if (managerId != null) {
 	        HttpSession session = request.getSession();
 	        session.setAttribute("managerId", managerId);
+	        System.out.println("sessionId : " + managerId.getPersonId());
 	        return "redirect:../products";
 	    } else {
 	        return "/member/ManagerLogin"; 
