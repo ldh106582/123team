@@ -14,5 +14,6 @@ public interface ManagerService {
 	void AllmanagerDelete(String managerId);
 	// Member 데이터를 삭제하는 함수
 	void P_managerDelete(String managerId);
-
+	// mypage로 이동하기 위한 값을 가져옴
+	ProductMember managerPage(String personId);
 }

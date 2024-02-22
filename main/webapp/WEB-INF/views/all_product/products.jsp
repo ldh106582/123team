@@ -29,12 +29,13 @@
                 </li>
                 
                 <% Manager manager = (Manager) session.getAttribute("managerId");
-              		  String type = manager.getType();
-                	System.out.println("managerId : " + type);
-                	if("p".equals(type)){ %>
+              		String type = manager.getType();
+                	System.out.println("managerId : " + type);%>
+                	
+                <%	if("p".equals(type) || "p" == type){ %>
                 	
                 <li class="nav-item">
-                  <a class="nav-link" href="/managerlogin/manager_page?manager=${managerId.managerId}">마이페이지</a>
+                  <a class="nav-link" href="/123team/managerlogin/manager_page?personId=${managerId.personId}">마이페이지</a>
                 </li>
                 
                 <%}else{ %>

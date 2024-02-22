@@ -1,20 +1,3 @@
-document.addEventListener("DOMContentLoaded", function(){
-    var allmember = document.getElementById("allmember");
-    var managerlogin = document.getElementById("managerlogin");
-  	
-  	if(allmember){
-  	
-  	  allmember.addEventListener("click", function(){
-      alert("관리자 회원가입 페이지로 이동합니다.");
-      });
- 	}
- 	
- 	if(managerlogin){
- 	managerlogin.addEventListener("click", function(){
-		alert("관리자 로그인 페이지로 이동합니다.");
-		});			
-	}
-});
 
 window.onload = function() {
     var form = document.querySelector("form.form-signin");
@@ -35,3 +18,11 @@ window.onload = function() {
     }
     firstLoad = false;
 };
+
+document.addEventListener("DOMContentLoaded", function(){
+	var allmember = document.getElementById("allmember");
+	allmember.addEventListener("click", function(){
+		alert("관리자 회원가입 페이지로 이동합니다.");
+	});
+		
+});

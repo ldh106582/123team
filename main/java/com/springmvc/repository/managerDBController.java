@@ -7,6 +7,7 @@ import org.springframework.jdbc.core.RowMapper;
 
 import com.springmvc.domain.Ajax;
 import com.springmvc.domain.Manager;
+import com.springmvc.domain.ProductMember;
 
 public class managerDBController implements RowMapper<Manager> {
 	public Manager mapRow(ResultSet rs, int rowNum) throws SQLException

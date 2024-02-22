@@ -1,16 +1,23 @@
 package com.springmvc.controller;
 
 import java.util.List;
+
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.support.SessionStatus;
+
 import com.springmvc.domain.EApplication;
 import com.springmvc.domain.ENBoard;
 import com.springmvc.domain.FBoard;
@@ -142,5 +149,22 @@ public class PersonController {
 		
 		return "/member/AllManager";
 	}
-	
+	//로그아웃 페이지
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public String logout(HttpServletRequest request, HttpServletResponse response, SessionStatus sessionStatus) {
+		System.out.println("로그아웃 페이지로 이동");
+		// 세션 무효시킴
+	    sessionStatus.setComplete();
+
+ 	  // 쿠키제거
+	    Cookie[] cookies = request.getCookies();
+	    if (cookies != null) {
+	        for (Cookie cookie : cookies) {
+	            cookie.setMaxAge(0);
+	            response.addCookie(cookie);
+	        }
+	    }
+	    
+	    return "redirect:/login";
+	}
 }

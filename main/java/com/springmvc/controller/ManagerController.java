@@ -88,7 +88,7 @@ public class ManagerController
 	@PostMapping("/AllLog")
 	public String Managerlogin(@ModelAttribute("managerlogin") Manager manager, Model model,
 								HttpServletRequest request) {
-		System.out.println("managerId : "+manager.getPersonId());
+		/* System.out.println("managerId : "+manager.getPersonId()); */
 		
 		// manager 로그인 함수
 		Manager managerId = managerService.managerlogin(manager);
@@ -96,16 +96,14 @@ public class ManagerController
 		HttpSession session = request.getSession();
 		session.setAttribute("managerId", managerId);
 		
-
-		model.addAttribute("managerId", managerId);
-		
 		return "/all_product/products";
 	}
 
 	
 	@GetMapping("/ManagerDelete")
 	public String ManagerDelete(@RequestParam("managerid") String managerId) {
-		System.out.println("삭제도착");
+		// System.out.println("managerId : " + managerId);
+		
 		// 전체 id db 데이터를 삭제하는 함수
 		managerService.AllmanagerDelete(managerId);
 		// productMember 데이터를 삭제하는 함수
@@ -113,9 +111,23 @@ public class ManagerController
 		return "/all_product/products";
 	}
 	
-	// mypage로 이동
+	// mypage로 이동하기 위한 값을 가져옴
+	@GetMapping("/manager_page")
+	public String ManagerPage(@RequestParam("personId") String personId, ProductMember productMember, Model model) {
+		System.out.println("c personId : " + personId);
+		productMember = managerService.managerPage(personId);
+		 // System.out.println("productMemberId : " + productMember.getPersonId());
+		 // System.out.println("productMembertype : " + productMember.getType());
+		// product 매니저 mypage로 값 전송
+		model.addAttribute("productMember", productMember);
+		
+		return "/member/managerMypage";
+	}
+	
+	// update 하기 전 데이터를 받아오는 곳
 	@GetMapping()
-	public String ManagerPage(@RequestParam("") String managerId) {
+	public String ManagerUpdate() {
+		
 		return "";
 	}
 }

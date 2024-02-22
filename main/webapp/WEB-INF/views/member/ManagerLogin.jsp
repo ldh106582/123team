@@ -45,7 +45,7 @@
 		</div>
 		<br>
 		<div class="col-md-12 justify-content-center" style="display: flex;">
-			<a href="/123team/login/Allmember" class="col-md-4 btn btn-outline-danger p-3 m-1">통합회원가입</a>
+			<a href="/123team/login/Allmember" class="col-md-4 btn btn-outline-danger p-3 m-1" id="allmember">통합회원가입</a>
 		</div>
 	</div>
 
@@ -54,4 +54,7 @@
 		
 	</footer>
 </body>
+<script src="../resources/js/ManagerLogin.js"></script>
+
+
 </html>

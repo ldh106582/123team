@@ -78,5 +78,20 @@ public class ManagerRepositoryImpl implements ManagerRepository {
 		String SQL = "delete from all_member where PersonId = ?";
 		template.update(SQL, managerId);
 	}
+	// mypage로 이동하기 위한 값을 가져옴
 
+	@Override
+	public ProductMember managerPage(String personId) {
+		String SQL = "select count(*) from ProductMember where PersonId = ?";
+		Integer intNum = template.queryForObject(SQL, Integer.class, personId);
+		System.out.println("intNum managerPage : " + intNum);
+		ProductMember productMember = new ProductMember();
+		if(intNum != null || intNum != 0) {
+			String managerSQL = "select * from ProductMember where PersonId = ?";
+			productMember = template.queryForObject(managerSQL, new Object[] {personId}, new ProductMemberDBConnector());
+		}
+		return productMember;
+	}
+	
+	
 }

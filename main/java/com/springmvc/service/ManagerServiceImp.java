@@ -45,5 +45,14 @@ public class ManagerServiceImp implements ManagerService{
 		// TODO Auto-generated method stub
 		productMemberRepository.P_managerDelete(managerId);
 	}
+	
+	// mypage로 이동하기 위한 값을 가져옴
+	@Override
+	public ProductMember managerPage(String personId) {
+		// TODO Auto-generated method stub
+		return productMemberRepository.managerPage(personId);
+	}
 
+
+	
 }

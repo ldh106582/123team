@@ -1,5 +1,5 @@
 @charset "UTF-8";
-/*2023-9-13 1:40:31 PM*/
+
 
 body,button,dd,dl,dt,fieldset,form,h1,h2,h3,h4,h5,h6,input,legend,li,ol,p,select,table,td,textarea,th,ul {
     margin: 0;
@@ -29,7 +29,6 @@ body {
 .naverid .container {
     background-color: #f9fbfc;
     width: 100%;
-    border: 1px solid red;
 }
 
 
