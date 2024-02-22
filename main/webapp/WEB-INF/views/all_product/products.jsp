@@ -11,17 +11,18 @@
 <body>
  <%@  include file="../module/header.jsp" %>
  <h1>상품 페이지</h1>
+ <a href="products/add"><button>상품추가</button></a>
  <c:forEach items="${productList}" var="product">
  	<p>
- 	${product.productImage}
+ 	사진 : ${product.productImage}
  	<p>
- 	${product.productName}
+ 	이름 : ${product.productName}
  	<p>
- 	${product.productPrice}
+ 	가격 : ${product.productPrice}
  	<p>
- 	${product.productCategoty}
+ 	카테고리 : ${product.productCategory}
  	<p>
- 	<a href="product?productId=${product.productId}"><button>상세정보</button></a>  <a href="#"><button>상품주문</button></a>
+ 	<a href="products/product?productId=${product.productId}"><button>상세정보</button></a>   <a href="#"><button>상품주문</button></a>
  </c:forEach>
 </body>
 </html>

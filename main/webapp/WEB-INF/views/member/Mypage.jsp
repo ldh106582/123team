@@ -97,7 +97,7 @@
                 <ul class="subindex_row">
                     <li>
                         <div class="row_item other">
-                            <a href="./login/update?id=${ id }" class="text-decoration-none"><span class="item_text">내 정보 수정</span></a>
+                            <a href="./login/update?id=${ id.personId }" class="text-decoration-none"><span class="item_text">내 정보 수정</span></a>
                         </div>
                     </li>
                     <li>

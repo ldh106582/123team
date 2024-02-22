@@ -19,6 +19,7 @@ public class userinfo {
 	private String personName;
 	private String type;
 	
+	
 	public String getPersonId() {
 		return personId;
 	}

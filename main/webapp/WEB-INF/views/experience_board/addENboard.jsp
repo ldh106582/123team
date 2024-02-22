@@ -18,7 +18,6 @@
 		내용 : <form:input path="context" name="context"/>
 		동물 : <form:input path="animal"/>
 		체험 : <form:input path="experience"/>
-		
 		<input type="submit" value="등록">
 	</form:form>
 </body>

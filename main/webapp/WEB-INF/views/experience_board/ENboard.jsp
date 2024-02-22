@@ -47,7 +47,7 @@
 						
 					}
 					
-					function bookform(title,animal,experience){
+					function bookform(title,animal,experience,mid){
 						var container = document.getElementById("container");
 						var delp = document.getElementById("delp");
 						
@@ -66,7 +66,7 @@
 						inputA.setAttribute("type","hidden");
 						inputA.setAttribute("name","animal");
 						inputA.setAttribute("value",animal);
-						
+
 						var inputE = document.createElement("input");
 						inputE.setAttribute("type","hidden");
 						inputE.setAttribute("name","experience");
@@ -82,12 +82,17 @@
 						inputs.setAttribute("type","submit");
 						inputs.setAttribute("value","신청하기");
 						
+						var inputM = document.createElement("input");
+						inputM.setAttribute("type","hidden");
+						inputM.setAttribute("name","mid");
+						inputM.setAttribute("value",mid);
 						
 						form.appendChild(inputT);
 						form.appendChild(inputA);
 						form.appendChild(inputE);
 						form.appendChild(inputD);
 						form.appendChild(inputs);
+						form.appendChild(inputM);
 						
 						container.appendChild(form);
 					}
@@ -106,9 +111,8 @@
 			<h5> 동물 : ${board.animal} &emsp;&emsp; 체험 : ${board.experience}</h5>
 			<h5>내용</h5>
 			<div>${board.context}</div>
-			
 			<div id="container">
-				<button id="delp" onclick="bookform('${board.title}','${board.animal}','${board.experience}')">체험신청</button>
+				<button id="delp" onclick="bookform('${board.title}','${board.animal}','${board.experience}','${board.personId}')">체험신청</button>
 			</div>
 			
 			<br>

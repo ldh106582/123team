@@ -5,8 +5,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.springmvc.controller.ManagerController;
+import com.springmvc.domain.Manager;
 import com.springmvc.domain.Person;
 import com.springmvc.domain.Pet;
+import com.springmvc.domain.ProductMember;
 import com.springmvc.repository.PersonRepository;
 
 @Service
@@ -54,9 +57,9 @@ public class PersonServciceImp implements PersonService{
 	}
 	// update에서 사용할 정보
 	@Override
-	public Person findPersonById(String personId) {
+	public Person findPersonById(String id) {
 		// TODO Auto-generated method stub
-		return psersonRepository.findPersonById(personId);
+		return psersonRepository.findPersonById(id);
 	}
 
 	// 전체 id db에 값을 넣어줌
@@ -70,7 +73,7 @@ public class PersonServciceImp implements PersonService{
 	public void getAllMember(Person person) {
 		// TODO Auto-generated method stub
 		psersonRepository.getAllMember(person);
-	} 
-
+	}	
+	
 
 }

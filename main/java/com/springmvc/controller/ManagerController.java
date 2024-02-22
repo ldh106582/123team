@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+
+import com.springmvc.domain.Manager;
 import com.springmvc.domain.ProductMember;
 import com.springmvc.domain.userinfo;
 import com.springmvc.service.ManagerService;
@@ -76,22 +78,21 @@ public class ManagerController
 		
 		return "redirect:/login";
 	}
-	
-	@GetMapping("/product")
-	public String ProductPage() {
-		return "/Product";
+
+	@GetMapping("/AllLog")
+	public String AllLog(@ModelAttribute("managerlogin") Manager manager )
+	{
+		return "/member/ManagerLogin";
 	}
 	
-	//경로 수정 필요함
-	@GetMapping("/productlogin")
-	public String GetProductManagerlogin(@ModelAttribute("productlogin") ProductMember productMember,
-										 HttpServletRequest reuqest) {
-		HttpSession session = reuqest.getSession();
-		session.getAttribute("productMember");
-		System.out.println(productMember.getPersonId());
-		System.out.println(productMember.getPersonPw());
-		return "Product";
+	@PostMapping("/AllLog")
+	public String Managerlogin(@ModelAttribute("managerlogin") Manager manager, Model model) {
+		System.out.println("managerId : "+manager.getPersonId());
+		// manager 로그인 함수
+		Manager managerId = managerService.managerlogin(manager);
+		System.out.println(managerId.getPersonPw());
+		model.addAttribute("managerId", managerId);
+		
+		return "/all_product/products";
 	}
-	
-	
 }

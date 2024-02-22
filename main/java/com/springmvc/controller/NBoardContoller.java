@@ -18,6 +18,7 @@ import com.springmvc.domain.NBoard;
 import com.springmvc.service.BoardCommentService;
 import com.springmvc.service.NBoardService;
 
+
 @Controller
 @RequestMapping("/Nboards")
 public class NBoardContoller {
@@ -128,8 +129,8 @@ public class NBoardContoller {
 			 
 		return "board_comment/updateCommentForm";
 	 }
+	 
 //	 수정한 정보 저장
-		
 	  @PostMapping("/updatecomment") 
 	  public String updatecomment(HttpServletRequest request) {
 		  BoardComment comment = boardCommentService.getCommentByCID(request.getParameter("commentId").toString());

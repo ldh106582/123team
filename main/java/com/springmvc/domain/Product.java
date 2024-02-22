@@ -14,7 +14,7 @@ public class Product implements Serializable{
 	private Date releaseDate;
 	private String productDescribe;
 	private String productImage;
-	private int productUnitstock;
+	private int productUnitStock;
 	public Product() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -31,11 +31,20 @@ public class Product implements Serializable{
 	public void setProductName(String productName) {
 		this.productName = productName;
 	}
+
 	public String getProductCategoty() {
 		return productCategory;
 	}
 	public void setProductCategoty(String productCategory) {
 		productCategory = productCategory;
+	}
+
+	public String getProductCategory() {
+		return productCategory;
+	}
+	public void setProductCategory(String productCategory) {
+		this.productCategory = productCategory;
+
 	}
 	public int getProductPrice() {
 		return productPrice;
@@ -61,11 +70,11 @@ public class Product implements Serializable{
 	public void setProductImage(String productImage) {
 		this.productImage = productImage;
 	}
-	public int getProductUnitstock() {
-		return productUnitstock;
+	public int getProductUnitStock() {
+		return productUnitStock;
 	}
-	public void setProductUnitstock(int productUnitstock) {
-		this.productUnitstock = productUnitstock;
+	public void setProductUnitStock(int productUnitStock) {
+		this.productUnitStock = productUnitStock;
 	}
 	public String getPersonId() {
 		return personId;

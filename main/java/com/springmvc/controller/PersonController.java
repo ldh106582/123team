@@ -1,10 +1,8 @@
 package com.springmvc.controller;
 
 import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -56,17 +54,18 @@ public class PersonController {
 	
 	// 로그인 파라미터값 받아옴
 	@PostMapping
-	public String GetReadPerson(@ModelAttribute("success") Person person, Model model, 
+	public String GetReadPerson(@ModelAttribute("success") Person person,
+								Model model,
 								Pet pet, HttpServletRequest request) {
 		
-		System.out.println("아이디 확인"+person.getPersonId());
+		// update에서 db로 가져가 조회할 session
 		HttpSession session = request.getSession();
-		
-		// 조원들에게 넘겨줄 객체
+
+		// 1. 조원들에게 넘겨줄 객체 2. personId와 pw를 가져옴
 		Person id = personService.loginSucess(person);
 		userinfo.getInstance().setPersonId(id.getPersonId());
 		userinfo.getInstance().setPersonName(id.getPersonName());
-		
+
 		if(id != null) 
 		{
 			if(id.getPersonId().equals(person.getPersonId()) && id.getPersonPw().equals(person.getPersonPw())) 
@@ -75,58 +74,42 @@ public class PersonController {
 				session.setAttribute("personPw", id.getPersonPw());
 				session.setAttribute("id", id);
 				
-				// pet이름 정보를 가져옴
-				List<Pet> petName = personService.getPetName(person);
-				System.out.println("petName : " + petName);
-				session.setAttribute("petName", petName);
-				
-				// pet 아이디 정보를 가져옴
-				List<Pet> petId = personService.getPetId(pet);
-				session.setAttribute("petId", petId);
-				
-				return "member/Mypage";
-			}
+			// pet이름 정보를 가져옴
+			List<Pet> petName = personService.getPetName(person);
+			System.out.println("petName : " + petName);
+			session.setAttribute("petName", petName);
+			
+			// pet 아이디 정보를 가져옴
+			List<Pet> petId = personService.getPetId(pet);
+			session.setAttribute("petId", petId);
+			
+			return "member/Mypage";
 		}
-		
+			
+	}
 		Booking booking = Booking.getintance();
 		booking.setName(id.getPersonName());
 		booking.setPhone(id.getPersonPhone());
-		// 보드로 가져갈게요
-		
-		
-		
-	 	FBoard fboard = FBoard.getInstance();
-	 	fboard.setPersonId(id.getPersonId());
-	 	fboard.setPersonName(id.getPersonName());
-	 	
-	 	NBoard nboard = NBoard.getInstance();
-	 	nboard.setPersonId(id.getPersonId());
-	 	nboard.setPersonName(id.getPersonName());
-	 	
-	 	ENBoard enboard = ENBoard.getInstance();
-	 	enboard.setPersonId(id.getPersonId());
-	 	
-	 	EApplication eApplication = EApplication.getInstance();
-	 	eApplication.setPersonId(id.getPersonId());
-	 	
+
 		// 내가 가져갈 객체
 		String personId = person.getPersonId();
 		String personPw = person.getPersonPw();
 		
-
 		return "Login";
+
 	}
 	
 	// 회원 수정 페이지로 이동
 	@GetMapping("/update")
 	public String GetUpdatePerson(@ModelAttribute("addmemberupdate") Person person,
+								  @RequestParam("id") String id,
 								  HttpServletRequest request, Model model) {
 		
 		HttpSession session = request.getSession();
-		String personId = (String) session.getAttribute("personId");
-		System.out.println("personId update " + personId);
-		
-		Person u_person = personService.findPersonById(personId);
+		System.out.println("id : " + id);
+
+
+		Person u_person = personService.findPersonById(id);
 		model.addAttribute("u_person", u_person);
 		
 		return "member/update";
