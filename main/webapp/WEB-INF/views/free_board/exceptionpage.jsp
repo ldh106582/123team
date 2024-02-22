@@ -8,10 +8,10 @@
 </head>
 <body>
 	존재하지 않는 게시글 제목 입니다.
-<<<<<<< HEAD
+
 	<a href="./">돌아가기</a>
-=======
+
 	<a href="/123team/Fboards">돌아가기</a>
->>>>>>> origin/hanui
+
 </body>
 </html>

@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
@@ -43,7 +44,7 @@
         <label for="context">내용 :</label>
         <textarea class="form-control" id="context" name="context" style="height: 300px;">${board.context}</textarea>
       </div>
-      <button type="submit" class="btn btn-danger">삭제</button>
+      <a href="/delete?boardId=${board.boardId}" class="btn btn-danger">삭제</a>
       <button type="submit" class="btn btn-primary">등록</button>
     </form>
   </div>
