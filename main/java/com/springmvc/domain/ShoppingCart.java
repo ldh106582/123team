@@ -1,7 +1,7 @@
 package com.springmvc.domain;
 
 import java.io.Serializable;
-
+// 2024-02-22
 @SuppressWarnings("serial")
 public class ShoppingCart implements Serializable{
 	private String shoppingCartId;
