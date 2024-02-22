@@ -3,7 +3,8 @@ package com.springmvc.domain;
 import java.io.Serializable;
 
 @SuppressWarnings("serial")
-public class Order implements Serializable{
+public class Order implements Serializable
+{
 
 	
 	private String orderId;
@@ -11,13 +12,12 @@ public class Order implements Serializable{
 	private String  orderAmount;
 	private String orderCondition;
 	private int orderPuchase;
-	public Order() {
+	public Order() 
+	{
+		
 		super();
 		// TODO Auto-generated constructor stub
-
-	
-	
-}
+	}
 	public String getOrderId() {
 		return orderId;
 	}

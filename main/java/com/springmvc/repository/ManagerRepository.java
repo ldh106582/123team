@@ -16,4 +16,10 @@ public interface ManagerRepository {
 	void P_managerDelete(String managerId);
 	// mypage로 이동하기 위한 값을 가져옴
 	ProductMember managerPage(String personId);
+	// prodcut 관리자 회원 정보를 수정하기 전 보여주는 함수
+	ProductMember managerUpdate(String personId);
+	// prodcut 관리자 회원 정보를 수정하는 함수
+	void getmanagerUpdate(ProductMember productMemId );
+	// 수정 후 보여주기 위해 데이터를 가져옴
+	ProductMember setmanagerUpdate(ProductMember productMemId);
 	}

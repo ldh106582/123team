@@ -87,17 +87,20 @@ public class ManagerController
 	
 	@PostMapping("/AllLog")
 	public String Managerlogin(@ModelAttribute("managerlogin") Manager manager, Model model,
-								HttpServletRequest request) {
-		/* System.out.println("managerId : "+manager.getPersonId()); */
-		
-		// manager 로그인 함수
-		Manager managerId = managerService.managerlogin(manager);
-		System.out.println(managerId.getPersonPw());
-		HttpSession session = request.getSession();
-		session.setAttribute("managerId", managerId);
-		
-		return "/all_product/products";
+	                            HttpServletRequest request) {
+	    // manager 로그인 함수
+	    Manager managerId = managerService.managerlogin(manager);
+	    
+	    // 로그인에 성공한 경우
+	    if (managerId != null) {
+	        HttpSession session = request.getSession();
+	        session.setAttribute("managerId", managerId);
+	        return "redirect:../products";
+	    } else {
+	        return "/member/ManagerLogin"; 
+	    }
 	}
+
 
 	
 	@GetMapping("/ManagerDelete")
@@ -125,9 +128,30 @@ public class ManagerController
 	}
 	
 	// update 하기 전 데이터를 받아오는 곳
-	@GetMapping()
-	public String ManagerUpdate() {
+	@GetMapping("/managerudpate")
+	public String ManagerUpdate(@RequestParam("personId") String personId, Model model,
+								@ModelAttribute("managerupdate") ProductMember productMember,
+								HttpServletRequest request) {
+		HttpSession session = request.getSession();
 		
-		return "";
+		// prodcut 관리자 회원 정보를 수정하기 전 보여주는 함수
+		productMember = managerService.managerUpdate(personId);
+		model.addAttribute("productMember", productMember);
+		session.setAttribute("type", productMember.getType());
+		
+		return "/member/ManagerUpdate";
+	}
+	
+	//update 수정하기 위한 곳
+	@PostMapping("/managerudpate")
+	public String ManagerUpdate(@ModelAttribute("managerupdate") ProductMember productMemId, Model model ) {
+		managerService.getmanagerUpdate(productMemId);
+		
+		// 수정 후 보여주기 위해 데이터를 가져옴
+		ProductMember productMember = new ProductMember();
+		productMember = managerService.setmanagerUpdate(productMemId);
+		model.addAttribute("productMember", productMember);
+		
+		return "/member/managerMypage";
 	}
 }

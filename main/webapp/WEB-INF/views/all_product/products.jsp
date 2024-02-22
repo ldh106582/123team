@@ -44,7 +44,7 @@
                   <a class="nav-link" href="/123team/login">로그인</a>
                 </li>
                 
-                <%} %>
+                <% } %>
             </div>
         </div>
     </nav>

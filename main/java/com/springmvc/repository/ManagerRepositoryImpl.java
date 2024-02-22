@@ -93,5 +93,46 @@ public class ManagerRepositoryImpl implements ManagerRepository {
 		return productMember;
 	}
 	
+	// prodcut 관리자 회원 정보를 수정하기 전 보여주는 함수
+	@Override
+	public ProductMember managerUpdate(String personId) {
+		String SQL = "select count(*) from ProductMember where PersonId = ?";
+		Integer intNum = template.queryForObject(SQL, Integer.class, personId);
+		ProductMember productMember = new ProductMember();
+		if(intNum != null || intNum != 0) {
+			String managerSQL = "select * from ProductMember where PersonId = ?";
+			productMember = template.queryForObject(managerSQL, new Object[] {personId}, new ProductMemberDBConnector());
+		}
+		return productMember;
+	}
+	
+	// prodcut 관리자 회원 정보를 수정하는 함수
+	@Override
+	public void getmanagerUpdate(ProductMember productMemId) {
+		if(productMemId.getPersonId()!=null) {
+			 String SQL = "update ProductMember set PersonPw=?, PersonEmail=?, PersonName=?, PersonPhone=?,"
+			 			   + "CompanyName=?, CompanyAddress=?, CompanyPhone=? where PersonId=?";
+			 template.update(SQL, productMemId.getPersonId(), productMemId.getPersonPw(), productMemId.getPersonEmail(), productMemId.getPersonName(),
+					 productMemId.getPersonPhone(), productMemId.getCompanyName(), productMemId.getCompanyAddress(), productMemId.getCompanyPhone());
+		}
+	}
+	// 수정 후 보여주기 위해 데이터를 가져옴
+	@Override
+	public ProductMember setmanagerUpdate(ProductMember productMemId) {
+		String SQL = "select count(*) from ProductMember where PersonId=?";
+		  Integer intNum = template.queryForObject(SQL, Integer.class, productMemId.getPersonId());
+		  ProductMember ProductMemberId = null;
+		  if(intNum != null && intNum != 0)
+		    {
+			  String ManagerSQL ="select * from ProductMember where PersonId=?";
+			  ProductMemberId = template.queryForObject(ManagerSQL, new Object[] {productMemId.getPersonId()}, new ProductMemberDBConnector());
+		    }
+		return ProductMemberId;
+	}
+	
+
+	
+	
+	
 	
 }

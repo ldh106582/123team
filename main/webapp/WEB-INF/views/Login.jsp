@@ -5,11 +5,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+<link rel="stylesheet" href="resources/css/Login.css">
 <!-- 부트스트랩 -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <meta charset="UTF-8">
 <title>로그인</title>
+<style type="text/css">
+	*{
+	font-family: 'KCC-Ganpan';
+}
+
+@font-face {
+    font-family: 'KCC-Ganpan';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/KCC-Ganpan.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+</style>
 </head>
 <body>
 <% 
@@ -17,28 +29,7 @@ userinfo user = userinfo.getInstance();
 String type = user.getType();
 System.out.println("싱글톤 : " + type);
 %>
-	<nav class="navbar navbar-expand navbar-dark bg-dark">
-        <div class="container">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="/123team">Home</a>
-            </div>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-              <ul class="navbar-nav">
-                <li class="nav-item">
-                  <a class="nav-link " href="/123team/hospital">병원</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/123team/product">동물상품</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/123team/Fboards">게시판</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/123team/login">로그인</a>
-                </li>
-            </div>
-        </div>
-    </nav>
+	<%@  include file="./module/headerdark.jsp" %>
 
 	<div class="jumbotron">
 		<div class="container">
@@ -83,9 +74,7 @@ System.out.println("싱글톤 : " + type);
 	</div>
 
 
-	<footer class="container">
-		
-	</footer>
+	<%@  include file="./module/footer.jsp" %>
 </body>
 <!-- js -->
 <script src="./resources/js/Login.js"></script>

@@ -11,6 +11,19 @@
 <link href="<c:url value="/resources/js/PetCardUpdate.js"/>" rel="stylesheet">
 <meta charset="UTF-8">
 <title>펫카드 수정페이지</title>
+<style type="text/css">
+	*{
+	font-family: 'KCC-Ganpan';
+	background-color()
+}
+
+@font-face {
+    font-family: 'KCC-Ganpan';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/KCC-Ganpan.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+</style>
 </head>
 <body>
    <div class="container mt-3">

@@ -5,7 +5,9 @@ import java.io.Serializable;
 @SuppressWarnings("serial")
 public class ShoppingCart implements Serializable{
 	private String shoppingCartId;
-	private int shoppingCartAmount;
+	private String productId;
+	private int amount;
+	private String personId;
 	public ShoppingCart() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -16,11 +18,23 @@ public class ShoppingCart implements Serializable{
 	public void setShoppingCartId(String shoppingCartId) {
 		this.shoppingCartId = shoppingCartId;
 	}
-	public int getShoppingCartAmount() {
-		return shoppingCartAmount;
+	public String getProductId() {
+		return productId;
 	}
-	public void setShoppingCartAmount(int shoppingCartAmount) {
-		this.shoppingCartAmount = shoppingCartAmount;
+	public void setProductId(String productId) {
+		this.productId = productId;
 	}
-
+	public int getAmount() {
+		return amount;
+	}
+	public void setAmount(int amount) {
+		this.amount = amount;
+	}
+	public String getPersonId() {
+		return personId;
+	}
+	public void setPersonId(String personId) {
+		this.personId = personId;
+	}
+	
 }

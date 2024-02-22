@@ -33,10 +33,10 @@
          </div>
       </div>
    </nav>
-   
-   <%
-	ProductMember productMember = (ProductMember) request.getAttribute("productMember");
-	String type = productMember.getType();
+  <%
+    HttpSession sessions = request.getSession();
+    String type = (String) session.getAttribute("type");
+    System.out.println("mypage type : " + type);
    %>
    
 <!-- 관리자 구분 -->
@@ -111,12 +111,12 @@
                    <ul class="subindex_row">
                        <li>
                            <div class="row_item other">
-                               <a href="./login/update?id=${ productMember.personId }" class="text-decoration-none"><span class="item_text">내 정보 수정</span></a>
+                               <a href="/123team/managerlogin/managerudpate?personId=${ productMember.personId }" class="text-decoration-none"><span class="item_text">내 정보 수정</span></a>
                            </div>
                        </li>
                        <li>
                            <div class="row_item other">
-                               <a href="./login/delete?id=${ productMember }" class="text-decoration-none" id="delete"><span class="item_text">회원 탈퇴</span></a>
+                               <a href="/123team/managerlogin/ManagerDelete?managerid=${ productMember.personId }" class="text-decoration-none" id="delete"><span class="item_text">회원 탈퇴</span></a>
                            </div>
                        </li>
                    </ul>

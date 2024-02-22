@@ -20,16 +20,15 @@ ol,ul {
 
 body {
     height: 100%;
-    font-family: -apple-system,BlinkMacSystemFont,helvetica,"Apple SD Gothic Neo",sans-serif;
-    font-size: 1rem;
-    background-color: #fff
+   
+    background-color: #fff;
+    
 }
 
 
 .naverid .container {
     background-color: #f9fbfc;
     width: 100%;
-    border: 1px solid red;
 }
 
 
@@ -281,3 +280,4 @@ button,input,select,textarea {
     text-align: right;
     color: #96a1aa
 }
+
