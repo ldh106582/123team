@@ -1,16 +1,20 @@
 package com.springmvc.domain;
 
 import java.io.Serializable;
+import java.sql.Date;
 
 @SuppressWarnings("serial")
 public class Product implements Serializable{
+	
+	private String personId;
 	private String productId;
 	private String productName;
-	private int productCost;
+	private String productCategory;
+	private int productPrice;
+	private Date releaseDate;
 	private String productDescribe;
 	private String productImage;
-	private int productUnitstock;
-	private String productCategory;
+	private int productUnitStock;
 	public Product() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -27,11 +31,32 @@ public class Product implements Serializable{
 	public void setProductName(String productName) {
 		this.productName = productName;
 	}
-	public int getProductCost() {
-		return productCost;
+
+	public String getProductCategoty() {
+		return productCategory;
 	}
-	public void setProductCost(int productCost) {
-		this.productCost = productCost;
+	public void setProductCategoty(String productCategory) {
+		productCategory = productCategory;
+	}
+
+	public String getProductCategory() {
+		return productCategory;
+	}
+	public void setProductCategory(String productCategory) {
+		this.productCategory = productCategory;
+
+	}
+	public int getProductPrice() {
+		return productPrice;
+	}
+	public void setProductPrice(int productPrice) {
+		this.productPrice = productPrice;
+	}
+	public Date getReleaseDate() {
+		return releaseDate;
+	}
+	public void setReleaseDate(Date releaseDate) {
+		this.releaseDate = releaseDate;
 	}
 	public String getProductDescribe() {
 		return productDescribe;
@@ -45,18 +70,19 @@ public class Product implements Serializable{
 	public void setProductImage(String productImage) {
 		this.productImage = productImage;
 	}
-	public int getProductUnitstock() {
-		return productUnitstock;
+	public int getProductUnitStock() {
+		return productUnitStock;
 	}
-	public void setProductUnitstock(int productUnitstock) {
-		this.productUnitstock = productUnitstock;
+	public void setProductUnitStock(int productUnitStock) {
+		this.productUnitStock = productUnitStock;
 	}
-	public String getProductCategory() {
-		return productCategory;
+	public String getPersonId() {
+		return personId;
 	}
-	public void setProductCategory(String productCategory) {
-		this.productCategory = productCategory;
+	public void setPersonId(String personId) {
+		this.personId = personId;
 	}
+	
 	
 	
 }

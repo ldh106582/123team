@@ -11,6 +11,7 @@
 <title>로그인 성공 페이지</title>
 </head>
 <body>
+
 <nav class="navbar navbar-expand navbar-dark bg-dark">
         <div class="container">
             <div class="navbar-header">
@@ -52,32 +53,38 @@
 	            <span class="photo_edit"></span>
             </a>
             <div class="profile">
-                <p class="useid">정영회</p>
-                <p class="usemail">dudghl530@naver.com</p>
+                <p class="useid">${ id.personId }</p>
+                <p class="usemail">${id.personEmail }</p>
             </div>
         </div>
     </div>
     <div id="headerLeft" class="header_left" aria-hidden="false">
         <ul class="left_menu" role="menu">
             <li>
-                <a href="" class="left_item" role="menuitem">
-                    <div class="menu_text">내정보</div>
-                </a>
+               <a href="" class="left_item" role="menuitem">
+                   <div class="menu_text">내정보</div>
+               </a>
             </li>
             <li>
+
+               <a href="./login/petcard" class="left_item" role="menuitem" >
+                   <div class="menu_text ">펫 카드</div>
+               </a>
+
                 <a href="login/petcard" class="left_item" role="menuitem" >
                     <div class="menu_text ">펫 카드</div>
                 </a>
+
             </li>
             <li>
-                <a href="./pet?id=${ id }" class="left_item" role="menuitem" >
-                    <div class="menu_text ">반려동물 정보</div>
-                </a>
+               <a href="./pet?id=${ id }" class="left_item" role="menuitem" >
+                   <div class="menu_text ">반려동물 회원가입</div>
+               </a>
             </li>
             <li>
-                <a href="" class="left_item" role="menuitem" >
-                    <div class="menu_text ">로그아웃</div>
-                </a>
+               <a href="" class="left_item" role="menuitem" >
+                   <div class="menu_text ">로그아웃</div>
+               </a>
             </li>
         </ul>
     </div>
@@ -96,7 +103,7 @@
                 <ul class="subindex_row">
                     <li>
                         <div class="row_item other">
-                            <a href="./login/update?id=${ id }" class="text-decoration-none"><span class="item_text">내 정보 수정</span></a>
+                            <a href="./login/update?id=${ id.personId }" class="text-decoration-none"><span class="item_text">내 정보 수정</span></a>
                         </div>
                     </li>
                     <li>
@@ -194,27 +201,11 @@
             e.preventDefault();
         }
     }); 
+    document.getElementById('logout').addEventListener("click", function(e){
+    	if(!confirm("로그아웃 하시겠습니까??")){
+    		e.preventDefault();
+    	}
+    });
 </script>
 
-	<%-- <p>로그인성공
-	
-	<p>아이디 : ${ id } 입니다!!
-	
-	<c:forEach items="${ petName }" var="pet">
-		<a href="<c:url value="/login/petcard?petid=${pet.petId}"/>"  class="bte bte-secondary" role="button">나의 반려동물 : ${ pet.petName }</a>
-	</c:forEach>
-	
-	<br>
-	<a class="btn btn-Secondary" role="button" href= "./login/update?id=${ id }">회원수정 &raquo;</a>
-	<a class="btn btn-Secondary" role="button" id="delete" href= "./login/delete?id=${ id }">회원삭제 &raquo;</a>
-	<a class="btn btn-Secondary" role="button" href= "./pet?id=${ id }">반려동물 정보입력 &raquo;</a>
-	
-</body>
-<script>
-    document.getElementById('delete').addEventListener("click", function(e){
-        if(!confirm("정말로 회원을 삭제하시겠습니까??")){
-            e.preventDefault();
-        }
-    }); 
-</script>--%>
 </html>

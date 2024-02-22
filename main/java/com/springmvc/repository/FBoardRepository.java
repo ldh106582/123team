@@ -11,5 +11,6 @@ public interface FBoardRepository {
 	void updateFBoard(FBoard board,String b_id);
 	void deleteFBoard(String boardId);
 	List<FBoard> getFBoardsByTitle(String title);
+	List<FBoard> getAllMyFBoardsById(String myid);
 	
 }

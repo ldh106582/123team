@@ -10,6 +10,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.springmvc.domain.FBoard;
+import com.springmvc.domain.userinfo;
 
 @Repository
 public class FBoardRepositoryImpl implements FBoardRepository{
@@ -46,7 +47,7 @@ public class FBoardRepositoryImpl implements FBoardRepository{
 		
 		String SQL = "insert into FBoard values(?,?,?,?,?,?,?)";
 //		이름과 아이디 받아오기
-		FBoard getboardNI = FBoard.getInstance();
+		userinfo getboardNI = userinfo.getInstance();
 		System.out.println("==============아이디받아온값================");
 		System.out.println(getboardNI.getPersonId());
 		System.out.println("========================================");
@@ -95,5 +96,11 @@ public class FBoardRepositoryImpl implements FBoardRepository{
 	        e.printStackTrace();
 	        return null; 
 	    }
+	}
+	@Override
+	public List<FBoard> getAllMyFBoardsById(String myid) {
+		 String SQL = "SELECT * FROM FBoard WHERE PersonId='"+myid+"'";
+		 List<FBoard> boardlist = template.query(SQL, new FBoardRowMapper());
+		return boardlist;
 	}
 }

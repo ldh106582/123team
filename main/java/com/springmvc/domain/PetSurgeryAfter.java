@@ -10,8 +10,8 @@ public class PetSurgeryAfter implements Serializable {
 	
 	private int petSurgeryAfterNum;
 	@DateTimeFormat(pattern="yyyy-MM-dd")
-	private LocalDate petSurgeryDateAfter ;
-	private String petSurgeryContentAfter ;
+	private LocalDate petSurgeryAfterDate ;
+	private String petSurgeryAfterContent ;
 	private String petId;
 	
 	public PetSurgeryAfter() {
@@ -23,28 +23,24 @@ public class PetSurgeryAfter implements Serializable {
 		return petSurgeryAfterNum;
 	}
 
-
-
 	public void setPetSurgeryAfterNum(int petSurgeryAfterNum) {
 		this.petSurgeryAfterNum = petSurgeryAfterNum;
 	}
 
-
-
-	public LocalDate getPetSurgeryDateAfter() {
-		return petSurgeryDateAfter;
+	public LocalDate getPetSurgeryAfterDate() {
+		return petSurgeryAfterDate;
 	}
 
-	public void setPetSurgeryDateAfter(LocalDate petSurgeryDateAfter) {
-		this.petSurgeryDateAfter = petSurgeryDateAfter;
+	public void setPetSurgeryAfterDate(LocalDate petSurgeryAfterDate) {
+		this.petSurgeryAfterDate = petSurgeryAfterDate;
 	}
 
-	public String getPetSurgeryContentAfter() {
-		return petSurgeryContentAfter;
+	public String getPetSurgeryAfterContent() {
+		return petSurgeryAfterContent;
 	}
 
-	public void setPetSurgeryContentAfter(String petSurgeryContentAfter) {
-		this.petSurgeryContentAfter = petSurgeryContentAfter;
+	public void setPetSurgeryAfterContent(String petSurgeryAfterContent) {
+		this.petSurgeryAfterContent = petSurgeryAfterContent;
 	}
 
 	public String getPetId() {
@@ -54,6 +50,8 @@ public class PetSurgeryAfter implements Serializable {
 	public void setPetId(String petId) {
 		this.petId = petId;
 	}
+
+
 
 	
 	

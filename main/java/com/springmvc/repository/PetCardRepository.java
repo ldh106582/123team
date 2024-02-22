@@ -55,6 +55,51 @@ public interface PetCardRepository {
 	// 동물의 입원 기록을 삭제하는 함수
 	void getDeleteSurgeryAfterPetCard(String petid, int petSurgeryAfterNumInt);
 	
-	// 몸무게 데이터를 수정하기 전 호출하는 함수
-	List<PetWeight> getWeghitUpdatePetCard(int weghitNum);
+	// 정보를 수정하기 전 동물의 정보를 보여주는 함수
+	Pet getUpdatePetCard(String petId);
+	
+	//  정보를 수정하기 전 몸무게 데이터를 보여주는 함수
+	List<PetWeight> getUpdateWeightPetCard(String petId);
+	
+	//  정보를 수정하기 전 진료 데이터를 보여주는 함수
+	List<PetChart> getChartUpdatePetCard(String petId);
+	
+	//  정보를 수정하기 전 예방접종 데이터를 보여주는 함수
+	List<PetVaccination> getVaccinationUpdatePetCard(String petId);
+	
+	//  정보를 수정하기 전 수술 데이터를 보여주는 함수
+	List<PetSurgery> getUpdatePetSurgery(String petId);
+	
+	//  정보를 수정하기 전 입원 데이터를 보여주는 함수
+	List<PetSurgeryAfter> getUpdatePetSurgeryAfter(String petId);
+	
+	// 동물의 진료 기록을 수정하는 함수
+	void setUpdateWeightPetCard(PetWeight petWeight);
+	
+	// 동물의 진료 기록을 수정하는 함수
+	void setUpdateChartPetCard(PetChart petChart);
+	
+	//  동물의 예방접종 기록을 수정하는 함수
+	void setUpdateVaccinationPetCard( PetVaccination petVaccination);
+	
+	void setUpdateSergeryionPetCard(PetSurgery petSurgery);
+	
+	void setUpdateSergeryAfterPetCard(PetSurgeryAfter petSurgeryAfter);
+	
+	//  다시 돌아가는 데이터 모음	
+	List<Pet> petcardback(String petid);
+	
+	List<PetWeight> petcardWheightback(String petid);
+	
+	List<PetChart> petcardChartback(String petid);
+	
+	List<PetVaccination> petcardVaccinationback(String petid);
+	
+	List<PetSurgery> petcardSurgeryback(String petid);
+	
+	List<PetSurgeryAfter> petcardSurgeryAfterback(String petid);
+	
+	
 }
+
+

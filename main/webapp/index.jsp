@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <meta charset="UTF-8">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page import="java.util.List"%>
+<%@ page import="java.sql.*" %>
 <!-- css -->
 <html>
 <head>
@@ -10,6 +12,8 @@
 <script src="https://kit.fontawesome.com/8759f784cf.js" crossorigin="anonymous"></script>
 <!-- css -->
 <link href="<c:url value="/resources/css/index.css"/>" rel="stylesheet">
+<!-- 이미지 -->
+<link href="<c:url value="/resources/pet/"/>" rel="stylesheet">
 </head>
 <style>
 
@@ -22,6 +26,7 @@
 				<h1 class="text-center">반려동물과 함께하는 즐거운 공간</h1> 
 			</div>
 		</nav>
+		
 		<div class="intro2">
 			<div class="intro3">
 				<div class="intro4 text-center border border-dark">
@@ -34,12 +39,13 @@
 					
 					<div class="intro6">
 						<div class="intro7">
-							<a href="#"> 공지사항 &raquo;</a>
+							<a href="ENboards"> 체험단 &raquo;</a>
 						</div>
 						<div class="intro7">
 							<a href="#"> 동물카드 &raquo;</a>
 						</div>
 					</div>
+
 				</div>
 
 				<div class="intro8">
@@ -50,7 +56,7 @@
 						</div>
 						<div class="intro10 border border-dark btn btn-primary p-3">
 							<i class="fa-sharp fa-solid fa-gifts"></i>
-							<a href="./product" class="justify-center text-white">동물상품 &raquo;</a>
+							<a href="products" class="justify-center text-white">동물상품 &raquo;</a>
 						</div>
 					</div>
 					
@@ -65,26 +71,73 @@
 						</div>
 					</div>
 				</div>
-
 				<div class="intro11">
 					<div class="intro12">
-						<h4>위의 버튼을 이용해 여러분들이 원하는 페이지로 이동해주세요 </h4>
-					</div>
-				</div>
-	 
-				<div class="intro13">
-					<div>
-						<img src="./이도현/dog.jpg" class="img01">
-						<img src="./이도현/cat1.jpg" class="img01">
-						<img src="./이도현/dog2.jpg" class="img01">
-						<img src="./이도현/cat3.jpg" class="img01">
-						<img src="./이도현/dog4.jpg" class="img01">
-						<img src="./이도현/cat5.jpg" class="img01">
-						<img src="./이도현/dog6.jpg" class="img01">
-						<img src="./이도현/dog1.jpg" class="img01">
-						<img src="./이도현/cat2.jpg" class="img01">
-						<img src="./이도현/dog3.jpg" class="img01">
-						<img src="./이도현/cat4.jpg" class="img01">
+						<div class="intro10 border border-dark btn btn-primary p-3">
+							<i class="fa-solid fa-clipboard-user"></i>
+							<a href="Fboards" class="justify-center text-white">공지사항 &raquo;</a>
+						</div>
+						<p>
+						<%
+							Connection conn = null;
+						   	Statement stmt = null;
+						  	ResultSet rs = null;
+						   
+						   try {
+						      // JDBC 드라이버를 로드합니다.
+						      Class.forName("com.mysql.jdbc.Driver");
+						      
+						      // DB에 연결합니다.
+						      String url = "jdbc:mysql://localhost:3306/123team_db";
+						      String username = "root";
+						      String password = "1234";
+						      conn = DriverManager.getConnection(url, username, password);
+						      
+						      // SQL 쿼리를 실행합니다.
+						      String sql = "SELECT * FROM NBoard";
+						      stmt = conn.createStatement();
+						      rs = stmt.executeQuery(sql);
+						      int i = 1;
+						      // 결과를 처리합니다.
+						      while (rs.next()) {
+						         // 각 행의 데이터를 가져옵니다.
+						         
+						         String title = rs.getString(3);
+						         int hit = rs.getInt(4);
+						         String registDay = rs.getString(5);
+						         String boardId = rs.getString(6);
+						         
+						         request.setAttribute("title", title);
+						         request.setAttribute("hit", hit);
+						         request.setAttribute("registDay", registDay);
+						         request.setAttribute("boardId", boardId);
+						         request.setAttribute("num", i);
+						         i++;
+						         if(i==7){
+						        	 break;
+						         }
+						 %>
+						 		<div class="border border-dark" >
+						 			<a href="Nboards/Nboard?boardId=${boardId}">${num} 제목 : ${title} 조회수 : ${hit} 등록일 : ${registDay}</a>
+						 		</div>
+						<%
+		
+						      }
+						   } catch (Exception e) {
+						      e.printStackTrace();
+						   } finally {
+						      // 사용한 자원을 정리합니다.
+						      if (rs != null) {
+						         try { rs.close(); } catch (SQLException e) { }
+						      }
+						      if (stmt != null) {
+						         try { stmt.close(); } catch (SQLException e) { }
+						      }
+						      if (conn != null) {
+						         try { conn.close(); } catch (SQLException e) { }
+						      }
+						   }
+						%>
 					</div>
 				</div>
 			</div>

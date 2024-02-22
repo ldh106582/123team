@@ -5,31 +5,14 @@ public class FBoard {
 	public FBoard () {
 		
 	}
-	
-	public static FBoard getInstance(){
-		if(instance == null){
-			instance = new FBoard();
-		}
-		return instance;
-	}
-	
-	private static FBoard instance;
 	private String title;
 	private String context;
 	private String registDay;
-	private int num;
 	private int hit;
 	private String personName;
 	private String personId;
 	private String boardId;
-	private String comment;
 	
-	public String getComment() {
-		return comment;
-	}
-	public void setComment(String comment) {
-		this.comment = comment;
-	}
 	public String getTitle() {
 		return title;
 	}
@@ -47,12 +30,6 @@ public class FBoard {
 	}
 	public void setRegistDay(String RegistDay) {
 		this.registDay = RegistDay;
-	}
-	public int getNum() {
-		return num;
-	}
-	public void setNum(int num) {
-		this.num = num;
 	}
 	public int getHit() {
 		return hit;

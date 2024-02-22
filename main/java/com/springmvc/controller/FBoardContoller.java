@@ -19,8 +19,6 @@ import com.springmvc.domain.FBoard;
 import com.springmvc.service.BoardCommentService;
 import com.springmvc.service.FBoardService;
 
-
-
 @Controller
 @RequestMapping("/Fboards")
 public class FBoardContoller {
@@ -33,12 +31,26 @@ public class FBoardContoller {
 	
 //	게시판 이동
 	@RequestMapping
-	public String ViewBoardlist(Model model) {
+	public String ViewBoardlist(Model model,HttpServletRequest request) {
 //		모든 게시글 가져오기
 		if(model.containsAttribute("FBoardlist")) {
 			return "free_board/Fboards";
 		}
+		
+		if(request.getParameter("myId")!=null) {
+			String myId = request.getParameter("myId");
+			List<FBoard> FBoardlist = fboardService.getAllMyFBoardsById(myId);
+			if(FBoardlist.isEmpty()) {
+				request.setAttribute("nothing", "내가 작성한 게시물이 없어요");
+				request.setAttribute("size",5);
+				return "free_board/Fboards";
+			}
+			model.addAttribute("FBoardlist",FBoardlist);
+			request.setAttribute("size", FBoardlist.size());
+			return "free_board/Fboards";
+		}
 		model.addAttribute("FBoardlist",fboardService.getAllFBoards());
+		request.setAttribute("size", 5);
 		return "free_board/Fboards";
 	}
 	
@@ -95,6 +107,9 @@ public class FBoardContoller {
 	public String selectboardbytitle(Model model,HttpServletRequest request) {
 		String title = (String) request.getParameter("title");
 		System.out.println(title);
+		if(title.equals(null)||title.equals("")||title.equals(" ")) {
+			return "redirect:/Fboards";
+		}
 		List<FBoard> FBoardlist = fboardService.getFBoardsByTitle(title);
 		if(FBoardlist.isEmpty()) {
 			//검색 결과가 없을때
@@ -105,6 +120,7 @@ public class FBoardContoller {
 		System.out.println(FBoardlist.get(0).getTitle());
 
 		model.addAttribute("FBoardlist",FBoardlist);
+		request.setAttribute("size", FBoardlist.size());
 		return "free_board/Fboards";
 	}
 	
@@ -131,12 +147,15 @@ public class FBoardContoller {
 			 
 		return "board_comment/updateCommentForm";
 	 }
+	 
+	 
 //	 수정한 정보 저장
 		
 	  @PostMapping("/updatecomment") 
 	  public String updatecomment(HttpServletRequest request) {
 		  BoardComment comment = boardCommentService.getCommentByCID(request.getParameter("commentId").toString());
 		  String boardId = comment.getBoardId(); 
+		  System.out.println("===================");
 		  comment.setComment(request.getParameter("comment").toString());
 		  boardCommentService.updateComment(comment);
 		  return "redirect:/Fboards/Fboard?boardId="+boardId; 

@@ -10,7 +10,9 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.springmvc.domain.BoardComment;
+import com.springmvc.domain.userinfo;
 import com.springmvc.domain.FBoard;
+
 
 @Repository
 public class BoardCommentRepositoryImpl implements BoardCommentRepository {
@@ -36,7 +38,7 @@ public class BoardCommentRepositoryImpl implements BoardCommentRepository {
 	public void addComment(String boardId, String comment) {
 		
 		String SQL = "insert into BoardComment values(?,?,?,?,?)";
-		FBoard getboardNI = FBoard.getInstance();
+		userinfo getboardNI = userinfo.getInstance();
 		template.update(SQL,boardId,comment,getRegistDay(),getboardNI.getPersonId(),CreatecommentId());
 	}
 //	날짜받기

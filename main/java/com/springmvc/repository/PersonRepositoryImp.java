@@ -1,20 +1,23 @@
 package com.springmvc.repository;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.sql.DataSource;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
-
+import com.springmvc.controller.ManagerController;
+import com.springmvc.domain.Manager;
 import com.springmvc.domain.Person;
 import com.springmvc.domain.Pet;
+import com.springmvc.domain.ProductMember;
 
 @Repository
-public class PersonRepositoryImp implements  PsersonRepository{
+public class PersonRepositoryImp implements  PersonRepository{
 
 	 public PersonRepositoryImp() {
 		super();
@@ -39,30 +42,16 @@ public class PersonRepositoryImp implements  PsersonRepository{
 		template.update(SQL, person.getPersonId(), person.getPersonPw(), person.getPersonEmail(), person.getPersonAddress(), person.getPersonName(), person.getPersonBirth(),  person.getPersonSex(), person.getPersonPhone());
 	}
 
+	//update전 person 데이터를 보여줌
 	@Override
 	public Person loginSucess(Person person) {
 		Person personID = null;
 		String SQL =  "select count(*) from Person where PersonId=?";
 		int rowNum = template.queryForObject(SQL, Integer.class, person.getPersonId());
+		System.out.println("personUpdate : " + rowNum);
 		if(rowNum != 0) {
 			SQL = "select * from Person where PersonId=?";
-			personID = template.queryForObject(SQL, new Object[] {person.getPersonId()}, new PersomDBConnector());
-		}
-		if(personID == null) {
-			System.out.println("아이디가 없습니다.");
-		}
-		return personID;
-	}
-
-	// update에 출력하기 위한 값을 가져감
-	@Override
-	public Person GetUpdatePerson(String personId) {
-		Person personID = null;
-		String SQL =  "select count(*) from Person where PersonId=?";
-		int rowNum = template.queryForObject(SQL, Integer.class, personId);
-		if(rowNum != 0) {
-			SQL = "select * from Person where PersonId=?";
-			personID = template.queryForObject(SQL, new Object[] {personId}, new PersomDBConnector());
+			personID = template.queryForObject(SQL, new Object[] {person.getPersonId()}, new PersonDBConnector());
 		}
 		if(personID == null) {
 			System.out.println("아이디가 없습니다.");
@@ -80,6 +69,7 @@ public class PersonRepositoryImp implements  PsersonRepository{
 				System.out.println("person 아이디가 없습니다.");
 		}
 	}
+	
 	// delete 아이디를 삭제하는함수
 	@Override
 	public void SetDeletePerson(String personId) {
@@ -102,14 +92,46 @@ public class PersonRepositoryImp implements  PsersonRepository{
 			
 		return petList;
 	}
-	//petid를 가져오는 함수
+	// 동물의 정보를 수정하기 전 정보를 보여주는 함수
 	@Override
 	public List<Pet> getPetId(Pet pet) {
 		List<Pet> petList = new ArrayList<Pet>();
 		String SQLPersonId = "select * from Pet where personId=?";
-		List<Pet> pets = template.query(SQLPersonId, new Object[] {pet.getPersonId()}, new PetDBConnector());
-		petList.addAll(pets);
+		petList = template.query(SQLPersonId, new Object[] {pet.getPersonId()}, new PetDBConnector());
 		
 		return petList;
 	}
+	
+	// update에서 사용할 정보
+	@Override
+	public Person findPersonById(String id) {
+		String SQL = "select count(*) from Person where PersonId=?";
+		Integer perCount = template.queryForObject(SQL, Integer.class, id);
+		
+		System.out.println("perCount : " + perCount);
+		Person personId = null;
+		if(perCount != 0) {
+			
+			String personSQL = "select * from Person where personId=?";
+			personId = template.queryForObject(personSQL, new Object[] {id}, new PersonDBConnector());
+		} else {
+			System.out.println("데이터가 없습니다.");
+		}
+		return personId;
+	}
+	
+	// 전체 id db에 값을 넣어줌
+	@Override
+	public void setAllMember(Person person) {
+		String SQL = "insert into all_member(PersonId)" + "values(?)";
+		template.update(SQL, person.getPersonId());
+	}
+
+	// 전체 id db에 값을 삭제해줌
+	@Override
+	public void getAllMember(Person person) {
+		String SQL = "delete from all_member where PersonId=?";
+		this.template.update(SQL, person.getPersonId());
+	}
+	
 }

@@ -17,9 +17,7 @@ public class Person implements Serializable{
 	   private LocalDate personBirth;
 	   private String personSex;
 	   private String personPhone;
-	   
-	
-	   
+	  
 	public Person() {
 		super();
 		// TODO Auto-generated constructor stub

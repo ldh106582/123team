@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 import com.springmvc.domain.Pet;
 import com.springmvc.domain.PetChart;
 import com.springmvc.domain.PetSurgery;
@@ -33,40 +35,46 @@ public class PetCardController {
 
 	@Autowired
 	PetCardService petCardService;
-
+	
 	// 1. 반려동물 몸무게를 넣어줌
 	@GetMapping("/petcard")
-	public String SetCreatPetCard(@RequestParam("petid") String petId, Model model) {
+	public String SetCreatPetCard(@RequestParam("petid") String petId, HttpServletRequest request) {
 
+		HttpSession session = request.getSession();
+		List<Pet> petid = (List<Pet>) session.getAttribute("petId");
+		session.setAttribute("petId", petid.get(0));
+		
 		// 폼 데이터를 바인딩하는 데 사용되는 객체를 생성하고 모델에 추가
 		PetWeight petWeight = new PetWeight();
-		model.addAttribute("petWeight", petWeight);
+		session.setAttribute("petWeight", petWeight);
 
 		// 몸무게 데이터를 보여주는 함수
 		System.out.println("몸무게 실행 함수");
 		List<PetWeight> listOfPetWeight = petCardService.getWeghitPetCard(petId);
 		System.out.println("listOfPetWeight : " + listOfPetWeight + "controller");
-		model.addAttribute("listOfPetWeight", listOfPetWeight);
+		session.setAttribute("listOfPetWeight", listOfPetWeight);
 
 		// 진료 기록을 보여주는 함수
 		List<PetChart> listOfPetChard = petCardService.getChartPetCard(petId);
-		model.addAttribute("listOfPetChard", listOfPetChard);
+		session.setAttribute("listOfPetChard", listOfPetChard);
 
 		// 예방접종 기록을 보여주는 함수
 		List<PetVaccination> listOfpetVaccination = petCardService.getVaccinationPetCard(petId);
-		model.addAttribute("listOfpetVaccination", listOfpetVaccination);
+		session.setAttribute("listOfpetVaccination", listOfpetVaccination);
 
 		// 수술 기록을 보여주는 함수
 		List<PetSurgery> listOfPetSurgery = petCardService.getPetSurgery(petId);
-		model.addAttribute("listOfPetSurgery", listOfPetSurgery);
+		session.setAttribute("listOfPetSurgery", listOfPetSurgery);
 
 		// 입원 기록을 보여주는 함수
 		List<PetSurgeryAfter> listOfPetSurgeryAfter = petCardService.getPetSurgeryAfter(petId);
-		model.addAttribute("listOfPetSurgeryAfter", listOfPetSurgeryAfter);
+		session.setAttribute("listOfPetSurgeryAfter", listOfPetSurgeryAfter);
 
 		// 동물의 정보를 가져오는 함수
-		Pet petid = petCardService.getPetList(petId);
-		model.addAttribute("petid", petid);
+		/*
+		 * Pet petid = petCardService.getPetList(petId); model.addAttribute("petid",
+		 * petid);
+		 */
 
 		return "petcard/petcard";
 	}
@@ -194,7 +202,7 @@ public class PetCardController {
 			System.out.println("넣어줄 값이 없습니다.");
 		}
 
-		return "redirect:/login/petcard?petid=" + request.getParameter("petId");
+		return "redirect:/login/petcard";
 	}
 
 	// 동물 몸무게를 제거하는 함수
@@ -295,19 +303,140 @@ public class PetCardController {
 		return "redirect:/login/petcard?petid=" + request.getParameter("petId");
 	}
 
-	// 몸무게 데이터를 수정하기 전 호출하는 함수
-	/*
-	 * @GetMapping("/petcardupdate") public String
-	 * GetUpdatePatCard(@RequestParam("weghitNum") int weghitNum, Model model) {
-	 * 
-	 * 
-	 * List<PetWeight> listOfPetWeight =
-	 * petCardService.getWeghitUpdatePetCard(weghitNum);
-	 * model.addAttribute("listOfPetWeight", listOfPetWeight);
-	 * 
-	 * 
-	 * return "/petcard/petcard"; }
-	 */
+	
+	
+	@GetMapping("/petcardupdate")
+	public String GetUpdatePetCard(@RequestParam("petId") String petId, HttpServletRequest request, Model model) {
+		
+		
+		// 정보를 수정하기 전 동물의 정보를 보여주는 함수
+		HttpSession session = request.getSession();
+		session.setAttribute("petId", petId);
+		Pet pet = petCardService.getUpdatePetCard(petId);
+		System.out.println("pet : " + pet.getPetName());
+		model.addAttribute("pet", pet);
+		
+		//  정보를 수정하기 전 몸무게 데이터를 보여주는 함수
+		List<PetWeight> listOfPetWeight = petCardService.getUpdateWeightPetCard(petId);
+		System.out.println("listOfPetWeight Controller" + listOfPetWeight);
+		model.addAttribute("listOfPetWeight", listOfPetWeight);
+		
+		//  정보를 수정하기 전 진료 데이터를 보여주는 함수
+		List<PetChart> listOfPetChard = petCardService.getChartUpdatePetCard(petId);
+		model.addAttribute("listOfPetChard", listOfPetChard);
+		
+		//  정보를 수정하기 전 예방접종 데이터를 보여주는 함수
+		List<PetVaccination> listOfpetVaccination = petCardService.getVaccinationUpdatePetCard(petId);
+		model.addAttribute("listOfpetVaccination", listOfpetVaccination);
+		
+		//  정보를 수정하기 전 수술 데이터를 보여주는 함수
+		List<PetSurgery> listOfPetSurgery = petCardService.getUpdatePetSurgery(petId);
+		model.addAttribute("listOfPetSurgery", listOfPetSurgery);
+		
+		//  정보를 수정하기 전 입원 데이터를 보여주는 함수
+		List<PetSurgeryAfter> listOfPetSurgeryAfter = petCardService.getUpdatePetSurgeryAfter(petId);
+		model.addAttribute("listOfPetSurgeryAfter", listOfPetSurgeryAfter);
+		
+		return "/petcard/PetCardUpdate";
+	}
+	               
+	@PostMapping("/petcardupdate")
+	public String SetUpdateChartPetCard(@RequestParam("type") String type,
+										@RequestParam("num") String num,
+									    @RequestParam("petId") String petId,
+									    HttpServletRequest request,
+									    PetChart petChart, PetWeight petWeight, PetVaccination petVaccination,
+									    PetSurgery petSurgery,PetSurgeryAfter petSurgeryAfter
+									    ) {
+		System.out.println("업데이트 실행");
+		HttpSession session = request.getSession();
+		String petid = (String) session.getAttribute("petId");
+		System.out.println("type : " + type);
+		
+		// 동물의 몸무게 기록을 수정하는 함수
+		if(type.equals("weight")) {
+			
+			petWeight.setPetId(petid);
+			petWeight.setPetWeightNum(Integer.parseInt(num));
+			petCardService.setUpdateWeightPetCard(petWeight);
+			
+			session.setAttribute("petWeightNum", num);
+			
+			return "redirect:/login/petcardupdate?petId=" + petid + "&" + "petWeightNum=" + num;
+		
+			// 동물의 진료 기록을 수정하는 함수
+		} else if(type.equals("chart")){
+			
+			petChart.setPetId(petid);
+			petChart.setPetChartNum(Integer.parseInt(num));
+			petCardService.setUpdateChartPetCard(petChart);
+			
+			session.setAttribute("petChartNum", num);
+			
+			return "redirect:/login/petcardupdate?petId=" + petid + "&" + "petChartNum=" + num;
+		
+			//  동물의 예방접종 기록을 수정하는 함수
+		} else if (type.equals("vaccin")) {
+			System.out.println("백신도착");
+			
+			petVaccination.setPetId(petid);
+			petVaccination.setPetVaccinationNum(Integer.parseInt(num));
 
+			petCardService.setUpdateVaccinationPetCard(petVaccination);
+			
+			session.setAttribute("petVaccinationNum", num);
+		                        	
+			return "redirect:/login/petcardupdate?petId=" + petid + "&" + "petVaccinationNum=" + num;
+			
+		}else if (type.equals("surgery")){
+			petSurgery.setPetId(petid);
+			petSurgery.setPetSurgeryNum(Integer.parseInt(num));
+			
+			petCardService.setUpdateSergeryionPetCard(petSurgery);
+			
+			return "redirect:/login/petcardupdate?petId=" + petid + "&" + "petSergeryNum=" + num;
+			
+		} else if (type.equals("sergeryAfter")) {
+			petSurgeryAfter.setPetId(petid);
+			petSurgeryAfter.setPetSurgeryAfterNum(Integer.parseInt(num));
+			
+			String petSurgeryDateAfter = request.getParameter("petSurgeryDateAfter");
+			if (petSurgeryDateAfter != null && !petSurgeryDateAfter.isEmpty()) {
+				petSurgeryAfter.setPetSurgeryAfterDate(LocalDate.parse(petSurgeryDateAfter));
+			}
+			
+			System.out.println("petSurgeryAfter : " + petSurgeryAfter.getPetSurgeryAfterContent());
+			
+			petCardService.setUpdateSergeryAfterPetCard(petSurgeryAfter);
+			return "redirect:/login/petcardupdate?petId=" + petid + "&" + "petSurgeryDateAfter=" + num;
+		}
+		
+	    return "/login";
+	}
+	//  다시 돌아가는 데이터 모음
+	@GetMapping("/back")
+	public String petcardback(@RequestParam("petid") String petid, HttpServletRequest request, Model model) {
+	
+		System.out.println("back오나?");
+		List<Pet> petId = petCardService.petcardback(petid);
+		model.addAttribute("petId", petId.get(0));
+		
+		List<PetWeight> listOfPetWeight  = petCardService.petcardWheightback(petid);
+		model.addAttribute("listOfPetWeight", listOfPetWeight);
+		
+		List<PetChart> listOfPetChard  = petCardService.petcardChartback(petid);
+		model.addAttribute("listOfPetChard", listOfPetChard);
+		
+		List<PetVaccination> listOfpetVaccination = petCardService.petcardVaccinationback(petid);
+		model.addAttribute("listOfpetVaccination", listOfpetVaccination);
+		
+		List<PetSurgery> listOfPetSurgery = petCardService.petcardSurgeryback(petid);
+		model.addAttribute("listOfPetSurgery", listOfPetSurgery);
+		
+		List<PetSurgeryAfter> listOfPetSurgeryAfter = petCardService.petcardSurgeryAfterback(petid);
+		model.addAttribute("listOfPetSurgeryAfter", listOfPetSurgeryAfter);
+		
+		return "/petcard/petcard";
+	}
 
 }
