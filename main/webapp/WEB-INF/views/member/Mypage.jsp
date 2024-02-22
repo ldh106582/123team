@@ -66,9 +66,15 @@
                </a>
             </li>
             <li>
+
                <a href="./login/petcard" class="left_item" role="menuitem" >
                    <div class="menu_text ">펫 카드</div>
                </a>
+
+                <a href="login/petcard" class="left_item" role="menuitem" >
+                    <div class="menu_text ">펫 카드</div>
+                </a>
+
             </li>
             <li>
                <a href="./pet?id=${ id }" class="left_item" role="menuitem" >

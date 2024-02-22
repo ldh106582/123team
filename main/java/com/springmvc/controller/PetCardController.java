@@ -76,7 +76,7 @@ public class PetCardController {
 		 * petid);
 		 */
 
-		return "/petcard/petcard";
+		return "petcard/petcard";
 	}
 
 	// petcard 예방접종 create

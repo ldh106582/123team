@@ -74,13 +74,10 @@ System.out.println("싱글톤 : " + type);
 			
 			<br>
 			<div class="col-md-12 justify-content-center" style="display: flex;">
-<<<<<<< HEAD
-				<a href="./login/Allmember" class="col-md-4 btn btn-outline-danger p-3 m-1">통합회원가입</a>
-				<a href="./managerlogin/AllLog" class="col-md-4 btn btn-outline-info p-3 m-1">관리자 로그인</a>
-=======
-				<a href="./login/Allmember" class="col-md-4 btn btn-outline-danger p-2 mr-2">통합회원가입</a>
-				<a href="./managerlogin/AllLog" class="col-md-4 btn btn-outline-info p-2 ml-2">관리자 로그인</a>
->>>>>>> 6bb23d73a8eea6e8d359f8841e52b0b8f361839d
+
+				<a href="./login/Allmember" class="col-md-4 btn btn-outline-danger p-2 m-1">통합회원가입</a>
+				<a href="./managerlogin/AllLog" class="col-md-4 btn btn-outline-info p-2 m-1">관리자 로그인</a>
+
 			</div>
 		</div>
 	</div>

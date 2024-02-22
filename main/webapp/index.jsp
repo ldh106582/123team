@@ -68,13 +68,14 @@
 							<a href="./login" class=" justify-center text-white">로그인 &raquo;</a>
 						</div>
 					</div>
-				</div>
+
 				<div class="intro11">
 					<div class="intro12">
 
 						<h4>위의 버튼을 이용해 여러분들이 원하는 페이지로 이동해주세요 </h4>
 					</div>
 				</div>
+
 
 				
 				
@@ -156,7 +157,6 @@
 						      }
 						   }
 						%>
-					</div>
 				</div>
 			</div>
 		</div>

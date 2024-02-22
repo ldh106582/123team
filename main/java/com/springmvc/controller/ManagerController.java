@@ -86,13 +86,6 @@ public class ManagerController
 	}
 	
 	@PostMapping("/AllLog")
-<<<<<<< HEAD
-	public String Managerlogin(@ModelAttribute("managerlogin") Manager manager, Model model) {
-		System.out.println("managerId : "+manager.getPersonId());
-		// manager 로그인 함수
-		Manager managerId = managerService.managerlogin(manager);
-		System.out.println(managerId.getPersonPw());
-=======
 	public String Managerlogin(@ModelAttribute("managerlogin") Manager manager, Model model,
 								HttpServletRequest request) {
 		System.out.println("managerId : "+manager.getPersonId());
@@ -103,13 +96,12 @@ public class ManagerController
 		HttpSession session = request.getSession();
 		session.setAttribute("managerId", managerId);
 		
->>>>>>> 6bb23d73a8eea6e8d359f8841e52b0b8f361839d
+
 		model.addAttribute("managerId", managerId);
 		
 		return "/all_product/products";
 	}
-<<<<<<< HEAD
-=======
+
 	
 	@GetMapping("/ManagerDelete")
 	public String ManagerDelete(@RequestParam("managerid") String managerId) {
@@ -126,5 +118,4 @@ public class ManagerController
 	public String ManagerPage(@RequestParam("") String managerId) {
 		return "";
 	}
->>>>>>> 6bb23d73a8eea6e8d359f8841e52b0b8f361839d
 }

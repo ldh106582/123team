@@ -25,8 +25,7 @@ public class ManagerServiceImp implements ManagerService{
 		// TODO Auto-generated method stub
 		productMemberRepository.setAllMember(productMember);
 	}
-<<<<<<< HEAD
-=======
+
 	
 	// manager 로그인 함수
 	@Override
@@ -46,14 +45,5 @@ public class ManagerServiceImp implements ManagerService{
 		// TODO Auto-generated method stub
 		productMemberRepository.P_managerDelete(managerId);
 	}
-	
-	
->>>>>>> 6bb23d73a8eea6e8d359f8841e52b0b8f361839d
-	
-	// manager 로그인 함수
-	@Override
-	public Manager managerlogin(Manager manager) {
-		// TODO Auto-generated method stub
-		return productMemberRepository.managerlogin(manager);
-	}
+
 }
