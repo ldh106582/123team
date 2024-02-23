@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>상품 상세정보 페이지</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 <body>
@@ -26,6 +26,7 @@
 	<p>
 	재고수 : ${product.productUnitStock}
 	<p>
-	  <a href="/123team/products/creatCart?product=${product}"><button>장바구니 담기</button></a> || <a href="update?productId=${product.productId}"><button>상품수정</button></a>  <a href="delete?productId=${product.productId}"><button>상품삭제</button></a>
+	  <a href="/123team/products/creatCart?productId=${product.productId}"><button>장바구니 담기</button></a> || <a href="update?productId=${product.productId}"><button>상품수정</button></a>  <a href="delete?productId=${product.productId}"><button>상품삭제</button></a>
+	  <a class="btn btn-success" href="/123team/products/readcart?personId=${product.personId}">내 장바구니</a>
 </body>
 </html>

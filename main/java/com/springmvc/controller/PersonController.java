@@ -155,6 +155,9 @@ public class PersonController {
 		System.out.println("로그아웃 페이지로 이동");
 		// 세션 무효시킴
 	    sessionStatus.setComplete();
+	    
+	    HttpSession session = request.getSession();
+	    session.invalidate();
 
  	  // 쿠키제거
 	    Cookie[] cookies = request.getCookies();
@@ -164,7 +167,7 @@ public class PersonController {
 	            response.addCookie(cookie);
 	        }
 	    }
-	    
+	  
 	    return "redirect:/login";
 	}
 }

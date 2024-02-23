@@ -96,14 +96,13 @@ public class ManagerController
 	        HttpSession session = request.getSession();
 	        session.setAttribute("managerId", managerId);
 	        System.out.println("sessionId : " + managerId.getPersonId());
+	        model.addAttribute("managerId", managerId);
 	        return "redirect:../products";
 	    } else {
 	        return "/member/ManagerLogin"; 
 	    }
 	}
 
-
-	
 	@GetMapping("/ManagerDelete")
 	public String ManagerDelete(@RequestParam("managerid") String managerId) {
 		// System.out.println("managerId : " + managerId);
@@ -154,5 +153,13 @@ public class ManagerController
 		model.addAttribute("productMember", productMember);
 		
 		return "/member/managerMypage";
+	}
+	
+	@GetMapping("/logout")
+	public String ManagerLogout(@RequestParam("managerid") String managerid, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		session.invalidate();
+		
+		return "redirect:/login";
 	}
 }

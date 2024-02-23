@@ -11,9 +11,11 @@ import com.springmvc.domain.ShoppingCart;
             ShoppingCart shoppingCart = new ShoppingCart();
             shoppingCart.setShoppingCartId(rs.getString("shoppingCartId"));
             shoppingCart.setProductId(rs.getString("productId"));
+            shoppingCart.setProductName(rs.getString("productName"));
+            shoppingCart.setProductPrice(rs.getInt("productPrice"));
+            shoppingCart.setProductCategory(rs.getString("productCategory"));
             shoppingCart.setAmount(rs.getInt("amount"));
             shoppingCart.setPersonId(rs.getString("personId"));
-            
             return shoppingCart;
         }
     }

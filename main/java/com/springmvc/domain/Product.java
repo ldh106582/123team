@@ -32,12 +32,7 @@ public class Product implements Serializable{
 		this.productName = productName;
 	}
 
-	public String getProductCategoty() {
-		return productCategory;
-	}
-	public void setProductCategoty(String productCategory) {
-		productCategory = productCategory;
-	}
+
 
 	public String getProductCategory() {
 		return productCategory;

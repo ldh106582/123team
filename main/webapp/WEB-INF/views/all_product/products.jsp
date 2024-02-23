@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-<title>Insert title here</title>
+<title>products 페이지</title>
 </head>
 <body>
 
@@ -27,21 +27,18 @@
                 <li class="nav-item">
                   <a class="nav-link" href="/123team/Fboards">게시판</a>
                 </li>
-                
-                <% Manager manager = (Manager) session.getAttribute("managerId");
-                	String type = null;
-                	if(manager != null){	
-                	type = manager.getType();
-                	System.out.println("products login type : " + type);
-                %>
-                <li class="nav-item">
-                  <a class="nav-link" href="/123team/login">로그인</a>
-                </li>
-                <%} else if("p".equals(type) || "p" == type){ %>
-                <li class="nav-item">
-                  <a class="nav-link" href="/123team/managerlogin/manager_page?personId=${managerId.personId}">마이페이지</a>
-                </li>
-                <% } %>
+				<c:choose>
+				    <c:when test="${not empty managerId and (managerId.type eq 'p' or managerId.type == 'p')}">
+				        <li class="nav-item">
+				            <a class="nav-link" href="/123team/managerlogin/manager_page?personId=${managerId.personId}">마이페이지</a>
+				        </li>
+				    </c:when>
+				    <c:otherwise>
+				        <li class="nav-item">
+				            <a class="nav-link" href="/123team/login">로그인</a>
+				        </li>
+				    </c:otherwise>
+				</c:choose>
             </div>
         </div>
     </nav>
@@ -60,10 +57,6 @@
  	<p>
  	<a href="products/product?productId=${product.productId}"><button>상세정보</button></a>   <a href="#"><button>상품주문</button></a>
  </c:forEach>
- 
- <div>
- 	<a href="/123team/managerlogin/ManagerDelete?managerid=${managerId.personId}">회원삭제</a>
- </div>
  
 </body>
 </html>

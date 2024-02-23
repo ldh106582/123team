@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -40,5 +41,15 @@ public class AjaxController {
 			return "true";
 		} else {
 		} return "false";
+	}
+	
+	// 장바구니 계수를 변경하는 함수
+	@PostMapping(value="/123team/products/addcart", produces="application/json" )
+	@ResponseBody
+	public String UpdateShopingCart(@RequestParam("shoppingcartId") int shoppingcartId, 
+									@RequestParam("amount") int amount) {
+		System.out.println("ajax 도착");
+
+		return null;
 	}
 }
