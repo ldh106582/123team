@@ -16,13 +16,13 @@
 <link href="<c:url value="/resources/pet/"/>" rel="stylesheet">
 <style type="text/css">
 	*{
-	font-family: 'KCC-Ganpan';
+	font-family: 'omyu_pretty';
 	background-color()
 }
 
 @font-face {
-    font-family: 'KCC-Ganpan';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/KCC-Ganpan.woff2') format('woff2');
+    font-family: 'omyu_pretty';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-01@1.0/omyu_pretty.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
 }
@@ -84,7 +84,7 @@
 					<div class="intro12">
 						<div class="intro10 border border-dark btn btn-primary p-3">
 							<i class="fa-solid fa-clipboard-user"></i>
-							<a href="Fboards" class="justify-center text-white">공지사항 &raquo;</a>
+							<a href="/123team/Nboards" class="justify-center text-white">공지사항 &raquo;</a>
 						</div>
 						<p>
 						<%

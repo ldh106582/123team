@@ -11,11 +11,21 @@
 <body>
  <%@  include file="../module/header.jsp" %>
  
-	<h1>공지글 수정 페이지</h1>
-	<form:form modelAttribute="updateBoard" action="update?boardId=${board.boardId}" method="POST">
-		제목 : <form:input path="title" name="title" value="${board.title}"/>
-		내용 : <form:input path="context" name="context" value="${board.context}"/>
-		<input type="submit" value="완료">
-	</form:form>
+	<div class="container my-3">
+    <h1>공지글 수정 페이지</h1>
+   <form:form modelAttribute="updateBoard" action="update?boardId=${board.boardId}" method="POST">
+      <div class="form-group">
+        <label for="title">제목 :</label>
+        <form:input path="title" name="title" class="form-control" value="${board.title}" />
+      </div>
+      <div class="form-group">
+        <label for="context">내용 :</label>
+        <form:input path="context" class="form-control" style="height: 300px;" name="context" value="${board.context}"/>
+      </div>
+      <a href="/delete?boardId=${board.boardId}" class="btn btn-danger">삭제</a>
+      <button type="submit" class="btn btn-primary">등록</button>
+    </form:form>
+  </div>
+  
 </body>
 </html>

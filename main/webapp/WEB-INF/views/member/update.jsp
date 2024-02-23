@@ -10,19 +10,6 @@
 <head>
 <meta charset="UTF-8">
 <title>회원수정 페이지</title>
-<style type="text/css">
-	*{
-	font-family: 'KCC-Ganpan';
-	background-color()
-}
-
-@font-face {
-    font-family: 'KCC-Ganpan';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/KCC-Ganpan.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
-}
-</style>
 </head>
 <body>
 		 <%@  include file="../module/memberheader.jsp" %>

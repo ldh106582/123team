@@ -11,28 +11,7 @@
     <title>상품관리자 회원가입 페이지입니다.</title>
 </head>
 <body>
-   <nav class="navbar navbar-expand navbar-danger bg-danger p-3">
-        <div class="container ">
-            <div class="navbar-header">
-                <a class="navbar-brandb text-white" href="./">Home</a>
-            </div>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-              <ul class="navbar-nav">
-                <li class="nav-item">
-                  <a class="nav-link active text-white" href="./hospital">병원</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link text-white" href="./product">동물상품</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link text-white" href="Fboards">게시판</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link text-white" href="./login">로그인</a>
-                </li>
-            </div>
-        </div>
-    </nav>
+   <%@  include file="../module/headerdark.jsp" %>
 
     <div class="jumbotron">
         <div class="container">
