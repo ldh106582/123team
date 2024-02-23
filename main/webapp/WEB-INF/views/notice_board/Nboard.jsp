@@ -49,11 +49,56 @@
 				</script>
 </head>
 <body>		
- <%@  include file="../module/header.jsp" %>
- <%
- 				request.setAttribute("loginId", userinfo.getInstance().getPersonId());
- 			%>
- 			<c:if test="${board.personId == loginId}">
+
+	<%@  include file="../module/header.jsp" %>
+	<%
+		request.setAttribute("loginId", userinfo.getInstance().getPersonId());
+	%>
+ 			
+	<div class="container my-3">
+        <h1>공지 상세 페이지</h1>
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="mt-4">${board.title}</h1>
+                <hr>
+                <div class="col-md-12" style="height: 200px;">
+                    <p class="">${board.context}</p>
+                </div>
+                <hr>
+                <a href="update?boardId=${board.boardId}"class="btn btn-primary">수정하기</a>
+                <a href="delete?boardId=${board.boardId}"class="btn btn-danger">삭제하기</a>
+            </div>
+        </div>
+        <hr>
+        <div class="list-group">
+		    <c:forEach items="${Commentlist}" var="comments">
+		        <div class="list-group-item">
+		            <div class="d-flex w-100 justify-content-between">
+		                <h5 class="mb-1">${comments.comment}</h5>
+		                <small>${comments.registDay}</small>
+		            </div>
+		            <p class="mb-1" id="${comments.commentId}">${comments.comment}</p>
+		            <c:if test="${comments.personId == loginId}">
+		                <button class="btn btn-primary" onclick="editform('${comments.comment}','${comments.commentId}')">댓글 수정</button>
+		                <a href="deletecoment?commentId=${comments.commentId}&boardId=${board.boardId}" class="btn btn-danger">댓글 삭제</a>
+		            </c:if>
+		        </div>
+		    </c:forEach>
+	        <c:if test="${loginId != null}">
+			    <h5 class="mb-3">댓글 작성</h5>
+			    <form action="ENboard" method="POST" class="mb-3">
+			        <input type="hidden" name="boardId" value="${board.boardId}">
+			        <div class="form-group">
+			            <textarea class="form-control" name="comment" rows="3"></textarea>
+			        </div>
+			        <button type="submit" class="btn btn-primary">등록</button>
+			    </form>
+			</c:if>
+		</div>
+    </div>
+	
+<%-- 	
+	<c:if test="${board.personId == loginId}">
 			<a href="update?boardId=${board.boardId}">공지글 수정</a>
 			<a href="delete?boardId=${board.boardId}">공지글 삭제</a>
 			&emsp;&emsp;&emsp; </c:if>
@@ -89,6 +134,7 @@
 				<input type="submit" value="등록">
 			</form>
 			</c:if>
+	 --%>
 			
 </body>
 </html>

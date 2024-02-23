@@ -1,6 +1,18 @@
 @charset "UTF-8";
 /*2023-9-13 1:40:31 PM*/
 
+@font-face {
+    font-family: 'KCC-Ganpan';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/KCC-Ganpan.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'GangwonEduHyeonokT_OTFMediumA';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEduHyeonokT_OTFMediumA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 body,button,dd,dl,dt,fieldset,form,h1,h2,h3,h4,h5,h6,input,legend,li,ol,p,select,table,td,textarea,th,ul {
     margin: 0;
     padding: 0;
@@ -22,7 +34,7 @@ body {
     height: 100%;
     font-family: -apple-system,BlinkMacSystemFont,helvetica,"Apple SD Gothic Neo",sans-serif;
     font-size: 1rem;
-    background-color: #fff
+    background-color: #fff;
 }
 
 
@@ -227,7 +239,6 @@ body {
 }
 
 .myinfo_area .myaccount .myname .name_text {
-    font-size: 24px;
     font-weight: 700;
     line-height: 29px;
     letter-spacing: -.63px;
@@ -239,7 +250,7 @@ body {
 .myinfo_area .myaccount .myname .btn_accent,.myinfo_area .myaccount .myname .btn_edit,.myinfo_area .myaccount .myname .btn_logout {
     position: absolute;
     top: 2px;
-    right: 0
+    right: 0;
 }
 
 .myinfo_area .myaccount .myaddress {
@@ -279,4 +290,13 @@ button,input,select,textarea {
     letter-spacing: -.2px;
     text-align: right;
     color: #96a1aa
+}
+
+input{
+    color: #96a1aa;
+    cursor: auto; 
+}
+
+input[type=text]{
+    color: #96a1aa;
 }
