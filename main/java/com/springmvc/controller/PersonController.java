@@ -85,10 +85,11 @@ public class PersonController {
 			List<Pet> petName = personService.getPetName(person);
 			System.out.println("petName : " + petName);
 			session.setAttribute("petName", petName);
-			
+			model.addAttribute("petName", petName);
 			// pet 아이디 정보를 가져옴
 			List<Pet> petId = personService.getPetId(pet);
 			session.setAttribute("petId", petId);
+			model.addAttribute("petId", petId);
 			
 			return "member/Mypage";
 		}

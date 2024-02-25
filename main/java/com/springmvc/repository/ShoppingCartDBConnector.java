@@ -19,4 +19,3 @@ import com.springmvc.domain.ShoppingCart;
             return shoppingCart;
         }
     }
-

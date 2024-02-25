@@ -9,24 +9,33 @@
 </head>
 <body>
  <%@  include file="../module/header.jsp" %>
- 	<p>
-	상품ID : ${product.productId}
-	<p>
-	상품명 : ${product.productName}
-	<p>
-	카테고리 : ${product.productCategory}
-	<p>
-	가격 : ${product.productPrice}
-	<p>
-	등록일 : ${product.releaseDate}
-	<p>
-	상품설명 : ${product.productDescribe}
-	<p>
-	상품사진 : ${product.productImage}
-	<p>
-	재고수 : ${product.productUnitStock}
-	<p>
-	  <a href="/123team/products/creatCart?productId=${product.productId}"><button>장바구니 담기</button></a> || <a href="update?productId=${product.productId}"><button>상품수정</button></a>  <a href="delete?productId=${product.productId}"><button>상품삭제</button></a>
+ 	<form action="/123team/products/creatCart" method="get">
+ 		<input type="hidden" name="productId" value="${product.productId}">
+ 		<input type="hidden" name="productName" value="${product.productName}">
+ 		<input type="hidden" name="productCategory" value="${product.productCategory}">
+ 		<input type="hidden" name="productPrice" value="${product.productPrice}">
+ 		<input type="hidden" name="releaseDate" value="${product.releaseDate}">
+ 		<input type="hidden" name="personId" value="${product.personId}">
+	 	<p>
+		상품ID : ${product.productId}
+		<p>
+		상품명 : ${product.productName}
+		<p>
+		카테고리 : ${product.productCategory}
+		<p>
+		가격 : ${product.productPrice}
+		<p>
+		등록일 : ${product.releaseDate}
+		<p>
+		상품설명 : ${product.productDescribe}
+		<p>
+		상품사진 : ${product.productImage}
+		<p>
+		재고수 : ${product.productUnitStock}
+		<p>
+  	      <input type="submit" value="장바구니 담기">
+	</from>
+     <a href="update?productId=${product.productId}"><button>상품수정</button></a>  <a href="delete?productId=${product.productId}"><button>상품삭제</button></a>
 	  <a class="btn btn-success" href="/123team/products/readcart?personId=${product.personId}">내 장바구니</a>
 </body>
 </html>

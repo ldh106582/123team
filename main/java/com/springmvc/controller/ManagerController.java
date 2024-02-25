@@ -90,7 +90,7 @@ public class ManagerController
 	                            HttpServletRequest request) {
 	    // manager 로그인 함수
 	    Manager managerId = managerService.managerlogin(manager);
-	    
+	    Manager.getInstance().setType(managerId.getType());
 	    // 로그인에 성공한 경우
 	    if (managerId != null) {
 	        HttpSession session = request.getSession();

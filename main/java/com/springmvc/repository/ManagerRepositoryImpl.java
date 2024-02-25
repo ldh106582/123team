@@ -61,7 +61,6 @@ public class ManagerRepositoryImpl implements ManagerRepository {
 
 	        System.out.println(managerId.getPersonId());
 	        System.out.println(managerId.getType());
-	        
 	    }
 	    return managerId;
 	}

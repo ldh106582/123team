@@ -2,20 +2,27 @@ package com.springmvc.repository;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import com.springmvc.controller.ShoppingCartController;
 import com.springmvc.domain.Product;
 import com.springmvc.domain.ShoppingCart;
 
 public interface ShoppingCartRepository {
-	// 장바구니를 생성하기 전 product db 데이터를 가져오는 함수
-	Product createCart(String productId);
-	// prduct에서 가져온 값을 장바구니db에 넣어줌
-	void createshoppingCart(Product product, int amount);
+	// 장바구니에 이미 값이 있을 경우 실행하는 함수
+	void D_createshoppingCart(Product product);
+	
+	
 	// 장바구니에 있는 데이터를 가져옴
 	List<ShoppingCart> readCart(String personId);
 	// 장바구니를 삭제하는 함수
-	void alldeleteCart(int shoppingcart);
+	void alldeleteCart(String personId);
 	//업데이트 하기 전 데이터를 출력하는 함수
 	List<ShoppingCart> addShopingCart(String personId);
-	
+	// 쇼핑카트 update 후 데이터를 db에 넣어주는 함수
+	void setupdatecart(ShoppingCart shoppingCart);
+	// db에서 값을 가져오는 함수
+	List<ShoppingCart> getupdatecart(String productId);
+	// 개별 product를 삭제하는 함수
+	void deleteCart(int shoppingCartId);
 }
