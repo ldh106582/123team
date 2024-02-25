@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.springmvc.domain.HospitalMember;
 import com.springmvc.domain.Manager;
 import com.springmvc.domain.ProductMember;
 import com.springmvc.domain.userinfo;
@@ -30,28 +31,41 @@ public class ManagerController
 	ManagerService managerService;
 	
 	@GetMapping("/Member")
-	public String showMemberPage(@ModelAttribute("productMember") ProductMember productMember,
+	public String showMemberPage(@ModelAttribute("productMember") ProductMember productMember, HospitalMember hospitalMember,
 								@RequestParam("type") String type) {
 	System.out.println("Member 페이지 요청 도착");
 	System.out.println("싱글톤 type : " + type);
-	productMember.setType(type);
-
 	userinfo.getInstance().setType(productMember.getType());
 	
+	if(type == "p" || "p".equals(type)) {
+	productMember.setType(type);
 	return "/member/AddManager";
-	}
 	
+	} else if(type == "h" || "h".equals(type)) {
+		hospitalMember.setType(type);
+		return "/member/Hospitalmanager";
+		
+	} else {
+		return "/member/Hopitalmanager";
+	}
+}
 	@PostMapping("/productmanager")
 	public String GetaddProductManager(@ModelAttribute("productMember") ProductMember productMember,
+									   @ModelAttribute("hospitalMember") HospitalMember hospitalMember,
 										HttpServletRequest request, Model model,
 										BindingResult result) {
 		userinfo userInfo = userinfo.getInstance();
-
-	
+		String t_type = userInfo.getType();
+		System.out.println("로그인 확인" + t_type);
+		
+		// product 관리자 회원가입 하는 함수 
+		if("p".equals(t_type)) {
 	    // 사업자등록증을 받아주는 함수
 		MultipartFile saveCompanyRegistrationimg = productMember.getCompanyregistrationimg();
 	    String companyregistrationName = saveCompanyRegistrationimg.getOriginalFilename();
 	    String companyregistrationPath  = request.getSession().getServletContext().getRealPath("/resources/images");
+	    
+
 	    File saveCompanyRegistration = new File(companyregistrationPath, companyregistrationName);
 
 	    try {
@@ -77,6 +91,74 @@ public class ManagerController
 		model.addAttribute("productMember", productMember);
 		
 		return "redirect:/login";
+		
+		// 병원 manager 회원가입 하는 함수
+		} else if("h".equals(t_type)) {
+			
+			System.out.println("여긴 병원 회원가입 : " + t_type);
+			// 사업자등록증을 받아주는 함수
+			MultipartFile hospitalregistrationimg = hospitalMember.getHopitalliLicenseimg();
+			System.out.println("hospitalregistrationimg : " + hospitalregistrationimg);
+			
+		    String hospitalregistrationName = hospitalregistrationimg.getOriginalFilename();
+		    System.out.println("hospitalregistrationName : " + hospitalregistrationName);
+		    
+		    String hospitalregistrationPath  = request.getSession().getServletContext().getRealPath("./resources/images");
+		    
+		    System.out.println("hospitalregistrationPath : " + hospitalregistrationPath);
+		    
+		    File dir = new File(hospitalregistrationPath);
+		    System.out.println("dir : " + dir);
+		    if (!dir.exists()) {
+		        dir.mkdirs();  // 디렉토리가 존재하지 않으면, 디렉토리를 생성합니다.
+		    };
+		    File hospitalregistration = new File(hospitalregistrationPath, hospitalregistrationName);
+			System.out.println("hospitalregistratio : " + hospitalregistration);
+		    
+		    try {
+		    	System.out.println("파일 등록 실패?1");
+		    	hospitalregistrationimg.transferTo(hospitalregistration);
+		    	System.out.println("파일 등록 실패?2");
+		    	hospitalMember.getHospitalregistration();
+		    } catch (Exception e) {
+		    	throw new RuntimeException("사업자등록증 업로드를 실패했습니다.", e);
+		    }
+		    System.out.println("사옵자 끝");
+		    
+			// 의사 자격증을 받아주는 함수
+			MultipartFile hopitalliLicenseimg = hospitalMember.getHopitalliLicenseimg();
+		    String hospitalliLicenseName = hopitalliLicenseimg.getOriginalFilename();
+		    String hospitalliLicensePath  = request.getSession().getServletContext().getRealPath("/resources/images");
+		    File hospitalliLicense = new File(hospitalliLicensePath, hospitalliLicenseName);
+			
+		    try {
+		    	hopitalliLicenseimg.transferTo(hospitalliLicense);
+		    	hospitalMember.getHospitalliLicense();
+		    } catch (Exception e) {
+		    	throw new RuntimeException("의사면허증  업로드를 실패했습니다.", e);
+		    }
+		    
+
+		    // 세션생성
+		    HttpSession session = request.getSession();
+		    String type = (String)session.getAttribute("type");
+		    System.out.println(type);
+		    hospitalMember.setType(type);
+		    
+			// 병원 manager 회원가입 하는 함수
+		    managerService.addHospitalManager(hospitalMember);
+		    
+		    // 전체 db에 데이터를 넣어주는 함수
+		    managerService.H_setAllMember(hospitalMember);
+		    
+		    System.out.println("여긴 회원가입 로그인");
+		    
+			return "redirect:/login";
+			
+		}else {
+		
+		return "redirect:/login";
+		}
 	}
 
 	@GetMapping("/AllLog")
