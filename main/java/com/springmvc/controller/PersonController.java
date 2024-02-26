@@ -85,10 +85,11 @@ public class PersonController {
 			List<Pet> petName = personService.getPetName(person);
 			System.out.println("petName : " + petName);
 			session.setAttribute("petName", petName);
-			
+			model.addAttribute("petName", petName);
 			// pet 아이디 정보를 가져옴
 			List<Pet> petId = personService.getPetId(pet);
 			session.setAttribute("petId", petId);
+			model.addAttribute("petId", petId);
 			
 			return "member/Mypage";
 		}
@@ -155,6 +156,9 @@ public class PersonController {
 		System.out.println("로그아웃 페이지로 이동");
 		// 세션 무효시킴
 	    sessionStatus.setComplete();
+	    
+	    HttpSession session = request.getSession();
+	    session.invalidate();
 
  	  // 쿠키제거
 	    Cookie[] cookies = request.getCookies();
@@ -164,7 +168,7 @@ public class PersonController {
 	            response.addCookie(cookie);
 	        }
 	    }
-	    
+	  
 	    return "redirect:/login";
 	}
 }
