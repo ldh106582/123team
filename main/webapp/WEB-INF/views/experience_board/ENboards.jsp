@@ -1,4 +1,3 @@
-<%@page import="com.springmvc.domain.userinfo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -15,7 +14,7 @@
  <%@  include file="../module/header.jsp" %>
  
 	<%
-		request.setAttribute("loginId", userinfo.getInstance().getPersonId());
+		request.setAttribute("loginId", session.getAttribute("personId"));
 	%>
 	
 	<div class="container my-3">

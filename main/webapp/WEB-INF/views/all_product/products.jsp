@@ -28,8 +28,7 @@
                   <a class="nav-link" href="/123team/Fboards">게시판</a>
                 </li>
  				<c:choose>             
-                <c:when test=${empty managerId }>
-                	
+                <c:when test="${empty managerId}">
                 <li class="nav-item">
                   <a class="nav-link" href="/123team/managerlogin/manager_page?personId=${managerId.personId}">마이페이지</a>
                 </li>
@@ -152,7 +151,7 @@
  	<p>
  	카테고리 : ${product.productCategory}
  	<p>
- 	<a href="products/product?productId=${product.productId}"><button>상세정보</button></a>   <a href="#"><button>상품주문</button></a>
+ 	<a href="products/product?productId=${product.productId}"><button>상세정보</button></a>
  </c:forEach>
  
 </body>

@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page import="com.springmvc.domain.userinfo" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,11 +12,6 @@
 <title>로그인</title>
 </head>
 <body>
-<% 
-userinfo user = userinfo.getInstance(); 
-String type = user.getType();
-System.out.println("싱글톤 : " + type);
-%>
 	<%@  include file="./module/headerdark.jsp" %>
 
 	<div class="jumbotron">

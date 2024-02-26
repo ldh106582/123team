@@ -20,8 +20,8 @@ public class BoardCommentServiceImpl implements BoardCommentService {
 	}
 
 	@Override
-	public void addComment(String boardId, String comment) {
-		boardCommentRepository.addComment(boardId,comment);
+	public void addComment(String boardId, String comment,String personId) {
+		boardCommentRepository.addComment(boardId,comment,personId);
 		
 	}
 

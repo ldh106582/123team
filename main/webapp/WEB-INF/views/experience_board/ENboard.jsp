@@ -1,4 +1,3 @@
-<%@page import="com.springmvc.domain.userinfo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
@@ -102,7 +101,7 @@
 	<%@  include file="../module/header.jsp" %>
 	
 	<%
-		request.setAttribute("loginId", userinfo.getInstance().getPersonId());
+		request.setAttribute("loginId", session.getAttribute("personId").toString());
 	%>
  			
 	<div class="container my-3">
