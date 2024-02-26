@@ -2,15 +2,12 @@ package com.springmvc.repository;
 
 import java.time.LocalDate;
 import java.util.List;
-
 import javax.sql.DataSource;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
-
 import com.springmvc.domain.Product;
-import com.springmvc.domain.userinfo;
+
 
 @Repository
 public class ProductRepositoryImp implements ProductRepository{
@@ -47,7 +44,7 @@ public class ProductRepositoryImp implements ProductRepository{
 	public void addProduct(Product product) {
 		String SQL = "insert into Product values(?,?,?,?,?,?,?,?,?)";
 		
-		template.update(SQL,getProductId(),product.getProductName(),product.getProductPrice(),product.getProductCategory(),product.getProductDescribe(),getReleaseDate(),product.getProductUnitStock(),product.getProductImage(),userinfo.getInstance().getPersonId());
+		template.update(SQL,getProductId(),product.getProductName(),product.getProductPrice(),product.getProductCategory(),product.getProductDescribe(),getReleaseDate(),product.getProductUnitStock(),product.getProductImage());
 	}
 
 //	날짜받기

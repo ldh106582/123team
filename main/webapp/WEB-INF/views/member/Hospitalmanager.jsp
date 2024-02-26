@@ -11,28 +11,42 @@
 <title>병원관리자 회원가입 페이지</title>
 </head>
 <body>
-   <nav class="navbar navbar-expand navbar-info bg-info p-3">
-        <div class="container ">
+  <!-- header start -->
+   <nav class="navbar navbar-expand navbar-dark bg-dark">
+        <div class="container">
             <div class="navbar-header">
-                <a class="navbar-brandb text-white" href="./">Home</a>
+                <a class="navbar-brand" href="/123team">Home</a>
             </div>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
               <ul class="navbar-nav">
                 <li class="nav-item">
-                  <a class="nav-link active text-white" href="./hospital">병원</a>
+                  <a class="nav-link" href="/123team/hospital">병원</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link text-white" href="./product">동물상품</a>
+                  <a class="nav-link" href="/123team/products">동물상품</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link text-white" href="Fboards">게시판</a>
+                  <a class="nav-link" href="/123team/Fboards">게시판</a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link text-white" href="./login">로그인</a>
-                </li>
+ 				<c:choose>             
+	            <c:when test="${not empty managerId }">
+	                	
+	                <li class="nav-item">
+	                  <a class="nav-link" href="/123team/managerlogin/manager_page?personId=${managerId.personId}">마이페이지</a>
+	                </li>
+	                
+	            </c:when>
+	               	<c:otherwise>
+		                <li class="nav-item">
+		                  <a class="nav-link" href="/123team/login">로그인</a>
+		                </li>
+	                </c:otherwise>
+                </c:choose>
+                
             </div>
         </div>
     </nav>
+<!-- header end -->
 
     <div class="jumbotron">
         <div class="container">
@@ -109,7 +123,7 @@
         <%
         
         String type = request.getParameter("type");
-        userinfo user = userinfo.getInstance();
+        Manager user = Manager.getInstance();
         System.out.println("jsp페이지 : " + type);
         session.setAttribute("type", type);
         

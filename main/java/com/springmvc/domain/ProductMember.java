@@ -11,6 +11,7 @@ public class ProductMember implements Serializable {
 	private String personEmail;
 	private String personName;
 	private String personPhone;
+	private String personAddress;
 	private String companyName;
 	private String companyAddress;
 	private String companyPhone;
@@ -110,4 +111,13 @@ public class ProductMember implements Serializable {
 	public void setCompanyregistrationimg(MultipartFile companyregistrationimg) {
 		this.companyregistrationimg = companyregistrationimg;
 	}
+
+	public String getPersonAddress() {
+		return personAddress;
+	}
+
+	public void setPersonAddress(String personAddress) {
+		this.personAddress = personAddress;
+	}
+	
 }

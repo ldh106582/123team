@@ -31,7 +31,8 @@
 <title>장바구니 페이지</title>
 </head>
 <body>
-<nav class="navbar navbar-expand navbar-dark bg-danger">
+<!-- header -->
+  <nav class="navbar navbar-expand navbar-dark bg-danger">
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand" href="/123team">Home</a>
@@ -62,7 +63,8 @@
             </div>
         </div>
     </nav>
-	
+	    <!-- header end -->
+	    
 	<div class="jumbotron">
 		<div class="contianer">
 			<h2 class="dislpay-2"> <i class="fa-solid fa-truck-fast"></i> 내 장바구니 목록</h2>
@@ -72,7 +74,7 @@
  	<div class="container">
  	
  		<div class="float-right mb-2">
- 			<a href="/123team/orders/o_create?personId=${shoppingCart.get(0).personId}" class="btn btn-info mr-5">주문하기</a>
+ 			<a href="/123team/orders/o_shipping?personId=${shoppingCart.get(0).personId}" class="btn btn-info mr-5">주문하기</a>
  		</div>
  		
  		<div>

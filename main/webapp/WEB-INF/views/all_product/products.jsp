@@ -10,8 +10,8 @@
 <title>products 페이지</title>
 </head>
 <body>
-
-<nav class="navbar navbar-expand navbar-dark bg-danger">
+<!-- header -->
+   <nav class="navbar navbar-expand navbar-dark bg-danger">
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand" href="/123team">Home</a>
@@ -28,21 +28,25 @@
                   <a class="nav-link" href="/123team/Fboards">게시판</a>
                 </li>
  				<c:choose>             
-                <c:when test=${empty managerId }>
-                	
-                <li class="nav-item">
-                  <a class="nav-link" href="/123team/managerlogin/manager_page?personId=${managerId.personId}">마이페이지</a>
-                </li>
-               </c:when>
-               <c:otherwise>
-                <li class="nav-item">
-                  <a class="nav-link" href="/123team/login">로그인</a>
-                </li>
-                </c:otherwise>
+	            <c:when test="${not empty managerId }">
+	                	
+	                <li class="nav-item">
+	                  <a class="nav-link" href="/123team/managerlogin/manager_page?personId=${managerId.personId}">마이페이지</a>
+	                </li>
+	                
+	            </c:when>
+	               	<c:otherwise>
+		                <li class="nav-item">
+		                  <a class="nav-link" href="/123team/login">로그인</a>
+		                </li>
+	                </c:otherwise>
                 </c:choose>
+                
             </div>
         </div>
     </nav>
+        <!-- header end -->
+        
     <div class="con" style="display: flex;">
         <div class="left_container">
             <div class="left_container1" >
@@ -151,7 +155,7 @@
  	가격 : ${product.productPrice}
  	<p>
  	카테고리 : ${product.productCategory}
- 	<p>
+ 	<p> ${product.personId }
  	<a href="products/product?productId=${product.productId}"><button>상세정보</button></a>   <a href="#"><button>상품주문</button></a>
  </c:forEach>
  

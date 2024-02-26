@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.support.SessionStatus;
-
 import com.springmvc.domain.EApplication;
 import com.springmvc.domain.ENBoard;
 import com.springmvc.domain.FBoard;
@@ -27,7 +26,6 @@ import com.springmvc.domain.FBoard;
 import com.springmvc.domain.Person;
 import com.springmvc.domain.Pet;
 import com.springmvc.domain.ProductMember;
-import com.springmvc.domain.userinfo;
 import com.springmvc.service.PersonService;
 import com.springmvc.service.ManagerService;
 
@@ -64,44 +62,27 @@ public class PersonController {
 	public String GetReadPerson(@ModelAttribute("success") Person person,
 								Model model,
 								Pet pet, HttpServletRequest request) {
-		
-		// update에서 db로 가져가 조회할 session
-		HttpSession session = request.getSession();
 
 		// 1. 조원들에게 넘겨줄 객체 2. personId와 pw를 가져옴
 		Person id = personService.loginSucess(person);
-		userinfo.getInstance().setPersonId(id.getPersonId());
-		userinfo.getInstance().setPersonName(id.getPersonName());
-
 		if(id != null) 
 		{
-			if(id.getPersonId().equals(person.getPersonId()) && id.getPersonPw().equals(person.getPersonPw())) 
-			{
-				session.setAttribute("personId", id.getPersonId());
-				session.setAttribute("personPw", id.getPersonPw());
-				session.setAttribute("id", id);
+			// update에서 db로 가져가 조회할 session
+			HttpSession session = request.getSession();
+			session.setAttribute("personkey", id);
 				
 			// pet이름 정보를 가져옴
 			List<Pet> petName = personService.getPetName(person);
 			System.out.println("petName : " + petName);
 			session.setAttribute("petName", petName);
-			model.addAttribute("petName", petName);
+
 			// pet 아이디 정보를 가져옴
 			List<Pet> petId = personService.getPetId(pet);
 			session.setAttribute("petId", petId);
-			model.addAttribute("petId", petId);
 			
 			return "member/Mypage";
 		}
-			
-	}
-		Booking booking = Booking.getintance();
-		booking.setName(id.getPersonName());
-		booking.setPhone(id.getPersonPhone());
-
-		// 내가 가져갈 객체
-		String personId = person.getPersonId();
-		String personPw = person.getPersonPw();
+	
 		
 		return "Login";
 
@@ -160,6 +141,7 @@ public class PersonController {
 	    HttpSession session = request.getSession();
 	    session.invalidate();
 
+	    System.out.println("==============로그아웃");
  	  // 쿠키제거
 	    Cookie[] cookies = request.getCookies();
 	    if (cookies != null) {

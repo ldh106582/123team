@@ -1,4 +1,4 @@
-<%@page import="com.springmvc.domain.userinfo"%>
+<%@page import="com.springmvc.domain.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
@@ -99,7 +99,36 @@
 </script>
 </head>
 <body>		
- <%@  include file="../module/header.jsp" %>
+   <nav class="navbar navbar-expand navbar-dark bg-success">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/123team">Home</a>
+            </div>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link" href="/123team/hospital">병원</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/123team/products">동물상품</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/123team/Fboards">게시판</a>
+                </li>
+ 				<c:choose>             
+	            <c:when test="${not empty managerId }">
+	                	
+	                <li class="nav-item">
+	                  <a class="nav-link" href="/123team/managerlogin/manager_page?personId=${managerId.personId}">마이페이지</a>
+	                </li>
+	                
+	            </c:when>
+	               	<c:otherwise>
+		                <li class="nav-item">
+		                  <a class="nav-link" href="/123team/login">로그인</a>
+		                </li>
+	                </c:otherwise>
+                </c:choose>
  			<%
  				request.setAttribute("loginId", userinfo.getInstance().getPersonId());
  			%>

@@ -13,6 +13,7 @@ public class ProductMemberDBConnector implements RowMapper<ProductMember>{
 	    productMember.setPersonPw(rs.getString("PersonPw"));
 	    productMember.setPersonEmail(rs.getString("PersonEmail"));
 	    productMember.setPersonName(rs.getString("PersonName"));
+	    productMember.setPersonAddress(rs.getString("PersonAddress"));
 	    productMember.setPersonPhone(rs.getString("PersonPhone"));
 	    productMember.setCompanyName(rs.getString("CompanyName"));
 	    productMember.setCompanyAddress(rs.getString("CompanyAddress"));

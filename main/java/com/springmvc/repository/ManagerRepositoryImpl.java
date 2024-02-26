@@ -34,9 +34,9 @@ public class ManagerRepositoryImpl implements ManagerRepository {
 	@Override
 	public void getaddProductManager(ProductMember productMember) 
 	{
-		String SQL = "insert into ProductMember(PersonId, PersonPw, PersonEmail, PersonName, PersonPhone, CompanyName, CompanyAddress, CompanyPhone, Companyregistration, Type) values(?,?,?,?,?,?,?,?,?,?)";
+		String SQL = "insert into ProductMember(PersonId, PersonPw, PersonEmail, PersonName, PersonAddress ,PersonPhone, CompanyName, CompanyAddress, CompanyPhone, Companyregistration, Type) values(?,?,?,?,?,?,?,?,?,?,?)";
 		template.update(SQL, new Object[] {productMember.getPersonId(), productMember.getPersonPw(), productMember.getPersonEmail(),
-						productMember.getPersonName(), productMember.getPersonPhone(), productMember.getCompanyName(), productMember.getCompanyAddress(),
+						productMember.getPersonName(), productMember.getPersonAddress(),productMember.getPersonPhone(), productMember.getCompanyName(), productMember.getCompanyAddress(),
 						productMember.getCompanyPhone(), productMember.getCompanyregistration(), productMember.getType()});
 	}
 	
@@ -111,10 +111,10 @@ public class ManagerRepositoryImpl implements ManagerRepository {
 	@Override
 	public void getmanagerUpdate(ProductMember productMemId) {
 		if(productMemId.getPersonId()!=null) {
-			 String SQL = "update ProductMember set PersonPw=?, PersonEmail=?, PersonName=?, PersonPhone=?,"
+			 String SQL = "update ProductMember set PersonPw=?, PersonEmail=?, PersonName=?, PersonAddress=?, PersonPhone=?,"
 			 			   + "CompanyName=?, CompanyAddress=?, CompanyPhone=? where PersonId=?";
 			 template.update(SQL, productMemId.getPersonId(), productMemId.getPersonPw(), productMemId.getPersonEmail(), productMemId.getPersonName(),
-					 productMemId.getPersonPhone(), productMemId.getCompanyName(), productMemId.getCompanyAddress(), productMemId.getCompanyPhone());
+					 productMemId.getPersonAddress(), productMemId.getPersonPhone(), productMemId.getCompanyName(), productMemId.getCompanyAddress(), productMemId.getCompanyPhone());
 		}
 	}
 	// 수정 후 보여주기 위해 데이터를 가져옴

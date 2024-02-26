@@ -14,6 +14,7 @@
 <title>주문 페이지 입니다.</title>
 </head>
 <body>
+<!-- header -->
 <nav class="navbar navbar-expand navbar-dark bg-danger">
         <div class="container">
             <div class="navbar-header">
@@ -45,7 +46,7 @@
             </div>
         </div>
     </nav>
-    
+ <!-- header end -->
     
     <div class="jumbotron">
 	  <div class="contianer">
@@ -70,7 +71,7 @@
 				  <th class="border-right">총금액
 				</tr>
 				<c:choose>
-				    <c:when test="${empty listOfmanager}">
+				    <c:when test="${empty listOfperson}">
 				        <tr>
 				            <c:forEach items="${listOfperson}" var="person">
 				                <th class="shop border-right align-self-center">${person.personId }</th>
@@ -78,14 +79,14 @@
 				            </c:forEach>
 				        </tr>
 				    </c:when>
-				    <c:otherwise>
+					<c:when test="${empty listOfmanager}">
 				        <c:forEach items="${listOfmanager}" var="manager">
 				            <tr>
 				                <th class="shop border-right align-self-center">${manager.personId }</th>
-				             <!-- <th class="shop border-right align-self-center">${manager.companyAddress}</th> -->  
+				             	<th class="shop border-right align-self-center">${manager.companyAddress}</th>
 				            </tr>
 				        </c:forEach>
-				    </c:otherwise>
+					</c:when>
 				</c:choose>
 				
 				<c:forEach items="${listOfcart}" var="cart">

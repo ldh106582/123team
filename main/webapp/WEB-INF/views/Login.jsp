@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page import="com.springmvc.domain.userinfo" %>
+<%@page import="com.springmvc.domain.*" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,7 +26,7 @@
 </head>
 <body>
 <% 
-userinfo user = userinfo.getInstance(); 
+Manager user = Manager.getInstance(); 
 String type = user.getType();
 System.out.println("싱글톤 : " + type);
 %>

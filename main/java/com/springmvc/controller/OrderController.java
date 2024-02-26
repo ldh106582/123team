@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.springmvc.domain.Manager;
 import com.springmvc.domain.Person;
+import com.springmvc.domain.ProductMember;
 import com.springmvc.domain.ShoppingCart;
 import com.springmvc.service.OrderSerivce;
 
@@ -24,7 +25,7 @@ public class OrderController {
 	@Autowired
 	private OrderSerivce orderSerivce;
 	
-	@GetMapping("/o_create")
+	@GetMapping("/o_shipping")
 	public String OderRead(@RequestParam("personId") String personId, Model model, HttpServletRequest request) {
 		
 		// 고객의 정보를 구분하는 것을 싱글톤으로 불러옴
@@ -33,19 +34,16 @@ public class OrderController {
 		if(type == null) {
 		// 개별 고객의 정보를 가져오는 함수
 			List<Person> listOfperson = orderSerivce.P_OderRead(personId);
-			model.addAttribute("listOfperson", listOfperson);
+			model.addAttribute("listOfperson", listOfperson.get(0));
 		} else {
 			// 관리자의 정보를 가져오는 함수
-			List<Manager> listOfmanager = orderSerivce.M_OderRead(personId);
-			model.addAttribute("listOfmanager", listOfmanager);
+			List<ProductMember> listOfproduct = orderSerivce.M_OderRead(personId);
+			model.addAttribute("listOfperson", listOfproduct.get(0));
 		}
 		
-		// 주문완료 페이지
-		List<ShoppingCart> listOfcart = new ArrayList<ShoppingCart>();
-		listOfcart = orderSerivce.oderRead(personId);
-		model.addAttribute("listOfcart", listOfcart);
-		
-		return "/all_product/Order";
+		return "/all_product/ordershiping";
 	}
+	
+	
 	
 }
