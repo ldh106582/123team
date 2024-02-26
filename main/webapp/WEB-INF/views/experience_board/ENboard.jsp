@@ -118,9 +118,16 @@
                 <div class="col-md-12" style="height: 200px;">
                     <p class="">${board.context}</p>
                 </div>
+                <c:if test="${loginId != null}">
+	                <div id="container">
+						<button id="delp" onclick="bookform('${board.title}','${board.animal}','${board.experience}','${board.personId}')">체험신청</button>
+					</div>			
+				</c:if>
                 <hr>
+                <c:if test="${loginId == board.personId}">
                 <a href="update?boardId=${board.boardId}"class="btn btn-primary">수정하기</a>
                 <a href="delete?boardId=${board.boardId}"class="btn btn-danger">삭제하기</a>
+                </c:if>
             </div>
         </div>
         <hr>
@@ -164,11 +171,7 @@
 			<h5> 동물 : ${board.animal} &emsp;&emsp; 체험 : ${board.experience}</h5>
 			<h5>내용</h5>
 			<div>${board.context}</div>
-			<c:if test="${loginId != null}">
-			<div id="container">
-				<button id="delp" onclick="bookform('${board.title}','${board.animal}','${board.experience}','${board.personId}')">체험신청</button>
-			</div>
-			</c:if>
+			
 			<br>
 			====================================================================================
 			<h5> 댓글</h5>

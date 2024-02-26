@@ -28,8 +28,10 @@
                     <p class="">${board.context}</p>
                 </div>
                 <hr>
+                <c:if test="${loginId == board.personId}">
                 <a href="update?boardId=${board.boardId}"class="btn btn-primary">수정하기</a>
                 <a href="delete?boardId=${board.boardId}"class="btn btn-danger">삭제하기</a>
+                </c:if>
             </div>
         </div>
         <hr>
