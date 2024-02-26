@@ -44,7 +44,12 @@ public class OrderController {
 			List<ProductMember> listOfproduct = orderSerivce.M_OderRead(personId);
 			model.addAttribute("listOfperson", listOfproduct.get(0));
 		}
-		
+	
+		return "/all_product/ordershiping";
+	}
+	
+	@GetMapping("/o_reading")
+	public String GetParameter(@RequestParam("personId") String personId, Model model, HttpServletRequest request, Order order) {
 		// 장바구니에서 받아온 데이터를 order db에 넣음
 		String productId = request.getParameter("productId");
 		String productName = request.getParameter("productName");
@@ -53,7 +58,6 @@ public class OrderController {
 		System.out.println(productId);
 		System.out.println(f_amount);
 		System.out.println(f_productPrice);
-		
 		
 		int amount = Integer.parseInt(f_amount);
 		int productPrice = Integer.parseInt(f_productPrice);
@@ -75,8 +79,6 @@ public class OrderController {
 	  	
 		HttpSession session = request.getSession();
 		session.setAttribute("order", order);
-	
-		 
 		return "/all_product/ordershiping";
 	}
 	
