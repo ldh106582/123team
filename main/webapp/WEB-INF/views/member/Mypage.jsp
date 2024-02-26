@@ -62,7 +62,7 @@
 		               </a>
 		            </li>
 		            <li>
-		               <a href="" class="left_item" role="menuitem" >
+		               <a href="./login/logout" class="left_item" role="menuitem" >
 		                   <div class="menu_text ">로그아웃</div>
 		               </a>
 		            </li>
@@ -74,7 +74,7 @@
 	        <div id="content" class="content">
 	            <div class="subindex_wrap" role="main">
 	                <div id="headerTop" class="path_area" aria-hidden="false"></div>
-	            </div>
+	            </div>                        
 	            <div class="subindex_item">
 	                <div class="head_title">
 	                    <h2 class="subindex_title">내 정보 수정</h3>

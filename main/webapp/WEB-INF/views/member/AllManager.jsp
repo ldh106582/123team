@@ -31,6 +31,8 @@
                 </div>
             </div>
         </div>
+	
+	<%@ include file="../module/footer.jsp" %>
 </body>
 <!-- js -->
 <script src="../resources/js/AllManager.js"></script>

@@ -18,5 +18,7 @@
 		<p>진료받을 내용 <form:input path="text" name="text"/>
 		<input type="submit" value="입력">
 	</form:form>
+	
+	<%@ include file="../module/footer.jsp" %>
 </body>
 </html>

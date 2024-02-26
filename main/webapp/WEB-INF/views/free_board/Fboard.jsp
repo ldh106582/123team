@@ -60,6 +60,8 @@
 		</div>
     </div>
     
+    
+    <%@ include file="../module/footer.jsp" %>
 			
     <%--  참고용 주석
 >>>>>>> origin/yeonghoe

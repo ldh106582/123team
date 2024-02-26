@@ -50,9 +50,7 @@
 	</div>
 
 
-	<footer class="container">
-		
-	</footer>
+	<%@ include file="../module/footer.jsp" %>
 </body>
 <script src="../resources/js/ManagerLogin.js"></script>
 

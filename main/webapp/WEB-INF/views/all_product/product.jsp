@@ -37,5 +37,8 @@
 	</from>
      <a href="update?productId=${product.productId}"><button>상품수정</button></a>  <a href="delete?productId=${product.productId}"><button>상품삭제</button></a>
 	  <a class="btn btn-success" href="/123team/products/readcart?personId=${product.personId}">내 장바구니</a>
+	  
+	
+	<%@ include file="../module/footer.jsp" %>
 </body>
 </html>

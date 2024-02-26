@@ -123,6 +123,11 @@
                 <a href="delete?boardId=${board.boardId}"class="btn btn-danger">삭제하기</a>
             </div>
         </div>
+        <c:if test="${loginId != null}">
+			<div id="container">
+				<button id="delp" onclick="bookform('${board.title}','${board.animal}','${board.experience}','${board.personId}')">체험신청</button>
+			</div>
+		</c:if>
         <hr>
         <div class="list-group">
 		    <c:forEach items="${Commentlist}" var="comments">
@@ -150,6 +155,8 @@
 			</c:if>
 		</div>
 	</div>
+	
+	<%@ include file="../module/footer.jsp" %>
 
 <%-- 
 	<c:if test="${board.personId == loginId}">

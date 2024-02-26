@@ -100,5 +100,6 @@
 		</div>
 	</div>
     
+    <%@ include file="../module/footer.jsp" %>
 </body>
 </html>

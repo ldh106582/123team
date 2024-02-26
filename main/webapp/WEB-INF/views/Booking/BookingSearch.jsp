@@ -10,5 +10,7 @@
 </head>
 <body>
 	예약정보
+	
+	<%@ include file="../module/footer.jsp" %>
 </body>
 </html>

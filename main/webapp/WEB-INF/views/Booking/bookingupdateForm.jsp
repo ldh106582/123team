@@ -8,5 +8,7 @@
 </head>
 <body>
 
+
+	<%@ include file="../module/footer.jsp" %>
 </body>
 </html>

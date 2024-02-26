@@ -88,5 +88,7 @@
 		</form:form>
 		</div>
 		<hr>
+		
+	<%@ include file="../module/footer.jsp" %>
 </body>
 </html>

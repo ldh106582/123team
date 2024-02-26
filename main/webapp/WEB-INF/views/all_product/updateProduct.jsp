@@ -28,6 +28,7 @@
 	상품사진 : <form:input path="productImage" value="${aproduct.productImage}"/>
 	<input type="submit" value="수정하기">
 </form:form>
-
+	
+	<%@ include file="../module/footer.jsp" %>
 </body>
 </html>

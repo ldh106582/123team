@@ -12,5 +12,7 @@
  
 	존재하지 않는 게시글 제목 입니다.
 	<a href="/123team/ENboards">돌아가기</a>
+	
+	<%@ include file="../module/footer.jsp" %>
 </body>
 </html>

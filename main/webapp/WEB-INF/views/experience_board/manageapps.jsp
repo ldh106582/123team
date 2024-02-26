@@ -34,6 +34,8 @@
         ${nothing}
 	</div>
  	
+ 	<%@ include file="../module/footer.jsp" %>
+ 	
  	<%-- 
 	<h2>체험 신청관리 페이지</h2>
 	<c:forEach items="${applists}" var="app">

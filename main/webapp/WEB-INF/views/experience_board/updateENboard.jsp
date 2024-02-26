@@ -33,6 +33,9 @@
     </form:form>
   </div>
   
+  
+  <%@ include file="../module/footer.jsp" %>
+  
   <%-- 
   <h1>공지글 수정 페이지</h1>
 	<form:form modelAttribute="updateBoard" action="update?boardId=${board.boardId}" method="POST">

@@ -209,6 +209,8 @@
 	           </div>
        		</div>
 		</div>
+	
+	<%@ include file="../module/footer.jsp" %>
 </body>
 <!-- js -->
 <script src="../resources/js/Mypage.js"></script>

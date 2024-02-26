@@ -15,5 +15,7 @@
 
 	<a href="/123team/Fboards">돌아가기</a>
 
+
+	<%@ include file="../module/footer.jsp" %>
 </body>
 </html>

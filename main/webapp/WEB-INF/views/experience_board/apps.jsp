@@ -67,6 +67,8 @@
         </div>
     </c:forEach>
 </div>
+
+	<%@ include file="../module/footer.jsp" %>
  <%-- 
 	<h2>내 체험단 예약현황</h2>
 	<a href="/123team/ENboards">체험단 공고글 목록으로 돌아가기</a>

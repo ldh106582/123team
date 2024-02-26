@@ -94,6 +94,8 @@
 		</div>
     </fieldset>
     </form:form>
+    
+    <%@ include file="../module/footer.jsp" %>
 
 </body>
 <!-- js -->

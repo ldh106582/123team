@@ -28,6 +28,8 @@
       <button type="submit" class="btn btn-primary">등록</button>
     </form:form>
   </div>
+  
+  <%@ include file="../module/footer.jsp" %>
 <%-- 
 	<form:form modelAttribute="updateBoard" action="update?boardId=${board.boardId}" method="POST">
 		제목 : <form:input path="title" name="title" value="${board.title}"/>

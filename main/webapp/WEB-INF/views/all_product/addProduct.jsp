@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
- <%@  include file="../module/header.jsp" %>
+ <%@ include file="../module/header.jsp" %>
  <h1>상품추가 페이지</h1>
  <form:form modelAttribute="product" method="POST">
  	<p>
@@ -29,5 +29,7 @@
  	등록하기 : <input type="submit">
  	<p>
  </form:form>
+ 
+ <%@ include file="../module/footer.jsp" %>
 </body>
 </html>

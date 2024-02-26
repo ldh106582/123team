@@ -98,6 +98,6 @@
 	<a href="Fboards?myId=${loginId}"><button>내 게시글만 보기</button></a>
 	</c:if>
 	
-	
+	<%@ include file="../module/footer.jsp" %>
 </body>
 </html>

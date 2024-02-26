@@ -11,38 +11,8 @@
 </head>
 <body>
 
-<nav class="navbar navbar-expand navbar-dark bg-danger">
-        <div class="container">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="/123team">Home</a>
-            </div>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-              <ul class="navbar-nav">
-                <li class="nav-item">
-                  <a class="nav-link" href="/123team/hospital">병원</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/123team/products">동물상품</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/123team/Fboards">게시판</a>
-                </li>
- 				<c:choose>             
-                <c:when test=${empty managerId }>
-                	
-                <li class="nav-item">
-                  <a class="nav-link" href="/123team/managerlogin/manager_page?personId=${managerId.personId}">마이페이지</a>
-                </li>
-               </c:when>
-               <c:otherwise>
-                <li class="nav-item">
-                  <a class="nav-link" href="/123team/login">로그인</a>
-                </li>
-                </c:otherwise>
-                </c:choose>
-            </div>
-        </div>
-    </nav>
+	<%@  include file="../module/headerdanger.jsp" %>
+
     <div class="con" style="display: flex;">
         <div class="left_container">
             <div class="left_container1" >
@@ -155,5 +125,6 @@
  	<a href="products/product?productId=${product.productId}"><button>상세정보</button></a>   <a href="#"><button>상품주문</button></a>
  </c:forEach>
  
+ 	<%@ include file="../module/footer.jsp" %>
 </body>
 </html>

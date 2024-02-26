@@ -96,6 +96,8 @@
 			</c:if>
 		</div>
     </div>
+    
+    <%@ include file="../module/footer.jsp" %>
 	
 <%-- 	
 	<c:if test="${board.personId == loginId}">

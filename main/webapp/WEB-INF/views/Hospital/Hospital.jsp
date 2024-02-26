@@ -16,5 +16,7 @@
 
 	<a href="booking">병원예약</a>
 	
+	
+	<%@ include file="../module/footer.jsp" %>
 </body>
 </html>
