@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import org.springframework.jdbc.core.RowMapper;
+
+import com.springmvc.domain.HospitalMember;
 import com.springmvc.domain.Manager;
 import com.springmvc.domain.ProductMember;
 
@@ -32,9 +34,9 @@ public class ManagerRepositoryImpl implements ManagerRepository {
 	@Override
 	public void getaddProductManager(ProductMember productMember) 
 	{
-		String SQL = "insert into ProductMember(PersonId, PersonPw, PersonEmail, PersonName, PersonPhone, CompanyName, CompanyAddress, CompanyPhone, Companyregistration, Type) values(?,?,?,?,?,?,?,?,?,?)";
+		String SQL = "insert into ProductMember(PersonId, PersonPw, PersonEmail, PersonName, PersonAddress ,PersonPhone, CompanyName, CompanyAddress, CompanyPhone, Companyregistration, Type) values(?,?,?,?,?,?,?,?,?,?,?)";
 		template.update(SQL, new Object[] {productMember.getPersonId(), productMember.getPersonPw(), productMember.getPersonEmail(),
-						productMember.getPersonName(), productMember.getPersonPhone(), productMember.getCompanyName(), productMember.getCompanyAddress(),
+						productMember.getPersonName(), productMember.getPersonAddress(),productMember.getPersonPhone(), productMember.getCompanyName(), productMember.getCompanyAddress(),
 						productMember.getCompanyPhone(), productMember.getCompanyregistration(), productMember.getType()});
 	}
 	
@@ -61,7 +63,6 @@ public class ManagerRepositoryImpl implements ManagerRepository {
 
 	        System.out.println(managerId.getPersonId());
 	        System.out.println(managerId.getType());
-	        
 	    }
 	    return managerId;
 	}
@@ -110,10 +111,10 @@ public class ManagerRepositoryImpl implements ManagerRepository {
 	@Override
 	public void getmanagerUpdate(ProductMember productMemId) {
 		if(productMemId.getPersonId()!=null) {
-			 String SQL = "update ProductMember set PersonPw=?, PersonEmail=?, PersonName=?, PersonPhone=?,"
+			 String SQL = "update ProductMember set PersonPw=?, PersonEmail=?, PersonName=?, PersonAddress=?, PersonPhone=?,"
 			 			   + "CompanyName=?, CompanyAddress=?, CompanyPhone=? where PersonId=?";
 			 template.update(SQL, productMemId.getPersonId(), productMemId.getPersonPw(), productMemId.getPersonEmail(), productMemId.getPersonName(),
-					 productMemId.getPersonPhone(), productMemId.getCompanyName(), productMemId.getCompanyAddress(), productMemId.getCompanyPhone());
+					 productMemId.getPersonAddress(), productMemId.getPersonPhone(), productMemId.getCompanyName(), productMemId.getCompanyAddress(), productMemId.getCompanyPhone());
 		}
 	}
 	// 수정 후 보여주기 위해 데이터를 가져옴
@@ -129,6 +130,21 @@ public class ManagerRepositoryImpl implements ManagerRepository {
 		    }
 		return ProductMemberId;
 	}
+	
+	// 병원 manager 회원가입 하는 함수
+	@Override
+	public void addHospitalManager(HospitalMember hospitalMember) {
+		String SQL = "insert into HopitalManager(personId =?, personPw =?, personEmail =?, personName =?, personPhone =?, hospitalName =?, hospitalAddress =?, hospitalPhone =?, hospitalregistration =?, type =?, hospitalliLicense =?)" + "values(?,?,?,?,?,?,?,?,?,?,?)";
+		template.update(SQL, hospitalMember.getPersonId(), hospitalMember.getPersonPw(), hospitalMember.getPersonEmail(), hospitalMember.getPersonName(), hospitalMember.getPersonPhone(),
+						hospitalMember.getHospitalName(), hospitalMember.getHospitalAddress(), hospitalMember.getHospitalPhone(), hospitalMember.getHospitalregistration(), hospitalMember.getHospitalliLicense());
+	}
+	 // 전체 db에 데이터를 넣어주는 함수
+	@Override
+	public void H_setAllMember(HospitalMember hospitalMember) {
+		String SQL = "insert into all_member(PersonId=?, type=?)" + "values(?,?)" ;
+		template.update(SQL, hospitalMember.getPersonId(), hospitalMember.getType());
+	}
+	
 	
 
 	

@@ -1,5 +1,6 @@
 package com.springmvc.repository;
 
+import com.springmvc.domain.HospitalMember;
 import com.springmvc.domain.Manager;
 import com.springmvc.domain.ProductMember;
 
@@ -22,4 +23,10 @@ public interface ManagerRepository {
 	void getmanagerUpdate(ProductMember productMemId );
 	// 수정 후 보여주기 위해 데이터를 가져옴
 	ProductMember setmanagerUpdate(ProductMember productMemId);
+	
+	// 병원 manager 회원가입 하는 함수
+	void addHospitalManager(HospitalMember hospitalMember);	
+	
+	 // 전체 db에 데이터를 넣어주는 함수
+	void H_setAllMember(HospitalMember hospitalMember);
 	}

@@ -1,17 +1,19 @@
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 
 $(document).ready(function() {
     $("#addButton").click(function(event) {
         event.preventDefault();
         
-        var amount = $("amount").val();
+        var amount = $("#amount").val();
+        var personId = $("#personId").val(); // personId를 가져올 요소가 필요합니다. 해당하는 요소의 ID를 확인해주세요.
         
         $.ajax({
             type: 'post',
             url: '/123team/products/addcart',
             dataType: 'json',
             data: {
-                "amount": amount
+                "amount": amount,
+                "personId": personId
             },
             success: function(result) {
                 if (result === true) {
@@ -23,6 +25,8 @@ $(document).ready(function() {
             error: function(request, error, status){
                 console.log(error);
             }
-        }); 
+        });
     });
 });
+
+

@@ -2,6 +2,8 @@ package com.springmvc.service;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.springmvc.controller.ShoppingCartController;
@@ -15,16 +17,11 @@ public class ShoppingCartServiceImp implements ShoppingCartService{
 	@Autowired
 	private ShoppingCartRepository shoppingCartRepository;
 	
-	// 장바구니를 생성하기 전 product db 데이터를 가져오는 함수
+	// 장바구니에 이미 값이 있을 경우 실행하는 함수
 	@Override
-	public Product createCart(String productId) {
-		return shoppingCartRepository.createCart(productId);	
-	}
-	// prduct에서 가져온 값을 장바구니db에 넣어줌
-	@Override
-	public void createshoppingCart(Product product) {
-		int amount = 1;
-		shoppingCartRepository.createshoppingCart(product, amount);
+	public void D_createshoppingCart(Product product) {
+		
+		shoppingCartRepository.D_createshoppingCart(product);
 	}
 	
 	// 장바구니에 있는 데이터를 가져옴
@@ -35,8 +32,8 @@ public class ShoppingCartServiceImp implements ShoppingCartService{
 	}
 	// 장바구니를 삭제하는 함수
 	@Override
-	public void alldeleteCart(int shoppingcart) {
-		shoppingCartRepository.alldeleteCart(shoppingcart);
+	public void alldeleteCart(String personId) {
+		shoppingCartRepository.alldeleteCart(personId);
 	}
 	//업데이트 하기 전 데이터를 출력하는 함수
 	@Override
@@ -45,7 +42,25 @@ public class ShoppingCartServiceImp implements ShoppingCartService{
 		return shoppingCartRepository.addShopingCart(personId);
 	}
 	
+	// 쇼핑카트 update 후 데이터를 db에 넣어주는 함수
+	@Override
+	public void setupdatecart(ShoppingCart shoppingCart) {
+		// TODO Auto-generated method stub
+		shoppingCartRepository.setupdatecart(shoppingCart);
+	}
 	
+	// db에서 값을 가져오는 함수
+	@Override
+	public List<ShoppingCart> getupdatecart(String productId) {
+		// TODO Auto-generated method stub
+		return shoppingCartRepository.getupdatecart(productId);
+	}
+	// 개별 product를 삭제하는 함수
+	@Override
+	public void deleteCart(int shoppingCartId) {
+		// TODO Auto-generated method stub
+		shoppingCartRepository.deleteCart(shoppingCartId);
+	}
 	
 	
 	

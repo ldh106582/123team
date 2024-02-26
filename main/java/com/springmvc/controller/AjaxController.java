@@ -42,14 +42,6 @@ public class AjaxController {
 		} else {
 		} return "false";
 	}
-	
-	// 장바구니 계수를 변경하는 함수
-	@PostMapping(value="/123team/products/addcart", produces="application/json" )
-	@ResponseBody
-	public String UpdateShopingCart(@RequestParam("shoppingcartId") int shoppingcartId, 
-									@RequestParam("amount") int amount) {
-		System.out.println("ajax 도착");
 
-		return null;
-	}
+	
 }

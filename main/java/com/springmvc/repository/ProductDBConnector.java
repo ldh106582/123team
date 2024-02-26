@@ -9,20 +9,20 @@ import com.springmvc.domain.Person;
 import com.springmvc.domain.Product;
 import com.springmvc.domain.ProductMember;
 
-public class ProductDBConnector implements RowMapper<ProductMember> {
-	public ProductMember mapRow(ResultSet rs, int rowNum) throws SQLException{
-		ProductMember productMember = new ProductMember();
-		productMember.setPersonId(rs.getString(1));
-		productMember.setPersonPw(rs.getString(2));
-		productMember.setPersonEmail(rs.getString(3));
-		productMember.setPersonName(rs.getString(4));
-		productMember.setPersonPhone(rs.getString(5));
-		productMember.setCompanyName(rs.getString(6));
-		productMember.setCompanyAddress(rs.getString(7));
-		productMember.setCompanyPhone(rs.getString(8));
-		productMember.setCompanyregistration(rs.getString(9));
-		productMember.setType(rs.getString(10));
-		return productMember;
+public class ProductDBConnector implements RowMapper<Product> {
+	public Product mapRow(ResultSet rs, int rowNum) throws SQLException{
+		Product product = new Product();
+		product.setPersonId(rs.getString(1));
+		product.setProductId(rs.getString(2));
+		product.setProductName(rs.getString(3));
+		product.setProductCategory(rs.getString(5));
+		product.setProductPrice(rs.getInt(6));
+		product.setReleaseDate(rs.getDate(7));
+		product.setProductDescribe(rs.getString(8));
+		product.setProductImage(rs.getString(9));
+		product.setProductUnitStock(rs.getInt(10));
+		
+		return product;
 	}
 
 }

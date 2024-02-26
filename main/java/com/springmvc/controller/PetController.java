@@ -52,7 +52,7 @@ public class PetController
 	// pet update 로 이동하기 
 	@GetMapping("/petread")
 	public String GetUpdatePet(@RequestParam("petId") String pet, Model model) {
-		System.out.println("petupodate CET 도착");
+		System.out.println("petupodate GET 도착");
 		Pet petId = petService.getUpdatePet(pet);
 		model.addAttribute("petId", petId);
 		return "/pet/petupdate";

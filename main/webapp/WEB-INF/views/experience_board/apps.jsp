@@ -1,6 +1,5 @@
-<%@page import="com.springmvc.domain.userinfo"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@page import="com.springmvc.domain.*"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
@@ -46,6 +45,7 @@
 </script>
 </head>
 <body>
+
  <%@  include file="../module/header.jsp" %>
  
  
@@ -68,6 +68,38 @@
     </c:forEach>
 </div>
  <%-- 
+=======
+   <nav class="navbar navbar-expand navbar-dark bg-success">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/123team">Home</a>
+            </div>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link" href="/123team/hospital">병원</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/123team/products">동물상품</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/123team/Fboards">게시판</a>
+                </li>
+ 				<c:choose>             
+	            <c:when test="${not empty managerId }">
+	                	
+	                <li class="nav-item">
+	                  <a class="nav-link" href="/123team/managerlogin/manager_page?personId=${managerId.personId}">마이페이지</a>
+	                </li>
+	                
+	            </c:when>
+	               	<c:otherwise>
+		                <li class="nav-item">
+		                  <a class="nav-link" href="/123team/login">로그인</a>
+		                </li>
+	                </c:otherwise>
+                </c:choose>
+>>>>>>> fa9e400f8ceb5c1826ec622c185d981968432be3
 	<h2>내 체험단 예약현황</h2>
 	<a href="/123team/ENboards">체험단 공고글 목록으로 돌아가기</a>
 	<p>
