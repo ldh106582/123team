@@ -19,7 +19,6 @@ import org.springframework.web.multipart.MultipartFile;
 import com.springmvc.domain.HospitalMember;
 import com.springmvc.domain.Manager;
 import com.springmvc.domain.ProductMember;
-import com.springmvc.domain.userinfo;
 import com.springmvc.service.ManagerService;
 
 
@@ -35,7 +34,7 @@ public class ManagerController
 								@RequestParam("type") String type) {
 	System.out.println("Member 페이지 요청 도착");
 	System.out.println("싱글톤 type : " + type);
-	userinfo.getInstance().setType(productMember.getType());
+	Manager.getInstance().setType(productMember.getType());
 	
 	if(type == "p" || "p".equals(type)) {
 	productMember.setType(type);
@@ -54,8 +53,8 @@ public class ManagerController
 									   @ModelAttribute("hospitalMember") HospitalMember hospitalMember,
 										HttpServletRequest request, Model model,
 										BindingResult result) {
-		userinfo userInfo = userinfo.getInstance();
-		String t_type = userInfo.getType();
+		Manager manager = Manager.getInstance();
+		String t_type = manager.getType();
 		System.out.println("로그인 확인" + t_type);
 		
 		// product 관리자 회원가입 하는 함수 

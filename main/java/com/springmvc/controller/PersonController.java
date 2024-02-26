@@ -9,7 +9,6 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,7 +26,6 @@ import com.springmvc.domain.Person;
 import com.springmvc.domain.Pet;
 import com.springmvc.domain.ProductMember;
 import com.springmvc.service.PersonService;
-import com.springmvc.service.ManagerService;
 
 @Controller
 @RequestMapping("/login")
@@ -63,6 +61,7 @@ public class PersonController {
 								Model model,
 								Pet pet, HttpServletRequest request) {
 
+
 		// 1. 조원들에게 넘겨줄 객체 2. personId와 pw를 가져옴
 		Person id = personService.loginSucess(person);
 		if(id != null) 
@@ -82,8 +81,6 @@ public class PersonController {
 			
 			return "member/Mypage";
 		}
-	
-		
 		return "Login";
 
 	}
@@ -137,7 +134,6 @@ public class PersonController {
 		System.out.println("로그아웃 페이지로 이동");
 		// 세션 무효시킴
 	    sessionStatus.setComplete();
-	    
 	    HttpSession session = request.getSession();
 	    session.invalidate();
 
@@ -150,7 +146,6 @@ public class PersonController {
 	            response.addCookie(cookie);
 	        }
 	    }
-	  
 	    return "redirect:/login";
 	}
 }

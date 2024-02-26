@@ -77,26 +77,20 @@
 		    <div id="headerLeft" class="header_left" aria-hidden="false">
 		        <ul class="left_menu" role="menu">
 		            <li>
-		               <a href="" class="left_item" role="menuitem">
+		               <a href="#" class="left_item" role="menuitem">
 		                   <div class="menu_text">내정보</div>
 		               </a>
 		            </li>
 		            <li>
-<<<<<<< HEAD
+
 		               <a href="./login/petcard?petid=${petid}" class="left_item" role="menuitem" >
 		                   <div class="menu_text ">펫 카드</div>
 		               </a>
-=======
-		
-		               <div class="left_item" role="menuitem" >
-		                   <div class="menu_text ">펫 카드</div>
-		               </div>
 						<c:forEach items="${petName }" var="petName">
 							<a href="./login/login/petcard?petid=${petName.petId}" class="left_item" role="menuitem">
 								<div>${petName.petName }</div>
 							</a>
 						</c:forEach>
->>>>>>> fa9e400f8ceb5c1826ec622c185d981968432be3
 		            </li>
 		            <li>
 		               <a href="./pet?id=${ id.personId }" class="left_item" role="menuitem" >
@@ -105,6 +99,7 @@
 		            </li>
 		            <li>
 		               <a href="./login/logout" class="left_item" role="menuitem" >
+
 		                   <div class="menu_text ">로그아웃</div>
 		               </a>
 		            </li>

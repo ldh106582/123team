@@ -7,7 +7,7 @@ import com.springmvc.domain.BoardComment;
 public interface BoardCommentService {
 
 	List<BoardComment> getCommentsById(String boardId);
-	void addComment(String boardId, String comment);
+	void addComment(String boardId, String comment, String personId);
 	void deleteComment(String commentId);
 	void updateComment(BoardComment boardComment);
 	String getBoardIdByCID(String commentId);

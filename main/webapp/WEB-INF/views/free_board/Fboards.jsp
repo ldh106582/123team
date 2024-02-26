@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@page import="com.springmvc.domain.userinfo"%>
+<%@page import="com.springmvc.domain.*"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
@@ -46,13 +46,8 @@
 	                </c:otherwise>
                 </c:choose>
 
-<<<<<<< HEAD
- <%@  include file="../module/header.jsp" %>
-=======
-	<h1>게시판 페이지</h1>
->>>>>>> fa9e400f8ceb5c1826ec622c185d981968432be3
-	<%
- 		request.setAttribute("loginId", userinfo.getInstance().getPersonId());
+	<% // 오류있음 한의 확인할것 변경x
+ 		// request.setAttribute("loginId", userinfo.getInstance().getPersonId());
  	%>
 	
 	<% 
@@ -60,10 +55,9 @@
 		request.setAttribute("sise", size);
 	%>
 	
-<<<<<<< HEAD
-=======
+
 	<%
-		if(pagenum%5>0){
+		/* if(pagenum%5>0){
 			++totalPages;
 		}
 	
@@ -72,7 +66,7 @@
 		if(size>5){
 			--totalPages;
 		}
-		request.setAttribute("totalPages", totalPages);
+		request.setAttribute("totalPages", totalPages); */
 	%>
 	
 	<c:forEach begin="1" end="${totalPages}" var="pageNum"> <!-- 페이지 번호 출력 -->
@@ -86,31 +80,6 @@
 		<button type="submit">검색</button>
 	</form>
 
-	
-
-	<nav class="navbar navbar-expand navbar-dark bg-dark">
-        <div class="container">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="/123team">Home</a>
-            </div>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-              <ul class="navbar-nav">
-                <li class="nav-item">
-                  <a class="nav-link " href="/123team/hospital">병원</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/123team/product">동물상품</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/123team/Fboards">게시판</a>
-                </li>
-                <li class="nav-item ">
-                  <a class="nav-link" href="/123team/login">로그인</a>
-                </li>
-            </div>
-        </div>
-    </nav>
->>>>>>> fa9e400f8ceb5c1826ec622c185d981968432be3
     <div class="container my-3">
         <h1><img width="66" height="66" src="https://img.icons8.com/ios/66/noticeboard.png" alt="noticeboard"/>자유게시판</h1>
         <div class="d-flex justify-content-between mb-3">

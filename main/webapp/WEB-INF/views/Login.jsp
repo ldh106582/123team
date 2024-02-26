@@ -1,7 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<<<<<<< HEAD
 <%@page import="com.springmvc.domain.*" %>
+=======
+>>>>>>> origin/hanui
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,6 +16,7 @@
 <title>로그인</title>
 </head>
 <body>
+
 <% 
 Manager user = Manager.getInstance(); 
 String type = user.getType();

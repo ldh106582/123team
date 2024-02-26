@@ -51,8 +51,8 @@
 
 
 	<%@  include file="../module/header.jsp" %>
-	<%
-		request.setAttribute("loginId", userinfo.getInstance().getPersonId());
+	<% // 오류 잇었음 userinfo에서 manager로 변경했음 한의 확인 후 수정할 것 
+		request.setAttribute("loginId", Manager.getInstance().getPersonId());
 	%>
  			
 	<div class="container my-3">
@@ -65,8 +65,10 @@
                     <p class="">${board.context}</p>
                 </div>
                 <hr>
+                <c:if test="${loginId == board.personId}">
                 <a href="update?boardId=${board.boardId}"class="btn btn-primary">수정하기</a>
                 <a href="delete?boardId=${board.boardId}"class="btn btn-danger">삭제하기</a>
+                </c:if>
             </div>
         </div>
         <hr>

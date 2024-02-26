@@ -1,6 +1,4 @@
-<%@page import="com.springmvc.domain.*"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -103,7 +101,7 @@
 	<%@  include file="../module/header.jsp" %>
 	
 	<%
-		request.setAttribute("loginId", userinfo.getInstance().getPersonId());
+		request.setAttribute("loginId", session.getAttribute("personId").toString());
 	%>
  			
 	<div class="container my-3">
@@ -119,9 +117,16 @@
                 <div class="col-md-12" style="height: 200px;">
                     <p class="">${board.context}</p>
                 </div>
+                <c:if test="${loginId != null}">
+	                <div id="container">
+						<button id="delp" onclick="bookform('${board.title}','${board.animal}','${board.experience}','${board.personId}')">체험신청</button>
+					</div>			
+				</c:if>
                 <hr>
+                <c:if test="${loginId == board.personId}">
                 <a href="update?boardId=${board.boardId}"class="btn btn-primary">수정하기</a>
                 <a href="delete?boardId=${board.boardId}"class="btn btn-danger">삭제하기</a>
+                </c:if>
             </div>
         </div>
         <hr>
@@ -201,11 +206,7 @@
 			<h5> 동물 : ${board.animal} &emsp;&emsp; 체험 : ${board.experience}</h5>
 			<h5>내용</h5>
 			<div>${board.context}</div>
-			<c:if test="${loginId != null}">
-			<div id="container">
-				<button id="delp" onclick="bookform('${board.title}','${board.animal}','${board.experience}','${board.personId}')">체험신청</button>
-			</div>
-			</c:if>
+			
 			<br>
 			====================================================================================
 			<h5> 댓글</h5>
