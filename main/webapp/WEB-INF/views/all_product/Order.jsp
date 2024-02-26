@@ -56,47 +56,29 @@
 	
 	<br>
  	<div class="container">
- 		<div>
- 			<a href="/123team/products/alldelete?personId=${shoppingCart.get(0).personId}" class="btn border border-danger mr-5 justify-content-right" id="alldelete" >주문취소</a>
- 		</div>
  		<br>
 		<div class="">
 			<table class="table text-center">
 				<tr> 
-  				  <th class="border-right">주문자
-  				  <th class="border-right">배송지
 				  <th class="border-right">상품명
 				  <th class="border-right">수량
 				  <th class="border-right">단가
-				  <th class="border-right">총금액
+				  <th class="">총금액
 				</tr>
-				<c:choose>
-				    <c:when test="${empty listOfperson}">
-				        <tr>
-				            <c:forEach items="${listOfperson}" var="person">
-				                <th class="shop border-right align-self-center">${person.personId }</th>
-				                <th class="shop border-right align-self-center">${person.personAddress}</th>
-				            </c:forEach>
-				        </tr>
-				    </c:when>
-					<c:when test="${empty listOfmanager}">
-				        <c:forEach items="${listOfmanager}" var="manager">
-				            <tr>
-				                <th class="shop border-right align-self-center">${manager.personId }</th>
-				             	<th class="shop border-right align-self-center">${manager.companyAddress}</th>
-				            </tr>
-				        </c:forEach>
-					</c:when>
-				</c:choose>
-				
-				<c:forEach items="${listOfcart}" var="cart">
+				<c:forEach items="${listOfOrder}" var="order">
 				    <tr>
-				        <td class="shop border-right align-self-center">${cart.productName}</td>
-				        <td class="shop border-right align-self-center">${cart.amount}</td>
-				        <td class="shop border-right align-self-center">${cart.productPrice}</td>
-				        <td class="shop border-right align-self-center"></td>
+				        <td class="shop border-right align-self-center">${order.productName}</td>
+				        <td class="shop border-right align-self-center">${order.amount}</td>
+				        <td class="shop border-right align-self-center">${order.productPrice}</td>
+				        <td class="shop border-right align-self-center">${order.totalPrice}</td>
 				    </tr>
 				</c:forEach>
+				<div class="contianer">
+					<h1 clss="alert alert-danger">주문해 주셔서 감사합니다.</h1>
+			    	<h4>소중한 상품 안전하게 배송해 드리겠습니다.</h4>
+			    	<p>주문 번호 : ${order.oderNum}
+				</div> 
+				<br><br>
 			</table>
 		</div>
 	</div>

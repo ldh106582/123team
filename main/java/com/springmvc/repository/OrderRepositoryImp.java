@@ -10,6 +10,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.springmvc.domain.Manager;
+import com.springmvc.domain.Order;
 import com.springmvc.domain.Person;
 import com.springmvc.domain.ProductMember;
 import com.springmvc.domain.ShoppingCart;
@@ -62,6 +63,28 @@ public class OrderRepositoryImp implements OrderRepository{
 			List<ProductMember> listOfproduct = template.query(SQL, new Object[] {personId}, new ProductMemberDBConnector());
 			return listOfproduct;
 		} else {
+			return null;
+		}
+	}
+	// 장바구니에서 받아온 데이터를 order db에 넣음
+	@Override
+	public void Ordercreate(Order order) {
+		String SQL = "insert into Ordertable values(?,?,?,?,?,?,?,?,?,?)";
+		template.update(SQL, order.getProductId(), order.getPersonName(), order.getProductName(), order.getAmount(), order.getPrice(),
+				order.getOrderDate(), order.getTotalPrice(), order.getPersonId(), order.getPersonName(), order.getPersonPhone(),
+				order.getPersonAddress());
+	}
+	//장바구니에 있는 데이터를 가져오는 함수
+	@Override
+	public List<Order> GetOrdercreate(String personId) {
+		String SQL = "select count(*) from Ordertable where ProductId =?";
+		int intNum = template.queryForObject(SQL, Integer.class, personId);
+		if(intNum != 0) {
+			SQL = "select * from Ordertable where ProductId =?";
+		List<Order> listOfOrder = template.query(SQL, new Object[] {personId}, new OrderDBConnector());
+		return listOfOrder;
+		} else {
+			System.out.println("order 값이 없습니다.");
 			return null;
 		}
 	}

@@ -65,7 +65,10 @@
 	  <br>
 	  
       <div class="container">
-        <form action="/orders/o_create" class="form-horizontal" method="post">
+        <form action="/123team/orders/o_create" class="form-horizontal" method="post">
+        <input type="hidden" name="personId" value="${listOfperson.personName}"/> <!-- 이름 -->
+        <input type="hidden" name="personId" value="${listOfperson.personPhone}"/> <!-- 연락처 -->
+        <input type="hidden" name="personId" value="${listOfperson.personAddress}"/> <!-- 주소 -->
             <div class="form-group row">
                 <label class="col-sm-2"> <i class="fa-solid fa-user col-sm-1"></i> 성명</label>
                 <div class="col-sm-3">

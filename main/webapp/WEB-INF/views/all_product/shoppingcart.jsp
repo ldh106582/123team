@@ -72,15 +72,6 @@
 	</div>
 	
  	<div class="container">
- 	
- 		<div class="float-right mb-2">
- 			<a href="/123team/orders/o_shipping?personId=${shoppingCart.get(0).personId}" class="btn btn-info mr-5">주문하기</a>
- 		</div>
- 		
- 		<div>
- 			<a href="/123team/products/alldelete?personId=${shoppingCart.get(0).personId}" class="btn border border-dark ml-5" id="alldelete" >전체삭제</a>
- 		</div>
- 	
 		<div class="">
 			<table class="table text-center">
 				<tr> 
@@ -94,13 +85,20 @@
 				</tr>
 			    <c:forEach items="${shoppingCart}" var="cart" varStatus="status">
    				<form action="/123team/products/addcart" method="post">
-	   				<input type="hidden" name="shoppingCartId" value="${cart.shoppingCartId}">
-			        <input type="hidden" name="productId" value="${cart.productId}">
-			        <input type="hidden" name="productName" value="${cart.productName}">
-   		            <input type="hidden" name="productPrice" value="${cart.productPrice}">
-   		            <input type="hidden" name="productCategory" value="${cart.productCategory}">
-			        <input type="hidden" name="personId" value="${cart.personId}">
-			        
+   				 	<div class="float-right mb-2">
+			 			<button onclick="redirectToLink" href="/123team/orders/o_shipping?personId=${shoppingCart.get(0).personId}" class="btn btn-info mr-5">주문하기</button>
+			 		</div>
+			 		
+			 		<div>
+			 			<a href="/123team/products/alldelete?personId=${shoppingCart.get(0).personId}" class="btn border border-dark ml-5" id="alldelete" >전체삭제</a>
+			 		</div>
+	   				<input type="hidden" name="shoppingCartId" value="${cart.shoppingCartId}"> <!-- 카트 넘버 -->
+			        <input type="hidden" name="productId" value="${cart.productId}"> <!-- 상품 아이디 -->
+			        <input type="hidden" name="productName" value="${cart.productName}"> <!-- 상품이름 -->
+			        <input type="hidden" name="amount" value="${cart.amount}"> <!-- 상품 양 -->
+   		            <input type="hidden" name="productPrice" value="${cart.productPrice}"> <!-- 상품 가격 -->
+			        <input type="hidden" name="personId" value="${cart.personId}"> <!-- 주문자 아이디 -->
+
 			        <tr>
 			            <td class="shop border-right">${cart.productCategory}</td>
 			            <td class="shop border-right align-self-center">img</td>
@@ -135,4 +133,9 @@
 		</div>
 	</div>
 </body>
+<script>
+function redirectToLink(){
+	 window.location.href ="/123team/products/addcart"
+}
+</script>
 </html>
