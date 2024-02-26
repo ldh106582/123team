@@ -52,7 +52,7 @@ public class NBoardRepositoryImpl implements NBoardRepository{
 	public void setNBoard(NBoard board) {
 		
 		String SQL = "insert into NBoard values(?,?,?,?,?,?)";
-//		이름과 아이디 받아오기
+//		이름과 아이디 받아오기 오류확인
 		userinfo getboardNI = userinfo.getInstance();
 		System.out.println("==============아이디받아온값================");
 		System.out.println(getboardNI.getPersonId());
