@@ -27,24 +27,19 @@
                 <li class="nav-item">
                   <a class="nav-link" href="/123team/Fboards">게시판</a>
                 </li>
-                
-                <% Manager manager = (Manager) session.getAttribute("managerId");
-              		String type = manager.getType();
-                	System.out.println("managerId : " + type);%>
-                	
-                <%	if("p".equals(type) || "p" == type){ %>
+ 				<c:choose>             
+                <c:when test=${empty managerId }>
                 	
                 <li class="nav-item">
                   <a class="nav-link" href="/123team/managerlogin/manager_page?personId=${managerId.personId}">마이페이지</a>
                 </li>
-                
-                <%}else{ %>
-                
+               </c:when>
+               <c:otherwise>
                 <li class="nav-item">
                   <a class="nav-link" href="/123team/login">로그인</a>
                 </li>
-                
-                <% } %>
+                </c:otherwise>
+                </c:choose>
             </div>
         </div>
     </nav>
