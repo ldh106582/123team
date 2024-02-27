@@ -61,7 +61,7 @@
 					<div class="intro9">
 						<div class="intro10 border border-dark btn btn-primary p-3 ">	
 							<i class="fa-regular fa-hospital"></i>
-							<a href="./hospital" class=" justify-center text-wrap text-white">병원 &raquo;</a>
+							<a href="./hospitals" class=" justify-center text-wrap text-white">병원 &raquo;</a>
 						</div>
 						<div class="intro10 border border-dark btn btn-primary p-3">
 							<i class="fa-sharp fa-solid fa-gifts"></i>

@@ -56,7 +56,7 @@
  			
 	<div class="container my-3">
         <h1>공지 상세 페이지</h1>
-        <a href="./">돌아가기</a>
+        <a href="/123team/Nboards">돌아가기</a>
         <div class="row">
             <div class="col-md-12">
                 <h1 class="mt-4">${board.title}</h1>

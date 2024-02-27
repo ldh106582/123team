@@ -21,9 +21,47 @@ public class HospitalRepositoryImp implements HospitalRepository{
 	 
 	@Override
 	public List<Hospital> getAllhospitals() {
-		String SQL = "";
+		String SQL = "Select * from hospital";
 		List<Hospital> list = template.query(SQL, new HospitalRowMapper());
-		return null;
+		return list;
 	}
 
+	@Override
+	public Hospital gethosptialByhId(String hid) {
+		Hospital hospital=null;
+		String SQL = "Select * from hospital";
+		List<Hospital> list = template.query(SQL, new HospitalRowMapper());
+		for(int i =0;i<list.size();i++) {
+			hospital = list.get(i);
+			if(hospital.getHid().equals(hid)) {
+				break;
+			}
+		}
+		return hospital;
+	}
+
+	@Override
+	public void addhospital(Hospital hospital) {
+		String SQL = "insert into hospital values(?,?,?,?,?,?,?,?,?)";
+		template.update(SQL,hospital.getName(),hospital.getAddr(),hospital.getNumber(),hospital.getRuntime(),getHid(),hospital.getParking(),hospital.getDescription(),hospital.getPersonId(),hospital.getImage());
+	}
+
+	private String getHid() {
+		String str = Long.toString(System.currentTimeMillis());
+		return str;
+	}
+
+	@Override
+	public void updateHospital(Hospital hospital, String hid) {
+		String SQL = "update hospital set name=?,number=?,runtime=?,parking=?,description=?,image=? where hid=?";
+		template.update(SQL,hospital.getName(),hospital.getNumber(),hospital.getRuntime(),hospital.getParking(),hospital.getDescription(),hospital.getImage(),hid);
+	}
+
+	@Override
+	public void deleteHospital(String hid) {
+		String SQL ="delete from hospital where hid='"+hid+"'";
+		template.update(SQL);
+		
+	}
+	
 }
