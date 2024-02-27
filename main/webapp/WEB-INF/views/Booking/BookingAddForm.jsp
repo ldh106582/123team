@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+ <%@  include file="../module/headerinfo.jsp" %>
 	<form:form modelAttribute="booking" method="post">
 		<p>반려동물 이름 <form:input path="petname" name="petname"/>
 		<p>품종 <form:input path="petbreed" name="petbreed" />

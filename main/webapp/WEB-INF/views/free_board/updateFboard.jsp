@@ -11,6 +11,7 @@
 </head>
 <body>
 
+<<<<<<< HEAD
    <nav class="navbar navbar-expand navbar-dark bg-success">
         <div class="container">
             <div class="navbar-header">
@@ -39,6 +40,9 @@
 		                </li>
 	                </c:otherwise>
                 </c:choose>
+=======
+ <%@  include file="../module/headersuccess.jsp" %>
+>>>>>>> origin/hanui
  
   <div class="container my-3">
     <h1>게시글 수정 페이지</h1>
@@ -51,8 +55,8 @@
         <label for="context">내용 :</label>
         <form:input path="context" class="form-control" style="height: 300px;" name="context" value="${board.context}"/>
       </div>
-      <a href="/delete?boardId=${board.boardId}" class="btn btn-danger">삭제</a>
       <button type="submit" class="btn btn-primary">등록</button>
+      <a href="/delete?boardId=${board.boardId}" class="btn btn-danger">삭제</a>
     </form:form>
   </div>
   

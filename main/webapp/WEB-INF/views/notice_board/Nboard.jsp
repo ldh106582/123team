@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 <%@page import="com.springmvc.domain.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+=======
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+>>>>>>> origin/hanui
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -49,14 +54,21 @@
 </head>
 <body>		
 
+<<<<<<< HEAD
 
 	<%@  include file="../module/header.jsp" %>
 	<% // 오류 잇었음 userinfo에서 manager로 변경했음 한의 확인 후 수정할 것 
 		request.setAttribute("loginId", Manager.getInstance().getPersonId());
+=======
+ <%@  include file="../module/headersuccess.jsp" %>
+	<%
+	request.setAttribute("loginId", session.getAttribute("personId"));
+>>>>>>> origin/hanui
 	%>
  			
 	<div class="container my-3">
         <h1>공지 상세 페이지</h1>
+        <a href="/123team/Nboards">돌아가기</a>
         <div class="row">
             <div class="col-md-12">
                 <h1 class="mt-4">${board.title}</h1>
@@ -73,33 +85,43 @@
         </div>
         <hr>
         <div class="list-group">
+        	<c:if test="${loginId != null}">
+			    <h5 class="mb-3">댓글</h5>
+			    <form action="ENboard" method="POST" class="mb-3">
+			        <input type="hidden" name="boardId" value="${board.boardId}">
+			        <div class="form-group">
+			            <textarea class="form-control" name="comment" rows="3"></textarea>
+			        </div>
+			        <button type="submit" class="btn btn-primary">댓글 작성</button>
+			    </form>
+			</c:if>
+			
 		    <c:forEach items="${Commentlist}" var="comments">
 		        <div class="list-group-item">
 		            <div class="d-flex w-100 justify-content-between">
-		                <h5 class="mb-1">${comments.comment}</h5>
+		            	<h5 class="mb-1">${comments.personId}</h5>
 		                <small>${comments.registDay}</small>
+		                
+		                
 		            </div>
-		            <p class="mb-1" id="${comments.commentId}">${comments.comment}</p>
+		            <div class="d-flex w-100 justify-content-between" id="${comments.commentId}">
+		            <p class="mb-1" id="willdelete${comments.commentId}">${comments.comment}</p>
+		             </div>
 		            <c:if test="${comments.personId == loginId}">
 		                <button class="btn btn-primary" onclick="editform('${comments.comment}','${comments.commentId}')">댓글 수정</button>
 		                <a href="deletecoment?commentId=${comments.commentId}&boardId=${board.boardId}" class="btn btn-danger">댓글 삭제</a>
 		            </c:if>
 		        </div>
 		    </c:forEach>
-	        <c:if test="${loginId != null}">
-			    <h5 class="mb-3">댓글 작성</h5>
-			    <form action="ENboard" method="POST" class="mb-3">
-			        <input type="hidden" name="boardId" value="${board.boardId}">
-			        <div class="form-group">
-			            <textarea class="form-control" name="comment" rows="3"></textarea>
-			        </div>
-			        <button type="submit" class="btn btn-primary">등록</button>
-			    </form>
-			</c:if>
+	        
 		</div>
+<<<<<<< HEAD
     </div>
     
     <%@ include file="../module/footer.jsp" %>
+=======
+	</div>
+>>>>>>> origin/hanui
 	
 <%-- 	
 	<c:if test="${board.personId == loginId}">

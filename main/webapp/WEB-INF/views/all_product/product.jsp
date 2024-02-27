@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +9,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 <body>
+<<<<<<< HEAD
 <!-- header -->
    <nav class="navbar navbar-expand navbar-dark bg-danger">
         <div class="container">
@@ -44,6 +46,10 @@
     </nav>
    <!-- header end -->
 
+=======
+ <%@  include file="../module/headerdanger.jsp" %>
+ 
+>>>>>>> origin/hanui
  	<form action="/123team/products/creatCart" method="get">
  		<input type="hidden" name="productId" value="${product.productId}">
  		<input type="hidden" name="productName" value="${product.productName}">

@@ -10,6 +10,7 @@
 <title>products 페이지</title>
 </head>
 <body>
+<<<<<<< HEAD
 
 	<%@  include file="../module/headerdanger.jsp" %>
 
@@ -49,6 +50,10 @@
     </nav>
         <!-- header end -->
 
+=======
+ <%@  include file="../module/headerdanger.jsp" %>
+ 
+>>>>>>> origin/hanui
     <div class="con" style="display: flex;">
         <div class="left_container">
             <div class="left_container1" >

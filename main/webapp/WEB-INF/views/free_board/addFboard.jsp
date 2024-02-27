@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 <body>
+<<<<<<< HEAD
 <!-- header start -->
    <nav class="navbar navbar-expand navbar-dark bg-success">
         <div class="container">
@@ -47,6 +48,10 @@
     </nav>
  <!-- header end -->
 	
+=======
+ <%@  include file="../module/headersuccess.jsp" %>
+ 
+>>>>>>> origin/hanui
   <div class="container my-3">
     <h1>게시글 등록 페이지</h1>
     <form:form modelAttribute="board" method="POST">

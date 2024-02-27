@@ -1,7 +1,11 @@
 package com.springmvc.controller;
 
 import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
+
+
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,7 +57,6 @@ public class ENBoardController {
 //	체험공고글 작성 페이지 이동
 	@GetMapping("/add")
 	public String addboardform(@ModelAttribute("board")ENBoard board,HttpSession session) {
-		System.out.println("작성아이디는:?");
 		System.out.println(session.getAttribute("personId"));
 		return "experience_board/addENboard";
 	}
@@ -176,8 +179,11 @@ public class ENBoardController {
 	 }
 //	 날짜 변경
 	 @PostMapping("/updateapp")
-	 public String updateapp(HttpServletRequest request) {
+	 public String updateapp(@RequestParam("originday") String originday,HttpServletRequest request) {
 		 String registDay = request.getParameter("registDay");
+		 if(registDay.equals(originday)) {
+			 return "redirect:/ENboards/applist";
+		 }
 		 String eid = request.getParameter("eid");
 		 enboardService.updatebook(registDay,eid);
 		 return "redirect:/ENboards/applist";
@@ -186,11 +192,12 @@ public class ENBoardController {
 //	 모든 신청 보기
 	 @GetMapping("manageapps")
 	 public String manageapps(Model model,HttpServletRequest request,HttpSession session) {
-		 String personId = session.getAttribute("peronId").toString();
+		 String personId = (String) session.getAttribute("personId");
 		 model.addAttribute("applists",enboardService.getPermisionList(personId));
 		 if(enboardService.getPermisionList(personId).isEmpty()) {
 			 request.setAttribute("nothing", "승인할 것이 없어요");
 		 }
+		 
 		 return "experience_board/manageapps";
 	 }
 // 	 신청 승인

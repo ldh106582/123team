@@ -153,4 +153,12 @@ public class PersonController {
 
 	    return "redirect:/login";
 	}
+	
+	@GetMapping("/mypage")
+	public String mypage(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		Person person = (Person) session.getAttribute("personkey");
+		session.setAttribute("person", person);
+		return "member/Mypage";
+	}
 }

@@ -7,7 +7,15 @@ public class Hospital {
 	String runtime; //운영시간
 	String hid; //병원고유 아이디
 	String parking; // 주차정보
-	String desciption; // 병원설명
+	String description; // 병원설명
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
 	String personId; //병원관리자 ID
 	String image;
 	
@@ -58,14 +66,6 @@ public class Hospital {
 
 	public void setHid(String hid) {
 		this.hid = hid;
-	}
-
-	public String getDesciption() {
-		return desciption;
-	}
-
-	public void setDesciption(String desciption) {
-		this.desciption = desciption;
 	}
 
 	public String getPersonId() {

@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<<<<<<< HEAD
 <!-- header start -->
    <nav class="navbar navbar-expand navbar-dark bg-success">
         <div class="container">
@@ -42,9 +43,10 @@
         </div>
     </nav>
  <!-- header end -->
+=======
+ <%@  include file="../module/headersuccess.jsp" %>
+>>>>>>> origin/hanui
 	존재하지 않는 게시글 제목 입니다.
-
-	<a href="./">돌아가기</a>
 
 	<a href="/123team/Fboards">돌아가기</a>
 

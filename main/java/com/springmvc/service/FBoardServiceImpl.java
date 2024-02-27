@@ -22,8 +22,8 @@ public class FBoardServiceImpl implements FBoardService{
 		
 	}
 	
-	public void setFBoard(FBoard board) {
-		fboardRepository.setFBoard(board);
+	public void setFBoard(FBoard board, String personId) {
+		fboardRepository.setFBoard(board,personId);
 	}
 	@Override
 	public void updateFBoard(FBoard board,String b_id) {

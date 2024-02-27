@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 <%@page import="com.springmvc.domain.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+=======
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+>>>>>>> origin/hanui
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
@@ -31,22 +36,43 @@
 			inputD.setAttribute("name","registDay");
 			inputD.setAttribute("value",registday);
 			
+			var inputO = document.createElement("input");
+			inputO.setAttribute("type","hidden");
+			inputO.setAttribute("name","originday");
+			inputO.setAttribute("value",registday);
 			
 			var inputs = document.createElement("input");
 			inputs.setAttribute("type","submit");
 			inputs.setAttribute("value","변경하기");
 			
+			var button = document.createElement("button");
+			button.setAttribute("onclick",cancelForm());
+			var buttonText = document.createTextNode("취소");
+			button.appendChild(buttonText);
+			
 			form.appendChild(inputT);
 			form.appendChild(inputD);
 			form.appendChild(inputs);
+			form.appendChild(inputO);
+			form.appendChild(button);
 			
 			container.appendChild(form);
 	}
+	function cancelForm() {
+         var form = document.querySelector("form");
+         if (form) {
+             form.remove();
+         }
+     }
 </script>
 </head>
 <body>
 
+<<<<<<< HEAD
  <%@  include file="../module/header.jsp" %>
+=======
+ <%@  include file="../module/headersuccess.jsp" %>
+>>>>>>> origin/hanui
  
  
  <div class="container">
