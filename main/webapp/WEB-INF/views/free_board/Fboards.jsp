@@ -45,7 +45,9 @@
 		                </li>
 	                </c:otherwise>
                 </c:choose>
-
+             </div>
+        </div>
+    </nav>
 	<% // 오류있음 한의 확인할것 변경x
  		// request.setAttribute("loginId", userinfo.getInstance().getPersonId());
  	%>

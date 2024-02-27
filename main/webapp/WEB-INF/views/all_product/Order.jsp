@@ -65,14 +65,12 @@
 				  <th class="border-right">단가
 				  <th class="">총금액
 				</tr>
-				<c:forEach items="${listOfOrder}" var="order">
 				    <tr>
 				        <td class="shop border-right align-self-center">${order.productName}</td>
 				        <td class="shop border-right align-self-center">${order.amount}</td>
-				        <td class="shop border-right align-self-center">${order.productPrice}</td>
-				        <td class="shop border-right align-self-center">${order.totalPrice}</td>
+				        <td class="shop border-right align-self-center">${order.price}</td>
+				        <td class="align-self-center">${order.totalPrice}</td>
 				    </tr>
-				</c:forEach>
 				<div class="contianer">
 					<h1 clss="alert alert-danger">주문해 주셔서 감사합니다.</h1>
 			    	<h4>소중한 상품 안전하게 배송해 드리겠습니다.</h4>

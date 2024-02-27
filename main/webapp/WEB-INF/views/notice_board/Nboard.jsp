@@ -51,8 +51,9 @@
 
 
 	<%@  include file="../module/header.jsp" %>
-	<% // 오류 잇었음 userinfo에서 manager로 변경했음 한의 확인 후 수정할 것 
-		request.setAttribute("loginId", Manager.getInstance().getPersonId());
+	<%
+	// 오류 잇었음 userinfo에서 manager로 변경했음 한의 확인 후 수정할 것 
+			request.setAttribute("loginId", type.getInstance().getPersonId());
 	%>
  			
 	<div class="container my-3">

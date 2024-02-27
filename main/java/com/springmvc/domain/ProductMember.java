@@ -1,6 +1,7 @@
 package com.springmvc.domain;
 
 import java.io.Serializable;
+import java.sql.Date;
 
 import org.springframework.web.multipart.MultipartFile;
 
@@ -9,15 +10,17 @@ public class ProductMember implements Serializable {
 	private String personId;
 	private String personPw;
 	private String personEmail;
-	private String personName;
-	private String personPhone;
 	private String personAddress;
+	private String personName;
+	private Date personBirth;
+	private String personSex;
+	private String personPhone;
 	private String companyName;
 	private String companyAddress;
 	private String companyPhone;
-	private String companyregistration;
+	private String s_image;  // 사업자등록증
 	private String type;
-	private MultipartFile companyregistrationimg;
+	private MultipartFile ms_image; // 사업자등록증 Multi
 	
 	public ProductMember() {
 		super();
@@ -48,12 +51,36 @@ public class ProductMember implements Serializable {
 		this.personEmail = personEmail;
 	}
 
+	public String getPersonAddress() {
+		return personAddress;
+	}
+
+	public void setPersonAddress(String personAddress) {
+		this.personAddress = personAddress;
+	}
+
 	public String getPersonName() {
 		return personName;
 	}
 
 	public void setPersonName(String personName) {
 		this.personName = personName;
+	}
+
+	public Date getPersonBirth() {
+		return personBirth;
+	}
+
+	public void setPersonBirth(Date personBirth) {
+		this.personBirth = personBirth;
+	}
+
+	public String getPersonSex() {
+		return personSex;
+	}
+
+	public void setPersonSex(String personSex) {
+		this.personSex = personSex;
 	}
 
 	public String getPersonPhone() {
@@ -88,12 +115,12 @@ public class ProductMember implements Serializable {
 		this.companyPhone = companyPhone;
 	}
 
-	public String getCompanyregistration() {
-		return companyregistration;
+	public String getS_image() {
+		return s_image;
 	}
 
-	public void setCompanyregistration(String companyregistration) {
-		this.companyregistration = companyregistration;
+	public void setS_image(String s_image) {
+		this.s_image = s_image;
 	}
 
 	public String getType() {
@@ -104,20 +131,16 @@ public class ProductMember implements Serializable {
 		this.type = type;
 	}
 
-	public MultipartFile getCompanyregistrationimg() {
-		return companyregistrationimg;
+	public MultipartFile getMs_image() {
+		return ms_image;
 	}
 
-	public void setCompanyregistrationimg(MultipartFile companyregistrationimg) {
-		this.companyregistrationimg = companyregistrationimg;
+	public void setMs_image(MultipartFile ms_image) {
+		this.ms_image = ms_image;
 	}
 
-	public String getPersonAddress() {
-		return personAddress;
-	}
-
-	public void setPersonAddress(String personAddress) {
-		this.personAddress = personAddress;
-	}
+	
+	
+	
 	
 }

@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.springmvc.domain.HospitalMember;
-import com.springmvc.domain.Manager;
+import com.springmvc.domain.type;
 import com.springmvc.domain.ProductMember;
 import com.springmvc.repository.ManagerRepository;
 
@@ -30,7 +30,7 @@ public class ManagerServiceImp implements ManagerService{
 	
 	// manager 로그인 함수
 	@Override
-	public Manager managerlogin(Manager manager) {
+	public type managerlogin(type manager) {
 		// TODO Auto-generated method stub
 		return productMemberRepository.managerlogin(manager);
 	}

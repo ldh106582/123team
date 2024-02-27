@@ -16,12 +16,6 @@
 <title>로그인</title>
 </head>
 <body>
-
-<% 
-Manager user = Manager.getInstance(); 
-String type = user.getType();
-System.out.println("싱글톤 : " + type);
-%>
 	<%@  include file="./module/headerdark.jsp" %>
 
 	<div class="jumbotron">
@@ -53,16 +47,10 @@ System.out.println("싱글톤 : " + type);
 			<div class="mt-5 text-center">
 				<a href="#">아이디 찾기</a> | 
 				<a href="#">비밀번호 찾기</a> | 
-				<a href="./login/add">회원가입</a>
+				<a href="./login/Allmember">회원가입</a>
 			</div>
 			
-			<br>
-			<div class="col-md-12 justify-content-center" style="display: flex;">
-
-				<a href="./login/Allmember" class="col-md-4 btn btn-outline-danger p-2 m-1" id="allmember">통합회원가입</a>
-				<a href="./managerlogin/AllLog" class="col-md-4 btn btn-outline-info p-2 m-1" id="managerlogin">관리자 로그인</a>
-
-			</div>
+			<hr>
 		</div>
 	</div>
 

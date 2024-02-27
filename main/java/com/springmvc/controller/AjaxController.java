@@ -1,7 +1,6 @@
 package com.springmvc.controller;
 
 import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,15 +32,17 @@ public class AjaxController {
 	    }
 
 	// 소비자 아이디확인 함수
-	@GetMapping(value="/login/add/join/memberid", produces="application/json")
+	@GetMapping(value="/123team/login/join/memberid", produces="application/json")
 	@ResponseBody
 	public String Member(@RequestParam("userId") String userId) {
-		System.out.println("소비자 ajax도착");
-		if(ajaxService.member(userId)){
-			return "true";
-		} else {
-		} return "false";
+	    System.out.println("소비자 ajax도착");
+	    if(ajaxService.member(userId)){
+	        return "true";
+	    } else {
+	        return "false";
+	    }
 	}
+
 
 	
 }

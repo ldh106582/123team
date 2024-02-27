@@ -2,6 +2,7 @@ package com.springmvc.domain;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.time.LocalDate;
 
 @SuppressWarnings("serial")
 public class Order implements Serializable
@@ -11,7 +12,7 @@ public class Order implements Serializable
 	private String productName;
 	private int amount;
 	private int price;
-	private String orderDate;
+	private LocalDate orderDate;
 	private int totalPrice;
 	private String personId;
 	private String personName;
@@ -96,15 +97,14 @@ public class Order implements Serializable
 
 
 
-
-	public String getOrderDate() {
+	public LocalDate getOrderDate() {
 		return orderDate;
 	}
 
 
 
 
-	public void setOrderDate(String orderDate) {
+	public void setOrderDate(LocalDate orderDate) {
 		this.orderDate = orderDate;
 	}
 

@@ -15,9 +15,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
-
 import com.springmvc.domain.HospitalMember;
-import com.springmvc.domain.Manager;
+import com.springmvc.domain.type;
 import com.springmvc.domain.ProductMember;
 import com.springmvc.service.ManagerService;
 
@@ -31,117 +30,107 @@ public class ManagerController
 	
 	@GetMapping("/Member")
 	public String showMemberPage(@ModelAttribute("productMember") ProductMember productMember, HospitalMember hospitalMember,
-								@RequestParam("type") String type) {
-	System.out.println("Member 페이지 요청 도착");
-	System.out.println("싱글톤 type : " + type);
-	Manager.getInstance().setType(productMember.getType());
+								@RequestParam("type") String type, HttpServletRequest request) {
 	
+	System.out.println("Member 페이지 요청 도착 : " + type);
+
+	
+	HttpSession session = request.getSession();
 	if(type == "p" || "p".equals(type)) {
+	session.setAttribute("type", type);
 	productMember.setType(type);
 	return "/member/AddManager";
 	
 	} else if(type == "h" || "h".equals(type)) {
+		session.setAttribute("type", type);
 		hospitalMember.setType(type);
 		return "/member/Hospitalmanager";
 		
 	} else {
-		return "/member/Hopitalmanager";
+		return "/member/AllManager";
 	}
 }
+	// manager page 회원가입 post
 	@PostMapping("/productmanager")
 	public String GetaddProductManager(@ModelAttribute("productMember") ProductMember productMember,
 									   @ModelAttribute("hospitalMember") HospitalMember hospitalMember,
-										HttpServletRequest request, Model model,
-										BindingResult result) {
-		Manager manager = Manager.getInstance();
-		String t_type = manager.getType();
-		System.out.println("로그인 확인" + t_type);
+										HttpServletRequest request) 
+	{	
+		System.out.println("post도착");
+		HttpSession session = request.getSession();
+		String type = (String)session.getAttribute("type");
+		System.out.println("세션에서 가져온 값 : " + type);
 		
 		// product 관리자 회원가입 하는 함수 
-		if("p".equals(t_type)) {
+		if("p".equals(type)) {
+			
+		productMember.setType(type);
+			
 	    // 사업자등록증을 받아주는 함수
-		MultipartFile saveCompanyRegistrationimg = productMember.getCompanyregistrationimg();
-	    String companyregistrationName = saveCompanyRegistrationimg.getOriginalFilename();
-	    String companyregistrationPath  = request.getSession().getServletContext().getRealPath("/resources/images");
-	    
-
-	    File saveCompanyRegistration = new File(companyregistrationPath, companyregistrationName);
+		MultipartFile ms_image = productMember.getMs_image();
+	    String s_imagePath  = request.getSession().getServletContext().getRealPath("/resources/images");
+	    String saves_image = ms_image.getOriginalFilename();
+	    File saveimage = new File(s_imagePath, saves_image);
 
 	    try {
-	    	saveCompanyRegistrationimg.transferTo(saveCompanyRegistration);
-	    	productMember.setCompanyregistration(companyregistrationName);
+	    	ms_image.transferTo(saveimage);
+	    	productMember.setS_image(saves_image);
 	       
 	    } catch (Exception e) {
 	        throw new RuntimeException("사업자등록증 업로드를 실패했습니다.", e);
 	    }
 	    
-	    // 세션생성
-	    HttpSession session = request.getSession();
-	    String type = (String)session.getAttribute("type");
-	    System.out.println(type);
-	    productMember.setType(type);
-	  
-	    
 	    //  회원가입 시 전체 데이터를 넣어주는 함수
 		managerService.getaddProductManager(productMember);
-		//전체 id db에 값을 넣어줌
+		
+		//personDB에 값을 넣어줌
 		managerService.setAllMember(productMember);
-		session.setAttribute("productMember", productMember.getType());
-		model.addAttribute("productMember", productMember);
+		session.setAttribute("productMember", productMember);
 		
 		return "redirect:/login";
 		
 		// 병원 manager 회원가입 하는 함수
-		} else if("h".equals(t_type)) {
+		} else if("h".equals(type)) {
 			
-			System.out.println("여긴 병원 회원가입 : " + t_type);
+			hospitalMember.setType(type);
+			
+			System.out.println("여긴 병원 회원가입 : " + type);
 			// 사업자등록증을 받아주는 함수
-			MultipartFile hospitalregistrationimg = hospitalMember.getHopitalliLicenseimg();
-			System.out.println("hospitalregistrationimg : " + hospitalregistrationimg);
+			MultipartFile ms_image = hospitalMember.getMs_image();
+			System.out.println("hospitalregistrationimg : " + ms_image);
 			
-		    String hospitalregistrationName = hospitalregistrationimg.getOriginalFilename();
-		    System.out.println("hospitalregistrationName : " + hospitalregistrationName);
+		    String s_imageName = ms_image.getOriginalFilename();
+		    System.out.println("hospitalregistrationName : " + s_imageName);
 		    
-		    String hospitalregistrationPath  = request.getSession().getServletContext().getRealPath("./resources/images");
+		    String s_imagePath  = request.getSession().getServletContext().getRealPath("/resources/images");
 		    
-		    System.out.println("hospitalregistrationPath : " + hospitalregistrationPath);
-		    
-		    File dir = new File(hospitalregistrationPath);
-		    System.out.println("dir : " + dir);
-		    if (!dir.exists()) {
-		        dir.mkdirs();  // 디렉토리가 존재하지 않으면, 디렉토리를 생성합니다.
-		    };
-		    File hospitalregistration = new File(hospitalregistrationPath, hospitalregistrationName);
-			System.out.println("hospitalregistratio : " + hospitalregistration);
+		    System.out.println("hospitalregistrationPath : " + s_imagePath);
+	
+		    File saveimage = new File(s_imagePath, s_imageName);
+			System.out.println("hospitalregistratio : " + saveimage);
 		    
 		    try {
-		    	System.out.println("파일 등록 실패?1");
-		    	hospitalregistrationimg.transferTo(hospitalregistration);
-		    	System.out.println("파일 등록 실패?2");
-		    	hospitalMember.getHospitalregistration();
+		    	ms_image.transferTo(saveimage);
+		    	hospitalMember.getMs_image();
 		    } catch (Exception e) {
 		    	throw new RuntimeException("사업자등록증 업로드를 실패했습니다.", e);
 		    }
+		    
 		    System.out.println("사옵자 끝");
 		    
 			// 의사 자격증을 받아주는 함수
-			MultipartFile hopitalliLicenseimg = hospitalMember.getHopitalliLicenseimg();
-		    String hospitalliLicenseName = hopitalliLicenseimg.getOriginalFilename();
-		    String hospitalliLicensePath  = request.getSession().getServletContext().getRealPath("/resources/images");
-		    File hospitalliLicense = new File(hospitalliLicensePath, hospitalliLicenseName);
+			MultipartFile hs_image  = hospitalMember.getHs_image();
+		    String h_imageName = hs_image.getOriginalFilename();
+		    String h_imagePath  = request.getSession().getServletContext().getRealPath("/resources/images");
+		    File saveh_image = new File(h_imagePath, h_imageName);
 			
 		    try {
-		    	hopitalliLicenseimg.transferTo(hospitalliLicense);
-		    	hospitalMember.getHospitalliLicense();
+		    	hs_image.transferTo(saveh_image);
+		    	hospitalMember.getHs_image();
 		    } catch (Exception e) {
 		    	throw new RuntimeException("의사면허증  업로드를 실패했습니다.", e);
 		    }
 		    
-
-		    // 세션생성
-		    HttpSession session = request.getSession();
-		    String type = (String)session.getAttribute("type");
-		    System.out.println(type);
 		    hospitalMember.setType(type);
 		    
 			// 병원 manager 회원가입 하는 함수
@@ -150,7 +139,10 @@ public class ManagerController
 		    // 전체 db에 데이터를 넣어주는 함수
 		    managerService.H_setAllMember(hospitalMember);
 		    
+		  
 		    System.out.println("여긴 회원가입 로그인");
+		    
+		    session.invalidate();
 		    
 			return "redirect:/login";
 			
@@ -161,23 +153,23 @@ public class ManagerController
 	}
 
 	@GetMapping("/AllLog")
-	public String AllLog(@ModelAttribute("managerlogin") Manager manager )
+	public String AllLog(@ModelAttribute("managerlogin") type manager )
 	{
 		return "/member/ManagerLogin";
 	}
 	
 	@PostMapping("/AllLog")
-	public String Managerlogin(@ModelAttribute("managerlogin") Manager manager, Model model,
+	public String Managerlogin(@ModelAttribute("managerlogin") type manager, Model model,
 	                            HttpServletRequest request) {
 	    // manager 로그인 함수
-	    Manager managerId = managerService.managerlogin(manager);
-	    Manager.getInstance().setType(managerId.getType());
+	    type managerId = managerService.managerlogin(manager);
+
 	    // 로그인에 성공한 경우
 	    if (managerId != null) {
 	        HttpSession session = request.getSession();
 	        session.setAttribute("managerId", managerId);
 	        System.out.println("sessionId : " + managerId.getPersonId());
-	        model.addAttribute("managerId", managerId);
+	        
 	        return "redirect:../products";
 	    } else {
 	        return "/member/ManagerLogin"; 

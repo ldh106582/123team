@@ -18,6 +18,7 @@ public class PersonDBConnector implements RowMapper<Person>, Serializable{
 	        person.setPersonBirth(rs.getDate(6).toLocalDate()); // PersonBirth, DB의 date 타입 컬럼
 	        person.setPersonSex(rs.getString(7));        // PersonSex
 	        person.setPersonPhone(rs.getString(8));      // PersonPhone
+	        person.setType(rs.getString(9));
 	        return person;
 	}
 }

@@ -11,7 +11,7 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import com.springmvc.controller.ManagerController;
-import com.springmvc.domain.Manager;
+import com.springmvc.domain.type;
 import com.springmvc.domain.Person;
 import com.springmvc.domain.Pet;
 import com.springmvc.domain.ProductMember;
@@ -38,8 +38,9 @@ public class PersonRepositoryImp implements  PersonRepository{
 	{
 		System.out.println("personrepository");
 		
-		String SQL = "INSERT INTO Person(PersonId, PersonPw, PersonEmail, PersonAddress, PersonName, PersonBirth,PersonSex, PersonPhone)" + "VALUES(?,?,?,?,?,?,?,?)";
-		template.update(SQL, person.getPersonId(), person.getPersonPw(), person.getPersonEmail(), person.getPersonAddress(), person.getPersonName(), person.getPersonBirth(),  person.getPersonSex(), person.getPersonPhone());
+		String SQL = "INSERT INTO Person(PersonId, PersonPw, PersonEmail, PersonAddress, PersonName, PersonBirth,PersonSex, PersonPhone, Type)" + "VALUES(?,?,?,?,?,?,?,?,?)";
+		template.update(SQL, person.getPersonId(), person.getPersonPw(), person.getPersonEmail(), person.getPersonAddress(),
+						person.getPersonName(), person.getPersonBirth(),  person.getPersonSex(), person.getPersonPhone(), person.getType());
 	}
 
 	//update전 person 데이터를 보여줌
@@ -63,8 +64,9 @@ public class PersonRepositoryImp implements  PersonRepository{
 	@Override
 	public void SetUpdatePerson(Person person) {
 		if(person.getPersonId()!=null) {
-			 String SQL = "update Person set personId = ?, personPw = ?, personEmail = ?, personAddress = ?, personName = ?, personBirth = ?, personSex = ?,  personPhone = ? where personId = ?";
-		     template.update(SQL, person.getPersonId(), person.getPersonPw(), person.getPersonEmail(), person.getPersonAddress(), person.getPersonName(), person.getPersonBirth(), person.getPersonSex(), person.getPersonPhone(), person.getPersonId());
+			 String SQL = "update Person set personId = ?, personPw = ?, personEmail = ?, personAddress = ?, personName = ?, personBirth = ?, personSex = ?,  personPhone = ?, Type=? where personId = ?";
+		     template.update(SQL, person.getPersonId(), person.getPersonPw(), person.getPersonEmail(), person.getPersonAddress(),
+		    		 			person.getPersonName(), person.getPersonBirth(), person.getPersonSex(), person.getPersonPhone(), person.getType());
 		}else {
 				System.out.println("person 아이디가 없습니다.");
 		}
@@ -120,18 +122,5 @@ public class PersonRepositoryImp implements  PersonRepository{
 		return personId;
 	}
 	
-	// 전체 id db에 값을 넣어줌
-	@Override
-	public void setAllMember(Person person) {
-		String SQL = "insert into all_member(PersonId)" + "values(?)";
-		template.update(SQL, person.getPersonId());
-	}
-
-	// 전체 id db에 값을 삭제해줌
-	@Override
-	public void getAllMember(Person person) {
-		String SQL = "delete from all_member where PersonId=?";
-		this.template.update(SQL, person.getPersonId());
-	}
 	
 }

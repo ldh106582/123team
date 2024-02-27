@@ -83,19 +83,31 @@
                 <form:input type="text" path="personName" class="control-label"/>
             </div>
         </div>
+        <div class="form-group row"> 
+           <label class="col-sm-2 control-label">  생년월일 </label>
+		   <div class="col-4">
+			  <form:input type="text" path="personBirth" class="control-label"/>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label class="col-sm-2 control-label"> 주소 </label>
+            <div class="col-4">
+				<form:input type="text" path="personAddress" class="control-label"/>
+			</div>
+		</div>
         <div class="form-group row">
             <label class="col-sm-2 control-label"> 개인번호 </label>  
             <div class="col-4">
                 <form:input type="text" path="personPhone" class="control-label"/>
             </div>
         </div>
+        
         <div class="form-group row">
             <label class="col-sm-2 control-label"> 동물병원명  </label>  
             <div class="col-4">
                 <form:input type="text" path="hospitalName" class="control-label"/>
             </div>
         </div>
-
         <div class="form-group row">
               <label class="col-sm-2 control-label"> 병원주소 </label>  
             <div class="col-4">
@@ -111,22 +123,26 @@
         <div class="form-group row">
             <label class="col-sm-2 control-label"> 사업자등록증 </label>  
             <div class="col-4">
-                <input type="file" name="hospitalregistrationimg" class="control-label" required="required"/>
+                <input type="file" name="s_image" class="control-label" required="required"/>
             </div>
         </div>
         <div class="form-group row">
             <label class="col-sm-2 control-label"> 의사면허증 </label>  
             <div class="col-4">
-                <input type="file" name="hopitalliLicenseimg" class="control-label" required="required"/>
+                <input type="file" name="h_image" class="control-label" required="required"/>
             </div>
         </div>
+       	<div class="form-group row">
+            <label class="col-sm-2 ccontrol-label"> 성별 </label>
+			<div class="col-4">
+				<form:radiobutton path="personSex" value="남자" class="col-sm-1"/>남자
+				<form:radiobutton path="personSex" value="여자" class="ml-3"/>여자
+			</div>
+		</div>
         <%
-        
         String type = request.getParameter("type");
-        Manager user = Manager.getInstance();
-        System.out.println("jsp페이지 : " + type);
-        session.setAttribute("type", type);
-        
+                System.out.println("jsp페이지 : " + type);
+                session.setAttribute("type", type);
         %>
         
         <div class="form-group row">

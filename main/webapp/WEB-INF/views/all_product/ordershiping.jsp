@@ -65,20 +65,21 @@
 	  <br>
 	  
       <div class="container">
-        <form action="/123team/orders/o_create" class="form-horizontal" method="post">
-        <input type="hidden" name="personId" value="${listOfperson.personName}"/> <!-- 이름 -->
-        <input type="hidden" name="personId" value="${listOfperson.personPhone}"/> <!-- 연락처 -->
-        <input type="hidden" name="personId" value="${listOfperson.personAddress}"/> <!-- 주소 -->
+        <form action="/123team/orders/o_complete" class="form-horizontal" method="post">
+        <input type="hidden" name="personId" value="${person.personId }"/>
+        <input type="hidden" name="personName" value="${person.personName}"/> <!-- 이름 -->
+        <input type="hidden" name="personPhone" value="${person.personPhone}"/> <!-- 연락처 -->
+        <input type="hidden" name="personAddress" value="${person.personAddress}"/> <!-- 주소 -->
             <div class="form-group row">
                 <label class="col-sm-2"> <i class="fa-solid fa-user col-sm-1"></i> 성명</label>
                 <div class="col-sm-3">
-                    <input name="" type="text" class="form-control" value="${listOfperson.personName}">
+                    <input name="" type="text" class="form-control" value="${person.personName}">
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-sm-2"> <i class="fa-solid fa-phone col-sm-1"></i> 연락처</label>
                 <div class="col-sm-3">
-                    <input name="" type="text" class="form-control" value="${listOfperson.personPhone}">
+                    <input name="" type="text" class="form-control" value="${person.personPhone}">
                 </div>
             </div>
             <div class="form-group row">
@@ -97,7 +98,7 @@
             <div class="form-group row">
                 <label class="col-sm-2"> <i class="fa-solid fa-location-dot col-sm-1"></i> 주소</label>
                 <div class="col-sm-3">
-                    <input name="" type="text" class="form-control" value="${listOfperson.personAddress}">
+                    <input name="" type="text" class="form-control" value="${person.personAddress}">
                 </div>
             </div>
             <br><br>

@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.springmvc.controller.ManagerController;
-import com.springmvc.domain.Manager;
+import com.springmvc.domain.type;
 import com.springmvc.domain.Person;
 import com.springmvc.domain.Pet;
 import com.springmvc.domain.ProductMember;
@@ -60,19 +60,6 @@ public class PersonServciceImp implements PersonService{
 	public Person findPersonById(String id) {
 		// TODO Auto-generated method stub
 		return psersonRepository.findPersonById(id);
-	}
-
-	// 전체 id db에 값을 넣어줌
-	@Override
-	public void setAllMember(Person person) {
-		// TODO Auto-generated method stub
-		psersonRepository.setAllMember(person);
-	}
-	// 전체 id db에 값을 삭제해줌
-	@Override
-	public void getAllMember(Person person) {
-		// TODO Auto-generated method stub
-		psersonRepository.getAllMember(person);
 	}	
 	
 

@@ -6,13 +6,13 @@ import java.sql.SQLException;
 import org.springframework.jdbc.core.RowMapper;
 
 import com.springmvc.domain.Ajax;
-import com.springmvc.domain.Manager;
+import com.springmvc.domain.type;
 import com.springmvc.domain.ProductMember;
 
-public class managerDBController implements RowMapper<Manager> {
-	public Manager mapRow(ResultSet rs, int rowNum) throws SQLException
+public class managerDBController implements RowMapper<type> {
+	public type mapRow(ResultSet rs, int rowNum) throws SQLException
 	{
-		Manager manager = new Manager();
+		type manager = new type();
 		manager.setPersonId(rs.getString(1));
 		manager.setType(rs.getString(2));
 		return manager;

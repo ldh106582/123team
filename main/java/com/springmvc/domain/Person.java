@@ -17,6 +17,7 @@ public class Person implements Serializable{
 	   private LocalDate personBirth;
 	   private String personSex;
 	   private String personPhone;
+	   private String type;
 	  
 	public Person() {
 		super();
@@ -87,6 +88,16 @@ public class Person implements Serializable{
 
 	public void setPersonPhone(String personPhone) {
 		this.personPhone = personPhone;
+	}
+
+
+	public String getType() {
+		return type;
+	}
+
+
+	public void setType(String type) {
+		this.type = type;
 	}
 
 
