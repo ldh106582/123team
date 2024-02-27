@@ -3,6 +3,7 @@ package com.springmvc.controller;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -66,14 +67,15 @@ public class FBoardContoller {
 	
 //	게시판 작성 페이지 이동
 	@GetMapping("/add")
-	public String addboardform(@ModelAttribute("board")FBoard board) {
+	public String addboardform(@ModelAttribute("board")FBoard board,HttpSession session) {
 		return "free_board/addFboard";
 	}
 
 //	작성한 게시글 DB저장
 	@PostMapping("/add") 
-	public String addboard(@ModelAttribute("board")FBoard board,Model model){ 
-		fboardService.setFBoard(board);
+	public String addboard(@ModelAttribute("board")FBoard board,Model model,HttpSession session){ 
+		String personId = (String) session.getAttribute("personId");
+		fboardService.setFBoard(board,personId);
 		return "redirect:/Fboards";
 	}
 	
@@ -126,8 +128,9 @@ public class FBoardContoller {
 	
 //	게시글 댓글 작성
 	 @PostMapping("/Fboard")
-	 public String addComment(Model model,HttpServletRequest request) {
-		 boardCommentService.addComment(request.getParameter("boardId").toString(),request.getParameter("comment").toString());
+	 public String addComment(Model model,HttpServletRequest request,HttpSession session) {
+		 String personId = (String) session.getAttribute("personId");
+		 boardCommentService.addComment(request.getParameter("boardId").toString(),request.getParameter("comment").toString(),personId);
 		 return "redirect:/Fboards/Fboard?boardId="+request.getParameter("boardId");
 	 }
 	 
@@ -144,7 +147,7 @@ public class FBoardContoller {
 		
 		model.addAttribute("board",board); 
 		model.addAttribute("comments",comments);
-			 
+
 		return "board_comment/updateCommentForm";
 	 }
 	 

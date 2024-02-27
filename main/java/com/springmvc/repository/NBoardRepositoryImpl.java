@@ -10,7 +10,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.springmvc.domain.NBoard;
-import com.springmvc.domain.userinfo;
 
 @Repository
 public class NBoardRepositoryImpl implements NBoardRepository{
@@ -49,15 +48,15 @@ public class NBoardRepositoryImpl implements NBoardRepository{
 	
 // 공지글 작성
 	@Override
-	public void setNBoard(NBoard board) {
+	public void setNBoard(NBoard board,String personId) {
 		
 		String SQL = "insert into NBoard values(?,?,?,?,?,?)";
 //		이름과 아이디 받아오기
-		userinfo getboardNI = userinfo.getInstance();
-		System.out.println("==============아이디받아온값================");
-		System.out.println(getboardNI.getPersonId());
 		
-		template.update(SQL,getboardNI.getPersonId(),board.getContext(),board.getTitle(),0,getRegistDay(),CreateBoardId());
+		System.out.println("==============아이디받아온값================");
+		
+		
+		template.update(SQL,personId,board.getContext(),board.getTitle(),0,getRegistDay(),CreateBoardId());
 	}
 //	날짜받기
 	public LocalDate getRegistDay()

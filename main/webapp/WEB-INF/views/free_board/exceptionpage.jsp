@@ -11,8 +11,6 @@
  <%@  include file="../module/header.jsp" %>
 	존재하지 않는 게시글 제목 입니다.
 
-	<a href="./">돌아가기</a>
-
 	<a href="/123team/Fboards">돌아가기</a>
 
 </body>

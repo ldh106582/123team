@@ -24,8 +24,8 @@
         <label for="context">내용 :</label>
         <form:input path="context" class="form-control" style="height: 300px;" name="context" value="${board.context}"/>
       </div>
-      <a href="/delete?boardId=${board.boardId}" class="btn btn-danger">삭제</a>
       <button type="submit" class="btn btn-primary">등록</button>
+      <a href="/delete?boardId=${board.boardId}" class="btn btn-danger">삭제</a>
     </form:form>
   </div>
 <%-- 

@@ -1,5 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@page import="com.springmvc.domain.userinfo"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
@@ -18,7 +17,7 @@
 
  <%@  include file="../module/header.jsp" %>
 	<%
- 		request.setAttribute("loginId", userinfo.getInstance().getPersonId());
+ 		request.setAttribute("loginId", session.getAttribute("personId"));
  	%>
 	
 	<% 
@@ -37,8 +36,9 @@
             <div>
 	            <c:if test="${loginId != null}">
 					<a href="Fboards?myId=${loginId}" class="btn btn-primary">내 게시글만 보기</a>
+					<a href="Fboards/add" class="btn btn-primary">게시글 작성</a>
 				</c:if>
-            	<a href="Fboards/add" class="btn btn-primary">게시글 작성</a>
+            	
             </div>
         </div>
         <table class="table table-striped">

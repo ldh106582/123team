@@ -1,4 +1,3 @@
-<%@page import="com.springmvc.domain.userinfo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -32,17 +31,34 @@
 			inputD.setAttribute("name","registDay");
 			inputD.setAttribute("value",registday);
 			
+			var inputO = document.createElement("input");
+			inputO.setAttribute("type","hidden");
+			inputO.setAttribute("name","originday");
+			inputO.setAttribute("value",registday);
 			
 			var inputs = document.createElement("input");
 			inputs.setAttribute("type","submit");
 			inputs.setAttribute("value","변경하기");
 			
+			var button = document.createElement("button");
+			button.setAttribute("onclick",cancelForm());
+			var buttonText = document.createTextNode("취소");
+			button.appendChild(buttonText);
+			
 			form.appendChild(inputT);
 			form.appendChild(inputD);
 			form.appendChild(inputs);
+			form.appendChild(inputO);
+			form.appendChild(button);
 			
 			container.appendChild(form);
 	}
+	function cancelForm() {
+         var form = document.querySelector("form");
+         if (form) {
+             form.remove();
+         }
+     }
 </script>
 </head>
 <body>
