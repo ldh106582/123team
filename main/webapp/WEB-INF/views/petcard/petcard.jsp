@@ -16,8 +16,28 @@
 <title>나의 동물 현황</title>
 </head>
 <body>
-    <%@  include file="../module/headerdark.jsp" %>
 
+	<nav class="navbar navbar-expand navbar-dark bg-dark">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="/123team">Home</a>
+			</div>
+			<div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+				<ul class="navbar-nav">
+					<li class="nav-item">
+						<a class="nav-link" href="/123team/hospital"><img width="24" height="24" src="https://img.icons8.com/doodle/48/hospital--v1.png" alt="hospital--v1"/>병원</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/123team/products"><img width="24" height="24" src="https://img.icons8.com/external-photo3ideastudio-lineal-color-photo3ideastudio/24/external-pet-shop-pet-shop-photo3ideastudio-lineal-color-photo3ideastudio.png" alt="external-pet-shop-pet-shop-photo3ideastudio-lineal-color-photo3ideastudio"/>동물상품</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/123team/Fboards"><img width="24" height="24" src="https://img.icons8.com/external-flaticons-lineal-color-flat-icons/24/external-board-police-flaticons-lineal-color-flat-icons-2.png" alt="external-board-police-flaticons-lineal-color-flat-icons-2"/>게시판</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	
     <div id="wrap" class="wrap naverid ">
         <header class="header" role="banner">
             <div class="header_subindex">
@@ -55,15 +75,25 @@
                     <div id="headerTop" class="path_area" aria-hidden="false"></div>
                 </div>
                 <div class="subindex_item">
+
 	                <div class="head_title">
 	                    <h2 class="subindex_title">동물 정보</h2>
+
+                   <div class="head_title">
+                       <h2 class="subindex_title">동물 정보</h2>
+
                         <div class="title_link">
                             <a href="" ><span class="text">추가하기</span></a>
                             <a href="" ><span class="text">수정하기</span></a>
                         </div>  
+
 	                </div>
                     
 	                <div class="subindex_greenbox">
+
+                   </div>
+                    
+                   <div class="subindex_greenbox">
                         <div class="myprofile">
                             <ul class="myinfo_area">
                                 <li>
@@ -81,33 +111,42 @@
                             </ul>
                         </div>
                         </ul>
-	                    <ul class="subindex_row">
-	                        <li>
-	                            <div class="row_item other">
-	                                <p> 종 : ${petid.petVarity} </p>
-	                            </div>
-	                        </li>
-	                        <li>
-	                            <div class="row_item other">
-	                                <p id="petbirth"> 생년월일 : ${petid.petBirth} (나이 : <b id="petAge"> </b>)</p>
-	                            </div>
-	                        </li>
+
+                       <ul class="subindex_row">
+                           <li>
+                               <div class="row_item other">
+                                   <p> 종 : ${petid.petVarity} </p>
+                               </div>
+                           </li>
+                           <li>
+                               <div class="row_item other">
+                                   <p id="petbirth"> 생년월일 : ${petid.petBirth} (나이 : <b id="petAge"> </b>)</p>
+                               </div>
+                           </li>
                             <li>
-	                            <div class="row_item other">
-	                                <p> 몸무게 </p>
-	                            </div>
-	                        </li>
-	                    </ul>
-	                </div>
-	            </div>
+                               <div class="row_item other">
+                                   <p> 몸무게 </p>
+                               </div>
+                           </li>
+                       </ul>
+                   </div>
+               </div>
+
                 <div class="subindex_item">
                     <div class="head_title">
                         <h2 class="subindex_title">동물 진찰 기록부</h2>
                     </div>
+<<<<<<< HEAD
                		<div class="subindex_greenbox">
 	                    <ul class="subindex_row">
                             
 	                        <table class="table">
+=======
+                     <div class="subindex_greenbox">
+                       <ul class="subindex_row">
+                            
+                           <table class="table">
+>>>>>>> fa9e400f8ceb5c1826ec622c185d981968432be3
                                 <tbody> 
                                     <tr>
                                         <td>
@@ -218,6 +257,7 @@
                                                         <p> 수술 후 진료내용 : ${petcard.petSurgeryAfterContent }</p>
                                                         <input class="m-2" id="editContentField5" type="text" name="petSurgeryContentAfter" style="display: none;"/>
                                                         <div class="update">
+
                                                             <a  id="Before5" onclick="toggleDisplay('Before5', 'After5','editDateField5', 'editContentField5')"  href="#" class="col-2 m-1 p-1 border text-white btn btn-success">수정하기</a>
                                                             <a id="After5" onclick="toggleDisplay('Before5', 'After5','editDateField5', 'editContentField5')"  href="${pageContext.request.contextPath}/login/deletetSurgeryAfter?petId=${petid.petId}&petSurgeryAfterNum=${petcard.petSurgeryAfterNum}" class="col-2 m-1 p-1 border text-white btn btn-success" style="display: none;">수정완료</a>
                                                         </div>
@@ -248,12 +288,12 @@
 </body>
 <script>
 window.onload = function(){
-	var birthday = new Date("${petId.petBirth}");
-	var dateString = birthday.toString();
-	//document.getElementById('dateString').text = dateString;
-	
-	var age = calculateAge(birthday);
-	document.getElementById("petAge").innerText = age;
+   var birthday = new Date("${petId.petBirth}");
+   var dateString = birthday.toString();
+   //document.getElementById('dateString').text = dateString;
+   
+   var age = calculateAge(birthday);
+   document.getElementById("petAge").innerText = age;
 };
 
 function calculateAge(birthday){
@@ -261,17 +301,17 @@ function calculateAge(birthday){
     var age_dt = new Date(diff_ms);
     return Math.abs(age_dt.getUTCFullYear()-1970);
 }
-	
-	function toggleDisplay(contentId, buttonId) {
-	   var element = document.getElementById(contentId);
-	   var button = document.getElementById(buttonId);
-	   if (element.style.display === 'none') {
-	       element.style.display = 'block';
-	       button.innerText = '내용 닫기';
-	   } else {
-	       element.style.display = 'none';
-	       button.innerText = '펼치기';
-	   }
-	}
+   
+   function toggleDisplay(contentId, buttonId) {
+      var element = document.getElementById(contentId);
+      var button = document.getElementById(buttonId);
+      if (element.style.display === 'none') {
+          element.style.display = 'block';
+          button.innerText = '내용 닫기';
+      } else {
+          element.style.display = 'none';
+          button.innerText = '펼치기';
+      }
+   }
 </script>
 </html>

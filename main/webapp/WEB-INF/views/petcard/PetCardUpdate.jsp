@@ -14,7 +14,45 @@
 <title>펫카드 수정페이지</title>
 </head>
 <body>
-    <%@  include file="../module/headerdark.jsp" %>
+
+	<nav class="navbar navbar-expand navbar-dark bg-dark">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="/123team">Home</a>
+			</div>
+			<div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+				<ul class="navbar-nav">
+					<li class="nav-item">
+						<a class="nav-link" href="/123team/hospital"><img width="24" height="24" src="https://img.icons8.com/doodle/48/hospital--v1.png" alt="hospital--v1"/>병원</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/123team/products"><img width="24" height="24" src="https://img.icons8.com/external-photo3ideastudio-lineal-color-photo3ideastudio/24/external-pet-shop-pet-shop-photo3ideastudio-lineal-color-photo3ideastudio.png" alt="external-pet-shop-pet-shop-photo3ideastudio-lineal-color-photo3ideastudio"/>동물상품</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/123team/Fboards"><img width="24" height="24" src="https://img.icons8.com/external-flaticons-lineal-color-flat-icons/24/external-board-police-flaticons-lineal-color-flat-icons-2.png" alt="external-board-police-flaticons-lineal-color-flat-icons-2"/>게시판</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	
+   <div class="container mt-3">
+	    <h2>나의 동물 진료 현황</h2>
+	    
+    <table class="table" border="1">
+        <tbody>
+            <tr>
+                <div class="border">
+                    <tr>
+                    <p><span> 이름 : ${pet.petName} </span></p>
+				    </div>
+	           	    <p> 종 : ${pet.petVarity} </p>
+	                <p id="petbirth"> 생년월일 : ${pet.petBirth} (나이 : <b id="petAge"> </b>)</p>
+					<div class="btn btn-success border border-dark mr-2 " style="padding-right:15px;">
+						<a class="text-white" href="/123team/login/back?petid=${ pet.petId }">기록수정완료 </a> 	             	
+					</div>
+             	</div>
+>>>>>>> fa9e400f8ceb5c1826ec622c185d981968432be3
 
     <div id="wrap" class="wrap naverid ">
         <header class="header" role="banner">

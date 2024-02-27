@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@page import="com.springmvc.domain.userinfo"%>
+<%@page import="com.springmvc.domain.*"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
@@ -15,10 +15,44 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 <body>
+   <nav class="navbar navbar-expand navbar-dark bg-dark">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/123team">Home</a>
+            </div>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link" href="/123team/hospital">병원</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/123team/products">동물상품</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/123team/Fboards">게시판</a>
+                </li>
+ 				<c:choose>             
+	            <c:when test="${not empty managerId }">
+	                	
+	                <li class="nav-item">
+	                  <a class="nav-link" href="/123team/managerlogin/manager_page?personId=${managerId.personId}">마이페이지</a>
+	                </li>
+	                
+	            </c:when>
+	               	<c:otherwise>
+		                <li class="nav-item">
+		                  <a class="nav-link" href="/123team/login">로그인</a>
+		                </li>
+	                </c:otherwise>
+                </c:choose>
+                
+            </div>
+        </div>
+    </nav>
+           	
 
- <%@  include file="../module/header.jsp" %>
-	<%
- 		request.setAttribute("loginId", userinfo.getInstance().getPersonId());
+	<% // 오류있음 한의 확인할것 변경x
+ 		// request.setAttribute("loginId", userinfo.getInstance().getPersonId());
  	%>
 	
 	<% 
@@ -26,6 +60,27 @@
 		request.setAttribute("sise", size);
 	%>
 	
+
+	<%
+		/* if(pagenum%5>0){
+			++totalPages;
+		}
+	
+		totalPages = totalPages+(pagenum/5);
+		
+		if(size>5){
+			--totalPages;
+		}
+		request.setAttribute("totalPages", totalPages); */
+	%>
+	
+	<c:forEach begin="1" end="${totalPages}" var="pageNum"> <!-- 페이지 번호 출력 -->
+		<a href="Fboards?page=${pageNum}"> [${pageNum}] </a>
+	</c:forEach>
+	
+	<br>
+
+
     <div class="container my-3">
         <h1><img width="66" height="66" src="https://img.icons8.com/ios/66/noticeboard.png" alt="noticeboard"/>자유게시판</h1>
         <div class="d-flex justify-content-between mb-3">

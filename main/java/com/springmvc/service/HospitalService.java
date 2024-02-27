@@ -1,7 +1,11 @@
 package com.springmvc.service;
 
-import com.springmvc.domain.HospitalMember;
+import java.util.List;
+
+import com.springmvc.domain.Hospital;
 
 public interface HospitalService {
+
+	List<Hospital> getAllhospitals();
 
 }

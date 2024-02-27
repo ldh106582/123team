@@ -31,7 +31,8 @@
 <title>장바구니 페이지</title>
 </head>
 <body>
-<nav class="navbar navbar-expand navbar-dark bg-danger">
+<!-- header -->
+  <nav class="navbar navbar-expand navbar-dark bg-danger">
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand" href="/123team">Home</a>
@@ -62,23 +63,20 @@
             </div>
         </div>
     </nav>
-	
+	    <!-- header end -->
+	    
 	<div class="jumbotron">
 		<div class="contianer">
 			<h2 class="dislpay-2"> <i class="fa-solid fa-truck-fast"></i> 내 장바구니 목록</h2>
 		</div>
 	</div>
+
+	
+	<div>
+		<a href="/123team/products/alldelete?personId=${shoppingCart.get(0).personId}" class="btn border border-dark ml-5" id="alldelete" >전체삭제</a>
+	</div>
 	
  	<div class="container">
- 	
- 		<div class="float-right mb-2">
- 			<a href="/123team/orders/o_create?personId=${shoppingCart.get(0).personId}" class="btn btn-info mr-5">주문하기</a>
- 		</div>
- 		
- 		<div>
- 			<a href="/123team/products/alldelete?personId=${shoppingCart.get(0).personId}" class="btn border border-dark ml-5" id="alldelete" >전체삭제</a>
- 		</div>
- 	
 		<div class="">
 			<table class="table text-center">
 				<tr> 
@@ -92,13 +90,15 @@
 				</tr>
 			    <c:forEach items="${shoppingCart}" var="cart" varStatus="status">
    				<form action="/123team/products/addcart" method="post">
-	   				<input type="hidden" name="shoppingCartId" value="${cart.shoppingCartId}">
-			        <input type="hidden" name="productId" value="${cart.productId}">
-			        <input type="hidden" name="productName" value="${cart.productName}">
-   		            <input type="hidden" name="productPrice" value="${cart.productPrice}">
-   		            <input type="hidden" name="productCategory" value="${cart.productCategory}">
-			        <input type="hidden" name="personId" value="${cart.personId}">
-			        
+	   				<input type="hidden" name="shoppingCartId" value="${cart.shoppingCartId}"> <!-- 카트 넘버 -->
+			        <input type="hidden" name="productId" value="${cart.productId}"> <!-- 상품 아이디 -->
+			        <input type="hidden" name="productName" value="${cart.productName}"> <!-- 상품이름 -->
+			        <input type="hidden" name="amount" value="${cart.amount}"> <!-- 상품 양 -->
+   		            <input type="hidden" name="productPrice" value="${cart.productPrice}"> <!-- 상품 가격 -->
+			        <input type="hidden" name="personId" value="${cart.personId}"> <!-- 주문자 아이디 -->
+					<div class="float-right mb-2">
+						<button class="btn btn-info btn-sm" type="button" onclick="redirectToOrder(${status.index}, '${cart.productId}', '${cart.productName}', ${cart.amount}, ${cart.productPrice}, '${cart.personId}')">주문하기</button>
+					</div>
 			        <tr>
 			            <td class="shop border-right">${cart.productCategory}</td>
 			            <td class="shop border-right align-self-center">img</td>
@@ -135,4 +135,16 @@
 	
 	<%@ include file="../module/footer.jsp" %>
 </body>
+<script>
+    function redirectToOrder(index, productId, productName, amount, productPrice, personId) {
+        var url = "/123team/orders/o_reading?";
+        url += "productId=" + productId + "&";
+        url += "productName=" + encodeURIComponent(productName) + "&";
+        url += "amount=" + amount + "&";
+        url += "productPrice=" + productPrice + "&";
+        url += "personId=" + personId;
+        window.location.href = url;
+    }
+</script>
+
 </html>

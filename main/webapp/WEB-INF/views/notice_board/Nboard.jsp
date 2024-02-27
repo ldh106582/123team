@@ -1,6 +1,5 @@
-<%@page import="com.springmvc.domain.userinfo"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@page import="com.springmvc.domain.*"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -50,9 +49,10 @@
 </head>
 <body>		
 
+
 	<%@  include file="../module/header.jsp" %>
-	<%
-		request.setAttribute("loginId", userinfo.getInstance().getPersonId());
+	<% // 오류 잇었음 userinfo에서 manager로 변경했음 한의 확인 후 수정할 것 
+		request.setAttribute("loginId", Manager.getInstance().getPersonId());
 	%>
  			
 	<div class="container my-3">
@@ -65,8 +65,10 @@
                     <p class="">${board.context}</p>
                 </div>
                 <hr>
+                <c:if test="${loginId == board.personId}">
                 <a href="update?boardId=${board.boardId}"class="btn btn-primary">수정하기</a>
                 <a href="delete?boardId=${board.boardId}"class="btn btn-danger">삭제하기</a>
+                </c:if>
             </div>
         </div>
         <hr>
@@ -101,6 +103,46 @@
 	
 <%-- 	
 	<c:if test="${board.personId == loginId}">
+=======
+    <nav class="navbar navbar-expand navbar-dark bg-success">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/123team">Home</a>
+            </div>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link" href="/123team/hospital">병원</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/123team/products">동물상품</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/123team/Fboards">게시판</a>
+                </li>
+ 				<c:choose>             
+	            <c:when test="${not empty managerId }">
+	                	
+	                <li class="nav-item">
+	                  <a class="nav-link" href="/123team/managerlogin/manager_page?personId=${managerId.personId}">마이페이지</a>
+	                </li>
+	                
+	            </c:when>
+	               	<c:otherwise>
+		                <li class="nav-item">
+		                  <a class="nav-link" href="/123team/login">로그인</a>
+		                </li>
+	                </c:otherwise>
+                </c:choose>
+                
+            </div>
+        </div>
+    </nav>
+ <%
+ 				request.setAttribute("loginId", userinfo.getInstance().getPersonId());
+ 			%>
+ 			<c:if test="${board.personId == loginId}">
+>>>>>>> fa9e400f8ceb5c1826ec622c185d981968432be3
 			<a href="update?boardId=${board.boardId}">공지글 수정</a>
 			<a href="delete?boardId=${board.boardId}">공지글 삭제</a>
 			&emsp;&emsp;&emsp; </c:if>

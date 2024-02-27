@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.springmvc.domain.Manager;
+import com.springmvc.domain.Order;
 import com.springmvc.domain.Person;
+import com.springmvc.domain.ProductMember;
 import com.springmvc.domain.ShoppingCart;
 import com.springmvc.repository.*;
 
@@ -29,10 +31,24 @@ public class OrderServiceImp implements OrderSerivce{
 	}
 	// 관리자의 정보를 가져오는 함수
 	@Override
-	public List<Manager> M_OderRead(String personId) {
+	public List<ProductMember> M_OderRead(String personId) {
 		// TODO Auto-generated method stub
 		return OrderRepository.M_OderRead(personId);
 	}
+	// 장바구니에서 받아온 데이터를 order db에 넣음
+	@Override
+	public void Ordercreate(Order order) {
+		// TODO Auto-generated method stub
+		OrderRepository.Ordercreate(order);
+	}
+	
+	//장바구니에 있는 데이터를 가져오는 함수
+	@Override
+	public List<Order> GetOrdercreate(String personId) {
+		// TODO Auto-generated method stub
+		return OrderRepository.GetOrdercreate(personId);
+	}
+	
 	
 	
 	

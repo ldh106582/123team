@@ -9,7 +9,6 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.support.SessionStatus;
-
 import com.springmvc.domain.EApplication;
 import com.springmvc.domain.ENBoard;
 import com.springmvc.domain.FBoard;
@@ -27,9 +25,7 @@ import com.springmvc.domain.FBoard;
 import com.springmvc.domain.Person;
 import com.springmvc.domain.Pet;
 import com.springmvc.domain.ProductMember;
-import com.springmvc.domain.userinfo;
 import com.springmvc.service.PersonService;
-import com.springmvc.service.ManagerService;
 
 @Controller
 @RequestMapping("/login")
@@ -79,14 +75,15 @@ public class PersonController {
 			List<Pet> petName = personService.getPetName(person);
 			System.out.println("petName : " + petName);
 			session.setAttribute("petName", petName);
-			
+
 			// pet 아이디 정보를 가져옴
 			List<Pet> petId = personService.getPetId(pet);
 			session.setAttribute("petId", petId);
 			
 			return "member/Mypage";
-				
-	}
+
+		}
+		
 		return "Login";
 
 	}
@@ -140,10 +137,10 @@ public class PersonController {
 		System.out.println("로그아웃 페이지로 이동");
 		// 세션 무효시킴
 	    sessionStatus.setComplete();
-	    
 	    HttpSession session = request.getSession();
 	    session.invalidate();
 
+	    System.out.println("==============로그아웃");
  	  // 쿠키제거
 	    Cookie[] cookies = request.getCookies();
 	    if (cookies != null) {
@@ -152,14 +149,8 @@ public class PersonController {
 	            response.addCookie(cookie);
 	        }
 	    }
-	  
-	    userinfo.getInstance().setPersonId(null);
-	    userinfo.getInstance().setPersonName(null);
-	    userinfo.getInstance().setType(null);
-	    System.out.println(userinfo.getInstance().getPersonId());
-	    System.out.println(userinfo.getInstance().getPersonName());
-	    System.out.println(userinfo.getInstance().getType());
-	       
+	 
+
 	    return "redirect:/login";
 	}
 }
