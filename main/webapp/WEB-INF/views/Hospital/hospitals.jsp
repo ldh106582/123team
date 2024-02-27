@@ -13,6 +13,75 @@
 	<a href="delete">병원삭제</a>
 	<a href="booking">병원예약</a>
 	
-	
+	<nav class="navbar navbar-expand navbar-dark bg-primary">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/123team">Home</a>
+            </div>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/123team/hospital">병원</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/123team/products">동물상품</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/123team/Fboards">게시판</a>
+                    </li>
+                    <c:choose>             
+                        <c:when test="${not empty managerId }">     
+                            <li class="nav-item">
+                            <a class="nav-link" href="/123team/managerlogin/manager_page?personId=${managerId.personId}">마이페이지</a>
+                            </li>
+                        </c:when>
+                        <c:otherwise>
+                            <li class="nav-item">
+                            <a class="nav-link" href="/123team/login">로그인</a>
+                            </li>
+                        </c:otherwise>
+                    </c:choose>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container my-3">
+        <div class="d-flex justify-content-between">
+            <div>
+                <h1><img width="50" height="50" src="https://img.icons8.com/ios/50/hospital.png" alt="hospital"/>병원목록</h1>
+            </div>
+            <div class="justify-content-end">
+                <a href="#" class="btn btn-success ">병원 추가</a>
+                <a href="#" class="btn btn-danger ">병원 삭제</a> 
+            </div>
+        </div>
+        <br>
+        <div class="row" >
+            <c:forEach>
+                <div class="col">
+                    <div class="border border-secondary rounded" style="width: 350px; height: 300px;">
+                        <div class="detail-box">
+                            <div class="options">
+                                <a href="">
+                                <img src="img/O8p-ejkKrjHyRj-WFMBNVXq-MkwfQNTGliUOWGrueWkwKT0Deqz5V7AsTA-X1b7QHrgJTUyy3joO053YGDEY1UgyGXJ-EN12PN7iDrO9MBMcycdmvo4AUuQnr_T7P8SZnkK32rOS54WfWOLT68svzQ.webp" alt="" width="100%" height="210">
+                                </a>
+                            </div>
+                            <a href="#" class="text-decoration-none">
+                                <h5>${hospital.name}</h5>
+                                <p>${hospital.context}</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </c:forEach>
+        </div>
+           
+        <br>
+        <form action="search" class="form-inline my-2 justify-content-center ">
+            <input type="text" name="title" placeholder="제목입력" class="form-control mr-3" />
+            <button type="submit" class="btn btn-success">검색</button>
+        </form>
+    </div>
 </body>
 </html>

@@ -27,11 +27,9 @@
                 </li>
  				<c:choose>             
 	            <c:when test="${not empty managerId }">
-	                	
 	                <li class="nav-item">
 	                  <a class="nav-link" href="/123team/managerlogin/manager_page?personId=${managerId.personId}">마이페이지</a>
 	                </li>
-	                
 	            </c:when>
 	               	<c:otherwise>
 		                <li class="nav-item">

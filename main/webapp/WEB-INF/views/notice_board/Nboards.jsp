@@ -11,7 +11,7 @@
 </head>
 <body>
 
- <%@  include file="../module/header.jsp" %> 
+<%--  <%@  include file="../module/header.jsp" %>  --%>
 
    <nav class="navbar navbar-expand navbar-dark bg-danger">
         <div class="container">
@@ -48,10 +48,6 @@
         </div>
     </nav>
     
-	<h1>공지사항 페이지</h1>
-	
-	<a href="/123team/Nboards"><button>공지사항</button></a> || <a href="/123team/Fboards"><button>자유게시판</button></a> || <a href="/123team/ENboards"><button>체험단</button></a>&emsp; <a href="Nboards/add"><button>게시글 작성</button></a>
-	<br>
 	<% 
 		int size = (Integer) request.getAttribute("size");
 		request.setAttribute("sise", size);

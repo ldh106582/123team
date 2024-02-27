@@ -38,7 +38,7 @@
 		                </li>
 	                </c:otherwise>
                 </c:choose>
-                
+                </ul>
             </div>
         </div>
     </nav>
