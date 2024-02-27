@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%@  include file="../module/header.jsp" %>
+ <%@  include file="../module/headerdanger.jsp" %>
 <h1>상품 수정페이지</h1>
 
 <form:form modelAttribute="product">

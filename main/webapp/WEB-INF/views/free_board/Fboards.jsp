@@ -15,7 +15,7 @@
 </head>
 <body>
 
- <%@  include file="../module/header.jsp" %>
+ <%@  include file="../module/headersuccess.jsp" %>
 	<%
  		request.setAttribute("loginId", session.getAttribute("personId"));
  	%>

@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
- <%@  include file="../module/header.jsp" %>
+ <%@  include file="../module/headersuccess.jsp" %>
 	존재하지 않는 게시글 제목 입니다.
 
 	<a href="/123team/Fboards">돌아가기</a>

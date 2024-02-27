@@ -9,8 +9,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<%@  include file="../module/header.jsp" %>
+
 <body>
+ <%@  include file="../module/headerinfo.jsp" %>
 <a href="hospitals/create">병원추가</a>
 
 <c:forEach items="${hospitals}" var="hospital">

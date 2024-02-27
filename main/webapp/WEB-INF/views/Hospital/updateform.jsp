@@ -10,6 +10,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+ <%@  include file="../module/headerinfo.jsp" %>
 <form:form modelAttribute="hospital" method="POST">
 	<p>
 		병원 이름 : <form:input path="name" value="${hospital.name}"/>

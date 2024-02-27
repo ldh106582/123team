@@ -11,7 +11,7 @@
 </head>
 <body>
 
-  <%@  include file="../module/header.jsp" %>
+ <%@  include file="../module/headersuccess.jsp" %>
   
 	<div class="container my-3">
 	    <h1>체험글 등록 페이지</h1>

@@ -10,7 +10,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%@  include file="../module/header.jsp" %>
+ <%@  include file="../module/headerinfo.jsp" %>
 <a href="/123team/hospitals">돌아가기</a>
 <div>
 <p>
