@@ -2,6 +2,7 @@ package com.springmvc.controller;
 
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -56,8 +57,9 @@ public class NBoardContoller {
 
 //	작성한 공지글 DB저장
 	@PostMapping("/add") 
-	public String addboard(@ModelAttribute("board")NBoard board,Model model){ 
-		nboardService.setNBoard(board);
+	public String addboard(@ModelAttribute("board")NBoard board,Model model,HttpSession session){ 
+		 String personId = (String) session.getAttribute("personId");
+		nboardService.setNBoard(board,personId);
 		return "redirect:/Nboards";
 	}
 	
@@ -106,8 +108,9 @@ public class NBoardContoller {
 	
 //	 공지글 댓글 작성
 	 @PostMapping("/Nboard")
-	 public String addComment(Model model,HttpServletRequest request) {
-		 boardCommentService.addComment(request.getParameter("boardId").toString(),request.getParameter("comment").toString());
+	 public String addComment(Model model,HttpServletRequest request,HttpSession session) {
+		 String personId = (String) session.getAttribute("personId");
+		 boardCommentService.addComment(request.getParameter("boardId").toString(),request.getParameter("comment").toString(),personId);
 		 return "redirect:/Nboards/Nboard?boardId="+request.getParameter("boardId");
 	 }
 	 

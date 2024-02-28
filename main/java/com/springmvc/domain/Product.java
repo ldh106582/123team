@@ -33,7 +33,6 @@ public class Product implements Serializable{
 	}
 
 
-
 	public String getProductCategory() {
 		return productCategory;
 	}

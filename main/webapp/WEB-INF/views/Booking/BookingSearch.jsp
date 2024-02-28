@@ -9,6 +9,9 @@
 <title>Insert title here</title>
 </head>
 <body>
+ <%@  include file="../module/headerinfo.jsp" %>
 	예약정보
+	
+	<%@ include file="../module/footer.jsp" %>
 </body>
 </html>

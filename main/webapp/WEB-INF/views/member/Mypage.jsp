@@ -11,45 +11,9 @@
 <meta charset="UTF-8">
 <title>로그인 성공 페이지</title>
 </head>
-
 <body>
 
-<!-- header start -->
-   <nav class="navbar navbar-expand navbar-dark bg-dark">
-        <div class="container">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="/123team">Home</a>
-            </div>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-              <ul class="navbar-nav">
-                <li class="nav-item">
-                  <a class="nav-link" href="/123team/hospital">병원</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/123team/products">동물상품</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/123team/Fboards">게시판</a>
-                </li>
- 				<c:choose>             
-	            <c:when test="${not empty managerId }">
-	                	
-	                <li class="nav-item">
-	                  <a class="nav-link" href="/123team/managerlogin/manager_page?personId=${managerId.personId}">마이페이지</a>
-	                </li>
-	                
-	            </c:when>
-	               	<c:otherwise>
-		                <li class="nav-item">
-		                  <a class="nav-link" href="/123team/login">로그인</a>
-		                </li>
-	                </c:otherwise>
-                </c:choose>
-                
-            </div>
-        </div>
-    </nav>
-<!-- header end -->
+	<%@ include file="../module/memberheader.jsp" %>
 
 	<div id="wrap" class="wrap naverid ">
 		<header class="header" role="banner">
@@ -99,7 +63,6 @@
 		            </li>
 		            <li>
 		               <a href="./login/logout" class="left_item" role="menuitem" >
-
 		                   <div class="menu_text ">로그아웃</div>
 		               </a>
 		            </li>
@@ -111,7 +74,7 @@
 	        <div id="content" class="content">
 	            <div class="subindex_wrap" role="main">
 	                <div id="headerTop" class="path_area" aria-hidden="false"></div>
-	            </div>
+	            </div>                        
 	            <div class="subindex_item">
 	                <div class="head_title">
 	                    <h2 class="subindex_title">내 정보 수정</h3>

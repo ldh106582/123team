@@ -25,8 +25,8 @@ public class NBoardServiceImpl implements NBoardService {
 	}
 
 	@Override
-	public void setNBoard(NBoard board) {
-		nboardRepository.setNBoard(board);
+	public void setNBoard(NBoard board,String personId) {
+		nboardRepository.setNBoard(board,personId);
 	}
 
 	@Override

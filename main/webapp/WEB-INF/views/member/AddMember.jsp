@@ -9,42 +9,9 @@
 <title>소비자 회원가입</title>
 </head>
 <body>
-  <!-- header start -->
-   <nav class="navbar navbar-expand navbar-dark bg-dark">
-        <div class="container">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="/123team">Home</a>
-            </div>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-              <ul class="navbar-nav">
-                <li class="nav-item">
-                  <a class="nav-link" href="/123team/hospital">병원</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/123team/products">동물상품</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/123team/Fboards">게시판</a>
-                </li>
- 				<c:choose>             
-	            <c:when test="${not empty managerId }">
-	                	
-	                <li class="nav-item">
-	                  <a class="nav-link" href="/123team/managerlogin/manager_page?personId=${managerId.personId}">마이페이지</a>
-	                </li>
-	                
-	            </c:when>
-	               	<c:otherwise>
-		                <li class="nav-item">
-		                  <a class="nav-link" href="/123team/login">로그인</a>
-		                </li>
-	                </c:otherwise>
-                </c:choose>
-                
-            </div>
-        </div>
-    </nav>
-<!-- header end -->
+
+
+    <%@  include file="../module/headerdark.jsp" %>
 	
     <div class="jumbotron">
         <div class="container">
@@ -129,6 +96,8 @@
 
 	<hr>
     </div>
+    
+    <%@ include file="../module/footer.jsp" %>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>

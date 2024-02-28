@@ -14,9 +14,9 @@
 </head>
 <body>
 
-   <%@  include file="../module/headerdark.jsp" %>
-   
 
+   <%@  include file="../module/headerdark.jsp" %>
+  
   <%
     HttpSession sessions = request.getSession();
     String type = (String) session.getAttribute("type");
@@ -210,6 +210,8 @@
 	           </div>
        		</div>
 		</div>
+	
+	<%@ include file="../module/footer.jsp" %>
 </body>
 <!-- js -->
 <script src="../resources/js/Mypage.js"></script>

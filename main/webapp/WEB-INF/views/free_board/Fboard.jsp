@@ -8,57 +8,56 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
+<script type="text/javascript">
+				
+					function editform(comment,commentId){
+						
+						var container = document.getElementById(commentId);
+						console.log(commentId);
+						var dew = "willdelete"+commentId;
+						var willdelete = document.getElementById(dew);
+						console.log(dew);
+						container.removeChild(willdelete);
+						
+						var form = document.createElement("form");
+						form.setAttribute("action","/123team/ENboards/updatecomment");
+						form.setAttribute("method","POST");
+						
+						var inputh = document.createElement("input");
+						inputh.setAttribute("type","hidden");
+						inputh.setAttribute("name","commentId");
+						inputh.setAttribute("value",commentId);
+						
+						var inputt = document.createElement("input");
+						inputt.setAttribute("type","text");
+						inputt.setAttribute("name","comment");
+						inputt.setAttribute("value",comment);
+						
+						var inputs = document.createElement("input");
+						inputs.setAttribute("type","submit");
+						inputs.setAttribute("value","수정하기");
+						
+						form.appendChild(inputh);
+						form.appendChild(inputt);
+						form.appendChild(inputs);
+						
+						container.appendChild(form);
+						
+					}
+					</script>			
 </head>
 <body>		
-
-	<%@  include file="../module/header.jsp" %>
+		
+	<%@ include file="../module/headersuccess.jsp" %>
 	
-	<%
-		//request.setAttribute("loginId", userinfo.getInstance().getPersonId());
+	<%@
+		request.setAttribute("loginId", session.getAttribute("personId"));
 	%>
 
-<!-- header start -->
-   <nav class="navbar navbar-expand navbar-dark bg-success">
-        <div class="container">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="/123team">Home</a>
-            </div>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-              <ul class="navbar-nav">
-                <li class="nav-item">
-                  <a class="nav-link" href="/123team/hospital">병원</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/123team/products">동물상품</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/123team/Fboards">게시판</a>
-                </li>
- 				<c:choose>             
-	            <c:when test="${not empty managerId }">
-	                	
-	                <li class="nav-item">
-	                  <a class="nav-link" href="/123team/managerlogin/manager_page?personId=${managerId.personId}">마이페이지</a>
-	                </li>
-	                
-	            </c:when>
-	               	<c:otherwise>
-		                <li class="nav-item">
-		                  <a class="nav-link" href="/123team/login">로그인</a>
-		                </li>
-	                </c:otherwise>
-                </c:choose>
-                
-            </div>
-        </div>
-    </nav>
- <!-- header end -->
-
- 		
-  
+ 		 
     <div class="container my-3">
         <h1>게시글 상세 페이지</h1>
+        <a href="/123team/Fboards">돌아가기</a>
         <div class="row">
             <div class="col-md-12">
                 <h1 class="mt-4">${board.title}</h1>
@@ -75,35 +74,42 @@
         </div>
         <hr>
         <div class="list-group">
+        	<c:if test="${loginId != null}">
+			    <h5 class="mb-3">댓글</h5>
+			    <form action="ENboard" method="POST" class="mb-3">
+			        <input type="hidden" name="boardId" value="${board.boardId}">
+			        <div class="form-group">
+			            <textarea class="form-control" name="comment" rows="3"></textarea>
+			        </div>
+			        <button type="submit" class="btn btn-primary">댓글 작성</button>
+			    </form>
+			</c:if>
+			
 		    <c:forEach items="${Commentlist}" var="comments">
 		        <div class="list-group-item">
 		            <div class="d-flex w-100 justify-content-between">
-		                <h5 class="mb-1">${comments.comment}</h5>
+		            	<h5 class="mb-1">${comments.personId}</h5>
 		                <small>${comments.registDay}</small>
+		                
+		                
 		            </div>
-		            <p class="mb-1" id="${comments.commentId}">${comments.comment}</p>
+		            <div class="d-flex w-100 justify-content-between" id="${comments.commentId}">
+		            <p class="mb-1" id="willdelete${comments.commentId}">${comments.comment}</p>
+		             </div>
 		            <c:if test="${comments.personId == loginId}">
 		                <button class="btn btn-primary" onclick="editform('${comments.comment}','${comments.commentId}')">댓글 수정</button>
 		                <a href="deletecoment?commentId=${comments.commentId}&boardId=${board.boardId}" class="btn btn-danger">댓글 삭제</a>
 		            </c:if>
 		        </div>
 		    </c:forEach>
-	        <c:if test="${loginId != null}">
-			    <h5 class="mb-3">댓글 작성</h5>
-			    <form action="ENboard" method="POST" class="mb-3">
-			        <input type="hidden" name="boardId" value="${board.boardId}">
-			        <div class="form-group">
-			            <textarea class="form-control" name="comment" rows="3"></textarea>
-			        </div>
-			        <button type="submit" class="btn btn-primary">등록</button>
-			    </form>
-			</c:if>
+	        
 		</div>
-    </div>
+	</div>
     
+    
+    <%@ include file="../module/footer.jsp" %>
 			
     <%--  참고용 주석
->>>>>>> origin/yeonghoe
 			<a href="update?boardId=${board.boardId}">게시글 수정</a>
 			<a href="delete?boardId=${board.boardId}">게시글 삭제</a>
 			&emsp;&emsp;&emsp; <a href="/123team/Fboards">돌아가기</a>
@@ -129,9 +135,6 @@
 				--------------------------------------------------------------------------------
 			</c:forEach>
 			
-=======
-
->>>>>>> origin/hanui
 				<script type="text/javascript">
 					function editform(comment,commentId){
 						
@@ -215,11 +218,9 @@
 				<input type="text" name="comment">
 				<input type="submit" value="등록">
 			</form>
-<<<<<<< HEAD
-			 
-=======
+
 			</c:if>
 			
->>>>>>> origin/hanui --%>
+ --%>
 </body>
 </html>

@@ -9,7 +9,6 @@ public class FBoard {
 	private String context;
 	private String registDay;
 	private int hit;
-	private String personName;
 	private String personId;
 	private String boardId;
 	
@@ -36,13 +35,6 @@ public class FBoard {
 	}
 	public void setHit(int hit) {
 		this.hit = hit;
-	}
-	public String getPersonName() {
-		
-		return personName;
-	}
-	public void setPersonName(String PersonName) {
-		this.personName = PersonName;
 	}
 	public String getPersonId() {
 		// 세션에서 받아오기

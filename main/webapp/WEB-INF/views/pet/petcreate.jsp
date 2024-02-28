@@ -148,6 +148,7 @@
 		</form>
     </div>
 
+	<%@ include file="../module/footer.jsp" %>
 </body>
 <script type="text/javascript">
 

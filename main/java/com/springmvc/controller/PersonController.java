@@ -79,15 +79,16 @@ public class PersonController {
 	public String GetReadPerson(@ModelAttribute("success") Person person,
 								Model model,
 								Pet pet, HttpServletRequest request) {
-
+		
+		// update에서 db로 가져가 조회할 session
 
 		// 1. 조원들에게 넘겨줄 객체 2. personId와 pw를 가져옴
 		Person id = personService.loginSucess(person);
+	
 		if(id != null) 
 		{
-			// update에서 db로 가져가 조회할 session
 			HttpSession session = request.getSession();
-			session.setAttribute("personkey", id);
+			session.setAttribute("id", id);
 				
 			// pet이름 정보를 가져옴
 			List<Pet> petName = personService.getPetName(person);
@@ -99,7 +100,9 @@ public class PersonController {
 			session.setAttribute("petId", petId);
 			
 			return "member/Mypage";
+
 		}
+		
 		return "Login";
 
 	}
@@ -158,6 +161,16 @@ public class PersonController {
 	            response.addCookie(cookie);
 	        }
 	    }
+	 
+
 	    return "redirect:/login";
+	}
+	
+	@GetMapping("/mypage")
+	public String mypage(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		Person person = (Person) session.getAttribute("personkey");
+		session.setAttribute("person", person);
+		return "member/Mypage";
 	}
 }

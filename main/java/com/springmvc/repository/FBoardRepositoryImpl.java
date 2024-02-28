@@ -10,7 +10,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.springmvc.domain.FBoard;
-import com.springmvc.domain.userinfo;
 
 @Repository
 public class FBoardRepositoryImpl implements FBoardRepository{
@@ -43,15 +42,10 @@ public class FBoardRepositoryImpl implements FBoardRepository{
 		return board;
 	}
 //	게시글 등록
-	public void setFBoard(FBoard board) {
+	public void setFBoard(FBoard board,String personId) {
 		
-		String SQL = "insert into FBoard values(?,?,?,?,?,?,?)";
-//		이름과 아이디 받아오기
-		userinfo getboardNI = userinfo.getInstance();
-		System.out.println("==============아이디받아온값================");
-		System.out.println(getboardNI.getPersonId());
-		System.out.println("========================================");
-		template.update(SQL,getboardNI.getPersonName(),getboardNI.getPersonId(),board.getContext(),board.getTitle(),0,getRegistDay(),CreateBoardId());
+		String SQL = "insert into FBoard values(?,?,?,?,?,?)";
+		template.update(SQL,personId,board.getContext(),board.getTitle(),0,getRegistDay(),CreateBoardId());
 	}
 //	날짜받기
 	public LocalDate getRegistDay()

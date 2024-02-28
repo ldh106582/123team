@@ -10,6 +10,9 @@
 <title>products 페이지</title>
 </head>
 <body>
+
+	<%@  include file="../module/headerdanger.jsp" %>
+
 <!-- header -->
    <nav class="navbar navbar-expand navbar-dark bg-danger">
         <div class="container">
@@ -45,7 +48,7 @@
         </div>
     </nav>
         <!-- header end -->
-        
+
     <div class="con" style="display: flex;">
         <div class="left_container">
             <div class="left_container1" >
@@ -159,5 +162,6 @@
 
  </c:forEach>
  
+ 	<%@ include file="../module/footer.jsp" %>
 </body>
 </html>

@@ -19,7 +19,7 @@
 						container.removeChild(willdelete);
 						
 						var form = document.createElement("form");
-						form.setAttribute("action","/123team/Nboards/updatecomment");
+						form.setAttribute("action","/123team/ENboards/updatecomment");
 						form.setAttribute("method","POST");
 						
 						var inputh = document.createElement("input");
@@ -41,7 +41,6 @@
 						form.appendChild(inputs);
 						
 						container.appendChild(form);
-						
 						
 					}
 					
@@ -92,20 +91,33 @@
 						form.appendChild(inputs);
 						form.appendChild(inputM);
 						
+						var button = document.createElement("button");
+						var buttonText = document.createTextNode("취소");
+						button.appendChild(buttonText);
+
+						button.addEventListener('click', function(event) {
+						  event.preventDefault(); // 기본 이벤트 동작을 막습니다.
+						  container.removeChild(form); // 폼을 삭제합니다.
+						  container.appendChild(delp); //신청버튼 다시생성
+						});
+						
+						form.appendChild(button);
 						container.appendChild(form);
 					}
 </script>
 </head>
 <body>		
 
-	<%@  include file="../module/header.jsp" %>
+ <%@  include file="../module/headersuccess.jsp" %>
+
 	
 	<%
-		request.setAttribute("loginId", session.getAttribute("personId").toString());
+		request.setAttribute("loginId", session.getAttribute("personId"));
 	%>
  			
 	<div class="container my-3">
         <h1>체험글 상세 페이지</h1>
+        <a href="/123team/ENboards">돌아가기</a>
         <div class="row">
             <div class="col-md-12">
                 <h1 class="mt-4">${board.title}</h1>
@@ -129,37 +141,50 @@
                 </c:if>
             </div>
         </div>
+        <c:if test="${loginId != null}">
+			<div id="container">
+				<button id="delp" onclick="bookform('${board.title}','${board.animal}','${board.experience}','${board.personId}')">체험신청</button>
+			</div>
+		</c:if>
         <hr>
         <div class="list-group">
+        	<c:if test="${loginId != null}">
+			    <h5 class="mb-3">댓글</h5>
+			    <form action="ENboard" method="POST" class="mb-3">
+			        <input type="hidden" name="boardId" value="${board.boardId}">
+			        <div class="form-group">
+			            <textarea class="form-control" name="comment" rows="3"></textarea>
+			        </div>
+			        <button type="submit" class="btn btn-primary">댓글 작성</button>
+			    </form>
+			</c:if>
+			
 		    <c:forEach items="${Commentlist}" var="comments">
 		        <div class="list-group-item">
 		            <div class="d-flex w-100 justify-content-between">
-		                <h5 class="mb-1">${comments.comment}</h5>
+		            	<h5 class="mb-1">${comments.personId}</h5>
 		                <small>${comments.registDay}</small>
+		                
+		                
 		            </div>
-		            <p class="mb-1" id="${comments.commentId}">${comments.comment}</p>
+		            <div class="d-flex w-100 justify-content-between" id="${comments.commentId}">
+		            <p class="mb-1" id="willdelete${comments.commentId}">${comments.comment}</p>
+		             </div>
 		            <c:if test="${comments.personId == loginId}">
 		                <button class="btn btn-primary" onclick="editform('${comments.comment}','${comments.commentId}')">댓글 수정</button>
 		                <a href="deletecoment?commentId=${comments.commentId}&boardId=${board.boardId}" class="btn btn-danger">댓글 삭제</a>
 		            </c:if>
 		        </div>
 		    </c:forEach>
-	        <c:if test="${loginId != null}">
-			    <h5 class="mb-3">댓글 작성</h5>
-			    <form action="ENboard" method="POST" class="mb-3">
-			        <input type="hidden" name="boardId" value="${board.boardId}">
-			        <div class="form-group">
-			            <textarea class="form-control" name="comment" rows="3"></textarea>
-			        </div>
-			        <button type="submit" class="btn btn-primary">등록</button>
-			    </form>
-			</c:if>
+	        
 		</div>
 	</div>
+	
+	<%@ include file="../module/footer.jsp" %>
 
 <%-- 
 	<c:if test="${board.personId == loginId}">
-=======
+
    <nav class="navbar navbar-expand navbar-dark bg-success">
         <div class="container">
             <div class="navbar-header">
@@ -194,7 +219,6 @@
  				request.setAttribute("loginId", userinfo.getInstance().getPersonId());
  			%>
  			<c:if test="${board.personId == loginId}">
->>>>>>> fa9e400f8ceb5c1826ec622c185d981968432be3
 			<a href="update?boardId=${board.boardId}">공고글 수정</a>
 			<a href="delete?boardId=${board.boardId}">공고글 삭제</a>
 			&emsp;&emsp;&emsp; </c:if>

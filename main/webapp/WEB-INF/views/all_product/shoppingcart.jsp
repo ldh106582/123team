@@ -31,6 +31,7 @@
 <title>장바구니 페이지</title>
 </head>
 <body>
+<<<<<<< HEAD
 <!-- header -->
   <nav class="navbar navbar-expand navbar-dark bg-danger">
         <div class="container">
@@ -65,6 +66,10 @@
     </nav>
 	    <!-- header end -->
 	    
+=======
+ <%@  include file="../module/headerdanger.jsp" %>
+	
+>>>>>>> origin/hanui
 	<div class="jumbotron">
 		<div class="contianer">
 			<h2 class="dislpay-2"> <i class="fa-solid fa-truck-fast"></i> 내 장바구니 목록</h2>
@@ -132,6 +137,8 @@
 			</table>
 		</div>
 	</div>
+	
+	<%@ include file="../module/footer.jsp" %>
 </body>
 
 <script>

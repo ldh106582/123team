@@ -16,27 +16,8 @@
 <title>나의 동물 현황</title>
 </head>
 <body>
-
-	<nav class="navbar navbar-expand navbar-dark bg-dark">
-		<div class="container">
-			<div class="navbar-header">
-				<a class="navbar-brand" href="/123team">Home</a>
-			</div>
-			<div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-				<ul class="navbar-nav">
-					<li class="nav-item">
-						<a class="nav-link" href="/123team/hospital"><img width="24" height="24" src="https://img.icons8.com/doodle/48/hospital--v1.png" alt="hospital--v1"/>병원</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="/123team/products"><img width="24" height="24" src="https://img.icons8.com/external-photo3ideastudio-lineal-color-photo3ideastudio/24/external-pet-shop-pet-shop-photo3ideastudio-lineal-color-photo3ideastudio.png" alt="external-pet-shop-pet-shop-photo3ideastudio-lineal-color-photo3ideastudio"/>동물상품</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="/123team/Fboards"><img width="24" height="24" src="https://img.icons8.com/external-flaticons-lineal-color-flat-icons/24/external-board-police-flaticons-lineal-color-flat-icons-2.png" alt="external-board-police-flaticons-lineal-color-flat-icons-2"/>게시판</a>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</nav>
+	
+	<%@  include file="../module/headerdark.jsp" %>
 	
     <div id="wrap" class="wrap naverid ">
         <header class="header" role="banner">
@@ -53,8 +34,8 @@
                 <div class="profile_inner">
                     <div class="profile">
                         
-                        <p class="useid">정영회</p>
-                        <p class="usemail">dudghl530@naver.com</p>
+                        <p class="useid">${ id.personId }</p>
+		                <p class="usemail">${id.personEmail }</p>
                     </div>
                 </div>
             </div>
@@ -136,17 +117,15 @@
                     <div class="head_title">
                         <h2 class="subindex_title">동물 진찰 기록부</h2>
                     </div>
-<<<<<<< HEAD
-               		<div class="subindex_greenbox">
+             		<div class="subindex_greenbox">
 	                    <ul class="subindex_row">
                             
 	                        <table class="table">
-=======
+
                      <div class="subindex_greenbox">
                        <ul class="subindex_row">
                             
                            <table class="table">
->>>>>>> fa9e400f8ceb5c1826ec622c185d981968432be3
                                 <tbody> 
                                     <tr>
                                         <td>

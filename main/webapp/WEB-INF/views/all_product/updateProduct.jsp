@@ -9,6 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<<<<<<< HEAD
 <!-- header -->
    <nav class="navbar navbar-expand navbar-dark bg-danger">
         <div class="container">
@@ -45,6 +46,9 @@
     </nav>
         <!-- header end -->
         s
+=======
+ <%@  include file="../module/headerdanger.jsp" %>
+>>>>>>> origin/hanui
 <h1>상품 수정페이지</h1>
 
 <form:form modelAttribute="product">
@@ -63,6 +67,7 @@
 	상품사진 : <form:input path="productImage" value="${aproduct.productImage}"/>
 	<input type="submit" value="수정하기">
 </form:form>
-
+	
+	<%@ include file="../module/footer.jsp" %>
 </body>
 </html>

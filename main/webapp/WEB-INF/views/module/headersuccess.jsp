@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,6 +22,10 @@
 </style>
 </head>
 <body>
+<%
+	String loginId = (String) session.getAttribute("personId");
+	request.setAttribute("loginId", loginId);
+%>
 	<nav class="navbar navbar-expand navbar-dark bg-success">
 		<div class="container">
 			<div class="navbar-header">
@@ -29,7 +34,7 @@
 			<div class="collapse navbar-collapse justify-content-end" id="navbarNav">
 				<ul class="navbar-nav">
 					<li class="nav-item">
-						<a class="nav-link" href="/123team/hospital"><img width="24" height="24" src="https://img.icons8.com/doodle/48/hospital--v1.png" alt="hospital--v1"/>병원</a>
+						<a class="nav-link" href="/123team/hospitals"><img width="24" height="24" src="https://img.icons8.com/doodle/48/hospital--v1.png" alt="hospital--v1"/>병원</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="/123team/products"><img width="24" height="24" src="https://img.icons8.com/external-photo3ideastudio-lineal-color-photo3ideastudio/24/external-pet-shop-pet-shop-photo3ideastudio-lineal-color-photo3ideastudio.png" alt="external-pet-shop-pet-shop-photo3ideastudio-lineal-color-photo3ideastudio"/>동물상품</a>
@@ -37,9 +42,18 @@
 					<li class="nav-item">
 						<a class="nav-link" href="/123team/Fboards"><img width="24" height="24" src="https://img.icons8.com/external-flaticons-lineal-color-flat-icons/24/external-board-police-flaticons-lineal-color-flat-icons-2.png" alt="external-board-police-flaticons-lineal-color-flat-icons-2"/>게시판</a>
 					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="/123team/login"><img width="24" height="24" src="https://img.icons8.com/stickers/24/unlock.png" alt="unlock"/>로그인</a>
-					</li>
+					<c:choose>
+						<c:when test="${loginId == null}">
+							<li class="nav-item">
+								<a class="nav-link" href="/123team/login"><img width="24" height="24" src="https://img.icons8.com/stickers/24/unlock.png" alt="unlock"/>로그인</a>
+							</li>
+						</c:when>
+						<c:otherwise>
+							<li class="nav-item">
+								<a class="nav-link" href="/123team/login/mypage">마이페이지</a>
+							</li>
+						</c:otherwise>
+					</c:choose>
 				</ul>
 			</div>
 		</div>
