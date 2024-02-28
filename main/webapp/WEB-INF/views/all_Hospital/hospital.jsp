@@ -18,11 +18,15 @@
             <div class="row ">
                 <div class="col-md-12">
                     <div class="text-center">
-                        <img src="${hospital.image}" alt="병원 이미지" class="border rounded">
+                        <img src="${hospital.image}" alt="병원 이미지" class="border rounded mx-auto" style="width: 720px; height: 420px;">
                     </div>
                     <div class="section_home">
                         <h4 class="section_header">${hospital.name}</h4>
                         <div class="section_info">
+                        	<p>${hospital.addr}</p>
+                        	<p>${hospital.runtime}</p>
+                        	<p>${hospital.number}</p>
+                        	<p>${hospital.parking}</p>
                             <p>${hospital.description}</p>
                         </div>
                     </div>
@@ -30,7 +34,7 @@
                     <div class="col-md-12">
                         <a href="update?hid=${hospital.hid}" class="btn btn-primary">수정하기</a>
                         <a href="delete?hid=${hospital.hid}" class="btn btn-danger">삭제하기</a>
-                        <a href="booking" class="btn btn-success">예약하기</a>
+                        <a href="/123team/booking" class="btn btn-success">예약하기</a>
                     </div>   
                 </div>
             </div>

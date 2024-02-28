@@ -37,10 +37,13 @@ public class PetController
 	@PostMapping("/creatpet")
 	public String SetCreatePet(@ModelAttribute Pet pet, Model model) {
 		System.out.println("여기 도착하나??");
+		System.out.println("PetId : "+pet.getPetId());
+		System.out.println("PetName : "+pet.getPetName());
 		System.out.println("PetType : "+pet.getPetType());
 		System.out.println("PetVarity : " + pet.getPetVarity());
-		System.out.println("주인 아이디 : " + pet.getPersonId());
+		System.out.println("PetVarity : " + pet.getPetSex());
 		System.out.println("동물생일 : " + pet.getPetBirth());
+		System.out.println("주인 아이디 : " + pet.getPersonId());
 		
 		Pet petname = petService.setcreatepet(pet);
 		

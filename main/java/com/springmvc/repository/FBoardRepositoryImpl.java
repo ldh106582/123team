@@ -21,11 +21,11 @@ public class FBoardRepositoryImpl implements FBoardRepository{
 	     this.template = new JdbcTemplate(dataSource);
 	 }
 //	게시판 전체 보기
-	public List<FBoard> getAllFBoards(){
-		String SQL = "SELECT * FROM FBoard";
-		List<FBoard> listofBoards = template.query(SQL, new FBoardRowMapper());
-		return listofBoards;
-	}
+	 public List<FBoard> getAllFBoards(){
+			String SQL = "SELECT * FROM FBoard";
+			List<FBoard> listofBoards = template.query(SQL, new FBoardRowMapper());
+			return listofBoards;
+	 }
 //	하나만보기
 	public FBoard getFBoardById(String boardid) {
 		String SQL = "SELECT * FROM FBoard";

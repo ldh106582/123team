@@ -9,7 +9,9 @@ import com.springmvc.domain.PetVaccination;
 import com.springmvc.domain.PetWeight;
 
 public interface PetCardRepository {
-	Pet getCreatPetCard(String petId);
+	// 반려동물의 정보를 가져오는 함수
+	Pet getPetRead(String petId);
+	
 	List<PetWeight> getReadPetCard(String petId);
 	// 동물의 몸무게를 가져오는 함수
 	List<PetWeight> getWeghitPetCard(String petId);

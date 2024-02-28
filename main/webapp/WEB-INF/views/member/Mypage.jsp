@@ -47,11 +47,11 @@
 		            </li>
 		            <li>
 
-		               <a href="./login/petcard?petid=${petid}" class="left_item" role="menuitem" >
+		               <div class="left_item" role="menuitem" >
 		                   <div class="menu_text ">펫 카드</div>
-		               </a>
+		               </div>
 						<c:forEach items="${petName }" var="petName">
-							<a href="./login/login/petcard?petid=${petName.petId}" class="left_item" role="menuitem">
+							<a href="./login/petcard?petid=${petName.petId}" class="left_item" role="menuitem">
 								<div>${petName.petName }</div>
 							</a>
 						</c:forEach>
