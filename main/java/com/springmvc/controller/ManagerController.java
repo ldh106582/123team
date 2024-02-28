@@ -28,9 +28,10 @@ public class ManagerController
 	@Autowired
 	ManagerService managerService;
 	
-	@GetMapping("/Member")
-	public String showMemberPage(@ModelAttribute("productMember") ProductMember productMember, HospitalMember hospitalMember,
-								@RequestParam("type") String type, HttpServletRequest request) {
+	@GetMapping("/addmanager")
+	public String showMemberPage(@ModelAttribute("productMember") ProductMember productMember,
+								 @ModelAttribute("hospitalMember") HospitalMember hospitalMember,
+								 @RequestParam("type") String type, HttpServletRequest request) {
 	
 	System.out.println("Member 페이지 요청 도착 : " + type);
 
@@ -51,7 +52,7 @@ public class ManagerController
 	}
 }
 	// manager page 회원가입 post
-	@PostMapping("/productmanager")
+	@PostMapping("/addmanager")
 	public String GetaddProductManager(@ModelAttribute("productMember") ProductMember productMember,
 									   @ModelAttribute("hospitalMember") HospitalMember hospitalMember,
 										HttpServletRequest request) 
@@ -68,8 +69,8 @@ public class ManagerController
 			
 	    // 사업자등록증을 받아주는 함수
 		MultipartFile ms_image = productMember.getMs_image();
-	    String s_imagePath  = request.getSession().getServletContext().getRealPath("/resources/images");
-	    String saves_image = ms_image.getOriginalFilename();
+		String saves_image = ms_image.getOriginalFilename();
+		String s_imagePath  = request.getSession().getServletContext().getRealPath("/resources/images");
 	    File saveimage = new File(s_imagePath, saves_image);
 
 	    try {
@@ -111,7 +112,7 @@ public class ManagerController
 		    
 		    try {
 		    	ms_image.transferTo(saveimage);
-		    	hospitalMember.getMs_image();
+		    	hospitalMember.setS_image(s_imageName);
 		    } catch (Exception e) {
 		    	throw new RuntimeException("사업자등록증 업로드를 실패했습니다.", e);
 		    }
@@ -126,7 +127,7 @@ public class ManagerController
 			
 		    try {
 		    	hs_image.transferTo(saveh_image);
-		    	hospitalMember.getHs_image();
+		    	hospitalMember.setS_image(h_imageName);
 		    } catch (Exception e) {
 		    	throw new RuntimeException("의사면허증  업로드를 실패했습니다.", e);
 		    }

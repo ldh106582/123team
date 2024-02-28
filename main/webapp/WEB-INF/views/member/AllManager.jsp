@@ -57,8 +57,8 @@
         <div class="mt-5" >
             <div class="col ">
                 <div class="col-12 row m-0 text-center justify-content-center">
-                    <a href="/123team/managerlogin/Member?type=h" class="p-4  border border-dark col-5 m-1 bg-info text-white rounded" id="hopital">병원관리자 회원가입</a>
-                    <a href="/123team/managerlogin/Member?type=p" class="p-4  border border-dark col-5 m-1 bg-danger text-white rounded" id="product">상품관리자 회원가입</a>
+                    <a href="/123team/managerlogin/addmanager?type=h" class="p-4  border border-dark col-5 m-1 bg-info text-white rounded" id="hopital">병원관리자 회원가입</a>
+                    <a href="/123team/managerlogin/addmanager?type=p" class="p-4  border border-dark col-5 m-1 bg-danger text-white rounded" id="product">상품관리자 회원가입</a>
                 </div>
                 
                 <div class="col row m-0 text-center justify-content-center">

@@ -55,7 +55,7 @@
         </div>
     </div>
     <div class="container">
-     <form:form modelAttribute="productMember" action="./productmanager?${ _csrf.parameterName }=${ _csrf.token }" method="post" enctype="multipart/form-data">
+     <form:form modelAttribute="productMember" action="./addmanager?${ _csrf.parameterName }=${ _csrf.token }" method="post" enctype="multipart/form-data">
      <fieldset>
         <div class="form-group row">
             <label class="col-sm-2 control-label"> 아이디 </label>  

@@ -10,11 +10,11 @@ public class HospitalMember implements Serializable {
 	private String personId;
 	private String personPw;
 	private String personEmail;
-	private String PersonAddress;
+	private String personAddress;
 	private String personName;
 	private String personPhone;
-	private Date PersonBirth;
-	private String PersonSex;
+	private String personBirth;
+	private String personSex;
 	private String hospitalName;
 	private String hospitalAddress;
 	private String hospitalPhone;
@@ -30,6 +30,9 @@ public class HospitalMember implements Serializable {
 	public String getPersonId() {
 		return personId;
 	}
+	public void setPersonId(String personId) {
+		this.personId = personId;
+	}
 	public String getPersonPw() {
 		return personPw;
 	}
@@ -43,10 +46,10 @@ public class HospitalMember implements Serializable {
 		this.personEmail = personEmail;
 	}
 	public String getPersonAddress() {
-		return PersonAddress;
+		return personAddress;
 	}
 	public void setPersonAddress(String personAddress) {
-		PersonAddress = personAddress;
+		this.personAddress = personAddress;
 	}
 	public String getPersonName() {
 		return personName;
@@ -60,17 +63,17 @@ public class HospitalMember implements Serializable {
 	public void setPersonPhone(String personPhone) {
 		this.personPhone = personPhone;
 	}
-	public Date getPersonBirth() {
-		return PersonBirth;
+	public String getPersonBirth() {
+		return personBirth;
 	}
-	public void setPersonBirth(Date personBirth) {
-		PersonBirth = personBirth;
+	public void setPersonBirth(String personBirth) {
+		this.personBirth = personBirth;
 	}
 	public String getPersonSex() {
-		return PersonSex;
+		return personSex;
 	}
 	public void setPersonSex(String personSex) {
-		PersonSex = personSex;
+		this.personSex = personSex;
 	}
 	public String getHospitalName() {
 		return hospitalName;
@@ -120,12 +123,6 @@ public class HospitalMember implements Serializable {
 	public void setHs_image(MultipartFile hs_image) {
 		this.hs_image = hs_image;
 	}
-	public void setPersonId(String personId) {
-		this.personId = personId;
-	}
-
-	
-
 	
 	
 
