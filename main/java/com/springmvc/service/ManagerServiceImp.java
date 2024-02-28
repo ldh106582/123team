@@ -27,7 +27,6 @@ public class ManagerServiceImp implements ManagerService{
 		productMemberRepository.setAllMember(productMember);
 	}
 
-	
 	// manager 로그인 함수
 	@Override
 	public type managerlogin(type manager) {
@@ -47,25 +46,18 @@ public class ManagerServiceImp implements ManagerService{
 		productMemberRepository.P_managerDelete(managerId);
 	}
 	
-	// mypage로 이동하기 위한 값을 가져옴
+	/*// mypage로 이동하기 위한 값을 가져옴
 	@Override
 	public ProductMember managerPage(String personId) {
 		// TODO Auto-generated method stub
 		return productMemberRepository.managerPage(personId);
-	}
+	}*/
 	
 	// prodcut 관리자 회원 정보를 수정하기 전 보여주는 함수
-	@Override
+/*	@Override
 	public ProductMember managerUpdate(String personId) {
 		// TODO Auto-generated method stub
 		return productMemberRepository.managerUpdate(personId);
-	}
-	
-	// prodcut 관리자 회원 정보를 수정하는 함수
-	@Override
-	public void getmanagerUpdate(ProductMember productMemId) {
-		// TODO Auto-generated method stub
-		productMemberRepository.getmanagerUpdate(productMemId);
 	}
 	
 	// 수정 후 보여주기 위해 데이터를 가져옴
@@ -73,7 +65,7 @@ public class ManagerServiceImp implements ManagerService{
 	public ProductMember setmanagerUpdate(ProductMember productMemId) {
 		// TODO Auto-generated method stub
 		return productMemberRepository.setmanagerUpdate(productMemId);
-	}
+	}*/
 	
 	// 병원 manager 회원가입 하는 함수
 	@Override
@@ -88,8 +80,6 @@ public class ManagerServiceImp implements ManagerService{
 		productMemberRepository.H_setAllMember(hospitalMember);
 	}
 
-
-	
 
 	
 }
