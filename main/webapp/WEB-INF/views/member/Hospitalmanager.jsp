@@ -54,7 +54,7 @@
         </div>
     </div>
     <div class="container">
-     <form:form modelAttribute="hospitalMember" action="./addmanager?type=${type}" method="post" enctype="multipart/form-data">
+     <form:form modelAttribute="hospitalMember" action="./productmanager?${ _csrf.parameterName }=${ _csrf.token }" method="post" enctype="multipart/form-data">
      <fieldset>
         <div class="form-group row">
             <label class="col-sm-2 control-label"> ¾ÆÀÌµð </label>  

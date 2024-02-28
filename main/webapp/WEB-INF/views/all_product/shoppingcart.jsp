@@ -70,11 +70,8 @@
 			<h2 class="dislpay-2"> <i class="fa-solid fa-truck-fast"></i> 내 장바구니 목록</h2>
 		</div>
 	</div>
-<<<<<<< HEAD
 
 	
-=======
->>>>>>> parent of 9fb6a4f (장바구니 조금만 더 하면 완성)
 	
  	<div class="container">
 		<div class="">
@@ -89,25 +86,13 @@
 				  <th >비고
 				</tr>
 			    <c:forEach items="${shoppingCart}" var="cart" varStatus="status">
-<<<<<<< HEAD
    				<form id="form" action="/123team/orders/o_create" method="post">
-=======
-   				<form action="/123team/products/addcart" method="post">
-   				 	<div class="float-right mb-2">
-			 			<button onclick="redirectToLink" href="/123team/orders/o_shipping?personId=${shoppingCart.get(0).personId}" class="btn btn-info mr-5">주문하기</button>
-			 		</div>
-			 		
-			 		<div>
-			 			<a href="/123team/products/alldelete?personId=${shoppingCart.get(0).personId}" class="btn border border-dark ml-5" id="alldelete" >전체삭제</a>
-			 		</div>
->>>>>>> parent of 9fb6a4f (장바구니 조금만 더 하면 완성)
 	   				<input type="hidden" name="shoppingCartId" value="${cart.shoppingCartId}"> <!-- 카트 넘버 -->
 			        <input type="hidden" name="productId" value="${cart.productId}"> <!-- 상품 아이디 -->
 			        <input type="hidden" name="productName" value="${cart.productName}"> <!-- 상품이름 -->
 			        <input type="hidden" name="amount" value="${cart.amount}"> <!-- 상품 양 -->
    		            <input type="hidden" name="productPrice" value="${cart.productPrice}"> <!-- 상품 가격 -->
 			        <input type="hidden" name="personId" value="${cart.personId}"> <!-- 주문자 아이디 -->
-<<<<<<< HEAD
 					<!-- 여기 버튼을 눌러서 제출 -->
 					<div class="float-right mb-2">
 						<input class="btn btn-info btn-sm mr-4" type="submit" value="주문하기"></input>
@@ -115,9 +100,6 @@
 					<div>
 						<a href="/123team/products/alldelete?personId=${shoppingCart.get(0).personId}" class="btn border border-dark ml-5 btn-sm" id="alldelete" >전체삭제</a>
 					</div>
-=======
-
->>>>>>> parent of 9fb6a4f (장바구니 조금만 더 하면 완성)
 			        <tr>
 			            <td class="shop border-right">${cart.productCategory}</td>
 			            <td class="shop border-right align-self-center">img</td>
@@ -153,7 +135,6 @@
 </body>
 
 <script>
-<<<<<<< HEAD
 function redirectToOrder(index, productId, productName, amount, productPrice, personId) {
     var formData = {
         index: index,
@@ -179,10 +160,6 @@ function redirectToOrder(index, productId, productName, amount, productPrice, pe
     	});
     	
     
-=======
-function redirectToLink(){
-	 window.location.href ="/123team/products/addcart"
-}
->>>>>>> parent of 9fb6a4f (장바구니 조금만 더 하면 완성)
 </script>
+
 </html>

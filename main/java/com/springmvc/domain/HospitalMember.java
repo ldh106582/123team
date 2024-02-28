@@ -124,6 +124,5 @@ public class HospitalMember implements Serializable {
 		this.hs_image = hs_image;
 	}
 	
-	
 
 }

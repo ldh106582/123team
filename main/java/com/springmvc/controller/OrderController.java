@@ -30,6 +30,7 @@ public class OrderController {
 	@Autowired
 	private OrderSerivce orderSerivce;
 	
+	// 배송정보 확인 페이지
 	@PostMapping("/o_create")
 	public String OderCreate(@RequestParam("personId") String personId, HttpServletRequest request, Model model) {
 		System.out.println("주문완료 페이지");
