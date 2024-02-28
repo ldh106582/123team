@@ -1,10 +1,6 @@
-<<<<<<< HEAD
-<%@page import="com.springmvc.domain.*"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-=======
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
->>>>>>> origin/hanui
+<%@page import="com.springmvc.domain.*"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -54,16 +50,10 @@
 </head>
 <body>		
 
-<<<<<<< HEAD
-
-	<%@  include file="../module/header.jsp" %>
-	<% // 오류 잇었음 userinfo에서 manager로 변경했음 한의 확인 후 수정할 것 
-		request.setAttribute("loginId", Manager.getInstance().getPersonId());
-=======
- <%@  include file="../module/headersuccess.jsp" %>
+	<%@ include file="../module/headersuccess.jsp" %>
+	
 	<%
-	request.setAttribute("loginId", session.getAttribute("personId"));
->>>>>>> origin/hanui
+		request.setAttribute("loginId", session.getAttribute("personId"));
 	%>
  			
 	<div class="container my-3">
@@ -105,24 +95,20 @@
 		                
 		            </div>
 		            <div class="d-flex w-100 justify-content-between" id="${comments.commentId}">
-		            <p class="mb-1" id="willdelete${comments.commentId}">${comments.comment}</p>
+		            	<p class="mb-1" id="willdelete${comments.commentId}">${comments.comment}</p>
 		             </div>
 		            <c:if test="${comments.personId == loginId}">
 		                <button class="btn btn-primary" onclick="editform('${comments.comment}','${comments.commentId}')">댓글 수정</button>
 		                <a href="deletecoment?commentId=${comments.commentId}&boardId=${board.boardId}" class="btn btn-danger">댓글 삭제</a>
 		            </c:if>
 		        </div>
-		    </c:forEach>
-	        
+		    </c:forEach>     
 		</div>
-<<<<<<< HEAD
     </div>
     
     <%@ include file="../module/footer.jsp" %>
-=======
-	</div>
->>>>>>> origin/hanui
-	
+
+
 <%-- 	
 	<c:if test="${board.personId == loginId}">
 =======

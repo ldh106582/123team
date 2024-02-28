@@ -107,12 +107,9 @@
 </script>
 </head>
 <body>		
-<<<<<<< HEAD
 
-	<%@  include file="../module/header.jsp" %>
-=======
  <%@  include file="../module/headersuccess.jsp" %>
->>>>>>> origin/hanui
+
 	
 	<%
 		request.setAttribute("loginId", session.getAttribute("personId"));
@@ -187,7 +184,7 @@
 
 <%-- 
 	<c:if test="${board.personId == loginId}">
-=======
+
    <nav class="navbar navbar-expand navbar-dark bg-success">
         <div class="container">
             <div class="navbar-header">
@@ -222,7 +219,6 @@
  				request.setAttribute("loginId", userinfo.getInstance().getPersonId());
  			%>
  			<c:if test="${board.personId == loginId}">
->>>>>>> fa9e400f8ceb5c1826ec622c185d981968432be3
 			<a href="update?boardId=${board.boardId}">공고글 수정</a>
 			<a href="delete?boardId=${board.boardId}">공고글 삭제</a>
 			&emsp;&emsp;&emsp; </c:if>

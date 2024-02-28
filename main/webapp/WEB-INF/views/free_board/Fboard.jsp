@@ -1,10 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<<<<<<< HEAD
 <%@ page import="com.springmvc.domain.*" %>
-=======
->>>>>>> origin/hanui
 <!DOCTYPE html>
 <html>
 <head>
@@ -50,59 +47,14 @@
 					</script>			
 </head>
 <body>		
-<<<<<<< HEAD
-
-	<%@  include file="../module/header.jsp" %>
+		
+	<%@ include file="../module/headersuccess.jsp" %>
 	
-	<%
-		//request.setAttribute("loginId", userinfo.getInstance().getPersonId());
-=======
- <%@  include file="../module/headersuccess.jsp" %>
-	
-	<%
-	request.setAttribute("loginId", session.getAttribute("personId"));
->>>>>>> origin/hanui
+	<%@
+		request.setAttribute("loginId", session.getAttribute("personId"));
 	%>
 
-<!-- header start -->
-   <nav class="navbar navbar-expand navbar-dark bg-success">
-        <div class="container">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="/123team">Home</a>
-            </div>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-              <ul class="navbar-nav">
-                <li class="nav-item">
-                  <a class="nav-link" href="/123team/hospital">병원</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/123team/products">동물상품</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/123team/Fboards">게시판</a>
-                </li>
- 				<c:choose>             
-	            <c:when test="${not empty managerId }">
-	                	
-	                <li class="nav-item">
-	                  <a class="nav-link" href="/123team/managerlogin/manager_page?personId=${managerId.personId}">마이페이지</a>
-	                </li>
-	                
-	            </c:when>
-	               	<c:otherwise>
-		                <li class="nav-item">
-		                  <a class="nav-link" href="/123team/login">로그인</a>
-		                </li>
-	                </c:otherwise>
-                </c:choose>
-                
-            </div>
-        </div>
-    </nav>
- <!-- header end -->
-
- 		
-  
+ 		 
     <div class="container my-3">
         <h1>게시글 상세 페이지</h1>
         <a href="/123team/Fboards">돌아가기</a>
@@ -158,7 +110,6 @@
     <%@ include file="../module/footer.jsp" %>
 			
     <%--  참고용 주석
->>>>>>> origin/yeonghoe
 			<a href="update?boardId=${board.boardId}">게시글 수정</a>
 			<a href="delete?boardId=${board.boardId}">게시글 삭제</a>
 			&emsp;&emsp;&emsp; <a href="/123team/Fboards">돌아가기</a>
@@ -184,9 +135,6 @@
 				--------------------------------------------------------------------------------
 			</c:forEach>
 			
-=======
-
->>>>>>> origin/hanui
 				<script type="text/javascript">
 					function editform(comment,commentId){
 						
@@ -270,11 +218,9 @@
 				<input type="text" name="comment">
 				<input type="submit" value="등록">
 			</form>
-<<<<<<< HEAD
-			 
-=======
+
 			</c:if>
 			
->>>>>>> origin/hanui --%>
+ --%>
 </body>
 </html>

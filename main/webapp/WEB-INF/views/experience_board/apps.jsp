@@ -1,10 +1,6 @@
-<<<<<<< HEAD
-<%@page import="com.springmvc.domain.*"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-=======
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
->>>>>>> origin/hanui
+<%@page import="com.springmvc.domain.*"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
@@ -68,11 +64,9 @@
 </head>
 <body>
 
-<<<<<<< HEAD
- <%@  include file="../module/header.jsp" %>
-=======
+
  <%@  include file="../module/headersuccess.jsp" %>
->>>>>>> origin/hanui
+
  
  
  <div class="container">
