@@ -4,9 +4,12 @@ public class Hospital {
 	String name; // 병원명
 	String addr; // 병원주소
 	String number; //병원 전화번호
-	String closeday; // 휴무일
+	String runtime; //운영시간
+	String hid; //병원고유 아이디
 	String parking; // 주차정보
-	String text; // 병원설명
+	String desciption; // 병원설명
+	String personId; //병원관리자 ID
+	String image;
 	
 	public Hospital() {}
 
@@ -33,15 +36,6 @@ public class Hospital {
 	public void setNumber(String number) {
 		this.number = number;
 	}
-
-	public String getCloseday() {
-		return closeday;
-	}
-
-	public void setCloseday(String closeday) {
-		this.closeday = closeday;
-	}
-
 	public String getParking() {
 		return parking;
 	}
@@ -50,17 +44,44 @@ public class Hospital {
 		this.parking = parking;
 	}
 
-	public String getText() {
-		return text;
+	public String getRuntime() {
+		return runtime;
 	}
 
-	public void setText(String text) {
-		this.text = text;
+	public void setRuntime(String runtime) {
+		this.runtime = runtime;
 	}
 
-	
+	public String getHid() {
+		return hid;
+	}
 
+	public void setHid(String hid) {
+		this.hid = hid;
+	}
 
-	
+	public String getDesciption() {
+		return desciption;
+	}
+
+	public void setDesciption(String desciption) {
+		this.desciption = desciption;
+	}
+
+	public String getPersonId() {
+		return personId;
+	}
+
+	public void setPersonId(String personId) {
+		this.personId = personId;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
 	
 }

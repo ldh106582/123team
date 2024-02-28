@@ -1,7 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<<<<<<< HEAD
 <%@page import="com.springmvc.domain.*" %>
+=======
+>>>>>>> origin/hanui
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,25 +14,8 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <meta charset="UTF-8">
 <title>로그인</title>
-<style type="text/css">
-	*{
-	font-family: 'KCC-Ganpan';
-}
-
-@font-face {
-    font-family: 'KCC-Ganpan';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/KCC-Ganpan.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
-}
-</style>
 </head>
 <body>
-<% 
-Manager user = Manager.getInstance(); 
-String type = user.getType();
-System.out.println("싱글톤 : " + type);
-%>
 	<%@  include file="./module/headerdark.jsp" %>
 
 	<div class="jumbotron">
@@ -61,16 +47,10 @@ System.out.println("싱글톤 : " + type);
 			<div class="mt-5 text-center">
 				<a href="#">아이디 찾기</a> | 
 				<a href="#">비밀번호 찾기</a> | 
-				<a href="./login/add">회원가입</a>
+				<a href="./login/Allmember">회원가입</a>
 			</div>
 			
-			<br>
-			<div class="col-md-12 justify-content-center" style="display: flex;">
-
-				<a href="./login/Allmember" class="col-md-4 btn btn-outline-danger p-2 m-1" id="allmember">통합회원가입</a>
-				<a href="./managerlogin/AllLog" class="col-md-4 btn btn-outline-info p-2 m-1" id="managerlogin">관리자 로그인</a>
-
-			</div>
+			<hr>
 		</div>
 	</div>
 

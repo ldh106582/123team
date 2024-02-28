@@ -11,6 +11,32 @@
 </head>
 <body>
 
+
+  <%@  include file="../module/header.jsp" %>
+  
+	<div class="container my-3">
+	    <h1>체험글 등록 페이지</h1>
+	    <form:form modelAttribute="board" method="POST">
+			<div class="form-group">
+			  <label for="title">제목 :</label>
+			  <form:input path="title" name="title" class="form-control"/>
+			</div>
+			<div class="form-group">
+			  <label for="context">동물 :</label>
+			  <form:input path="animal" class="form-control"/>
+			</div>
+			<div class="form-group">
+			  <label for="context">체험 :</label>
+			  <form:input path="experience" class="form-control"/>
+			</div>
+			<div class="form-group">
+			  <label for="context">내용 :</label>
+			  <textarea class="form-control " id="context" name="context" style="height: 300px;"></textarea>
+			</div>
+			<button type="submit" class="btn btn-primary">등록</button>
+		</form:form>
+	</div>
+
     <nav class="navbar navbar-expand navbar-dark bg-success">
         <div class="container">
             <div class="navbar-header">
@@ -50,5 +76,6 @@
 		체험 : <form:input path="experience"/>
 		<input type="submit" value="등록">
 	</form:form>
+
 </body>
 </html>

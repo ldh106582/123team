@@ -2,6 +2,8 @@ package com.springmvc.controller;
 
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,7 +31,7 @@ public class ENBoardController {
 	
 //	체험공고글 이동
 	@RequestMapping
-	public String ViewBoardlist(Model model,HttpServletRequest request) {
+	public String ViewBoardlist(Model model,HttpServletRequest request,HttpSession session) {
 //		모든 공지글 가져오기
 		if(model.containsAttribute("ENBoardlist")) {
 			return "experience_board/ENboards";
@@ -41,7 +43,7 @@ public class ENBoardController {
 	
 //	체험공고글 하나만 보기
 	@GetMapping("/ENboard")
-	public String ViewBoard(@RequestParam("boardId") String boardId, Model model) {
+	public String ViewBoard(@RequestParam("boardId") String boardId, Model model,HttpSession session) {
 		model.addAttribute("board",enboardService.getENBoardById(boardId));
 //		해당 공지글 댓글 가져오기
 		model.addAttribute("Commentlist",boardCommentService.getCommentsById(boardId));
@@ -50,14 +52,17 @@ public class ENBoardController {
 	
 //	체험공고글 작성 페이지 이동
 	@GetMapping("/add")
-	public String addboardform(@ModelAttribute("board")ENBoard board) {
+	public String addboardform(@ModelAttribute("board")ENBoard board,HttpSession session) {
+		System.out.println("작성아이디는:?");
+		System.out.println(session.getAttribute("personId"));
 		return "experience_board/addENboard";
 	}
 
 //	작성한 체험공고글 DB저장
 	@PostMapping("/add") 
-	public String addboard(@ModelAttribute("board")ENBoard board,Model model){ 
-		enboardService.setNBoard(board);
+	public String addboard(@ModelAttribute("board")ENBoard board,Model model,HttpSession session){ 
+		String personId = (String) session.getAttribute("personId");
+		enboardService.setNBoard(board,personId);
 		return "redirect:/ENboards";
 	}
 	
@@ -103,8 +108,9 @@ public class ENBoardController {
 	
 //	 체험공고글 댓글 작성
 	 @PostMapping("/ENboard")
-	 public String addComment(Model model,HttpServletRequest request) {
-		 boardCommentService.addComment(request.getParameter("boardId").toString(),request.getParameter("comment").toString());
+	 public String addComment(Model model,HttpServletRequest request,HttpSession session) {
+		 String personId = (String) session.getAttribute("personId");
+		 boardCommentService.addComment(request.getParameter("boardId").toString(),request.getParameter("comment").toString(),personId);
 		 return "redirect:/ENboards/ENboard?boardId="+request.getParameter("boardId");
 	 }
 	 
@@ -145,20 +151,21 @@ public class ENBoardController {
 //	 (사용자)
 //	 예약 목록 보기
 	 @GetMapping("/applist")
-	 public String applist(Model model) {
+	 public String applist(Model model,HttpSession session) {
+		 String personId = (String) session.getAttribute("personId");
 		 model.addAttribute("applist",enboardService.getAllApps(personId));
 		 return "experience_board/apps";
 	 }
 //	 체험단 신청
 	 @PostMapping("/addapp")
-	 public String bookex(HttpServletRequest request) {
+	 public String bookex(HttpServletRequest request,HttpSession session) {
 		 EApplication application = new EApplication();
 		 application.setMid(request.getParameter("mid"));
 		 application.setAnimal(request.getParameter("animal"));
 		 application.setExperience(request.getParameter("experience"));
 		 application.setRegistDay(request.getParameter("registDay"));
 		 application.setTitle(request.getParameter("title"));
-		 enboardService.addbook(application);
+		 enboardService.addbook(application,session.getAttribute("personId").toString());
 		 return "redirect:/ENboards/applist";
 	 }
 //	 예약 삭제
@@ -178,9 +185,10 @@ public class ENBoardController {
 //	 (관리자)
 //	 모든 신청 보기
 	 @GetMapping("manageapps")
-	 public String manageapps(Model model,HttpServletRequest request) {
-		 model.addAttribute("applists",enboardService.getPermisionList());
-		 if(enboardService.getPermisionList().isEmpty()) {
+	 public String manageapps(Model model,HttpServletRequest request,HttpSession session) {
+		 String personId = session.getAttribute("peronId").toString();
+		 model.addAttribute("applists",enboardService.getPermisionList(personId));
+		 if(enboardService.getPermisionList(personId).isEmpty()) {
 			 request.setAttribute("nothing", "승인할 것이 없어요");
 		 }
 		 return "experience_board/manageapps";

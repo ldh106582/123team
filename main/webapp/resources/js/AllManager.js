@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function(){
 	var hopital = document.getElementById("hopital");
 	var product = document.getElementById("product");
 	var exprience = document.getElementById("exprience");
-	var allmember = document.getElementById("allmember");
+	var customer = document.getElementById("customer");
 	
 	if(hopital) {
 		hopital.addEventListener("click", function(){
@@ -23,9 +23,9 @@ document.addEventListener("DOMContentLoaded", function(){
 		});
 	}
 	
-	if(allmember){
-		allmember.addEventListener("click", function(){
-			alert("통합 회원가입 페이지로 이동합니다.");
+	if(customer){
+		customer.addEventListener("click", function(){
+			alert("일반 회원가입 페이지로 이동합니다.");
 		})
 	}
 });

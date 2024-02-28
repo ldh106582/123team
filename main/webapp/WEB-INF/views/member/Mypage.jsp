@@ -11,18 +11,7 @@
 <meta charset="UTF-8">
 <title>로그인 성공 페이지</title>
 </head>
-<style type="text/css">
-	*{
-	font-family: 'KCC-Ganpan';
-}
 
-@font-face {
-    font-family: 'KCC-Ganpan';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/KCC-Ganpan.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
-}
-</style>
 <body>
 
 <!-- header start -->
@@ -88,15 +77,15 @@
 		    <div id="headerLeft" class="header_left" aria-hidden="false">
 		        <ul class="left_menu" role="menu">
 		            <li>
-		               <a href="" class="left_item" role="menuitem">
+		               <a href="#" class="left_item" role="menuitem">
 		                   <div class="menu_text">내정보</div>
 		               </a>
 		            </li>
 		            <li>
-		
-		               <div class="left_item" role="menuitem" >
+
+		               <a href="./login/petcard?petid=${petid}" class="left_item" role="menuitem" >
 		                   <div class="menu_text ">펫 카드</div>
-		               </div>
+		               </a>
 						<c:forEach items="${petName }" var="petName">
 							<a href="./login/login/petcard?petid=${petName.petId}" class="left_item" role="menuitem">
 								<div>${petName.petName }</div>
@@ -110,6 +99,7 @@
 		            </li>
 		            <li>
 		               <a href="./login/logout" class="left_item" role="menuitem" >
+
 		                   <div class="menu_text ">로그아웃</div>
 		               </a>
 		            </li>
@@ -180,7 +170,7 @@
 		                <ul class="subindex_row">
 		                    <li>
 		                        <div class="row_item other">
-		                        <a href="" class="text-decoration-none"><span class="item_text">작성 글 확인</span></a>
+		                        <a href="/123team/Fboards?myId=${id.personId}" class="text-decoration-none"><span class="item_text">작성 글 확인</span></a>
 		                        </div>
 		                    </li>
 		                </ul>
@@ -210,7 +200,7 @@
 		                <ul class="subindex_row">
 		                    <li>
 		                        <div class="row_item other">
-		                            <a href="" class="text-decoration-none"><span class="item_text">체험 신청 글 확인</span></a>
+		                            <a href="/123team/ENboards/applist" class="text-decoration-none"><span class="item_text">체험 신청 글 확인</span></a>
 		                        </div>
 		                    </li>
 		                </ul>

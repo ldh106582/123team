@@ -8,7 +8,7 @@ public interface BoardCommentRepository {
 
 	List<BoardComment> getCommentsById(String boardId);
 
-	void addComment(String boardId, String comment);
+	void addComment(String boardId, String comment, String personId);
 	
 	void deleteComment(String commentId);
 

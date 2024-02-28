@@ -8,8 +8,16 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
 </head>
 <body>		
+
+	<%@  include file="../module/header.jsp" %>
+	
+	<%
+		//request.setAttribute("loginId", userinfo.getInstance().getPersonId());
+	%>
+
 <!-- header start -->
    <nav class="navbar navbar-expand navbar-dark bg-success">
         <div class="container">
@@ -46,30 +54,8 @@
         </div>
     </nav>
  <!-- header end -->
+
  		
-  	<nav class="navbar navbar-expand navbar-dark bg-dark">
-    <div class="container">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="/123team">Home</a>
-      </div>
-      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link " href="/123team/hospital">병원</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/123team/product">동물상품</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/123team/Fboards">게시판</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/123team/login">로그인</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
   
     <div class="container my-3">
         <h1>게시글 상세 페이지</h1>
@@ -81,28 +67,41 @@
                     <p class="">${board.context}</p>
                 </div>
                 <hr>
-                <button class="btn btn-primary">수정하기</button>
-                <button class="btn btn-danger">삭제하기</button>
+                <c:if test="${loginId == board.personId}">
+                <a href="update?boardId=${board.boardId}"class="btn btn-primary">수정하기</a>
+                <a href="delete?boardId=${board.boardId}"class="btn btn-danger">삭제하기</a>
+                </c:if>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-12">
-                <h2 class="mt-4">댓글 작성하기</h2>
-                <form>
-                    <div class="form-group">
-                        <label for="commenterName">이름</label>
-                        <input type="text" class="form-control" id="commenterName" placeholder="이름을 입력해주세요">
-                    </div>
-                    <div class="form-group">
-                        <label for="commentContent">댓글 내용</label>
-                        <textarea class="form-control" id="commentContent" rows="3" placeholder="댓글을 입력해주세요"></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">댓글 작성</button>
-                </form>
-            </div>
-        </div>
+        <hr>
+        <div class="list-group">
+		    <c:forEach items="${Commentlist}" var="comments">
+		        <div class="list-group-item">
+		            <div class="d-flex w-100 justify-content-between">
+		                <h5 class="mb-1">${comments.comment}</h5>
+		                <small>${comments.registDay}</small>
+		            </div>
+		            <p class="mb-1" id="${comments.commentId}">${comments.comment}</p>
+		            <c:if test="${comments.personId == loginId}">
+		                <button class="btn btn-primary" onclick="editform('${comments.comment}','${comments.commentId}')">댓글 수정</button>
+		                <a href="deletecoment?commentId=${comments.commentId}&boardId=${board.boardId}" class="btn btn-danger">댓글 삭제</a>
+		            </c:if>
+		        </div>
+		    </c:forEach>
+	        <c:if test="${loginId != null}">
+			    <h5 class="mb-3">댓글 작성</h5>
+			    <form action="ENboard" method="POST" class="mb-3">
+			        <input type="hidden" name="boardId" value="${board.boardId}">
+			        <div class="form-group">
+			            <textarea class="form-control" name="comment" rows="3"></textarea>
+			        </div>
+			        <button type="submit" class="btn btn-primary">등록</button>
+			    </form>
+			</c:if>
+		</div>
     </div>
     
+			
     <%--  참고용 주석
 >>>>>>> origin/yeonghoe
 			<a href="update?boardId=${board.boardId}">게시글 수정</a>

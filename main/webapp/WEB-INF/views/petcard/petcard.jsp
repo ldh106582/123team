@@ -75,12 +75,22 @@
                     <div id="headerTop" class="path_area" aria-hidden="false"></div>
                 </div>
                 <div class="subindex_item">
+
+	                <div class="head_title">
+	                    <h2 class="subindex_title">동물 정보</h2>
+
                    <div class="head_title">
                        <h2 class="subindex_title">동물 정보</h2>
+
                         <div class="title_link">
                             <a href="" ><span class="text">추가하기</span></a>
                             <a href="" ><span class="text">수정하기</span></a>
                         </div>  
+
+	                </div>
+                    
+	                <div class="subindex_greenbox">
+
                    </div>
                     
                    <div class="subindex_greenbox">
@@ -101,6 +111,7 @@
                             </ul>
                         </div>
                         </ul>
+
                        <ul class="subindex_row">
                            <li>
                                <div class="row_item other">
@@ -120,14 +131,22 @@
                        </ul>
                    </div>
                </div>
+
                 <div class="subindex_item">
                     <div class="head_title">
                         <h2 class="subindex_title">동물 진찰 기록부</h2>
                     </div>
+<<<<<<< HEAD
+               		<div class="subindex_greenbox">
+	                    <ul class="subindex_row">
+                            
+	                        <table class="table">
+=======
                      <div class="subindex_greenbox">
                        <ul class="subindex_row">
                             
                            <table class="table">
+>>>>>>> fa9e400f8ceb5c1826ec622c185d981968432be3
                                 <tbody> 
                                     <tr>
                                         <td>
@@ -144,7 +163,7 @@
                                                         <input class="m-2" id="editContentField2" type="text" name="petChartContent;" style="display: none;"/>
                                                             
                                                         <div class="update">
-                                                            <a  id="Before2" onclick="toggleDisplay(event'Before2', 'After2','editDateField2', 'editName2', 'editContentField2')" href="#" class="col-2 m-1 p-1 border text-white btn btn-success btn-sm">수정하기</a>
+                                                            <a  id="Before2" onclick="toggleDisplay(event'Before2', 'After2','editDateField2', 'editName2', 'editContentField2')" href="#" class="col-2 m-1 p-1 border text-white btn btn-success">수정하기</a>
                                                             <a id="After2" onclick="toggleDisplay('Before2', 'After2','editDateField2', 'editName2', 'editContentField2')"  href="${pageContext.request.contextPath}/login/deletetPetChart?petId=${petid.petId}&petChartNum=${petcard.petChartNum}"  class="col-2 m-1 p-1 border text-white btn btn-success" style="display: none;">수정완료</a>
                                                         </div>
                                                         <div class="col-sm-1" style="position: absolute; top: 45%; transform: translateX(980%);">
@@ -176,7 +195,7 @@
                                                         <p> 예방접종내용 : ${petcard.petVaccinationCotent}
                                                             <input class="m-2" id="editContentField3" type="text" name="petVaccinationCotent" style="display: none;"/>
                                                         <div class="update">
-                                                            <a  id="Before3" onclick="toggleDisplay('Before3', 'After3','editDateField3', 'editName3', 'editContentField3')" href="#" class="col-2 m-1 p-1 border text-white btn btn-success btn-sm">수정하기</a>
+                                                            <a  id="Before3" onclick="toggleDisplay('Before3', 'After3','editDateField3', 'editName3', 'editContentField3')" href="#" class="col-2 m-1 p-1 border text-white btn btn-success">수정하기</a>
                                                             <a id="After3" onclick="toggleDisplay('Before3', 'After3','editDateField3', 'editName3', 'editContentField3')" href="${pageContext.request.contextPath}/login/deleteVaccination?petId=${petid.petId}&petVaccinationNum=${petcard.petVaccinationNum}" class="col-2 m-1 p-1 border text-white btn btn-success" style="display: none;">수정완료</a>
                                                         </div>
                                                         <div class="col-sm-1" style="position: absolute; top: 45%; transform: translateX(950%);">
@@ -208,7 +227,7 @@
                                                         <p> 수술내용 : ${petcard.petSurgeryContent}</p>
                                                         <input class="m-2" id="editContentField4" type="text" name="PetSurgeryContent" style="display: none;"/>       
                                                         <div class="update">
-                                                            <a id="Before4" onclick="toggleDisplay('Before4', 'After4','editDateField4', 'editName4', 'editContentField4')"  href="#" class="col-2 m-1 p-1 border text-white btn btn-success btn-sm">수정하기</a>
+                                                            <a id="Before4" onclick="toggleDisplay('Before4', 'After4','editDateField4', 'editName4', 'editContentField4')"  href="#" class="col-2 m-1 p-1 border text-white btn btn-success">수정하기</a>
                                                             <a id="After4" onclick="toggleDisplay('Before4', 'After4','editDateField4', 'editName4', 'editContentField4')"  href="${pageContext.request.contextPath}/login/deletetSurgery?petId=${petid.petId}&petSurgeryNum=${petcard.petSurgeryNum}" class="col-2 m-1 p-1 border text-white btn btn-success" style="display: none;">수정완료</a>
                                                         </div>
                                                         <div class="col-sm-1" style="position: absolute; top: 45%; transform: translateX(980%);">
@@ -238,7 +257,8 @@
                                                         <p> 수술 후 진료내용 : ${petcard.petSurgeryAfterContent }</p>
                                                         <input class="m-2" id="editContentField5" type="text" name="petSurgeryContentAfter" style="display: none;"/>
                                                         <div class="update">
-                                                            <a  id="Before5" onclick="toggleDisplay('Before5', 'After5','editDateField5', 'editContentField5')"  href="#" class="col-2 m-1 p-1 border text-white btn btn-success btn-sm">수정하기</a>
+
+                                                            <a  id="Before5" onclick="toggleDisplay('Before5', 'After5','editDateField5', 'editContentField5')"  href="#" class="col-2 m-1 p-1 border text-white btn btn-success">수정하기</a>
                                                             <a id="After5" onclick="toggleDisplay('Before5', 'After5','editDateField5', 'editContentField5')"  href="${pageContext.request.contextPath}/login/deletetSurgeryAfter?petId=${petid.petId}&petSurgeryAfterNum=${petcard.petSurgeryAfterNum}" class="col-2 m-1 p-1 border text-white btn btn-success" style="display: none;">수정완료</a>
                                                         </div>
                                                         <div class="col-sm-1" style="position: absolute; top: 45%; transform: translateX(980%);">
@@ -257,14 +277,14 @@
                                     </tr>
                                 </tbody>
                             </table>
-                       </ul>
-                    </div>
-               </div>
-           </div> 
-        </div>   
-   </div>
-   
-   <%@  include file="../module/footer.jsp" %> 
+	                    </ul>
+              		</div>
+            	</div>
+	        </div> 
+        </div>	
+	</div>
+	
+	<%@  include file="../module/footer.jsp" %> 
 </body>
 <script>
 window.onload = function(){

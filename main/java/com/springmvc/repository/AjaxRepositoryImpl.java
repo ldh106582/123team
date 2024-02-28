@@ -25,7 +25,7 @@ public class AjaxRepositoryImpl implements AjaxRepository{
 	// product 관리자 아이디확인 함수
 	@Override
 	public boolean productManager(String userId) {
-		String SQL = "select count(*) from all_member where PersonId = ?";
+		String SQL = "select count(*) from person where PersonId = ?";
 		int id = template.queryForObject(SQL, Integer.class, userId);
 		System.out.println("id :" + id);
 		
@@ -40,7 +40,7 @@ public class AjaxRepositoryImpl implements AjaxRepository{
 	// 소비자 아이디확인 함수
 	@Override
 	public boolean member(String userId) {
-		String SQL = "select count(*) from all_member where PersonId = ?";
+		String SQL = "select count(*) from person where PersonId = ?";
 		int id = template.queryForObject(SQL, Integer.class, userId);
 		System.out.println("id :" + id);
 		

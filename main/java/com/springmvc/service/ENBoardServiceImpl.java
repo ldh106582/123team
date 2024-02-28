@@ -29,8 +29,8 @@ public class ENBoardServiceImpl implements ENBoardService{
 
 
 	@Override
-	public void setNBoard(ENBoard board) {
-		enboardRepository.setENBoard(board);
+	public void setNBoard(ENBoard board, String personId) {
+		enboardRepository.setENBoard(board,personId);
 	}
 
 
@@ -61,8 +61,8 @@ public class ENBoardServiceImpl implements ENBoardService{
 
 
 	@Override
-	public void addbook(EApplication application) {
-		enboardRepository.addbook(application);
+	public void addbook(EApplication application,String personId) {
+		enboardRepository.addbook(application,personId);
 	}
 
 
@@ -86,8 +86,8 @@ public class ENBoardServiceImpl implements ENBoardService{
 
 
 	@Override
-	public List<EApplication> getPermisionList() {
-		return enboardRepository.getPermisionList();
+	public List<EApplication> getPermisionList(String personId) {
+		return enboardRepository.getPermisionList(personId);
 	}
 
 

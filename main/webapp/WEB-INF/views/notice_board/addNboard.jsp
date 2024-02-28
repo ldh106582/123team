@@ -10,6 +10,24 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 <body>
+<<<<<<< HEAD
+ <%@  include file="../module/header.jsp" %>
+	
+	<div class="container my-3">
+	    <h1>공지글 등록 페이지</h1>
+	    <form:form modelAttribute="board" method="POST">
+			<div class="form-group">
+			  <label for="title">제목 :</label>
+			  <input type="text" class="form-control" id="title" name="title">
+			</div>
+			<div class="form-group">
+			  <label for="context">내용 :</label>
+			  <textarea class="form-control " id="context" name="context" style="height: 300px;"></textarea>
+			</div>
+			<button type="submit" class="btn btn-primary">등록</button>
+		</form:form>
+	</div>
+=======
    <nav class="navbar navbar-expand navbar-dark bg-success">
         <div class="container">
             <div class="navbar-header">
@@ -51,5 +69,6 @@
 		내용 : <form:input path="context" name="context"/>
 		<input type="submit" value="등록">
 	</form:form>
+>>>>>>> fa9e400f8ceb5c1826ec622c185d981968432be3
 </body>
 </html>

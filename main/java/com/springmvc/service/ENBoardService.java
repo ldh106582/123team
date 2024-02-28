@@ -11,7 +11,7 @@ public interface ENBoardService {
 
 	ENBoard getENBoardById(String boardId);
 
-	void setNBoard(ENBoard board);
+	void setNBoard(ENBoard board, String personId);
 
 	ENBoard getNBoardById(String boardId);
 
@@ -21,7 +21,7 @@ public interface ENBoardService {
 
 	List<ENBoard> getENBoardsByTitle(String title);
 
-	void addbook(EApplication application);
+	void addbook(EApplication application,String personId);
 
 	List<EApplication> getAllApps(String personId);
 
@@ -29,7 +29,7 @@ public interface ENBoardService {
 
 	void updatebook(String registDay, String eid);
 
-	List<EApplication> getPermisionList();
+	List<EApplication> getPermisionList(String personId);
 
 	void updateState(String dec, String eid);
 

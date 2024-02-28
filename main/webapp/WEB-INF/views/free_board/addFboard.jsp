@@ -80,9 +80,10 @@
         </div>
     </nav>
 
+>>>>>>> fa9e400f8ceb5c1826ec622c185d981968432be3
   <div class="container my-3">
     <h1>게시글 등록 페이지</h1>
-    <form action="/게시글_등록_주소" method="POST">
+    <form:form modelAttribute="board" method="POST">
       <div class="form-group">
         <label for="title">제목 :</label>
         <input type="text" class="form-control" id="title" name="title">
@@ -92,7 +93,7 @@
         <textarea class="form-control " id="context" name="context" style="height: 300px;"></textarea>
       </div>
       <button type="submit" class="btn btn-primary">등록</button>
-    </form>
+    </form:form>
   </div>
 
 </body>

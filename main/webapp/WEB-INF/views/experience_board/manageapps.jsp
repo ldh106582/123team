@@ -40,10 +40,34 @@
 	                </c:otherwise>
                 </c:choose>
  
- <h2>체험 신청관리 페이지</h2>
- <c:forEach items="${applists}" var="app">
- 	<div>
- 		<p>
+ <div class="container my-3">
+        <h1>체험 신청관리 페이지</h1>
+        <c:forEach items="${applists}" var="app">
+	        <div class="row">
+	            <div class="col-md-12">
+	                <h1 class="mt-4">${app.title}</h1>
+	                <hr>
+	                <div class="col-md-12">
+	                	<h5> 신청자 ID : ${app.personId} &emsp;&emsp; 예약일 : ${app.registDay}</h5>
+	                </div>
+	                <hr>
+	                <div class="col-md-12" style="height: 200px;">
+	                    <p class="">${board.context}</p>
+	                </div>
+	                <hr>
+	                <a href="decision?dec=승인&eid=${app.eid}"class="btn btn-primary">승인</a>
+	                <a href="decision?dec=거부&eid=${app.eid}"class="btn btn-danger">거부</a>
+	            </div>
+	        </div>
+        </c:forEach>
+        ${nothing}
+	</div>
+ 	
+ 	<%-- 
+	<h2>체험 신청관리 페이지</h2>
+	<c:forEach items="${applists}" var="app">
+		<div>
+			<p>
 	 	신청자 ID : ${app.personId}
 	 	<p>
 	 	신청한 체험 제목 : ${app.title}
@@ -51,9 +75,9 @@
 	 	예약일 : ${app.registDay}
 	 	<p>
 	 	<a href="decision?dec=승인&eid=${app.eid}"><button>승인</button></a> || <a href="decision?dec=거부&eid=${app.eid}"><button>거부</button></a>
- 	</div>
- 	
- </c:forEach>
- ${nothing}
+		</div>
+	</c:forEach>
+	 --%>
+	
 </body>
 </html>

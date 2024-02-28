@@ -1,3 +1,4 @@
+<%@ page import="com.springmvc.domain.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
@@ -6,9 +7,6 @@
 <head>
 <meta charset="UTF-8">
 <title>소비자 회원가입</title>
-    <style>
-
-    </style>
 </head>
 <body>
   <!-- header start -->
@@ -148,11 +146,12 @@ function idDuplicateCheck(event) {
 
     $.ajax({
         type: 'get',
-        url: './add/join/memberid',
+        url: '/123team/login/join/memberid',
         contentType: 'application/json',
         dataType: 'text',
         data: {
             "userId": userId
+
         },
         success: function (result) {
             if (result == "true") {
@@ -163,15 +162,11 @@ function idDuplicateCheck(event) {
                 alert("이미 사용중인 아이디입니다.")
             }
         },
-       		 if(!IdCheck){
-	        	alert("아이디 중복은 필수 입니다")
-	        	e.preventDefault();
-        }
-          	 error: function (request, status, error) {
-                 console.log(request);
+        error: function (request, status, error) {
+            console.log(request);
         }
     });
-};
+}
 
 </script>
 </html>

@@ -11,6 +11,7 @@
     <title>상품관리자 회원가입 페이지입니다.</title>
 </head>
 <body>
+
 <!-- header start -->
    <nav class="navbar navbar-expand navbar-dark bg-dark">
         <div class="container">
@@ -47,6 +48,7 @@
         </div>
     </nav>
 <!-- header end -->
+
     <div class="jumbotron">
         <div class="container">
             <legend id="id"><h2>상품관리자 회원가입 페이지입니다.</h2></legend>
@@ -83,6 +85,12 @@
             </div>
         </div>
         <div class="form-group row">
+            <label class="col-sm-2 control-label"> 생년월일 </label>  
+            <div class="col-4">
+                <form:input type="Date" path="personBirth" class="control-label"/>
+            </div>
+        </div>
+        <div class="form-group row">
             <label class="col-sm-2 control-label"> 집주소 </label>  
             <div class="col-4">
                 <form:input type="text" path="personAddress" class="control-label"/>
@@ -94,6 +102,7 @@
                 <form:input type="text" path="personPhone" class="control-label"/>
             </div>
         </div>
+        
         <div class="form-group row">
             <label class="col-sm-2 control-label"> 회사명  </label>  
             <div class="col-4">
@@ -116,16 +125,20 @@
         <div class="form-group row">
             <label class="col-sm-2 control-label"> 사업자등록증 </label>  
             <div class="col-4">
-                <input type="file" name="companyregistrationimg" class="control-label" required="required"/>
+                <input type="file" name="s_file" class="control-label" required="required"/>
             </div>
         </div>
+        <div class="form-group row">
+            <label class="col-sm-2 ccontrol-label"> 성별 </label>
+			<div class="col-4">
+				<form:radiobutton path="personSex" value="남자" class="col-sm-1"/>남자
+				<form:radiobutton path="personSex" value="여자" class="ml-3"/>여자
+			</div>
+		</div>
         <%
-        
-        String type = request.getParameter("type");
-        Manager user = Manager.getInstance();
-        System.out.println("jsp페이지 : " + type);
-        session.setAttribute("type", type);
-        
+        	String type = request.getParameter("type");
+            System.out.println("manager 회원가입 jsp페이지 : " + type);
+            session.setAttribute("type", type);
         %>
         
         <div class="form-group row">
@@ -151,7 +164,7 @@ function idDuplicateCheck(event){
 	
 	$.ajax({
 		type: 'get',
-		url: './join/idcheck',
+		url: '/join/idcheck',
 		contentType: 'application/json;',
 		dataType: 'text',
 		data: {

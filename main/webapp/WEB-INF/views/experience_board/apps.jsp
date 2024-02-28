@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@page import="com.springmvc.domain.*"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 <script type="text/javascript">
 	function changed(eid,registday) {
-			var container = document.getElementById("container");
+			var container = document.getElementById("container"+eid);
 			var delp = document.getElementById("willdelete"+eid);
 			var addp = document.getElementById("addp"+eid);
 			
@@ -45,6 +45,33 @@
 </script>
 </head>
 <body>
+
+ <%@  include file="../module/header.jsp" %>
+ 
+ 
+ <div class="container">
+    <h2 class="my-3">내 체험단 예약현황</h2>
+    <a href="/123team/ENboards" class="btn btn-primary mb-3">체험단 공고글 목록으로 돌아가기</a>
+
+    <c:forEach items="${applist}" var="app">
+        <div class="card mb-3">
+            <div class="card-body" id="container${app.eid}">
+                <h5 class="card-title">${app.title}</h5>
+                <p class="card-text">${app.experience}</p>
+                <p class="card-text">${app.animal}</p>
+                <p class="card-text">${app.state}</p>
+                <p class="card-text" id="willdelete${app.eid}">예약일 : <span >${app.registDay}</span></p>
+              	<button class="btn btn-primary" onclick="changed('${app.eid}','${app.registDay}')" id="addp${app.eid}" >날짜 변경</button>
+            </div>
+            <div class="card-body" >
+            <a href="deleteapp?eid=${app.eid}" class="btn btn-danger">예약 삭제</a>
+            </div>
+            
+        </div>
+    </c:forEach>
+</div>
+ <%-- 
+=======
    <nav class="navbar navbar-expand navbar-dark bg-success">
         <div class="container">
             <div class="navbar-header">
@@ -75,6 +102,7 @@
 		                </li>
 	                </c:otherwise>
                 </c:choose>
+>>>>>>> fa9e400f8ceb5c1826ec622c185d981968432be3
 	<h2>내 체험단 예약현황</h2>
 	<a href="/123team/ENboards">체험단 공고글 목록으로 돌아가기</a>
 	<p>
@@ -98,5 +126,7 @@
 		<p>
 		-------------------------------------------------------------------------------
 	</c:forEach>
+	 --%>
+	
 </body>
 </html>

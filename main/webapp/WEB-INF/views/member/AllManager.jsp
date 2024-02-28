@@ -45,13 +45,14 @@
     </nav>
 <!-- header end -->
 
+
     <div class="jumbotron">
         <div class="container">
             <h4> 관리자를 위한 회원가입 페이지 입니다.</h4>
         </div>
     </div>
 
-    <br><br><br><br><br><br>
+    <br><br><br><br><br>
     
         <div class="mt-5" >
             <div class="col ">
@@ -62,11 +63,44 @@
                 
                 <div class="col row m-0 text-center justify-content-center">
                     <a class="p-4  border border-dark col-5 m-1 bg-success text-white rounded" id="exprience">체험단관리자 회원가입</a>
-                    <a href="/managerlogin/Member?type=all" class="p-4  border border-dark col-5 m-1 rounded" id="allmember">통합관리자 회원가입</a>
+                    <a href="/123team/login/add?type=c" class="p-4  border border-dark col-5 m-1 rounded" id="customer">일반 회원가입</a>
                 </div>
             </div>
         </div>
 </body>
 <!-- js -->
-<script src="../resources/js/AllManager.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+	 
+	var hopital = document.getElementById("hopital");
+	var product = document.getElementById("product");
+	var exprience = document.getElementById("exprience");
+	var customer = document.getElementById("customer");
+	
+	if(hopital) {
+		hopital.addEventListener("click", function(){
+			alert("병원관리자 회원가입 페이지로 이동합니다.");
+		});
+	} 
+	
+	if(product) {
+		product.addEventListener("click", function(){
+			alert("상품관리자 회원가입 페이지로 이동합니다.")
+		});
+	} 
+	
+	if(exprience){
+		exprience.addEventListener("click", function(){
+			alert("체험단 회원가입 페이지로 이동합니다.");
+		});
+	}
+	
+	if(customer){
+		customer.addEventListener("click", function(){
+			alert("일반 회원가입 페이지로 이동합니다.");
+		})
+	}
+});
+</script>
+<
 </html>
