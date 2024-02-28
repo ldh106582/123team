@@ -28,7 +28,7 @@ public class ManagerController
 	@Autowired
 	ManagerService managerService;
 	
-	@GetMapping("/addmanager")
+	@GetMapping("/manager")
 	public String showMemberPage(@ModelAttribute("productMember") ProductMember productMember,
 								 @ModelAttribute("hospitalMember") HospitalMember hospitalMember,
 								 @RequestParam("type") String type, HttpServletRequest request) {
