@@ -22,15 +22,13 @@
 </style>
 </head>
 <body>
-<<<<<<< HEAD
-	<nav class="navbar navbar-expand navbar-dark bg-success">
-=======
+
 <%
 	String loginId = (String) session.getAttribute("personId");
 	request.setAttribute("loginId", loginId);
 %>
 	<nav class="navbar navbar-expand navbar-dark bg-danger">
->>>>>>> origin/hanui
+
 		<div class="container">
 			<div class="navbar-header">
 				<a class="navbar-brand" href="/123team">Home</a>

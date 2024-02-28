@@ -20,7 +20,7 @@
     </div>
 
     <div class="container">
-		<form action="/creatpet" method="POST">
+		<form action="./pet/creatpet" method="POST">
 
 			<div class="form-group row"> 반려동물 아이디 :
                 <div class="col-4">

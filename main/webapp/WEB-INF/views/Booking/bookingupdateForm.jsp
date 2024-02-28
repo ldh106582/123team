@@ -9,7 +9,7 @@
 <body>
 
 	<%@ include file="../module/footer.jsp" %>
-
+	
 
 	<%@ include file="../module/headerinfo.jsp" %>
 
