@@ -15,9 +15,9 @@
 <body>
 
 <% 
-Manager user = Manager.getInstance(); 
-String type = user.getType();
-System.out.println("싱글톤 : " + type);
+	Manager user = Manager.getInstance(); 
+	String type = user.getType();
+	System.out.println("싱글톤 : " + type);
 %>
 	<%@  include file="./module/headerdark.jsp" %>
 

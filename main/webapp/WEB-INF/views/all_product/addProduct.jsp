@@ -8,8 +8,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<<<<<<< HEAD
-
 
  <%@  include file="../module/headerdanger.jsp" %>
 

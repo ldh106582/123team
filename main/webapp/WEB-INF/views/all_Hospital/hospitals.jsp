@@ -19,6 +19,9 @@
             <div>
                 <h1><img width="50" height="50" src="https://img.icons8.com/ios/50/hospital.png" alt="hospital"/>병원목록</h1>
             </div>
+            <div class="justify-content-end">
+                <a href="hospitals/create" class="btn btn-success ">병원 추가</a>
+            </div>
         </div>
         <br>
         <div class="row" >
