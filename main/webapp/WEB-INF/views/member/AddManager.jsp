@@ -125,7 +125,7 @@
         <div class="form-group row">
             <label class="col-sm-2 control-label"> 사업자등록증 </label>  
             <div class="col-4">
-                <input type="file" name="s_image" class="control-label" required="required"/>
+                <input type="file" name="s_file" class="control-label" required="required"/>
             </div>
         </div>
         <div class="form-group row">

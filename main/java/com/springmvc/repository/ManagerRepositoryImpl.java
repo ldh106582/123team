@@ -132,16 +132,46 @@ public class ManagerRepositoryImpl implements ManagerRepository {
 	// 병원 manager 회원가입 하는 함수
 	@Override
 	public void addHospitalManager(HospitalMember hospitalMember) {
-		String SQL = "insert into HospitalMember(personId =?, personPw =?, personEmail =?, personName =?, personPhone =?, hospitalName =?, hospitalAddress =?, hospitalPhone =?, image1 =?, type =?, image2 =?)" + "values(?,?,?,?,?,?,?,?,?,?,?)";
-		template.update(SQL, hospitalMember.getPersonId(), hospitalMember.getPersonPw(), hospitalMember.getPersonEmail(), hospitalMember.getPersonName(), hospitalMember.getPersonPhone(),
-						hospitalMember.getHospitalName(), hospitalMember.getHospitalAddress(), hospitalMember.getHospitalPhone(), hospitalMember.getS_image(), hospitalMember.getHs_image());
+		// 1
+		System.out.println(hospitalMember.getPersonId());
+		// 2
+		System.out.println(hospitalMember.getPersonPw());
+		// 3
+		System.out.println(hospitalMember.getPersonEmail());
+		// 4
+		System.out.println(hospitalMember.getPersonName());
+		// 5
+		System.out.println(hospitalMember.getPersonPhone());
+		// 6
+		System.out.println(hospitalMember.getHospitalName());
+		// 7
+		System.out.println(hospitalMember.getHospitalAddress());
+		// 8
+		System.out.println(hospitalMember.getHospitalPhone());
+		// 9
+		System.out.println(hospitalMember.getS_image());
+		// 10
+		System.out.println(hospitalMember.getH_image());
+		// 11
+		System.out.println(hospitalMember.getType());
+		//12
+		System.out.println(hospitalMember.getPersonAddress());
+		// 13
+		System.out.println(hospitalMember.getPersonBirth());
+		// 14
+		System.out.println(hospitalMember.getPersonSex());
+		String SQL = "insert into HospitalMember(personId, personPw, personEmail, personName, personAddress, personBirth, personPhone,  PersonSex, hospitalName, hospitalAddress, hospitalPhone, image1, type, image2) " +
+	             "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		template.update(SQL, hospitalMember.getPersonId(), hospitalMember.getPersonPw(), hospitalMember.getPersonEmail(), hospitalMember.getPersonName(), hospitalMember.getPersonAddress(), hospitalMember.getPersonBirth(), 
+				       hospitalMember.getPersonPhone(), hospitalMember.getPersonSex(), hospitalMember.getHospitalName(), hospitalMember.getHospitalAddress(), hospitalMember.getHospitalPhone(),
+				       hospitalMember.getS_image(), hospitalMember.getH_image(), hospitalMember.getType() );
 	}
 	 // 전체 db에 데이터를 넣어주는 함수
 	@Override
 	public void H_setAllMember(HospitalMember hospitalMember) {
 		String SQL = "insert into Person values(?,?,?,?,?,?,?,?,?)";
 		template.update(SQL, hospitalMember.getPersonId(), hospitalMember.getPersonPw(), hospitalMember.getPersonEmail(), hospitalMember.getPersonAddress(),
-				hospitalMember.getPersonName(), hospitalMember.getPersonBirth(), hospitalMember.getPersonSex(), hospitalMember.getPersonPhone());
+				hospitalMember.getPersonName(), hospitalMember.getPersonBirth(), hospitalMember.getPersonSex(), hospitalMember.getPersonPhone(), hospitalMember.getType());
 	}
 	
 	

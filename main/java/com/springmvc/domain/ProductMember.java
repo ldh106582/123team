@@ -12,7 +12,7 @@ public class ProductMember implements Serializable {
 	private String personEmail;
 	private String personAddress;
 	private String personName;
-	private Date personBirth;
+	private String personBirth;
 	private String personSex;
 	private String personPhone;
 	private String companyName;
@@ -67,11 +67,11 @@ public class ProductMember implements Serializable {
 		this.personName = personName;
 	}
 
-	public Date getPersonBirth() {
+	public String getPersonBirth() {
 		return personBirth;
 	}
 
-	public void setPersonBirth(Date personBirth) {
+	public void setPersonBirth(String personBirth) {
 		this.personBirth = personBirth;
 	}
 

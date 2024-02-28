@@ -13,7 +13,7 @@ public class HospitalMember implements Serializable {
 	private String personAddress;
 	private String personName;
 	private String personPhone;
-	private String personBirth;
+	private Date personBirth;
 	private String personSex;
 	private String hospitalName;
 	private String hospitalAddress;
@@ -63,10 +63,10 @@ public class HospitalMember implements Serializable {
 	public void setPersonPhone(String personPhone) {
 		this.personPhone = personPhone;
 	}
-	public String getPersonBirth() {
+	public Date getPersonBirth() {
 		return personBirth;
 	}
-	public void setPersonBirth(String personBirth) {
+	public void setPersonBirth(Date personBirth) {
 		this.personBirth = personBirth;
 	}
 	public String getPersonSex() {
