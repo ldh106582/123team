@@ -1,14 +1,24 @@
 package com.springmvc.domain;
 
-public class Manager {
-	
-	private String personId;
-	private String personPw;
-	private String type;
-	public Manager() {
+public class type {
+
+	public type() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	private String personId;
+	private String personPw;
+	private String type;
+	
+	private static type instance;
+	
+	public static type getInstance() {
+		if(instance == null) {
+			instance = new type();
+	}
+		return instance;
+	}
+	
 	public String getPersonId() {
 		return personId;
 	}
@@ -27,7 +37,6 @@ public class Manager {
 	public void setType(String type) {
 		this.type = type;
 	}
-	
 	
 	
 }

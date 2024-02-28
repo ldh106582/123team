@@ -12,13 +12,17 @@ public class HospitalManagerDBConnector implements RowMapper<HospitalMember> {
 		hospitalManager.setPersonId(rs.getString("personId"));
 		hospitalManager.setPersonPw(rs.getString("personPw"));
 		hospitalManager.setPersonEmail(rs.getString("personEmail"));
+		hospitalManager.setPersonAddress(rs.getString("personAddress"));
 		hospitalManager.setPersonName(rs.getString("personName"));
-		hospitalManager.setPersonPhone(rs.getString("personPhone"));
+		hospitalManager.setPersonPhone(rs.getString("personPhone"));		
+		hospitalManager.setPersonBirth(rs.getDate("personBirth"));
+		hospitalManager.setPersonSex(rs.getString("personSex"));
+
 		hospitalManager.setHospitalName(rs.getString("hospitalName"));
 		hospitalManager.setHospitalAddress(rs.getString("hospitalAddress"));
 		hospitalManager.setHospitalPhone(rs.getString("hospitalPhone"));
-		hospitalManager.setHospitalregistration(rs.getString("hospitalregistration"));
-		hospitalManager.setHospitalliLicense(rs.getString("hopitalliLicense"));
+		hospitalManager.setS_image(rs.getString("s_image"));
+		hospitalManager.setH_image(rs.getString("h_image"));
 		hospitalManager.setType(rs.getString("type"));
 		return hospitalManager;
 	}

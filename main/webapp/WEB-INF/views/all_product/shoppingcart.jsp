@@ -77,9 +77,6 @@
 	</div>
 
 	
-	<div>
-		<a href="/123team/products/alldelete?personId=${shoppingCart.get(0).personId}" class="btn border border-dark ml-5" id="alldelete" >전체삭제</a>
-	</div>
 	
  	<div class="container">
 		<div class="">
@@ -94,15 +91,19 @@
 				  <th >비고
 				</tr>
 			    <c:forEach items="${shoppingCart}" var="cart" varStatus="status">
-   				<form action="/123team/products/addcart" method="post">
+   				<form id="form" action="/123team/orders/o_create" method="post">
 	   				<input type="hidden" name="shoppingCartId" value="${cart.shoppingCartId}"> <!-- 카트 넘버 -->
 			        <input type="hidden" name="productId" value="${cart.productId}"> <!-- 상품 아이디 -->
 			        <input type="hidden" name="productName" value="${cart.productName}"> <!-- 상품이름 -->
 			        <input type="hidden" name="amount" value="${cart.amount}"> <!-- 상품 양 -->
    		            <input type="hidden" name="productPrice" value="${cart.productPrice}"> <!-- 상품 가격 -->
 			        <input type="hidden" name="personId" value="${cart.personId}"> <!-- 주문자 아이디 -->
+					<!-- 여기 버튼을 눌러서 제출 -->
 					<div class="float-right mb-2">
-						<button class="btn btn-info btn-sm" type="button" onclick="redirectToOrder(${status.index}, '${cart.productId}', '${cart.productName}', ${cart.amount}, ${cart.productPrice}, '${cart.personId}')">주문하기</button>
+						<input class="btn btn-info btn-sm mr-4" type="submit" value="주문하기"></input>
+					</div>
+					<div>
+						<a href="/123team/products/alldelete?personId=${shoppingCart.get(0).personId}" class="btn border border-dark ml-5 btn-sm" id="alldelete" >전체삭제</a>
 					</div>
 			        <tr>
 			            <td class="shop border-right">${cart.productCategory}</td>
@@ -116,13 +117,12 @@
 			            <td class="shop border-right text-right">${cart.productPrice} 원</td>
 			            <td class="shop border-right text-right">${cart.amount * cart.productPrice} 원</td>
 			            <td class="form-group">
-			                <!-- 여기 버튼을 눌러서 제출 -->
-			                <button class="btn btn-info btn-sm" type="submit">추가하기</button>
-			                <br>                                                                                       
+			                                                                                               
 			                <a class="btn btn-danger btn-sm" href="/123team/products/cartdelete?shoppingCartId=${cart.shoppingCartId}&personId=${cart.personId}">삭제하기</a>
 			            </td>
 			        </tr>
 		        </form>
+		        
 			    </c:forEach>
 				
 				<tr>
@@ -140,16 +140,33 @@
 	
 	<%@ include file="../module/footer.jsp" %>
 </body>
+
 <script>
-    function redirectToOrder(index, productId, productName, amount, productPrice, personId) {
-        var url = "/123team/orders/o_reading?";
-        url += "productId=" + productId + "&";
-        url += "productName=" + encodeURIComponent(productName) + "&";
-        url += "amount=" + amount + "&";
-        url += "productPrice=" + productPrice + "&";
-        url += "personId=" + personId;
-        window.location.href = url;
-    }
+function redirectToOrder(index, productId, productName, amount, productPrice, personId) {
+    var formData = {
+        index: index,
+        productId: productId,
+        productName: productName,
+        amount: amount,
+        productPrice: productPrice,
+        personId: personId
+    };
+    	    	$.ajax({
+    	    		url : "/123team/orders/o_reading?",
+    	    		type : "post",
+    	    		data: formData
+    	    		success: function(response){
+    	    			consol.log("값입력", response);
+    	    		},
+    	    		error: function(xhr, status, error){
+    	    			console.error("ajax요청", error);
+    	    		}
+    	    		
+    	    	});
+    	    });
+    	});
+    	
+    
 </script>
 
 </html>

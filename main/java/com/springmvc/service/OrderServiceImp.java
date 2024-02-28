@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.springmvc.domain.Manager;
+import com.springmvc.domain.type;
 import com.springmvc.domain.Order;
 import com.springmvc.domain.Person;
 import com.springmvc.domain.ProductMember;
@@ -44,7 +44,7 @@ public class OrderServiceImp implements OrderSerivce{
 	
 	//장바구니에 있는 데이터를 가져오는 함수
 	@Override
-	public List<Order> GetOrdercreate(String personId) {
+	public Person GetOrdercreate(String personId) {
 		// TODO Auto-generated method stub
 		return OrderRepository.GetOrdercreate(personId);
 	}

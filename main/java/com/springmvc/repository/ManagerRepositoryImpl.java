@@ -2,16 +2,13 @@ package com.springmvc.repository;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
 import javax.sql.DataSource;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import org.springframework.jdbc.core.RowMapper;
-
 import com.springmvc.domain.HospitalMember;
-import com.springmvc.domain.Manager;
+import com.springmvc.domain.type;
 import com.springmvc.domain.ProductMember;
 
 @Repository
@@ -34,30 +31,31 @@ public class ManagerRepositoryImpl implements ManagerRepository {
 	@Override
 	public void getaddProductManager(ProductMember productMember) 
 	{
-		String SQL = "insert into ProductMember(PersonId, PersonPw, PersonEmail, PersonName, PersonAddress ,PersonPhone, CompanyName, CompanyAddress, CompanyPhone, Companyregistration, Type) values(?,?,?,?,?,?,?,?,?,?,?)";
-		template.update(SQL, new Object[] {productMember.getPersonId(), productMember.getPersonPw(), productMember.getPersonEmail(),
-						productMember.getPersonName(), productMember.getPersonAddress(),productMember.getPersonPhone(), productMember.getCompanyName(), productMember.getCompanyAddress(),
-						productMember.getCompanyPhone(), productMember.getCompanyregistration(), productMember.getType()});
+		String SQL = "insert into ProductMember(PersonId, PersonPw, PersonEmail, PersonAddress, PersonName, PersonBirth, PersonSex  ,PersonPhone, CompanyName, CompanyAddress, CompanyPhone, image, Type)" + "values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		template.update(SQL, new Object[] {productMember.getPersonId(), productMember.getPersonPw(), productMember.getPersonEmail(), productMember.getPersonAddress(),
+						productMember.getPersonName(), productMember.getPersonBirth(), productMember.getPersonSex() ,productMember.getPersonPhone(), productMember.getCompanyName(), productMember.getCompanyAddress(),
+						productMember.getCompanyPhone(), productMember.getS_image(), productMember.getType()});
 	}
 	
 	// 전체 id db에 값을 넣어줌
 	@Override
 	public void setAllMember(ProductMember productMember) 
 	{
-		String SQL = "insert into all_member(PersonId)" + "values(?)";
-		template.update(SQL, productMember.getPersonId());
+		String SQL = "insert into Person values(?,?,?,?,?,?,?,?,?)";
+		template.update(SQL, productMember.getPersonId(), productMember.getPersonPw(), productMember.getPersonEmail(), productMember.getPersonAddress(),
+				productMember.getPersonName(), productMember.getPersonBirth(), productMember.getPersonSex(), productMember.getPersonPhone(), productMember.getType());
 	}
 
 	@Override
-	public Manager managerlogin(Manager manager) 
+	public type managerlogin(type manager) 
 	{
-	    String SQL = "select count(*) from all_member where PersonId=?";
+	    String SQL = "select count(*) from Person where PersonId=?";
 	    Integer intNum = template.queryForObject(SQL, Integer.class, manager.getPersonId());
 	    System.out.println("intNum : " + intNum);
-	    Manager managerId = null;
+	    type managerId = null;
 	    if(intNum != null && intNum != 0)
 	    {
-	        String ManagerSQL ="select * from all_member where PersonId=?";
+	        String ManagerSQL ="select * from Person where PersonId=?";
 	        // RowMapper 객체를 정의해야 합니다. RowMapper는 인터페이스이므로 익명 클래스를 사용할 수 있습니다.
 	        managerId = template.queryForObject(ManagerSQL, new Object[] {manager.getPersonId()}, new managerDBController());
 
@@ -76,7 +74,7 @@ public class ManagerRepositoryImpl implements ManagerRepository {
 	// Member 데이터를 삭제하는 함수
 	@Override
 	public void P_managerDelete(String managerId) {
-		String SQL = "delete from all_member where PersonId = ?";
+		String SQL = "delete from Person where PersonId = ?";
 		template.update(SQL, managerId);
 	}
 	// mypage로 이동하기 위한 값을 가져옴
@@ -111,10 +109,10 @@ public class ManagerRepositoryImpl implements ManagerRepository {
 	@Override
 	public void getmanagerUpdate(ProductMember productMemId) {
 		if(productMemId.getPersonId()!=null) {
-			 String SQL = "update ProductMember set PersonPw=?, PersonEmail=?, PersonName=?, PersonAddress=?, PersonPhone=?,"
+			 String SQL = "update ProductMember set PersonPw=?, PersonEmail=?, PersonAddress=? ,PersonName=?, PersonBirth=?, PersonSex=? , PersonPhone=?,"
 			 			   + "CompanyName=?, CompanyAddress=?, CompanyPhone=? where PersonId=?";
-			 template.update(SQL, productMemId.getPersonId(), productMemId.getPersonPw(), productMemId.getPersonEmail(), productMemId.getPersonName(),
-					 productMemId.getPersonAddress(), productMemId.getPersonPhone(), productMemId.getCompanyName(), productMemId.getCompanyAddress(), productMemId.getCompanyPhone());
+			 template.update(SQL, productMemId.getPersonId(), productMemId.getPersonPw(), productMemId.getPersonEmail(), productMemId.getPersonAddress(), productMemId.getPersonName(),
+					 productMemId.getPersonBirth(), productMemId.getPersonSex(), productMemId.getPersonPhone(), productMemId.getCompanyName(), productMemId.getCompanyAddress(), productMemId.getCompanyPhone(), productMemId.getS_image());
 		}
 	}
 	// 수정 후 보여주기 위해 데이터를 가져옴
@@ -134,15 +132,46 @@ public class ManagerRepositoryImpl implements ManagerRepository {
 	// 병원 manager 회원가입 하는 함수
 	@Override
 	public void addHospitalManager(HospitalMember hospitalMember) {
-		String SQL = "insert into HopitalManager(personId =?, personPw =?, personEmail =?, personName =?, personPhone =?, hospitalName =?, hospitalAddress =?, hospitalPhone =?, hospitalregistration =?, type =?, hospitalliLicense =?)" + "values(?,?,?,?,?,?,?,?,?,?,?)";
-		template.update(SQL, hospitalMember.getPersonId(), hospitalMember.getPersonPw(), hospitalMember.getPersonEmail(), hospitalMember.getPersonName(), hospitalMember.getPersonPhone(),
-						hospitalMember.getHospitalName(), hospitalMember.getHospitalAddress(), hospitalMember.getHospitalPhone(), hospitalMember.getHospitalregistration(), hospitalMember.getHospitalliLicense());
+		// 1
+		System.out.println(hospitalMember.getPersonId());
+		// 2
+		System.out.println(hospitalMember.getPersonPw());
+		// 3
+		System.out.println(hospitalMember.getPersonEmail());
+		// 4
+		System.out.println(hospitalMember.getPersonName());
+		// 5
+		System.out.println(hospitalMember.getPersonPhone());
+		// 6
+		System.out.println(hospitalMember.getHospitalName());
+		// 7
+		System.out.println(hospitalMember.getHospitalAddress());
+		// 8
+		System.out.println(hospitalMember.getHospitalPhone());
+		// 9
+		System.out.println(hospitalMember.getS_image());
+		// 10
+		System.out.println(hospitalMember.getH_image());
+		// 11
+		System.out.println(hospitalMember.getType());
+		//12
+		System.out.println(hospitalMember.getPersonAddress());
+		// 13
+		System.out.println(hospitalMember.getPersonBirth());
+		// 14
+		System.out.println(hospitalMember.getPersonSex());
+		String SQL = "insert into HospitalMember(personId, personPw, personEmail, personName, personAddress, personBirth, personPhone,  PersonSex, hospitalName, hospitalAddress, hospitalPhone, image1, type, image2) " +
+	             "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		template.update(SQL, hospitalMember.getPersonId(), hospitalMember.getPersonPw(), hospitalMember.getPersonEmail(), hospitalMember.getPersonName(), hospitalMember.getPersonAddress(), hospitalMember.getPersonBirth(), 
+				       hospitalMember.getPersonPhone(), hospitalMember.getPersonSex(), hospitalMember.getHospitalName(), hospitalMember.getHospitalAddress(), hospitalMember.getHospitalPhone(),
+				       hospitalMember.getS_image(), hospitalMember.getH_image(), hospitalMember.getType() );
 	}
 	 // 전체 db에 데이터를 넣어주는 함수
 	@Override
 	public void H_setAllMember(HospitalMember hospitalMember) {
-		String SQL = "insert into all_member(PersonId=?, type=?)" + "values(?,?)" ;
-		template.update(SQL, hospitalMember.getPersonId(), hospitalMember.getType());
+		String SQL = "insert into Person values(?,?,?,?,?,?,?,?,?)";
+		template.update(SQL, hospitalMember.getPersonId(), hospitalMember.getPersonPw(), hospitalMember.getPersonEmail(), hospitalMember.getPersonAddress(),
+				hospitalMember.getPersonName(), hospitalMember.getPersonBirth(), hospitalMember.getPersonSex(), hospitalMember.getPersonPhone(), hospitalMember.getType());
 	}
 	
 	

@@ -14,7 +14,8 @@
 </head>
 <body>
 
-  <%@ include file="../module/memberheader.jsp" %>
+
+   <%@  include file="../module/headerdark.jsp" %>
   
   <%
     HttpSession sessions = request.getSession();

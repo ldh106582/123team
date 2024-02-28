@@ -2,7 +2,7 @@ package com.springmvc.service;
 
 import java.util.List;
 
-import com.springmvc.domain.Manager;
+import com.springmvc.domain.type;
 import com.springmvc.domain.Order;
 import com.springmvc.domain.Person;
 import com.springmvc.domain.ProductMember;
@@ -23,5 +23,7 @@ public interface OrderSerivce {
 	void Ordercreate(Order order);
 	
 	//장바구니에 있는 데이터를 가져오는 함수
-	List<Order> GetOrdercreate(String personId);
+	Person GetOrdercreate(String personId);
+	
+
 }

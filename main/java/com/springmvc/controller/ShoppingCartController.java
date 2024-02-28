@@ -35,6 +35,7 @@ public class ShoppingCartController {
 		
 		 return "redirect:/products";
 	}
+	// 주문완료 페이지 POST의 경우 ORDERCONTROLLER에 있음
 	
 	@GetMapping("/readcart")
 	public String ReadCart(@RequestParam(name = "personId", required = false) String personId,
