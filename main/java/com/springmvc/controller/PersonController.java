@@ -112,7 +112,7 @@ public class PersonController {
 			List<Pet> petId = personService.getPetId(pet);
 			session.setAttribute("petId", petId);
 			
-			return "/all_product/products";
+			return "redirect:/products";
 		
 		} 
 		else if("h".equals(type)) 

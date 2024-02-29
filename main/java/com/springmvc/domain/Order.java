@@ -8,7 +8,7 @@ import java.time.LocalDate;
 public class Order implements Serializable
 {
 	private int oderNum;
-	private String ProductId;
+	private String productId;
 	private String productName;
 	private int amount;
 	private int price;
@@ -41,16 +41,13 @@ public class Order implements Serializable
 
 
 
-
 	public String getProductId() {
-		return ProductId;
+		return productId;
 	}
 
 
-
-
 	public void setProductId(String productId) {
-		ProductId = productId;
+		this.productId = productId;
 	}
 
 
