@@ -26,20 +26,20 @@ public class HospitalController {
 	public String getAllhospitals(Model model) 
 	{
 		model.addAttribute("hospitals",hospitalService.getAllhospitals());
-		return "Hospital/hospitals";
+		return "all_Hospital/hospitals";
 	}
 	
 	@GetMapping("hospital")
 	public String hospital(@RequestParam("hid") String hid,Model model)
 	{
 		model.addAttribute("hospital",hospitalService.gethosptialByhId(hid));
-		return "Hospital/hospital";
+		return "all_Hospital/hospital";
 	}
 	
 	@GetMapping("/create")
 	public String hospitalcreateform(@ModelAttribute("hospital")Hospital hospital) 
 	{
-		return "Hospital/addform";
+		return "all_Hospital/addform";
 	}
 	
 	@PostMapping("/create")
@@ -55,7 +55,7 @@ public class HospitalController {
 	public String hospitalupdateform(@RequestParam("hid")String hid,@ModelAttribute("hospital")Hospital hospital,Model model)
 	{
 		model.addAttribute("hospital",hospitalService.gethosptialByhId(hid));
-		return "Hospital/updateform";
+		return "all_Hospital/updateform";
 	}
 	
 	@PostMapping("update")
