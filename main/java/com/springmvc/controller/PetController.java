@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import com.springmvc.domain.Person;
 import com.springmvc.domain.Pet;
 import com.springmvc.service.PetService;
 
@@ -21,19 +23,15 @@ public class PetController
 	@Autowired
 	private PetService petService;
 	
-	@GetMapping
-	public String GetCreatePet(@RequestParam("id") String personId, Model model, HttpServletRequest request) {
-		// 아이디값 출력잘됨
-		System.out.println("petpersonId : " + personId);
-		
-		HttpSession session = request.getSession();
-		session.setAttribute("personId", personId);
-		
+	// pet회원가입 페이지로 이동
+	@GetMapping("/creatpet")
+	public String GetCreatePet(@ModelAttribute("pet_create") Pet pet, Model model, HttpServletRequest request) {
+
 		return "/pet/petcreate";
 	}
 	
 	@PostMapping("/creatpet")
-	public String SetCreatePet(@ModelAttribute Pet pet, Model model) {
+	public String SetCreatePet(@ModelAttribute("pet_create") Pet pet, Model model, HttpServletRequest request) {
 		System.out.println("여기 도착하나??");
 		System.out.println("PetId : "+pet.getPetId());
 		System.out.println("PetName : "+pet.getPetName());

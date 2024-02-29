@@ -57,7 +57,7 @@
 						</c:forEach>
 		            </li>
 		            <li>
-		               <a href="./pet?id=${ id.personId }" class="left_item" role="menuitem" >
+		               <a href="./pet/creatpet?id=${ id.personId }" class="left_item" role="menuitem" >
 		                   <div class="menu_text ">반려동물 회원가입</div>
 		               </a>
 		            </li>

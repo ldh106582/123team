@@ -122,20 +122,21 @@
 function idDuplicateCheck(event){
 	 event.preventDefault();
 	 
-	var userName = document.getElementById("userId").value;
+	var userId = document.getElementById("userId").value;
+	console.log("userId");
 	
-	if(userName === "") {
+	if(userId === "") {
 		alert("아이디를 입력해주세요");
 		return;
 	}
 	
 	$.ajax({
 		type: 'get',
-		url: '/join/idcheck',
+		url: '/123team/managerlogin',
 		contentType: 'application/json;',
 		dataType: 'text',
 		data: {
-			"userId":userName, 
+			"userId":userId, 
 		},
 		success : function(result) {
 			if(result === "true"){
