@@ -12,8 +12,11 @@
 
 <body>
  <%@  include file="../module/headerinfo.jsp" %>
+ <%
+		request.setAttribute("loginId", session.getAttribute("personId"));
+	%>
 <a href="hospitals/create">병원추가</a>
-
+<a href="hospitals/mybookList?personId=${loginId}">내 예약 보기</a>
 <c:forEach items="${hospitals}" var="hospital">
 	<p> 이미지 : ${hospital.image}
 	<p> 병원 이름 : ${hospital.name}

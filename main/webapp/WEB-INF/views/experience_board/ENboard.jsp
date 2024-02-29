@@ -71,7 +71,7 @@
 						inputE.setAttribute("value",experience);
 						
 						var inputD = document.createElement("input");
-						inputD.setAttribute("type","date");
+						inputD.setAttribute("type","datetime-local");
 						inputD.setAttribute("name","registDay");
 						inputD.setAttribute("required",true);
 						

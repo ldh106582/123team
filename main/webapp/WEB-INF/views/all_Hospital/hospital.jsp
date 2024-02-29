@@ -12,7 +12,9 @@
 <body>
  <%@  include file="../module/headerinfo.jsp" %>
 <a href="/123team/hospitals">돌아가기</a>
-<div>
+<%
+		request.setAttribute("loginId", session.getAttribute("personId"));
+	%>
 <p>
 병원 사진 : ${hospital.image}
 <p>
@@ -28,9 +30,35 @@
 <p>
 설명 : ${hospital.description}
 <p>
+
+<c:if test="${loginId ==  hospital.personId}">
 <a href="update?hid=${hospital.hid}">병원수정</a>
 <a href="delete?hid=${hospital.hid}">병원삭제</a>
-<a href="booking">병원예약</a>
-</div>
+</c:if>
+<c:if test="${loginId != null}">
+<a href="addbook?hid=${hospital.hid}">병원예약</a>
+</c:if>
+<br>
+<h3>reviews</h3>
+<c:if test="${loginId != null}">
+<a href="addreview?hid=${hospital.hid}">리뷰작성</a>
+</c:if>
+
+<c:forEach items="${reviews}" var="review">
+<p>
+	등록일 : ${review.registDay}
+	<p>
+	제목 : ${review.title}
+	<p>
+	리뷰 점수 : ${review.reviewScore}
+	<p>
+	사진 : ${review.reviewImage}
+	<p>
+	내용 : ${review.context}
+	<p>
+	<c:if test="${loginId ==  review.personId}">
+	<a href="editreview?reviewId=${review.reviewId}">리뷰수정</a> || <a href="deletereview?reviewId=${review.reviewId}">리뷰삭제</a>
+	</c:if>
+</c:forEach>
 </body>
 </html>

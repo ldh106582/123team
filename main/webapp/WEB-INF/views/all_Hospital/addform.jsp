@@ -27,7 +27,7 @@
 		<p>
 		사진 : <form:input path="image"/>
 		<p>
-		<input type="병원추가">
+		<input type="submit" value="병원추가">
 	</form:form>
 </body>
 </html>
