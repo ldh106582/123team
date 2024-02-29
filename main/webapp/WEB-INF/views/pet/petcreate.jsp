@@ -24,7 +24,7 @@
 		<input type="hidden" name="personId" />
 		<input type="hidden" name="petName" />
 		<input type="hidden" name="petType" />
-		<input type="hidden" name="petVarity" />
+		<input type="hidden" name="petVarity1" />
 
 			<div class="form-group row"> 반려동물 아이디 :
                 <div class="col-4">

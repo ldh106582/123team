@@ -41,7 +41,7 @@ public class PetController
 		System.out.println("PetName : "+pet.getPetName());
 		System.out.println("PetType : "+pet.getPetType());
 		System.out.println("PetVarity : " + pet.getPetVarity());
-		System.out.println("PetVarity : " + pet.getPetSex());
+		System.out.println("Pet성별 : " + pet.getPetSex());
 		System.out.println("동물생일 : " + pet.getPetBirth());
 		System.out.println("주인 아이디 : " + pet.getPersonId());
 		
