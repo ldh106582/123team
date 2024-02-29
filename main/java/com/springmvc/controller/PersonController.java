@@ -21,7 +21,6 @@ import com.springmvc.domain.FBoard;
 import com.springmvc.domain.Hospital;
 import com.springmvc.domain.HospitalMember;
 import com.springmvc.domain.NBoard;
-import com.springmvc.domain.Booking;
 import com.springmvc.domain.FBoard;
 import com.springmvc.domain.Person;
 import com.springmvc.domain.Pet;

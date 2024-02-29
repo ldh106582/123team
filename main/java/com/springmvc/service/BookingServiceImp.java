@@ -6,7 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.springmvc.domain.Booking;
+import com.springmvc.domain.HospitalBooking;
 import com.springmvc.repository.BookingRepository;
 
 @Service
@@ -14,21 +14,29 @@ public class BookingServiceImp implements BookingService{
 	
 	@Autowired
 	private BookingRepository bookingrepository;
-	
+
 	@Override
-	public void setNewBooking(Booking booking) {
-		bookingrepository.setNewBooking(booking);
+	public List<HospitalBooking> getMyBookList(String personId) {
+		return bookingrepository.getMyBookList(personId);
 	}
-	
+
 	@Override
-	public void SetUpdateBooking(Booking booking) {
-		bookingrepository.SetUpdateBooking(booking);
+	public void addbook(HospitalBooking booking) {
+		bookingrepository.addbook(booking);
+		
 	}
-	
+
 	@Override
-	public Booking getBookingname(String name) {
-		Booking bookingbyname = bookingrepository.getBookingname(name);
-		return bookingbyname;
+	public void editbook(String bid, String registDay) {
+		bookingrepository.editbook(bid,registDay);
+		
 	}
+
+	@Override
+	public void deletebook(String bid) {
+		bookingrepository.deletebook(bid);
+		
+	}
+
 
 }

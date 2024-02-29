@@ -5,21 +5,22 @@ import java.sql.SQLException;
 
 import org.springframework.jdbc.core.RowMapper;
 
-import com.springmvc.domain.Booking;
+import com.springmvc.domain.HospitalBooking;
 
-public class BookingRowMapper implements RowMapper<Booking>{
+public class BookingRowMapper implements RowMapper<HospitalBooking>{
 	
 	@Override
-	public Booking mapRow(ResultSet rs, int rowNum) throws SQLException {
-		Booking booking = new Booking();
-		booking.setNumber(rs.getInt(1));
-		booking.setPetname(rs.getString(2));
-		booking.setPetbreed(rs.getString(3));
-		booking.setAge(rs.getInt(4));
-		booking.setPetgender(rs.getString(5));
-		booking.setName(rs.getString(6));
-		booking.setPhone(rs.getString(7));
-		booking.setText(rs.getString(8));
+	public HospitalBooking mapRow(ResultSet rs, int rowNum) throws SQLException {
+		HospitalBooking booking = new HospitalBooking();
+		booking.setRegistDay(rs.getString(1));
+		booking.setPersonId(rs.getString(2));
+		booking.setBid(rs.getString(3));
+		booking.setMid(rs.getString(4));
+		booking.setHospitalName(rs.getString(5));
+		booking.setHid(rs.getString(6));
+		booking.setPetName(rs.getString(7));
+		booking.setContext(rs.getString(8));
+		booking.setState(rs.getString(9));
 		return booking;
 	}
 }

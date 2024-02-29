@@ -11,43 +11,26 @@
 </head>
 <body>
  <%@  include file="../module/headerinfo.jsp" %>
-	
-	<div class="container my-3">
-    <h1>병원 수정 페이지</h1>
-   <form:form modelAttribute="hospital" method="POST">
-      <div class="form-group">
-        <label for="title">병원명 :</label>
-        <form:input path="name" value="${hospital.name}" class="form-control"/>
-      </div>
-      <div class="form-group">
-        <label for="title">병원 주소 :</label>
-        <form:input path="addr" value="${hospital.addr}" class="form-control"/>
-      </div>
-      <div class="form-group">
-        <label for="title">진료시간 :</label>
-        <form:input path="runtime" value="${hospital.runtime}" class="form-control"/>
-      </div>
-      <div class="form-group">
-        <label for="title">전화번호 :</label>
-        <form:input path="number" value="${hospital.number}" class="form-control"/>
-      </div>
-      <div class="form-group">
-        <label for="title">주차정보 :</label>
-        <form:input path="parking" value="${hospital.parking}" class="form-control"/>
-      </div>
-      <div class="form-group">
-        <label for="context">설명 :</label>
-        <%-- <form:input path="description" class="form-control" style="height: 300px;" name="description" value="${board.description}"/> --%>
-        <form:input path="description" value="${hospital.description}" class="form-control"/>
-      </div>
-      <div class="form-group">
-        <label for="title">병원이미지 :</label>
-        <form:input path="image" type="file" class="form-control"/>
-      </div>
-      <button type="submit" class="btn btn-primary">등록</button>
-      <a href="/delete?boardId=${board.boardId}" class="btn btn-danger">삭제</a>
-    </form:form>
-  </div>
-  
+
+<form:form modelAttribute="hospital" method="POST">
+	<p>
+		병원 이름 : <form:input path="name" value="${hospital.name}"/>
+		<p>
+		병원 주소 : <form:input path="addr" value="${hospital.addr}"/>
+		<p>
+		전화번호 : <form:input path="number" value="${hospital.number}"/>
+		<p>
+		진료시간 : <form:input path="runtime" value="${hospital.runtime}"/>
+		<p>
+		설명 : <form:input path="description" value="${hospital.description}"/>
+		<p>
+		주차정보 : <form:input path="parking" value="${hospital.parking}"/>
+		<p>
+		사진 : <form:input path="image" value="${hospital.image}"/>
+		<p>
+		<input type="hidden" value="${hospital.hid}">
+		<input type="submit" value="수정완료">
+	</form:form>
+
 </body>
 </html>
