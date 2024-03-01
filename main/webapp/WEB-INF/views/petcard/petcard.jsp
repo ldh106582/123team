@@ -1,3 +1,5 @@
+<%@page import="java.time.LocalDate"%>
+<%@page import="java.time.Period"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
@@ -106,8 +108,14 @@
                                </div>
                            </li>
                            <li>
+                           		<%
+                           		
+								String age = (String)request.getAttribute("ageString");
+                           		System.out.println("birthday : jasp" + age);
+                           		%>
+                           
                                <div class="row_item other">
-                                   <p id="petbirth"> 생년월일 : ${petid.petBirth} (나이 : <b id="petAge"> </b>)</p>
+                                   <p id="petbirth"> 생년월일 : ${petid.petBirth} (나이 :<%= age %>)</p>
                                </div>
                            </li>
                             <li>
@@ -296,31 +304,18 @@
 	<%@  include file="../module/footer.jsp" %> 
 </body>
 <script>
-window.onload = function(){
-   var birthday = new Date("${petId.petBirth}");
-   var dateString = birthday.toString();
-   //document.getElementById('dateString').text = dateString;
-   
-   var age = calculateAge(birthday);
-   document.getElementById("petAge").innerText = age;
-};
 
-function calculateAge(birthday){
-    var diff_ms = Date.now() - birthday.getTime();
-    var age_dt = new Date(diff_ms);
-    return Math.abs(age_dt.getUTCFullYear()-1970);
+function toggleDisplay(contentId, buttonId) {
+    var element = document.getElementById(contentId);
+    var button = document.getElementById(buttonId);
+    
+    if (element.style.display === 'none' || element.style.display === '') {
+        element.style.display = 'block';
+        button.innerText = '내용 닫기';
+    } else {
+        element.style.display = 'none';
+        button.innerText = '펼치기';
+    }
 }
-
-   function toggleDisplay(contentId, buttonId) {
-      var element = document.getElementById(contentId);
-      var button = document.getElementById(buttonId);
-      if (element.style.display === 'none') {
-          element.style.display = 'block';
-          button.innerText = '내용 닫기';
-      } else {
-          element.style.display = 'none';
-          button.innerText = '펼치기';
-      }
-   }
 </script>
 </html>

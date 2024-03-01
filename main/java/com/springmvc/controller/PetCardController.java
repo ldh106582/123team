@@ -1,6 +1,8 @@
 package com.springmvc.controller;
 
 import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -40,7 +42,25 @@ public class PetCardController {
 	public String SetCreatPetCard(@RequestParam("petid") String petId, HttpServletRequest request, Model model) {
 		// 반려동물의 정보를 가져오는 함수
 		Pet petid = petCardService.getPetRead(petId);
+		LocalDate birthday = (LocalDate) petid.getPetBirth();
+		System.out.println("birthday : " + birthday);
+
+		// 현재 날짜 가져오기
+		LocalDate currentDate = LocalDate.now();
+
+		// 나이 계산
+		int age = currentDate.getYear() - birthday.getYear();
+		System.out.println("petAge: " + age);
+		String ageString = String.valueOf(age);
+
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		String birthdayString = birthday.format(formatter);
+		System.out.println("ageString : " + ageString);
+
+		// request에 나이 값 추가
+		request.setAttribute("ageString", ageString);
 		model.addAttribute("petid", petid);
+
 		
 		// 폼 데이터를 바인딩하는 데 사용되는 객체를 생성하고 모델에 추가
 		PetWeight petWeight = new PetWeight();
