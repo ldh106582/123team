@@ -147,49 +147,5 @@ document.getElementById('petVarity').addEventListener("click", function(){
         }
 });
 
-	document.getElementById('dogtype').addEventListener('change', function (){
-	    var selectedValue = this.value;
-	    if(selectedValue === 'Etc') {
-	        selectedValue = prompt("기타 종류를 입력해주세요.");
-	    }
-		document.getElementById('petTypeHidden').value = selectedValue;
-	});
-	document.getElementById('cattype').addEventListener('change', function (){
-	    var selectedValue = this.value;
-	    if(selectedValue === 'Etc') {
-	        selectedValue = prompt("기타 종류를 입력해주세요.");
-	    }
-		document.getElementById('petTypeHidden').value = selectedValue;
-	});
-	document.getElementById('birdtype').addEventListener('change', function (){
-	    var selectedValue = this.value;
-	    if(selectedValue === 'Etc') {
-	        selectedValue = prompt("기타 종류를 입력해주세요.");
-	    }
-		document.getElementById('petTypeHidden').value = selectedValue;
-	});
-	document.getElementById('rabbittype').addEventListener('change', function (){
-	    var selectedValue = this.value;
-	    if(selectedValue === 'Etc') {
-	        selectedValue = prompt("기타 종류를 입력해주세요.");
-	    }
-		document.getElementById('petTypeHidden').value = selectedValue;
-	});
-	document.getElementById('guineapigtype').addEventListener('change', function (){
-	    var selectedValue = this.value;
-	    if(selectedValue === 'Etc') {
-	        selectedValue = prompt("기타 종류를 입력해주세요.");
-	    }
-		document.getElementById('petTypeHidden').value = selectedValue;
-	});
-	document.getElementById('reptiletype').addEventListener('change', function (){
-	    var selectedValue = this.value;
-	    if(selectedValue === 'Etc') {
-	        selectedValue = prompt("기타 종류를 입력해주세요.");
-	    }
-		document.getElementById('petTypeHidden').value = selectedValue;
-	});
-
-
 </script>
 </html>
