@@ -22,6 +22,19 @@
 	   <input type="hidden" name="productPrice" value="${product.productPrice}">
 	   <input type="hidden" name="productCategory" value="${product.productCategory}" >
 	   <input type="hidden" name="productImage" value="${product.productImage}" >
+	
+			 <c:choose>
+                 <c:when test="${product.productImage == null} ">
+                     <div class="myphoto">
+                         <img src="https://ibb.co/kmbdwzQ" width="56" height="56" alt="내 프로필 이미지">
+                     </div>
+                    </c:when>
+                   <c:otherwise>
+                     <div class="myphoto">
+                         <img src="<c:url value="/resources/images/ ${product.productImage}"/>" height="56" alt="상품 이미지">
+                     </div>
+                   </c:otherwise>
+             </c:choose>
 		 	<p>
 			상품ID : ${product.productId}
 			<p>
@@ -34,8 +47,7 @@
 			등록일 : ${product.releaseDate}
 			<p>
 			상품설명 : ${product.productDescribe}
-			<p>
-			상품사진 : ${product.productImage}
+
 			<p>
 			재고수 : ${product.productUnitStock}
 			<p>

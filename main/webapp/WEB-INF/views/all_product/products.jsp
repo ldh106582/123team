@@ -12,119 +12,164 @@
 <body>
 
 	<%@  include file="../module/headerdanger.jsp" %>
+    <div class="show-gird no-gutters">
+        <img src="https://cdn.pet-friends.co.kr/resources/pc/img/background.png" alt="" style="position: absolute; width: 160;">
+        <div class="row no-gutters">
+            <div class="col-md-2 border border-dark">
+            </div>
+            <div class="col-md-5 border border-dark no-gutters">
+                <div class="row mt-5 no-gutters">
+                    <h4 class="col-md-12 border border-dark">123상점</h4>
+                    <div class="col-md-12 border border-dark no-gutters">
+                        <h3 class="mt-3 border border-dark">반려동물 웹 쇼핑 1위
+                            123프렌즈 샵
+                        </h3>
+                        <div class="mt-4 col-md-7 row">
+                            <img src="https://cdn.pet-friends.co.kr/resources/pc/img/button-search%402x.png" class="img1 col-md-12" style="width: 130%; height: 150%; position: absolute
+                            ; ">
+                            <form class="col-md-8 row" >
+                                <input style="left: 20.1%; top: 23%; border: 1px solid white;" class="col-12  row" type="text" placeholder="찾는 물건을 검색해보세요"></input>
+                            </form>
+                        </div>
+                        <div>
+                            <br>
+                            <h5 class="col-12 no-gutters">전체 상품</h5>
+                        </div>
+                        <!-- 여기서 복붙 시작-->
+                        <div class="col-12 row m-1 no-gutters card-group">
+                            <div class="col-md-3 no-gutters card rounded m-1" >
+                               <c:forEach items="${productList}" var="product">
+                                  <c:choose>
+							         <c:when test="${product.productImage == null} ">
+							             <div class="myphoto">
+							                 <a href="https://ibb.co/kmbdwzQ"><img src="https://i.ibb.co/kmbdwzQ/image.jpg" alt="image" border="0"></a>
+							             </div>
+							            </c:when>
+							           <c:otherwise>
+							             <div class="myphoto">
+							                 <img src="<c:url value="/resources/images/ ${product.productImage}"/>" height="56" alt="상품 이미지">
+							             </div>
+							           </c:otherwise>
+							       </c:choose>
+							       
+	                                <div class="col-md-12 no-gutters">
+	                                    <h6 class="col-md-12 ">상품 : ${product.productName}</h6>
+	                                    <h6 class="col-md-12 ">카테고리 : ${product.productCategory}</h6>
+	                                    <h6 class="col-md-12 ">가격 : ${product.productPrice}</h6>
+	                                </div>
+                                
+								<a href="products/product?productId=${product.productId}"><button>상세정보</button></a>   <a href="#"><button>상품주문</button></a>
+								</c:forEach>
+                            </div>
+                        </div>
+                        <!--복붙끝-->
+                    </div>
+                </div>
+            </div>
 
-    <div class="con" style="display: flex;">
-        <div class="left_container">
-            <div class="left_container1" >
-                <i class="fa-regular fa-paw" style="width: 15%; border: 1px solid red; text-align: right;"></i>
-                <h2 style="width: 60%;">123상점</h2>
-            </div>
-            <div class="left_container2">
-                <div class="left_ment" style="margin: 0 auto;">
-                    <h2 style="margin: 2% 13%;">반려동물과 즐거운 시간</h2>
+            <div class="col-md-3  no-gutters" style="background-color: white;">
+                <div class="row mt-2 no-gutters ml-2">
+                    <h3 class="col-md-12 ml-1">
+                    강아지상품
+                    <p style="font-size: medium;">버튼을 누르면 원하시는 상품을 보실 수 있습니다.</p>
+                    </h3> 
+                    
+                    <p style="height: 50%;" class="dog col-3 border rounded-pill mr-1 ml-2"># 사료</p>
+                    <p style="height: 50%;" class="dog col-3 border rounded-pill mr-1 ml-2"># 간식</p>
+                    <p style="height: 50%;" class="dog col-3 border rounded-pill mr-1 ml-2"># 산책</p>
+                    <p style="height: 50%;" class="dog col-3 border rounded-pill mr-1 ml-2"># 배변</p>
+                    <br><br>
+                    <p style="height: 50%;" class="dog col-3 border rounded-pill mr-1 ml-2"># 미용</p>
+                    <p style="height: 50%;" class="dog col-3 border rounded-pill mr-1 ml-2"># 옷</p>
+                    <p style="height: 50%;" class="dog col-3 border rounded-pill mr-1 ml-2"># 집</p>
+                    <p style="height: 50%;" class="dog col-3 border rounded-pill mr-1 ml-2"># 기타</p>
                 </div>
-                <div style="width: 100%;   position: relative;">
-                    <img src="https://cdn.pet-friends.co.kr/resources/pc/img/button-search%402x.png" width="40%" height="
-                    10%"  class="img1">
-                    <form style="background-color: white;">
-                        <input class="search" type="text" placeholder="찾는 상품을 검색해보세요">
-                    </form>
-                </div>
-                <div class="product_1">
-                    <h5 style="font-size: 1.5vw; margin: 2% 13% 0% 0%;">상품 모음</h5>
-                </div>
-                <div style="display: flex; margin: 0 auto; width: 100%; height: 10%;">
-                    <div style="width: 25%; height: 10%; margin: 1%;">
-                        <img src="https://i.ibb.co/7zqBWjZ/pexels-markus-winkler-3937657.jpg" alt="pexels-markus-winkler-3937657" style="width: 100%; height: 40%; border: 1px solid black;"/>
-                        <h4>강아지 용품</h4>
-                        <h6 style="width: 100%;"> 상품명 : 강아지 배변패트</h6>
-                        <p style="margin: 0;">설명 : 이상품은 누구나 좋아하는 상품
-                        <p style="margin: 0;">가격 : 15000원</p>
-                    </div>
-                    <div style="width: 25%; height: 10%; margin: 1%">
-                        <img src="https://i.ibb.co/7zqBWjZ/pexels-markus-winkler-3937657.jpg" alt="pexels-markus-winkler-3937657" style="width: 100%; height: 40%; border: 1px solid black;"/>
-                        <h4>강아지 용품</h4>
-                        <h6 style="width: 100%;"> 상품명 : 강아지 배변패트</h6>
-                        <p style="margin: 0;">설명 : 이상품은 누구나 좋아하는 상품
-                        <p style="margin: 0;">가격 : 15000원</p>
-                    </div>
-                    <div style="width: 25%; height: 10%; margin: 1%">
-                        <img src="https://i.ibb.co/7zqBWjZ/pexels-markus-winkler-3937657.jpg" alt="pexels-markus-winkler-3937657" style="width: 100%; height: 40%; border: 1px solid black;"/>
-                        <h4>강아지 용품</h4>
-                        <h6 style="width: 100%;"> 상품명 : 강아지 배변패트</h6>
-                        <p style="margin: 0;">설명 : 이상품은 누구나 좋아하는 상품
-                        <p style="margin: 0;">가격 : 15000원</p>
-                    </div>
-                    <div style="width: 25%; height: 10%; margin: 1%">
-                        <img src="https://i.ibb.co/7zqBWjZ/pexels-markus-winkler-3937657.jpg" alt="pexels-markus-winkler-3937657" style="width: 100%; height: 40%; border: 1px solid black;"/>
-                        <h4>강아지 용품</h4>
-                        <h6 style="width: 100%; "> 상품명 : 강아지 배변패트</h6>
-                        <p style="margin: 0;">설명 : 이상품은 누구나 좋아하는 상품
-                        <p style="margin: 0;">가격 : 15000원</p>
-                    </div>
-                </div>
-                 <!--고양이 용품-->
-                 
-            </div>
-        </div>
+                <hr>
+                <div class="row mt-2 no-gutters ml-2">
+                    <h3 class=" col-md-12 ml-1">
+                        고양이상품
+                    <p style="font-size: medium;">버튼을 누르면 원하시는 상품을 보실 수 있습니다.</p>
+                    </h3>
 
-        <div class="middle_container" style="background-color: azure;">
-            <div>
-                <h3>상품전체 보기</h3>
-                <div>
-                    <p>asdf</p>
-                    <p>adsf</p>
+                    <p style="height: 50%;" class="cat col-2 border rounded-pill mr-1 ml-2"># 사료</p>
+                    <p style="height: 50%;" class="cat col-2 border rounded-pill mr-1 ml-2"># 간식</p>
+                    <p style="height: 50%;" class="cat col-2 border rounded-pill mr-1 ml-2"># 톳밥</p>
+                    <p style="height: 50%;" class="cat col-2 border rounded-pill mr-1 ml-2"># 장난감</p>
+                    <br><br>
+                    <p style="height: 50%;" class="cat col-2 border rounded-pill mr-1 ml-2"># 미용</p>
+                    <p style="height: 50%;" class="cat col-2 border rounded-pill mr-1 ml-2"># 옷</p>
+                    <p style="height: 50%;" class="cat col-2 border rounded-pill mr-1 ml-2"># 집</p>
+                    <p style="height: 50%;" class="cat col-2 border rounded-pill mr-1 ml-2"># 기타</p>
                 </div>
-            </div>
-            <div>
-                <h3>강아지 상품 전체 보기</h3>
-                <div>
-                    <p>adsf</p>
-                    <p>adf</p>
+                <hr>
+                <div class="row mt-2 no-gutters ml-2">
+                    <h3 class="col-md-12 ml-1">
+                        기니피그 상품
+                        <p style="font-size: medium;">버튼을 누르면 원하시는 상품을 보실 수 있습니다.</p>
+                    </h3>
+                    <p style="height: 50%;"class="gini col-2 border rounded-pill mr-1 ml-2"># 사료</p>
+                    <p style="height: 50%;"class="gini col-2 border rounded-pill mr-1 ml-2"># 간식</p>
+                    <p style="height: 50%;"class="gini col-2 border rounded-pill mr-1 ml-2"># 산책</p>
+                    <p style="height: 50%;"class="gini col-2 border rounded-pill mr-1 ml-2"># 배변</p>
+                    <br><br>
+                    <p style="height: 50%;"class="gini col-2 border rounded-pill mr-1 ml-2"># 미용</p>
+                    <p style="height: 50%;"class="gini col-2 border rounded-pill mr-1 ml-2"># 장난감</p>
+                    <p style="height: 50%;"class="gini col-2 border rounded-pill mr-1 ml-2"># 집</p>
+                    <p style="height: 50%;"class="gini col-2 border rounded-pill mr-1 ml-2"># 기타</p>
                 </div>
-            </div>
-            <div>
-                <h3>고양이 상품 전체 보기</h3>
-                <div>
-                    <p>adsf</p>
-                    <p>asdf</p>
+                <hr>
+                <div class="row mt-2 no-gutters ml-2">
+                    <h3 class="col-md-12 ml-1">
+                        토끼상품
+                        <p style="font-size: medium;">버튼을 누르면 원하시는 상품을 보실 수 있습니다.</p>
+                    </h3>
+                    <p style="height: 50%;"class="rabbit col-2 border rounded-pill mr-1 ml-2"># 사료</p>
+                    <p style="height: 50%;"class="rabbit col-2 border rounded-pill mr-1 ml-2"># 간식</p>
+                    <p style="height: 50%;"class="rabbit col-2 border rounded-pill mr-1 ml-2"># 산책</p>
+                    <p style="height: 50%;"class="rabbit col-2 border rounded-pill mr-1 ml-2"># 배변</p>
+                    <br><br>
+                    <p style="height: 50%;"class="rabbit col-2 border rounded-pill mr-1 ml-2"># 미용</p>
+                    <p style="height: 50%;"class="rabbit col-2 border rounded-pill mr-1 ml-2"># 장난감</p>
+                    <p style="height: 50%;"class="rabbit col-2 border rounded-pill mr-1 ml-2"># 집</p>
+                    <p style="height: 50%;"class="rabbit col-2 border rounded-pill mr-1 ml-2"># 기타</p>
                 </div>
-            </div>
-            <div>
-                <h3>기니피그 상품 전체 보기</h3>
-                <div>
-                    <p>asdf</p>
-                    <p>asdf</p>
+                <hr>
+                <div class="row mt-2 no-gutters no-gutters">
+                    <h3 class=" col-md-12 ml-1">
+                        파충류 상품
+                        <p style="font-size: medium;">버튼을 누르면 원하시는 상품을 보실 수 있습니다.</p>
+                    </h3>
+                    <p style="height: 50%;"class="col-2 border rounded-pill mr-1 ml-2"># 사료</p>
+                    <p style="height: 50%;"class="col-2 border rounded-pill mr-1 ml-2"># 간식</p>
+                    <p style="height: 50%;"class="col-2 border rounded-pill mr-1 ml-2"># 집게</p>
+                    <p style="height: 50%;"class="col-2 border rounded-pill mr-1 ml-2"># 배변</p>
+                    <br><br>
+                    <p style="height: 50%;"class="col-2 border rounded-pill mr-1 ml-2"># 영양제</p>
+                    <p style="height: 50%;"class="col-2 border rounded-pill mr-1 ml-2"># 물통</p>
+                    <p style="height: 50%;"class="col-2 border rounded-pill mr-1 ml-2"># 집</p>
+                    <p style="height: 50%;"class="col-2 border rounded-pill mr-1 ml-2"># 기타</p>
                 </div>
-            </div>
-            <div>
-                <h3>파충류 상품 전체 보기</h3>
-                <div>
-                    <p>adsf</p>
-                    <p>adf</p>
+                <hr>
+                <div class="row mt-2 no-gutters no-gutters">
+                    <h3 class=" col-md-12 ml-1">
+                        기타상품
+                        <p style="font-size: medium;">버튼을 누르면 원하시는 상품을 보실 수 있습니다.</p>
+                    </h3>
+                    <p style="height: 50%;"class="col-2 border rounded-pill mr-1 ml-2">사료</p>
+                    <p style="height: 50%;"class="col-2 border rounded-pill mr-1 ml-2">간식</p>
+                    <p style="height: 50%;"class="col-2 border rounded-pill mr-1 ml-2">산책</p>
+                    <p style="height: 50%;"class="col-2 border rounded-pill mr-1 ml-2">배변</p>
+                    <br><br>
+                    <p style="height: 50%;"class="col-2 border rounded-pill mr-1 ml-2">미용</p>
+                    <p style="height: 50%;"class="col-2 border rounded-pill mr-1 ml-2">옷</p>
+                    <p style="height: 50%;"class="col-2 border rounded-pill mr-1 ml-2">집</p>
+                    <p style="height: 50%;"class="col-2 border rounded-pill mr-1 ml-2">기타</p>
                 </div>
+                
             </div>
-        </div>
-
-        <div class="right_container">
+            <div class="col-md-2 border border-dark"></div>
         </div>
     </div>
-    
- <h1>상품 페이지</h1>
- <a href="products/add"><button>상품추가</button></a>
- <c:forEach items="${productList}" var="product">
- 	<p>
- 	사진 : ${product.productImage}
- 	<p>
- 	이름 : ${product.productName}
- 	<p>
- 	가격 : ${product.productPrice}
- 	<p>
- 	카테고리 : ${product.productCategory}
-
-	<a href="products/product?productId=${product.productId}"><button>상세정보</button></a>   <a href="#"><button>상품주문</button></a>
-		
- </c:forEach>
  
  	<%@ include file="../module/footer.jsp" %>
 </body>

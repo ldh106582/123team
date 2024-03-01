@@ -1,5 +1,6 @@
 package com.springmvc.controller;
 
+import java.io.File;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.springmvc.domain.Order;
 import com.springmvc.domain.Person;
@@ -59,8 +61,27 @@ public class ProductController {
 	}
 	
 	@PostMapping("add")
-	public String addProductProccess(@ModelAttribute("product") Product product,Model model) {
+	public String addProductProccess(@ModelAttribute("product") Product product, HttpServletRequest request,
+									 @RequestParam("p_image") MultipartFile productImage, Model model) {
+		String imageName = productImage.getOriginalFilename();
+		String imagePatn = request.getSession().getServletContext().getRealPath("/resources/images");
+		System.out.println("이미지 경로 : " + imagePatn);
+		File file = new File(imagePatn, imageName);
+		
+		try 
+		{
+			productImage.transferTo(file);
+			product.setProductImage(imageName);
+		}
+		catch (Exception e)
+		{
+			System.out.println("이미지 파일이 존재하지 않습니다." + e);
+		}
+		
 		productService.addProduct(product);
+		
+		
+		
 		return "redirect:/products";
 	}
 // U
