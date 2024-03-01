@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-
+import com.springmvc.domain.Person;
 import com.springmvc.domain.Product;
 import com.springmvc.domain.ShoppingCart;
 import com.springmvc.service.ShoppingCartService;
@@ -26,20 +26,43 @@ public class ShoppingCartController {
 	@Autowired
 	private ShoppingCartService shoppingCartService;
 	
-	@GetMapping("/creatCart")
-	public String CreateCart(@ModelAttribute Product product) {
+	@PostMapping("/creatCart")
+	public String CreateCart(@ModelAttribute("product") Product product, HttpServletRequest request) {
 		System.out.println("productId create : " + product.getProductId());
-		System.out.println("personId create : " + product.getPersonId());
+		
+		HttpSession session = request.getSession();
+		Person person = (Person) session.getAttribute("id");
+		String personId = person.getPersonId();
+		
 		// 장바구니에 이미 값이 있는지 확인하는 함수
-		shoppingCartService.D_createshoppingCart(product);
+		int c_living = shoppingCartService.c_readshoppingCart(personId);
+		
+		//값을 읽어왔을 실행하는 함수
+		if(c_living == 0) {
+			// 쇼핑카트를 만들어주는 함수
+			System.out.println("해당 아이디의 쇼핑카트가 존재하지 않으므로 생성합니다.");
+			product.setPersonId(personId);
+			shoppingCartService.D_createshoppingCart(product);
+		} else {
+			
+			System.out.println("해당 아이디의 쇼핑카트가 존재므로 amount만 추가합니다.");
+			// 쇼핑카트가 존재함하여 값을 가져오는 함수
+			ShoppingCart shoppingCart = shoppingCartService.DS_createshoppingCart(personId);
+			// 쇼핑카트가 존재함으로 amout를 1증가 시켜주는 함수
+
+			shoppingCartService.DP_createshoppingCart(shoppingCart);
+		}		
 		
 		 return "redirect:/products";
 	}
-	// 주문완료 페이지 POST의 경우 ORDERCONTROLLER에 있음
 	
+	// 주문완료 페이지 POST의 경우 ORDERCONTROLLER에 있음
 	@GetMapping("/readcart")
-	public String ReadCart(@RequestParam(name = "personId", required = false) String personId,
-							HttpServletRequest request, Model model) {
+	public String ReadCart(HttpServletRequest request, Model model) 
+	{
+		HttpSession session = request.getSession();
+		Person person = (Person)session.getAttribute("id");
+		String personId = person.getPersonId();
 		System.out.println("장바구니 read : " + personId);
 		// 장바구니에 있는 데이터를 가져옴
 		List<ShoppingCart> shoppingCart = shoppingCartService.readCart(personId);

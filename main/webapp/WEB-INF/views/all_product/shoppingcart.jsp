@@ -75,7 +75,7 @@
 			            <td class="shop border-right align-self-center">${cart.productName}</td>
 			            <td id="a_num" class="shop border-right">
 			                <div id="num"> 
-			                    <input id="amount_${status.index}" class="form-group col-sm-8" type="number" name="amount" value="${cart.amount}">
+			                    <input id="amount_${status.index}" class="form-group col-sm-12" type="number" name="amount" value="${cart.amount}">
 			                </div>
 			            </td>
 			            <td class="shop border-right text-right">${cart.productPrice} 원</td>

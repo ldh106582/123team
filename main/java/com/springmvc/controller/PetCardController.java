@@ -1,6 +1,8 @@
 package com.springmvc.controller;
 
 import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -36,42 +38,57 @@ public class PetCardController {
 	@Autowired
 	PetCardService petCardService;
 	
-	// 1. 반려동물 몸무게를 넣어줌 read
 	@GetMapping("/petcard")
 	public String SetCreatPetCard(@RequestParam("petid") String petId, HttpServletRequest request, Model model) {
 		// 반려동물의 정보를 가져오는 함수
-		HttpSession session = request.getSession();
 		Pet petid = petCardService.getPetRead(petId);
+		LocalDate birthday = (LocalDate) petid.getPetBirth();
+		System.out.println("birthday : " + birthday);
+
+		// 현재 날짜 가져오기
+		LocalDate currentDate = LocalDate.now();
+
+		// 나이 계산
+		int age = currentDate.getYear() - birthday.getYear();
+		System.out.println("petAge: " + age);
+		String ageString = String.valueOf(age);
+
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		String birthdayString = birthday.format(formatter);
+		System.out.println("ageString : " + ageString);
+
+		// request에 나이 값 추가
+		request.setAttribute("ageString", ageString);
 		model.addAttribute("petid", petid);
+
 		
 		// 폼 데이터를 바인딩하는 데 사용되는 객체를 생성하고 모델에 추가
 		PetWeight petWeight = new PetWeight();
-		session.setAttribute("petWeight", petWeight);
+		model.addAttribute("petWeight", petWeight);
 
 		// 몸무게 데이터를 보여주는 함수
 		System.out.println("몸무게 실행 함수");
 		List<PetWeight> listOfPetWeight = petCardService.getWeghitPetCard(petId);
 		System.out.println("listOfPetWeight : " + listOfPetWeight + "controller");
-		session.setAttribute("listOfPetWeight", listOfPetWeight);
+		model.addAttribute("listOfPetWeight", listOfPetWeight);
 
 		// 진료 기록을 보여주는 함수
 		List<PetChart> listOfPetChard = petCardService.getChartPetCard(petId);
-		session.setAttribute("listOfPetChard", listOfPetChard);
+		model.addAttribute("listOfPetChard", listOfPetChard);
 
 		// 예방접종 기록을 보여주는 함수
 		List<PetVaccination> listOfpetVaccination = petCardService.getVaccinationPetCard(petId);
-		session.setAttribute("listOfpetVaccination", listOfpetVaccination);
+		model.addAttribute("listOfpetVaccination", listOfpetVaccination);
 
 		// 수술 기록을 보여주는 함수
 		List<PetSurgery> listOfPetSurgery = petCardService.getPetSurgery(petId);
-		session.setAttribute("listOfPetSurgery", listOfPetSurgery);
+		model.addAttribute("listOfPetSurgery", listOfPetSurgery);
 
 		// 입원 기록을 보여주는 함수
 		List<PetSurgeryAfter> listOfPetSurgeryAfter = petCardService.getPetSurgeryAfter(petId);
-		session.setAttribute("listOfPetSurgeryAfter", listOfPetSurgeryAfter);
+		model.addAttribute("listOfPetSurgeryAfter", listOfPetSurgeryAfter);
 
-
-		return "petcard/petcard";
+		return "/petcard/petcard";
 	}
 
 	// petcard 예방접종 create

@@ -253,10 +253,14 @@ public class PersonController {
 	}
 	
 	@GetMapping("/mypage")
-	public String mypage(HttpServletRequest request) {
+	public String mypage(HttpServletRequest request, Model model) {
 		HttpSession session = request.getSession();
 		Person person = (Person) session.getAttribute("id");
 		session.setAttribute("person", person);
+		
+		List<Pet> petName = (List<Pet>) session.getAttribute("petName");
+		model.addAttribute("petName", petName);
+		
 		return "member/Mypage";
 	}
 }

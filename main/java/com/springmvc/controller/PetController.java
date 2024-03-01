@@ -1,5 +1,7 @@
 package com.springmvc.controller;
 
+import java.io.File;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.springmvc.domain.Person;
 import com.springmvc.domain.Pet;
@@ -32,7 +35,9 @@ public class PetController
 	
 	@PostMapping("/creatpet")
 	public String SetCreatePet(@ModelAttribute("pet_create") Pet pet, 
-								@RequestParam("id") String personId, Model model, HttpServletRequest request) {
+							   @RequestParam("id") String personId, 
+							   @RequestParam("pet_Image") MultipartFile petImage, Model model, HttpServletRequest request) {
+		
 		System.out.println("여기 도착하나??");
 		System.out.println("PetId : "+pet.getPetId());
 		System.out.println("PetName : "+pet.getPetName());
@@ -41,6 +46,23 @@ public class PetController
 		System.out.println("Pet성별 : " + pet.getPetSex());
 		System.out.println("동물생일 : " + pet.getPetBirth());
 		System.out.println("PersonId : "+ personId.length());
+		System.out.println("petImage : " + petImage);
+		
+		String filename = petImage.getOriginalFilename();
+		String filepath = request.getSession().getServletContext().getRealPath("/resources/images");
+		File file = new File(filepath, filename);
+		
+		try 
+		{
+			petImage.transferTo(file);
+			pet.setPetImage(filename);
+		}
+		catch (Exception e)
+		{
+			System.out.println("해당하는 파일이 없습니다." + e);
+		}
+		
+		System.out.println("image : " + petImage);
 		
 		System.out.println("PersonId : " + pet.getPersonId());
 		pet.setPersonId(personId);
@@ -49,7 +71,7 @@ public class PetController
 		
 		model.addAttribute("petname", petname.getPetName());
 		
-		return "/member/Mypage";
+		return "redirect:/login/mypage";
 	}
 	
 	// pet update 로 이동하기 

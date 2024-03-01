@@ -73,6 +73,7 @@ public class OrderRepositoryImp implements OrderRepository{
 		template.update(SQL, order.getProductId(), order.getProductName(), order.getAmount(), order.getPrice(),
 				order.getOrderDate(), order.getTotalPrice(), order.getPersonId());
 	}
+	
 	//장바구니에 있는 데이터를 가져오는 함수
 	@Override
 	public Person GetOrdercreate(String personId) {
@@ -87,9 +88,15 @@ public class OrderRepositoryImp implements OrderRepository{
 			return null;
 		}
 	}
-	
-	
-	
-	
-	
+	// product테이블 재고를 관리하는 함수
+	@Override
+	public void SetminusProduct(String productId, int productUnitStock,String personId) {
+		for(int i = 0; i < 1; i++) {
+		String SQL = "update Product set ProductUnitStock = ProductUnitStock - ? where ProductId = ?";
+		template.update(SQL, productUnitStock,productId);
+		
+		String SQL1 = "delete from ShoppingCart where productId = ? and personId=?";
+		template.update(SQL1, productId, personId);
+		}
+	}
 }

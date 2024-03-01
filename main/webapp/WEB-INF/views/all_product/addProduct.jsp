@@ -12,7 +12,7 @@
  <%@  include file="../module/headerdanger.jsp" %>
 
  <h1>상품추가 페이지</h1>
- <form:form modelAttribute="product" method="POST">
+ <form:form modelAttribute="product" method="POST" enctype="multipart/form-data">
  	<p>
  	상품명 : <form:input path="productName"/>
  	<p>
@@ -27,8 +27,10 @@
  	<p>
  	상품재고수 : <form:input path="productUnitStock"/>
  	<p>
- 	등록하기 : <input type="submit">
+ 	이미지 : <input type="file" name="p_image" value="productImage">
  	<p>
+ 	등록하기 : <input type="submit">
+ 	
  </form:form>
  
  <%@ include file="../module/footer.jsp" %>

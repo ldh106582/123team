@@ -76,6 +76,10 @@ public class OrderController {
 		Order order = (Order) session.getAttribute("order");
 		session.setAttribute("order", order);
 		
+		String productId = (String) order.getProductId();
+		int productUnitStock = order.getAmount();
+		// product테이블 재고를 관리하는 함수
+		orderSerivce.SetminusProduct(productId, productUnitStock, personId);
 		
 		return "/all_product/Order";
 	}

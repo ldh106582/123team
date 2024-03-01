@@ -21,8 +21,9 @@
     </div>
 
     <div class="container">
-		<form:form modelAttribute="pet_create" action="./creatpet?id=${id.personId}" method="POST">
+		<form:form modelAttribute="pet_create" action="./creatpet?id=${id.personId}" method="POST" enctype="multipart/form-data">
 		<form:hidden path="personId" value="${id}"/>
+		<form:hidden path="personId" value="petImage"/>
 
 			<div class="form-group row"> 반려동물 아이디 :
                 <div class="col-4">
@@ -66,6 +67,11 @@
                 <div class="col-4">
 				    <form:input type="date" path="petBirth"/>
                 </div>
+            </div>
+            <div class="form-group row"> [선택] 반려동물이미지 : 
+            	<div class="col-4">
+            		<input type="file" name="pet_Image"/>
+            	</div>
             </div>
 
 			<div class="form-group row">
@@ -146,6 +152,9 @@ document.getElementById('petVarity').addEventListener("click", function(){
             document.getElementById('reptiletype').style.display = "block";
         }
 });
+<<<<<<< HEAD
 
+=======
+>>>>>>> 8188671a50ff3db0dd77b7763abf02de62fb015a
 </script>
 </html>
