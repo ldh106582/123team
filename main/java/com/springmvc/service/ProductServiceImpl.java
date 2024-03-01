@@ -56,14 +56,7 @@ public class ProductServiceImpl implements ProductService{
 	
 	
 	
-	// 장바구니에 있는 데이터를 가져오는 함수
 
-	@Override
-	public Order getOrderdate(Person personId) {
-		// TODO Auto-generated method stub
-		return productRepository.getOrderdate(personId);
-	}
-	
 	//리뷰 값을 db에 담는 함수
 	@Override
 	public void setproductReview(ProductReview productReview) {

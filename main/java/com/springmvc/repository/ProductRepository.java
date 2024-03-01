@@ -22,9 +22,6 @@ public interface ProductRepository {
 	// product 전체 구매목록을 가져옴
 	List<ProductReview> getp_Orderdate(String productId);
 	
-	// 장바구니에 있는 데이터를 가져오는 함수
-	Order getOrderdate(Person personId);
-
 	//리뷰 값을 db에 담는 함수
 	void setproductReview(ProductReview productReview);
 	

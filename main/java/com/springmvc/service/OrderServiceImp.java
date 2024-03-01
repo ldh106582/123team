@@ -48,6 +48,12 @@ public class OrderServiceImp implements OrderSerivce{
 		// TODO Auto-generated method stub
 		return OrderRepository.GetOrdercreate(personId);
 	}
+	// product테이블 재고를 관리하는 함수
+	@Override
+	public void SetminusProduct(String productId, int productUnitStock, String personId) {
+		// TODO Auto-generated method stub
+		OrderRepository.SetminusProduct(productId, productUnitStock, personId);
+	}
 	
 	
 	

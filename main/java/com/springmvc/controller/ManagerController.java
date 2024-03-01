@@ -70,7 +70,9 @@ public class ManagerController
 					
 			    // 사업자등록증을 받아주는 함수
 			    String s_imagePath  = request.getSession().getServletContext().getRealPath("/resources/images");
+			    System.out.println(s_imagePath);
 			    String saves_image = s_file.getOriginalFilename();
+			    
 			    File saveimage = new File(s_imagePath, saves_image);
 
 			    try {

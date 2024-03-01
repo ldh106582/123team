@@ -121,9 +121,9 @@
  	가격 : ${product.productPrice}
  	<p>
  	카테고리 : ${product.productCategory}
- 	<p> ${product.personId }
- 	<a href="products/product?productId=${product.productId}"><button>상세정보</button></a>   <a href="#"><button>상품주문</button></a>
 
+	<a href="products/product?productId=${product.productId}"><button>상세정보</button></a>   <a href="#"><button>상품주문</button></a>
+		
  </c:forEach>
  
  	<%@ include file="../module/footer.jsp" %>

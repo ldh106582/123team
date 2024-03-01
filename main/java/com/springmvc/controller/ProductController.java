@@ -47,10 +47,6 @@ public class ProductController {
 		List<ProductReview> listOfProductReview = productService.getp_Orderdate(productId);
 		model.addAttribute("listOfProductReview", listOfProductReview);
 		
-		// 주문완료에 있는 데이터를 가져오는 함수
-		Order order = productService.getOrderdate(personId);
-		session.setAttribute("order", order);
-		
 		model.addAttribute("product",productService.getProductById(productId));
 		
 		return "all_product/product";

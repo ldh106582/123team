@@ -36,11 +36,9 @@ public class PetCardController {
 	@Autowired
 	PetCardService petCardService;
 	
-	// 1. 반려동물 몸무게를 넣어줌 read
 	@GetMapping("/petcard")
 	public String SetCreatPetCard(@RequestParam("petid") String petId, HttpServletRequest request, Model model) {
 		// 반려동물의 정보를 가져오는 함수
-		HttpSession session = request.getSession();
 		Pet petid = petCardService.getPetRead(petId);
 		model.addAttribute("petid", petid);
 		
@@ -70,8 +68,7 @@ public class PetCardController {
 		List<PetSurgeryAfter> listOfPetSurgeryAfter = petCardService.getPetSurgeryAfter(petId);
 		model.addAttribute("listOfPetSurgeryAfter", listOfPetSurgeryAfter);
 
-
-		return "petcard/petcard";
+		return "/petcard/petcard";
 	}
 
 	// petcard 예방접종 create

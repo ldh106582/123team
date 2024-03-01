@@ -33,7 +33,6 @@
             <div class="profile_area">
                 <div class="profile_inner">
                     <div class="profile">
-                        
                         <p class="useid">${ id.personId }</p>
 		                <p class="usemail">${id.personEmail }</p>
                     </div>
@@ -49,6 +48,7 @@
                 </ul>
             </div>
         </header>
+        
         <div id="container" class="container ">
             <!-- container -->
             <div id="content" class="content">
@@ -80,13 +80,13 @@
 	                                    <div class="myphoto">
 	                                        <img src="https://static.nid.naver.com/images/web/user/default.png" width="56" height="56" alt="내 프로필 이미지">
 	                                    </div>
-	                                   </c:when>
-	                                   <c:otherwise>
+                                    </c:when>
+                                   <c:otherwise>
 	                                    <div class="myphoto">
 	                                        <img src="<c:url value="/resources/images/${ petid.petImage }"/>" height="56" alt="내 프로필 이미지">
 	                                    </div>
-	                                   </c:otherwise>
-	                                </c:choose>
+                                   </c:otherwise>
+	                            </c:choose>
                                 </li>
                                 <li>
                                     <div class="myaccount">
@@ -123,7 +123,7 @@
                                          <p class="mt-0"> 몸무게 : ${petcard.petWeight}</p>
                                          <input class="m-2" id="editName0" type="text" name="petChart;" style="display: none;"/> 
                                          <div class="update">
-                                             <a  id="Before0" onclick="toggleDisplay(event'Before0', 'After0','editDateField0', 'editName0', 'editContentField0')" href="#" class="col-2 m-1 p-1 border text-white btn btn-success">수정하기</a>
+                                             <a  id="Before0" onclick="toggleDisplay('Before0', 'After0','editDateField0', 'editName0', 'editContentField0')" href="#" class="col-2 m-1 p-1 border text-white btn btn-success">수정하기</a>
                                              <a id="After0" onclick="toggleDisplay('Before0', 'After0','editDateField0', 'editName0', 'editContentField0')"  href="${pageContext.request.contextPath}/login/deletetPetChart?petId=${petid.petId}&petChartNum=${petcard.petWeightNum}"  class="col-2 m-1 p-1 border text-white btn btn-success" style="display: none;">수정완료</a>
                                          </div>
                                          <div class="col-sm-1" style="position: absolute; top: 45%; transform: translateX(980%);">
@@ -132,11 +132,11 @@
                                      </div>
                                    </c:forEach>
                                    <form action="${pageContext.request.contextPath}/login/petcard" method="post">
-                                         <input type="hidden" name="petId" value="${petid.petId}" />
-                                         <p class="m-2"> 일 자  : <input type="date" name="petWeightDate" /></p>
-                                         <p class="m-2"> 몸무게 : <input type="text" name="petWeight"/></p>
-                                         <input class="bg-warning rounded m-2" type="submit" value="몸무게기록" />
-                                     </form>
+                                       <input type="hidden" name="petId" value="${petid.petId}" />
+	                                       <p class="m-2"> 일 자  : <input type="date" name="petWeightDate" /></p>
+	                                       <p class="m-2"> 몸무게 : <input type="text" name="petWeight"/></p>
+                                       <input class="bg-warning rounded m-2" type="submit" value="몸무게기록" />
+                                    </form>
                                   </div>
                            	  </li>
 	                       </ul>
@@ -150,7 +150,7 @@
              		<div class="subindex_greenbox">
 	                    <ul class="subindex_row">
                             
-	                        <table class="table">
+	                      <table class="table">
 
                      <div class="subindex_greenbox">
                        <ul class="subindex_row">
@@ -172,7 +172,7 @@
                                                         <input class="m-2" id="editContentField2" type="text" name="petChartContent;" style="display: none;"/>
                                                             
                                                         <div class="update">
-                                                            <a  id="Before2" onclick="toggleDisplay(event'Before2', 'After2','editDateField2', 'editName2', 'editContentField2')" href="#" class="col-2 m-1 p-1 border text-white btn btn-success">수정하기</a>
+                                                            <a  id="Before2" onclick="toggleDisplay('Before2', 'After2','editDateField2', 'editName2', 'editContentField2')" href="#" class="col-2 m-1 p-1 border text-white btn btn-success">수정하기</a>
                                                             <a id="After2" onclick="toggleDisplay('Before2', 'After2','editDateField2', 'editName2', 'editContentField2')"  href="${pageContext.request.contextPath}/login/deletetPetChart?petId=${petid.petId}&petChartNum=${petcard.petChartNum}"  class="col-2 m-1 p-1 border text-white btn btn-success" style="display: none;">수정완료</a>
                                                         </div>
                                                         <div class="col-sm-1" style="position: absolute; top: 45%; transform: translateX(980%);">
@@ -310,7 +310,7 @@ function calculateAge(birthday){
     var age_dt = new Date(diff_ms);
     return Math.abs(age_dt.getUTCFullYear()-1970);
 }
-   
+
    function toggleDisplay(contentId, buttonId) {
       var element = document.getElementById(contentId);
       var button = document.getElementById(buttonId);

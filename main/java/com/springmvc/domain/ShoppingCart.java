@@ -12,6 +12,7 @@ public class ShoppingCart implements Serializable{
 	private String productCategory;
 	private int amount;
 	private String personId;
+	private String productImage;
 
 	
 	public ShoppingCart() {
@@ -87,6 +88,16 @@ public class ShoppingCart implements Serializable{
 
 	public void setPersonId(String personId) {
 		this.personId = personId;
+	}
+
+
+	public String getProductImage() {
+		return productImage;
+	}
+
+
+	public void setProductImage(String productImage) {
+		this.productImage = productImage;
 	}
 
 

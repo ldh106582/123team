@@ -91,15 +91,7 @@ public class ProductRepositoryImp implements ProductRepository{
 	}
 	
 	
-	// 장바구니에 있는 데이터를 가져오는 함수
-	@Override
-	public Order getOrderdate(Person personId) {
-		String personid = personId.getPersonId();
-		Order order = null;
-		String SQL = "select * from Ordertable where personId=?";
-		order = template.queryForObject(SQL, new Object[] {personid}, new OrderDBConnector());
-		return order;
-	}
+
 	//리뷰 값을 db에 담는 함수
 	@Override
 	public void setproductReview(ProductReview productReview) {

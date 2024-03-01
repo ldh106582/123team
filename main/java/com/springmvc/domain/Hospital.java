@@ -1,5 +1,7 @@
 package com.springmvc.domain;
 
+import java.util.ArrayList;
+
 public class Hospital {
 	String name; // 병원명
 	String addr; // 병원주소
@@ -8,6 +10,7 @@ public class Hospital {
 	String hid; //병원고유 아이디
 	String parking; // 주차정보
 	String description; // 병원설명
+	
 	public String getDescription() {
 		return description;
 	}
