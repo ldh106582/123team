@@ -15,6 +15,7 @@ public class Pet implements Serializable{
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate petBirth;
 	private String personId;
+	private String petImage;
 	
 	public Pet() {
 		super();
@@ -76,6 +77,14 @@ public class Pet implements Serializable{
 	public void setPersonId(String personId) {
 		this.personId = personId;
 	}
+	public String getPetImage() {
+		return petImage;
+	}
 
+	public void setPetImage(String petImage) {
+		this.petImage = petImage;
+	}
+
+	
 	
 }

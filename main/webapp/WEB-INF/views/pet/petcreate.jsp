@@ -21,8 +21,9 @@
     </div>
 
     <div class="container">
-		<form:form modelAttribute="pet_create" action="./creatpet?id=${id.personId}" method="POST">
+		<form:form modelAttribute="pet_create" action="./creatpet?id=${id.personId}" method="POST" enctype="multipart/form-data">
 		<form:hidden path="personId" value="${id}"/>
+		<form:hidden path="personId" value="petImage"/>
 
 			<div class="form-group row"> 반려동물 아이디 :
                 <div class="col-4">
@@ -66,6 +67,11 @@
                 <div class="col-4">
 				    <form:input type="date" path="petBirth"/>
                 </div>
+            </div>
+            <div class="form-group row"> [선택] 반려동물이미지 : 
+            	<div class="col-4">
+            		<input type="file" name="pet_Image"/>
+            	</div>
             </div>
 
 			<div class="form-group row">
@@ -146,50 +152,5 @@ document.getElementById('petVarity').addEventListener("click", function(){
             document.getElementById('reptiletype').style.display = "block";
         }
 });
-
-	document.getElementById('dogtype').addEventListener('change', function (){
-	    var selectedValue = this.value;
-	    if(selectedValue === 'Etc') {
-	        selectedValue = prompt("기타 종류를 입력해주세요.");
-	    }
-		document.getElementById('petTypeHidden').value = selectedValue;
-	});
-	document.getElementById('cattype').addEventListener('change', function (){
-	    var selectedValue = this.value;
-	    if(selectedValue === 'Etc') {
-	        selectedValue = prompt("기타 종류를 입력해주세요.");
-	    }
-		document.getElementById('petTypeHidden').value = selectedValue;
-	});
-	document.getElementById('birdtype').addEventListener('change', function (){
-	    var selectedValue = this.value;
-	    if(selectedValue === 'Etc') {
-	        selectedValue = prompt("기타 종류를 입력해주세요.");
-	    }
-		document.getElementById('petTypeHidden').value = selectedValue;
-	});
-	document.getElementById('rabbittype').addEventListener('change', function (){
-	    var selectedValue = this.value;
-	    if(selectedValue === 'Etc') {
-	        selectedValue = prompt("기타 종류를 입력해주세요.");
-	    }
-		document.getElementById('petTypeHidden').value = selectedValue;
-	});
-	document.getElementById('guineapigtype').addEventListener('change', function (){
-	    var selectedValue = this.value;
-	    if(selectedValue === 'Etc') {
-	        selectedValue = prompt("기타 종류를 입력해주세요.");
-	    }
-		document.getElementById('petTypeHidden').value = selectedValue;
-	});
-	document.getElementById('reptiletype').addEventListener('change', function (){
-	    var selectedValue = this.value;
-	    if(selectedValue === 'Etc') {
-	        selectedValue = prompt("기타 종류를 입력해주세요.");
-	    }
-		document.getElementById('petTypeHidden').value = selectedValue;
-	});
-
-
 </script>
 </html>

@@ -60,9 +60,6 @@
 	                <div class="head_title">
 	                    <h2 class="subindex_title">동물 정보</h2>
 
-                   <div class="head_title">
-                       <h2 class="subindex_title">동물 정보</h2>
-
                         <div class="title_link">
                             <a href="" ><span class="text">추가하기</span></a>
                             <a href="" ><span class="text">수정하기</span></a>
@@ -78,9 +75,18 @@
                         <div class="myprofile">
                             <ul class="myinfo_area">
                                 <li>
-                                    <div class="myphoto">
-                                        <img src="https://static.nid.naver.com/images/web/user/default.png" width="56" height="56" alt="내 프로필 이미지">
-                                    </div>
+                                <c:choose>
+	                                <c:when test="${petid.getPetImage() == null }">
+	                                    <div class="myphoto">
+	                                        <img src="https://static.nid.naver.com/images/web/user/default.png" width="56" height="56" alt="내 프로필 이미지">
+	                                    </div>
+	                                   </c:when>
+	                                   <c:otherwise>
+	                                    <div class="myphoto">
+	                                        <img src="<c:url value="/resources/images/${ petid.petImage }"/>" height="56" alt="내 프로필 이미지">
+	                                    </div>
+	                                   </c:otherwise>
+	                                </c:choose>
                                 </li>
                                 <li>
                                     <div class="myaccount">
@@ -106,12 +112,36 @@
                            </li>
                             <li>
                                <div class="row_item other">
-                                   <p> 몸무게 </p>
+                                   <p> 몸무게 기록 </p>
                                </div>
-                           </li>
-                       </ul>
-                   </div>
-               </div>
+                               <button class="bg-info text-white rounded m-2" id="ChartButton0" onclick="toggleDisplay('ChartDetails0', 'ChartButton0')">펼치기</button>
+                               <div id="ChartDetails0"  style="display: none;">  
+                                 <c:forEach items="${listOfPetWeight}" var="petcard" >
+                                     <div class="border m-2" style=" position: relative;">
+                                         <p class="mt-2"> 몸무게일자 : ${petcard.petWeightDate}</p> 
+                                         <input class="ml-2" id="editDateField0" type="date" name="petChartDate;" style="display: none;"/>
+                                         <p class="mt-0"> 몸무게 : ${petcard.petWeight}</p>
+                                         <input class="m-2" id="editName0" type="text" name="petChart;" style="display: none;"/> 
+                                         <div class="update">
+                                             <a  id="Before0" onclick="toggleDisplay(event'Before0', 'After0','editDateField0', 'editName0', 'editContentField0')" href="#" class="col-2 m-1 p-1 border text-white btn btn-success">수정하기</a>
+                                             <a id="After0" onclick="toggleDisplay('Before0', 'After0','editDateField0', 'editName0', 'editContentField0')"  href="${pageContext.request.contextPath}/login/deletetPetChart?petId=${petid.petId}&petChartNum=${petcard.petWeightNum}"  class="col-2 m-1 p-1 border text-white btn btn-success" style="display: none;">수정완료</a>
+                                         </div>
+                                         <div class="col-sm-1" style="position: absolute; top: 45%; transform: translateX(980%);">
+                                             <a href="${pageContext.request.contextPath}/login/deletetPetChart?petId=${petid.petId}&petChartNum=${petcard.petWeightNum}" class="p-3 border text-secondary" ><i class="fa-solid fa-trash-can"></i></a>
+                                         </div>  
+                                     </div>
+                                   </c:forEach>
+                                   <form action="${pageContext.request.contextPath}/login/petcard" method="post">
+                                         <input type="hidden" name="petId" value="${petid.petId}" />
+                                         <p class="m-2"> 일 자  : <input type="date" name="petWeightDate" /></p>
+                                         <p class="m-2"> 몸무게 : <input type="text" name="petWeight"/></p>
+                                         <input class="bg-warning rounded m-2" type="submit" value="몸무게기록" />
+                                     </form>
+                                  </div>
+                           	  </li>
+	                       </ul>
+	                   </div>
+	               </div>
 
                 <div class="subindex_item">
                     <div class="head_title">

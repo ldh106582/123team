@@ -46,29 +46,29 @@ public class PetCardController {
 		
 		// 폼 데이터를 바인딩하는 데 사용되는 객체를 생성하고 모델에 추가
 		PetWeight petWeight = new PetWeight();
-		session.setAttribute("petWeight", petWeight);
+		model.addAttribute("petWeight", petWeight);
 
 		// 몸무게 데이터를 보여주는 함수
 		System.out.println("몸무게 실행 함수");
 		List<PetWeight> listOfPetWeight = petCardService.getWeghitPetCard(petId);
 		System.out.println("listOfPetWeight : " + listOfPetWeight + "controller");
-		session.setAttribute("listOfPetWeight", listOfPetWeight);
+		model.addAttribute("listOfPetWeight", listOfPetWeight);
 
 		// 진료 기록을 보여주는 함수
 		List<PetChart> listOfPetChard = petCardService.getChartPetCard(petId);
-		session.setAttribute("listOfPetChard", listOfPetChard);
+		model.addAttribute("listOfPetChard", listOfPetChard);
 
 		// 예방접종 기록을 보여주는 함수
 		List<PetVaccination> listOfpetVaccination = petCardService.getVaccinationPetCard(petId);
-		session.setAttribute("listOfpetVaccination", listOfpetVaccination);
+		model.addAttribute("listOfpetVaccination", listOfpetVaccination);
 
 		// 수술 기록을 보여주는 함수
 		List<PetSurgery> listOfPetSurgery = petCardService.getPetSurgery(petId);
-		session.setAttribute("listOfPetSurgery", listOfPetSurgery);
+		model.addAttribute("listOfPetSurgery", listOfPetSurgery);
 
 		// 입원 기록을 보여주는 함수
 		List<PetSurgeryAfter> listOfPetSurgeryAfter = petCardService.getPetSurgeryAfter(petId);
-		session.setAttribute("listOfPetSurgeryAfter", listOfPetSurgeryAfter);
+		model.addAttribute("listOfPetSurgeryAfter", listOfPetSurgeryAfter);
 
 
 		return "petcard/petcard";

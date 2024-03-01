@@ -23,8 +23,8 @@ public class PetRepositoryImp implements PetRepository{
 	@Override
 	public Pet setcreatepet(Pet pet) {
 		System.out.println("create db 도착");
-		String SQL = "insert into Pet(PetId, PetName, PetType, PetVarity, PetSex, PetBirth, PersonId) values (?,?,?,?,?,?,?)";
-		template.update(SQL, pet.getPetId(), pet.getPetName(), pet.getPetType(), pet.getPetVarity(), pet.getPetSex(), pet.getPetBirth(), pet.getPersonId());
+		String SQL = "insert into Pet(PetId, PetName, PetType, PetVarity, PetSex, PetBirth, PersonId, petImage) values (?,?,?,?,?,?,?,?)";
+		template.update(SQL, pet.getPetId(), pet.getPetName(), pet.getPetType(), pet.getPetVarity(), pet.getPetSex(), pet.getPetBirth(), pet.getPersonId(), pet.getPetImage());
 		
 		return pet;
 	}
@@ -46,8 +46,8 @@ public class PetRepositoryImp implements PetRepository{
 	@Override
 	public void SetUpdatePet(Pet updatepet) {
 		if(updatepet.getPetId() != null) {
-		String SQL = "update Pet set petId=?, petName=?, petType=?, petVarity=?, petSex=?, petBirth=?, personId=?";
-		template.update(SQL, updatepet.getPetId(), updatepet.getPetName(), updatepet.getPetType(), updatepet.getPetVarity(), updatepet.getPetSex(), updatepet.getPersonId());
+		String SQL = "update Pet set petId=?, petName=?, petType=?, petVarity=?, petSex=?, petBirth=?, personId=?, petImage=?";
+		template.update(SQL, updatepet.getPetId(), updatepet.getPetName(), updatepet.getPetType(), updatepet.getPetVarity(), updatepet.getPetSex(), updatepet.getPersonId(), updatepet.getPetImage());
 		}else {
 			System.out.println("pet 아이디가 없습니다.");
 		}
