@@ -17,6 +17,8 @@
 	
 	<%
 		request.setAttribute("loginId", session.getAttribute("personId"));
+		request.setAttribute("type", session.getAttribute("type"));
+		request.setAttribute("checktype", "h");
 	%>
 
     <div class="container my-3">
@@ -25,7 +27,9 @@
                 <h1><img width="50" height="50" src="https://img.icons8.com/ios/50/hospital.png" alt="hospital"/>병원목록</h1>
             </div>
             <div class="justify-content-end">
-                <a href="hospitals/create" class="btn btn-success ">병원 추가</a>
+                <a href="hospitals/create" class="btn btn-success">병원 추가</a>
+                <a href="hospitals/manageapps" class="btn btn-success" >모든신청보기</a>
+                <a href="hospitals/mybookList?personId=${loginId}" class="btn btn-success">내 예약 보기</a>
             </div>
         </div>
         <br>
@@ -56,11 +60,7 @@
         </form>
 
 	<%@ include file="../module/footer.jsp" %>
-<%-- 	
->>>>>>> origin/yeonghoe
-<a href="hospitals/create">병원추가</a>
-<a href="hospitals/manageapps">모든신청보기</a>
-<%-- </c:if> --%>
+<%-- 
 <a href="hospitals/mybookList?personId=${loginId}">내 예약 보기</a>
 <c:forEach items="${hospitals}" var="hospital">
 	<p> 이미지 : ${hospital.image}
@@ -68,7 +68,6 @@
 	<p> 병원 설명 : ${hospital.description}
 	<a href="hospitals/hospital?hid=${hospital.hid}"><button>상세보기</button></a>
 	<p>
-	======================================
 </c:forEach>	
 <p>
 <a href="search">병원검색</a>	

@@ -155,14 +155,8 @@
                     <div class="head_title">
                         <h2 class="subindex_title">동물 진찰 기록부</h2>
                     </div>
-             		<div class="subindex_greenbox">
-	                    <ul class="subindex_row">
-                            
-	                      <table class="table">
-
                      <div class="subindex_greenbox">
                        <ul class="subindex_row">
-                            
                            <table class="table">
                                 <tbody> 
                                     <tr>

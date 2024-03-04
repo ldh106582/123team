@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<link rel="stylesheet" href="/123team/resources/css/Mypage.css">
 <head>
 <script type="text/javascript">
 function changed(bid,registday) {
@@ -116,11 +117,12 @@ function cancelForm() {
 			        <div class="subindex_item">
 			            <div class="head_title">
 			                <h2 class="subindex_title">${book.hospitalName}</h2>
+			                <div class="title_link">
+	                    		<a href="deletebook?bid=${book.bid}"><span class="text">예약취소</span></a>
+	                       	 	<a href="" ><span class="text">수정하기</span></a>
+	                    	</div>
 	                    </div>
-	                    <div class="title_link">
-	                    	<a href="deletebook?bid=${book.bid}"><span class="text">예약취소</span></a>
-	                        <a href="" ><span class="text">수정하기</span></a>
-	                    </div>  
+	                      
 			            <div class="subindex_greenbox">
 			                <ul class="subindex_row">
 			                    <li>
@@ -130,27 +132,12 @@ function cancelForm() {
 			                    </li>
 	                            <li>
 			                        <div class="row_item other">
-			                            <a href="" class="text-decoration-none"><span class="item_text">${book.petName}</span></a>
+			                            <a href="" class="text-decoration-none"><span class="item_text">${book.petId}</span></a>
 			                        </div>  
 			                    </li>
 	                            <li>
 			                        <div class="row_item other">
 			                            <a href="" class="text-decoration-none"><span class="item_text">${book.context}</span></a>
-			                        </div>  
-			                    </li>
-	                            <li>
-			                        <div class="row_item other">
-			                            <a href="" class="text-decoration-none"><span class="item_text">예약자명</span></a>
-			                        </div>  
-			                    </li>
-	                            <li>
-			                        <div class="row_item other">
-			                            <a href="" class="text-decoration-none"><span class="item_text">연락처</span></a>
-			                        </div>  
-			                    </li>
-	                            <li>
-			                        <div class="row_item other">
-			                            <a href="" class="text-decoration-none"><span class="item_text">진료받을 내용</span></a>
 			                        </div>  
 			                    </li>
 			                </ul>

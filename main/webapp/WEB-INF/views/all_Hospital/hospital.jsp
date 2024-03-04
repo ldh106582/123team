@@ -37,16 +37,33 @@
                         </div>
                     </div>
                     <br>
-                    
-	                    <div class="col-md-12">
-	                    	<c:if test="${loginId ==  hospital.personId}">
-	                        	<a href="update?hid=${hospital.hid}" class="btn btn-primary">수정하기</a>
-	                        <a href="delete?hid=${hospital.hid}" class="btn btn-danger">삭제하기</a>
-	                		</c:if>
-	               			<c:if test="${loginId != null}">
-	                        	<a href="addbook?hid=${hospital.hid}" class="btn btn-success">예약하기</a>
-	                      	</c:if>
-	                    </div>  
+                    <div class="col-md-12">
+                    	<c:if test="${loginId ==  hospital.personId}">
+                        	<a href="update?hid=${hospital.hid}" class="btn btn-primary">수정하기</a>
+                        	<a href="delete?hid=${hospital.hid}" class="btn btn-danger">삭제하기</a>
+                		</c:if>
+               			<c:if test="${loginId != null}">
+                        	<a href="addbook?hid=${hospital.hid}" class="btn btn-success">예약하기</a>
+                        	<a href="addreview?hid=${hospital.hid}" class="btn btn-success">리뷰작성</a>
+                      	</c:if>
+                      	<hr>
+                      	<c:forEach items="${reviews}" var="review">
+							<p>
+							등록일 : ${review.registDay}
+							<p>
+							제목 : ${review.title}
+							<p>
+							리뷰 점수 : ${review.reviewScore}
+							<p>
+							사진 : ${review.reviewImage}
+							<p>
+							내용 : ${review.context}
+							<p>
+							<c:if test="${loginId ==  review.personId}">
+								<a href="editreview?reviewId=${review.reviewId}">리뷰수정</a> || <a href="deletereview?reviewId=${review.reviewId}">리뷰삭제</a>
+							</c:if>
+						</c:forEach>
+                    </div>  
                 </div>
             </div>
         </div>
@@ -54,17 +71,7 @@
     
     <%@ include file="../module/footer.jsp" %>
 <%-- 
-<c:if test="${loginId ==  hospital.personId}">
 
-	
-<<<<<<< HEAD
-	
-=======
-	<%@ include file="../module/footer.jsp" %>
-  
-<a href="/123team/hospitals">돌아가기</a>
->>>>>>> origin/yeonghoe
-<div>
 
  <%@  include file="../module/headerinfo.jsp" %>
 <a href="/123team/hospitals">돌아가기</a>
@@ -88,9 +95,9 @@
 <p>
 설명 : ${hospital.description}
 <p>
-<<<<<<< HEAD
+
 <c:if test="${hospital.personId==loginId}">
-=======
+
 
 <a href="update?hid=${hospital.hid}">병원수정</a>
 <a href="delete?hid=${hospital.hid}">병원삭제</a>
@@ -122,7 +129,7 @@
 </c:forEach>
 
 <c:if test="${loginId ==  hospital.personId}">
->>>>>>> origin/yeonghoe
+
 <a href="update?hid=${hospital.hid}">병원수정</a>
 <a href="delete?hid=${hospital.hid}">병원삭제</a>
 </c:if>
@@ -147,9 +154,9 @@
 	<a href="editreview?reviewId=${review.reviewId}">리뷰수정</a> || <a href="deletereview?reviewId=${review.reviewId}">리뷰삭제</a>
 	</c:if>
 </c:forEach>
-<<<<<<< HEAD
+
 <%@ include file="../module/footer.jsp" %>
-=======
+
  --%>
  
 </body>

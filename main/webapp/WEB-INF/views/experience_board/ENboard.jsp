@@ -131,7 +131,7 @@
                 </div>
                 <c:if test="${loginId != null}">
 	                <div id="container">
-						<button id="delp" onclick="bookform('${board.title}','${board.animal}','${board.experience}','${board.personId}')">체험신청</button>
+						<button id="delp" onclick="bookform('${board.title}','${board.animal}','${board.experience}','${board.personId}')" class="btn btn-primary">체험신청</button>
 					</div>			
 				</c:if>
                 <hr>
@@ -141,11 +141,6 @@
                 </c:if>
             </div>
         </div>
-        <c:if test="${loginId != null}">
-			<div id="container">
-				<button id="delp" onclick="bookform('${board.title}','${board.animal}','${board.experience}','${board.personId}')">체험신청</button>
-			</div>
-		</c:if>
         <hr>
         <div class="list-group">
         	<c:if test="${loginId != null}">
