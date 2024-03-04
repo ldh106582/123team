@@ -1,6 +1,5 @@
 package com.springmvc.domain;
 
-import java.util.ArrayList;
 
 public class Hospital {
 	String name; // 병원명
@@ -10,6 +9,8 @@ public class Hospital {
 	String hid; //병원고유 아이디
 	String parking; // 주차정보
 	String description; // 병원설명
+	String image;
+	String personId; //병원관리자 ID
 	
 	public String getDescription() {
 		return description;
@@ -19,9 +20,6 @@ public class Hospital {
 		this.description = description;
 	}
 
-	String personId; //병원관리자 ID
-	String image;
-	
 	public Hospital() {}
 
 	public String getName() {

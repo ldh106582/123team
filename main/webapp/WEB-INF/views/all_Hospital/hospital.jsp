@@ -12,18 +12,16 @@
 </head>
 <body>
 	
-	<%@ include file="../module/footer.jsp" %>
-
-<%--  
-<a href="/123team/hospitals">돌아가기</a>
+	
 <div>
-=======
+
  <%@  include file="../module/headerinfo.jsp" %>
 <a href="/123team/hospitals">돌아가기</a>
-<%
+	<%
 		request.setAttribute("loginId", session.getAttribute("personId"));
+		request.setAttribute("type", session.getAttribute("type"));
 	%>
->>>>>>> origin/hanui
+
 <p>
 병원 사진 : ${hospital.image}
 <p>
@@ -39,26 +37,14 @@
 <p>
 설명 : ${hospital.description}
 <p>
-<<<<<<< HEAD
-<a href="update?hid=${hospital.hid}">병원수정</a>
-<a href="delete?hid=${hospital.hid}">병원삭제</a>
-<a href="booking">병원예약</a>
-</div>
- --%>
-
-
-<c:if test="${loginId ==  hospital.personId}">
+<c:if test="${hospital.personId==loginId}">
 <a href="update?hid=${hospital.hid}">병원수정</a>
 <a href="delete?hid=${hospital.hid}">병원삭제</a>
 </c:if>
-<c:if test="${loginId != null}">
 <a href="addbook?hid=${hospital.hid}">병원예약</a>
-</c:if>
-<br>
-<h3>reviews</h3>
-<c:if test="${loginId != null}">
-<a href="addreview?hid=${hospital.hid}">리뷰작성</a>
-</c:if>
+</div>
+
+
 
 <c:forEach items="${reviews}" var="review">
 <p>
@@ -76,6 +62,6 @@
 	<a href="editreview?reviewId=${review.reviewId}">리뷰수정</a> || <a href="deletereview?reviewId=${review.reviewId}">리뷰삭제</a>
 	</c:if>
 </c:forEach>
-
+<%@ include file="../module/footer.jsp" %>
 </body>
 </html>

@@ -62,7 +62,7 @@
 		               </a>
 		            </li>
 		            <li>
-		               <a href="./login/logout" class="left_item" role="menuitem" >
+		               <a href="/123team/login/logout" class="left_item" role="menuitem" >
 		                   <div class="menu_text ">로그아웃</div>
 		               </a>
 		            </li>

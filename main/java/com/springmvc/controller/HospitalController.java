@@ -1,5 +1,6 @@
 package com.springmvc.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.security.auth.message.callback.PrivateKeyCallback.Request;
@@ -141,8 +142,6 @@ public class HospitalController {
 	@PostMapping("addbook")
 	public String addbook(@ModelAttribute("booking") HospitalBooking booking,HttpServletRequest request,HttpSession session) {
 		String personId = (String) session.getAttribute("personId");
-		
-		System.out.println(booking.getPetName());
 
 		
 		String registDay = request.getParameter("registDay");
@@ -156,7 +155,8 @@ public class HospitalController {
 		booking.setHid(hid);
 		booking.setHospitalName(hospitalName);
 		
-
+		
+		
 		bookingService.addbook(booking);
 		
 		return "redirect:/hospitals/mybookList?personId="+personId;
@@ -177,4 +177,23 @@ public class HospitalController {
 		bookingService.deletebook(bid);
 		return "redirect:/hospitals/mybookList?personId="+personId;
 	}
+	
+//	 모든 신청 보기
+	@GetMapping("manageapps")
+	public String manageapps(Model model,HttpSession session,HttpServletRequest request) {
+		 String personId = (String) session.getAttribute("personId");
+		 List<HospitalBooking> list = bookingService.getPermisionList(personId);
+		 model.addAttribute("applists",list);
+		 if(list.isEmpty()) {
+			 request.setAttribute("nothing", "승인할 것이 없어요");
+		 }
+		 return "all_Hospital/permitLists"; 
+	}	 
+	
+//	예약 승인||거절
+	 @GetMapping("decision")
+	 public String decision(@RequestParam("dec") String dec,@RequestParam("bid") String bid){
+		 bookingService.updateState(dec,bid);
+		 return "redirect:/hospitals/manageapps";
+	 }
 }

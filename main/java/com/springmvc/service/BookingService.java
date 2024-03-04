@@ -13,6 +13,10 @@ public interface BookingService {
 	void editbook(String bid, String registDay);
 
 	void deletebook(String bid);
+
+	List<HospitalBooking> getPermisionList(String personId);
+
+	void updateState(String dec, String bid);
 	
 	
 }

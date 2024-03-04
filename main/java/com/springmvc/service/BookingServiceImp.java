@@ -38,5 +38,15 @@ public class BookingServiceImp implements BookingService{
 		
 	}
 
+	@Override
+	public List<HospitalBooking> getPermisionList(String personId) {
+		return bookingrepository.getPermisionList(personId);
+	}
+
+	@Override
+	public void updateState(String dec, String bid) {
+		bookingrepository.updateState(dec,bid);
+	}
+
 
 }

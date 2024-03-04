@@ -16,9 +16,14 @@
 	<%@  include file="../module/headerinfo.jsp" %>
 
  <%
-		request.setAttribute("loginId", session.getAttribute("personId"));
-	%>
+	request.setAttribute("loginId", session.getAttribute("personId"));
+	request.setAttribute("type", session.getAttribute("type"));
+	request.setAttribute("checktype", "h");
+%>
+<%-- <c:if test="${type==checktype}"> --%>
 <a href="hospitals/create">병원추가</a>
+<a href="hospitals/manageapps">모든신청보기</a>
+<%-- </c:if> --%>
 <a href="hospitals/mybookList?personId=${loginId}">내 예약 보기</a>
 <c:forEach items="${hospitals}" var="hospital">
 	<p> 이미지 : ${hospital.image}
