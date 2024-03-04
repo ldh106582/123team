@@ -46,5 +46,11 @@ public interface PersonService {
 	Person getEM(String personId);
 	// 체험단 신청목록을 로그인할 때 가져올 데이터
 	List<EApplication> getEA(String personId);
+	  // product manager 회원수정
+	ProductMember P_update(String id);
+	  // hopital manager 회원수정
+	HospitalMember H_update(String id);
+	  // EXpreience manager 회원수정
+	Ex_manager E_update(String id);
 	
 }

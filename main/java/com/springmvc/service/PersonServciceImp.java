@@ -128,6 +128,24 @@ public class PersonServciceImp implements PersonService{
 		// TODO Auto-generated method stub
 		return psersonRepository.getEA(personId);
 	}
+	  // product manager 회원수정
+	@Override
+	public ProductMember P_update(String id) {
+		// TODO Auto-generated method stub
+		return psersonRepository.P_update(id);
+	}
+	  // hopital manager 회원수정
+	@Override
+	public HospitalMember H_update(String id) {
+		// TODO Auto-generated method stub
+		return psersonRepository.H_update(id);
+	}
+	  // EXpreience manager 회원수정
+	@Override
+	public Ex_manager E_update(String id) {
+		// TODO Auto-generated method stub
+		return psersonRepository.E_update(id);
+	}
 	
 	
 

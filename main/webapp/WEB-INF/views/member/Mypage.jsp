@@ -14,7 +14,7 @@
 <body>
 
 
-	<%@ include file="../module/memberheader.jsp" %>
+	<%@ include file="../module/headerdark.jsp" %>
 
 	<div id="wrap" class="wrap naverid ">
 		<header class="header" role="banner">
@@ -72,7 +72,7 @@
 		</header>
 		<!--병원 관리자-->
 		<c:choose>
-			<c:when test="">
+			<c:when test="${type  eq 'h'}">
 				<div id="container" class="container ">
 			        <!-- container -->
 			        <div id="content" class="content">
@@ -87,7 +87,7 @@
 				                <ul class="subindex_row">
 				                    <li>
 				                        <div class="row_item other">
-				                            <a href="./login/update?id=${ id.personId }" class="text-decoration-none"><span class="item_text">내 정보 수정</span></a>
+				                            <a href="/123team/login/update?id=${ id.personId }" class="text-decoration-none"><span class="item_text">내 정보 수정</span></a>
 				                        </div>
 				                    </li>
 				                    <li>
@@ -203,9 +203,10 @@
 					</div>
 			    </div>
 			</c:when>
-			<!--체험단 관리자-->
-			<c:when test="">
+		
+			<c:when test="${ type  eq 'e'}">
 				<div id="container" class="container ">
+					<!--체험단 관리자-->
 			        <!-- container -->
 			        <div id="content" class="content">
 			            <div class="subindex_wrap" role="main">
@@ -219,7 +220,7 @@
 			                    <ul class="subindex_row">
 			                        <li>
 			                            <div class="row_item other">
-			                                <a href="./login/update?id=${ id.personId }" class="text-decoration-none"><span class="item_text">내 정보 수정</span></a>
+			                                <a href="/123team/login/update?id=${ id.personId }" class="text-decoration-none"><span class="item_text">내 정보 수정</span></a>
 			                            </div>
 			                        </li>
 			                        <li>
@@ -314,9 +315,10 @@
 			        </div>
 			    </div>
 			</c:when>
-			<!--일반 mypage -->
+
 			<c:otherwise>
 			    <div id="container" class="container ">
+			    			<!--일반 mypage -->
 			        <!-- container -->
 			        <div id="content" class="content">
 			            <div class="subindex_wrap" role="main">
@@ -330,7 +332,7 @@
 				                <ul class="subindex_row">
 				                    <li>
 				                        <div class="row_item other">
-				                            <a href="./login/update?id=${ id.personId }" class="text-decoration-none"><span class="item_text">내 정보 수정</span></a>
+				                            <a href="/123team/login/update?id=${ id.personId }" class="text-decoration-none"><span class="item_text">내 정보 수정</span></a>
 				                        </div>
 				                    </li>
 				                    <li>
