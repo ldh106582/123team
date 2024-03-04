@@ -1,17 +1,17 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
 <head>
-<!-- ��Ʈ��Ʈ�� -->
+<!-- 부트스트랩 -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-<!-- ��Ʈ��� -->
+<!-- 폰트어썸 -->
 <script src="https://kit.fontawesome.com/8759f784cf.js" crossorigin="anonymous"></script>
 <!-- css -->
 <link rel="stylesheet" href="../resources/css/shoppingcart.css">
-<meta charset="EUC-KR">
-<title>�ֹ� ������ �Դϴ�.</title>
+<meta charset="utf-8">
+<title>주문 페이지 입니다.</title>
 </head>
 <body>
 
@@ -19,7 +19,7 @@
 
     <div class="jumbotron">
 	  <div class="contianer">
-		 <h2 class="dislpay-2"> <i class="fa-solid fa-gift"></i> �ֹ� �Ϸ� ������</h2>
+		 <h2 class="dislpay-2"> <i class="fa-solid fa-gift"></i> 주문 완료 페이지</h2>
 	  </div>
 	</div>
 	
@@ -29,10 +29,10 @@
 		<div class="">
 			<table class="table text-center">
 				<tr> 
-				  <th class="border-right">��ǰ��
-				  <th class="border-right">����
-				  <th class="border-right">�ܰ�
-				  <th class="">�ѱݾ�
+				  <th class="border-right">상품명
+				  <th class="border-right">수량
+				  <th class="border-right">단가
+				  <th class="">총금액
 				</tr>
 				    <tr>
 				        <td class="shop border-right align-self-center">${order.productName}</td>
@@ -41,9 +41,9 @@
 				        <td class="align-self-center">${order.totalPrice}</td>
 				    </tr>
 				<div class="contianer">
-					<h1 clss="alert alert-danger">�ֹ��� �ּż� �����մϴ�.</h1>
-			    	<h4>������ ��ǰ �����ϰ� ����� �帮�ڽ��ϴ�.</h4>
-			    	<p>�ֹ� ��ȣ : ${order.oderNum}
+					<h1 clss="alert alert-danger">주문해 주셔서 감사합니다.</h1>
+			    	<h4>소중한 상품 안전하게 배송해 드리겠습니다.</h4>
+			    	<p>주문 번호 : ${order.oderNum}
 				</div> 
 				<br><br>
 			</table>

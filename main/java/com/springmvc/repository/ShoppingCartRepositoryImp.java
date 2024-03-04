@@ -22,29 +22,50 @@ public class ShoppingCartRepositoryImp implements ShoppingCartRepository{
 		// TODO Auto-generated constructor stub
 	}
 	private JdbcTemplate template;
-
-	 @Autowired
+	
+	@Autowired
 	     public void setJdbctemplate(DataSource dataSource) {
 	         this.template = new JdbcTemplate(dataSource);
 	     }
-	// 장바구니에 이미 값이 있을 경우 실행하는 함수
+	
+	// 장바구니에 이미 값이 있는지 확인하는 함수
+	 @Override
+	public int c_readshoppingCart(String perosnId) {
+		String SQL = "select count(*) from ShoppingCart where personId=?";
+		Integer intNum = template.queryForObject(SQL, Integer.class, perosnId);
+		if(intNum != 0) {
+			System.out.println("해당" + perosnId + "의 쇼핑카트가 존재합니다.");
+			return 1;
+		} else {
+			System.out.println("해당" + perosnId + "의 쇼핑카트가 존재하지 않습니다.");
+			return 0;		
+		}
+	}
+	// 쇼핑카트를 만들어주는 함수
 	 @Override
 		public void D_createshoppingCart(Product product) {
-		   String SQL = "SELECT * FROM ShoppingCart WHERE productId=? AND personId=?";
-		    List<ShoppingCart> shoppingCarts = template.query(SQL, new Object[]{product.getProductId(), product.getPersonId()}, new ShoppingCartDBConnector());
-		    
-		    int amount = 1;
-		    if (shoppingCarts.isEmpty()) {
-		        System.out.println("장바구니가 없습니다.");
-		        SQL = "INSERT INTO ShoppingCart (ProductId, ProductName, ProductPrice, ProductCategory, Amount, PersonId) VALUES (?,?,?,?,?,?)";
+		 		int amount = 1;
+		        String SQL = "INSERT INTO ShoppingCart (ProductId, ProductName, ProductPrice, ProductCategory, Amount, PersonId) VALUES (?,?,?,?,?,?)";
 		        template.update(SQL, product.getProductId(), product.getProductName(), product.getProductPrice(), product.getProductCategory(), amount, product.getPersonId());
-		    } else {
-		        System.out.println("값이 있습니다.");
-		        SQL = "UPDATE ShoppingCart SET Amount = Amount + 1 WHERE productId=? AND personId=?";
-		        template.update(SQL, product.getProductId(), product.getPersonId());
-		    }
-		}
+		} 
 	 
+	// 쇼핑카트가 존재함하여 값을 가져오는 함수
+	@Override
+	public ShoppingCart DS_createshoppingCart(String personId) {	
+		
+		ShoppingCart shoppingCart = null;
+		String SQL = "select * from ShoppingCart where personId=?";
+		shoppingCart = template.queryForObject(SQL, new Object[] {personId}, new ShoppingCartDBConnector());
+		return shoppingCart;
+	}
+	
+	// 쇼핑카트가 존재함으로 amout를 1증가 시켜주는 함수
+	@Override
+	public void DP_createshoppingCart(ShoppingCart shoppingCart) {
+		String SQL = "UPDATE ShoppingCart SET amount = amount + 1 WHERE productId = ? AND personId = ?";
+		template.update(SQL, shoppingCart.getProductId(), shoppingCart.getPersonId());
+	}
+	
 	// 장바구니에 있는 데이터를 가져옴
 	@Override
 	public List<ShoppingCart> readCart(String personId) {
@@ -109,6 +130,7 @@ public class ShoppingCartRepositoryImp implements ShoppingCartRepository{
 			return null;
 		}
 	}
+	
 	// 개별 product를 삭제하는 함수
 	@Override
 	public void deleteCart(int shoppingCartId) {

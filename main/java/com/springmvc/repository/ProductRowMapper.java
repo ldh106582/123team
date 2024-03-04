@@ -2,10 +2,9 @@ package com.springmvc.repository;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
 import org.springframework.jdbc.core.RowMapper;
-
 import com.springmvc.domain.Product;
+
 
 public class ProductRowMapper implements RowMapper<Product> {
 

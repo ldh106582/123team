@@ -8,10 +8,13 @@
 </head>
 <body>
 
+<<<<<<< HEAD:main/webapp/WEB-INF/views/Booking/bookingupdateForm.jsp
 	<%@ include file="../module/footer.jsp" %>
 	
 
 	<%@ include file="../module/headerinfo.jsp" %>
 
+=======
+>>>>>>> origin/hanui:main/webapp/WEB-INF/views/all_Hospital/editbookform.jsp
 </body>
 </html>

@@ -17,13 +17,35 @@ public class ShoppingCartServiceImp implements ShoppingCartService{
 	@Autowired
 	private ShoppingCartRepository shoppingCartRepository;
 	
-	// 장바구니에 이미 값이 있을 경우 실행하는 함수
+	
+	// 장바구니에 이미 값이 있는지 확인하는 함수
+	@Override
+	public int c_readshoppingCart(String perosnId) {
+		// TODO Auto-generated method stub
+		return shoppingCartRepository.c_readshoppingCart(perosnId);
+	}
+
+	// 쇼핑카트를 만들어주는 함수
 	@Override
 	public void D_createshoppingCart(Product product) {
 		
 		shoppingCartRepository.D_createshoppingCart(product);
 	}
-	
+	// 쇼핑카트가 존재함하여 값을 가져오는 함수
+	@Override
+	public ShoppingCart DS_createshoppingCart(String perosnId) {
+		// TODO Auto-generated method stub
+		return shoppingCartRepository.DS_createshoppingCart(perosnId);
+		
+	}
+
+	// 쇼핑카트가 존재함으로 amout를 1증가 시켜주는 함수
+	@Override
+	public void DP_createshoppingCart(ShoppingCart shoppingCart) {
+		// TODO Auto-generated method stub
+		shoppingCartRepository.DP_createshoppingCart(shoppingCart);
+	}
+
 	// 장바구니에 있는 데이터를 가져옴
 	@Override
 	public List<ShoppingCart>  readCart(String personId) {

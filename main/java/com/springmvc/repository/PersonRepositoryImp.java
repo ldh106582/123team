@@ -12,8 +12,11 @@ import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import com.springmvc.controller.ManagerController;
 import com.springmvc.domain.type;
+import com.springmvc.domain.Hospital;
+import com.springmvc.domain.HospitalMember;
 import com.springmvc.domain.Person;
 import com.springmvc.domain.Pet;
+import com.springmvc.domain.Product;
 import com.springmvc.domain.ProductMember;
 
 @Repository
@@ -121,6 +124,96 @@ public class PersonRepositoryImp implements  PersonRepository{
 		}
 		return personId;
 	}
+	// 프로덕트 매니저가 로그인할 때 가져올 데이터
+	@Override
+	public ProductMember getPM(String personId) {
+		String SQL = "select count(*) from ProductMember where personId = ?";
+		Integer intNum = template.queryForObject(SQL, Integer.class, personId);
+		ProductMember productMember = null;
+		if(intNum != 0) {
+			SQL = "select * from ProductMember where personId=?";
+			
+			return template.queryForObject(SQL, new Object[] {personId}, new ProductMemberDBConnector());
+		}
+		System.out.println("pm정보가 존재하지 않습니다.");
+		return null;
+	}
+	// 해당 프로덕트 매니저의 상품을 가죠오는 데이터
+	@Override
+	public List<Product> getProduct(String personId) {
+		String SQL = "select * from Product where personId = ?";
+		//return template.query(SQL, new Object[] {personId}, new ProductDBConnector());
+		return template.query(SQL, new Object[] {personId}, new ProductRowMapper());
+	}
 	
+	// 동물병원 의사가 로그인할 때 가져올 데이터
+
+	@Override
+	public HospitalMember getHM(String personId) {
+		String SQL = "select count(*) from HospitalMember where personId = ?";
+		Integer intNum = template.queryForObject(SQL, Integer.class, personId);
+		if(intNum != 0) {
+			HospitalMember hospitalMember = null;
+			SQL = "select * from HospitalMember where personId=?";
+			hospitalMember = template.queryForObject(SQL, new Object[] {personId}, new HospitalManagerDBConnector());
+			return hospitalMember;
+	}
+		System.out.println("Hm정보가 존재하지 않습니다.");
+		
+		return null;
+	}
+	// 해당 동물병원의사의 병원정보를 가죠오는 데이터
+	@Override
+	public List<Hospital> getHopital(String personId) {
+		String SQL = "select * from hospital where personId = ?";
+		List<Hospital> listOfHospital = template.query(SQL, new Object[] {personId}, new HospitalRowMapper());
+		return listOfHospital;
+	}
+	// product manager 마이페이지를 수정하는 곳
+	@Override
+	public void SetUpdatePM(ProductMember productMember) {
+		if(productMember.getPersonId()!=null) {
+			 String SQL = "update ProductMember set PersonPw=?, PersonEmail=?, PersonAddress=? ,PersonName=?, PersonBirth=?, PersonSex=? , PersonPhone=?,"
+			 			   + "CompanyName=?, CompanyAddress=?, CompanyPhone=? where PersonId=?";
+			 template.update(SQL, productMember.getPersonId(), productMember.getPersonPw(), productMember.getPersonEmail(), productMember.getPersonAddress(), productMember.getPersonName(),
+					 productMember.getPersonBirth(), productMember.getPersonSex(), productMember.getPersonPhone(), productMember.getCompanyName(), productMember.getCompanyAddress(), productMember.getCompanyPhone(), productMember.getS_image());
+		}
+	}
+	 // hospital manager 마이페이지를 수정하는 곳
+	@Override
+	public void SetUpdateHM(HospitalMember hospitalMember) {
+		if(hospitalMember.getPersonId()!=null) {
+			String SQL = "update HospitalMember set PersonPw=?, PersonEmail=?, PersonAddress=?, PersonName=?, personPhone=?, PersonBirth=?, PersonSex=?, hospitalName=?, hospitalAddress=?, hospitalPhone=?, s_image=? where PersonId=?";
+			template.update(SQL, hospitalMember.getPersonPw(), hospitalMember.getPersonEmail(), hospitalMember.getPersonAddress(), hospitalMember.getPersonName(), hospitalMember.getPersonPhone(),
+					hospitalMember.getPersonBirth(), hospitalMember.getPersonSex(), hospitalMember.getHospitalName(), hospitalMember.getHospitalAddress(), hospitalMember.getS_image());
+		}
+		
+	}
+	// hospital manager 마이페이지를 수정하는 곳
+	@Override
+	public void SetUpdatePr(ProductMember productMember) {
+		if(productMember.getPersonId()!=null) {
+			 String SQL = "update Person set PersonPw=?, PersonEmail=?, PersonAddress=? ,PersonName=?, PersonBirth=?, PersonSex=? , PersonPhone=?,";
+			 template.update(SQL, productMember.getPersonId(), productMember.getPersonPw(), productMember.getPersonEmail(), productMember.getPersonAddress(), productMember.getPersonName(),
+					 productMember.getPersonBirth(), productMember.getPersonSex(), productMember.getPersonPhone());
+		}
+		
+	}
+	 // hospital manager person 테이블을 수정하는 곳
+	@Override
+	public void SetUpdatePH(HospitalMember hospitalMembers) {
+		if(hospitalMembers.getPersonId()!=null) {
+			 String SQL = "update Person set PersonPw=?, PersonEmail=?, PersonAddress=? ,PersonName=?, PersonBirth=?, PersonSex=? , PersonPhone=?,";
+			 template.update(SQL, hospitalMembers.getPersonId(), hospitalMembers.getPersonPw(), hospitalMembers.getPersonEmail(), hospitalMembers.getPersonAddress(), hospitalMembers.getPersonName(),
+					 hospitalMembers.getPersonBirth(), hospitalMembers.getPersonSex(), hospitalMembers.getPersonPhone());
+		}
+		
+	}
 	
+
+
+
+
+
+
 }

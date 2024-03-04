@@ -1,63 +1,72 @@
 package com.springmvc.domain;
 
 public class HospitalReview {
-	int number; // 게시글 번호
-	String reviewdate; // 작성일
-	String review; // 제목
-	String reviewscore; // 별점수
-	String reviewcontext; // 리뷰내용
-	String reviewimage; // 리뷰이미지
 	
-	public HospitalReview() {}
+	public HospitalReview() {
+		
+	}
+	private String hid;
+	private String registDay;
+	private String personId;
+	private String title;
+	
+	private String context;
+	private int reviewScore;
+	private String reviewImage;
+	private String reviewId;
 
-	public int getNumber() {
-		return number;
+
+	
+	
+	public int getReviewScore() {
+		return reviewScore;
+	}
+	public void setReviewScore(int reviewScore) {
+		this.reviewScore = reviewScore;
 	}
 
-	public void setNumber(int number) {
-		this.number = number;
+	public String getHid() {
+		return hid;
 	}
-
-	public String getReviewdate() {
-		return reviewdate;
+	public void setHid(String hid) {
+		this.hid = hid;
 	}
-
-	public void setReviewdate(String reviewdate) {
-		this.reviewdate = reviewdate;
+	public String getRegistDay() {
+		return registDay;
 	}
-
-	public String getReview() {
-		return review;
+	public void setRegistDay(String registDay) {
+		this.registDay = registDay;
 	}
-
-	public void setReview(String review) {
-		this.review = review;
+	public String getPersonId() {
+		return personId;
 	}
-
-	public String getReviewscore() {
-		return reviewscore;
+	public void setPersonId(String personId) {
+		this.personId = personId;
 	}
-
-	public void setReviewscore(String reviewscore) {
-		this.reviewscore = reviewscore;
+	public String getReviewId() {
+		return reviewId;
 	}
-
-	public String getReviewcontext() {
-		return reviewcontext;
+	public void setReviewId(String reviewId) {
+		this.reviewId = reviewId;
 	}
-
-	public void setReviewcontext(String reviewcontext) {
-		this.reviewcontext = reviewcontext;
+	public String getReviewImage() {
+		return reviewImage;
 	}
-
-	public String getReviewimage() {
-		return reviewimage;
+	public void setReviewImage(String reviewImage) {
+		this.reviewImage = reviewImage;
 	}
-
-	public void setReviewimage(String reviewimage) {
-		this.reviewimage = reviewimage;
+	public String getContext() {
+		return context;
 	}
-
+	public void setContext(String context) {
+		this.context = context;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
 	
 	
 }

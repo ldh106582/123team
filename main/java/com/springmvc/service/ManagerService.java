@@ -16,17 +16,17 @@ public interface ManagerService {
 	// Member 데이터를 삭제하는 함수
 	void P_managerDelete(String managerId);
 	// mypage로 이동하기 위한 값을 가져옴
-	ProductMember managerPage(String personId);
+	//ProductMember managerPage(String personId);
 	
 	// prodcut 관리자 회원 정보를 수정하기 전 보여주는 함수
-	ProductMember managerUpdate(String personId);
+//	ProductMember managerUpdate(String personId);
 	
-	// prodcut 관리자 회원 정보를 수정하는 함수
-	void getmanagerUpdate(ProductMember productMemId);
 	// 정보를 넣고 보여주는 함수
-	ProductMember setmanagerUpdate(ProductMember productMemId);
+//	ProductMember setmanagerUpdate(ProductMember productMemId);
 	// 병원 manager 회원가입 하는 함수
 	void addHospitalManager(HospitalMember hospitalMember);
 	 // 전체 db에 데이터를 넣어주는 함수
 	void H_setAllMember(HospitalMember hospitalMember);
+
+	
 }

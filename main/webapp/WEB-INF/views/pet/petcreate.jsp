@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,174 +21,140 @@
     </div>
 
     <div class="container">
-		<form action="./pet/creatpet" method="POST">
+		<form:form modelAttribute="pet_create" action="./creatpet?id=${id.personId}" method="POST" enctype="multipart/form-data">
+		<form:hidden path="personId" value="${id}"/>
+		<form:hidden path="personId" value="petImage"/>
 
 			<div class="form-group row"> 반려동물 아이디 :
                 <div class="col-4">
-				    <input class="control-label" type="text" name="petId" placeholder="반려동물 아이디"/>
+				    <form:input class="control-label" type="text" path="petId"/>
                 </div>
             </div>
 			<div class="form-group row"> 반려동물이름 : 
                 <div class="col-4">
-                    <input type="text" name="petName" placeholder="반려동물 이름"/>
+                    <form:input type="text" path="petName" />
                 </div>
             </div>
 
-            <div class="form-group row"> 반려동물 종류 :
+			<div class="form-group row"> 반려동물 종류 :
                 <div class="col-4">
-                    <select id="pet">
-                        <option name="dog" value="dog" />강아지
-                        <option name="cat" value="cat" />고양이
-                        <option name="birth" value="bird" />새
-                        <option name="rabbit" value="rabbit" />토끼
-                        <option name="guineapig" value="guineapig" />기니피그
-                        <option name="reptile" value="reptile"/>파충류
-                    </select>
+                    <form:select id="petVarity" path="petType">
+                        <form:option id="dog" value="dog">강아지</form:option>
+                        <form:option id="cat" value="cat">고양이</form:option>
+                        <form:option id="bird" value="bird">새</form:option>
+                        <form:option id="rabbit" value="rabbit">토끼</form:option>
+                        <form:option id="guineapig" value="guineapig">기니피그</form:option>
+                        <form:option id="reptile" value="reptile">파충류</form:option>
+                        <form:option id="Etc" value="reptile">기타</form:option>
+                    </form:select>
                 </div>
             </div>
 
-            <div class="form-group row">반려동물 종족 :
+            <div class="form-group row"> 반려동물 종 :
                 <div class="col-4">
-                    <!-- 강아지 종류 -->
-                    <select name="petType" id="dog">  
-                        <option value="Retriever" />리트리버
-                        <option value="Poodle" />푸들
-                        <option value="Beagle" />비글
-                        <option value="Bulldog" />불독
-                        <option value="Mix" />믹스견
-                        <option value="ShihTzu" />시츄
-                        <option value="Pomeranian" />포메라니안
-                        <option value="Koreadog" />진돗개
-                        <option value="Shiba" />시바
-                        <option value="Etc" />기타
-                    </select>
-                
-                    <!-- 고양이 종류-->
-                    <select name="petType" id="cat">
-                        <option value="Persian" />페르시안 
-                        <option value="Siamese" />시암 
-                        <option value="Maine" />메인쿤
-                        <option value="RussianBlue" />러시안블루
-                        <option value="Ragdoll" />래그돌
-                        <option value="Scottish" />스코티시
-                        <option value="Abyssinian" />아비시니안
-                        <option value="Chantilly" />샴
-                        <option value="Bengal" />벵갈
-                        <option value="Etc" />기타
-                    </select>
-    
-                    <!-- 새 종류 -->
-                    <select name="petType" id="bird">
-                        <option value="Canary" />캔터베리
-                        <option value="Parake" />잉꼬
-                        <option value="Budgerigar" />버드나무새
-                        <option value="Peachfaced" />피치페이스
-                        <option value="Cockat" />칵투스
-                        <option value="BlueJay" />파랑새
-                        <option value="AfricanGrey" />아프리칸그레이
-                        <option value="Cockatiel" />콕카틸
-                        <option value="SunConure" />선앵무
-                        <option value="Etc" />기타
-                    </select>
-        
-                    <!-- 토끼 -->
-                    <select name="petType" id="rabbit">
-                        <option value="NetherlandDwarf" />네덜란드드와프
-                        <option value="Lionhead" />라이언헤드
-                        <option value="MiniRex" />미니렉스
-                        <option value="Lop" />미니로프
-                        <option value="BelgianHare" />벨지안헤어
-                        <option value="FlemishGiant" />플레미쉬자이언트
-                        <option value="Angora" />앵고라토끼
-                        <option value="CashmereLop" />캐시미어로프
-                        <option value="Chinchilla" />체틀랜드
-                        <option value="Etc" />기타
-                    </select>
-                    <!-- 기니피그 -->
-                    <select name="petType" id="guineapig">
-                        <option value="AmericanGuineaPig" />아메리칸
-                        <option value="AbyssinianGuineaPig" />아비시니안
-                        <option value="PeruvianGuineaPig" />페루비안                
-                        <option value="SilkieGuineaPig" />실키
-                        <option value="TexelGuineaPig" />텍셀
-                        <option value="CoronetGuineaPig" />코로넷
-                        <option value="AlpacaGuineaPig" />알파카
-                        <option value="SheltieGuineaPig" />셸티
-                        <option value="BaldwinGuineaPig" />발드윈
-                        <option value="Etc" />기타
-                    </select>
-                    <!--파충류-->
-                    <select name="petType" id="reptile">
-                        <option value="Lizards" />도마뱀
-                        <option value="Spiders" />거미
-                        <option value="Snakes" />뱀
-                        <option value="Turtles" />거북이
-                        <option value="Etc" />기타
-                    </select>
+                	<form:input type="text" path="petVarity" />
                 </div>
 			</div>
 			
             <div class="form-group row"> 반려동물성별 :
                 <div class="col-4">
-				    <input class="col-3" type="radio" name="petSex" value="남자"/>남자
-                    <input class="col-3" type="radio" name="petSex" value="여자"/>여자
+				    <form:radiobutton class="col-3" path="petSex" value="남자"/>남자
+                    <form:radiobutton class="col-3" path="petSex" value="여자"/>여자
                 </div>
             </div>
 
 			<div class="form-group row"> 반려동물생일 :
                 <div class="col-4">
-				    <input type="date"  path="petBirth"/>
+				    <form:input type="date" path="petBirth"/>
                 </div>
+            </div>
+            <div class="form-group row"> [선택] 반려동물이미지 : 
+            	<div class="col-4">
+            		<input type="file" name="pet_Image"/>
+            	</div>
             </div>
 
 			<div class="form-group row">
 				<div >
-					<input type="submit" class="btn btn-primary"/>
+					<input type="submit" class="btn btn-primary" onclick="getform:form:selectedValue()"/>
 				</div>
 			</div>
-		</form>
+		</form:form>
     </div>
 
 	<%@ include file="../module/footer.jsp" %>
 </body>
 <script type="text/javascript">
+window.onload = function(){
+    document.getElementById('dogtype').style.display = "none";
+    document.getElementById('cattype').style.display = "none";
+    document.getElementById('birdtype').style.display = "none";
+    document.getElementById('rabbittype').style.display = "none";
+    document.getElementById('guineapigtype').style.display = "none";
+    document.getElementById('reptiletype').style.display = "none";
+};
 
-window.onload = function() {
-    document.getElementById('cat').style.display = "none";
-    document.getElementById('bird').style.display = "none";
-    document.getElementById('rabbit').style.display = "none";
-    document.getElementById('guineapig').style.display = "none";
-    document.getElementById('reptile').style.display = "none";
-}
+document.getElementById('petVarity').addEventListener("click", function(){
+    var petVarity = this.value;
 
-document.getElementById('pet').addEventListener('change', function(){
-    document.getElementById('dog').style.display = "none";
-    document.getElementById('cat').style.display = "none";
-    document.getElementById('bird').style.display = "none";
-    document.getElementById('rabbit').style.display = "none";
-    document.getElementById('guineapig').style.display = "none";
-    document.getElementById('reptile').style.display = "none";
-
-if (this.value == "dog") {
-    document.getElementById('dog').style.display = "block";
-} else if(this.value == "cat"){
-    document.getElementById('cat').style.display = "block";
-} else if(this.value == "bird") {
-    document.getElementById('bird').style.display = "block";
-} else if (this.value == "rabbit"){
-    document.getElementById('rabbit').style.display = "block";
-} else if(this.value == "guineapig"){
-    document.getElementById('guineapig').style.display = "block";
-} else if(this.value == "reptile") {
-    document.getElementById('reptile').style.display = "block";
-}
+        if(petVarity == 'dog')
+        {
+            document.getElementById('dogtype').style.display = "block";
+            document.getElementById('cattype').style.display = "none";
+            document.getElementById('birdtype').style.display = "none";
+            document.getElementById('rabbittype').style.display = "none";
+            document.getElementById('guineapigtype').style.display = "none";
+            document.getElementById('reptiletype').style.display = "none";
+        }
+        else if(petVarity == 'cat')
+        {
+            document.getElementById('dogtype').style.display = "none";
+            document.getElementById('cattype').style.display = "block";
+            document.getElementById('birdtype').style.display = "none";
+            document.getElementById('rabbittype').style.display = "none";
+            document.getElementById('guineapigtype').style.display = "none";
+            document.getElementById('reptiletype').style.display = "none";
+        }
+        else if(petVarity == 'bird')
+        {
+            document.getElementById('dogtype').style.display = "none";
+            document.getElementById('cattype').style.display = "none";
+            document.getElementById('birdtype').style.display = "block";
+            document.getElementById('rabbittype').style.display = "none";
+            document.getElementById('guineapigtype').style.display = "none";
+            document.getElementById('reptiletype').style.display = "none";
+        }
+        else if(petVarity == 'rabbit')
+        {
+            document.getElementById('dogtype').style.display = "none";
+            document.getElementById('cattype').style.display = "none";
+            document.getElementById('birdtype').style.display = "none";
+            document.getElementById('rabbittype').style.display = "block";
+            document.getElementById('guineapigtype').style.display = "none";
+            document.getElementById('reptiletype').style.display = "none";
+        }
+        else if(petVarity == 'guineapig')
+        {
+            document.getElementById('dogtype').style.display = "none";
+            document.getElementById('cattype').style.display = "none";
+            document.getElementById('birdtype').style.display = "none";
+            document.getElementById('rabbittype').style.display = "none";
+            document.getElementById('guineapigtype').style.display = "block";
+            document.getElementById('reptiletype').style.display = "none";
+        }
+        else if(petVarity == 'reptile')
+        {
+            document.getElementById('dogtype').style.display = "none";
+            document.getElementById('cattype').style.display = "none";
+            document.getElementById('birdtype').style.display = "none";
+            document.getElementById('rabbittype').style.display = "none";
+            document.getElementById('guineapigtype').style.display = "none";
+            document.getElementById('reptiletype').style.display = "block";
+        }
 });
+<<<<<<< HEAD
 
-document.getElementById('pet').addEventListener('change', function () {
-    ['dog', 'cat', 'bird', 'rabbit', 'guineapig', 'reptile'].forEach(function(id) {
-        document.getElementById(id).style.display = 'none';
-    });
-    document.getElementById(this.value).style.display = 'block';
-});
+=======
+>>>>>>> 8188671a50ff3db0dd77b7763abf02de62fb015a
 </script>
 </html>

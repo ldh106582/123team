@@ -20,11 +20,11 @@ public class PetCardServiceImp implements PetCardService{
 	@Autowired
 	private PetCardRepository petCardRepository;
 	
-	// 몸무
+	// 반려동물의 정보를 가져오는 함수
 	@Override
-	public Pet getCreatPetCard(String petId) {
+	public Pet getPetRead(String petId) {
 		// TODO Auto-generated method stub
-		return petCardRepository.getCreatPetCard(petId);
+		return petCardRepository.getPetRead(petId);
 	}
 
 	@Override

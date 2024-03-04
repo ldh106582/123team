@@ -10,7 +10,8 @@ import com.springmvc.domain.PetWeight;
 import com.springmvc.repository.PetSurgeryAfter;
 
 public interface PetCardService {
-	Pet getCreatPetCard(String petId);
+
+	Pet getPetRead(String petId);
 	List<PetWeight> getReadPetCard(String petId);
 	
 	// 동물의 정보를 가져오는 함수

@@ -16,6 +16,7 @@ import com.springmvc.domain.ShoppingCart;
             shoppingCart.setProductCategory(rs.getString("productCategory"));
             shoppingCart.setAmount(rs.getInt("amount"));
             shoppingCart.setPersonId(rs.getString("personId"));
+            shoppingCart.setProductImage(rs.getString("productImage"));
             return shoppingCart;
         }
     }

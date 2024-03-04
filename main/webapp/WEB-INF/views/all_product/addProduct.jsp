@@ -5,14 +5,14 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-<title>Insert title here</title>
+<title>상품 추가 페이지</title>
 </head>
 <body>
 
  <%@  include file="../module/headerdanger.jsp" %>
 
  <h1>상품추가 페이지</h1>
- <form:form modelAttribute="product" method="POST">
+ <form:form modelAttribute="product" method="POST" enctype="multipart/form-data">
  	<p>
  	상품명 : <form:input path="productName"/>
  	<p>
@@ -27,8 +27,10 @@
  	<p>
  	상품재고수 : <form:input path="productUnitStock"/>
  	<p>
- 	등록하기 : <input type="submit">
+ 	이미지 : <input type="file" name="p_image" value="productImage">
  	<p>
+ 	등록하기 : <input type="submit">
+ 	
  </form:form>
  
  <%@ include file="../module/footer.jsp" %>

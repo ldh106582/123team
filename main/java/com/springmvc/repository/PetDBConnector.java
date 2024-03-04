@@ -17,6 +17,7 @@ public class PetDBConnector implements RowMapper<Pet>{
         pet.setPetSex(rs.getString(5).trim());
         pet.setPetBirth(rs.getDate(6).toLocalDate());
         pet.setPersonId(rs.getString(7).trim());
+        pet.setPetImage(rs.getString(8));
         return pet;
 	}
 }

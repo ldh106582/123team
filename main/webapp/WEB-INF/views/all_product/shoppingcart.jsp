@@ -31,45 +31,9 @@
 <title>장바구니 페이지</title>
 </head>
 <body>
-<<<<<<< HEAD
-<!-- header -->
-  <nav class="navbar navbar-expand navbar-dark bg-danger">
-        <div class="container">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="/123team">Home</a>
-            </div>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-              <ul class="navbar-nav">
-                <li class="nav-item">
-                  <a class="nav-link" href="/123team/hospital">병원</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/123team/products">동물상품</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/123team/Fboards">게시판</a>
-                </li>
-				<c:choose>
-				    <c:when test="${not empty managerId and (managerId.type eq 'p' or managerId.type == 'p')}">
-				        <li class="nav-item">
-				            <a class="nav-link" href="/123team/managerlogin/manager_page?personId=${managerId.personId}">마이페이지</a>
-				        </li>
-				    </c:when>
-				    <c:otherwise>
-				        <li class="nav-item">
-				            <a class="nav-link" href="/123team/login">로그인</a>
-				        </li>
-				    </c:otherwise>
-				</c:choose>
-            </div>
-        </div>
-    </nav>
-	    <!-- header end -->
-	    
-=======
+
  <%@  include file="../module/headerdanger.jsp" %>
-	
->>>>>>> origin/hanui
+ 
 	<div class="jumbotron">
 		<div class="contianer">
 			<h2 class="dislpay-2"> <i class="fa-solid fa-truck-fast"></i> 내 장바구니 목록</h2>
@@ -111,7 +75,7 @@
 			            <td class="shop border-right align-self-center">${cart.productName}</td>
 			            <td id="a_num" class="shop border-right">
 			                <div id="num"> 
-			                    <input id="amount_${status.index}" class="form-group col-sm-8" type="number" name="amount" value="${cart.amount}">
+			                    <input id="amount_${status.index}" class="form-group col-sm-12" type="number" name="amount" value="${cart.amount}">
 			                </div>
 			            </td>
 			            <td class="shop border-right text-right">${cart.productPrice} 원</td>

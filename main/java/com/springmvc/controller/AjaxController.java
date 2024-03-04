@@ -19,7 +19,7 @@ public class AjaxController {
 	AjaxService ajaxService;
 	
 	// product 관리자 아이디확인 함수
-	@GetMapping(value="/managerlogin/join/idcheck", produces="application/json")
+	@GetMapping(value="/managerlogin", produces="application/json")
 	@ResponseBody
 	public String ProductMemberajax(@RequestParam("userId") String userId) {
 			System.out.println("product ajax도착");
@@ -32,7 +32,7 @@ public class AjaxController {
 	    }
 
 	// 소비자 아이디확인 함수
-	@GetMapping(value="/123team/login/join/memberid", produces="application/json")
+	@GetMapping(value="/login/join/memberid", produces="application/json")
 	@ResponseBody
 	public String Member(@RequestParam("userId") String userId) {
 	    System.out.println("소비자 ajax도착");

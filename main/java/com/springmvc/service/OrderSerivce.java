@@ -24,6 +24,7 @@ public interface OrderSerivce {
 	
 	//장바구니에 있는 데이터를 가져오는 함수
 	Person GetOrdercreate(String personId);
-	
+	// product테이블 재고를 관리하는 함수
+	void SetminusProduct(String productId, int productUnitStock, String personId);
 
 }

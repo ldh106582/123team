@@ -28,7 +28,7 @@
 			inputT.setAttribute("value",eid);
 			
 			var inputD = document.createElement("input");
-			inputD.setAttribute("type","date");
+			inputD.setAttribute("type","datetime-local");
 			inputD.setAttribute("name","registDay");
 			inputD.setAttribute("value",registday);
 			
@@ -67,8 +67,6 @@
 
  <%@  include file="../module/headersuccess.jsp" %>
 
- 
- 
  <div class="container">
     <h2 class="my-3">내 체험단 예약현황</h2>
     <a href="/123team/ENboards" class="btn btn-primary mb-3">체험단 공고글 목록으로 돌아가기</a>

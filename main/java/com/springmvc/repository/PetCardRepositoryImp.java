@@ -32,9 +32,11 @@ public class PetCardRepositoryImp implements PetCardRepository{
 
     List<PetWeight> listOfPetCard = new ArrayList<PetWeight>();
     
+    
+    
     // 1. 반려동물 이름과 id를 가져옴
    @Override
-   public Pet getCreatPetCard(String petId) {
+   public Pet getPetRead(String petId) {
       
       String SQL = "select * from Pet where PetId=?";
       Pet petName = template.queryForObject(SQL, new Object[] {petId}, new PetDBConnector());

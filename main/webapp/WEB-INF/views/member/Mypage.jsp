@@ -47,17 +47,17 @@
 		            </li>
 		            <li>
 
-		               <a href="./login/petcard?petid=${petid}" class="left_item" role="menuitem" >
+		               <div class="left_item" role="menuitem" >
 		                   <div class="menu_text ">펫 카드</div>
-		               </a>
-						<c:forEach items="${petName }" var="petName">
-							<a href="./login/login/petcard?petid=${petName.petId}" class="left_item" role="menuitem">
+		               </div>
+						<c:forEach items="${petName}" var="petName">
+							<a href="./login/petcard?petid=${petName.petId}" class="left_item" role="menuitem">
 								<div>${petName.petName }</div>
 							</a>
 						</c:forEach>
 		            </li>
 		            <li>
-		               <a href="./pet?id=${ id.personId }" class="left_item" role="menuitem" >
+		               <a href="./pet/creatpet?id=${ id.personId }" class="left_item" role="menuitem" >
 		                   <div class="menu_text ">반려동물 회원가입</div>
 		               </a>
 		            </li>

@@ -50,5 +50,28 @@
   </div>
   
   <%@ include file="../module/footer.jsp" %>
+
+<%-- 
+<form:form modelAttribute="hospital" method="POST">
+	<p>
+		병원 이름 : <form:input path="name" value="${hospital.name}"/>
+		<p>
+		병원 주소 : <form:input path="addr" value="${hospital.addr}"/>
+		<p>
+		전화번호 : <form:input path="number" value="${hospital.number}"/>
+		<p>
+		진료시간 : <form:input path="runtime" value="${hospital.runtime}"/>
+		<p>
+		설명 : <form:input path="description" value="${hospital.description}"/>
+		<p>
+		주차정보 : <form:input path="parking" value="${hospital.parking}"/>
+		<p>
+		사진 : <form:input path="image" value="${hospital.image}"/>
+		<p>
+		<input type="hidden" value="${hospital.hid}">
+		<input type="submit" value="수정완료">
+	</form:form>
+
+ --%>
 </body>
 </html>

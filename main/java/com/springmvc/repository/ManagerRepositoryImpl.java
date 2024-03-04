@@ -79,7 +79,7 @@ public class ManagerRepositoryImpl implements ManagerRepository {
 	}
 	// mypage로 이동하기 위한 값을 가져옴
 
-	@Override
+/*	@Override
 	public ProductMember managerPage(String personId) {
 		String SQL = "select count(*) from ProductMember where PersonId = ?";
 		Integer intNum = template.queryForObject(SQL, Integer.class, personId);
@@ -90,10 +90,10 @@ public class ManagerRepositoryImpl implements ManagerRepository {
 			productMember = template.queryForObject(managerSQL, new Object[] {personId}, new ProductMemberDBConnector());
 		}
 		return productMember;
-	}
+	}*/
 	
 	// prodcut 관리자 회원 정보를 수정하기 전 보여주는 함수
-	@Override
+/*	@Override
 	public ProductMember managerUpdate(String personId) {
 		String SQL = "select count(*) from ProductMember where PersonId = ?";
 		Integer intNum = template.queryForObject(SQL, Integer.class, personId);
@@ -105,16 +105,7 @@ public class ManagerRepositoryImpl implements ManagerRepository {
 		return productMember;
 	}
 	
-	// prodcut 관리자 회원 정보를 수정하는 함수
-	@Override
-	public void getmanagerUpdate(ProductMember productMemId) {
-		if(productMemId.getPersonId()!=null) {
-			 String SQL = "update ProductMember set PersonPw=?, PersonEmail=?, PersonAddress=? ,PersonName=?, PersonBirth=?, PersonSex=? , PersonPhone=?,"
-			 			   + "CompanyName=?, CompanyAddress=?, CompanyPhone=? where PersonId=?";
-			 template.update(SQL, productMemId.getPersonId(), productMemId.getPersonPw(), productMemId.getPersonEmail(), productMemId.getPersonAddress(), productMemId.getPersonName(),
-					 productMemId.getPersonBirth(), productMemId.getPersonSex(), productMemId.getPersonPhone(), productMemId.getCompanyName(), productMemId.getCompanyAddress(), productMemId.getCompanyPhone(), productMemId.getS_image());
-		}
-	}
+
 	// 수정 후 보여주기 위해 데이터를 가져옴
 	@Override
 	public ProductMember setmanagerUpdate(ProductMember productMemId) {
@@ -127,7 +118,7 @@ public class ManagerRepositoryImpl implements ManagerRepository {
 			  ProductMemberId = template.queryForObject(ManagerSQL, new Object[] {productMemId.getPersonId()}, new ProductMemberDBConnector());
 		    }
 		return ProductMemberId;
-	}
+	} */
 	
 	// 병원 manager 회원가입 하는 함수
 	@Override

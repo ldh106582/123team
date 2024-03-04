@@ -12,7 +12,12 @@
 
 <body>
 
+
 	<%@  include file="../module/headerinfo.jsp" %>
+	
+	<%
+		request.setAttribute("loginId", session.getAttribute("personId"));
+	%>
 
     <div class="container my-3">
         <div class="d-flex justify-content-between">
@@ -51,5 +56,19 @@
         </form>
 
 	<%@ include file="../module/footer.jsp" %>
+<%-- 	
+<a href="hospitals/create">병원추가</a>
+<a href="hospitals/mybookList?personId=${loginId}">내 예약 보기</a>
+<c:forEach items="${hospitals}" var="hospital">
+	<p> 이미지 : ${hospital.image}
+	<p> 병원 이름 : ${hospital.name}
+	<p> 병원 설명 : ${hospital.description}
+	<a href="hospitals/hospital?hid=${hospital.hid}"><button>상세보기</button></a>
+	<p>
+	======================================
+</c:forEach>	
+<p>
+<a href="search">병원검색</a>	
+ --%>
 </body>
 </html>

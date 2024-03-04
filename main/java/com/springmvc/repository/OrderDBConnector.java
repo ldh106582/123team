@@ -10,7 +10,7 @@ import com.springmvc.domain.Order;
 public class OrderDBConnector implements RowMapper<Order>{
 	public Order mapRow(ResultSet rs, int rowNum) throws SQLException{
 		Order order = new Order();
-		order.setOderNum(rs.getInt("oderNum"));
+		order.setOderNum(rs.getInt("orderNum"));
 		order.setProductId(rs.getString("productId"));
 		order.setProductName(rs.getString("productName"));
 		order.setAmount(rs.getInt("amount"));
@@ -18,9 +18,6 @@ public class OrderDBConnector implements RowMapper<Order>{
 		order.setOrderDate(rs.getObject("orderDate", LocalDate.class));
 		order.setTotalPrice(rs.getInt("totalPrice"));
 		order.setPersonId(rs.getString("personId"));
-		order.setPersonName(rs.getString("personName"));
-		order.setPersonName(rs.getString("personPhone"));
-		order.setPersonAddress(rs.getString("personAddress"));
 		
 		return order;
 	}
