@@ -50,6 +50,6 @@
             <button type="submit" class="btn btn-success">검색</button>
         </form>
 
-
+	<%@ include file="../module/footer.jsp" %>
 </body>
 </html>
