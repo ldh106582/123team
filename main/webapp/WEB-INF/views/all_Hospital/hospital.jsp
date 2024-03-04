@@ -11,7 +11,12 @@
 <title>Insert title here</title>
 </head>
 <body>
+
 	<%@  include file="../module/headerinfo.jsp" %>
+	
+	<%
+		request.setAttribute("loginId", session.getAttribute("personId"));
+	%>
 	
 	<div class="home_container">
         <div class="container my-3">
@@ -32,13 +37,16 @@
                         </div>
                     </div>
                     <br>
-                    <c:if test="${loginId ==  hospital.personId}">
+                    
 	                    <div class="col-md-12">
-	                        <a href="update?hid=${hospital.hid}" class="btn btn-primary">수정하기</a>
+	                    	<c:if test="${loginId ==  hospital.personId}">
+	                        	<a href="update?hid=${hospital.hid}" class="btn btn-primary">수정하기</a>
 	                        <a href="delete?hid=${hospital.hid}" class="btn btn-danger">삭제하기</a>
-	                        <a href="addbook?hid=${hospital.hid}" class="btn btn-success">예약하기</a>
-	                    </div>   
-                    </c:if>
+	                		</c:if>
+	               			<c:if test="${loginId != null}">
+	                        	<a href="addbook?hid=${hospital.hid}" class="btn btn-success">예약하기</a>
+	                      	</c:if>
+	                    </div>  
                 </div>
             </div>
         </div>

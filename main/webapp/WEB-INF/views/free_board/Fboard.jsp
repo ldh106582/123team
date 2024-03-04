@@ -50,11 +50,11 @@
 		
 	<%@ include file="../module/headersuccess.jsp" %>
 	
-	<%@
+	<%
 		request.setAttribute("loginId", session.getAttribute("personId"));
 	%>
 
- 		 
+		 
     <div class="container my-3">
         <h1>게시글 상세 페이지</h1>
         <a href="/123team/Fboards">돌아가기</a>

@@ -1,14 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page import="com.springmvc.domain.*" %>
 <%@ page import="com.springmvc.controller.*" %>
 <!DOCTYPE html>
 <html>
 <head>
-	<!-- ºÎÆ®½ºÆ®·¦ -->
+	<!-- ë¶€íŠ¸ìŠ¤íŠ¸ëž© -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <meta charset="utf-8">
-<title>º´¿ø°ü¸®ÀÚ È¸¿ø°¡ÀÔ ÆäÀÌÁö</title>
+<title>ë³‘ì›ê´€ë¦¬ìž íšŒì›ê°€ìž… íŽ˜ì´ì§€</title>
 </head>
 <body>
 
@@ -16,98 +16,98 @@
 
     <div class="jumbotron">
         <div class="container">
-            <legend id="id"><h2>º´¿ø°ü¸®ÀÚ È¸¿ø°¡ÀÔ ÆäÀÌÁöÀÔ´Ï´Ù.</h2></legend>
+            <legend id="id"><h2>ë³‘ì›ê´€ë¦¬ìž íšŒì›ê°€ìž… íŽ˜ì´ì§€ìž…ë‹ˆë‹¤.</h2></legend>
         </div>
     </div>
     <div class="container">
      <form:form modelAttribute="hospitalMember" action="./productmanager?${ _csrf.parameterName }=${ _csrf.token }" method="post" enctype="multipart/form-data">
      <fieldset>
         <div class="form-group row">
-            <label class="col-sm-2 control-label"> ¾ÆÀÌµð </label>  
+            <label class="col-sm-2 control-label"> ì•„ì´ë”” </label>  
             <div class="col-3">
                 <form:input id="userId" type="text" path="personId" class="control-label"/>
             </div>
 			<div id="confirm" class="col-2"> 
-			    <button onclick="idDuplicateCheck(event)" id="idConfirmBtn" class="btn btn-secondary">Áßº¹È®ÀÎ</button>
+			    <button onclick="idDuplicateCheck(event)" id="idConfirmBtn" class="btn btn-secondary">ì¤‘ë³µí™•ì¸</button>
 			</div>
         </div>    
         <div class="form-group row">
-            <label class="col-sm-2 control-label"> ºñ¹Ð¹øÈ£ </label>  
+            <label class="col-sm-2 control-label"> ë¹„ë°€ë²ˆí˜¸ </label>  
             <div class="col-4">
                 <form:input type="password" path="personPw" class="control-label"/>
             </div>
         </div>
         <div class="form-group row">
-             <label class="col-sm-2 control-label"> ÀÌ¸ÞÀÏ </label>  
+             <label class="col-sm-2 control-label"> ì´ë©”ì¼ </label>  
             <div class="col-4">
                 <form:input type="text" path="personEmail" class="control-label" />
             </div>
         </div>
         <div class="form-group row">
-            <label class="col-sm-2 control-label"> ÀÌ¸§ </label>  
+            <label class="col-sm-2 control-label"> ì´ë¦„ </label>  
             <div class="col-4">
                 <form:input type="text" path="personName" class="control-label"/>
             </div>
         </div>
         <div class="form-group row"> 
-           <label class="col-sm-2 control-label">  »ý³â¿ùÀÏ </label>
+           <label class="col-sm-2 control-label">  ìƒë…„ì›”ì¼ </label>
 		   <div class="col-4">
 			  <form:input type="date" path="personBirth" class="control-label"/>
 			</div>
 		</div>
 		<div class="form-group row">
-			<label class="col-sm-2 control-label"> ÁÖ¼Ò </label>
+			<label class="col-sm-2 control-label"> ì£¼ì†Œ </label>
             <div class="col-4">
 				<form:input type="text" path="personAddress" class="control-label"/>
 			</div>
 		</div>
         <div class="form-group row">
-            <label class="col-sm-2 control-label"> °³ÀÎ¹øÈ£ </label>  
+            <label class="col-sm-2 control-label"> ê°œì¸ë²ˆí˜¸ </label>  
             <div class="col-4">
                 <form:input type="text" path="personPhone" class="control-label"/>
             </div>
         </div>
         
         <div class="form-group row">
-            <label class="col-sm-2 control-label"> µ¿¹°º´¿ø¸í  </label>  
+            <label class="col-sm-2 control-label"> ë™ë¬¼ë³‘ì›ëª…  </label>  
             <div class="col-4">
                 <form:input type="text" path="hospitalName" class="control-label"/>
             </div>
         </div>
         <div class="form-group row">
-              <label class="col-sm-2 control-label"> º´¿øÁÖ¼Ò </label>  
+              <label class="col-sm-2 control-label"> ë³‘ì›ì£¼ì†Œ </label>  
             <div class="col-4">
                 <form:input type="text" path="hospitalAddress" class="control-label"/>
             </div>
         </div>
         <div class="form-group row">
-            <label class="col-sm-2 control-label"> º´¿ø¹øÈ£ </label>  
+            <label class="col-sm-2 control-label"> ë³‘ì›ë²ˆí˜¸ </label>  
             <div class="col-4">
                 <form:input type="text" path="hospitalPhone" class="control-label"/>
             </div>
         </div>
         <div class="form-group row">
-            <label class="col-sm-2 control-label"> »ç¾÷ÀÚµî·ÏÁõ </label>  
+            <label class="col-sm-2 control-label"> ì‚¬ì—…ìžë“±ë¡ì¦ </label>  
             <div class="col-4">
                 <input type="file" name="s_file" class="control-label" required="required"/>
             </div>
         </div>
         <div class="form-group row">
-            <label class="col-sm-2 control-label"> ÀÇ»ç¸éÇãÁõ </label>  
+            <label class="col-sm-2 control-label"> ì˜ì‚¬ë©´í—ˆì¦ </label>  
             <div class="col-4">
                 <input type="file" name="h_file" class="control-label" required="required"/>
             </div>
         </div>
        	<div class="form-group row">
-            <label class="col-sm-2 ccontrol-label"> ¼ºº° </label>
+            <label class="col-sm-2 ccontrol-label"> ì„±ë³„ </label>
 			<div class="col-4">
-				<form:radiobutton path="personSex" value="³²ÀÚ" class="col-sm-1"/>³²ÀÚ
-				<form:radiobutton path="personSex" value="¿©ÀÚ" class="ml-3"/>¿©ÀÚ
+				<form:radiobutton path="personSex" value="ë‚¨ìž" class="col-sm-1"/>ë‚¨ìž
+				<form:radiobutton path="personSex" value="ì—¬ìž" class="ml-3"/>ì—¬ìž
 			</div>
 		</div>
         <%
         String type = request.getParameter("type");
-                System.out.println("jspÆäÀÌÁö : " + type);
+                System.out.println("jspíŽ˜ì´ì§€ : " + type);
                 session.setAttribute("type", type);
         %>
         
