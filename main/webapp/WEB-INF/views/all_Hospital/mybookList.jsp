@@ -1,64 +1,14 @@
+<%@page import="com.springmvc.domain.Pet"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
+<link rel="stylesheet" href="/123team/resources/css/Mypage.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <head>
-<script type="text/javascript">
-function changed(bid,registday) {
-	var container = document.getElementById("container"+bid);
-	var delp = document.getElementById("willdelete"+bid);
-	var addp = document.getElementById("addp"+bid);
-	
-	console.log(bid);
-	container.removeChild(delp);
-	container.removeChild(addp);
-	
-	var form = document.createElement("form");
-	form.setAttribute("action","/123team/hospitals/editbook");
-	form.setAttribute("method","POST");
-	
-	var inputT = document.createElement("input");
-	inputT.setAttribute("type","hidden");
-	inputT.setAttribute("name","bid");
-	inputT.setAttribute("value",bid);
-	
-	var inputD = document.createElement("input");
-	inputD.setAttribute("type","datetime-local");
-	inputD.setAttribute("name","registDay");
-	inputD.setAttribute("value",registday);
-	
-	var inputO = document.createElement("input");
-	inputO.setAttribute("type","hidden");
-	inputO.setAttribute("name","originday");
-	inputO.setAttribute("value",registday);
-	
-	var inputs = document.createElement("input");
-	inputs.setAttribute("type","submit");
-	inputs.setAttribute("value","변경완료");
-	
-	var button = document.createElement("button");
-	button.setAttribute("onclick",cancelForm());
-	var buttonText = document.createTextNode("취소");
-	button.appendChild(buttonText);
-	
-	form.appendChild(inputT);
-	form.appendChild(inputD);
-	form.appendChild(inputs);
-	form.appendChild(inputO);
-	form.appendChild(button);
-	
-	container.appendChild(form);
-}
-function cancelForm() {
-    var form = document.querySelector("form");
-    if (form) {
-        form.remove();
-    }
-}
-</script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
@@ -115,45 +65,94 @@ function cancelForm() {
 			        <!--병원 예약 정보-->
 			        <div class="subindex_item">
 			            <div class="head_title">
-			                <h2 class="subindex_title">${book.hospitalName}</h2>
-	                    </div>
-	                    <div class="title_link">
-	                    	<a href="deletebook?bid=${book.bid}"><span class="text">예약취소</span></a>
-	                        <a href="" ><span class="text">수정하기</span></a>
-	                    </div>  
+                         <h2 class="subindex_title">${book.hospitalName}</h2>
+                         <div class="title_link">
+                             <button class="text" onclick="editform('${book.bid}','${book.registDay}')">날짜변경</button>
+                             <a href="deletebook?bid=${book.bid}"><span class="text">예약취소</span></a>
+                          </div>
+                       </div>
+                       <script type="text/javascript">
+   					
+                       function editform(bid, originDay) {
+                    	   var container = document.getElementById("container" + bid);
+                    	   var delp = document.getElementById("willdelete" + bid);
+
+                    	   container.removeChild(delp);
+
+                    	   var form = document.createElement("form");
+                    	   form.setAttribute("action", "editbook");
+                    	   form.setAttribute("method", "POST");
+
+                    	   var inputT = document.createElement("input");
+                    	   inputT.setAttribute("type", "hidden");
+                    	   inputT.setAttribute("name", "bid");
+                    	   inputT.setAttribute("value", bid);
+
+                    	   var inputD = document.createElement("input");
+                    	   inputD.setAttribute("type", "datetime-local");
+                    	   inputD.setAttribute("name", "registDay");
+                    	   inputD.setAttribute("value", originDay);
+                    	   inputD.setAttribute("required", true);
+
+                    	   var submitButton = document.createElement("input");
+                    	   submitButton.setAttribute("type", "submit");
+                    	   submitButton.setAttribute("value", "변경완료");
+                    	   submitButton.setAttribute("class", "cancel-button");
+                    	   var cancelButton = document.createElement("button");
+                    	   var cancelButtonText = document.createTextNode("취소");
+                    	   cancelButton.appendChild(cancelButtonText);
+
+                    	   cancelButton.addEventListener('click', function(event) {
+                    	     event.preventDefault();
+                    	     container.removeChild(form);
+                    	     container.appendChild(delp);
+                    	   });
+
+                    	   form.appendChild(inputT);
+                    	   form.appendChild(inputD);
+                    	   
+                    	   var buttonContainer = document.createElement("div");
+                    	   buttonContainer.setAttribute("class", "button-container");
+                    	   buttonContainer.appendChild(submitButton);
+                    	   buttonContainer.appendChild(cancelButton);
+                    	   
+                    	   form.appendChild(buttonContainer);
+                    	   container.appendChild(form);
+                    	 }
+                       </script>
+<style>
+			            .button-container {
+  display: flex;
+}
+
+.cancel-button {
+  margin-right: 10px;
+}
+</style>
 			            <div class="subindex_greenbox">
-			                <ul class="subindex_row">
+			                <ul class="subindex_row" >
 			                    <li>
 			                        <div class="row_item other">
-			                            <a href="" class="text-decoration-none"><span class="item_text">${book.registDay}</span></a>
+			                            <a href="" class="text-decoration-none" id="container${book.bid}"><span class="item_text" id="willdelete${book.bid}">예약일 : ${book.registDay}</span></a>
 			                        </div>  
 			                    </li>
 	                            <li>
 			                        <div class="row_item other">
-			                            <a href="" class="text-decoration-none"><span class="item_text">${book.petName}</span></a>
+			                            <a href="" class="text-decoration-none"><span class="item_text">동물ID : ${book.petId}</span></a>
 			                        </div>  
 			                    </li>
-	                            <li>
+			                    <li>
 			                        <div class="row_item other">
-			                            <a href="" class="text-decoration-none"><span class="item_text">${book.context}</span></a>
+			                            <a href="" class="text-decoration-none"><span class="item_text"> 내용 : ${book.context}</span></a>
 			                        </div>  
 			                    </li>
-	                            <li>
+			                    <li>
 			                        <div class="row_item other">
-			                            <a href="" class="text-decoration-none"><span class="item_text">예약자명</span></a>
-			                        </div>  
-			                    </li>
-	                            <li>
-			                        <div class="row_item other">
-			                            <a href="" class="text-decoration-none"><span class="item_text">연락처</span></a>
-			                        </div>  
-			                    </li>
-	                            <li>
-			                        <div class="row_item other">
-			                            <a href="" class="text-decoration-none"><span class="item_text">진료받을 내용</span></a>
+			                            <a href="" class="text-decoration-none"><span class="item_text">처리현왕 : ${book.state}</span></a>
 			                        </div>  
 			                    </li>
 			                </ul>
+			                
 			            </div>
 			        </div>
 		        </c:forEach> 
@@ -162,23 +161,5 @@ function cancelForm() {
 	</div>  
 	
 	<%@ include file="../module/footer.jsp" %>
-<%-- 	
-	<a href="/123team/hospitals">병원목록으로 돌아가기</a>
- <c:forEach items="${booklist}" var="book">
- <div id="container${book.bid}">
- <p>
- 	병원이름 : ${book.hospitalName}
- 	<p>
- 	동물 : ${book.petId}
- 	<p>
- 	설명 : ${book.context}
- 	<p>
- 	처리 상태 : ${book.state}
- 	<p id="willdelete${book.bid}">예약일 : ${book.registDay}</p>
- 	<button onclick="changed('${book.bid}','${book.registDay}')" id="addp${book.bid}" >날짜 변경</button>
- </div>
- 	<a href="deletebook?bid=${book.bid}">예약취소</a>
- </c:forEach>
-  --%>      
 </body>
 </html>

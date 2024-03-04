@@ -11,12 +11,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-	<%@  include file="../module/headerinfo.jsp" %>
-	
 	<%
-		request.setAttribute("loginId", session.getAttribute("personId"));
+		request.setAttribute("type", session.getAttribute("type"));
+		request.setAttribute("checktype", "h");
 	%>
+	<%@  include file="../module/headerinfo.jsp" %>
 	
 	<div class="home_container">
         <div class="container my-3">
@@ -43,7 +42,7 @@
 	                        	<a href="update?hid=${hospital.hid}" class="btn btn-primary">수정하기</a>
 	                        <a href="delete?hid=${hospital.hid}" class="btn btn-danger">삭제하기</a>
 	                		</c:if>
-	               			<c:if test="${loginId != null}">
+	               			<c:if test="${loginId != null && type != checktype}">
 	                        	<a href="addbook?hid=${hospital.hid}" class="btn btn-success">예약하기</a>
 	                      	</c:if>
 	                    </div>  

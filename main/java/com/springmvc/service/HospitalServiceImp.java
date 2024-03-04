@@ -39,6 +39,11 @@ public class HospitalServiceImp implements HospitalService{
 		hospitalRepository.deleteHospital(hid);
 		
 	}
+
+	@Override
+	public List<Hospital> gethospitalsByTitle(String title) {
+		return hospitalRepository.gethospitalsByTitle(title);
+	}
 	
 	
 

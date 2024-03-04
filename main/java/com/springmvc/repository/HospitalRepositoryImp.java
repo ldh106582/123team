@@ -63,5 +63,12 @@ public class HospitalRepositoryImp implements HospitalRepository{
 		template.update(SQL);
 		
 	}
+
+	@Override
+	public List<Hospital> gethospitalsByTitle(String title) {
+		String SQL = "select * from hospital where name Like '%"+title+"%'";
+		List<Hospital> list = template.query(SQL, new HospitalRowMapper());
+		return list;
+	}
 	
 }

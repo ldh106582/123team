@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.mysql.cj.Session;
+import com.springmvc.domain.ENBoard;
 import com.springmvc.domain.Hospital;
 import com.springmvc.domain.HospitalBooking;
 import com.springmvc.domain.HospitalReview;
@@ -128,8 +129,10 @@ public class HospitalController {
 	}
 //	예약조회
 	@GetMapping("mybookList")
-	public String mybookList(@RequestParam("personId") String personId,Model model) {
+	public String mybookList(@RequestParam("personId") String personId,Model model,HttpSession session) {
 		model.addAttribute("booklist", bookingService.getMyBookList(personId));
+		List<Pet> list = (List<Pet>) session.getAttribute("petId");
+		model.addAttribute("petlist",list);
 		return "all_Hospital/mybookList";
 	}
 //	병원예약하기
@@ -196,4 +199,22 @@ public class HospitalController {
 		 bookingService.updateState(dec,bid);
 		 return "redirect:/hospitals/manageapps";
 	 }
+	 
+//		체험공고글 검색
+		@GetMapping("/selectbytitle")
+		public String selectboardbytitle(Model model,HttpServletRequest request) {
+			String title = (String) request.getParameter("title");
+			System.out.println(title);
+			if(title.equals(null)||title.equals("")||title.equals(" ")) {
+				return "redirect:/hospitals";
+			}
+			System.out.println(title);
+			List<Hospital> hospitallist = hospitalService.gethospitalsByTitle(title);
+			if(hospitallist.isEmpty()) {
+				//검색 결과가 없을때
+				return "all_Hospital/exceptionpage";
+			}
+			model.addAttribute("hospitals",hospitallist);
+			return "all_Hospital/hospitals";
+		}
 }

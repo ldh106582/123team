@@ -17,6 +17,8 @@ public interface BookingService {
 	List<HospitalBooking> getPermisionList(String personId);
 
 	void updateState(String dec, String bid);
+
+	HospitalBooking getbookById(String bid);
 	
 	
 }

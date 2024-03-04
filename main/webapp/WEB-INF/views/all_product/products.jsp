@@ -10,9 +10,14 @@
 <title>products 페이지</title>
 </head>
 <body>
-
+		<%
+		request.setAttribute("type", session.getAttribute("type"));
+		request.setAttribute("checktype", "p");
+	%>
 	<%@  include file="../module/headerdanger.jsp" %>
-	
+	<c:if test="${type == checktype }">
+		<a href="products/add">상품추가</a>
+	</c:if>
     <div class="show-gird no-gutters">
         <img src="https://cdn.pet-friends.co.kr/resources/pc/img/background.png" alt="" style="position: absolute; width: 160;">
         <div class="row no-gutters">
@@ -59,7 +64,7 @@
 	                                    <h6 class="col-md-12 ">가격 : ${product.productPrice}</h6>
 	                                </div>
                                 
-								<a href="products/product?productId=${product.productId}"><button>상세정보</button></a>   <a href="#"><button>상품주문</button></a>
+								<a href="products/product?productId=${product.productId}"><button>상세정보</button></a>  <c:if test="${loginId != null && type != checktype}"><a href="#"><button>상품주문</button></a></c:if> 
 								</c:forEach>
                             </div>
                         </div>
