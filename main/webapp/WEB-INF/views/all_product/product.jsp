@@ -13,8 +13,11 @@
 </script>
 </head>
 <body>
-
- <%@  include file="../module/headerdanger.jsp" %>
+	<%
+		request.setAttribute("type", session.getAttribute("type"));
+		request.setAttribute("checktype", "p");
+	%>
+ 	<%@  include file="../module/headerdanger.jsp" %>
  
  	   <form:form modelAttribute="product" action="/123team/products/creatCart" method="post" enctype="Multipart/form-data">
  	   <input type="hidden" name="productId"  value="${product.productId}">
@@ -51,13 +54,17 @@
 			<p>
 			재고수 : ${product.productUnitStock}
 			<p>
+			<c:if test="${loginId != null && type != checktype}">
 			<input type="submit" value="장바구니추가"/>
+			</c:if>
   	   </form:form>
-  	      
+  	<c:if test="${loginId == product.personId}">
 	<a href="update?productId=${product.productId}"><button>상품수정</button></a>  <a href="delete?productId=${product.productId}"><button>상품삭제</button></a>
+	</c:if>
+	<c:if test="${loginId != null && type != checktype}">
 	<a class="btn btn-success" href="/123team/products/readcart">내 장바구니</a>
 	<a class="btn btn-success" aria-labelledby="exampleModalLabel" href="/123team/products/p_review?personId=${product.personId}">리뷰쓰기</a>
-	
+	</c:if>
 	<%@ include file="../module/footer.jsp" %>
 </body>
 </html>

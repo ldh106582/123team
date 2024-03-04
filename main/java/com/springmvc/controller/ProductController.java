@@ -38,11 +38,7 @@ public class ProductController {
 	}
 	
 	@GetMapping("/product")
-	public String getProduct(@RequestParam("productId") String productId,Model model, HttpServletRequest request) {
-		HttpSession session = request.getSession();
-		Person personId = (Person) session.getAttribute("id");
-		System.out.println("여긴 product 사용자 id : "+personId.getPersonId());
-		
+	public String getProduct(@RequestParam("productId") String productId,Model model) {
 		// 리뷰에 대한 내용을 가져옴
 		System.out.println("여긴 product 상품 id : "+ productId);
 		

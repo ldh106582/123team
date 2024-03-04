@@ -48,5 +48,10 @@ public class BookingServiceImp implements BookingService{
 		bookingrepository.updateState(dec,bid);
 	}
 
+	@Override
+	public HospitalBooking getbookById(String bid) {
+		return bookingrepository.getbookById(bid);
+	}
+
 
 }

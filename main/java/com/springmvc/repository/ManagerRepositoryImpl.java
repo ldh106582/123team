@@ -166,6 +166,7 @@ public class ManagerRepositoryImpl implements ManagerRepository {
 	      template.update(SQL, hospitalMember.getPersonId(), hospitalMember.getPersonPw(), hospitalMember.getPersonEmail(), hospitalMember.getPersonAddress(),
 	            hospitalMember.getPersonName(), hospitalMember.getPersonBirth(), hospitalMember.getPersonSex(), hospitalMember.getPersonPhone(),hospitalMember.getType());
 	   }
+
 	   // 체험단 manager 회원가입 하는 함수
 	@Override
 	public void addEx_Manager(Ex_manager ex_manager) {
@@ -181,6 +182,7 @@ public class ManagerRepositoryImpl implements ManagerRepository {
 		 template.update(SQL,ex_manager.getPersonId(), ex_manager.getPersonPw(), ex_manager.getPersonEmail(), ex_manager.getPersonAddress(), ex_manager.getPersonName(),
 				 ex_manager.getPersonBirth(), ex_manager.getPersonSex(), ex_manager.getPersonPhone(), ex_manager.getType());
 	}
+
 
 	   
 	   

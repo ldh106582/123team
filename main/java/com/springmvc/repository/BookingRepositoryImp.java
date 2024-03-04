@@ -61,5 +61,13 @@ public class BookingRepositoryImp implements BookingRepository{
 		template.update(SQL,dec,bid);
 		
 	}
+	@Override
+	public HospitalBooking getbookById(String bid) {
+		HospitalBooking booking = new HospitalBooking();
+		SQL = "select * from HApllication where bid='"+bid+"'";
+		List<HospitalBooking> list = template.query(SQL, new BookingRowMapper());
+		booking = list.get(0);
+		return booking;
+	}
 	
 }

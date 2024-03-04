@@ -16,4 +16,6 @@ public interface HospitalService {
 
 	void deleteHospital(String hid);
 
+	List<Hospital> gethospitalsByTitle(String title);
+
 }
