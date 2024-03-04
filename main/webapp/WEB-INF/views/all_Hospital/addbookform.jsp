@@ -30,8 +30,9 @@
 		<% 
 			for(int i=0;i<petlist.size();i++){
 				request.setAttribute("name", petlist.get(i).getPetName());
+				request.setAttribute("petId", petlist.get(i).getPetId());
 				%>
-				${name} <form:checkbox value="${name}" path="petName"/>
+				${name} <form:checkbox value="${petId}" path="petId"/>
 		<%
 			}
 		%>

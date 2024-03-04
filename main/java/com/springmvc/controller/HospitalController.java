@@ -1,6 +1,6 @@
 package com.springmvc.controller;
 
-import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.security.auth.message.callback.PrivateKeyCallback.Request;
@@ -14,8 +14,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
-
 import com.mysql.cj.Session;
 import com.springmvc.domain.Hospital;
 import com.springmvc.domain.HospitalBooking;
@@ -61,23 +59,10 @@ public class HospitalController {
 	}
 	
 	@PostMapping("/create")
-	public String hospitalcreate(@ModelAttribute("hospital")Hospital hospital, @RequestParam("h_image") MultipartFile h_image,
-								 HttpSession session,Model model, HttpServletRequest request) 
+	public String hospitalcreate(@ModelAttribute("hospital")Hospital hospital,HttpSession session,Model model) 
 	{
 		String personId = (String) session.getAttribute("personId");
 		hospital.setPersonId(personId);
-		
-		String imageName = h_image.getOriginalFilename();
-		String imagePath = request.getSession().getServletContext().getRealPath("/resources/images");
-		File  file = new File(imagePath, imageName);
-		
-		try{
-			h_image.transferTo(file);
-			hospital.setImage(imageName);
-		}catch (Exception e) {
-			System.out.println("파일을 입력하지 않았습니다." + e);
-		}
-		
 		hospitalService.addhospital(hospital);
 		return "redirect:/hospitals";
 	}
@@ -157,8 +142,6 @@ public class HospitalController {
 	@PostMapping("addbook")
 	public String addbook(@ModelAttribute("booking") HospitalBooking booking,HttpServletRequest request,HttpSession session) {
 		String personId = (String) session.getAttribute("personId");
-		
-		System.out.println(booking.getPetName());
 
 		
 		String registDay = request.getParameter("registDay");
@@ -172,7 +155,8 @@ public class HospitalController {
 		booking.setHid(hid);
 		booking.setHospitalName(hospitalName);
 		
-
+		
+		
 		bookingService.addbook(booking);
 		
 		return "redirect:/hospitals/mybookList?personId="+personId;
@@ -193,4 +177,23 @@ public class HospitalController {
 		bookingService.deletebook(bid);
 		return "redirect:/hospitals/mybookList?personId="+personId;
 	}
+	
+//	 모든 신청 보기
+	@GetMapping("manageapps")
+	public String manageapps(Model model,HttpSession session,HttpServletRequest request) {
+		 String personId = (String) session.getAttribute("personId");
+		 List<HospitalBooking> list = bookingService.getPermisionList(personId);
+		 model.addAttribute("applists",list);
+		 if(list.isEmpty()) {
+			 request.setAttribute("nothing", "승인할 것이 없어요");
+		 }
+		 return "all_Hospital/permitLists"; 
+	}	 
+	
+//	예약 승인||거절
+	 @GetMapping("decision")
+	 public String decision(@RequestParam("dec") String dec,@RequestParam("bid") String bid){
+		 bookingService.updateState(dec,bid);
+		 return "redirect:/hospitals/manageapps";
+	 }
 }

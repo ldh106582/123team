@@ -16,24 +16,17 @@
 	<%@  include file="../module/headerinfo.jsp" %>
 
  <%
-		request.setAttribute("loginId", session.getAttribute("personId"));
-	%>
+	request.setAttribute("loginId", session.getAttribute("personId"));
+	request.setAttribute("type", session.getAttribute("type"));
+	request.setAttribute("checktype", "h");
+%>
+<%-- <c:if test="${type==checktype}"> --%>
 <a href="hospitals/create">병원추가</a>
+<a href="hospitals/manageapps">모든신청보기</a>
+<%-- </c:if> --%>
 <a href="hospitals/mybookList?personId=${loginId}">내 예약 보기</a>
 <c:forEach items="${hospitals}" var="hospital">
-      <c:choose>
-         <c:when test="${hospital.getImage() == null }">
-             <div>
-                 <img src="https://static.nid.naver.com/images/web/user/default.png" width="100" height="56" alt="내 프로필 이미지">
-             </div>
-            </c:when>
-           <c:otherwise>
-             <div>
-                 <img src="<c:url value="/resources/images/${ hospital.image }"/>" height="56" alt="내 프로필 이미지">
-             </div>
-           </c:otherwise>
-     </c:choose>
-
+	<p> 이미지 : ${hospital.image}
 	<p> 병원 이름 : ${hospital.name}
 	<p> 병원 설명 : ${hospital.description}
 	<a href="hospitals/hospital?hid=${hospital.hid}"><button>상세보기</button></a>

@@ -151,7 +151,7 @@ public class ManagerRepositoryImpl implements ManagerRepository {
 		System.out.println(hospitalMember.getPersonBirth());
 		// 14
 		System.out.println(hospitalMember.getPersonSex());
-		String SQL = "insert into HospitalMember(personId, personPw, personEmail, personName, personAddress, personBirth, personPhone,  PersonSex, hospitalName, hospitalAddress, hospitalPhone, s_image,  h_image, type) " +
+		String SQL = "insert into HospitalMember(personId, personPw, personEmail, personName, personAddress, personBirth, personPhone,  PersonSex, hospitalName, hospitalAddress, hospitalPhone, image1, type, image2) " +
 	             "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		template.update(SQL, hospitalMember.getPersonId(), hospitalMember.getPersonPw(), hospitalMember.getPersonEmail(), hospitalMember.getPersonName(), hospitalMember.getPersonAddress(), hospitalMember.getPersonBirth(), 
 				       hospitalMember.getPersonPhone(), hospitalMember.getPersonSex(), hospitalMember.getHospitalName(), hospitalMember.getHospitalAddress(), hospitalMember.getHospitalPhone(),
@@ -162,7 +162,7 @@ public class ManagerRepositoryImpl implements ManagerRepository {
 	public void H_setAllMember(HospitalMember hospitalMember) {
 		String SQL = "insert into Person values(?,?,?,?,?,?,?,?,?)";
 		template.update(SQL, hospitalMember.getPersonId(), hospitalMember.getPersonPw(), hospitalMember.getPersonEmail(), hospitalMember.getPersonAddress(),
-				hospitalMember.getPersonName(), hospitalMember.getPersonBirth(), hospitalMember.getPersonSex(), hospitalMember.getPersonPhone(),hospitalMember.getType());
+				hospitalMember.getPersonName(), hospitalMember.getPersonBirth(), hospitalMember.getPersonSex(), hospitalMember.getPersonPhone(), hospitalMember.getType());
 	}
-	
+
 }

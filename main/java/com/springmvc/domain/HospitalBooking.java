@@ -1,12 +1,13 @@
 package com.springmvc.domain;
 
+
 public class HospitalBooking {
 	
 
 	public HospitalBooking() {}
 	
 	private String bid; // 예약번호
-	private String petName; // 펫 품종
+	private String petId; // 펫 아이디
 	private String hid; 
 	private String mid;
 	private String hospitalName;
@@ -21,14 +22,6 @@ public class HospitalBooking {
 	public void setBid(String bid) {
 		this.bid = bid;
 	}
-
-	public String getPetName() {
-		return petName;
-	}
-	public void setPetName(String petName) {
-		this.petName = petName;
-	}
-	
 	
 	public String getHospitalName() {
 		return hospitalName;
@@ -71,6 +64,12 @@ public class HospitalBooking {
 	}
 	public void setState(String state) {
 		this.state = state;
+	}
+	public String getPetId() {
+		return petId;
+	}
+	public void setPetId(String petId) {
+		this.petId = petId;
 	}
 	
 	

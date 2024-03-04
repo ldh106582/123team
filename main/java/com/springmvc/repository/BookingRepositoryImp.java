@@ -30,7 +30,7 @@ public class BookingRepositoryImp implements BookingRepository{
 	@Override
 	public void addbook(HospitalBooking booking) {
 		SQL = "insert into HApllication values(?,?,?,?,?,?,?,?,?)";
-		template.update(SQL,booking.getRegistDay(),booking.getPersonId(),getBid(),booking.getMid(),booking.getHospitalName(),booking.getHid(),booking.getPetName(),booking.getContext(),"처리중");
+		template.update(SQL,booking.getRegistDay(),booking.getPersonId(),getBid(),booking.getMid(),booking.getHospitalName(),booking.getHid(),booking.getPetId(),booking.getContext(),"처리중");
 		
 	}
 	private String getBid() {
@@ -40,14 +40,26 @@ public class BookingRepositoryImp implements BookingRepository{
 	
 	@Override
 	public void editbook(String bid, String registDay) {
-		SQL = "update HApllication set registDay=? where bid='"+bid+"'";
-		template.update(SQL,registDay);
+		SQL = "update HApllication set registDay=?,state=? where bid='"+bid+"'";
+		template.update(SQL,registDay,"처리중");
 		
 	}
 	@Override
 	public void deletebook(String bid) {
 		SQL = "delete from HApllication where bid='"+bid+"'";
 		template.update(SQL);
+	}
+	@Override
+	public List<HospitalBooking> getPermisionList(String personId) {
+		SQL = "select * from HApllication where mid='"+personId+"' and state='"+"처리중"+"'";
+		List<HospitalBooking> list = template.query(SQL, new BookingRowMapper());
+		return list;
+	}
+	@Override
+	public void updateState(String dec, String bid) {
+		SQL = "update HApllication set state=? where bid=?";
+		template.update(SQL,dec,bid);
+		
 	}
 	
 }

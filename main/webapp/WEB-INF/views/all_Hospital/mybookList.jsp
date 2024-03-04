@@ -37,7 +37,7 @@ function changed(bid,registday) {
 	
 	var inputs = document.createElement("input");
 	inputs.setAttribute("type","submit");
-	inputs.setAttribute("value","변경하기");
+	inputs.setAttribute("value","변경완료");
 	
 	var button = document.createElement("button");
 	button.setAttribute("onclick",cancelForm());
@@ -70,7 +70,7 @@ function cancelForm() {
  <p>
  	병원이름 : ${book.hospitalName}
  	<p>
- 	동물 : ${book.petName}
+ 	동물 : ${book.petId}
  	<p>
  	설명 : ${book.context}
  	<p>
