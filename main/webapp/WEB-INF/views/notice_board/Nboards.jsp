@@ -12,6 +12,7 @@
 <body>
 
 	<%@  include file="../module/headersuccess.jsp" %>
+	
  
 	<% 
 		int size = (Integer) request.getAttribute("size");
@@ -26,9 +27,6 @@
                 <a href="/123team/ENboards" class="btn btn-secondary mr-2">체험단</a>
             </div>
             <div>
-	            <c:if test="${loginId != null}">
-					<a href="Fboards?myId=${loginId}" class="btn btn-primary">내 게시글만 보기</a>
-				</c:if>
             	<a href="Nboards/add" class="btn btn-primary">게시글 작성</a>
             </div>
         </div>
@@ -94,10 +92,6 @@
             <button type="submit" class="btn btn-success">검색</button>
         </form>
     </div>
-	
-	<c:if test="${loginId != null}">
-		<a href="Fboards?myId=${loginId}"><button>내 게시글만 보기</button></a>
-	</c:if>
 	
 	<%@ include file="../module/footer.jsp" %>
 </body>

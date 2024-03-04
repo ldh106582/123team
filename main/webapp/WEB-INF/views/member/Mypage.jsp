@@ -70,7 +70,7 @@
 		        </ul>
 		    </div>
 		</header>
-		
+		<!--병원 관리자-->
 		<c:choose>
 			<c:when test="">
 				<div id="container" class="container ">
@@ -203,6 +203,118 @@
 					</div>
 			    </div>
 			</c:when>
+			<!--체험단 관리자-->
+			<c:when test="">
+				<div id="container" class="container ">
+			        <!-- container -->
+			        <div id="content" class="content">
+			            <div class="subindex_wrap" role="main">
+			                <div id="headerTop" class="path_area" aria-hidden="false"></div>
+			            </div>                        
+			            <div class="subindex_item">
+			                <div class="head_title">
+			                    <h2 class="subindex_title">정보 수정</h3>
+			                </div>
+			                <div class="subindex_greenbox">
+			                    <ul class="subindex_row">
+			                        <li>
+			                            <div class="row_item other">
+			                                <a href="./login/update?id=${ id.personId }" class="text-decoration-none"><span class="item_text">내 정보 수정</span></a>
+			                            </div>
+			                        </li>
+			                        <li>
+			                            <div class="row_item other">
+			                                <a href="./login/delete?id=${ id }" class="text-decoration-none" id="delete"><span class="item_text">회원 탈퇴</span></a>
+			                            </div>
+			                        </li>
+			                    </ul>
+			                </div>
+			            </div>
+			            <!--체험단-->
+			            <div class="subindex_item">
+			                <div class="head_title">
+			                    <h2 class="subindex_title">체험단 관리</h2>
+			                </div>
+			                <div class="subindex_greenbox">
+			                    <ul class="subindex_row">
+			                        <li>
+			                            <div class="row_item other">
+			                                <a href="" class="text-decoration-none"><span class="item_text">체험단 신청 확인</span></a>
+			                            </div>
+			                        </li>
+			                        <li>
+			                            <div class="row_item other">
+			                                <a href="" class="text-decoration-none"><span class="item_text">체험단 신청 내역</span></a>
+			                            </div>
+			                        </li>
+			                    </ul>
+			                </div>
+			            </div>
+			            <!--병원 예약 정보-->
+			            <div class="subindex_item">
+			                <div class="head_title">
+			                    <h2 class="subindex_title">병원 예약 정보</h2>
+			                </div>
+			                <div class="subindex_greenbox">
+			                    <ul class="subindex_row">
+			                        <li>
+			                            <div class="row_item other">
+			                                <a href="" class="text-decoration-none"><span class="item_text">예약 확인</span></a>
+			                            </div>
+			                        </li>
+			                    </ul>
+			                </div>
+			            </div>
+			            <!--주문 정보-->
+			            <div class="subindex_item">
+			                <div class="head_title">
+			                    <h2 class="subindex_title">주문목록</h2>
+			                </div>
+			                <div class="subindex_greenbox">
+			                    <ul class="subindex_row">
+			                        <li>
+			                            <div class="row_item other">
+			                                <a href="" class="text-decoration-none"><span class="item_text">주문 내역 확인</span></a>
+			                            </div>
+			                        </li>
+			        
+			                    </ul>
+			                </div>
+			            </div>
+			            <!--게시판-->
+			            <div class="subindex_item">
+			                <div class="head_title">
+			                    <h2 class="subindex_title">게시판</h2>
+			                </div>
+			                <div class="subindex_greenbox">
+			                    <ul class="subindex_row">
+			                        <li>
+			                            <div class="row_item other">
+			                            <a href="/123team/Fboards?myId=${id.personId}" class="text-decoration-none"><span class="item_text">작성 글 확인</span></a>
+			                            </div>
+			                        </li>
+			                    </ul>
+			                </div>
+			            </div>
+			            <!--Q&A-->
+			            <div class="subindex_item">
+			                <div class="head_title">
+			                    <h2 class="subindex_title">Q&A</h2>
+			                </div>
+			                <div class="subindex_greenbox">
+			                    <ul class="subindex_row">
+			                        <li>
+			                            <div class="row_item other">
+			                                <a href="" class="text-decoration-none"><span class="item_text">작성 Q&A 확인</span></a>
+			                            </div>
+			                        </li>
+			                    </ul>
+			                </div>
+			            </div>
+			        </div>
+			    </div>
+			</c:when>
+			<!--일반 mypage -->
 			<c:otherwise>
 			    <div id="container" class="container ">
 			        <!-- container -->

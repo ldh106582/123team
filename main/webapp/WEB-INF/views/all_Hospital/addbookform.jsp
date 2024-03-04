@@ -14,11 +14,48 @@
 <body>
 <%@  include file="../module/headerinfo.jsp" %>
 	<%
-	List<Pet> petlist = (List<Pet>) session.getAttribute("petName");
-	
-	out.print(petlist.get(0).getPetName());
+		List<Pet> petlist = (List<Pet>) session.getAttribute("petName");
 	%>
-	<form:form modelAttribute="booking" method="POST">
+	
+	<div class="container py-5">
+    <h1 class="mb-5">예약 페이지</h1>
+    <form:form modelAttribute="booking" method="POST">
+      <div class="form-group">
+        <label>예약 가능 시간</label>
+        <p class="form-control-static">${hospital.runtime}</p>
+      </div>
+      <div class="form-group">
+        <label>예약 시간</label>
+        <input type="datetime-local" name="registDay" class="form-control">
+      </div>
+      <div class="form-group">
+        <label>설명</label>
+        <input type="text" name="context" class="form-control">
+      </div>
+      <div class="form-group">
+        <div>
+          <p>
+		동물 :
+		<% 
+			for(int i=0;i<petlist.size();i++){
+				request.setAttribute("name", petlist.get(i).getPetName());
+				request.setAttribute("petId", petlist.get(i).getPetId());
+				%>
+				${name} <form:checkbox value="${petId}" path="petId"/>
+		<%
+			}
+		%>
+		<p>
+        </div>
+      </div>
+      <input type="hidden" name="hospitalName" value="${hospital.name}">
+      <input type="hidden" name="hid" value="${hospital.hid}">
+      <input type="hidden" name="mid" value="${hospital.personId}">
+      <button type="submit" class="btn btn-primary">예약 완료</button>
+    </form:form>
+  </div>
+  
+  <%-- <form:form modelAttribute="booking" method="POST">
 		<p>
 		예약가능시간 : ${hospital.runtime}
 		<p>
@@ -41,6 +78,7 @@
 		<input type="hidden" name="hid" value="${hospital.hid}">
 		<input type="hidden" name="mid" value="${hospital.personId}">
 		<input type="submit" value="예약완료">
-	</form:form>
+	</form:form> --%>
+	
 </body>
 </html>

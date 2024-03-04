@@ -167,6 +167,7 @@ public class ManagerRepositoryImpl implements ManagerRepository {
 	            hospitalMember.getPersonName(), hospitalMember.getPersonBirth(), hospitalMember.getPersonSex(), hospitalMember.getPersonPhone(),hospitalMember.getType());
 	   }
 
+
 	   // 체험단 manager 회원가입 하는 함수
 	@Override
 	public void addEx_Manager(Ex_manager ex_manager) {

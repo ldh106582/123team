@@ -28,6 +28,7 @@
             <div class="justify-content-end">
                 <a href="hospitals/create" class="btn btn-success ">병원 추가</a>
                 <a href="hospitals/manageapps">모든신청보기</a>
+
             </div>
             </c:if>
             <c:if test="${loginId != null && type!=checktype}">
@@ -62,5 +63,20 @@
         </form>
 
 	<%@ include file="../module/footer.jsp" %>
+<<<<<<< HEAD
+=======
+<%-- 
+<a href="hospitals/mybookList?personId=${loginId}">내 예약 보기</a>
+<c:forEach items="${hospitals}" var="hospital">
+	<p> 이미지 : ${hospital.image}
+	<p> 병원 이름 : ${hospital.name}
+	<p> 병원 설명 : ${hospital.description}
+	<a href="hospitals/hospital?hid=${hospital.hid}"><button>상세보기</button></a>
+	<p>
+</c:forEach>	
+<p>
+<a href="search">병원검색</a>	
+ --%>
+>>>>>>> origin/yeonghoe
 </body>
 </html>

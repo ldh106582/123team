@@ -144,6 +144,8 @@ public class HospitalController {
 	}
 	@PostMapping("addbook")
 	public String addbook(@ModelAttribute("booking") HospitalBooking booking,HttpServletRequest request,HttpSession session) {
+		
+		
 		String personId = (String) session.getAttribute("personId");
 
 		
