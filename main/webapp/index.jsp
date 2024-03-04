@@ -3,7 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="java.util.List"%>
 <%@ page import="java.sql.*" %>
-<!-- css -->
 <html>
 <head>
 <!--  부트스트랩 -->
