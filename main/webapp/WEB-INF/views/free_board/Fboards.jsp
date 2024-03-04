@@ -15,17 +15,18 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 <body>
-   
-	<%@  include file="../module/headersuccess.jsp" %>
+
 	<%
  		request.setAttribute("loginId", session.getAttribute("personId"));
-
+		
  	%>
 	
 	<% 
 		int size = (Integer) request.getAttribute("size");
 		request.setAttribute("sise", size);
-	%>
+	%>   
+	
+	<%@  include file="../module/headersuccess.jsp" %>
 	
 	
 	<c:forEach begin="1" end="${totalPages}" var="pageNum"> <!-- 페이지 번호 출력 -->

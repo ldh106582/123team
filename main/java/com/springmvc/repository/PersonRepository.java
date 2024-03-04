@@ -4,6 +4,8 @@ import java.util.List;
 
 import com.springmvc.controller.ManagerController;
 import com.springmvc.domain.type;
+import com.springmvc.domain.EApplication;
+import com.springmvc.domain.Ex_manager;
 import com.springmvc.domain.Hospital;
 import com.springmvc.domain.HospitalMember;
 import com.springmvc.domain.Person;
@@ -37,4 +39,8 @@ public interface PersonRepository {
 	void SetUpdatePr(ProductMember productMember);
 	 // hospital manager person 테이블을 수정하는 곳
 	void SetUpdatePH(HospitalMember hospitalMembers);
+    // 체험단 관리자가 로그인할 때 가져올 데이터
+	Person getEM(String personId);
+	// 체험단 신청목록을 로그인할 때 가져올 데이터
+	List<EApplication> getEA(String personId);
 }

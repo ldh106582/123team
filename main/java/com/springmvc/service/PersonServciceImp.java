@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 
 import com.springmvc.controller.ManagerController;
 import com.springmvc.domain.type;
+import com.springmvc.domain.EApplication;
+import com.springmvc.domain.Ex_manager;
 import com.springmvc.domain.Hospital;
 import com.springmvc.domain.HospitalMember;
 import com.springmvc.domain.Person;
@@ -113,6 +115,18 @@ public class PersonServciceImp implements PersonService{
 	public void SetUpdatePH(HospitalMember hospitalMember) {
 		// TODO Auto-generated method stub
 		psersonRepository.SetUpdatePH(hospitalMember);
+	}
+
+	@Override
+	public Person getEM(String personId) {
+		// TODO Auto-generated method stub
+		return psersonRepository.getEM(personId);
+	}
+
+	@Override
+	public List<EApplication> getEA(String personId) {
+		// TODO Auto-generated method stub
+		return psersonRepository.getEA(personId);
 	}
 	
 	

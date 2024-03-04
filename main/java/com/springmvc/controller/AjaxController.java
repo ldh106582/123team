@@ -42,7 +42,21 @@ public class AjaxController {
 	        return "false";
 	    }
 	}
-
-
 	
+	// 로그인 성공 실패를 알려주는 함수
+	@PostMapping(value="/confirm", produces="application/json")
+	@ResponseBody
+	public String LoginConfirm(@RequestParam("userId") String userId,
+							   @RequestParam("userPw") String userPw) {
+		
+		System.out.println("여긴 로그인 함수 ajax");
+		
+	    if ("correctId".equals(userId) && "correctPassword".equals(userPw)) {
+	        return "success";
+	    } else {
+	        return "fail";
+	    }
+	}
+
+
 }

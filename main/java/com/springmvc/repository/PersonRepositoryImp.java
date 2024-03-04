@@ -12,6 +12,8 @@ import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import com.springmvc.controller.ManagerController;
 import com.springmvc.domain.type;
+import com.springmvc.domain.EApplication;
+import com.springmvc.domain.Ex_manager;
 import com.springmvc.domain.Hospital;
 import com.springmvc.domain.HospitalMember;
 import com.springmvc.domain.Person;
@@ -208,6 +210,28 @@ public class PersonRepositoryImp implements  PersonRepository{
 					 hospitalMembers.getPersonBirth(), hospitalMembers.getPersonSex(), hospitalMembers.getPersonPhone());
 		}
 		
+	}
+    // 체험단 관리자가 로그인할 때 가져올 데이터
+	@Override
+	public Person getEM(String personId) {
+		String SQL = "select count(*) from Person where personId = ?";
+		Integer intNum = template.queryForObject(SQL, Integer.class, personId);
+		System.out.println(intNum);
+		Person ex_person  = null;
+		if(intNum != 0) {
+			SQL = "select * from Person where personId = ?";
+			ex_person= template.queryForObject(SQL, new Object[] {personId}, new PersonDBConnector());
+			return ex_person;
+		}
+		return null;
+	}
+	// 체험단 신청목록을 로그인할 때 가져올 데이터
+	@Override
+	public List<EApplication> getEA(String personId) {
+		List<EApplication> listOfEA = new ArrayList<EApplication>();
+		String SQL = "select * from EApllication where Mid = ?";
+		listOfEA = template.query(SQL, new Object[] {personId}, new EApplicationRowMapper());
+		return listOfEA;
 	}
 	
 

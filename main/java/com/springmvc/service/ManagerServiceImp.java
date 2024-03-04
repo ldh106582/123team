@@ -3,6 +3,7 @@ package com.springmvc.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.springmvc.domain.Ex_manager;
 import com.springmvc.domain.HospitalMember;
 import com.springmvc.domain.type;
 import com.springmvc.domain.ProductMember;
@@ -79,7 +80,21 @@ public class ManagerServiceImp implements ManagerService{
 		// TODO Auto-generated method stub
 		productMemberRepository.H_setAllMember(hospitalMember);
 	}
+	  // 체험단 manager 회원가입 하는 함수
+	@Override
+	public void addEx_Manager(Ex_manager ex_manager) {
+		// TODO Auto-generated method stub
+		productMemberRepository.addEx_Manager(ex_manager);
 
+	}
+	 // 전체 db에 데이터를 넣어주는 함수
+	@Override
+	public void setEx_AllMember(Ex_manager ex_manager) {
+		// TODO Auto-generated method stub
+		productMemberRepository.setEx_AllMember(ex_manager);
+	}
+
+	
 
 	
 }

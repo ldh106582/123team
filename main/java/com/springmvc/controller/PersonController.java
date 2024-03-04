@@ -15,6 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.support.SessionStatus;
+
+import com.springmvc.domain.EApplication;
+import com.springmvc.domain.Ex_manager;
 import com.springmvc.domain.Hospital;
 import com.springmvc.domain.HospitalMember;
 import com.springmvc.domain.Person;
@@ -131,6 +134,29 @@ public class PersonController {
          
          return "all_Hospital/hospitals";
       } 
+      else if("e".equals(type))
+      {
+    	  System.out.println("여기는 체험단 " + personId);
+          // 체험단 관리자가 로그인할 때 가져올 데이터
+    	  Person ex_person = personService.getEM(personId);
+    	  session.setAttribute("personId", ex_person);
+    	// 체험단 신청목록을 로그인할 때 가져올 데이터
+    	  List<EApplication> eApplication = personService.getEA(personId);
+    	  session.setAttribute("eApplication", eApplication);
+          // pet이름 정보를 가져옴 수정필요함 없애도 상관없는 함수
+          List<Pet> petName = personService.getPetName(person);
+          System.out.println("petName : " + petName);
+          session.setAttribute("petName", petName);
+
+          // pet 아이디 정보를 가져옴
+          List<Pet> petId = personService.getPetId(pet);
+          session.setAttribute("petId", petId);
+          
+          System.out.println("로그인 조회 성공");
+          
+          
+          return "redirect:/Fboards";
+      }
       else 
       {
 

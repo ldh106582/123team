@@ -27,7 +27,7 @@
                 </div>
                 
                 <div class="col row m-0 text-center justify-content-center">
-                    <a class="p-4  border border-dark col-5 m-1 bg-success text-white rounded" id="exprience">체험단관리자 회원가입</a>
+                    <a href="/123team/managerlogin/Member?type=e" class="p-4  border border-dark col-5 m-1 bg-success text-white rounded" id="exprience">체험단관리자 회원가입</a>
                     <a href="/123team/login/add?type=c" class="p-4  border border-dark col-5 m-1 rounded" id="customer">일반 회원가입</a>
                 </div>
             </div>

@@ -22,10 +22,7 @@
 </style>
 </head>
 <body>
-<%
-	String loginId = (String) session.getAttribute("personId");
-	request.setAttribute("loginId", loginId);
-%>
+
 	<nav class="navbar navbar-expand navbar-dark bg-success">
 		<div class="container">
 			<div class="navbar-header">
