@@ -7,7 +7,6 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
-
 import com.springmvc.domain.Order;
 import com.springmvc.domain.Person;
 import com.springmvc.domain.Product;

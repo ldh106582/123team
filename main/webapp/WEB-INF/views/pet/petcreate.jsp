@@ -152,5 +152,9 @@ document.getElementById('petVarity').addEventListener("click", function(){
             document.getElementById('reptiletype').style.display = "block";
         }
 });
+<<<<<<< HEAD
+
+=======
+>>>>>>> 8188671a50ff3db0dd77b7763abf02de62fb015a
 </script>
 </html>
