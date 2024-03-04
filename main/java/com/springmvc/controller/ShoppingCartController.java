@@ -67,6 +67,17 @@ public class ShoppingCartController {
 		// 장바구니에 있는 데이터를 가져옴
 		List<ShoppingCart> shoppingCart = shoppingCartService.readCart(personId);
 		
+		int totalPrice = 0;
+		int allprice = 0 + 2500;
+		for(int i = 0; i < shoppingCart.size(); i++) {
+			int amount = shoppingCart.get(i).getAmount();
+			int price = shoppingCart.get(i).getProductPrice();
+			totalPrice = amount * price;
+			allprice += totalPrice; 
+		}
+		System.out.println("allprice : " + allprice);
+		model.addAttribute("allprice", allprice);
+		
 		if(shoppingCart.isEmpty()) {
 			System.out.println("값이 존재하지 않습니다.");
 		return "all_product/shoppingcart";
@@ -116,6 +127,9 @@ public class ShoppingCartController {
 		shoppingCartService.setupdatecart(shoppingCart);
 		// db에서 값을 가져오는 함수
 		List<ShoppingCart> listOfCart = shoppingCartService.getupdatecart(productId);
+		
+
+		
 		model.addAttribute("listOfCart", listOfCart);
 		return "redirect:/products/readcart?personId=" + personId;
 	}

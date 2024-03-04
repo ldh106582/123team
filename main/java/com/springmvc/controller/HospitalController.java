@@ -1,5 +1,6 @@
 package com.springmvc.controller;
 
+import java.io.File;
 import java.util.List;
 
 import javax.security.auth.message.callback.PrivateKeyCallback.Request;
@@ -13,6 +14,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+
 import com.mysql.cj.Session;
 import com.springmvc.domain.Hospital;
 import com.springmvc.domain.HospitalBooking;
@@ -58,10 +61,23 @@ public class HospitalController {
 	}
 	
 	@PostMapping("/create")
-	public String hospitalcreate(@ModelAttribute("hospital")Hospital hospital,HttpSession session,Model model) 
+	public String hospitalcreate(@ModelAttribute("hospital")Hospital hospital, @RequestParam("h_image") MultipartFile h_image,
+								 HttpSession session,Model model, HttpServletRequest request) 
 	{
 		String personId = (String) session.getAttribute("personId");
 		hospital.setPersonId(personId);
+		
+		String imageName = h_image.getOriginalFilename();
+		String imagePath = request.getSession().getServletContext().getRealPath("/resources/images");
+		File  file = new File(imagePath, imageName);
+		
+		try{
+			h_image.transferTo(file);
+			hospital.setImage(imageName);
+		}catch (Exception e) {
+			System.out.println("파일을 입력하지 않았습니다." + e);
+		}
+		
 		hospitalService.addhospital(hospital);
 		return "redirect:/hospitals";
 	}

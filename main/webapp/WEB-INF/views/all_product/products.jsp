@@ -12,6 +12,7 @@
 <body>
 
 	<%@  include file="../module/headerdanger.jsp" %>
+	
     <div class="show-gird no-gutters">
         <img src="https://cdn.pet-friends.co.kr/resources/pc/img/background.png" alt="" style="position: absolute; width: 160;">
         <div class="row no-gutters">

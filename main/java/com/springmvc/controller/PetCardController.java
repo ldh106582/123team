@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -20,7 +19,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import com.springmvc.domain.Pet;
 import com.springmvc.domain.PetChart;
 import com.springmvc.domain.PetSurgery;
@@ -93,8 +91,10 @@ public class PetCardController {
 
 	// petcard 예방접종 create
 	@PostMapping("/petcard")
-	public String GetWeghitPetCard(HttpServletRequest request) {
-
+	public String GetWeghitPetCard(@RequestParam("petid") String petId, HttpServletRequest request) {
+		
+		System.out.println("petcard 도착");
+		
 		// 몸무게 객체
 		PetWeight petWeight = new PetWeight();
 
@@ -112,24 +112,23 @@ public class PetCardController {
 
 		// 몸무게의 값을 넣어줌
 
-		String petId = request.getParameter("petId");
 		String petWeightDateStr = request.getParameter("petWeightDate");
 		String petWeightStr = request.getParameter("petWeight");
-		String petWeightNum = request.getParameter("PetWeightNum");
-		System.out.println(petWeightNum);
+		System.out.println("petId : " + petId);
+		System.out.println("petWeightNum : " + petWeightStr);
+		System.out.println("petWeightDateStr : " + petWeightDateStr);
 
 		// 차트의 값을 넣어줌
 		String petChartstr = request.getParameter("petChart");
 		String petChartContent = request.getParameter("petChartContent");
 		String petChartDate = request.getParameter("petChartDate");
-		String petId_chart = request.getParameter("petId");
+		System.out.println("차트 : " + petId);
 
 		// 예방접종의 값을 넣어줌
 		String petVaccinationDate = request.getParameter("petVaccinationDate");
 		String petVaccinationstr = request.getParameter("petVaccination");
 		String petVaccinationCotent = request.getParameter("petVaccinationCotent");
-		String petId_Vaccination = request.getParameter("petId");
-
+		System.out.println("예방접종의 : " + petId);
 		/*
 		 * System.out.println(petVaccinationDate);
 		 * System.out.println(petVaccinationstr);
@@ -139,9 +138,8 @@ public class PetCardController {
 
 		// 수술 기록의 값을 넣어줌
 		String petSurgeryDate = request.getParameter("petSurgeryDate");
-		String petSurgeryName = request.getParameter("petSurgeryDate");
-		String petSurgeryContent = request.getParameter("petSurgeryName");
-		String pet_Surgery = request.getParameter("petId");
+		String petSurgeryName = request.getParameter("petSurgeryName");
+		String petSurgeryContent = request.getParameter("petSurgeryContent");
 
 		/*
 		 * System.out.println(petSurgeryDate); System.out.println(petSurgeryName);
@@ -161,6 +159,7 @@ public class PetCardController {
 
 		// 몸무게의 값을 넣어줌(조건문)
 		if (petId != null && petWeightDateStr != null && petWeightStr != null) {
+			System.out.println("petWeight : " + petWeightDateStr);
 			petWeight.setPetId(petId);
 			petWeight.setPetWeightDate(LocalDate.parse(petWeightDateStr));
 			petWeight.setPetWeight((petWeightStr));
@@ -168,19 +167,17 @@ public class PetCardController {
 			petCardService.setWeghitPetCard(petWeight);
 		}
 		// 차트의 값을 넣어줌(조건문)
-		if (petChartstr != null && petChartContent != null && petChartDate != null && petId_chart != null) {
+		if (petChartstr != null && petChartContent != null && petChartDate != null) {
 			petChart.setPetChart(petChartstr);
 			petChart.setPetChartContent(petChartContent);
 			petChart.setPetChartDate(LocalDate.parse(petChartDate));
-			petChart.setPetId(petId_chart);
-
+			petChart.setPetId(petId);
 			petCardService.setChartPetCard(petChart);
 		}
 		// 예방접종의 값을 넣어줌(조건문)
-		if (petVaccinationDate != null && petVaccinationstr != null && petVaccinationCotent != null
-				&& petId_Vaccination != null) {
+		if (petVaccinationDate != null && petVaccinationstr != null && petVaccinationCotent != null) {
 			petVaccination.setPetVaccinationDate(LocalDate.parse(petVaccinationDate));
-			petVaccination.setPetId(petId_Vaccination);
+			petVaccination.setPetId(petId);
 			petVaccination.setPetVaccination(petVaccinationstr);
 			petVaccination.setPetVaccinationCotent(petVaccinationCotent);
 
@@ -188,11 +185,11 @@ public class PetCardController {
 		}
 
 		// 수술 기록의 값을 넣어줌(조건문)
-		if (petSurgeryDate != null && petSurgeryName != null && petSurgeryContent != null && pet_Surgery != null) {
+		if (petSurgeryDate != null && petSurgeryName != null && petSurgeryContent != null) {
 			petSurgery.setPetSurgeryDate(LocalDate.parse(petSurgeryDate));
 			petSurgery.setPetSurgeryName(petSurgeryName);
 			petSurgery.setPetSurgeryContent(petSurgeryContent);
-			petSurgery.setPetId(pet_Surgery);
+			petSurgery.setPetId(petId);
 
 			petCardService.setPetSurgery(petSurgery);
 		}
@@ -202,19 +199,18 @@ public class PetCardController {
 			petSurgeryAfter.setPetSurgeryAfterDate(LocalDate.parse(petSurgeryDateAfter));
 			petSurgeryAfter.setPetSurgeryAfterContent(petSurgeryContentAfter);
 			petSurgeryAfter.setPetId(pet_SurgeryAfter);
-
+			petSurgeryAfter.setPetId(petId);
 			petCardService.setPetSurgeryAfter(petSurgeryAfter);
 		}
 
 		if (petId == null && petWeightDateStr == null && petWeightStr == null && petChartstr == null
-				&& petChartContent == null && petChartDate == null && petId_chart == null && petVaccinationDate == null
-				&& petVaccinationstr == null && petVaccinationCotent == null && petId_Vaccination == null
-				&& petSurgeryDate == null && petSurgeryName == null && petSurgeryContent == null && pet_Surgery == null
+				&& petChartContent == null && petChartDate == null && petVaccinationDate == null
+				&& petVaccinationstr == null && petVaccinationCotent == null && petSurgeryDate == null && petSurgeryName == null && petSurgeryContent == null 
 				&& petSurgeryDateAfter == null && petSurgeryContentAfter == null && pet_SurgeryAfter == null) {
 			System.out.println("넣어줄 값이 없습니다.");
 		}
 
-		return "redirect:/login/petcard";
+		return "redirect:/login/petcard?petid=" + petId;
 	}
 
 	// 동물 몸무게를 제거하는 함수
@@ -315,8 +311,6 @@ public class PetCardController {
 		return "redirect:/login/petcard?petid=" + request.getParameter("petId");
 	}
 
-	
-	
 	@GetMapping("/petcardupdate")
 	public String GetUpdatePetCard(@RequestParam("petId") String petId, HttpServletRequest request, Model model) {
 		

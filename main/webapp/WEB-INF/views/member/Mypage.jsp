@@ -13,7 +13,7 @@
 </head>
 <body>
 
-	<%@ include file="../module/memberheader.jsp" %>
+	<%@ include file="../module/headerdark.jsp" %>
 
 	<div id="wrap" class="wrap naverid ">
 		<header class="header" role="banner">

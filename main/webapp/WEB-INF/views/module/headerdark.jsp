@@ -24,6 +24,7 @@
 <body>
 <%
 	String loginId = (String) session.getAttribute("personId");
+	System.out.println("헤더 : " + loginId);
 	request.setAttribute("loginId", loginId);
 %>
 	<nav class="navbar navbar-expand navbar-dark bg-dark">

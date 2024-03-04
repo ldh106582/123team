@@ -64,7 +64,7 @@
 
                         <div class="title_link">
                             <a href="" ><span class="text">추가하기</span></a>
-                            <a href="" ><span class="text">수정하기</span></a>
+                            <a href="/123team/pet/petread?petId=${petid.petId}" ><span class="text">수정하기</span></a>
                         </div>  
 
 	                </div>
@@ -80,7 +80,7 @@
                                 <c:choose>
 	                                <c:when test="${petid.getPetImage() == null }">
 	                                    <div class="myphoto">
-	                                        <img src="https://static.nid.naver.com/images/web/user/default.png" width="56" height="56" alt="내 프로필 이미지">
+	                                        <img src="https://static.nid.naver.com/images/web/user/default.png" width="100" height="56" alt="내 프로필 이미지">
 	                                    </div>
                                     </c:when>
                                    <c:otherwise>
@@ -131,16 +131,16 @@
                                          <p class="mt-0"> 몸무게 : ${petcard.petWeight}</p>
                                          <input class="m-2" id="editName0" type="text" name="petChart;" style="display: none;"/> 
                                          <div class="update">
-                                             <a  id="Before0" onclick="toggleDisplay('Before0', 'After0','editDateField0', 'editName0', 'editContentField0')" href="#" class="col-2 m-1 p-1 border text-white btn btn-success">수정하기</a>
-                                             <a id="After0" onclick="toggleDisplay('Before0', 'After0','editDateField0', 'editName0', 'editContentField0')"  href="${pageContext.request.contextPath}/login/deletetPetChart?petId=${petid.petId}&petChartNum=${petcard.petWeightNum}"  class="col-2 m-1 p-1 border text-white btn btn-success" style="display: none;">수정완료</a>
+                                             <a id="Before0" onclick="toggleDisplay('Before0', 'After0','editDateField0', 'editName0', 'editContentField0')" href="${pageContext.request.contextPath}/login/petcardupdate?petId=${petid.petId}&petWeightNum=${petcard.petWeightNum}" class="col-2 m-1 p-1 border text-white btn btn-success">수정하기</a>
+                                             <a id="After0" onclick="toggleDisplay('Before0', 'After0','editDateField0', 'editName0', 'editContentField0')"  href="${pageContext.request.contextPath}/login/deletetPetChart?petId=${petid.petId}&petWeightNum=${petcard.petWeightNum}"  class="col-2 m-1 p-1 border text-white btn btn-success" style="display: none;">수정완료</a>
                                          </div>
                                          <div class="col-sm-1" style="position: absolute; top: 45%; transform: translateX(980%);">
-                                             <a href="${pageContext.request.contextPath}/login/deletetPetChart?petId=${petid.petId}&petChartNum=${petcard.petWeightNum}" class="p-3 border text-secondary" ><i class="fa-solid fa-trash-can"></i></a>
+                                             <a href="${pageContext.request.contextPath}/login/deleteWeghit?petId=${petid.petId}&petWeightNum=${petcard.petWeightNum}" class="p-3 border text-secondary" ><i class="fa-solid fa-trash-can"></i></a>
                                          </div>  
                                      </div>
                                    </c:forEach>
-                                   <form action="${pageContext.request.contextPath}/login/petcard" method="post">
-                                       <input type="hidden" name="petId" value="${petid.petId}" />
+                                   <form action="${pageContext.request.contextPath}/login/petcard?petid=${petid.petId}" method="post">
+	                                <input type="hidden" name="petId" value="petid"/>      
 	                                       <p class="m-2"> 일 자  : <input type="date" name="petWeightDate" /></p>
 	                                       <p class="m-2"> 몸무게 : <input type="text" name="petWeight"/></p>
                                        <input class="bg-warning rounded m-2" type="submit" value="몸무게기록" />
@@ -180,7 +180,7 @@
                                                         <input class="m-2" id="editContentField2" type="text" name="petChartContent;" style="display: none;"/>
                                                             
                                                         <div class="update">
-                                                            <a  id="Before2" onclick="toggleDisplay('Before2', 'After2','editDateField2', 'editName2', 'editContentField2')" href="#" class="col-2 m-1 p-1 border text-white btn btn-success">수정하기</a>
+                                                            <a id="Before2" onclick="toggleDisplay('Before2', 'After2','editDateField2', 'editName2', 'editContentField2')" href="${pageContext.request.contextPath}/login/petcardupdate?petid=${petid.petId}&petChartNum=${petcard.petChartNum}" class="col-2 m-1 p-1 border text-white btn btn-success">수정하기</a>
                                                             <a id="After2" onclick="toggleDisplay('Before2', 'After2','editDateField2', 'editName2', 'editContentField2')"  href="${pageContext.request.contextPath}/login/deletetPetChart?petId=${petid.petId}&petChartNum=${petcard.petChartNum}"  class="col-2 m-1 p-1 border text-white btn btn-success" style="display: none;">수정완료</a>
                                                         </div>
                                                         <div class="col-sm-1" style="position: absolute; top: 45%; transform: translateX(980%);">
@@ -188,8 +188,8 @@
                                                         </div>  
                                                     </div>
                                                 </c:forEach>
-                                                <form action="${pageContext.request.contextPath}/login/petcard" method="post">
-                                                    <input type="hidden" name="petId" value="${petid.petId}" />
+                                                 <form action="${pageContext.request.contextPath}/login/petcard?petid=${petid.petId}" method="post">
+	                                			 <input type="hidden" name="petId" value="petid"/>   
                                                     <p class="m-2"> 진료일자 : <input type="date" name="petChartDate" /></p>
                                                     <p class="m-2"> 진료명 : <input type="text" name="petChart"/></p>
                                                     <p class="m-2"> 진료내용 : <input type="text" name="petChartContent" placeholder="진료 내용을 입력해주세요"/></p>
@@ -212,7 +212,7 @@
                                                         <p> 예방접종내용 : ${petcard.petVaccinationCotent}
                                                             <input class="m-2" id="editContentField3" type="text" name="petVaccinationCotent" style="display: none;"/>
                                                         <div class="update">
-                                                            <a  id="Before3" onclick="toggleDisplay('Before3', 'After3','editDateField3', 'editName3', 'editContentField3')" href="#" class="col-2 m-1 p-1 border text-white btn btn-success">수정하기</a>
+                                                            <a  id="Before3" onclick="toggleDisplay('Before3', 'After3','editDateField3', 'editName3', 'editContentField3')" href="${pageContext.request.contextPath}/login/petcardupdate?petId=${petid.petId}&petVaccinationNum=${petcard.petVaccinationNum}" class="col-2 m-1 p-1 border text-white btn btn-success">수정하기</a>
                                                             <a id="After3" onclick="toggleDisplay('Before3', 'After3','editDateField3', 'editName3', 'editContentField3')" href="${pageContext.request.contextPath}/login/deleteVaccination?petId=${petid.petId}&petVaccinationNum=${petcard.petVaccinationNum}" class="col-2 m-1 p-1 border text-white btn btn-success" style="display: none;">수정완료</a>
                                                         </div>
                                                         <div class="col-sm-1" style="position: absolute; top: 45%; transform: translateX(950%);">
@@ -220,8 +220,8 @@
                                                         </div>
                                                     </div>
                                                 </c:forEach>
-                                                <form action="${pageContext.request.contextPath}/login/petcard" method="post">
-                                                    <input type="hidden" name="petId" value="${petid.petId}" />
+                                                 <form action="${pageContext.request.contextPath}/login/petcard?petid=${petid.petId}" method="post">
+	                          				     <input type="hidden" name="petId" value="petid"/>   
                                                     <p class="m-2"> 예방접종일자 : <input type="date" name="petVaccinationDate"/></p> 
                                                     <p class="m-2"> 예방접종명: <input type="text" name="petVaccination"/></p>
                                                     <p class="m-2"> 예방접종내용: <input type="text" name="petVaccinationCotent" placeholder="특이사항을 입력해주세요"/></p>
@@ -244,7 +244,7 @@
                                                         <p> 수술내용 : ${petcard.petSurgeryContent}</p>
                                                         <input class="m-2" id="editContentField4" type="text" name="PetSurgeryContent" style="display: none;"/>       
                                                         <div class="update">
-                                                            <a id="Before4" onclick="toggleDisplay('Before4', 'After4','editDateField4', 'editName4', 'editContentField4')"  href="#" class="col-2 m-1 p-1 border text-white btn btn-success">수정하기</a>
+                                                            <a id="Before4" onclick="toggleDisplay('Before4', 'After4','editDateField4', 'editName4', 'editContentField4')"  href="${pageContext.request.contextPath}/login/petcardupdate?petId=${petid.petId}&petSurgeryNum=${petcard.petSurgeryNum}" class="col-2 m-1 p-1 border text-white btn btn-success">수정하기</a>
                                                             <a id="After4" onclick="toggleDisplay('Before4', 'After4','editDateField4', 'editName4', 'editContentField4')"  href="${pageContext.request.contextPath}/login/deletetSurgery?petId=${petid.petId}&petSurgeryNum=${petcard.petSurgeryNum}" class="col-2 m-1 p-1 border text-white btn btn-success" style="display: none;">수정완료</a>
                                                         </div>
                                                         <div class="col-sm-1" style="position: absolute; top: 45%; transform: translateX(980%);">
@@ -252,8 +252,8 @@
                                                         </div>
                                                     </div>
                                                 </c:forEach>
-                                                <form action="${pageContext.request.contextPath}/login/petcard" method="post">
-                                                    <input type="hidden" name="petId" value="${petid.petId}" />
+												<form action="${pageContext.request.contextPath}/login/petcard?petid=${petid.petId}" method="post">
+											    <input type="hidden" name="petId" value="petid"/>   
                                                     <p class="m-2"> 수술일자 : <input type="date" name="petSurgeryDate"></p>
                                                     <p class="m-2"> 수술명 : <input type="text" name="petSurgeryName"></p>
                                                     <p class="m-2"> 수술내용: <input type="text" name="petSurgeryContent" placeholder="수술 중 특이사항을 입력해주세요"></p>
@@ -275,7 +275,7 @@
                                                         <input class="m-2" id="editContentField5" type="text" name="petSurgeryContentAfter" style="display: none;"/>
                                                         <div class="update">
 
-                                                            <a  id="Before5" onclick="toggleDisplay('Before5', 'After5','editDateField5', 'editContentField5')"  href="#" class="col-2 m-1 p-1 border text-white btn btn-success">수정하기</a>
+                                                            <a  id="Before5" onclick="toggleDisplay('Before5', 'After5','editDateField5', 'editContentField5')"  href="${pageContext.request.contextPath}/login/petcardupdate?petId=${petid.petId}&petSurgeryAfterNum=${petcard.petSurgeryAfterNum}" class="col-2 m-1 p-1 border text-white btn btn-success">수정하기</a>
                                                             <a id="After5" onclick="toggleDisplay('Before5', 'After5','editDateField5', 'editContentField5')"  href="${pageContext.request.contextPath}/login/deletetSurgeryAfter?petId=${petid.petId}&petSurgeryAfterNum=${petcard.petSurgeryAfterNum}" class="col-2 m-1 p-1 border text-white btn btn-success" style="display: none;">수정완료</a>
                                                         </div>
                                                         <div class="col-sm-1" style="position: absolute; top: 45%; transform: translateX(980%);">
@@ -283,8 +283,8 @@
                                                         </div>
                                                     </div>
                                                 </c:forEach>
-                                                <form action="${pageContext.request.contextPath}/login/petcard" method="post">
-                                                    <input type="hidden" name="petId" value="${petid.petId}" />
+                                                <form action="${pageContext.request.contextPath}/login/petcard?petid=${petid.petId}" method="post">
+	                               			    <input type="hidden" name="petId" value="petid"/>   
                                                     <p class="m-2"> 수술 후 기록일자 : <input type="date" name="petSurgeryDateAfter"></p>
                                                     <p class="m-2"> 수술 후 진료내용 :  <input type="text" name="petSurgeryContentAfter" placeholder="수술 후 진료 사항을 작성해주세요"></p>
                                                     <input class="bg-warning rounded" type="submit" value="입원 기록 제출" />

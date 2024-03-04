@@ -45,9 +45,10 @@ public class PetRepositoryImp implements PetRepository{
 	// pet 업데이트 해줌
 	@Override
 	public void SetUpdatePet(Pet updatepet) {
+		System.out.println(updatepet.getPetImage());
 		if(updatepet.getPetId() != null) {
-		String SQL = "update Pet set petId=?, petName=?, petType=?, petVarity=?, petSex=?, petBirth=?, personId=?, petImage=?";
-		template.update(SQL, updatepet.getPetId(), updatepet.getPetName(), updatepet.getPetType(), updatepet.getPetVarity(), updatepet.getPetSex(), updatepet.getPersonId(), updatepet.getPetImage());
+		String SQL = "update Pet set petName=?, petVarity=?, petBirth=?, petImage=? where petId=?";
+		template.update(SQL, updatepet.getPetName(), updatepet.getPetVarity(), updatepet.getPetBirth(), updatepet.getPetImage(), updatepet.getPetId());
 		}else {
 			System.out.println("pet 아이디가 없습니다.");
 		}

@@ -76,16 +76,47 @@ public class PetController
 	
 	// pet update 로 이동하기 
 	@GetMapping("/petread")
-	public String GetUpdatePet(@RequestParam("petId") String pet, Model model) {
+	public String GetUpdatePet(@RequestParam("petId") String pet, Model model, 
+							   @ModelAttribute("pet") Pet updatepet, HttpServletRequest request) {
 		System.out.println("petupodate GET 도착");
 		Pet petId = petService.getUpdatePet(pet);
 		model.addAttribute("petId", petId);
+		
+		HttpSession session = request.getSession();
+		Person id = (Person)session.getAttribute("id");
+		session.setAttribute("id", id);
 		return "/pet/petupdate";
 	}
+	
 	//pet update 값 받아오기
-	@PostMapping("/petupdate")
-	public String SetUpdatePet(@ModelAttribute("pet") Pet updatepet, Model model, HttpSession session) {
+	@PostMapping("/petread")
+	public String SetUpdatePet(@ModelAttribute("pet") Pet updatepet, Model model, 
+							   @RequestParam("personId") String personId, HttpServletRequest request,
+							   @RequestParam("pet_Image") MultipartFile pet_Image) 
+	{
 		System.out.println("petupodate Post 도착");
+		System.out.println(updatepet.getPetId());
+		String petId = updatepet.getPetId();
+		System.out.println(updatepet.getPetName());
+		System.out.println(updatepet.getPetType());
+		System.out.println(updatepet.getPetVarity());
+		System.out.println(updatepet.getPetSex());
+		System.out.println(updatepet.getPetBirth());
+		System.out.println(personId);
+
+		System.out.println("pet_Image : " + pet_Image);
+	
+		String imageName = pet_Image.getOriginalFilename();
+		System.out.println(imageName);
+		String imagePath = request.getSession().getServletContext().getRealPath("/resources/images");
+		File file = new File(imagePath, imageName);
+		
+		try {
+			pet_Image.transferTo(file);
+			updatepet.setPetImage(imageName);
+		}catch (Exception e) {
+			System.out.println("이미지를 업로드 하지 않았습니다." + e);
+		}
 		
 		// update로 값을 넣어줌
 		petService.SetUpdatePet(updatepet);
@@ -95,7 +126,7 @@ public class PetController
 		Pet pet = petService.getUpdatePet(updatepet.getPetId());
 		model.addAttribute("pet", pet);
 		
-		return "./member/Mypage";
+		return "redirect:/login/petcard?petid="+petId;
 	}
 	
 	// pet delete

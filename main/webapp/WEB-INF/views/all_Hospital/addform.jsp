@@ -26,7 +26,7 @@
 		<p>
 		주차정보 : <form:input path="parking"/>
 		<p>
-		사진 : <form:input path="image"/>
+		사진 : <input type="file" name="h_image"/>
 		<p>
 		<input type="submit" value="병원추가">
 	</form:form>

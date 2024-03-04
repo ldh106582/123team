@@ -91,7 +91,7 @@
 				
 				<tr>
 					<td colspan="4">전체 금액 (배송비2,500원 + 총 금액)</td>
-	      			<td id="subtotal" class="border-left" colspan="3"> 2500원 <span> (배송비 포함)</span></td>
+	      			<td id="subtotal" class="border-left" colspan="3"> <c:out value="${allprice}" />원  <span>(2500원 배송비 포함)</span></td>
 				</tr>
 				<tr>
 					<td colspan="4">
