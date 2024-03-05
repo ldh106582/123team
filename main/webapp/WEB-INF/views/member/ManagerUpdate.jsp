@@ -127,6 +127,114 @@
 			</div>
 			<hr>
 			</c:when>
+			
+			<c:when test="${type eq 'e' }" >
+			 <div class="jumbotron">
+			    		<!-- 체험단 관리자 update -->
+		        <div class="container">
+		            <legend id="id"><h2>체험단 담당자님 회원수정 페이지 입니다.</h2></legend>
+		        </div>
+		    </div>
+		    
+		    <div class="container">
+			<form:form modelAttribute="ex_manager" action="/123team/login/update" method="post" enctype="Multipart/form-data">
+	    	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+			<fieldset>
+			
+				<div class="form-group row">
+			   		<label class="col-sm-2 control-label"> 아이디  </label>
+			   		<div class="col-5"> ${ex_person.personId}
+					    <form:hidden path="personId" value="${ex_person.personId}" class="rounded"/>
+					</div>
+				</div>
+				
+				<div class="form-group row">
+					<label class="col-sm-2 control-label"> 비밀번호 </label> 
+					<div class="col-4">
+						<form:input class="border border-success rounded" type="password" path="personPw" value="${ex_person.personPw}"/>
+					</div>
+				</div>
+				
+				<div class="form-group row"> 
+					<label class="col-sm-2 control-label"> 이메일 </label> 
+					<div class="col-4">
+						<form:input class="border border-success rounded" type="email" path="personEmail" value="${ex_person.personEmail}"/>
+					</div>
+				</div>
+				
+				<div class="form-group row"> 
+					<label class="col-sm-2 control-label"> 주소 </label> 
+					<div class="col-4">
+						<form:input class="border border-success rounded" type="text" path="personAddress" value="${ex_person.personAddress}"/>
+					</div>
+				</div>
+				
+				<div class="form-group row">
+					<label class="col-sm-2 control-label"> 이름 </label> 
+					<div class="col-4">
+						<form:input class="border border-success rounded" type="text" path="personName" value="${ex_person.personName}"/>
+					</div>
+				</div>
+	
+				<div class="form-group row"> 
+					<label class="col-sm-2 control-label"> 개인번호 </label> 
+					<div class="col-4">
+						<form:input class="border border-success rounded" type="text" path="personPhone"  value="${ex_person.personPhone}" />
+					</div>
+				</div>
+				
+				<div class="form-group row"> 
+					<label class="col-sm-2 control-label"> 생년월일 </label> 
+					<div class="col-4">
+						<form:input class="border border-success rounded" type="date" path="personBirth"  value=" ${ex_person.personBirth}" />
+					</div>
+				</div>
+				
+				<div class="form-group row"> 
+					<label class="col-sm-2 control-label"> 성별 </label> 
+					<div class="col-4">
+						<form:input class="border border-success rounded" path="personSex"  value="${ex_person.personSex}" />
+					</div>
+				</div>
+				
+				<div class="form-group row"> 
+					<label class="col-sm-2 control-label"> 체험단명 </label> 
+					<div class="col-4">
+						<form:input class="border border-success rounded" path="ex_Name" value="${ex_Manager.ex_Name}" />
+					</div>
+				</div>
+				
+				<div class="form-group row"> 
+					<label class="col-sm-2 control-label"> 체험단주소 </label> 
+					<div class="col-4">
+						<form:input class="border border-success rounded" path="ex_Address" value="${ex_Manager.ex_Address}" />
+					</div>
+				</div>
+				
+				<div class="form-group row">
+					<label class="col-sm-2 control-label"> 체험단번호 </label>
+					<div class="col-4">
+						<form:input class="border border-success rounded" type="text" path="ex_Phone" value="${ex_Manager.ex_Phone}" />
+					</div>
+				</div>
+				<div class="form-group row">
+					<label class="col-sm-2 control-label"> 사업자등록증 </label>
+					<div class="col-4">
+						<input class="border border-success rounded" type="file" name="s_file" />
+					</div>
+				</div>
+				
+				
+				<div class="form-group row">
+					<div class="col-sm-offset-2 col-sm-10">
+						<input type="submit" class="btn btn-primary" value="회원정보수정"/>
+					</div>
+				</div>
+			</fieldset>
+			</form:form>
+			</div>
+			</c:when>
+
 	
 		<c:otherwise>
 			    <div class="jumbotron">

@@ -186,7 +186,9 @@ public class HospitalController {
 //	 모든 신청 보기
 	@GetMapping("manageapps")
 	public String manageapps(Model model,HttpSession session,HttpServletRequest request) {
-		 String personId = (String) session.getAttribute("personId");
+		System.out.println("======================="); 
+		String personId = (String) session.getAttribute("personId");
+		System.out.println("=======================1");
 		 List<HospitalBooking> list = bookingService.getPermisionList(personId);
 		 model.addAttribute("applists",list);
 		 if(list.isEmpty()) {
