@@ -53,9 +53,12 @@
 
 	<%@ include file="../module/headersuccess.jsp" %>
 	
-	<%
+<%
 		request.setAttribute("loginId", session.getAttribute("personId"));
+		request.setAttribute("type", session.getAttribute("type"));
+		request.setAttribute("checktype", "e");
 	%>
+
  			
 	<div class="container my-3">
         <h1>공지 상세 페이지</h1>
@@ -78,7 +81,7 @@
         <div class="list-group">
         	<c:if test="${loginId != null}">
 			    <h5 class="mb-3">댓글</h5>
-			    <form action="ENboard" method="POST" class="mb-3">
+			    <form action="Nboard" method="POST" class="mb-3">
 			        <input type="hidden" name="boardId" value="${board.boardId}">
 			        <div class="form-group">
 			            <textarea class="form-control" name="comment" rows="3"></textarea>

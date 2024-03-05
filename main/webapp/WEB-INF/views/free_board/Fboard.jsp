@@ -48,11 +48,11 @@
 </head>
 <body>		
 		
-	<%@ include file="../module/headersuccess.jsp" %>
-	
 	<%
 		request.setAttribute("loginId", session.getAttribute("personId"));
-	%>
+	%>	
+	<%@ include file="../module/headersuccess.jsp" %>
+
 
 		 
     <div class="container my-3">

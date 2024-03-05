@@ -3,7 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="java.util.List"%>
 <%@ page import="java.sql.*" %>
-<!-- css -->
 <html>
 <head>
 <!--  부트스트랩 -->
@@ -12,7 +11,7 @@
 <script src="https://kit.fontawesome.com/8759f784cf.js" crossorigin="anonymous"></script>
 <!-- css -->
 <link href="<c:url value="/resources/css/index.css"/>" rel="stylesheet">
-<!-- 이미지 -->
+
 <link href="<c:url value="/resources/pet/"/>" rel="stylesheet">
 <style type="text/css">
 	*{

@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import org.springframework.jdbc.core.RowMapper;
+
+import com.springmvc.domain.Ex_manager;
 import com.springmvc.domain.HospitalMember;
 import com.springmvc.domain.type;
 import com.springmvc.domain.ProductMember;
@@ -165,4 +167,24 @@ public class ManagerRepositoryImpl implements ManagerRepository {
 	            hospitalMember.getPersonName(), hospitalMember.getPersonBirth(), hospitalMember.getPersonSex(), hospitalMember.getPersonPhone(),hospitalMember.getType());
 	   }
 
+
+	   // 체험단 manager 회원가입 하는 함수
+	@Override
+	public void addEx_Manager(Ex_manager ex_manager) {
+		 String SQL = "insert into Ex_Manager values(?,?,?,?,?,?,?)";
+		 template.update(SQL,ex_manager.getPersonId(), ex_manager.getPersonPw(), ex_manager.getS_image(), ex_manager.getEx_Name(), ex_manager.getEx_Phone(),
+				 ex_manager.getEx_Address(), ex_manager.getType());
+		
+	}
+	 // 전체 db에 데이터를 넣어주는 함수
+	@Override
+	public void setEx_AllMember(Ex_manager ex_manager) {
+		 String SQL = "insert into Person values(?,?,?,?,?,?,?,?,?)";
+		 template.update(SQL,ex_manager.getPersonId(), ex_manager.getPersonPw(), ex_manager.getPersonEmail(), ex_manager.getPersonAddress(), ex_manager.getPersonName(),
+				 ex_manager.getPersonBirth(), ex_manager.getPersonSex(), ex_manager.getPersonPhone(), ex_manager.getType());
+	}
+
+
+	   
+	   
 }

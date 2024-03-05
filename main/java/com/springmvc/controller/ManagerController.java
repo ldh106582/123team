@@ -5,15 +5,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import com.springmvc.domain.Ex_manager;
 import com.springmvc.domain.HospitalMember;
-import com.springmvc.domain.type;
 import com.springmvc.domain.ProductMember;
 import com.springmvc.service.ManagerService;
 
@@ -28,6 +27,7 @@ public class ManagerController
 	@GetMapping("/Member")
 	public String showMemberPage(@ModelAttribute("productMember") ProductMember productMember, 
 								 @ModelAttribute("hospitalMember") HospitalMember hospitalMember,
+								 @ModelAttribute("ex_member") Ex_manager ex_manager,
 								 @RequestParam("type") String type, HttpServletRequest request) {
 	
 	System.out.println("Member 페이지 요청 도착 : " + type);
@@ -42,7 +42,9 @@ public class ManagerController
 		session.setAttribute("type", type);
 		return "/member/Hospitalmanager";
 		
-	} else {
+	} else if(type == "e" || "e".equals(type)) {
+		return "/member/ex_manager";
+	}else {
 		return "/member/Allmember";
 	}
 }
@@ -51,8 +53,9 @@ public class ManagerController
 			@PostMapping("/productmanager")
 			public String GetaddProductManager(@ModelAttribute("productMember") ProductMember productMember,
 											   @ModelAttribute("hospitalMember") HospitalMember hospitalMember,
+											   @ModelAttribute("ex_member") Ex_manager ex_manager,
 											   @RequestParam("s_file") MultipartFile s_file,
-											   @RequestParam("h_file") MultipartFile h_file,
+											   @RequestParam(value="h_file", required=false) MultipartFile h_file,
 												HttpServletRequest request) 
 			{	
 				System.out.println("post도착");
@@ -139,15 +142,40 @@ public class ManagerController
 				    // 전체 db에 데이터를 넣어주는 함수
 				    managerService.H_setAllMember(hospitalMember);
 				    
-				  
-				    System.out.println("여긴 회원가입 로그인");
+				    return "redirect:/login";
 				    
-				    session.invalidate();
+				//체험단 매니저 회원가입하는 함수
+				}else if("e".equals(type)){
+					ex_manager.setType(type);
+					
+					System.out.println("여기 체험단 타입 : " + type);
+					String s_imageName = s_file.getOriginalFilename();
+					String s_imagePath  = request.getSession().getServletContext().getRealPath("/resources/images");
+					File saveimage = new File(s_imagePath, s_imageName);
+						
+					
+				    try {
+				    	s_file.transferTo(saveimage);
+				    	ex_manager.setS_image(s_imageName);
+				    } catch (Exception e) {
+				    	throw new RuntimeException("사업자등록증 업로드를 실패했습니다.", e);
+				    }
+				    
+				    System.out.println("사옵자 끝");
+				    
+				    // 체험단 manager 회원가입 하는 함수
+				    managerService.addEx_Manager(ex_manager);
+				    
+				    // 전체 db에 데이터를 넣어주는 함수
+				    managerService.setEx_AllMember(ex_manager);
+				    
 				    
 					return "redirect:/login";
 					
 				}else {
-				
+				    session.invalidate();
+					
+					 System.out.println("여긴 회원가입 로그인");
 				return "redirect:/login";
 				}
 			}

@@ -25,6 +25,7 @@
 	<%
 		request.setAttribute("loginId", session.getAttribute("personId"));
 		request.setAttribute("type", session.getAttribute("type"));
+		
 	%>
 	<nav class="navbar navbar-expand navbar-dark bg-dark">
 		<div class="container">
@@ -50,7 +51,7 @@
 						</c:when>
 						<c:otherwise>
 							<li class="nav-item">
-								<a class="nav-link" href="/123team/login/mypage">마이페이지</a>
+								<a class="nav-link" href="/123team/login/mypage"><img width="24" height="24" src="https://img.icons8.com/external-filled-outline-icons-maxicons/24/external-member-borrow-book-filled-outline-filled-outline-icons-maxicons.png" alt="external-member-borrow-book-filled-outline-filled-outline-icons-maxicons"/>마이페이지</a>
 							</li>
 						</c:otherwise>
 					</c:choose>

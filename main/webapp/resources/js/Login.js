@@ -1,37 +1,10 @@
-document.addEventListener("DOMContentLoaded", function(){
-    var allmember = document.getElementById("allmember");
-    var managerlogin = document.getElementById("managerlogin");
-  	
-  	if(allmember){
-  	
-  	  allmember.addEventListener("click", function(){
-      alert("관리자 회원가입 페이지로 이동합니다.");
-      });
- 	}
- 	
- 	if(managerlogin){
- 	managerlogin.addEventListener("click", function(){
-		alert("관리자 로그인 페이지로 이동합니다.");
-		});			
-	}
-});
 
-window.onload = function() {
-    var form = document.querySelector("form.form-signin");
-	
-    form.addEventListener("submit", function(e){
-        var id = document.getElementById("id").value;
-        var pw = document.getElementById("pw").value;
-        if(id === "" || pw === ""){
-            alert("아이디와 비밀번호를 입력해주세요.");
-            e.preventDefault();
+    document.getElementById("login").addEventListener("click", function(event) {
+        var username = document.getElementById("id").value;
+        var password = document.getElementById("pw").value;
+        
+        if (username === "" || password === "") {
+            alert("아이디와 비밀번호를 모두 입력해주세요.");
+            event.preventDefault(); // 폼 제출을 중단합니다.
         }
     });
-	
-    var error = "아이디와 비밀번호를 확인해주세요";
-    var firstLoad = true;
-    if(error && !firstLoad){
-        alert(error);
-    }
-    firstLoad = false;
-};

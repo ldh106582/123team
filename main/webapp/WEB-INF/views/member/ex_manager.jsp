@@ -1,26 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ page import="com.springmvc.domain.*" %>
-<%@ page import="com.springmvc.controller.*" %>
 <!DOCTYPE html>
 <html>
 <head>
-<!-- 부트스트랩 -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <meta charset="UTF-8">
-<title>상품관리자 회원가입 페이지입니다.</title>
+<title>체험단 관리자 회원가입 페이지 입니다.</title>
 </head>
 <body>
-
 	<%@  include file="../module/headerdark.jsp" %>
 
     <div class="jumbotron">
         <div class="container">
-            <legend id="id"><h2>상품관리자 회원가입 페이지입니다.</h2></legend>
+            <legend id="id"><h2>체험단 관리자 회원가입 페이지입니다.</h2></legend>
         </div>
     </div>
     <div class="container">
-     <form:form modelAttribute="productMember" action="./productmanager?${ _csrf.parameterName }=${ _csrf.token }" method="post" enctype="multipart/form-data">
+     <form:form modelAttribute="ex_member" action="./productmanager?${ _csrf.parameterName }=${ _csrf.token }" method="post" enctype="multipart/form-data">
      <fieldset>
         <div class="form-group row">
             <label class="col-sm-2 control-label"> 아이디 </label>  
@@ -69,22 +64,22 @@
         </div>
         
         <div class="form-group row">
-            <label class="col-sm-2 control-label"> 회사명  </label>  
+            <label class="col-sm-2 control-label"> 체험단 명  </label>  
             <div class="col-4">
-                <form:input type="text" path="companyName" class="control-label"/>
+                <form:input type="text" path="ex_Name" class="control-label"/>
             </div>
         </div>
 
         <div class="form-group row">
-              <label class="col-sm-2 control-label"> 회사주소 </label>  
+              <label class="col-sm-2 control-label"> 체험단주소 </label>  
             <div class="col-4">
-                <form:input type="text" path="companyAddress" class="control-label"/>
+                <form:input type="text" path="ex_Address" class="control-label"/>
             </div>
         </div>
         <div class="form-group row">
-            <label class="col-sm-2 control-label"> 회사번호 </label>  
+            <label class="col-sm-2 control-label"> 체험단번호 </label>  
             <div class="col-4">
-                <form:input type="text" path="companyPhone" class="control-label"/>
+                <form:input type="text" path="ex_Phone" class="control-label"/>
             </div>
         </div>
         <div class="form-group row">
@@ -114,10 +109,7 @@
     </form:form>
     
     <%@ include file="../module/footer.jsp" %>
-
 </body>
-<!-- js -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
 function idDuplicateCheck(event){
 	 event.preventDefault();

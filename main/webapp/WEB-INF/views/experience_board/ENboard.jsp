@@ -113,6 +113,8 @@
 	
 	<%
 		request.setAttribute("loginId", session.getAttribute("personId"));
+		request.setAttribute("type", session.getAttribute("type"));
+		request.setAttribute("checktype", "e");
 	%>
  			
 	<div class="container my-3">
@@ -129,9 +131,9 @@
                 <div class="col-md-12" style="height: 200px;">
                     <p class="">${board.context}</p>
                 </div>
-                <c:if test="${loginId != null}">
+                <c:if test="${loginId != null && type!=checktype}">
 	                <div id="container">
-						<button id="delp" onclick="bookform('${board.title}','${board.animal}','${board.experience}','${board.personId}')">체험신청</button>
+						<button id="delp" onclick="bookform('${board.title}','${board.animal}','${board.experience}','${board.personId}')" class="btn btn-primary">체험신청</button>
 					</div>			
 				</c:if>
                 <hr>
@@ -141,11 +143,6 @@
                 </c:if>
             </div>
         </div>
-        <c:if test="${loginId != null}">
-			<div id="container">
-				<button id="delp" onclick="bookform('${board.title}','${board.animal}','${board.experience}','${board.personId}')">체험신청</button>
-			</div>
-		</c:if>
         <hr>
         <div class="list-group">
         	<c:if test="${loginId != null}">
@@ -182,85 +179,6 @@
 	
 	<%@ include file="../module/footer.jsp" %>
 
-<%-- 
-	<c:if test="${board.personId == loginId}">
-
-   <nav class="navbar navbar-expand navbar-dark bg-success">
-        <div class="container">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="/123team">Home</a>
-            </div>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-              <ul class="navbar-nav">
-                <li class="nav-item">
-                  <a class="nav-link" href="/123team/hospital">병원</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/123team/products">동물상품</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/123team/Fboards">게시판</a>
-                </li>
- 				<c:choose>             
-	            <c:when test="${not empty managerId }">
-	                	
-	                <li class="nav-item">
-	                  <a class="nav-link" href="/123team/managerlogin/manager_page?personId=${managerId.personId}">마이페이지</a>
-	                </li>
-	                
-	            </c:when>
-	               	<c:otherwise>
-		                <li class="nav-item">
-		                  <a class="nav-link" href="/123team/login">로그인</a>
-		                </li>
-	                </c:otherwise>
-                </c:choose>
- 			<%
- 				request.setAttribute("loginId", userinfo.getInstance().getPersonId());
- 			%>
- 			<c:if test="${board.personId == loginId}">
-			<a href="update?boardId=${board.boardId}">공고글 수정</a>
-			<a href="delete?boardId=${board.boardId}">공고글 삭제</a>
-			&emsp;&emsp;&emsp; </c:if>
-			<a href="/123team/ENboards">돌아가기</a>
-			<br>
-			===================================================================================
-			<br>
-			<h5> 제목 : ${board.title}</h5>
-			<h5> 동물 : ${board.animal} &emsp;&emsp; 체험 : ${board.experience}</h5>
-			<h5>내용</h5>
-			<div>${board.context}</div>
-			
-			<br>
-			====================================================================================
-			<h5> 댓글</h5>
-			<c:forEach items="${Commentlist}" var="comments">
-				<br>
-				작성일 : ${comments.registDay}
-				<div id="${comments.commentId}">
-					<b id="willdelete${comments.commentId}">${comments.comment}</b>
-				</div>
-	 			<c:if test="${comments.personId == loginId}">
-					<button onclick="editform('${comments.comment}','${comments.commentId}')">댓글 수정</button>
-					
-					<a href="deletecoment?commentId=${comments.commentId}&boardId=${board.boardId}"><button>댓글 삭제</button></a>
-				</c:if>
-				<br>
-			</c:forEach>
-				
-			<br>
-			====================================================================================
-
-			<c:if test="${loginId != null}">
-			<h5>댓글 작성</h5>
-			
-			<form action="ENboard" method="POST">
-				<input type="hidden" name="boardId" value="${board.boardId}">
-				<input type="text" name="comment">
-				<input type="submit" value="등록">
-			</form>
-			</c:if>
-			 --%>
 			
 </body>
 </html>

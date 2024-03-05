@@ -26,12 +26,12 @@
             </div>
             <c:if test="${type == checktype}">
             <div class="justify-content-end">
-                <a href="hospitals/create" class="btn btn-success ">병원 추가</a>
-                <a href="hospitals/manageapps">모든신청보기</a>
+                <a href="/123team/hospitals/create" class="btn btn-success ">병원 추가</a>
+                <a href="/123team/hospitals/manageapps">모든예약보기</a>
             </div>
             </c:if>
             <c:if test="${loginId != null && type!=checktype}">
-            	<a href="hospitals/mybookList?personId=${loginId}">내 예약 보기</a>            
+            	<a href="/123team/hospitals/mybookList?personId=${loginId}">내 예약 보기</a>            
             </c:if>
         </div>
         <br>
@@ -41,11 +41,11 @@
                     <div class="border border-secondary rounded " style="width: 350px; height: 300px;">
                         <div class="detail-box">
                             <div class="options">
-                                <a href="hospitals/hospital?hid=${hospital.hid}">
+                                <a href="/123team/hospitals/hospital?hid=${hospital.hid}">
                                 <img src="${hospital.image}" alt="" width="100%" height="210">
                                 </a>
                             </div>
-                            <a href="hospitals/hospital?hid=${hospital.hid}" class="text-decoration-none">
+                            <a href="/123team/hospitals/hospital?hid=${hospital.hid}" class="text-decoration-none">
                                 <h5>${hospital.name}</h5>
                                 <p>${hospital.description}</p>
                             </a>

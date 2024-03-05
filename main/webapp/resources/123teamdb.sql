@@ -1,6 +1,6 @@
 create database 123team_db default character set  utf8 collate utf8_general_ci;
 use 123team_db;
-
+drop database 123team_db;
 create table if not exists Person
 (
     PersonId varchar(20) not null primary key,
@@ -11,20 +11,23 @@ create table if not exists Person
     PersonBirth date not null,
     PersonSex varchar(2) not null,
     PersonPhone varchar(15) not null,
-	Type varchar(3) not null
+   Type varchar(3) not null
     
 )default charset=utf8 ;
 
 insert into person values("ehgus190", "1234", "ehgus190@naver.com", "김해시", "이도현", "1993-08-26", "남", "010", "c");
 insert into person values("ehgus191", "1234", "ehgus190@naver.com", "김해시", "이도현", "1993-08-26", "남", "010", "p");
+insert into person values("hanui", "1234", "hanui@naver.com", "김해시", "김한의사", "2007-02-22", "남", "010", "h");
 select * from Person;
+delete from person where personId="hanui";
+update Person set Type="c" where PersonId="ehgus190";
 alter table Person modify column PersonAddress varchar(100);
 alter table person modify column PersonEmail varchar(50) not null;
 drop table Person;
 
 create table if not exists Pet
 (
-	PetId varchar(20) not null primary key,
+   PetId varchar(20) not null primary key,
     PetName varchar(10) not null,
     PetType varchar(20) not null,
     PetVarity varchar(20) null,
@@ -37,15 +40,17 @@ create table if not exists Pet
     
 )default charset=utf8;
 
-insert into Pet values("forme", "포미", "강아지", "포메라니안", "여자", "2022-12-24", "ehgus190");
+insert into Pet values("forme", "포미", "강아지", "포메라니안", "여자", "2022-12-24", "이미지","ehgus190");
+insert into Pet values("forme2", "포미", "강아지", "포메라니안", "여자", "2022-12-24", "이미지","ehgus191");
+insert into Pet values("forme1", "포미1", "강아지", "포메라니안", "여자", "2022-12-24", "이미지","ehgus191");
 select * from Pet;
 drop table pet;
 delete from pet where petId="forme";
 alter table pet  add petimage varchar(100);
 
 create table if not exists PetWeight(
-	PetWeightNum int auto_increment primary key,
-	PetWeightDate date null,
+   PetWeightNum int auto_increment primary key,
+   PetWeightDate date null,
     PetWeight varchar(3),
     
     PetId varchar(100),
@@ -57,7 +62,7 @@ insert into PetWeight value("1","2022-02-11","5", "forme");
 select * from PetWeight;
 
 create table if not exists petchart(
-	petChartNum int AUTO_INCREMENT primary key,
+   petChartNum int AUTO_INCREMENT primary key,
     petChartDate date not null,
     petChart varchar(100) null,
     petChartContent text null,
@@ -69,7 +74,7 @@ create table if not exists petchart(
 insert into petchart value("1","2024-02-28","진료확인","예방접종완료","ehgus190");
 
 create table if not exists petVaccination(
-	petVaccinationNum int AUTO_INCREMENT primary key,
+   petVaccinationNum int AUTO_INCREMENT primary key,
     petVaccinationDate date not null,
     petVaccination varchar(100) null,
     petVaccinationCotent text null,
@@ -81,22 +86,22 @@ insert into petVaccination value("1","2022-02-22", "심장사사충", "접종완
 select * from petVaccination;
 
 create table if not exists PetSurgery(
-	PetSurgeryNum int primary key auto_increment,
-	PetSurgeryDate date null,
+   PetSurgeryNum int primary key auto_increment,
+   PetSurgeryDate date null,
     PetSurgeryName varchar(100) null,
     PetSurgeryContent text null,
-	
+   
     PetId varchar(100) not null
 )default charset=utf8;
 insert into PetSurgery values ("1","2022-02-22", "성전환수술", "이제 성이 없음", "forme");
 select * from PetSurgery;
 
 create table if not exists PetSurgeryAfter(
-	PetSurgeryAfterNum int primary key auto_increment,
+   PetSurgeryAfterNum int primary key auto_increment,
     PetSurgeryAfterDate date null,
     PetSurgeryAfterContent text null,
      
-	PetId varchar(100) not null
+   PetId varchar(100) not null
 )default charset=utf8;
 insert into PetSurgeryAfter values("1","2022-02-22", "문제없음", "forme");
 select * from PetSurgeryAfter;
@@ -110,12 +115,12 @@ drop table PetSurgery;
 drop table PetSurgeryAfter;
 
 create table if not exists ProductMember(
-	PersonId varchar(20) primary key not null,
+   PersonId varchar(20) primary key not null,
     PersonPw varchar(30) not null,
     PersonEmail varchar(30) not null,
-	PersonAddress varchar(100) not null,
+   PersonAddress varchar(100) not null,
     PersonName varchar(10) not null,
-	PersonBirth date not null,
+   PersonBirth date not null,
     PersonSex  varchar(2) not null,
     PersonPhone varchar(20) not null,
     CompanyName varchar(100) not null,
@@ -131,7 +136,7 @@ delete from ProductMember where PersonId ="ehgus191";
 drop table ProductMember;
 
 create table if not exists ShoppingCart(
-	
+   
     shoppingCartId int not null primary key auto_increment,
     ProductId  varchar(100) not null,
     ProductName varchar(100),
@@ -180,13 +185,30 @@ create table if not exists HospitalMember(
 
 )default charset=utf8;
 
-insert into HospitalMember value("ehgus198", "1234", "fadsf@adsf",  "Yeorae-ri, Jinyoung-eup, Gimhae-si, Gyeongnam.", "doyheon", "010" ,"2024-02-28", "남자", "ㅁㅇㄹ", "Yeorae-ri, Jinyoung-eup, Gimhae-si, Gyeongnam.","01093341065", "img1", "img2", "h");
+insert into HospitalMember value("ehgus198", "1234", "fadsf@adsf",  "Yeorae-ri, Jinyoung-eup, Gimhae-si, Gyeongnam.", "doyheon", "010" ,"2024-02-28","남자", "ㅁㅇㄹ", "Yeorae-ri, Jinyoung-eup, Gimhae-si, Gyeongnam.","01093341065", "img1", "img2", "h");
 select * from HospitalMember;
 drop table HospitalMember;
+update HospitalMember set PersonSex="남자" where personId="ehgus198";
+
+-- 체험단 manager
+create table if not exists Ex_Manager(
+	PersonId varchar(20) primary key not null,
+    personPw varchar(20),
+    s_image varchar(100),
+    ex_name varchar(100) not null,
+    ex_phone varchar(20),
+    ex_Address varchar(100) not null,
+    type varchar(10) not null
+    
+)default charset=utf8;
+
+insert into Ex_Manager value("ehgus194","1234","image","행복한체험단","010","김해시", e);
+select * from Ex_Manager;
+drop table Ex_Manager;
 
 -- productReview
 create table if not exists ProductReview(
-	ReviewId int auto_increment primary key,
+   ReviewId int auto_increment primary key,
     context text,
     ReviewScore int,
     Reviewimage varchar(100),
@@ -194,7 +216,7 @@ create table if not exists ProductReview(
     title varchar(50),
     
     productId varchar(100),
-	personId varchar(100)
+   personId varchar(100)
 
 )default charset=utf8;
 
@@ -208,7 +230,6 @@ select * from ProductReview;
 -- 한의 db 취합 2024-02-22 FBoard / BoardComment / NBoard / Nboard (체험단신청) / EApllication / ENBoard / Product
 
 create table FBoard(
-	PersonName varchar(10) not null,
     PersonId varchar(20) not null,
     Context text not null,
     Title varchar(30) not null,
@@ -217,9 +238,10 @@ create table FBoard(
     BoardId varchar(50) primary key
 )default charset=utf8;
 
+
 drop table BoardComment;
 create table BoardComment(
-	BoardId varchar(50) not null,
+   BoardId varchar(50) not null,
     comment text not null,
     RegistDay date not null,
     PersonId varchar(20) not null,
@@ -239,7 +261,7 @@ create table BoardComment(
 select * from Nboard;
 -- 체험단 신청 
 create table EApllication(
-	Experience varchar(20) not null, -- 놀이,사진찍기,알러지
+   Experience varchar(20) not null, -- 놀이,사진찍기,알러지
     Animal varchar(10) not null, -- 강아지 고양이  
     RegistDay date not null, -- 예약일
     state varchar(10) default "처리중", -- 상태 (처리중,예약취소,예약완료)
@@ -251,6 +273,7 @@ create table EApllication(
 )default charset=utf8;
 
 select * from EApllication where PersonId='ehgus190';
+insert into EApllication value("사진찍기", "강아지", "2024-02-02", "처리중", "사진찍기", "ehgus190", "01", "ehgus197");
 
 drop table EApllication;
 select * from EApllication;
@@ -276,10 +299,6 @@ insert into NBoard values("id2","내용2","제목2","2","2000-02-02","2");
 insert into NBoard values("id3","내용3","제목3","3","2000-03-03","3");
 insert into NBoard values("id4","내용4","제목4","4","2000-04-04","4");
 
-insert into FBoard values(null,"하니","id1","내용1","제목1","1","2000-01-01","1",null);
-insert into FBoard values(null,"두니","id2","내용2","제목2","2","2000-02-02","2",null);
-insert into FBoard values(null,"세니","id3","내용3","제목3","3","2000-03-03","3",null);
-insert into FBoard values(null,"사니","id4","내용4","제목4","4","2000-04-04","4",null);
 delete from FBoard where num=1;
 select * from FBoard;
 select * from NBoard;
@@ -322,3 +341,36 @@ create table hospital(
 insert into hospital values("개병원","창원시어딘가","010-1001-1011","매주 주말 휴무,평일 아침9시 ~ 밤10시","id1","시장에주차 ㄱㄱ","잡병원","hanui","");
 select * from hospital;
 
+
+create table HApllication(
+    registDay datetime not null, -- 예약일
+    personId varchar(20) not null,  -- 예약자ID 
+    bid varchar(20) primary key, -- 예약 고유번호 
+    mid varchar(20) not null, -- 예약관리자 ID
+    
+    hospitalName varchar(20) not null,
+    hid varchar(20) not null, -- 예약하는 병원 ID
+    petId varchar(50) not null, -- 동물 이름
+    context varchar(20) null,
+    state varchar(10) not null
+    
+)default charset=utf8;
+select * from HApllication;
+insert into HospitalReview values();
+
+drop  table HApllication;
+drop  table HospitalReview;
+create table HospitalReview(
+   hid varchar(20) not null,
+    PersonId varchar(20) not null,
+    title varchar(20) not null,
+    context text not null,
+    reviewScore int,
+    reviewImage varchar(100),
+    
+    RegistDay date not null,
+    ReviewId varchar(50) primary key
+    
+)default charset=utf8;
+insert into HospitalReview values("병원아이디1","리뷰작성자아이디","제목1","내용1","1","사진","2000-01-01","리뷰고유아이디");
+select * from HospitalReview; 

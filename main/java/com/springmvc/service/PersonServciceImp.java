@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 
 import com.springmvc.controller.ManagerController;
 import com.springmvc.domain.type;
+import com.springmvc.domain.EApplication;
+import com.springmvc.domain.Ex_manager;
 import com.springmvc.domain.Hospital;
 import com.springmvc.domain.HospitalMember;
 import com.springmvc.domain.Person;
@@ -114,7 +116,42 @@ public class PersonServciceImp implements PersonService{
 		// TODO Auto-generated method stub
 		psersonRepository.SetUpdatePH(hospitalMember);
 	}
-	
-	
+
+	@Override
+	public Person getEM(String personId) {
+		// TODO Auto-generated method stub
+		return psersonRepository.getEM(personId);
+	}
+
+	@Override
+	public List<EApplication> getEA(String personId) {
+		// TODO Auto-generated method stub
+		return psersonRepository.getEA(personId);
+	}
+	  // product manager 회원수정
+	@Override
+	public ProductMember P_update(String id) {
+		// TODO Auto-generated method stub
+		return psersonRepository.P_update(id);
+	}
+	  // hopital manager 회원수정
+	@Override
+	public HospitalMember H_update(String id) {
+		// TODO Auto-generated method stub
+		return psersonRepository.H_update(id);
+	}
+	  // EXpreience manager 회원수정
+	@Override
+	public Ex_manager E_update(String id) {
+		// TODO Auto-generated method stub
+		return psersonRepository.E_update(id);
+	}
+	 // hospital manager 마이페이지를 수정하는 곳
+    // hospital manager person 테이블을 수정하는 곳
+	@Override
+	public void SetUpdateEM(Ex_manager ex_manager) {
+		// TODO Auto-generated method stub
+		psersonRepository.SetUpdateEM(ex_manager);
+	}
 
 }

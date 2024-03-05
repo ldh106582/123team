@@ -15,6 +15,8 @@
  
 	<%
 		request.setAttribute("loginId", session.getAttribute("personId"));
+		request.setAttribute("type", session.getAttribute("type"));
+		request.setAttribute("checktype", "e");
 	%>
 	
 	<div class="container my-3">
@@ -24,13 +26,17 @@
                 <a href="/123team/Nboards" class="btn btn-secondary mr-2">공지사항</a>
                 <a href="/123team/Fboards" class="btn btn-secondary mr-2">자유게시판</a>
                 <a href="/123team/ENboards" class="btn btn-secondary mr-2">체험단</a>
-                <a href="ENboards/manageapps" class="btn btn-secondary mr-2">신청 관리</a>
+                <c:if test="${type==checktype}">
+                	<a href="ENboards/manageapps" class="btn btn-secondary mr-2">신청 관리</a>
+                </c:if>
             </div>
             <div>
 	            <c:if test="${loginId != null}">
 					<a href="/123team/ENboards/applist" class="btn btn-primary">내 체험단 신청 목록</a>
 				</c:if>
-            	<a href="ENboards/add" class="btn btn-primary">게시글 작성</a>
+				<c:if test="${type==checktype}">
+            		<a href="ENboards/add" class="btn btn-primary">게시글 작성</a>
+            	</c:if>
             </div>
         </div>
         <table class="table table-striped">

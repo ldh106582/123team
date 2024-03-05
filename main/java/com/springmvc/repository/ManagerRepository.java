@@ -1,5 +1,6 @@
 package com.springmvc.repository;
 
+import com.springmvc.domain.Ex_manager;
 import com.springmvc.domain.HospitalMember;
 import com.springmvc.domain.type;
 import com.springmvc.domain.ProductMember;
@@ -27,4 +28,9 @@ public interface ManagerRepository {
 	
 	 // 전체 db에 데이터를 넣어주는 함수
 	void H_setAllMember(HospitalMember hospitalMember);
+	  // 체험단 manager 회원가입 하는 함수
+	void addEx_Manager(Ex_manager ex_manager);
+	 // 전체 db에 데이터를 넣어주는 함수
+	void setEx_AllMember(Ex_manager ex_manager);
+	
 	}

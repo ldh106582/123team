@@ -12,10 +12,13 @@
 <body>
 
 	<%@  include file="../module/headersuccess.jsp" %>
+	
  
 	<% 
 		int size = (Integer) request.getAttribute("size");
 		request.setAttribute("sise", size);
+		request.setAttribute("loginId", session.getAttribute("personId"));
+		request.setAttribute("checkId", "관리자아이디");
 	%>
 	<div class="container my-3">
         <h1><img width="66" height="66" src="https://img.icons8.com/external-outline-design-circle/66/external-46-business-and-investment-outline-design-circle.png" alt="external-46-business-and-investment-outline-design-circle"/>공지사항</h1>
@@ -26,10 +29,9 @@
                 <a href="/123team/ENboards" class="btn btn-secondary mr-2">체험단</a>
             </div>
             <div>
-	            <c:if test="${loginId != null}">
-					<a href="Fboards?myId=${loginId}" class="btn btn-primary">내 게시글만 보기</a>
-				</c:if>
+             <c:if test="${loginId==checkId}">
             	<a href="Nboards/add" class="btn btn-primary">게시글 작성</a>
+            	</c:if>
             </div>
         </div>
         <table class="table table-striped">
@@ -94,10 +96,6 @@
             <button type="submit" class="btn btn-success">검색</button>
         </form>
     </div>
-	
-	<c:if test="${loginId != null}">
-		<a href="Fboards?myId=${loginId}"><button>내 게시글만 보기</button></a>
-	</c:if>
 	
 	<%@ include file="../module/footer.jsp" %>
 </body>

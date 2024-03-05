@@ -120,4 +120,39 @@
     
     <%@ include file="../module/footer.jsp" %>
 </body>
+<script>
+function idDuplicateCheck(event){
+	 event.preventDefault();
+	 
+	var userId = document.getElementById("userId").value;
+	console.log("userId");
+	
+	if(userId === "") {
+		alert("아이디를 입력해주세요");
+		return;
+	}
+	
+	$.ajax({
+		type: 'get',
+		url: '/123team/managerlogin',
+		contentType: 'application/json;',
+		dataType: 'text',
+		data: {
+			"userId":userId, 
+		},
+		success : function(result) {
+			if(result === "true"){
+			isIdCheck = true;
+			alert("사용 가능한 아이디 입니다.")
+			} else {
+				isIdCheck = false;
+				alert("이미 사용중인 아이디 입니다.")
+			}
+		},
+		error : function(request, status, error){
+			console.log(request);
+		}
+	});
+}
+</script>
 </html>

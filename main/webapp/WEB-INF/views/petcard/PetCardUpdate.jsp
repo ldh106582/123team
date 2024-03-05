@@ -34,8 +34,8 @@
                 <div class="profile_inner">
                     <div class="profile">
                         
-                        <p class="useid">정영회</p>
-                        <p class="usemail">dudghl530@naver.com</p>
+                        <p class="useid">${ id.personId }</p>
+                        <p class="usemail">${id.personEmail }</p>
                     </div>
                 </div>
             </div>

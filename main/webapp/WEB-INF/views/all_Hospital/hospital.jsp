@@ -20,6 +20,7 @@
 	<div class="home_container">
         <div class="container my-3">
             <h1>병원 상세 정보</h1>
+            <a href="/123team/hospitals">돌아가기</a>
             <div class="row ">
                 <div class="col-md-12">
                     <div class="text-center">

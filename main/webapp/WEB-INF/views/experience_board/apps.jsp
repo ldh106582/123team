@@ -31,6 +31,7 @@
 			inputD.setAttribute("type","datetime-local");
 			inputD.setAttribute("name","registDay");
 			inputD.setAttribute("value",registday);
+			inputD.setAttribute("required",true);
 			
 			var inputO = document.createElement("input");
 			inputO.setAttribute("type","hidden");
@@ -41,24 +42,24 @@
 			inputs.setAttribute("type","submit");
 			inputs.setAttribute("value","변경하기");
 			
-			var button = document.createElement("button");
-			button.setAttribute("onclick",cancelForm());
-			var buttonText = document.createTextNode("취소");
-			button.appendChild(buttonText);
-			
 			form.appendChild(inputT);
 			form.appendChild(inputD);
 			form.appendChild(inputs);
 			form.appendChild(inputO);
-			form.appendChild(button);
 			
+			var button = document.createElement("button");
+			var buttonText = document.createTextNode("취소");
+			button.appendChild(buttonText);
+			
+			button.addEventListener('click', function(event) {
+			  event.preventDefault(); // 기본 이벤트 동작을 막습니다.
+			  container.removeChild(form); // 폼을 삭제합니다.
+			  container.appendChild(delp);
+			  container.appendChild(addp); //변경버튼 다시생성
+			});
+			
+			form.appendChild(button);
 			container.appendChild(form);
-	}
-	function cancelForm() {
-         var form = document.querySelector("form");
-         if (form) {
-             form.remove();
-         }
      }
 </script>
 </head>
@@ -79,7 +80,7 @@
                 <p class="card-text">${app.animal}</p>
                 <p class="card-text">${app.state}</p>
                 <p class="card-text" id="willdelete${app.eid}">예약일 : <span >${app.registDay}</span></p>
-              	<button class="btn btn-primary" onclick="changed('${app.eid}','${app.registDay}')" id="addp${app.eid}" >날짜 변경</button>
+              	<button id="addp${app.eid}" class="btn btn-primary" onclick="changed('${app.eid}','${app.registDay}')"  >날짜 변경</button>
             </div>
             <div class="card-body" >
             <a href="deleteapp?eid=${app.eid}" class="btn btn-danger">예약 삭제</a>

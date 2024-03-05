@@ -144,6 +144,8 @@ public class HospitalController {
 	}
 	@PostMapping("addbook")
 	public String addbook(@ModelAttribute("booking") HospitalBooking booking,HttpServletRequest request,HttpSession session) {
+		
+		
 		String personId = (String) session.getAttribute("personId");
 
 		
@@ -185,7 +187,9 @@ public class HospitalController {
 	@GetMapping("manageapps")
 	public String manageapps(Model model,HttpSession session,HttpServletRequest request) {
 		 String personId = (String) session.getAttribute("personId");
+		 System.out.println("1111111111111111");
 		 List<HospitalBooking> list = bookingService.getPermisionList(personId);
+		 System.out.println("2222222222222222222");
 		 model.addAttribute("applists",list);
 		 if(list.isEmpty()) {
 			 request.setAttribute("nothing", "승인할 것이 없어요");
