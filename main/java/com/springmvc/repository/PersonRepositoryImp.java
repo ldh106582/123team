@@ -284,6 +284,43 @@ public class PersonRepositoryImp implements  PersonRepository{
 		
 		}
 	}
+	//product manager 테이블 데이터를 삭제하는 함수
+	  //person 테이블 데이터를 삭제하는 함수
+	@Override
+	public void PM(String personId) {
+		for(int i = 0; i < 1; i++) {
+			String SQL = "delete from person where personId=?";
+			template.update(SQL, new Object[] {personId}, new PersonDBConnector());
+			String SQL1= "delete from ProductMember where personId=?";
+			template.update(SQL1, new Object[] {personId}, new ProductMemberDBConnector());
+		}
+		
+	}
+	  //병원 manager 테이블 데이터를 삭제하는 함수
+	  //person 테이블 데이터를 삭제하는 함수
+	@Override
+	public void HM(String personId) {
+		for(int i = 0; i < 1; i++) {
+			String SQL = "delete from person where personId=?";
+			template.update(SQL, new Object[] {personId}, new PersonDBConnector());
+			String SQL1= "delete from HospitalMember where personId=?";
+			template.update(SQL1, new Object[] {personId}, new HospitalManagerDBConnector());
+		}
+		
+	}
+	  //체험단 manager 테이블 데이터를 삭제하는 함수
+	  //person 테이블 데이터를 삭제하는 함수
+
+	@Override
+	public void EM(String personId) {
+		for(int i = 0; i < 1; i++) {
+			String SQL = "delete from person where personId=?";
+			template.update(SQL, new Object[] {personId}, new PersonDBConnector());
+			String SQL1= "delete from Ex_Manager where personId=?";
+			template.update(SQL1, new Object[] {personId}, new ex_managerDBConnector());
+		}
+		
+	}
 	
 
 

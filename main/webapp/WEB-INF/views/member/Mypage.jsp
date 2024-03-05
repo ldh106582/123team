@@ -97,7 +97,7 @@
 				                    </li>
 		                            <li>
 				                        <div class="row_item other">
-				                            <a href="./login/delete?id=${ id }" class="text-decoration-none" id="delete"><span class="item_text">회원 탈퇴</span></a>
+				                            <a href="/123team/login/delete?id=${ id.personId }" class="text-decoration-none" id="delete"><span class="item_text">회원 탈퇴</span></a>
 				                        </div>
 				                    </li>
 				                </ul>
@@ -225,7 +225,7 @@
 			                        </li>
 			                        <li>
 			                            <div class="row_item other">
-			                                <a href="./login/delete?id=${ id }" class="text-decoration-none" id="delete"><span class="item_text">회원 탈퇴</span></a>
+			                                <a href="/123team/login/delete?id=${ id.personId }" class="text-decoration-none" id="delete"><span class="item_text">회원 탈퇴</span></a>
 			                            </div>
 			                        </li>
 			                    </ul>
@@ -337,7 +337,7 @@
 				                    </li>
 				                    <li>
 				                        <div class="row_item other">
-				                            <a href="./login/delete?id=${ id }" class="text-decoration-none" id="delete"><span class="item_text">회원 탈퇴</span></a>
+				                            <a href="/123team/login/delete?id=${ id.personId }" class="text-decoration-none" id="delete"><span class="item_text">회원 탈퇴</span></a>
 				                        </div>
 				                    </li>
 				                </ul>

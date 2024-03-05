@@ -347,12 +347,31 @@ public class PersonController {
    
    //회원삭제 페이지
    @RequestMapping(value="/delete")
-   public String SetDeletePerson(@RequestParam("id") String personId) {
+   public String SetDeletePerson(@RequestParam("id") String personId, HttpServletRequest request) {
       System.out.println("person delete문 controller 도착");
       
+      HttpSession session = request.getSession();
+      String type = (String)request.getAttribute("type");
+      System.out.println(type);
       
-      // 
-      personService.SetDeletePerson(personId);
+      if("p".equals(type)) {
+    	  //product manager 테이블 데이터를 삭제하는 함수
+    	  //person 테이블 데이터를 삭제하는 함수
+    	  personService.PM(personId);
+    	  
+      } else if("h".equals(type)){
+    	  //병원 manager 테이블 데이터를 삭제하는 함수
+    	  //person 테이블 데이터를 삭제하는 함수
+    	  personService.HM(personId);
+      } else if("e".equals(type)){
+    	  //체험단 manager 테이블 데이터를 삭제하는 함수
+    	  //person 테이블 데이터를 삭제하는 함수
+    	  personService.EM(personId);
+      } else {
+          personService.SetDeletePerson(personId);
+      }
+      
+     
      
       return "redirect:/login";
    }
