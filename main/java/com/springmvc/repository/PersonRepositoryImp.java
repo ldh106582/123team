@@ -268,6 +268,18 @@ public class PersonRepositoryImp implements  PersonRepository{
 		ex_manager = template.queryForObject(SQL, new Object[] {id}, new ex_managerDBConnector());
 		return ex_manager;
 	}
+
+	@Override
+	public void SetUpdateEM(Ex_manager ex_manager) {
+		for(int i = 0; i < 2; i++) {
+		String SQL = "update Ex_Manager set personPw=?,  s_image=?, ex_name=?, ex_phone=?,ex_Address=?,  type=? where PersonId=?";
+		template.update(SQL, ex_manager.getPersonPw(), ex_manager.getS_image(), ex_manager.getEx_Name(), ex_manager.getEx_Phone(), ex_manager.getEx_Address(),ex_manager.getType(), ex_manager.getPersonId());
+		
+		String SQL1 = "update Person set personPw=?,  PersonEmail=?, PersonAddress=?, PersonName=?,PersonBirth=?,  PersonSex=?, PersonPhone=?, Type=?, where PersonId=?";
+		template.update(SQL1, ex_manager.getPersonPw(), ex_manager.getPersonEmail(), ex_manager.getPersonAddress(), ex_manager.getPersonName(), ex_manager.getPersonPhone(), ex_manager.getType(), ex_manager.getPersonId());
+		
+		}
+	}
 	
 
 

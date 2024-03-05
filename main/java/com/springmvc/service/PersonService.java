@@ -53,4 +53,7 @@ public interface PersonService {
 	  // EXpreience manager 회원수정
 	Ex_manager E_update(String id);
 	
+	// hospital manager 마이페이지를 수정하는 곳
+	void SetUpdateEM(Ex_manager ex_manager);
+
 }

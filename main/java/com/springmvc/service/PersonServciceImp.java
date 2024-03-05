@@ -146,7 +146,12 @@ public class PersonServciceImp implements PersonService{
 		// TODO Auto-generated method stub
 		return psersonRepository.E_update(id);
 	}
-	
-	
+	 // hospital manager 마이페이지를 수정하는 곳
+    // hospital manager person 테이블을 수정하는 곳
+	@Override
+	public void SetUpdateEM(Ex_manager ex_manager) {
+		// TODO Auto-generated method stub
+		psersonRepository.SetUpdateEM(ex_manager);
+	}
 
 }

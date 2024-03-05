@@ -323,9 +323,9 @@ public class PersonController {
      		  System.out.println("새로운 이미지를 전송하지 않았습니다." + e);
      	  }
     	   // hospital manager 마이페이지를 수정하는 곳
+     	 // hospital manager person 테이블을 수정하는 곳
           personService.SetUpdateEM(ex_manager);
-           // hospital manager person 테이블을 수정하는 곳
-          personService.SetUpdatePE(ex_manager);
+ 
        }
        else 
        {
