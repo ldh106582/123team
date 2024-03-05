@@ -14,168 +14,349 @@
 		request.setAttribute("type", session.getAttribute("type"));
 		request.setAttribute("checktype", "p");
 	%>
-	<%@  include file="../module/headerdanger.jsp" %>
-	<c:if test="${type == checktype }">
+ <%@  include file="../module/header.jsp" %>
+ 
+      <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+      <!-- partial -->
+      <!-- partial:partials/_sidebar.html -->
+      <nav class="sidebar sidebar-offcanvas" id="sidebar">
+        <ul class="nav">
+          <li class="nav-item">
+            <a class="nav-link" href="/123team/hospitals">
+              <i class="fa-solid fa-hospital"></i>
+              <span class="menu-title ml-3">반려동물 병원</span>
+               <i class="menu-arrow"></i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="/123team/products" aria-expanded="false" aria-controls="ui-basic">
+              <i class="fa-solid fa-gift"></i>
+              <span class="menu-title ml-3">반려동물 상품</span>
+              <i class="menu-arrow"></i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
+              <i class="fa-solid fa-cart-shopping"></i>
+              <span class="menu-title ml-3">장바구니</span>
+              <i class="menu-arrow"></i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="/123team/ENboards" aria-expanded="false" aria-controls="charts">
+              <i class="fa-solid fa-dog"></i>
+              <span class="menu-title ml-3">체험단</span>
+              <i class="menu-arrow"></i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="/123team/Fboards" aria-expanded="false" aria-controls="tables">
+              <i class="fa-solid fa-clipboard-question"></i>
+              <span class="menu-title ml-3">자유게시판</span>
+              <i class="menu-arrow"></i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
+              <i class="fa-solid fa-user"></i>
+              <span class="menu-title  ml-3">My Pages</span>
+              <i class="menu-arrow"></i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="/123team/Nboards" aria-expanded="false" aria-controls="error">
+              <i class="fa-solid fa-clipboard"></i>
+              <span class="menu-title ml-3">공지사항</span>
+              <i class="menu-arrow"></i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/123team/login">
+              <i class="fa-solid fa-key"></i>
+              <span class="menu-title ml-3">로그인</span>
+              <i class="menu-arrow"></i>
+            
+              <i class="fa-solid fa-right-from-bracket"></i>
+              <span class="menu-title ml-3">로그아웃</span>
+              <i class="menu-arrow"></i>
+            </a>
+          </li>
+        </ul>
+      </nav>
+     
+         <!-- partial -->
+      <div class="main-panel">
+        <div class="content-wrapper">
+          <div class="row">
+            <div class="col-md-12 grid-margin">
+              <div class="row">
+                <div class="col-12 col-xl-8 mb-4 mb-xl-0">
+                  <h3 class="font-weight-bold"> </h3>
+                  <h6 class="font-weight-normal mb-0"></h6>
+                </div>
+                <div class="col-12 col-xl-4">
+                 <div class="justify-content-end d-flex">
+                  <div class="dropdown flex-md-grow-1 flex-xl-grow-0">
+                  </div>
+                 </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+        <footer class="footer">
+          <div class="d-sm-flex justify-content-center justify-content-sm-between">
+            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2021.  Premium <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap admin template</a> from BootstrapDash. All rights reserved.</span>
+            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="ti-heart text-danger ml-1"></i></span>
+          </div>
+          <div class="d-sm-flex justify-content-center justify-content-sm-between">
+            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Distributed by <a href="https://www.themewagon.com/" target="_blank">Themewagon</a></span> 
+          </div>
+        </footer> 
+        <!-- partial -->
+      </div>
+      <!-- main-panel ends -->
+    </div>   
+    <!-- page-body-wrapper ends -->
+  </div>
+  <!-- container-scroller -->
+ 	<c:if test="${type == checktype }">
 		<a href="products/add">상품추가</a>
 	</c:if>
-    <div class="show-gird no-gutters">
-        <img src="https://cdn.pet-friends.co.kr/resources/pc/img/background.png" alt="" style="position: absolute; width: 160;">
-        <div class="row no-gutters">
-            <div class="col-md-2 border border-dark">
-            </div>
-            <div class="col-md-5 border border-dark no-gutters">
-                <div class="row mt-5 no-gutters">
-                    <h4 class="col-md-12 border border-dark">123상점</h4>
-                    <div class="col-md-12 border border-dark no-gutters">
-                        <h3 class="mt-3 border border-dark">반려동물 웹 쇼핑 1위
-                            123프렌즈 샵
-                        </h3>
-                        <div class="mt-4 col-md-7 row">
-                            <img src="https://cdn.pet-friends.co.kr/resources/pc/img/button-search%402x.png" class="img1 col-md-12" style="width: 130%; height: 150%; position: absolute
-                            ; ">
-                            <form class="col-md-8 row" >
-                                <input style="left: 20.1%; top: 23%; border: 1px solid white;" class="col-12  row" type="text" placeholder="찾는 물건을 검색해보세요"></input>
-                            </form>
+    <div class="contianer">
+        <div class="show-gird no-gutters">
+            <div class="col-md-12 border border-dark no-gutters">
+                <div class="col-md-10 border border-dark no-gutters" style="margin: 0 auto; width: 100%; height: 400px; display: flex; margin-bottom: 2%;;">
+                   <img src="resources/images/001.jpg" alt="Image 1" style="width: 100%"/>
+                   <img src="resources/images/002.jpg" alt="Image 2" style="width: 100%"/>
+                   <img src="resources/images/003.jpg" alt="Image 3" style="width: 100%"/>
+                   <img src="resources/images/004.jpg" alt="Image 4" style="width: 100%"/>
+                   <img src="resources/images/005.jpg" alt="Image 5" style="width: 100%"/>
+                   <img src="resources/images/001.jpg" alt="Image 6" style="width: 100%"/>
+                </div>
+                
+                <div class="col-md-10 row no-gutters" style="margin: 0 auto;">
+                    <div class="col-md-7 border border-dark ">
+                        <div style="border-left: 3px solid red; margin-left: 3%;"> <h4 style="margin-left: 2%;"> 123 상점 상품 보기 </h4>
                         </div>
-                        <div>
-                            <br>
-                            <h5 class="col-12 no-gutters">전체 상품</h5>
-                        </div>
-                        <!-- 여기서 복붙 시작-->
-                        <div class="col-12 row m-1 no-gutters card-group">
-                            <div class="col-md-3 no-gutters card rounded m-1" >
-                               <c:forEach items="${productList}" var="product">
-                                  <c:choose>
-							         <c:when test="${product.productImage == null} ">
-							             <div class="myphoto">
-							                 <a href="https://ibb.co/kmbdwzQ"><img src="https://i.ibb.co/kmbdwzQ/image.jpg" alt="image" border="0"></a>
-							             </div>
-							            </c:when>
-							           <c:otherwise>
-							             <div class="myphoto">
-							                 <img src="<c:url value="/resources/images/ ${product.productImage}"/>" height="56" alt="상품 이미지">
-							             </div>
-							           </c:otherwise>
-							       </c:choose>
-							       
-	                                <div class="col-md-12 no-gutters">
-	                                    <h6 class="col-md-12 ">상품 : ${product.productName}</h6>
-	                                    <h6 class="col-md-12 ">카테고리 : ${product.productCategory}</h6>
-	                                    <h6 class="col-md-12 ">가격 : ${product.productPrice}</h6>
-	                                </div>
-                                
-								<a href="products/product?productId=${product.productId}"><button>상세정보</button></a>  <c:if test="${loginId != null && type != checktype}"><a href="#"><button>상품주문</button></a></c:if> 
-								</c:forEach>
+                        <br>
+                        
+                        <h5 style="border-left: 3px solid #FF7EA0; margin-left: 3%; margin-bottom: 3%;">강아지 상품</h5>
+                        
+                        <div class="col-md-12 no-gutters row card-group">
+                            <div class="col-md-4 row no-gutters card">
+                                <img class="card-img-top">상품이미지 들어가는 공간
+                                <div class="col-md-12 card-body">
+                                    <p class="card-title">상품명 : </p>
+                                    <p class="card-text"> 가격 : </p>
+                                    <p class="card-text">상품설명 : </p>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 row no-gutters card">
+                                <img class="card-img-top">상품이미지 들어가는 공간
+                                <div class="col-md-12 card-body">
+                                    <p class="card-title">상품명 : </p>
+                                    <p class="card-text"> 가격 : </p>
+                                    <p class="card-text">상품설명 : </p>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 row no-gutters card">
+                                <img class="card-img-top">상품이미지 들어가는 공간
+                                <div class="col-md-12 card-body">
+                                    <p class="card-title">상품명 : </p>
+                                    <p class="card-text"> 가격 : </p>
+                                    <p class="card-text">상품설명 : </p>
+                                </div>
                             </div>
                         </div>
-                        <!--복붙끝-->
+
+                        <h5 style="border-left: 3px solid #FFA07A; margin: 3%;">고양이 상품</h5>
+
+                        <div class="col-md-12 no-gutters row card-group">
+                            <div class="col-md-4 row no-gutters card">
+                                <img class="card-img-top">상품이미지 들어가는 공간
+                                <div class="col-md-12 card-body">
+                                    <p class="card-title">상품명 : </p>
+                                    <p class="card-text"> 가격 : </p>
+                                    <p class="card-text">상품설명 : </p>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 row no-gutters card">
+                                <img class="card-img-top">상품이미지 들어가는 공간
+                                <div class="col-md-12 card-body">
+                                    <p class="card-title">상품명 : </p>
+                                    <p class="card-text"> 가격 : </p>
+                                    <p class="card-text">상품설명 : </p>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 row no-gutters card">
+                                <img class="card-img-top">상품이미지 들어가는 공간
+                                <div class="col-md-12 card-body">
+                                    <p class="card-title">상품명 : </p>
+                                    <p class="card-text"> 가격 : </p>
+                                    <p class="card-text">상품설명 : </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h5 style="border-left: 3px solid #FFCD63; margin: 3%;">토끼 상품</h5>
+
+                        <div class="col-md-12 no-gutters row card-group">
+                            <div class="col-md-4 row no-gutters card">
+                                <img class="card-img-top">상품이미지 들어가는 공간
+                                <div class="col-md-12 card-body">
+                                    <p class="card-title">상품명 : </p>
+                                    <p class="card-text"> 가격 : </p>
+                                    <p class="card-text">상품설명 : </p>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 row no-gutters card">
+                                <img class="card-img-top">상품이미지 들어가는 공간
+                                <div class="col-md-12 card-body">
+                                    <p class="card-title">상품명 : </p>
+                                    <p class="card-text"> 가격 : </p>
+                                    <p class="card-text">상품설명 : </p>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 row no-gutters card">
+                                <img class="card-img-top">상품이미지 들어가는 공간
+                                <div class="col-md-12 card-body">
+                                    <p class="card-title">상품명 : </p>
+                                    <p class="card-text"> 가격 : </p>
+                                    <p class="card-text">상품설명 : </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h5 style="border-left: 3px solid #D5CABD; margin: 3%;">기니피그 상품</h5>
+
+                        <div class="col-md-12 no-gutters row card-group">
+                            <div class="col-md-4 row no-gutters card">
+                                <img class="card-img-top">상품이미지 들어가는 공간
+                                <div class="col-md-12 card-body">
+                                    <p class="card-title">상품명 : </p>
+                                    <p class="card-text"> 가격 : </p>
+                                    <p class="card-text">상품설명 : </p>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 row no-gutters card">
+                                <img class="card-img-top">상품이미지 들어가는 공간
+                                <div class="col-md-12 card-body">
+                                    <p class="card-title">상품명 : </p>
+                                    <p class="card-text"> 가격 : </p>
+                                    <p class="card-text">상품설명 : </p>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 row no-gutters card">
+                                <img class="card-img-top">상품이미지 들어가는 공간
+                                <div class="col-md-12 card-body">
+                                    <p class="card-title">상품명 : </p>
+                                    <p class="card-text"> 가격 : </p>
+                                    <p class="card-text">상품설명 : </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h5 style="border-left: 3px solid #65BAA9; margin: 3%;">파충류 상품</h5>
+
+                        <div class="col-md-12 no-gutters row card-group">
+                            <div class="col-md-4 row no-gutters card">
+                                <img class="card-img-top">상품이미지 들어가는 공간
+                                <div class="col-md-12 card-body">
+                                    <p class="card-title">상품명 : </p>
+                                    <p class="card-text"> 가격 : </p>
+                                    <p class="card-text">상품설명 : </p>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 row no-gutters card">
+                                <img class="card-img-top">상품이미지 들어가는 공간
+                                <div class="col-md-12 card-body">
+                                    <p class="card-title">상품명 : </p>
+                                    <p class="card-text"> 가격 : </p>
+                                    <p class="card-text">상품설명 : </p>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 row no-gutters card">
+                                <img class="card-img-top">상품이미지 들어가는 공간
+                                <div class="col-md-12 card-body">
+                                    <p class="card-title">상품명 : </p>
+                                    <p class="card-text"> 가격 : </p>
+                                    <p class="card-text">상품설명 : </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h5 style="border-left: 3px solid #1E0764; margin: 3%;">기타 반려동물 상품</h5>
+
+                        <div class="col-md-12 no-gutters row card-group">
+                            <div class="col-md-4 row no-gutters card">
+                                <img class="card-img-top">상품이미지 들어가는 공간
+                                <div class="col-md-12 card-body">
+                                    <p class="card-title">상품명 : </p>
+                                    <p class="card-text"> 가격 : </p>
+                                    <p class="card-text">상품설명 : </p>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 row no-gutters card">
+                                <img class="card-img-top">상품이미지 들어가는 공간
+                                <div class="col-md-12 card-body">
+                                    <p class="card-title">상품명 : </p>
+                                    <p class="card-text"> 가격 : </p>
+                                    <p class="card-text">상품설명 : </p>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 row no-gutters card">
+                                <img class="card-img-top">상품이미지 들어가는 공간
+                                <div class="col-md-12 card-body">
+                                    <p class="card-title">상품명 : </p>
+                                    <p class="card-text"> 가격 : </p>
+                                    <p class="card-text">상품설명 : </p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+    
+                    <div class="col-md-5 border border-dark ">
+                        <div class="no-gutters col-md-12" style="border-left: 3px solid red;"></h4 style="margin-left: 2%;">원하는 상품 보기 </h4>
+                            <div class="col-md-12 no-gutters ml-1" style="display: flex;">
+                                <span class="btn border rounded-pill" >사료</span><span class="btn ml-1 border rounded-pill">간식</span> <span class="btn ml-1 border rounded-pill">집</span> <span class="btn ml-1 border rounded-pill">산책</span> <span class="btn ml-1 border rounded-pill">기타</span>
+                            </div>    
+                        </div>
+                        <br>
+                        <div class="card mb-3" style="max-width: 540px;">
+                            <div class="row no-gutters">
+                                <div class="col-md-4 border">
+                                    <img src="" class="card-img" alt="">이미지 들어갈 곳
+                                </div>
+                              <div class="col-md-8">
+                                    <div class="card-body">
+                                        <p class="card-text">상품명 : </p>
+                                        <p class="card-text">가격 : </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-
-            <div class="col-md-3  no-gutters" style="background-color: white;">
-                <div class="row mt-2 no-gutters ml-2">
-                    <h3 class="col-md-12 ml-1">
-                    강아지상품
-                    <p style="font-size: medium;">버튼을 누르면 원하시는 상품을 보실 수 있습니다.</p>
-                    </h3> 
-                    
-                    <p style="height: 50%;" class="dog col-3 border rounded-pill mr-1 ml-2"># 사료</p>
-                    <p style="height: 50%;" class="dog col-3 border rounded-pill mr-1 ml-2"># 간식</p>
-                    <p style="height: 50%;" class="dog col-3 border rounded-pill mr-1 ml-2"># 산책</p>
-                    <p style="height: 50%;" class="dog col-3 border rounded-pill mr-1 ml-2"># 배변</p>
-                    <br><br>
-                    <p style="height: 50%;" class="dog col-3 border rounded-pill mr-1 ml-2"># 미용</p>
-                    <p style="height: 50%;" class="dog col-3 border rounded-pill mr-1 ml-2"># 옷</p>
-                    <p style="height: 50%;" class="dog col-3 border rounded-pill mr-1 ml-2"># 집</p>
-                    <p style="height: 50%;" class="dog col-3 border rounded-pill mr-1 ml-2"># 기타</p>
-                </div>
-                <hr>
-                <div class="row mt-2 no-gutters ml-2">
-                    <h3 class=" col-md-12 ml-1">
-                        고양이상품
-                    <p style="font-size: medium;">버튼을 누르면 원하시는 상품을 보실 수 있습니다.</p>
-                    </h3>
-
-                    <p style="height: 50%;" class="cat col-2 border rounded-pill mr-1 ml-2"># 사료</p>
-                    <p style="height: 50%;" class="cat col-2 border rounded-pill mr-1 ml-2"># 간식</p>
-                    <p style="height: 50%;" class="cat col-2 border rounded-pill mr-1 ml-2"># 톳밥</p>
-                    <p style="height: 50%;" class="cat col-2 border rounded-pill mr-1 ml-2"># 장난감</p>
-                    <br><br>
-                    <p style="height: 50%;" class="cat col-2 border rounded-pill mr-1 ml-2"># 미용</p>
-                    <p style="height: 50%;" class="cat col-2 border rounded-pill mr-1 ml-2"># 옷</p>
-                    <p style="height: 50%;" class="cat col-2 border rounded-pill mr-1 ml-2"># 집</p>
-                    <p style="height: 50%;" class="cat col-2 border rounded-pill mr-1 ml-2"># 기타</p>
-                </div>
-                <hr>
-                <div class="row mt-2 no-gutters ml-2">
-                    <h3 class="col-md-12 ml-1">
-                        기니피그 상품
-                        <p style="font-size: medium;">버튼을 누르면 원하시는 상품을 보실 수 있습니다.</p>
-                    </h3>
-                    <p style="height: 50%;"class="gini col-2 border rounded-pill mr-1 ml-2"># 사료</p>
-                    <p style="height: 50%;"class="gini col-2 border rounded-pill mr-1 ml-2"># 간식</p>
-                    <p style="height: 50%;"class="gini col-2 border rounded-pill mr-1 ml-2"># 산책</p>
-                    <p style="height: 50%;"class="gini col-2 border rounded-pill mr-1 ml-2"># 배변</p>
-                    <br><br>
-                    <p style="height: 50%;"class="gini col-2 border rounded-pill mr-1 ml-2"># 미용</p>
-                    <p style="height: 50%;"class="gini col-2 border rounded-pill mr-1 ml-2"># 장난감</p>
-                    <p style="height: 50%;"class="gini col-2 border rounded-pill mr-1 ml-2"># 집</p>
-                    <p style="height: 50%;"class="gini col-2 border rounded-pill mr-1 ml-2"># 기타</p>
-                </div>
-                <hr>
-                <div class="row mt-2 no-gutters ml-2">
-                    <h3 class="col-md-12 ml-1">
-                        토끼상품
-                        <p style="font-size: medium;">버튼을 누르면 원하시는 상품을 보실 수 있습니다.</p>
-                    </h3>
-                    <p style="height: 50%;"class="rabbit col-2 border rounded-pill mr-1 ml-2"># 사료</p>
-                    <p style="height: 50%;"class="rabbit col-2 border rounded-pill mr-1 ml-2"># 간식</p>
-                    <p style="height: 50%;"class="rabbit col-2 border rounded-pill mr-1 ml-2"># 산책</p>
-                    <p style="height: 50%;"class="rabbit col-2 border rounded-pill mr-1 ml-2"># 배변</p>
-                    <br><br>
-                    <p style="height: 50%;"class="rabbit col-2 border rounded-pill mr-1 ml-2"># 미용</p>
-                    <p style="height: 50%;"class="rabbit col-2 border rounded-pill mr-1 ml-2"># 장난감</p>
-                    <p style="height: 50%;"class="rabbit col-2 border rounded-pill mr-1 ml-2"># 집</p>
-                    <p style="height: 50%;"class="rabbit col-2 border rounded-pill mr-1 ml-2"># 기타</p>
-                </div>
-                <hr>
-                <div class="row mt-2 no-gutters no-gutters">
-                    <h3 class=" col-md-12 ml-1">
-                        파충류 상품
-                        <p style="font-size: medium;">버튼을 누르면 원하시는 상품을 보실 수 있습니다.</p>
-                    </h3>
-                    <p style="height: 50%;"class="col-2 border rounded-pill mr-1 ml-2"># 사료</p>
-                    <p style="height: 50%;"class="col-2 border rounded-pill mr-1 ml-2"># 간식</p>
-                    <p style="height: 50%;"class="col-2 border rounded-pill mr-1 ml-2"># 집게</p>
-                    <p style="height: 50%;"class="col-2 border rounded-pill mr-1 ml-2"># 배변</p>
-                    <br><br>
-                    <p style="height: 50%;"class="col-2 border rounded-pill mr-1 ml-2"># 영양제</p>
-                    <p style="height: 50%;"class="col-2 border rounded-pill mr-1 ml-2"># 물통</p>
-                    <p style="height: 50%;"class="col-2 border rounded-pill mr-1 ml-2"># 집</p>
-                    <p style="height: 50%;"class="col-2 border rounded-pill mr-1 ml-2"># 기타</p>
-                </div>
-                <hr>
-                <div class="row mt-2 no-gutters no-gutters">
-                    <h3 class=" col-md-12 ml-1">
-                        기타상품
-                        <p style="font-size: medium;">버튼을 누르면 원하시는 상품을 보실 수 있습니다.</p>
-                    </h3>
-                    <p style="height: 50%;"class="col-2 border rounded-pill mr-1 ml-2">사료</p>
-                    <p style="height: 50%;"class="col-2 border rounded-pill mr-1 ml-2">간식</p>
-                    <p style="height: 50%;"class="col-2 border rounded-pill mr-1 ml-2">산책</p>
-                    <p style="height: 50%;"class="col-2 border rounded-pill mr-1 ml-2">배변</p>
-                    <br><br>
-                    <p style="height: 50%;"class="col-2 border rounded-pill mr-1 ml-2">미용</p>
-                    <p style="height: 50%;"class="col-2 border rounded-pill mr-1 ml-2">옷</p>
-                    <p style="height: 50%;"class="col-2 border rounded-pill mr-1 ml-2">집</p>
-                    <p style="height: 50%;"class="col-2 border rounded-pill mr-1 ml-2">기타</p>
-                </div>
-                
-            </div>
-            <div class="col-md-2 border border-dark"></div>
         </div>
     </div>
+  <div class="col-md-2 border border-dark"></div>
+
  
  	<%@ include file="../module/footer.jsp" %>
 </body>
