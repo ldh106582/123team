@@ -204,6 +204,7 @@
 			    </div>
 			</c:when>
 			<!--체험단 관리자-->
+		<%-- 	
 			<c:when test="">
 				<div id="container" class="container ">
 			        <!-- container -->
@@ -314,6 +315,7 @@
 			        </div>
 			    </div>
 			</c:when>
+			 --%>
 			<!--일반 mypage -->
 			<c:otherwise>
 			    <div id="container" class="container ">
