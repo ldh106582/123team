@@ -60,7 +60,8 @@
 							       
 	                                <div class="col-md-12 no-gutters">
 	                                    <h6 class="col-md-12 ">상품 : ${product.productName}</h6>
-	                                    <h6 class="col-md-12 ">카테고리 : ${product.productCategory}</h6>
+	                                    <h6 class="col-md-12 ">상품  카테고리 : ${product.productCategory}</h6>
+	                                    <h6 class="col-md-12 ">동물  카테고리 : ${product.animalCategory}</h6>
 	                                    <h6 class="col-md-12 ">가격 : ${product.productPrice}</h6>
 	                                </div>
                                 

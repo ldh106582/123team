@@ -43,7 +43,9 @@
 			<p>
 			상품명 : ${product.productName}
 			<p>
-			카테고리 : ${product.productCategory}
+			상품 카테고리 : ${product.productCategory}
+			<p>
+			동물 카테고리 : ${product.animalCategory}
 			<p>
 			가격 : ${product.productPrice}
 			<p>

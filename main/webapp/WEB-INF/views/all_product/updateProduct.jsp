@@ -18,7 +18,14 @@
 	<input type="hidden" value="${aproduct.productId}"/>  
 	상품명 : <form:input path="productName" value="${aproduct.productName}"/>
 	<p>
-	카테고리 : <form:input path="productCategory" value="${aproduct.productCategory}"/>
+	상품 카테고리 : <form:input path="productCategory" value="${aproduct.productCategory}"/>
+	<p>
+	동뮬 카테고리 : 강아지 <form:radiobutton path="animalCategory" value="강아지"/>
+			 	 고양이 <form:radiobutton path="animalCategory" value="고양이"/>
+			 	 토끼 <form:radiobutton path="animalCategory" value="토끼"/>
+			 	 기니피그 <form:radiobutton path="animalCategory" value="기니피그"/>
+			 	 파춯류 <form:radiobutton path="animalCategory" value="파춯류"/>
+			 	 기타 <form:radiobutton path="animalCategory" value="기타"/>
 	<p>
 	가격 : <form:input path="productPrice" value="${aproduct.productPrice}"/>
 	<p>
@@ -26,8 +33,7 @@
 	<p>
 	재고수 : <form:input path="productUnitStock" value="${aproduct.productUnitStock}"/>
 	<p>
-	<!-- 멀티파츠 -->
-	상품사진 : <form:input path="productImage" value="${aproduct.productImage}"/>
+	이미지 : <input type="file" name="p_image" value="productImage">
 	<input type="submit" value="수정하기">
 </form:form>
 	

@@ -16,14 +16,18 @@
  	<p>
  	상품명 : <form:input path="productName"/>
  	<p>
- 	카테고리 : <form:input path="productCategory"/>
+ 	상품 카테고리 : <form:input path="productCategory"/>
+ 	<p>
+ 	동뮬 카테고리 : 강아지 <form:radiobutton path="animalCategory" value="강아지"/>
+			 	 고양이 <form:radiobutton path="animalCategory" value="고양이"/>
+			 	 토끼 <form:radiobutton path="animalCategory" value="토끼"/>
+			 	 기니피그 <form:radiobutton path="animalCategory" value="기니피그"/>
+			 	 파춯류 <form:radiobutton path="animalCategory" value="파춯류"/>
+			 	 기타 <form:radiobutton path="animalCategory" value="기타"/>
  	<p>
  	상품가격 :<form:input path="productPrice"/>
  	<p>
  	상품설명 : <form:input path="productDescribe"/>
- 	<p>
- 	<!-- 멀티파츠 추가해야함 -->
- 	상품사진 : <form:input path="productImage"/>
  	<p>
  	상품재고수 : <form:input path="productUnitStock"/>
  	<p>

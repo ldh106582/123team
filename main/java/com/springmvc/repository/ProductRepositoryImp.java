@@ -46,9 +46,9 @@ public class ProductRepositoryImp implements ProductRepository{
 
 	@Override
 	public void addProduct(Product product) {
-		String SQL = "insert into Product values(?,?,?,?,?,?,?,?,?)";
+		String SQL = "insert into Product values(?,?,?,?,?,?,?,?,?,?)";
 		
-		template.update(SQL,getProductId(),product.getProductName(),product.getProductPrice(),product.getProductCategory(),product.getProductDescribe(), product.getReleaseDate(),product.getProductUnitStock(),product.getProductImage());
+		template.update(SQL,getProductId(),product.getProductName(),product.getProductPrice(),product.getProductCategory(),product.getProductDescribe(), getReleaseDate(),product.getProductUnitStock(),product.getProductImage(),product.getPersonId(),product.getAnimalCategory());
 	}
 
 //	날짜받기
