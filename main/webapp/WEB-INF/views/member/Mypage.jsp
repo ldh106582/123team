@@ -12,8 +12,10 @@
 <title>로그인 성공 페이지</title>
 </head>
 <body>
-
-
+<%
+	request.setAttribute("type", session.getAttribute("type"));
+		request.setAttribute("checktype", "p");
+	%>
 	<%@ include file="../module/memberheader.jsp" %>
 
 	<div id="wrap" class="wrap naverid ">
