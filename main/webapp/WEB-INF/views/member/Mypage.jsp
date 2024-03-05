@@ -14,7 +14,7 @@
 <body>
 
 
-	<%@ include file="../module/memberheader.jsp" %>
+	<%@ include file="../module/headerdark.jsp" %>
 
 	<div id="wrap" class="wrap naverid ">
 		<header class="header" role="banner">
@@ -203,10 +203,9 @@
 					</div>
 			    </div>
 			</c:when>
-			<!--체험단 관리자-->
-		<%-- 	
 			<c:when test="">
 				<div id="container" class="container ">
+			        <!--체험단 관리자-->
 			        <!-- container -->
 			        <div id="content" class="content">
 			            <div class="subindex_wrap" role="main">
@@ -315,10 +314,9 @@
 			        </div>
 			    </div>
 			</c:when>
-			 --%>
-			<!--일반 mypage -->
 			<c:otherwise>
 			    <div id="container" class="container ">
+			    <!--일반 mypage -->
 			        <!-- container -->
 			        <div id="content" class="content">
 			            <div class="subindex_wrap" role="main">

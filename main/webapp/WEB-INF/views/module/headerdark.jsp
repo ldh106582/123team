@@ -25,6 +25,7 @@
 	<%
 		request.setAttribute("loginId", session.getAttribute("personId"));
 		request.setAttribute("type", session.getAttribute("type"));
+		
 	%>
 	<nav class="navbar navbar-expand navbar-dark bg-dark">
 		<div class="container">

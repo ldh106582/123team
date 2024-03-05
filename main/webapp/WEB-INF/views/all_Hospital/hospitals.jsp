@@ -27,13 +27,12 @@
             <c:if test="${type == checktype}">
             <div class="justify-content-end">
                 <a href="hospitals/create" class="btn btn-success ">병원 추가</a>
-                <a href="hospitals/manageapps">모든신청보기</a>
-
-            </div>
+                <a href="hospitals/manageapps" class="btn btn-success">모든신청보기</a>
             </c:if>
             <c:if test="${loginId != null && type!=checktype}">
-            	<a href="hospitals/mybookList?personId=${loginId}">내 예약 보기</a>            
+            	<a href="hospitals/mybookList?personId=${loginId}" class="btn btn-success">내 예약 보기</a>            
             </c:if>
+            </div>
         </div>
         <br>
         <div class="row" >
@@ -63,8 +62,7 @@
         </form>
 
 	<%@ include file="../module/footer.jsp" %>
-<<<<<<< HEAD
-=======
+
 <%-- 
 <a href="hospitals/mybookList?personId=${loginId}">내 예약 보기</a>
 <c:forEach items="${hospitals}" var="hospital">
@@ -77,6 +75,5 @@
 <p>
 <a href="search">병원검색</a>	
  --%>
->>>>>>> origin/yeonghoe
 </body>
 </html>

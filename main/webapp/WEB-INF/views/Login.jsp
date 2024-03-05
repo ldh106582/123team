@@ -28,8 +28,9 @@
 		<div class="container col-md-5">
 			<div class="text-center">
 				<h4>아이디 / 비밀번호 입력해주세요</h4>
+				<p>(${noId})</p>	
 			</div>
-	
+								
 			<form:form id="loginForm" class="form-signin mx-auto mt-5" modelAttribute="success" method="POST" style="max-width: 400px;">
 	
 				<div class="form-group text-center">아이디를 입력하세요
@@ -42,13 +43,13 @@
 					<input type="submit" class="btn btn-lg btn-success btn-block" value="로그인" id="login"/>
 				</div>
 			</form:form>
-		
+
 			<div class="mt-5 text-center">
 				<a href="#">아이디 찾기</a> | 
 				<a href="#">비밀번호 찾기</a> | 
 				<a href="./login/Allmember">회원가입</a>
 			</div>
-			
+
 			<hr>
 		</div>
 	</div>
