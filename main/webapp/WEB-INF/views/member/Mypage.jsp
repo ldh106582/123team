@@ -7,7 +7,7 @@
 <html>
 <head>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-<link rel="stylesheet" href="/123team/resources/css/Mypage.css">
+<link rel="stylesheet" href="./resources/css/mypage.css">
 <meta charset="UTF-8">
 <title>로그인 성공 페이지</title>
 </head>
@@ -84,42 +84,118 @@
           </li>
         </ul>
       </nav>
-     
-         <!-- partial -->
-      <div class="main-panel">
-        <div class="content-wrapper">
-          <div class="row">
-            <div class="col-md-12 grid-margin">
-              <div class="row">
-                <div class="col-12 col-xl-8 mb-4 mb-xl-0">
-                  <h3 class="font-weight-bold"> </h3>
-                  <h6 class="font-weight-normal mb-0"></h6>
-                </div>
-                <div class="col-12 col-xl-4">
-                 <div class="justify-content-end d-flex">
-                  <div class="dropdown flex-md-grow-1 flex-xl-grow-0">
-                  </div>
-                 </div>
-                </div>
-              </div>
-            </div>
+      <div id="container" class="container col-md-4">
+			    <!--일반 mypage -->
+			        <!-- container -->
+			        <div id="content" class="content">
+			            <div class="subindex_wrap" role="main">
+			                <div id="headerTop" class="path_area" aria-hidden="false"></div>
+			            </div>                        
+			            <div class="subindex_item">
+			                <div class="head_title">
+			                    <h2 class="subindex_title">내 정보</h3>
+			                </div>
+				            <div class="subindex_greenbox">
+				                <ul class="subindex_row">
+				                    <li>
+				                        <div class="row_item other">
+				                            <a href="./login/update?id=${ id.personId }" class="text-decoration-none"><span class="item_text">내 정보 수정</span></a>
+				                        </div>
+				                    </li>
+				                    <li>
+				                        <div class="row_item other">
+				                            <a href="" id=""><span class="item_text">펫 정보 보기</span></a>
+				                        </div>
+				                    </li>
+				                    <li>
+				                        <div class="row_item other">
+				                            <a href="/123team/login/delete?id=${ id.personId }" class="text-decoration-none" id="delete"><span class="item_text">회원 탈퇴</span></a>
+				                        </div>
+				                    </li>
+				                </ul>
+				            </div>
+			        	</div>
+				        <!--병원 예약 정보-->
+				        <div class="subindex_item">
+				            <div class="head_title">
+				                <h2 class="subindex_title">병원 예약 정보</h2>
+				            </div>
+				            <div class="subindex_greenbox">
+				                <ul class="subindex_row">
+				                    <li>
+				                        <div class="row_item other">
+				                            <a href="/123team/hospitals/mybookList?personId=${loginId}" class="text-decoration-none"><span class="item_text">예약 확인</span></a>
+				                        </div>
+				                    </li>
+				                </ul>
+				            </div>
+				        </div>
+				        <!--주문 정보-->
+				        <div class="subindex_item">
+				            <div class="head_title">
+				                <h2 class="subindex_title">주문목록</h2>
+				            </div>
+				            <div class="subindex_greenbox">
+				                <ul class="subindex_row">
+				                    <li>
+				                        <div class="row_item other">
+				                            <a href="" class="text-decoration-none"><span class="item_text">주문 내역 확인</span></a>
+				                        </div>
+				                    </li>
+				                </ul>
+				            </div>
+				        </div>
+				        <!--게시판-->
+				        <div class="subindex_item">
+				            <div class="head_title">
+				                <h2 class="subindex_title">게시판</h2>
+				            </div>
+				            <div class="subindex_greenbox">
+				                <ul class="subindex_row">
+				                    <li>
+				                        <div class="row_item other">
+				                        <a href="/123team/Fboards?myId=${id.personId}" class="text-decoration-none"><span class="item_text">작성 글 확인</span></a>
+				                        </div>
+				                    </li>
+				                </ul>
+				            </div>
+				        </div>
+				        <!--Q&A-->
+				        <div class="subindex_item">
+				            <div class="head_title">
+				                <h2 class="subindex_title">Q&A</h2>
+				            </div>
+				            <div class="subindex_greenbox">
+				                <ul class="subindex_row">
+				                    <li>
+				                        <div class="row_item other">
+				                            <a href="" class="text-decoration-none"><span class="item_text">작성 Q&A 확인</span></a>
+				                        </div>
+				                    </li>
+				                </ul>
+				            </div>
+				        </div>
+				        <!--체험단-->
+				        <div class="subindex_item">
+				            <div class="head_title">
+				                <h2 class="subindex_title">체험단</h2>
+				            </div>
+				            <div class="subindex_greenbox">
+				                <ul class="subindex_row">
+				                    <li>
+				                        <div class="row_item other">
+				                            <a href="/123team/ENboards/applist" class="text-decoration-none"><span class="item_text">체험 신청 글 확인</span></a>
+				                        </div>
+				                    </li>
+				                </ul>
+				            </div>
+				        </div>
+					</div>
+			    </div>
           </div>
           
-        <footer class="footer">
-          <div class="d-sm-flex justify-content-center justify-content-sm-between">
-            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2021.  Premium <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap admin template</a> from BootstrapDash. All rights reserved.</span>
-            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="ti-heart text-danger ml-1"></i></span>
-          </div>
-          <div class="d-sm-flex justify-content-center justify-content-sm-between">
-            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Distributed by <a href="https://www.themewagon.com/" target="_blank">Themewagon</a></span> 
-          </div>
-        </footer> 
-        <!-- partial -->
-      </div>
-      <!-- main-panel ends -->
-    </div>   
-    <!-- page-body-wrapper ends -->
-  </div>
+          <%@  include file="../module/footer.jsp" %>
+ <%--        
   <!-- container-scroller -->
 	<div id="wrap" class="wrap naverid ">
 		<header class="header" role="banner">
@@ -641,7 +717,8 @@
 			</c:otherwise>
 		</c:choose>
 	</div>
-	<%@  include file="../module/footer.jsp" %>
+	 --%>
+	
 
 </body>
 <!-- js -->
