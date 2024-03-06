@@ -153,5 +153,29 @@ public class PersonServciceImp implements PersonService{
 		// TODO Auto-generated method stub
 		psersonRepository.SetUpdateEM(ex_manager);
 	}
+	//product manager 테이블 데이터를 삭제하는 함수
+	  //person 테이블 데이터를 삭제하는 함수
+	@Override
+	public void PM(String personId) {
+		// TODO Auto-generated method stub
+		psersonRepository.PM(personId);
+	}
+	  //병원 manager 테이블 데이터를 삭제하는 함수
+	  //person 테이블 데이터를 삭제하는 함수
+	@Override
+	public void HM(String personId) {
+		// TODO Auto-generated method stub
+		psersonRepository.HM(personId);
+	}
+	  //체험단 manager 테이블 데이터를 삭제하는 함수
+	  //person 테이블 데이터를 삭제하는 함수
+	@Override
+	public void EM(String personId) {
+		// TODO Auto-generated method stub
+		psersonRepository.EM(personId);
+	}
+
+	
+	
 
 }

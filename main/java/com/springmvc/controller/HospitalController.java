@@ -23,6 +23,10 @@ import com.springmvc.domain.Pet;
 import com.springmvc.service.BookingService;
 import com.springmvc.service.HospitalReviewService;
 import com.springmvc.service.HospitalService;
+import java.net.*;
+import java.io.*;
+import javax.net.ssl.HttpsURLConnection;
+import org.json.*;
 
 @Controller
 @RequestMapping("/hospitals")
@@ -41,13 +45,15 @@ public class HospitalController {
 	public String getAllhospitals(Model model) 
 	{
 		model.addAttribute("hospitals",hospitalService.getAllhospitals());
+		
 		return "all_Hospital/hospitals";
 	}
 
 	@GetMapping("hospital")
-	public String hospital(@RequestParam("hid") String hid,Model model)
+	public String hospital(@RequestParam("hid") String hid,Model model,HttpServletRequest request)
 	{
-		model.addAttribute("hospital",hospitalService.gethosptialByhId(hid));
+		Hospital hospital = hospitalService.gethosptialByhId(hid);
+		model.addAttribute("hospital",hospital);
 //		병원리뷰
 		model.addAttribute("reviews",reviewService.getAllReviews(hid));
 		return "all_Hospital/hospital";
@@ -60,11 +66,13 @@ public class HospitalController {
 	}
 	
 	@PostMapping("/create")
-	public String hospitalcreate(@ModelAttribute("hospital")Hospital hospital,HttpSession session,Model model) 
+	public String hospitalcreate(@ModelAttribute("hospital")Hospital hospital,
+								HttpSession session,Model model,HttpServletRequest request) 
 	{
+		String realpath = request.getSession().getServletContext().getRealPath("/resources/images");
 		String personId = (String) session.getAttribute("personId");
 		hospital.setPersonId(personId);
-		hospitalService.addhospital(hospital);
+		hospitalService.addhospital(hospital,realpath);
 		return "redirect:/hospitals";
 	}
 	
@@ -186,10 +194,10 @@ public class HospitalController {
 //	 모든 신청 보기
 	@GetMapping("manageapps")
 	public String manageapps(Model model,HttpSession session,HttpServletRequest request) {
-		 String personId = (String) session.getAttribute("personId");
-		 System.out.println("1111111111111111");
+		System.out.println("======================="); 
+		String personId = (String) session.getAttribute("personId");
+		System.out.println("=======================1");
 		 List<HospitalBooking> list = bookingService.getPermisionList(personId);
-		 System.out.println("2222222222222222222");
 		 model.addAttribute("applists",list);
 		 if(list.isEmpty()) {
 			 request.setAttribute("nothing", "승인할 것이 없어요");
@@ -221,4 +229,5 @@ public class HospitalController {
 			model.addAttribute("hospitals",hospitallist);
 			return "all_Hospital/hospitals";
 		}
+//		지도 띄우기
 }

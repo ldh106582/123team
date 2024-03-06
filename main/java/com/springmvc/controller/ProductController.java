@@ -58,7 +58,7 @@ public class ProductController {
 	
 	@PostMapping("add")
 	public String addProductProccess(@ModelAttribute("product") Product product, HttpServletRequest request,
-									 @RequestParam("p_image") MultipartFile productImage, Model model,HttpSession session) {
+									 @RequestParam("p_image") MultipartFile productImage, Model model) {
 		String imageName = productImage.getOriginalFilename();
 		String imagePatn = request.getSession().getServletContext().getRealPath("/resources/images");
 		System.out.println("이미지 경로 : " + imagePatn);
@@ -74,7 +74,6 @@ public class ProductController {
 			System.out.println("이미지 파일이 존재하지 않습니다." + e);
 		}
 		
-		product.setPersonId((String) session.getAttribute("personId"));
 		productService.addProduct(product);
 		
 		

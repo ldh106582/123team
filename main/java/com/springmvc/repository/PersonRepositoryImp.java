@@ -263,22 +263,63 @@ public class PersonRepositoryImp implements  PersonRepository{
 
 	@Override
 	public Ex_manager E_update(String id) {
+		System.out.println("id" + id);
 		String SQL = "select * from Ex_Manager where personId = ?";
+		System.out.println("id2 : " + id);
 		Ex_manager ex_manager = null;
+		System.out.println("id3 : " + id);
 		ex_manager = template.queryForObject(SQL, new Object[] {id}, new ex_managerDBConnector());
+		System.out.println("ex_manager : " + ex_manager);
 		return ex_manager;
 	}
 
 	@Override
 	public void SetUpdateEM(Ex_manager ex_manager) {
-		for(int i = 0; i < 2; i++) {
-		String SQL = "update Ex_Manager set personPw=?,  s_image=?, ex_name=?, ex_phone=?,ex_Address=?,  type=? where PersonId=?";
+		for(int i = 0; i < 1; i++) {
+		String SQL = "update Ex_Manager set personPw=?,  s_image=?, ex_name=?, ex_phone=?,ex_Address=?,  Type=? where PersonId=?";
 		template.update(SQL, ex_manager.getPersonPw(), ex_manager.getS_image(), ex_manager.getEx_Name(), ex_manager.getEx_Phone(), ex_manager.getEx_Address(),ex_manager.getType(), ex_manager.getPersonId());
 		
-		String SQL1 = "update Person set personPw=?,  PersonEmail=?, PersonAddress=?, PersonName=?,PersonBirth=?,  PersonSex=?, PersonPhone=?, Type=?, where PersonId=?";
-		template.update(SQL1, ex_manager.getPersonPw(), ex_manager.getPersonEmail(), ex_manager.getPersonAddress(), ex_manager.getPersonName(), ex_manager.getPersonPhone(), ex_manager.getType(), ex_manager.getPersonId());
+		String SQL1 = "update Person set PersonPw=?, PersonEmail=?, PersonAddress=?, PersonName=?, PersonBirth=?, PersonSex=?, PersonPhone=? where PersonId=?";
+		template.update(SQL1, ex_manager.getPersonPw(), ex_manager.getPersonEmail(), ex_manager.getPersonAddress(), ex_manager.getPersonName(), ex_manager.getPersonBirth(), ex_manager.getPersonSex() ,ex_manager.getPersonPhone(), ex_manager.getPersonId());
 		
 		}
+	}
+	//product manager 테이블 데이터를 삭제하는 함수
+	  //person 테이블 데이터를 삭제하는 함수
+	@Override
+	public void PM(String personId) {
+		for(int i = 0; i < 1; i++) {
+			String SQL = "delete from person where personId=?";
+			template.update(SQL, new Object[] {personId}, new PersonDBConnector());
+			String SQL1= "delete from ProductMember where personId=?";
+			template.update(SQL1, new Object[] {personId}, new ProductMemberDBConnector());
+		}
+		
+	}
+	  //병원 manager 테이블 데이터를 삭제하는 함수
+	  //person 테이블 데이터를 삭제하는 함수
+	@Override
+	public void HM(String personId) {
+		for(int i = 0; i < 1; i++) {
+			String SQL = "delete from person where personId=?";
+			template.update(SQL, new Object[] {personId}, new PersonDBConnector());
+			String SQL1= "delete from HospitalMember where personId=?";
+			template.update(SQL1, new Object[] {personId}, new HospitalManagerDBConnector());
+		}
+		
+	}
+	  //체험단 manager 테이블 데이터를 삭제하는 함수
+	  //person 테이블 데이터를 삭제하는 함수
+
+	@Override
+	public void EM(String personId) {
+		for(int i = 0; i < 1; i++) {
+			String SQL = "delete from person where personId=?";
+			template.update(SQL, new Object[] {personId}, new PersonDBConnector());
+			String SQL1= "delete from Ex_Manager where personId=?";
+			template.update(SQL1, new Object[] {personId}, new ex_managerDBConnector());
+		}
+		
 	}
 	
 

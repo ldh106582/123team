@@ -75,7 +75,6 @@ public class FBoardContoller {
 	@PostMapping("/add") 
 	public String addboard(@ModelAttribute("board")FBoard board,Model model,HttpSession session){ 
 		String personId = (String) session.getAttribute("personId");
-		System.out.println(personId);
 		fboardService.setFBoard(board,personId);
 		return "redirect:/Fboards";
 	}

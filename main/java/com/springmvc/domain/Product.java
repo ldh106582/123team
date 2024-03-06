@@ -15,8 +15,6 @@ public class Product implements Serializable{
 	private String productDescribe;
 	private String productImage;
 	private int productUnitStock;
-	private String animalCategory;
-	
 	public Product() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -77,12 +75,6 @@ public class Product implements Serializable{
 	}
 	public void setPersonId(String personId) {
 		this.personId = personId;
-	}
-	public String getAnimalCategory() {
-		return animalCategory;
-	}
-	public void setAnimalCategory(String animalCategory) {
-		this.animalCategory = animalCategory;
 	}
 	
 	
