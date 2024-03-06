@@ -51,5 +51,13 @@ public interface PersonRepository {
 	Ex_manager E_update (String id);
 	 // hospital manager 마이페이지를 수정하는 곳
 	void SetUpdateEM(Ex_manager ex_manager);
-
+	//product manager 테이블 데이터를 삭제하는 함수
+	  //person 테이블 데이터를 삭제하는 함수
+	void PM(String personId);
+	  //병원 manager 테이블 데이터를 삭제하는 함수
+	  //person 테이블 데이터를 삭제하는 함수
+	void HM(String personId);
+	  //체험단 manager 테이블 데이터를 삭제하는 함수
+	  //person 테이블 데이터를 삭제하는 함수
+	void EM(String personId);
 }

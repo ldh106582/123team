@@ -106,7 +106,7 @@ public class PersonController {
          // 프로덕트 매니저가 로그인할 때 가져올 데이터
          ProductMember productMember = personService.getPM(personId);
          
-         session.setAttribute("persId", productMember);
+         session.setAttribute("productMember", productMember);
          // 해당 프로덕트 매니저의 상품을 가죠오는 데이터
          List<Product> listOfProduct = personService.getProduct(personId);
          session.setAttribute("listOfProduct", listOfProduct);
@@ -123,6 +123,7 @@ public class PersonController {
          return "redirect:/products";
       	
       } 
+      
       if("h".equals(type)) 
       {
 
@@ -131,9 +132,10 @@ public class PersonController {
     		  
     		  return "Login";
     	  }
+    	  
          // 동물병원 의사가 로그인할 때 가져올 데이터
          HospitalMember hospitalMember = personService.getHM(personId);
-         session.setAttribute("personId", hospitalMember);
+         session.setAttribute("hospitalMember", hospitalMember);
          // 해당 동물병원의사의 병원정보를 가죠오는 데이터
          List<Hospital> listOfHospital = personService.getHopital(personId);
          session.setAttribute("listOfHospital", listOfHospital);
@@ -157,10 +159,12 @@ public class PersonController {
     		  
     		  return "Login";
     	  }
+    	  
     	  System.out.println("여기는 체험단 " + personId);
           // 체험단 관리자가 로그인할 때 가져올 데이터
     	  Person ex_person = personService.getEM(personId);
-    	  session.setAttribute("personId", ex_person);
+    	  session.setAttribute("ex_person", ex_person);
+    	  
     	// 체험단 신청목록을 로그인할 때 가져올 데이터
     	  List<EApplication> eApplication = personService.getEA(personId);
     	  session.setAttribute("eApplication", eApplication);
@@ -209,6 +213,7 @@ public class PersonController {
    public String GetUpdatePerson(@ModelAttribute("addmemberupdate") Person person,
 		   						 @ModelAttribute("managerupdate") ProductMember productMember,
 		   						 @ModelAttribute("hospitalupdate") HospitalMember hospitalMember,
+		   						 @ModelAttribute("ex_manager") Ex_manager ex_manager,
 		                         @RequestParam("id") String id,
 		                         HttpServletRequest request, Model model) {
       
@@ -242,10 +247,14 @@ public class PersonController {
       else if("e".equals(type)) 
       {
     	  // EXpreience manager 회원수정
-    	  Ex_manager ex_manager =  personService.E_update(id);
-          model.addAttribute("ex_manager", ex_manager);
+    	  Ex_manager ex_Manager =  personService.E_update(id);
+    	  System.out.println(ex_Manager.getEx_Name());
+          model.addAttribute("ex_Manager", ex_Manager);
+
+          Person ex_person = (Person)session.getAttribute("id");
+          System.out.println("e : " + ex_person.getPersonEmail());
           
-          model.addAttribute("u_person", u_person);
+          model.addAttribute("ex_person", ex_person);
           return "/member/ManagerUpdate";
        }
       else 
@@ -311,7 +320,7 @@ public class PersonController {
        }
        else if("e".equals(type)) 
        {	
-    	   ex_manager.setType(type);
+    	  ex_manager.setType(type);
      	  String imageName =  s_file.getOriginalFilename();
      	  String imagePath = request.getSession().getServletContext().getRealPath("/resources/images");
      	  File file = new File(imagePath, imageName );
@@ -323,6 +332,7 @@ public class PersonController {
      		  System.out.println("새로운 이미지를 전송하지 않았습니다." + e);
      	  }
     	   // hospital manager 마이페이지를 수정하는 곳
+     	  
      	 // hospital manager person 테이블을 수정하는 곳
           personService.SetUpdateEM(ex_manager);
  
@@ -337,10 +347,31 @@ public class PersonController {
    
    //회원삭제 페이지
    @RequestMapping(value="/delete")
-   public String SetDeletePerson(@RequestParam("id") String personId) {
+   public String SetDeletePerson(@RequestParam("id") String personId, HttpServletRequest request) {
       System.out.println("person delete문 controller 도착");
-      // 
-      personService.SetDeletePerson(personId);
+      
+      HttpSession session = request.getSession();
+      String type = (String)request.getAttribute("type");
+      System.out.println(type);
+      
+      if("p".equals(type)) {
+    	  //product manager 테이블 데이터를 삭제하는 함수
+    	  //person 테이블 데이터를 삭제하는 함수
+    	  personService.PM(personId);
+    	  
+      } else if("h".equals(type)){
+    	  //병원 manager 테이블 데이터를 삭제하는 함수
+    	  //person 테이블 데이터를 삭제하는 함수
+    	  personService.HM(personId);
+      } else if("e".equals(type)){
+    	  //체험단 manager 테이블 데이터를 삭제하는 함수
+    	  //person 테이블 데이터를 삭제하는 함수
+    	  personService.EM(personId);
+      } else {
+          personService.SetDeletePerson(personId);
+      }
+      
+     
      
       return "redirect:/login";
    }

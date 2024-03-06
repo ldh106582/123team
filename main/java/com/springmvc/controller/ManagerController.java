@@ -54,7 +54,7 @@ public class ManagerController
 			public String GetaddProductManager(@ModelAttribute("productMember") ProductMember productMember,
 											   @ModelAttribute("hospitalMember") HospitalMember hospitalMember,
 											   @ModelAttribute("ex_member") Ex_manager ex_manager,
-											   @RequestParam("s_file") MultipartFile s_file,
+											   @RequestParam(value="s_file", required=false) MultipartFile s_file,
 											   @RequestParam(value="h_file", required=false) MultipartFile h_file,
 												HttpServletRequest request) 
 			{	

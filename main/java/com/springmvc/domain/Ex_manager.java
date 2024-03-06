@@ -5,19 +5,19 @@ import java.sql.Date;
 import org.springframework.web.multipart.MultipartFile;
 
 public class Ex_manager {
-	private String personId;
-	private String personPw;
-	private String personEmail;
-	private String personAddress;
-	private String personName;
-	private String personPhone;
-	private Date personBirth;
-	private String personSex;
-	private String ex_Name;
-	private String ex_Address;
-	private String ex_Phone;
-	private String s_image; // 사업자등록증
-	private String type;
+	   private String personId;
+	   private String personPw;
+	   private String personEmail;
+	   private String personAddress;
+	   private String personName;
+	   private String personPhone;
+	   private Date personBirth;
+	   private String personSex;
+	   private String ex_Name;
+	   private String ex_Address;
+	   private String ex_Phone;
+	   private String s_image; // 사업자등록증
+	   private String type;
 	public Ex_manager() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -33,6 +33,37 @@ public class Ex_manager {
 	}
 	public void setPersonPw(String personPw) {
 		this.personPw = personPw;
+	}
+	
+	public String getEx_Name() {
+		return ex_Name;
+	}
+	public void setEx_Name(String ex_Name) {
+		this.ex_Name = ex_Name;
+	}
+	public String getEx_Address() {
+		return ex_Address;
+	}
+	public void setEx_Address(String ex_Address) {
+		this.ex_Address = ex_Address;
+	}
+	public String getEx_Phone() {
+		return ex_Phone;
+	}
+	public void setEx_Phone(String ex_Phone) {
+		this.ex_Phone = ex_Phone;
+	}
+	public String getS_image() {
+		return s_image;
+	}
+	public void setS_image(String s_image) {
+		this.s_image = s_image;
+	}
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
 	}
 	public String getPersonEmail() {
 		return personEmail;
@@ -69,36 +100,6 @@ public class Ex_manager {
 	}
 	public void setPersonSex(String personSex) {
 		this.personSex = personSex;
-	}
-	public String getEx_Name() {
-		return ex_Name;
-	}
-	public void setEx_Name(String ex_Name) {
-		this.ex_Name = ex_Name;
-	}
-	public String getEx_Address() {
-		return ex_Address;
-	}
-	public void setEx_Address(String ex_Address) {
-		this.ex_Address = ex_Address;
-	}
-	public String getEx_Phone() {
-		return ex_Phone;
-	}
-	public void setEx_Phone(String ex_Phone) {
-		this.ex_Phone = ex_Phone;
-	}
-	public String getS_image() {
-		return s_image;
-	}
-	public void setS_image(String s_image) {
-		this.s_image = s_image;
-	}
-	public String getType() {
-		return type;
-	}
-	public void setType(String type) {
-		this.type = type;
 	}
 	
 	
