@@ -66,7 +66,7 @@ function cancelForm() {
 <body>
  <%@  include file="../module/header.jsp" %>
         <!-- partial -->
-     <%@  include file="../module/leftheader.jsp" %>
+    <div class="container-fluid page-body-wrapper">
       <!-- partial -->
       <!-- partial:partials/_sidebar.html -->
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
@@ -153,7 +153,6 @@ function cancelForm() {
               </div>
             </div>
           </div>
-      </div>
           
         <footer class="footer">
           <div class="d-sm-flex justify-content-center justify-content-sm-between">
@@ -164,6 +163,96 @@ function cancelForm() {
             <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Distributed by <a href="https://www.themewagon.com/" target="_blank">Themewagon</a></span> 
           </div>
         </footer> 
+        <!-- partial -->
+      </div>
+      <!-- main-panel ends -->
+    </div>   
+    <!-- page-body-wrapper ends -->
+  </div>
+  <!-- container-scroller -->
+
+ <div id="wrap" class="wrap naverid ">
+		<header class="header" role="banner">
+		    <div class="header_subindex">
+		        <!--로고/Mypage-->
+		        <div class="gnb_area">
+		            <a href="#" class="text-decoration-none" >
+		                <h1 class="">예약정보확인</h2>
+		            </a>
+		        </div>
+		    </div>
+		    <!--프로필-->
+		    <div class="profile_area">
+		        <div class="profile_inner">
+		        	<a href="#" onclick="changeImage()" class="photo">
+			            <img src="https://static.nid.naver.com/images/web/user/default.png" width="84" height="84" alt="프로필 이미지">
+			            <span class="photo_edit"></span>
+		            </a>
+		            <div class="profile">
+		                <p class="useid">${ id.personId }</p>
+		                <p class="usemail">${id.personEmail }</p>
+		            </div>
+		        </div>
+		    </div>
+		    <div id="headerLeft" class="header_left" aria-hidden="false">
+		        <ul class="left_menu" role="menu">
+		            <li>
+		               <a href="#" class="left_item" role="menuitem">
+		                   <div class="menu_text">내정보</div>
+		               </a>
+		            </li>
+		            <li>
+		               <a href="./login/logout" class="left_item" role="menuitem" >
+		                   <div class="menu_text ">로그아웃</div>
+		               </a>
+		            </li>
+		        </ul>
+		    </div>
+		</header>
+		
+		 <div id="container" class="container ">
+	        <!-- container -->
+	        <div id="content" class="content">
+	            <div class="subindex_wrap" role="main">
+	                <div id="headerTop" class="path_area" aria-hidden="false"></div>
+	            </div>    
+	            <c:forEach items="${booklist}" var="book">            
+			        <!--병원 예약 정보-->
+			        <div class="subindex_item">
+			            <div class="head_title">
+			                <h2 class="subindex_title">${book.hospitalName}</h2>
+			                <div class="title_link">
+	                    		<a href="deletebook?bid=${book.bid}"><span class="text">예약취소</span></a>
+	                       	 	<a href="" ><span class="text">수정하기</span></a>
+	                    	</div>
+	                    </div>
+	                      
+			            <div class="subindex_greenbox">
+			                <ul class="subindex_row">
+			                    <li>
+			                        <div class="row_item other">
+			                            <a href="" class="text-decoration-none"><span class="item_text">${book.registDay}</span></a>
+			                        </div>  
+			                    </li>
+	                            <li>
+			                        <div class="row_item other">
+			                            <a href="" class="text-decoration-none"><span class="item_text">${book.petId}</span></a>
+			                        </div>  
+			                    </li>
+	                            <li>
+			                        <div class="row_item other">
+			                            <a href="" class="text-decoration-none"><span class="item_text">${book.context}</span></a>
+			                        </div>  
+			                    </li>
+			                </ul>
+			            </div>
+			        </div>
+		        </c:forEach> 
+			</div>
+		</div>
+	</div>  
+	
+	<%@ include file="../module/footer.jsp" %>
 <%-- 	
 	<a href="/123team/hospitals">병원목록으로 돌아가기</a>
  <c:forEach items="${booklist}" var="book">
