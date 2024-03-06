@@ -15,6 +15,7 @@
 	<%
 		request.setAttribute("type", session.getAttribute("type"));
 		request.setAttribute("checktype", "h");
+		
 	%>
 	
  <%@  include file="../module/header.jsp" %>
