@@ -138,8 +138,6 @@
 		<a href="Fboards?page=${pageNum}"> [${pageNum}] </a>
 	</c:forEach>
 	
-	<br>
-
 
     <div class="container my-3">
         <h1><img width="66" height="66" src="https://img.icons8.com/ios/66/noticeboard.png" alt="noticeboard"/>자유게시판</h1>
