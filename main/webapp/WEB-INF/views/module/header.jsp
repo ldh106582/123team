@@ -18,7 +18,7 @@
 <title>Skydash Admin</title>
 <!-- plugins:css -->
 <link href="<c:url value="/resources/css/vendors/feather/feather.css"/>" rel="stylesheet">
-<link href="<c:url value="resources/css/vendors/ti-icons/css/themify-icons.css"/>" rel="stylesheet">
+<link href="<c:url value="/resources/css/vendors/ti-icons/css/themify-icons.css"/>" rel="stylesheet">
 <link href="<c:url value="/resources/css/vendors/css/vendor.bundle.base.css"/>" rel="stylesheet">
  <!-- endinject -->
 <link href="<c:url value="/resources/css/vendors/datatables.net-bs4/dataTables.bootstrap4.css"/>" rel="stylesheet">
@@ -26,12 +26,10 @@
 <link href="<c:url value="/resources/css/text/css"/>">
  <!-- inject:css -->
 <link href="<c:url value="/resources/css/vertical-layout-light/style.css"/>" rel="stylesheet">
-
 <!-- End plugin css for this page -->
 <!-- endinject -->
  <link href="<c:url value="/resources/css/images/favicon.png"/>" rel="stylesheet">
 <link rel="shortcut icon" href="images/favicon.png" />
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <title>Insert title here</title>
 <style type="text/css">
 </style>
@@ -46,7 +44,7 @@
 	<div class="container-scroller">
 		<nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
 		    <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-		        <a class="navbar-brand brand-logo mr-5" href="/123team"><img src="resources/images/logo.jpg" class="mr-2" alt="logo"/></a>
+		        <a class="navbar-brand brand-logo mr-5" href="/123team"><img src="/resources/images/logo.jpg" class="mr-2" alt="logo"/></a>
 		    </div>
 		    <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
 		        <ul class="navbar-nav mr-lg-2">
