@@ -45,6 +45,7 @@
 	               			<c:if test="${loginId != null && type != checktype}">
 	                        	<a href="addbook?hid=${hospital.hid}" class="btn btn-success">예약하기</a>
 	                      	</c:if>
+	                      	<a href="addreview?hid=${hospital.hid}">리뷰작성</a>
 	                    </div>  
                 </div>
             </div>
@@ -55,14 +56,11 @@
 <%-- 
 <c:if test="${loginId ==  hospital.personId}">
 
-	
-<<<<<<< HEAD
-	
-=======
+
 	<%@ include file="../module/footer.jsp" %>
   
 <a href="/123team/hospitals">돌아가기</a>
->>>>>>> origin/yeonghoe
+
 <div>
 
  <%@  include file="../module/headerinfo.jsp" %>
@@ -87,9 +85,9 @@
 <p>
 설명 : ${hospital.description}
 <p>
-<<<<<<< HEAD
+
 <c:if test="${hospital.personId==loginId}">
-=======
+
 
 <a href="update?hid=${hospital.hid}">병원수정</a>
 <a href="delete?hid=${hospital.hid}">병원삭제</a>
@@ -146,9 +144,8 @@
 	<a href="editreview?reviewId=${review.reviewId}">리뷰수정</a> || <a href="deletereview?reviewId=${review.reviewId}">리뷰삭제</a>
 	</c:if>
 </c:forEach>
-<<<<<<< HEAD
+
 <%@ include file="../module/footer.jsp" %>
-=======
  --%>
  
 </body>
