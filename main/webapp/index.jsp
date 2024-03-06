@@ -11,29 +11,24 @@
 <script src="https://kit.fontawesome.com/8759f784cf.js" crossorigin="anonymous"></script>
 <!-- css -->
 <link href="<c:url value="/resources/css/index.css"/>" rel="stylesheet">
-
 <link href="<c:url value="/resources/pet/"/>" rel="stylesheet">
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Skydash Admin</title>
-  <!-- plugins:css -->
-  <link href="<c:url value="/resources/css/vendors/feather/feather.css"/>" rel="stylesheet">
-  <link href="<c:url value="resources/css/vendors/ti-icons/css/themify-icons.css"/>" rel="stylesheet">
-  <link href="<c:url value="/resources/css/vendors/css/vendor.bundle.base.css"/>" rel="stylesheet">
-    <!-- endinject -->
-  <link href="<c:url value="/resources/css/vendors/datatables.net-bs4/dataTables.bootstrap4.css"/>" rel="stylesheet">
-  <link href="<c:url value="/resources/css/vendors/ti-icons/css/themify-icons.css"/>" rel="stylesheet">
-  <link href="<c:url value="/resources/css/text/css"/>">
-    <!-- inject:css -->
-  <link href="<c:url value="/resources/css/vertical-layout-light/style.css"/>" rel="stylesheet">
-
-  <!-- End plugin css for this page -->
-  <!-- endinject -->
-    <link href="<c:url value="/resources/css/images/favicon.png"/>" rel="stylesheet">
-  <link rel="shortcut icon" href="images/favicon.png" />
-
-
+<!-- Required meta tags -->
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Skydash Admin</title>
+<!-- plugins:css -->
+<link href="<c:url value="/resources/css/vendors/feather/feather.css"/>" rel="stylesheet">
+<link href="<c:url value="resources/css/vendors/ti-icons/css/themify-icons.css"/>" rel="stylesheet">
+<link href="<c:url value="/resources/css/vendors/css/vendor.bundle.base.css"/>" rel="stylesheet">
+<!-- endinject -->
+<link href="<c:url value="/resources/css/vendors/datatables.net-bs4/dataTables.bootstrap4.css"/>" rel="stylesheet">
+<link href="<c:url value="/resources/css/vendors/ti-icons/css/themify-icons.css"/>" rel="stylesheet">
+<link href="<c:url value="/resources/css/text/css"/>">
+<!-- inject:css -->
+<link href="<c:url value="/resources/css/vertical-layout-light/style.css"/>" rel="stylesheet">
+<!-- End plugin css for this page -->
+<!-- endinject -->
+<link href="<c:url value="/resources/css/images/favicon.png"/>" rel="stylesheet">
+<link rel="shortcut icon" href="images/favicon.png" />
 </head>
 <body>
 

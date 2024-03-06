@@ -5,11 +5,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- scc -->
-<link rel="stylesheet" href="resources/css/Login.css">
-<!-- 부트스트랩 -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-<meta charset="UTF-8">
+<!-- 폰트어썸 -->
+<script src="https://kit.fontawesome.com/8759f784cf.js" crossorigin="anonymous"></script>
+<!-- css -->
+<link href="<c:url value="/resources/css/index.css"/>" rel="stylesheet">
+<link href="<c:url value="/resources/pet/"/>" rel="stylesheet">
+<!-- Required meta tags -->
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Login</title>
+<!-- plugins:css -->
+<link href="<c:url value="/resources/css/vendors/feather/feather.css"/>" rel="stylesheet">
+<link href="<c:url value="/resources/css/vendors/ti-icons/css/themify-icons.css"/>" rel="stylesheet">
+<link href="<c:url value="/resources/css/vendors/css/vendor.bundle.base.css"/>" rel="stylesheet">
+<!-- endinject -->
+<link href="<c:url value="/resources/css/vendors/datatables.net-bs4/dataTables.bootstrap4.css"/>" rel="stylesheet">
+<link href="<c:url value="/resources/css/vendors/ti-icons/css/themify-icons.css"/>" rel="stylesheet">
+<link href="<c:url value="/resources/css/text/css"/>">
+<!-- inject:css -->
+<link href="<c:url value="/resources/css/vertical-layout-light/style.css"/>" rel="stylesheet">
+<!-- End plugin css for this page -->
+<!-- endinject -->
+<link href="<c:url value="/resources/css/images/favicon.png"/>" rel="stylesheet">
+<link rel="shortcut icon" href="images/favicon.png" />
 <title>로그인</title>
 </head>
 <body>
@@ -77,7 +94,10 @@
               <i class="fa-solid fa-key"></i>
               <span class="menu-title ml-3">로그인</span>
               <i class="menu-arrow"></i>
-            
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/123team/login">
               <i class="fa-solid fa-right-from-bracket"></i>
               <span class="menu-title ml-3">로그아웃</span>
               <i class="menu-arrow"></i>
@@ -85,36 +105,33 @@
           </li>
         </ul>
       </nav>
-     
-         <!-- partial -->
-      <div class="main-panel">
-        <div class="content-wrapper">
-          <div class="row">
-            <div class="col-md-12 grid-margin">
-              <div class="row">
-                <div class="col-12 col-xl-8 mb-4 mb-xl-0">
-                  <h3 class="font-weight-bold"> </h3>
-                  <h6 class="font-weight-normal mb-0"></h6>
-                </div>
-                <div class="col-12 col-xl-4">
-                 <div class="justify-content-end d-flex">
-                  <div class="dropdown flex-md-grow-1 flex-xl-grow-0">
-                  </div>
-                 </div>
-                </div>
-              </div>
-            </div>
-          </div>
+		<div class="content-wrapper d-flex align-items-center auth px-0">
+			<div class="row w-100 mx-0">
+				<div class="col-lg-6 mx-auto">
+					<div class="auth-form-light text-left py-5 px-4 px-sm-5">
+						<div class="brand-logo">
+						    <img src="resources/images/logo.jpg" alt="logo">
+						</div>
+						<form:form id="loginForm" class="pt-3" modelAttribute="success" method="POST">
+							<div class="form-group">
+								<form:input class="form-control form-control-lg" type="text" path="personId" id="id" placeholder="아이디" />
+							</div>
+							<div class="form-group">
+								<form:input class="form-control form-control-lg" type="password" path="personPw" id="pw" placeholder="비밀번호"/>
+							</div>
+							<div class="mt-3">
+								<input type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" value="로그인" id="login"/>
+							</div>
+							<div class="text-center mt-4 font-weight-light">
+								<a href="./login/Allmember" class="text-primary">회원가입</a>
+						</form:form>
+					</div>
+				</div>
+			</div>
+		</div>
+    </div>
+
           
-        <footer class="footer">
-          <div class="d-sm-flex justify-content-center justify-content-sm-between">
-            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2021.  Premium <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap admin template</a> from BootstrapDash. All rights reserved.</span>
-            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="ti-heart text-danger ml-1"></i></span>
-          </div>
-          <div class="d-sm-flex justify-content-center justify-content-sm-between">
-            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Distributed by <a href="https://www.themewagon.com/" target="_blank">Themewagon</a></span> 
-          </div>
-        </footer> 
         <!-- partial -->
       </div>
       <!-- main-panel ends -->
@@ -122,14 +139,12 @@
     <!-- page-body-wrapper ends -->
   </div>
   <!-- container-scroller -->
- 
+<%--  
 	<div class="jumbotron">
 		<div class="container">
 			<h2>로그인 페이지</h2>
 		</div>
 	</div>
-
-	
 	<div class="container">
 		<div class="container col-md-5">
 			<div class="text-center">
@@ -159,7 +174,7 @@
 			<hr>
 		</div>
 	</div>
-
+ --%>
 
 	<%@  include file="./module/footer.jsp" %>
 </body>
