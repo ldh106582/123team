@@ -201,9 +201,139 @@
             </ul>
         </nav>
    <!--시작 -->
-   		
+   		                <div class="main-panel">
+                    <div class="content-wrapper">
+                        <div class="row">
+                            <!--여기서 복붙 시작-->
+                            <div class="show-gird no-gutters col-md-12">
+                                <div class="col-md-12 no-gutters">
+                                    <div  id="slider" class="col-md-12 no-gutters" style="margin: 0 auto; width: 100%; height: 400px; display: flex; margin-bottom: 2%;;">
+                                    	<img src="./resources/images/hospital01.jpg" style="width: 100%"; alt="병원이미지01"/>
+                                        <img src="./resources/images/hospital02.jpg" style="width: 100%"; alt="병원이미지01"/>
+                                        <img src="./resources/images/hospital03.jpg" style="width: 100%"; alt="병원이미지01"/>
+                                        <img src="./resources/images/hospital04.jpg" style="width: 100%"; alt="병원이미지01"/>
+                                        <img src="./resources/images/hospital05.jpg" style="width: 100%"; alt="병원이미지01"/>
+                                        
+                                    </div>
+                                    
+                                    <div class="col-md-12 row no-gutters" style="margin: 0 auto;">
+                                        <div class="col-md-9 ">
+                                            <div style="border-left: 3px solid red;"> <h4 style="margin-left: 2%;"> 우리 홈페이지 현황</h4>
+
+                                            </div>
+                                            <br>
+                                            
+                                            <h5 style="border-left: 3px solid #FF7EA0; margin-bottom: 3%;"><span class="ml-4">best 별점 병원</span></h5>
+                                            
+	                                            <div class="col-md-12 row card-group no-gutters" style="margin-bottom: 3%;">
+	                                            <c:forEach items="${hospitals}" var="hospital">
+	                                                
+	                                                <div class="col-md-4 row no-gutters card">
+	                                                    <div class="col-md-12 card-body no-gutters">
+															<c:choose>
+															    <c:when test="${not empty hospital.image}">
+															        <img class="col-md-12" src="<c:url value='/resources/images/${hospital.image}'/>" height="250" width="150" alt="병원이미지">
+															    </c:when>
+															    <c:otherwise>
+															        <img class="col-md-12" src="https://i.ibb.co/gdq8PKg/pexels-tom-fisk-1692693.jpg" alt="병원이미지" height="250" width="150" border="0">
+															    </c:otherwise>
+															</c:choose>
+															
+	                                                        <p class="card-title" style="margin-top: 7%;">병원명 : ${hospital.name}</p>
+	                                                        <p class="card-text" style="margin-top: 4%;">병원안내 : ${hospital.description}</p>
+	                                                    </div>
+                                                      	<a href="hospitals/hospital?hid=${hospital.hid}" class="btn btn-success">병원 상세보기</a>
+	                                                </div>
+	                                            </c:forEach>
+	                                            
+                    						  	</div>
+                    						  	
+                                            <h5 style="border-left: 3px solid #FFA07A; margin-bottom: 3%;"><span class="ml-4">best 별점 상품</span></h5>
+                    
+	                                            <div class="col-md-12 row card-group no-gutters" style="margin-bottom: 3%;">
+	                                            <c:forEach items="${hospitals}" var="hospital">
+	                                                
+	                                                <div class="col-md-4 row no-gutters card">
+	                                                    <div class="col-md-12 card-body no-gutters">
+															<c:choose>
+															    <c:when test="${not empty hospital.image}">
+															        <img class="col-md-12" src="<c:url value='/resources/images/${hospital.image}'/>" height="250" width="150" alt="병원이미지">
+															    </c:when>
+															    <c:otherwise>
+															        <img class="col-md-12" src="https://i.ibb.co/gdq8PKg/pexels-tom-fisk-1692693.jpg" alt="병원이미지" height="250" width="150" border="0">
+															    </c:otherwise>
+															</c:choose>
+															
+	                                                        <p class="card-title" style="margin-top: 7%;">병원명 : ${hospital.name}</p>
+	                                                        <p class="card-text" style="margin-top: 4%;">병원안내 : ${hospital.description}</p>
+	                                                    </div>
+                                                      	<a href="hospitals/hospital?hid=${hospital.hid}" class="btn btn-success">병원 상세보기</a>
+	                                                </div>
+	                                            </c:forEach>
+	                                            
+                    						  	</div>
+                    
+                                            <h5 style="border-left: 3px solid #FFCD63; margin-bottom: 3%;"> <span class="ml-4">체험단 현황</span></h5>
+                    
+	                                            <div class="col-md-12 row card-group no-gutters" style="margin-bottom: 3%;">
+	                                            <c:forEach items="${hospitals}" var="hospital">
+	                                                
+	                                                <div class="col-md-4 row no-gutters card">
+	                                                    <div class="col-md-12 card-body no-gutters">
+															<c:choose>
+															    <c:when test="${not empty hospital.image}">
+															        <img class="col-md-12" src="<c:url value='/resources/images/${hospital.image}'/>" height="250" width="150" alt="병원이미지">
+															    </c:when>
+															    <c:otherwise>
+															        <img class="col-md-12" src="https://i.ibb.co/gdq8PKg/pexels-tom-fisk-1692693.jpg" alt="병원이미지" height="250" width="150" border="0">
+															    </c:otherwise>
+															</c:choose>
+															
+	                                                        <p class="card-title" style="margin-top: 7%;">병원명 : ${hospital.name}</p>
+	                                                        <p class="card-text" style="margin-top: 4%;">병원안내 : ${hospital.description}</p>
+	                                                    </div>
+                                                      	<a href="hospitals/hospital?hid=${hospital.hid}" class="btn btn-success">병원 상세보기</a>
+	                                                </div>
+	                                            </c:forEach>
+	                                            
+                    						  	</div>
+                                        </div>
+                        
+                                        <div class="col-md-3 no-gutters">
+                                            <div class="no-gutters col-md-12" style="border-left: 3px solid red;"><h4 class="ml-3" >공지사항 </h4>    
+                                            </div>
+                                            <br>   
+                                            <c:forEach items="${hospitals}" var="hospital">
+	                                            <div class="card col-md-12 no-gutters" style="max-width: 540px;">
+	                                                <div class="col-md-12 row no-gutters border border-dark">
+													<c:choose>
+													   <c:when test="${not empty hospital.image}">
+														   <img class="col-md-4" src="<c:url value='/resources/images/${hospital.image}'/>" height="150" width="150" alt="병원이미지">
+													    </c:when>
+														<c:otherwise>
+														    <img class="col-md-4" src="https://i.ibb.co/gdq8PKg/pexels-tom-fisk-1692693.jpg" alt="병원이미지" height="150" width="150" border="0">
+														</c:otherwise>
+													</c:choose>
+	                                                  	<div class="col-md-8 border border-dark">
+	                                                        <div class="card-body">
+	                                                            <p class="card-text">공지사항 제목 : </p>
+	                                                            <a href="hospitals/hospital?hid=${hospital.hid}" class="btn btn-success border rounded-pill" style="font-size: 75%; height: 10%; width: 40%;"> 상세보기</a>
+	                                                        </div>
+		                                                 </div>
+	                                                </div>
+	                                            </div>
+	                                        </c:forEach> 
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--여기서 복붙 끝-->
+                        </div>
+                    </div>
+                </div>
+             </div>
+                        
    <!--끝 -->
-	</div>
 	 
     <footer class="footer">
       <div class="d-sm-flex justify-content-center justify-content-sm-between">
@@ -214,9 +344,6 @@
         <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Distributed by <a href="https://www.themewagon.com/" target="_blank">Themewagon</a></span> 
       </div>
     </footer> 
-        <!-- partial -->
-      <!-- main-panel ends -->
-  <!-- container-scroller -->
   
   <!-- plugins:js -->
   <script src="vendors/js/vendor.bundle.base.js"></script>
@@ -240,67 +367,6 @@
   <script src="js/Chart.roundedBarCharts.js"></script>
   <!-- End custom js for this page-->
 
-
-
-<!-- 
-	<header class="intro0">
-		<nav class="intro1 head navbar navbar-secondary m-0">
-			<div class="intro1">
-				<h1 class="text-center">반려동물과 함께하는 즐거운 공간</h1> 
-			</div>
-		</nav>
-		
-		<div class="intro2">
-			<div class="intro3">
-				<div class="intro4 text-center border border-dark">
-
-					<div class="intro5">
-						<h4><가족과 같은 반려 동물과 함께 하는 공간입니다.></h4>
-						<br><p> <i class="fa-regular fa-user"></i> 병원예약, 반려동물 상품구매, 동물관련 커뮤니케이션, 동물 체험활동을 할 수 있는 공간입니다.
-						<p> <i class="fa-solid fa-shield-dog"></i> 나의 반려동물이 어떤 진료를 받았고, 예방접종 내역, 몸무게, 등을 손쉽게 파악할 수 있는 공간이 마련되어 있습니다.
-					</div>
-					
-					<div class="intro6">
-						<div class="intro7">
-							<a href="ENboards"> 체험단 &raquo;</a>
-						</div>
-						<div class="intro7">
-							<a href="#"> 동물카드 &raquo;</a>
-						</div>
-					</div>
-
-				</div>
-
-				<div class="intro8">
-					<div class="intro9">
-						<div class="intro10 border border-dark btn btn-primary p-3 ">	
-							<i class="fa-regular fa-hospital"></i>
-							<a href="./hospitals" class=" justify-center text-wrap text-white">병원 &raquo;</a>
-						</div>
-						<div class="intro10 border border-dark btn btn-primary p-3">
-							<i class="fa-sharp fa-solid fa-gifts"></i>
-							<a href="products" class="justify-center text-white">동물상품 &raquo;</a>
-						</div>
-					</div>
-					
-					<div class="intro9">
-						<div class="intro10 border border-dark btn btn-primary p-3">
-							<i class="fa-solid fa-clipboard-user"></i>
-							<a href="Fboards" class="justify-center text-white">게시판 &raquo;</a>
-						</div>
-						<div class="intro10 border border-dark btn btn-primary p-3">
-							<i class="fa-solid fa-right-to-bracket"></i>
-							<a href="./login" class=" justify-center text-white">로그인 &raquo;</a>
-						</div>
-					</div>
-				</div>
-				<div class="intro11">
-					<div class="intro12">
-						<div class="intro10 border border-dark btn btn-primary p-3">
-							<i class="fa-solid fa-clipboard-user"></i>
-							<a href="/123team/Nboards" class="justify-center text-white">공지사항 &raquo;</a>
-						</div>
-						<p>
 						<%
 							Connection conn = null;
 						   	Statement stmt = null;
@@ -361,10 +427,6 @@
 						      }
 						   }
 						%> 
-					</div>
-				</div>
-			</div>
-		</div>
-	</header> -->
 </body>
+<script src="/resources/js/hospitals.js"></script>
 </html>

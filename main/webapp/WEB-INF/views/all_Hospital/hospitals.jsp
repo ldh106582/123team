@@ -28,16 +28,6 @@
                         <div class="row">
                             <!--여기서 복붙 시작-->
                             <div class="show-gird no-gutters col-md-12">
-                                <div class="col-md-12 no-gutters">
-                                    <div  id="slider" class="col-md-12 no-gutters" style="margin: 0 auto; width: 100%; height: 400px; display: flex; margin-bottom: 2%;;">
-                                    	<img src="./resources/images/hospital01.jpg" style="width: 100%"; alt="병원이미지01"/>
-                                        <img src="./resources/images/hospital02.jpg" style="width: 100%"; alt="병원이미지01"/>
-                                        <img src="./resources/images/hospital03.jpg" style="width: 100%"; alt="병원이미지01"/>
-                                        <img src="./resources/images/hospital04.jpg" style="width: 100%"; alt="병원이미지01"/>
-                                        <img src="./resources/images/hospital05.jpg" style="width: 100%"; alt="병원이미지01"/>
-                                        
-                                    </div>
-                                    
                                     <div class="col-md-12 row no-gutters" style="margin: 0 auto;">
                                         <div class="col-md-9 ">
                                             <div style="border-left: 3px solid red;"> <h4 style="margin-left: 2%;"> 우리 병원 현황</h4>
@@ -204,18 +194,18 @@
                             <!--여기서 복붙 끝-->
                         </div>
                     </div>
-                </div>   
-            </div>
+                </div>
+             </div>
                         
-                        <footer class="footer">
-                            <div class="d-sm-flex justify-content-center justify-content-sm-between">
-                            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2021.  Premium <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap admin template</a> from BootstrapDash. All rights reserved.</span>
-                            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="ti-heart text-danger ml-1"></i></span>
-                            </div>
-                            <div class="d-sm-flex justify-content-center justify-content-sm-between">
-                            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Distributed by <a href="https://www.themewagon.com/" target="_blank">Themewagon</a></span> 
-                            </div>
-                        </footer> 
+             <footer class="footer">
+                 <div class="d-sm-flex justify-content-center justify-content-sm-between">
+                 <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2021.  Premium <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap admin template</a> from BootstrapDash. All rights reserved.</span>
+                 <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="ti-heart text-danger ml-1"></i></span>
+                 </div>
+                 <div class="d-sm-flex justify-content-center justify-content-sm-between">
+                 <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Distributed by <a href="https://www.themewagon.com/" target="_blank">Themewagon</a></span> 
+                 </div>
+             </footer> 
  
  <!-- 
     <div class="container my-3">
@@ -260,7 +250,6 @@
             <button type="submit" class="btn btn-success">검색</button>
         </form>
  -->
-	<%@ include file="../module/footer.jsp" %>
 
 <%-- 
 <a href="search">병원검색</a>	

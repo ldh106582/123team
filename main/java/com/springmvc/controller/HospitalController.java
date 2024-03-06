@@ -160,8 +160,6 @@ public class HospitalController {
 		booking.setHid(hid);
 		booking.setHospitalName(hospitalName);
 		
-		
-		
 		bookingService.addbook(booking);
 		
 		return "redirect:/hospitals/mybookList?personId="+personId;
