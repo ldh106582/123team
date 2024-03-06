@@ -11,7 +11,6 @@ public class Hospital {
 	String description; // 병원설명
 	String image;
 	String personId; //병원관리자 ID
-	String map;
 	
 	public String getDescription() {
 		return description;
@@ -84,14 +83,6 @@ public class Hospital {
 
 	public void setImage(String image) {
 		this.image = image;
-	}
-
-	public String getMap() {
-		return map;
-	}
-
-	public void setMap(String map) {
-		this.map = map;
 	}
 	
 }

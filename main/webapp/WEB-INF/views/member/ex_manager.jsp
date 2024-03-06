@@ -9,6 +9,7 @@
 <body>
  <%@  include file="../module/header.jsp" %>
  
+       <!-- partial -->
     <div class="container-fluid page-body-wrapper">
       <!-- partial -->
       <!-- partial:partials/_sidebar.html -->
@@ -77,62 +78,41 @@
         </ul>
       </nav>
      
-          <div class="content-wrapper d-flex align-items-center auth px-0">
-        <div class="row w-100 mx-0">
-            <div class="col-lg-6 mx-auto">
-                <div class="auth-form-light text-left py-5 px-4 px-sm-5">
-                    <div class="brand-logo">
-                        <img src="resources/images/logo.jpg" alt="logo">
-                    </div>
-     				<form:form modelAttribute="ex_member" action="./productmanager?${ _csrf.parameterName }=${ _csrf.token }" method="post" enctype="multipart/form-data">
-                        <div class="form-group">
-                            <form:input class="form-control form-control-lg" type="text" path="personId"  placeholder="아이디" />
-                        </div>
-                        <div class="form-group">
-                            <form:input class="form-control form-control-lg" type="password" path="personPw"  placeholder="비밀번호"/>
-                        </div>
-                        <div class="form-group">
-                            <form:input class="form-control form-control-lg" type="email" path="personEmail"  placeholder="이메일"/>
-                        </div>
-                        <div class="form-group">
-                            <form:input class="form-control form-control-lg" type="text" path="personName"  placeholder="이름"/>
-                        </div>
-                        <div class="form-group">
-                            <form:input class="form-control form-control-lg" type="text" path="personBirth"  placeholder="생년월일"/>
-                        </div>
-                        <div class="form-group">
-                            <form:input class="form-control form-control-lg" type="text" path="personAddress" placeholder="주소"/>
-                        </div>
-                        <div class="form-group">
-                            <form:input class="form-control form-control-lg" type="text" path="personPhone" placeholder="전화번호"/>
-                        </div>
-                        <div class="form-group">
-                            <form:radiobutton path="personSex" value="남자" class="col-sm-1"/>남성
-				            <form:radiobutton path="personSex" value="여자" class="col-sm-1"/>여성
-                        </div>
-                        <div class="form-group">
-                            <form:input class="form-control form-control-lg" type="text" path="ex_Name" placeholder="체험단 명"/>
-                        </div>
-                        <div class="form-group">
-                            <form:input class="form-control form-control-lg" type="text" path="ex_Address" placeholder="체험단주소"/>
-                        </div>
-                        <div class="form-group">
-                   	    	<form:input class="form-control form-control-lg" type="text" path="ex_Phone" placeholder="체험단 번호"/>
-                        </div>
-                        <div class="form-group">
-                            <input type="file" name="s_file" class="control-label" required="required"/>
-                        </div>
-                        <div class="mt-3">
-                            <input type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" value="로그인" id="login"/>
-                        </div>
-                        <div class="text-center mt-4 font-weight-light">
-                            <a href="./login/Allmember" class="text-primary">회원가입</a>
-                    </form:form>
+         <!-- partial -->
+      <div class="main-panel">
+        <div class="content-wrapper">
+          <div class="row">
+            <div class="col-md-12 grid-margin">
+              <div class="row">
+                <div class="col-12 col-xl-8 mb-4 mb-xl-0">
+                  <h3 class="font-weight-bold"> </h3>
+                  <h6 class="font-weight-normal mb-0"></h6>
                 </div>
+                <div class="col-12 col-xl-4">
+                 <div class="justify-content-end d-flex">
+                  <div class="dropdown flex-md-grow-1 flex-xl-grow-0">
+                  </div>
+                 </div>
+                </div>
+              </div>
             </div>
-        </div>
-        
-  <%--       
+          </div>
+          
+        <footer class="footer">
+          <div class="d-sm-flex justify-content-center justify-content-sm-between">
+            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2021.  Premium <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap admin template</a> from BootstrapDash. All rights reserved.</span>
+            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="ti-heart text-danger ml-1"></i></span>
+          </div>
+          <div class="d-sm-flex justify-content-center justify-content-sm-between">
+            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Distributed by <a href="https://www.themewagon.com/" target="_blank">Themewagon</a></span> 
+          </div>
+        </footer> 
+        <!-- partial -->
+      </div>
+      <!-- main-panel ends -->
+    </div>   
+    <!-- page-body-wrapper ends -->
+  </div>
   <!-- container-scroller -->
     <div class="jumbotron">
         <div class="container">
@@ -231,7 +211,7 @@
         </div> 
 		</div>
     </fieldset>
-    </form:form> --%>
+    </form:form>
     
     <%@ include file="../module/footer.jsp" %>
 </body>

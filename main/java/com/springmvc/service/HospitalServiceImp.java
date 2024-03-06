@@ -25,8 +25,8 @@ public class HospitalServiceImp implements HospitalService{
 	}
 
 	@Override
-	public void addhospital(Hospital hospital, String realpath) {
-		hospitalRepository.addhospital(hospital,realpath);
+	public void addhospital(Hospital hospital) {
+		hospitalRepository.addhospital(hospital);
 	}
 
 	@Override

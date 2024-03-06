@@ -79,31 +79,41 @@
           </li>
         </ul>
       </nav>
-     <div class="content-wrapper">
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <div class="mt-5 d-flex justify-content-center" >
-            <div class="col ">
-                <div class="col-12 row m-0 text-center justify-content-center">
-                    <a href="/123team/managerlogin/Member?type=h" class="p-4  card card-tale col-5 m-1 text-decoration-none" id="hopital">병원관리자 회원가입</a>
+     
+         <!-- partial -->
+      <div class="main-panel">
+        <div class="content-wrapper">
+          <div class="row">
+            <div class="col-md-12 grid-margin">
+              <div class="row">
+                <div class="col-12 col-xl-8 mb-4 mb-xl-0">
+                  <h3 class="font-weight-bold"> </h3>
+                  <h6 class="font-weight-normal mb-0"></h6>
                 </div>
-                <div class="col row m-0 text-center justify-content-center">
-                    <a href="/123team/managerlogin/Member?type=p" class="p-4  card card-dark-blue col-5 m-1 text-decoration-none" id="product">상품관리자 회원가입</a>
+                <div class="col-12 col-xl-4">
+                 <div class="justify-content-end d-flex">
+                  <div class="dropdown flex-md-grow-1 flex-xl-grow-0">
+                  </div>
+                 </div>
                 </div>
-                <div class="col row m-0 text-center justify-content-center">
-                    <a href="/123team/managerlogin/Member?type=e" class="p-4  card card-light-blue col-5 m-1 text-decoration-none" id="exprience">체험단관리자 회원가입</a>
-                </div>
-                <div class="col row m-0 text-center justify-content-center">
-                    <a href="/123team/login/add?type=c" class="p-4  card card-light-danger col-5 m-1 text-decoration-none" id="customer">일반 회원가입</a>                </div>
+              </div>
             </div>
-        </div>
-   	 </div>
+          </div>
           
+        <footer class="footer">
+          <div class="d-sm-flex justify-content-center justify-content-sm-between">
+            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2021.  Premium <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap admin template</a> from BootstrapDash. All rights reserved.</span>
+            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="ti-heart text-danger ml-1"></i></span>
+          </div>
+          <div class="d-sm-flex justify-content-center justify-content-sm-between">
+            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Distributed by <a href="https://www.themewagon.com/" target="_blank">Themewagon</a></span> 
+          </div>
+        </footer> 
+        <!-- partial -->
+      </div>
+      <!-- main-panel ends -->
+    </div>   
+    <!-- page-body-wrapper ends -->
   </div>
   <!-- container-scroller -->
     <div class="jumbotron">
