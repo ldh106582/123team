@@ -19,44 +19,43 @@
 	request.setAttribute("checktype", "h");
 	%>
 	<%@  include file="../module/header.jsp"%>
-	<!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+			<%@  include file="../module/leftheader.jsp"%>
 
-	<%@  include file="../module/leftheader.jsp"%>
-
-	<div class="content-wrapper">
-		<div class="row no-gutters">
-			<div class="show-gird col-md-12 row no-gutters">
-				<div class="col-md-6">
-					<c:choose>
-						<c:when test="${not empty hospital.image}">
-							<img class="col-md-12"
-								src="<c:url value='/resources/images/${hospital.image}'/>"
-								height="200" width="150" alt="병원이미지">
-						</c:when>
-						<c:otherwise>
-							<img class="col-md-12"
-								src="https://i.ibb.co/gdq8PKg/pexels-tom-fisk-1692693.jpg"
-								alt="병원이미지" height="250" width="150" border="0">
-						</c:otherwise>
-					</c:choose>
+		<div class="content-wrapper"> <!-- ddd -->
+			<div class="row no-gutters">
+				<div class="show-gird col-md-12 row no-gutters">
+					<div class="col-md-6">
+						<c:choose>
+							<c:when test="${not empty hospital.image}">
+								<img class="col-md-12"
+									src="<c:url value='/resources/images/${hospital.image}'/>"
+									height="200" width="150" alt="병원이미지">
+							</c:when>
+							<c:otherwise>
+								<img class="col-md-12"
+									src="https://i.ibb.co/gdq8PKg/pexels-tom-fisk-1692693.jpg"
+									alt="병원이미지" height="250" width="150" border="0">
+							</c:otherwise>
+						</c:choose>
+					</div>
+					<div class="col-md-6  no-gutters ">
+						<h4 class="mt-5 col-md-12 ">병원명 : ${hospital.name}</h4>
+						<p class="col-md-12">병원주소 : ${hospital.addr}</p>
+						<p class="col-md-12">진료시간 : ${hospital.runtime}</p>
+						<p class="col-md-12">전화번호 : ${hospital.number}</p>
+						<p class="col-md-12">주차정보 : ${hospital.parking}</p>
+					</div>
 				</div>
-				<div class="col-md-6  no-gutters ">
-					<h4 class="mt-5 col-md-12 ">병원명 : ${hospital.name}</h4>
-					<p class="col-md-12">병원주소 : ${hospital.addr}</p>
-					<p class="col-md-12">진료시간 : ${hospital.runtime}</p>
-					<p class="col-md-12">전화번호 : ${hospital.number}</p>
-					<p class="col-md-12">주차정보 : ${hospital.parking}</p>
+	
+				<div class="col-md-12 no-gutters row mt-2" style="display: flex;">
+					<a class="col-md-4 mt-2 text-center" id="park" style="font-size: 20px;">주차장 이미지 상세 보기</a>
+					<div class="col-md-4 mt-2 text-center">
+						<p id="review" style="font-size: 20px;">리뷰보기</p>
+					</div>
+						<a class="col-md-4 text-center mt-1" href="/123team/hospitals/addbook?hid=${hospital.hid}" style="font-size: 20px;">예약하기</a>
 				</div>
 			</div>
-
-			<div class="col-md-12 no-gutters row mt-2" style="display: flex;">
-				<a class="col-md-4 mt-2 text-center" id="park" style="font-size: 20px;">주차장 이미지 상세 보기</a>
-				<div class="col-md-4 mt-2 text-center">
-					<p id="review" style="font-size: 20px;">리뷰보기</p>
-				</div>
-				<a class="col-md-4 text-center mt-1" href="/123team/hospitals/addbook?hid=${hospital.hid}" style="font-size: 20px;">예약하기</a>
-			</div>
-		</div>
 
 		<div class="col-md-12 row no-gutters show-gird mt-5">
 			<!--병원 지도이미지 가져오기-->
@@ -66,16 +65,16 @@
 			
 			<c:forEach items="${reviews}" var="review">
 			<div id="reviewadd" class="col-md-6 mt-2">
-			<c:choose>
-				<c:when test="${not empty hospital.image}">
-					<img class="col-md-12"
-						src="<c:url value='/resources/images/${hospital.image}'/>"
-						height="200" width="150" alt="리뷰이미지">
-				</c:when>
-				<c:otherwise>
-					<img class="col-md-12"  src="https://i.ibb.co/wRMh3Nd/pexels-tranmautritam-2194261.jpg" height="300" width="300" alt="리뷰이미지" alt="pexels-tranmautritam-2194261" border="0">
-				</c:otherwise>
-			</c:choose>
+				<c:choose>
+					<c:when test="${not empty hospital.image}">
+						<img class="col-md-12"
+							src="<c:url value='/resources/images/${hospital.image}'/>"
+							height="200" width="150" alt="리뷰이미지">
+					</c:when>
+					<c:otherwise>
+						<img class="col-md-12"  src="https://i.ibb.co/wRMh3Nd/pexels-tranmautritam-2194261.jpg" height="300" width="300" alt="리뷰이미지" alt="pexels-tranmautritam-2194261" border="0">
+					</c:otherwise>
+				</c:choose>
 			</div>
 			
 			<div id="reviewadd1" class="col-md-6 no-gutters" style="margin: 0 auto">
@@ -96,34 +95,13 @@
 						<a href="deletereview?reviewId=${review.reviewId}">리뷰삭제</a>
 					</c:if>
 					</c:forEach>
-
 				</div>
 			</div>
 		</div>
 	</div>
+</div>
 
-
-		<footer class="footer">
-			<div
-				class="d-sm-flex justify-content-center justify-content-sm-between">
-				<span
-					class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright
-					© 2021. Premium <a href="https://www.bootstrapdash.com/"
-					target="_blank">Bootstrap admin template</a> from BootstrapDash.
-					All rights reserved.
-				</span> <span
-					class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted
-					& made with <i class="ti-heart text-danger ml-1"></i>
-				</span>
-			</div>
-			<div
-				class="d-sm-flex justify-content-center justify-content-sm-between">
-				<span
-					class="text-muted text-center text-sm-left d-block d-sm-inline-block">Distributed
-					by <a href="https://www.themewagon.com/" target="_blank">Themewagon</a>
-				</span>
-			</div>
-		</footer>
+<%@  include file="../module/footer.jsp" %>
 	<%-- 
 <c:if test="${loginId ==  hospital.personId}">
 

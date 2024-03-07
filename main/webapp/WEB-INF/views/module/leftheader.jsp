@@ -37,7 +37,6 @@
 </style>
 </head>
 <body>
-    <div class="container-fluid page-body-wrapper">
         <!-- partial -->
         <nav class="sidebar sidebar-offcanvas" id="sidebar">
             <ul class="nav">

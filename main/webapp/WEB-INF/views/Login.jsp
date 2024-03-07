@@ -34,6 +34,7 @@
 
  <%@  include file="./module/header.jsp" %>
  
+ <div class="container-fluid page-body-wrapper">
   <%@  include file="./module/leftheader.jsp" %>
 
 		<div class="content-wrapper d-flex align-items-center auth px-0">
@@ -55,6 +56,7 @@
 							</div>
 							<div class="text-center mt-4 font-weight-light">
 								<a href="./login/Allmember" class="text-primary">회원가입</a>
+							</div>
 						</form:form>
 					</div>
 				</div>

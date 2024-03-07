@@ -45,9 +45,6 @@ html[lang=ko] body,html[lang=ko] button,html[lang=ko] input,html[lang=ko] select
     font-family: -apple-system,BlinkMacSystemFont,helvetica,"Apple SD Gothic Neo",sans-serif
 }
 
-html {
-    font-size: 14px
-}
 
 button,input,select,textarea {
     border-radius: 0;
