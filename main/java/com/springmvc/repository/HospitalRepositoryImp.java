@@ -9,7 +9,6 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
-import java.util.Date;
 import java.util.List;
 
 import javax.net.ssl.HttpsURLConnection;
@@ -22,6 +21,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.springmvc.domain.ENBoard;
 import com.springmvc.domain.Hospital;
 
 @Repository
@@ -184,9 +184,21 @@ public class HospitalRepositoryImp implements HospitalRepository{
 
 	@Override
 	public List<Hospital> gethospitalsByTitle(String title) {
-		String SQL = "select * from hospital where name Like '%"+title+"%'";
-		List<Hospital> list = template.query(SQL, new HospitalRowMapper());
-		return list;
+		try {
+			String SQL = "select * from hospital where name Like '%"+title+"%'";
+			List<Hospital> list = template.query(SQL, new HospitalRowMapper());
+	        
+	        if (list.isEmpty()) {
+	            System.out.println("해당 제목은 없음");
+	        }
+	        return list;
+	    } catch (Exception e) {
+	        // 예외 처리
+	        e.printStackTrace();
+	        return null; 
+	    }
+
+		
 	}
 	
 }

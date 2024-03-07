@@ -32,5 +32,7 @@ public interface ProductService {
 	void setUpdateReview(ProductReview productReview, int reviewId);
 	// 리뷰를 삭제하는 함수
 	void setdeleteReview(int reviewId);
+
+	List<Product> getProductByName(String context);
 	
 }

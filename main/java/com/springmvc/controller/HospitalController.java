@@ -213,7 +213,7 @@ public class HospitalController {
 		 return "redirect:/hospitals/manageapps";
 	 }
 	 
-//		체험공고글 검색
+// 검색
 		@GetMapping("/selectbytitle")
 		public String selectboardbytitle(Model model,HttpServletRequest request) {
 			String title = (String) request.getParameter("title");

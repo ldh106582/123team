@@ -42,6 +42,16 @@ setTimeout(function(){
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <title>Insert title here</title>
 <style type="text/css">
+.icon-button {
+  background-color: #00000;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.icon-button i {
+  font-size: 20px;
+}
 </style>
 </head>
 <body>
@@ -176,11 +186,16 @@ setTimeout(function(){
           <li class="nav-item nav-search d-none d-lg-block">
             <div class="input-group">
               <div class="input-group-prepend hover-cursor" id="navbar-search-icon">
-                <span class="input-group-text" id="search">
-                  <i class="icon-search"></i>
-                </span>
+	              <form action="/123team/select">
+	                <span class="input-group-text" id="search">
+	                 	<button type="submit" class="icon-button">
+	  						<i class="fas fa-search"></i>
+						</button>
+	              		<input type="text" name="context" class="form-control" id="navbar-search-input" placeholder="Search now" aria-label="search" aria-describedby="search">
+	                </span>
+	              </form>
               </div>
-              <input type="text" class="form-control" id="navbar-search-input" placeholder="Search now" aria-label="search" aria-describedby="search">
+              
             </div>
           </li>
         </ul>

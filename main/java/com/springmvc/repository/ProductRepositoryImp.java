@@ -7,6 +7,8 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+
+import com.springmvc.domain.ENBoard;
 import com.springmvc.domain.Order;
 import com.springmvc.domain.Person;
 import com.springmvc.domain.Product;
@@ -118,6 +120,24 @@ public class ProductRepositoryImp implements ProductRepository{
 	public void setdeleteReview(int reviewId) {
 		String SQL = "delete from ProductReview where reviewId=?";
 		template.update(SQL, reviewId);
+	}
+
+	@Override
+	public List<Product> getProductByName(String context) {
+		try {
+			String SQL = "select * from Product where ProductName like'%"+context+"%'";
+			List<Product> list = template.query(SQL, new ProductRowMapper());
+	        
+	        if (list.isEmpty()) {
+	            System.out.println("해당 제목은 없음");
+	        }
+	        return list;
+	    } catch (Exception e) {
+	        // 예외 처리
+	        e.printStackTrace();
+	        return null; 
+	    }
+		
 	}
 	
 	
