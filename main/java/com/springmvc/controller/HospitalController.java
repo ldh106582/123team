@@ -61,11 +61,12 @@ public class HospitalController {
 	}
 	
 	@PostMapping("/create")
-	public String hospitalcreate(@ModelAttribute("hospital")Hospital hospital,HttpSession session,Model model) 
+	public String hospitalcreate(@ModelAttribute("hospital")Hospital hospital,HttpSession session,Model model, HttpServletRequest request) 
 	{
 		String personId = (String) session.getAttribute("personId");
 		hospital.setPersonId(personId);
-		hospitalService.addhospital(hospital);
+		String realpath = request.getSession().getServletContext().getRealPath("/resources/images");
+		hospitalService.addhospital(hospital, realpath);
 		return "redirect:/hospitals";
 	}
 	
