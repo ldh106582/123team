@@ -10,75 +10,8 @@
 <body>
    
  <%@  include file="../module/header.jsp" %>
- 
-       <!-- partial -->
-    <div class="container-fluid page-body-wrapper">
-      <!-- partial -->
-      <!-- partial:partials/_sidebar.html -->
-      <nav class="sidebar sidebar-offcanvas" id="sidebar">
-        <ul class="nav">
-          <li class="nav-item">
-            <a class="nav-link" href="/123team/hospitals">
-              <i class="fa-solid fa-hospital"></i>
-              <span class="menu-title ml-3">반려동물 병원</span>
-               <i class="menu-arrow"></i>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="/123team/products" aria-expanded="false" aria-controls="ui-basic">
-              <i class="fa-solid fa-gift"></i>
-              <span class="menu-title ml-3">반려동물 상품</span>
-              <i class="menu-arrow"></i>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
-              <i class="fa-solid fa-cart-shopping"></i>
-              <span class="menu-title ml-3">장바구니</span>
-              <i class="menu-arrow"></i>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="/123team/ENboards" aria-expanded="false" aria-controls="charts">
-              <i class="fa-solid fa-dog"></i>
-              <span class="menu-title ml-3">체험단</span>
-              <i class="menu-arrow"></i>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="/123team/Fboards" aria-expanded="false" aria-controls="tables">
-              <i class="fa-solid fa-clipboard-question"></i>
-              <span class="menu-title ml-3">자유게시판</span>
-              <i class="menu-arrow"></i>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
-              <i class="fa-solid fa-user"></i>
-              <span class="menu-title  ml-3">My Pages</span>
-              <i class="menu-arrow"></i>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="/123team/Nboards" aria-expanded="false" aria-controls="error">
-              <i class="fa-solid fa-clipboard"></i>
-              <span class="menu-title ml-3">공지사항</span>
-              <i class="menu-arrow"></i>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/123team/login">
-              <i class="fa-solid fa-key"></i>
-              <span class="menu-title ml-3">로그인</span>
-              <i class="menu-arrow"></i>
-            
-              <i class="fa-solid fa-right-from-bracket"></i>
-              <span class="menu-title ml-3">로그아웃</span>
-              <i class="menu-arrow"></i>
-            </a>
-          </li>
-        </ul>
-      </nav>
+	<div class="container-fluid page-body-wrapper">
+ 		<%@  include file="../module/leftheader.jsp" %>
      <div class="content-wrapper">
         <br>
         <br>

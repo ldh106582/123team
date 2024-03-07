@@ -17,8 +17,6 @@
 <link href="<c:url value="/resources/css/vendors/feather/feather.css"/>" rel="stylesheet">
 <link href="<c:url value="/resources/css/vendors/ti-icons/css/themify-icons.css"/>" rel="stylesheet">
 <link href="<c:url value="/resources/css/vendors/css/vendor.bundle.base.css"/>" rel="stylesheet">
-<!-- endinject -->
-<link href="<c:url value="/resources/css/vendors/datatables.net-bs4/dataTables.bootstrap4.css"/>" rel="stylesheet">
 <link href="<c:url value="/resources/css/vendors/ti-icons/css/themify-icons.css"/>" rel="stylesheet">
 <link href="<c:url value="/resources/css/text/css"/>">
 <!-- inject:css -->
@@ -27,14 +25,15 @@
 <!-- endinject -->
 <link href="<c:url value="/resources/css/images/favicon.png"/>" rel="stylesheet">
 <link rel="shortcut icon" href="images/favicon.png" />
+<!-- endinject -->
+<link href="<c:url value="/resources/css/vendors/datatables.net-bs4/dataTables.bootstrap4.css"/>" rel="stylesheet">
 <title>로그인</title>
 </head>
 <body>
 
 
  <%@  include file="./module/header.jsp" %>
- 
- <div class="container-fluid page-body-wrapper">
+ 	<div class="container-fluid page-body-wrapper">
   <%@  include file="./module/leftheader.jsp" %>
 
 		<div class="content-wrapper d-flex align-items-center auth px-0">
@@ -56,7 +55,6 @@
 							</div>
 							<div class="text-center mt-4 font-weight-light">
 								<a href="./login/Allmember" class="text-primary">회원가입</a>
-							</div>
 						</form:form>
 					</div>
 				</div>

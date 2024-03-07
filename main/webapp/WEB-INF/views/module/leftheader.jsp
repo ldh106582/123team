@@ -5,8 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<!--  부트스트랩 -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <!-- 폰트어썸 -->
 <script src="https://kit.fontawesome.com/8759f784cf.js" crossorigin="anonymous"></script>
 <!-- css -->
@@ -26,17 +25,18 @@
 <link href="<c:url value="/resources/css/text/css"/>">
  <!-- inject:css -->
 <link href="<c:url value="/resources/css/vertical-layout-light/style.css"/>" rel="stylesheet">
-
 <!-- End plugin css for this page -->
 <!-- endinject -->
  <link href="<c:url value="/resources/css/images/favicon.png"/>" rel="stylesheet">
 <link rel="shortcut icon" href="images/favicon.png" />
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <title>Insert title here</title>
+ <!-- endinject -->
+<link href="<c:url value="/resources/css/vendors/datatables.net-bs4/dataTables.bootstrap4.css"/>" rel="stylesheet">
 <style type="text/css">
 </style>
 </head>
 <body>
+
         <!-- partial -->
         <nav class="sidebar sidebar-offcanvas" id="sidebar">
             <ul class="nav">
