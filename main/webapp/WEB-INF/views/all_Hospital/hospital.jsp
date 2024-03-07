@@ -49,7 +49,7 @@
 				</div>
 	
 				<div class="col-md-12 no-gutters row mt-2" style="display: flex;">
-					<a class="col-md-4 mt-2 text-center" id="park" style="font-size: 20px;">주차장 이미지 상세 보기</a>
+					<img class="col-md-12" src="<c:url value='/resources/images/${hospital.map}'/>.jpg" height="250" width="150" alt="병원이미지">
 					<div class="col-md-4 mt-2 text-center">
 						<p id="review" style="font-size: 20px;">리뷰보기</p>
 					</div>

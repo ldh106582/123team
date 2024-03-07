@@ -77,8 +77,9 @@ public class HospitalController {
 	}
 	
 	@PostMapping("update")
-	public String hospitalupdate(@RequestParam("hid")String hid,@ModelAttribute("hospital")Hospital hospital) {
-		hospitalService.updateHospital(hospital,hid);
+	public String hospitalupdate(@RequestParam("hid")String hid,@ModelAttribute("hospital")Hospital hospital,HttpServletRequest request) {
+		String realpath = request.getSession().getServletContext().getRealPath("/resources/images");
+		hospitalService.updateHospital(hospital,hid,realpath);
 		return "redirect:/hospitals/hospital?hid="+hid;
 	}
 	
@@ -204,7 +205,7 @@ public class HospitalController {
 		 return "redirect:/hospitals/manageapps";
 	 }
 	 
-//		체험공고글 검색
+// 검색
 		@GetMapping("/selectbytitle")
 		public String selectboardbytitle(Model model,HttpServletRequest request) {
 			String title = (String) request.getParameter("title");

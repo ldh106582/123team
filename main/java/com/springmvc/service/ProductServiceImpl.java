@@ -85,6 +85,12 @@ public class ProductServiceImpl implements ProductService{
 		// TODO Auto-generated method stub
 		productRepository.setdeleteReview(reviewId);
 	}
+
+	@Override
+	public List<Product> getProductByName(String context) {
+		return productRepository.getProductByName(context);
+		
+	}
 	
 	
 	

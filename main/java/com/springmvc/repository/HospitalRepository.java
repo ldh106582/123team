@@ -10,9 +10,9 @@ public interface HospitalRepository {
 
 	Hospital gethosptialByhId(String hid);
 
-	void addhospital(Hospital hospital);
+	void addhospital(Hospital hospital, String realpath);
 
-	void updateHospital(Hospital hospital, String hid);
+	void updateHospital(Hospital hospital, String hid,String realpath);
 
 	void deleteHospital(String hid);
 
