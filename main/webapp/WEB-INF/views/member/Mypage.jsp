@@ -14,187 +14,147 @@
 <body>
 
 
- <%@  include file="../module/header.jsp" %>
- 
-     <!-- partial -->
-    <div class="container-fluid page-body-wrapper">
-      <!-- partial -->
-      <!-- partial:partials/_sidebar.html -->
-      <nav class="sidebar sidebar-offcanvas" id="sidebar">
-        <ul class="nav">
-          <li class="nav-item">
-            <a class="nav-link" href="/123team/hospitals">
-              <i class="fa-solid fa-hospital"></i>
-              <span class="menu-title ml-3">반려동물 병원</span>
-               <i class="menu-arrow"></i>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="/123team/products" aria-expanded="false" aria-controls="ui-basic">
-              <i class="fa-solid fa-gift"></i>
-              <span class="menu-title ml-3">반려동물 상품</span>
-              <i class="menu-arrow"></i>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
-              <i class="fa-solid fa-cart-shopping"></i>
-              <span class="menu-title ml-3">장바구니</span>
-              <i class="menu-arrow"></i>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="/123team/ENboards" aria-expanded="false" aria-controls="charts">
-              <i class="fa-solid fa-dog"></i>
-              <span class="menu-title ml-3">체험단</span>
-              <i class="menu-arrow"></i>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="/123team/Fboards" aria-expanded="false" aria-controls="tables">
-              <i class="fa-solid fa-clipboard-question"></i>
-              <span class="menu-title ml-3">자유게시판</span>
-              <i class="menu-arrow"></i>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
-              <i class="fa-solid fa-user"></i>
-              <span class="menu-title  ml-3">My Pages</span>
-              <i class="menu-arrow"></i>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="/123team/Nboards" aria-expanded="false" aria-controls="error">
-              <i class="fa-solid fa-clipboard"></i>
-              <span class="menu-title ml-3">공지사항</span>
-              <i class="menu-arrow"></i>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/123team/login">
-              <i class="fa-solid fa-key"></i>
-              <span class="menu-title ml-3">로그인</span>
-              <i class="menu-arrow"></i>
-            
-              <i class="fa-solid fa-right-from-bracket"></i>
-              <span class="menu-title ml-3">로그아웃</span>
-              <i class="menu-arrow"></i>
-            </a>
-          </li>
-        </ul>
-      </nav>
-      <div id="container" class="container col-md-4">
-			    <!--일반 mypage -->
-			        <!-- container -->
-			        <div id="content" class="content">
-			            <div class="subindex_wrap" role="main">
-			                <div id="headerTop" class="path_area" aria-hidden="false"></div>
-			            </div>                        
-			            <div class="subindex_item">
-			                <div class="head_title">
-			                    <h2 class="subindex_title">내 정보</h3>
-			                </div>
-				            <div class="subindex_greenbox">
-				                <ul class="subindex_row">
-				                    <li>
-				                        <div class="row_item other">
-				                            <a href="./login/update?id=${ id.personId }" class="text-decoration-none"><span class="item_text">내 정보 수정</span></a>
-				                        </div>
-				                    </li>
-				                    <li>
-				                        <div class="row_item other">
-				                            <a href="" id=""><span class="item_text">펫 정보 보기</span></a>
-				                        </div>
-				                    </li>
-				                    <li>
-				                        <div class="row_item other">
-				                            <a href="/123team/login/delete?id=${ id.personId }" class="text-decoration-none" id="delete"><span class="item_text">회원 탈퇴</span></a>
-				                        </div>
-				                    </li>
-				                </ul>
-				            </div>
-			        	</div>
-				        <!--병원 예약 정보-->
-				        <div class="subindex_item">
-				            <div class="head_title">
-				                <h2 class="subindex_title">병원 예약 정보</h2>
-				            </div>
-				            <div class="subindex_greenbox">
-				                <ul class="subindex_row">
-				                    <li>
-				                        <div class="row_item other">
-				                            <a href="/123team/hospitals/mybookList?personId=${loginId}" class="text-decoration-none"><span class="item_text">예약 확인</span></a>
-				                        </div>
-				                    </li>
-				                </ul>
-				            </div>
-				        </div>
-				        <!--주문 정보-->
-				        <div class="subindex_item">
-				            <div class="head_title">
-				                <h2 class="subindex_title">주문목록</h2>
-				            </div>
-				            <div class="subindex_greenbox">
-				                <ul class="subindex_row">
-				                    <li>
-				                        <div class="row_item other">
-				                            <a href="" class="text-decoration-none"><span class="item_text">주문 내역 확인</span></a>
-				                        </div>
-				                    </li>
-				                </ul>
-				            </div>
-				        </div>
-				        <!--게시판-->
-				        <div class="subindex_item">
-				            <div class="head_title">
-				                <h2 class="subindex_title">게시판</h2>
-				            </div>
-				            <div class="subindex_greenbox">
-				                <ul class="subindex_row">
-				                    <li>
-				                        <div class="row_item other">
-				                        <a href="/123team/Fboards?myId=${id.personId}" class="text-decoration-none"><span class="item_text">작성 글 확인</span></a>
-				                        </div>
-				                    </li>
-				                </ul>
-				            </div>
-				        </div>
-				        <!--Q&A-->
-				        <div class="subindex_item">
-				            <div class="head_title">
-				                <h2 class="subindex_title">Q&A</h2>
-				            </div>
-				            <div class="subindex_greenbox">
-				                <ul class="subindex_row">
-				                    <li>
-				                        <div class="row_item other">
-				                            <a href="" class="text-decoration-none"><span class="item_text">작성 Q&A 확인</span></a>
-				                        </div>
-				                    </li>
-				                </ul>
-				            </div>
-				        </div>
-				        <!--체험단-->
-				        <div class="subindex_item">
-				            <div class="head_title">
-				                <h2 class="subindex_title">체험단</h2>
-				            </div>
-				            <div class="subindex_greenbox">
-				                <ul class="subindex_row">
-				                    <li>
-				                        <div class="row_item other">
-				                            <a href="/123team/ENboards/applist" class="text-decoration-none"><span class="item_text">체험 신청 글 확인</span></a>
-				                        </div>
-				                    </li>
-				                </ul>
-				            </div>
-				        </div>
-					</div>
-			    </div>
-          </div>
-          
-          <%@  include file="../module/footer.jsp" %>
+	<%@  include file="../module/header.jsp" %>
+	<div class="container-fluid page-body-wrapper">
+ 		<%@  include file="../module/leftheader.jsp" %>
+			<div id="container" class="container wrap naverid"">
+				<header class="header" role="banner">
+		            <div class="header_home">
+		            <div class="gnb_area"></div>
+		            <div class="profile_area">
+		                <div class="profile_inner">
+		                    <a href="#" onclick="changeImage()" class="photo">
+		                        <img src="https://static.nid.naver.com/images/web/user/default.png" width="84" height="84" alt="프로필 이미지">
+		                    </a>
+		                    <div class="profile">
+		                        <p class="useid">${id.personId}</p> 
+		                        <p class="usemail">${id.personEmail}</p>
+		                    </div>
+		                </div>
+		            </div>
+		            <div id="headerLeft" class="header_left" aria-hidden="false">
+		                <ul class="left_menu" role="menu">
+		                    <li>
+		                        <a href="/user2/help/myInfoV2?m=viewProfile&amp;lang=ko_KR" class="left_item" role="menuitem" onclick="nclk(this,'lnb.info','','',event)" aria-current="">
+		                            <div class="menu_text ">내프로필</div>
+		                        </a>
+		                    </li>
+		                    <li>
+		                        <a href="./pet/creatpet?id=${ id.personId }" class="left_item" role="menuitem" >
+		                            <div class="menu_text ">반려동물 회원가입</div>
+		                        </a>
+		                     </li>
+		                     <li>
+		                        <a href="/123team/login/logout" class="left_item" role="menuitem" >
+		                            <div class="menu_text ">로그아웃</div>
+		                        </a>
+		                     </li>
+		                </ul>
+		            </div>
+		        </header>
+				<div id="content" class="content">
+	            <div class="subindex_wrap" role="main">
+	                <div id="headerTop" class="path_area" aria-hidden="false"></div>
+	            </div>                        
+	            <div class="subindex_item">
+	                <div class="head_title">
+	                    <h2 class="subindex_title">내 정보 수정</h3>
+	                </div>
+	                <div class="subindex_greenbox">
+	                    <ul class="subindex_row">
+	                        <li>
+	                            <div class="row_item other">
+	                                <a href="./login/update?id=${ id.personId }" class="text-decoration-none"><span class="item_text">내 정보 수정</span></a>
+	                            </div>
+	                        </li>
+	                        <li>
+	                            <div class="row_item other">
+	                                <a href="/123team/login/delete?id=${ id.personId }" class="text-decoration-none" id="delete"><span class="item_text">회원 탈퇴</span></a>
+	                            </div>
+	                        </li>
+	                    </ul>
+	                </div>
+	            </div>
+	            <!--병원 예약 정보-->
+	            <div class="subindex_item">
+	                <div class="head_title">
+	                    <h2 class="subindex_title">병원 예약 정보</h2>
+	                </div>
+	                <div class="subindex_greenbox">
+	                    <ul class="subindex_row">
+	                        <li>
+	                            <div class="row_item other">
+	                                <a href="/123team/hospitals/mybookList?personId=${loginId}" class="text-decoration-none"><span class="item_text">예약 확인</span></a>
+	                            </div>
+	                        </li>
+	                    </ul>
+	                </div>
+	            </div>
+	            <!--주문 정보-->
+	            <div class="subindex_item">
+	                <div class="head_title">
+	                    <h2 class="subindex_title">주문목록</h2>
+	                </div>
+	                <div class="subindex_greenbox">
+	                    <ul class="subindex_row">
+	                        <li>
+	                            <div class="row_item other">
+	                                <a href="" class="text-decoration-none"><span class="item_text">주문 내역 확인</span></a>
+	                            </div>
+	                        </li>
+	                    </ul>
+	                </div>
+	            </div>
+	            <!--게시판-->
+	            <div class="subindex_item">
+	                <div class="head_title">
+	                    <h2 class="subindex_title">게시판</h2>
+	                </div>
+	                <div class="subindex_greenbox">
+	                    <ul class="subindex_row">
+	                        <li>
+	                            <div class="row_item other">
+	                            <a href="/123team/Fboards?myId=${id.personId}" class="text-decoration-none"><span class="item_text">작성 글 확인</span></a>
+	                            </div>
+	                        </li>
+	                    </ul>
+	                </div>
+	            </div>
+	            <!--Q&A-->
+	            <div class="subindex_item">
+	                <div class="head_title">
+	                    <h2 class="subindex_title">Q&A</h2>
+	                </div>
+	                <div class="subindex_greenbox">
+	                    <ul class="subindex_row">
+	                        <li>
+	                            <div class="row_item other">
+	                                <a href="" class="text-decoration-none"><span class="item_text">작성 Q&A 확인</span></a>
+	                            </div>
+	                        </li>
+	                    </ul>
+	                </div>
+	            </div>
+	            <!--체험단-->
+	            <div class="subindex_item">
+	                <div class="head_title">
+	                    <h2 class="subindex_title">체험단</h2>
+	                </div>
+	                <div class="subindex_greenbox">
+	                    <ul class="subindex_row">
+	                        <li>
+	                            <div class="row_item other">
+	                                <a href="/123team/ENboards/applist" class="text-decoration-none"><span class="item_text">체험 신청 글 확인</span></a>
+	                            </div>
+	                        </li>
+	                    </ul>
+	                </div>
+	            </div>
+	        </div>
+		</div>
+	</div>
+	
+    <%@  include file="../module/footer.jsp" %>
  <%--        
   <!-- container-scroller -->
 	<div id="wrap" class="wrap naverid ">
