@@ -84,8 +84,9 @@ public class HospitalController {
 	}
 	
 	@PostMapping("update")
-	public String hospitalupdate(@RequestParam("hid")String hid,@ModelAttribute("hospital")Hospital hospital) {
-		hospitalService.updateHospital(hospital,hid);
+	public String hospitalupdate(@RequestParam("hid")String hid,@ModelAttribute("hospital")Hospital hospital,HttpServletRequest request) {
+		String realpath = request.getSession().getServletContext().getRealPath("/resources/images");
+		hospitalService.updateHospital(hospital,hid,realpath);
 		return "redirect:/hospitals/hospital?hid="+hid;
 	}
 	

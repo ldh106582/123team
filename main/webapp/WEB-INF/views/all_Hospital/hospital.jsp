@@ -20,8 +20,6 @@
 	<%
 		request.setAttribute("type", session.getAttribute("type"));
 		request.setAttribute("checktype", "h");
-		String x = (String) request.getAttribute("x");
-		String y = (String) request.getAttribute("x");
 	%>
 	
  <%@  include file="../module/header.jsp" %>
@@ -101,7 +99,7 @@
                  
                 <div class="show-gird border border-dark col-md-12 row no-gutters">
                     <div class="border border-dark col-md-6">
-                      <img> ${hospital.image}
+                   		<img alt="" src="">
                     </div>
                     <div class="border border-dark col-md-6 no-gutters">
                         <h4 class="col-md-12">병원명 : ${hospital.name} </h4>
@@ -114,8 +112,11 @@
 
                     <div class="col-md-12 row no-gutters ">
                       <div class="col-md-4 text-center border" >
+                      <!-- 병원 지도 표시 -->
                          <a class="btn">병원 위치 상세보기</a>
+                      		<img class="col-md-12" src="<c:url value='/resources/images/${hospital.map}'/>.jpg" height="250" width="150" alt="병원이미지">
                       </div>
+                      <a href="update?hid=${hospital.hid}">병원수정</a>
                       
 					<!--리뷰 작성링크 가져오기-->
                       <c:choose>

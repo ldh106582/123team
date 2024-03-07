@@ -12,7 +12,7 @@ public interface HospitalRepository {
 
 	void addhospital(Hospital hospital, String realpath);
 
-	void updateHospital(Hospital hospital, String hid);
+	void updateHospital(Hospital hospital, String hid,String realpath);
 
 	void deleteHospital(String hid);
 

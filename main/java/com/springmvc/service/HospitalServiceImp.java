@@ -30,8 +30,8 @@ public class HospitalServiceImp implements HospitalService{
 	}
 
 	@Override
-	public void updateHospital(Hospital hospital, String hid) {
-		hospitalRepository.updateHospital(hospital,hid);
+	public void updateHospital(Hospital hospital, String hid,String realpath) {
+		hospitalRepository.updateHospital(hospital,hid,realpath);
 	}
 
 	@Override

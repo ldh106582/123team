@@ -61,47 +61,50 @@ public class HospitalRepositoryImp implements HospitalRepository{
 		String hid =getHid();
 		template.update(SQL,hospital.getName(),hospital.getAddr(),hospital.getNumber(),hospital.getRuntime(),hid,hospital.getParking(),hospital.getDescription(),hospital.getPersonId(),hospital.getImage(),hid);
 		 
-		 	String address = hospital.getAddr();
-   			String y = null;
-		 	String x = null;
-		 	try{
-		 		 String addr = URLEncoder.encode(address,"UTF-8");
-		 		 String reqUrl = "https://naveropenapi.apigw.ntruss.com/map-geocode/v2/geocode?query="+addr;
-		 		
-		 		 URL url = new URL(reqUrl);
-    			 HttpsURLConnection con = (HttpsURLConnection) url.openConnection();
-    			 con.setRequestMethod("GET");
-    			 con.setRequestProperty("X-NCP-APIGW-API-KEY-ID", client_id);
-    			 con.setRequestProperty("X-NCP-APIGW-API-KEY", client_secret);
-    			
-    			 BufferedReader br;
-    			 int responseCode = con.getResponseCode();
-    			 if(responseCode==200) {
-    				 br = new BufferedReader(new InputStreamReader(con.getInputStream(),"UTF-8"));
-    			 }else {
-    				 br = new BufferedReader(new InputStreamReader(con.getErrorStream()));
-    			 }
-    			 String line;
-    			 StringBuffer response = new StringBuffer();
-    			 while((line=br.readLine())!=null) {
-    				 response.append(line);
-    			 }
-    			 br.close();
-    			 JSONTokener tokener = new JSONTokener(response.toString());
-    			 JSONObject object = new JSONObject(tokener);
-    			 JSONArray arr = object.getJSONArray("addresses");
-				 for(int i=0;i<arr.length();i++) {
-	   				 JSONObject temp =(JSONObject) arr.get(i);
-	   				 address =(String) temp.get("roadAddress");
-					 x =(String) temp.get("x");
-					 y =(String) temp.get("y");
-				}
-			 	System.out.println(x+y);
-			 	map_service(x,y,address,hid,realpath);
-		 	}catch (Exception e){
-		 	e.printStackTrace();
-		 	}
-		
+		getxy(hospital, realpath, hid);
+	}
+	public void getxy(Hospital hospital,String realpath,String hid) {
+		String address = hospital.getAddr();
+			String y = null;
+	 	String x = null;
+	 	try{
+	 		 String addr = URLEncoder.encode(address,"UTF-8");
+	 		 String reqUrl = "https://naveropenapi.apigw.ntruss.com/map-geocode/v2/geocode?query="+addr;
+	 		
+	 		 URL url = new URL(reqUrl);
+			 HttpsURLConnection con = (HttpsURLConnection) url.openConnection();
+			 con.setRequestMethod("GET");
+			 con.setRequestProperty("X-NCP-APIGW-API-KEY-ID", client_id);
+			 con.setRequestProperty("X-NCP-APIGW-API-KEY", client_secret);
+			
+			 BufferedReader br;
+			 int responseCode = con.getResponseCode();
+			 if(responseCode==200) {
+				 br = new BufferedReader(new InputStreamReader(con.getInputStream(),"UTF-8"));
+			 }else {
+				 br = new BufferedReader(new InputStreamReader(con.getErrorStream()));
+			 }
+			 String line;
+			 StringBuffer response = new StringBuffer();
+			 while((line=br.readLine())!=null) {
+				 response.append(line);
+			 }
+			 br.close();
+			 JSONTokener tokener = new JSONTokener(response.toString());
+			 JSONObject object = new JSONObject(tokener);
+			 JSONArray arr = object.getJSONArray("addresses");
+			 for(int i=0;i<arr.length();i++) {
+   				 JSONObject temp =(JSONObject) arr.get(i);
+   				 address =(String) temp.get("roadAddress");
+				 x =(String) temp.get("x");
+				 y =(String) temp.get("y");
+			}
+		 	System.out.println(x+y);
+		 	map_service(x,y,address,hid,realpath);
+	 	}catch (Exception e){
+	 	e.printStackTrace();
+	 	}
+	
 	}
 	public void map_service(String point_x,String point_y,String address,String hid,String realpath) {
 		String URL_STATICMAP = "https://naveropenapi.apigw.ntruss.com/map-static/v2/raster?";
@@ -113,7 +116,7 @@ public class HospitalRepositoryImp implements HospitalRepository{
 			url += "center=" + point_x + "," + point_y;
 			url += "&level=16&w=700&h=500";
 			url += "&markers=type:t|size:mid|pos:"+pos+"|label:"+URLEncoder.encode(address,"UTF-8");
-
+			
 //			사이트 연결 
 			URL u = new URL(url);
 			HttpURLConnection con = (HttpURLConnection)u.openConnection();
@@ -132,6 +135,9 @@ public class HospitalRepositoryImp implements HospitalRepository{
 //				파일 생성
 				String tempname = hid;
 				File f = new File(realpath,tempname+".jpg");
+				if (f.exists()) {
+	                f.delete();
+	            }
 				f.createNewFile();
 				
 //				파일 내용 쓰기
@@ -162,9 +168,11 @@ public class HospitalRepositoryImp implements HospitalRepository{
 	}
 
 	@Override
-	public void updateHospital(Hospital hospital, String hid) {
-		String SQL = "update hospital set name=?,number=?,runtime=?,parking=?,description=?,image=? where hid=?";
-		template.update(SQL,hospital.getName(),hospital.getNumber(),hospital.getRuntime(),hospital.getParking(),hospital.getDescription(),hospital.getImage(),hid);
+	public void updateHospital(Hospital hospital, String hid,String realpath) {
+		String SQL = "update hospital set name=?,number=?,runtime=?,parking=?,description=?,image=?,addr=?,filename=? where hid=?";
+		template.update(SQL,hospital.getName(),hospital.getNumber(),hospital.getRuntime(),hospital.getParking(),hospital.getDescription(),hospital.getImage(),hospital.getAddr(),hid,hid);
+		System.out.println(hospital.getAddr());
+		getxy(hospital, realpath, hid);
 	}
 
 	@Override
