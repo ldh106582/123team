@@ -53,17 +53,21 @@ public class HospitalRepositoryImp implements HospitalRepository{
 		}
 		return hospital;
 	}
-	String client_id = "dtj7ddq8yk";
-	 String client_secret ="jEihQzfLWUYzyRW3YNped129cBccTC3Zp5JSonHa";
+	String client_id = "peaxg064t9";
+	 String client_secret ="8cU8yVtzZkXZkvHrHNryQCuOH3c1IWU626zy4pYi";
+	 
+	 
 	@Override
-	public void addhospital(Hospital hospital,String realpath) {
-		String SQL = "insert into hospital values(?,?,?,?,?,?,?,?,?,?)";
+	public void addhospital(Hospital hospital, String realpath) {
+		String SQL = "insert into hospital values(?,?,?,?,?,?,?,?,?,?,?)";
 		String hid =getHid();
-		template.update(SQL,hospital.getName(),hospital.getAddr(),hospital.getNumber(),hospital.getRuntime(),hid,hospital.getParking(),hospital.getDescription(),hospital.getPersonId(),hospital.getImage(),hid);
-		 
-		getxy(hospital, realpath, hid);
+		String[] xy = getxy(hospital, realpath, hid);
+		System.out.println("x값"+xy[0]+" y값"+xy[1]);
+		template.update(SQL,hospital.getName(),hospital.getAddr(),hospital.getNumber(),hospital.getRuntime(),hid,hospital.getParking(),hospital.getDescription(),hospital.getPersonId(),hospital.getImage(),xy[0],xy[1]);
+
 	}
-	public void getxy(Hospital hospital,String realpath,String hid) {
+
+	public String[] getxy(Hospital hospital,String realpath,String hid) {
 		String address = hospital.getAddr();
 			String y = null;
 	 	String x = null;
@@ -100,66 +104,13 @@ public class HospitalRepositoryImp implements HospitalRepository{
 				 y =(String) temp.get("y");
 			}
 		 	System.out.println(x+y);
-		 	map_service(x,y,address,hid,realpath);
 	 	}catch (Exception e){
 	 	e.printStackTrace();
 	 	}
-	
-	}
-	public void map_service(String point_x,String point_y,String address,String hid,String realpath) {
-		String URL_STATICMAP = "https://naveropenapi.apigw.ntruss.com/map-static/v2/raster?";
-		try {
-			
-//			URL 생성,위도와 경도 변수 처리
-			String pos =URLEncoder.encode(point_x+" "+point_y,"UTF-8");
-			String url = URL_STATICMAP;
-			url += "center=" + point_x + "," + point_y;
-			url += "&level=16&w=700&h=500";
-			url += "&markers=type:t|size:mid|pos:"+pos+"|label:"+URLEncoder.encode(address,"UTF-8");
-			
-//			사이트 연결 
-			URL u = new URL(url);
-			HttpURLConnection con = (HttpURLConnection)u.openConnection();
-			con.setRequestMethod("GET");
-			con.setRequestProperty("X-NCP-APIGW-API-KEY-ID", client_id);
-			con.setRequestProperty("X-NCP-APIGW-API-KEY", client_secret);
-			int responseCode = con.getResponseCode();
-			BufferedReader br;
-//			연결 성공시
-			if(responseCode==200) {
-//				파일 읽기
-				InputStream is = con.getInputStream();
-				int read = 0;
-				byte[] bytes = new byte[1024];
-				
-//				파일 생성
-				String tempname = hid;
-				File f = new File(realpath,tempname+".jpg");
-				if (f.exists()) {
-	                f.delete();
-	            }
-				f.createNewFile();
-				
-//				파일 내용 쓰기
-				OutputStream outputStream = new FileOutputStream(f);
-				while ((read=is.read(bytes)) !=-1) {
-					outputStream.write(bytes,0,read);
-				}
-				is.close();
-//				연결실패시
-			}else {
-				 br = new BufferedReader(new InputStreamReader(con.getErrorStream()));
-				 String inputLine;
-				 StringBuffer response = new StringBuffer();
-				 while((inputLine = br.readLine()) != null) {
-					 response.append(inputLine);
-				 }
-				 br.close();
-				 System.out.println(response.toString());
-			}
-		} catch (Exception e) {
-			System.out.println(e);
-		}
+	 	String[] s = new String[2];
+	 	s[0] = x;
+	 	s[1] = y;
+	 	return s;
 	}
 	
 	private String getHid() {
@@ -169,10 +120,10 @@ public class HospitalRepositoryImp implements HospitalRepository{
 
 	@Override
 	public void updateHospital(Hospital hospital, String hid,String realpath) {
-		String SQL = "update hospital set name=?,number=?,runtime=?,parking=?,description=?,image=?,addr=?,filename=? where hid=?";
-		template.update(SQL,hospital.getName(),hospital.getNumber(),hospital.getRuntime(),hospital.getParking(),hospital.getDescription(),hospital.getImage(),hospital.getAddr(),hid,hid);
 		System.out.println(hospital.getAddr());
-		getxy(hospital, realpath, hid);
+		String[] xy = getxy(hospital, realpath, hid);
+		String SQL = "update hospital set name=?,number=?,runtime=?,parking=?,description=?,image=?,addr=?,filename=? where hid=?";
+		template.update(SQL,hospital.getName(),hospital.getNumber(),hospital.getRuntime(),hospital.getParking(),hospital.getDescription(),hospital.getImage(),hospital.getAddr(),hid,xy[0],xy[1]);
 	}
 
 	@Override

@@ -15,96 +15,20 @@
 	<%
 		request.setAttribute("type", session.getAttribute("type"));
 		request.setAttribute("checktype", "h");
-		
 	%>
-	
- <%@  include file="../module/header.jsp" %>
- 
-    	      <!-- partial -->
-              <div class="container-fluid page-body-wrapper ">
-                <!-- partial -->
-                <!-- partial:partials/_sidebar.html -->
-                <nav class="sidebar sidebar-offcanvas" id="sidebar">
-                  <ul class="nav">
-                    <li class="nav-item">
-                      <a class="nav-link" href="/123team/hospitals">
-                        <i class="fa-solid fa-hospital"></i>
-                        <span class="menu-title ml-3">반려동물 병원</span>
-                         <i class="menu-arrow"></i>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" data-toggle="collapse" href="/123team/products" aria-expanded="false" aria-controls="ui-basic">
-                        <i class="fa-solid fa-gift"></i>
-                        <span class="menu-title ml-3">반려동물 상품</span>
-                        <i class="menu-arrow"></i>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" data-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                        <span class="menu-title ml-3">장바구니</span>
-                        <i class="menu-arrow"></i>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" data-toggle="collapse" href="/123team/ENboards" aria-expanded="false" aria-controls="charts">
-                        <i class="fa-solid fa-dog"></i>
-                        <span class="menu-title ml-3">체험단</span>
-                        <i class="menu-arrow"></i>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" data-toggle="collapse" href="/123team/Fboards" aria-expanded="false" aria-controls="tables">
-                        <i class="fa-solid fa-clipboard-question"></i>
-                        <span class="menu-title ml-3">자유게시판</span>
-                        <i class="menu-arrow"></i>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
-                        <i class="fa-solid fa-user"></i>
-                        <span class="menu-title  ml-3">My Pages</span>
-                        <i class="menu-arrow"></i>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" data-toggle="collapse" href="/123team/Nboards" aria-expanded="false" aria-controls="error">
-                        <i class="fa-solid fa-clipboard"></i>
-                        <span class="menu-title ml-3">공지사항</span>
-                        <i class="menu-arrow"></i>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="/123team/login">
-                        <i class="fa-solid fa-key"></i>
-                        <span class="menu-title ml-3">로그인</span>
-                        <i class="menu-arrow"></i>
-                      
-                        <i class="fa-solid fa-right-from-bracket"></i>
-                        <span class="menu-title ml-3">로그아웃</span>
-                        <i class="menu-arrow"></i>
-                      </a>
-                    </li>
-                  </ul>
-                </nav>
+<%@  include file="../module/header.jsp" %>
+
+
+     <div class="container-fluid page-body-wrapper">
+
+      <%@  include file="../module/leftheader.jsp" %>
                
-                   <!-- partial -->
+                   
                 <div class="main-panel">
                     <div class="content-wrapper">
                         <div class="row">
                             <!--여기서 복붙 시작-->
                             <div class="show-gird no-gutters col-md-12">
-                                <div class="col-md-12 no-gutters">
-                                    <div  id="slider" class="col-md-12 no-gutters" style="margin: 0 auto; width: 100%; height: 400px; display: flex; margin-bottom: 2%;;">
-                                    	<img src="./resources/images/hospital01.jpg" style="width: 100%"; alt="병원이미지01"/>
-                                        <img src="./resources/images/hospital02.jpg" style="width: 100%"; alt="병원이미지01"/>
-                                        <img src="./resources/images/hospital03.jpg" style="width: 100%"; alt="병원이미지01"/>
-                                        <img src="./resources/images/hospital04.jpg" style="width: 100%"; alt="병원이미지01"/>
-                                        <img src="./resources/images/hospital05.jpg" style="width: 100%"; alt="병원이미지01"/>
-                                        
-                                    </div>
-                                    
                                     <div class="col-md-12 row no-gutters" style="margin: 0 auto;">
                                         <div class="col-md-9 ">
                                             <div style="border-left: 3px solid red;"> <h4 style="margin-left: 2%;"> 우리 병원 현황</h4>
@@ -270,20 +194,13 @@
                             </div>
                             <!--여기서 복붙 끝-->
                         </div>
-                        
-                        <footer class="footer">
-                            <div class="d-sm-flex justify-content-center justify-content-sm-between">
-                            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2021.  Premium <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap admin template</a> from BootstrapDash. All rights reserved.</span>
-                            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="ti-heart text-danger ml-1"></i></span>
-                            </div>
-                            <div class="d-sm-flex justify-content-center justify-content-sm-between">
-                            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Distributed by <a href="https://www.themewagon.com/" target="_blank">Themewagon</a></span> 
-                            </div>
-                        </footer> 
                     </div>
-                </div>   
-            </div>
+                </div>
+             </div>
+                        
+<%@  include file="../module/footer.jsp" %>
  
+ <!-- 
     <div class="container my-3">
         <div class="d-flex justify-content-between">
             <div>
@@ -292,13 +209,12 @@
             <c:if test="${type == checktype}">
             <div class="justify-content-end">
                 <a href="hospitals/create" class="btn btn-success ">병원 추가</a>
-                <a href="hospitals/manageapps">모든신청보기</a>
-
-            </div>
+                <a href="hospitals/manageapps" class="btn btn-success">모든신청보기</a>
             </c:if>
             <c:if test="${loginId != null && type!=checktype}">
-            	<a href="hospitals/mybookList?personId=${loginId}">내 예약 보기</a>            
+            	<a href="hospitals/mybookList?personId=${loginId}" class="btn btn-success">내 예약 보기</a>            
             </c:if>
+            </div>
         </div>
         <br>
         <div class="row" >
@@ -326,8 +242,7 @@
             <input type="text" name="title" placeholder="병원 이름 입력" class="form-control mr-3" />
             <button type="submit" class="btn btn-success">검색</button>
         </form>
-
-	<%@ include file="../module/footer.jsp" %>
+ -->
 
 <%-- 
 <a href="search">병원검색</a>	

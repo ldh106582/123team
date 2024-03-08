@@ -22,7 +22,8 @@ public class HospitalRowMapper implements RowMapper<Hospital>{
 		hopital.setDescription(rs.getString(7));
 		hopital.setPersonId(rs.getString(8));
 		hopital.setImage(rs.getString(9));
-		hopital.setMap(rs.getString(10));
+		hopital.setX(rs.getString(10));
+		hopital.setY(rs.getString(11));
 		return hopital;
 	}
 	
