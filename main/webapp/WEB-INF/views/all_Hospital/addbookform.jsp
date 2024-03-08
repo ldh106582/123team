@@ -24,40 +24,45 @@
                 <div class="row w-100 mx-0">
                    <div class="col-lg-6 mx-auto">
                       <div class="auth-form-light text-left py-5 px-4 px-sm-5">
-                         <div class="brand-logo">
-                             <img src="resources/images/logo.jpg" alt="logo">
-                         </div>
-                         <p class="card-title">병원예약</p>
-                         <form:form modelAttribute="booking" method="POST">
-                            <input type="hidden" name="hospitalName" value="${hospital.name}">
-                            <input type="hidden" name="hid" value="${hospital.hid}">
-                            <input type="hidden" name="mid" value="${hospital.personId}">
-                            <div class="form-group">
-                                <h2 class="col-md-12 p-0" style="color: rgb(140, 58, 179);">예약가능시간 </h2>  
-                                <form:input class="form-control form-control-lg" type="text" path="registDay" value="${hospital.runtime}"  />
-                            </div>
-                            <div class="form-group">
-                                <h2 class="col-md-12 p-0" style="color: rgb(140, 58, 179);">진료예약시간 </h2>   
-                                <form:input class="form-control form-control-lg" type="datetime-local" name="registDay" path="registDay"/>
-                            </div>
-                            <div class="form-group">
-                              <h2 class="col-md-12 p-0" style="color: rgb(140, 58, 179);">특이사항 </h2>  
-                              <form:input type="text" path="context" class="form-control form-control-lg" />
-                            </div>
-                            <div class="mt-3">
-                               <h2 class="col-md-12 p-0" style="color: rgb(140, 58, 179);">나의반려동물 </h2>
-                                <% 
-                                    for(int i=0;i<petlist.size();i++){
-                                        request.setAttribute("name", petlist.get(i).getPetName());
-                                        request.setAttribute("petId", petlist.get(i).getPetId());
-                                        %>
-                                        ${name} <form:checkbox value="${petId}" path="petId"/>
-                                <%
-                                    }
-                                %>
-                                <input type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn mt-3" value="예약하기" id="login"/>
-                             </div>
-                         </form:form>
+		  		 		<div class="content-wrapper">
+				     	  <div class="col-12 grid-margin stretch-card">
+			                <div class="card">
+			                  <div class="card-body">
+		                         <h4 class="card-title">예약하기</h4>
+		                         <form:form modelAttribute="booking" method="POST">
+		                            <input type="hidden" name="hospitalName" value="${hospital.name}">
+		                            <input type="hidden" name="hid" value="${hospital.hid}">
+		                            <input type="hidden" name="mid" value="${hospital.personId}">
+		                            <div class="form-group">
+		                                <h4 class="col-md-12 p-0" style="color: rgb(140, 58, 179);">예약가능시간 </h4>  
+		                                <form:input class="form-control form-control-lg" type="text" path="registDay" value="${hospital.runtime}"  />
+		                            </div>
+		                            <div class="form-group">
+		                                <h4 class="col-md-12 p-0" style="color: rgb(140, 58, 179);">진료예약시간 </h4>   
+		                                <form:input class="form-control form-control-lg" type="datetime-local" name="registDay" path="registDay"/>
+		                            </div>
+		                            <div class="form-group">
+		                              <h4 class="col-md-12 p-0" style="color: rgb(140, 58, 179);">특이사항 </h4>  
+		                              <form:input type="text" path="context" class="form-control form-control-lg" />
+		                            </div>
+		                            <div class="mt-3">
+		                               <h4 class="col-md-12 p-0" style="color: rgb(140, 58, 179);">나의반려동물 </h4>
+		                                <% 
+		                                    for(int i=0;i<petlist.size();i++){
+		                                        request.setAttribute("name", petlist.get(i).getPetName());
+		                                        request.setAttribute("petId", petlist.get(i).getPetId());
+		                                        %>
+		                                        ${name} <form:checkbox value="${petId}" path="petId"/>
+		                                <%
+		                                    }
+		                                %>
+		                                <input type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn mt-3" value="예약하기" id="login"/>
+		                             </div>
+		                         </form:form>
+		                    	</div>
+		                      </div>
+		                   </div>
+		                 </div>
                       </div>
                    </div>
                 </div>

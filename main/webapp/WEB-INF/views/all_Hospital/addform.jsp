@@ -23,6 +23,9 @@
                            <div class="brand-logo">
                                <img src="resources/images/logo.jpg" alt="logo">
                            </div>
+                           <div class="card">
+			                  <div class="card-body">
+		                         <h4 class="card-title">예약하기</h4>
                         <form:form modelAttribute="hospital"method="POST" enctype="multipart/form-data">
                                <div class="form-group">
                                   <label for="exampleInputUsername1">병원명</label>
@@ -63,6 +66,8 @@
                                    <input type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" value="병원등록" />
                                </div>
                            </form:form>
+                           </div>
+                         </div>
                        </div>
                     </div>
                  </div>
