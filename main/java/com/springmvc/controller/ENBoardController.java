@@ -168,6 +168,9 @@ public class ENBoardController {
 		 application.setExperience(request.getParameter("experience"));
 		 application.setRegistDay(request.getParameter("registDay"));
 		 application.setTitle(request.getParameter("title"));
+		 application.setBoardId(request.getParameter("boardId"));
+		 System.out.println("=======================================");
+		 System.out.println(request.getParameter("registDay"));
 		 enboardService.addbook(application,session.getAttribute("personId").toString());
 		 return "redirect:/ENboards/applist";
 	 }
