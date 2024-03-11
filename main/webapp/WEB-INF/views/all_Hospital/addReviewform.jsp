@@ -22,10 +22,8 @@
 		      <div class="row w-100 mx-0">
 		        <div class="col-lg-6 mx-auto">
 		          <div class="col-md-7 no-gutters" style="margin-left: 25%;">
-		          	<div class="card">
-			           <div class="card-body">
-		                  <h4 class="card-title">예약하기</h4>
-		            	<div class="show-gird col-md-12 mb-4">
+		            <h1 class="col-md-12 text-center mb-5" style="color: rgb(140, 58, 179);">리뷰 등록</h1>
+		            <div class="show-gird col-md-12 mb-4">
 						 <form:form modelAttribute="review" method="POST" enctype="multipart/form-data">
 						    <div class="rating text-center col-md-12 mb-2">
 						        <form:radiobutton path="reviewScore" value="5" id="star5"/>
@@ -56,8 +54,6 @@
 						        <input class="btn btn col-md-12 p-2" type="submit" value="작성완료" style="background-color: blueviolet; color: white;">
 						    </div>
 						</form:form>
-						</div>
-					   </div>
 		            </div>
 		          </div>
 		        </div>

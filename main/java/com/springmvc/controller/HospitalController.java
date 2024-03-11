@@ -48,7 +48,6 @@ public class HospitalController {
 	public String hospital(@RequestParam("hid") String hid,Model model)
 	{
 		model.addAttribute("hospital",hospitalService.gethosptialByhId(hid));
-		System.out.println(hospitalService.gethosptialByhId(hid));
 //		병원리뷰
 		model.addAttribute("reviews",reviewService.getAllReviews(hid));
 		return "all_Hospital/hospital";

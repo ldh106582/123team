@@ -27,11 +27,6 @@
 <link href="<c:url value="/resources/css/text/css"/>">
  <!-- inject:css -->
 <link href="<c:url value="/resources/css/vertical-layout-light/style.css"/>" rel="stylesheet">
-<script type="text/javascript">
-setTimeout(function(){
-    location.reload();
-}, 180000);
-</script>
 <!-- End plugin css for this page -->
 <!-- endinject -->
  <link href="<c:url value="/resources/css/images/favicon.png"/>" rel="stylesheet">
@@ -57,13 +52,13 @@ setTimeout(function(){
 	<%
 		String personId = (String) session.getAttribute("personId");
 		request.setAttribute("loginId", personId);
-		request.setAttribute("type", session.getAttribute("type"));
-		request.setAttribute("checktype", "c");
 	%>
+	<div id="checkingR">
 	<c:if test="${personId != null }">
+
 	
 	<%
-			
+
 			Connection conn = null;
 			Statement stmt1 = null;
 			Statement stmt2 = null;
@@ -139,14 +134,12 @@ setTimeout(function(){
 			    // 사용한 자원을 정리합니다.
 			    if (rs1 != null) {
 			        try {
-			        	System.out.println("3sssssssssssss");
 			        	rs1.close();
 			        } catch (SQLException e) {
 			        }
 			    }
 			    if (rs2 != null) {
 			        try {
-			        	System.out.println("3sssssssssssss");
 			        	rs2.close();
 			        } catch (SQLException e) {
 			        }
@@ -172,8 +165,17 @@ setTimeout(function(){
 			}
 
 			%> 
+
 		</c:if>	
-			
+		     		</div> 
+     		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+  window.setInterval(refreshDiv, 5000);
+  
+  function refreshDiv() {
+    $('#checkingR').load(location.href + ' #checkingR');
+  }
+</script>
 	    <!-- partial:partials/_navbar.html -->
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">

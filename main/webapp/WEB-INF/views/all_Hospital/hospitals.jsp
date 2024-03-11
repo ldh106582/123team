@@ -15,11 +15,10 @@
 	<%
 		request.setAttribute("type", session.getAttribute("type"));
 		request.setAttribute("checktype", "h");
-		
 	%>
-	
- <%@  include file="../module/header.jsp" %>
-     
+<%@  include file="../module/header.jsp" %>
+
+
      <div class="container-fluid page-body-wrapper">
 
       <%@  include file="../module/leftheader.jsp" %>

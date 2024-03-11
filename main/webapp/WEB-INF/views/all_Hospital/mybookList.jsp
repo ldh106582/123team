@@ -77,7 +77,7 @@ function cancelForm() {
                <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
-		                    <h4 class="card-title">예약내역</h4>
+                            <h1 class="col-md-12 text-center mb-5" style="color: rgb(140, 58, 179);">예약자 정보 확인</h1>
                             <div class="row">
                                 <div class="col-12">
                                     <div class="table-responsive">

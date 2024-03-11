@@ -23,21 +23,18 @@
                            <div class="brand-logo">
                                <img src="resources/images/logo.jpg" alt="logo">
                            </div>
-                           <div class="card">
-			                  <div class="card-body">
-		                         <h4 class="card-title">예약하기</h4>
-                        <form:form modelAttribute="hospital"method="POST" enctype="multipart/form-data">
+                        <form:form modelAttribute="hospital" method="POST" enctype="multipart/form-data">
                                <div class="form-group">
                                   <label for="exampleInputUsername1">병원명</label>
                                    <form:input class="form-control form-control-lg" type="text" path="name"  />
                                </div>
                                <div class="form-group">
                                   <label for="exampleInputUsername1">병원주소</label>
-                                   <form:input class="form-control form-control-lg" type="password" path="addr" />
+                                   <form:input class="form-control form-control-lg" type="text" path="addr" />
                                </div>
                                <div class="form-group">
                                   <label for="exampleInputUsername1">진료시간</label>
-                                   <form:input class="form-control form-control-lg" type="email" path="runtime"/>
+                                   <form:input class="form-control form-control-lg" type="text" path="runtime"/>
                                </div>
                                <div class="form-group">
                                   <label for="exampleInputUsername1">전화번호</label>
@@ -46,10 +43,6 @@
                                <div class="form-group">
                                   <label for="exampleInputUsername1">주차정보</label>
                                    <form:input class="form-control form-control-lg" type="text" path="parking" />
-                               </div>
-                               <div class="form-group">
-                                  <label for="exampleInputUsername1">주소</label>
-                                   <form:input class="form-control form-control-lg" type="text" path="personAddress" />
                                </div>
                                <div class="form-group">
                                   <label for="exampleInputUsername1">설명</label>
@@ -66,8 +59,6 @@
                                    <input type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" value="병원등록" />
                                </div>
                            </form:form>
-                           </div>
-                         </div>
                        </div>
                     </div>
                  </div>
