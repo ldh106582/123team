@@ -41,7 +41,7 @@
 	                                            <div class="col-md-12 row card-group no-gutters" style="margin-bottom: 3%;">
 	                                            <c:forEach items="${hospitals}" var="hospital">
 	                                                
-	                                                <div class="col-md-4 row no-gutters card">
+	                                                <div class="col-md-4 row no-gutters mr-1 card mb-1">
 	                                                    <div class="col-md-12 card-body no-gutters">
 															<c:choose>
 															    <c:when test="${not empty hospital.image}">
@@ -51,11 +51,10 @@
 															        <img class="col-md-12" src="https://i.ibb.co/gdq8PKg/pexels-tom-fisk-1692693.jpg" alt="병원이미지" height="250" width="150" border="0">
 															    </c:otherwise>
 															</c:choose>
-															
 	                                                        <p class="card-title" style="margin-top: 7%;">병원명 : ${hospital.name}</p>
 	                                                        <p class="card-text" style="margin-top: 4%;">병원안내 : ${hospital.description}</p>
 	                                                    </div>
-                                                      	<a href="hospitals/hospital?hid=${hospital.hid}" class="btn btn-success">병원 상세보기</a>
+                                                      	<a href="hospitals/hospital?hid=${hospital.hid}" class="btn btn-outline-primary" >병원 상세보기</a>
 	                                                </div>
 	                                            </c:forEach>
 	                                            
@@ -66,7 +65,7 @@
 	                                            <div class="col-md-12 row card-group no-gutters" style="margin-bottom: 3%;">
 	                                            <c:forEach items="${hospitals}" var="hospital">
 	                                                
-	                                                <div class="col-md-4 row no-gutters card">
+	                                                <div class="col-md-4 row no-gutters mr-1 card mb-1">
 	                                                    <div class="col-md-12 card-body no-gutters">
 															<c:choose>
 															    <c:when test="${not empty hospital.image}">
@@ -80,7 +79,7 @@
 	                                                        <p class="card-title" style="margin-top: 7%;">병원명 : ${hospital.name}</p>
 	                                                        <p class="card-text" style="margin-top: 4%;">병원안내 : ${hospital.description}</p>
 	                                                    </div>
-                                                      	<a href="hospitals/hospital?hid=${hospital.hid}" class="btn btn-success">병원 상세보기</a>
+                                                      	<a href="hospitals/hospital?hid=${hospital.hid}" class="btn btn-outline-primary">병원 상세보기</a>
 	                                                </div>
 	                                            </c:forEach>
 	                                            
@@ -91,7 +90,7 @@
 	                                            <div class="col-md-12 row card-group no-gutters" style="margin-bottom: 3%;">
 	                                            <c:forEach items="${hospitals}" var="hospital">
 	                                                
-	                                                <div class="col-md-4 row no-gutters card">
+	                                                <div class="col-md-4 row no-gutters mr-1 card mb-1">
 	                                                    <div class="col-md-12 card-body no-gutters">
 															<c:choose>
 															    <c:when test="${not empty hospital.image}">
@@ -105,7 +104,7 @@
 	                                                        <p class="card-title" style="margin-top: 7%;">병원명 : ${hospital.name}</p>
 	                                                        <p class="card-text" style="margin-top: 4%;">병원안내 : ${hospital.description}</p>
 	                                                    </div>
-                                                      	<a href="hospitals/hospital?hid=${hospital.hid}" class="btn btn-success">병원 상세보기</a>
+                                                      	<a href="hospitals/hospital?hid=${hospital.hid}" class="btn btn-outline-primary">병원 상세보기</a>
 	                                                </div>
 	                                            </c:forEach>
 	                                            
@@ -121,7 +120,7 @@
                                             
                                             <c:forEach items="${hospitals}" var="hospital">
 	                                            <div class="card col-md-12 no-gutters" style="max-width: 540px;">
-	                                                <div class="col-md-12 row no-gutters border border-dark">
+	                                                <div class="col-md-12 row no-gutters border">
 													<c:choose>
 													   <c:when test="${not empty hospital.image}">
 														   <img class="col-md-4" src="<c:url value='/resources/images/${hospital.image}'/>" height="150" width="150" alt="병원이미지">
@@ -130,11 +129,11 @@
 														    <img class="col-md-4" src="https://i.ibb.co/gdq8PKg/pexels-tom-fisk-1692693.jpg" alt="병원이미지" height="150" width="150" border="0">
 														</c:otherwise>
 													</c:choose>
-	                                                  	<div class="col-md-8 border border-dark">
+	                                                  	<div class="col-md-8 border">
 	                                                        <div class="card-body">
 	                                                            <p class="card-text">병원명 : </p>
 	                                                            <p class="card-text">리 뷰 : </p>
-	                                                            <a href="hospitals/hospital?hid=${hospital.hid}" class="btn btn-success border rounded-pill" style="font-size: 75%; height: 10%; width: 40%;"> 상세보기</a>
+	                                                            <a href="hospitals/hospital?hid=${hospital.hid}" class="btn btn-outline-primary btn-sm rounded-pill" style="font-size: 75%; height: 10%; width: 40%;"> 상세보기</a>
 	                                                        </div>
 		                                                 </div>
 	                                                </div>
@@ -145,7 +144,7 @@
                                             
                                             <c:forEach items="${hospitals}" var="hospital">
 	                                            <div class="card col-md-12 no-gutters" style="max-width: 540px;">
-	                                                <div class="col-md-12 row no-gutters border border-dark">
+	                                                <div class="col-md-12 row no-gutters border">
 													<c:choose>
 													   <c:when test="${not empty hospital.image}">
 														   <img class="col-md-4" src="<c:url value='/resources/images/${hospital.image}'/>" height="150" width="150" alt="병원이미지">
@@ -154,11 +153,11 @@
 														    <img class="col-md-4" src="https://i.ibb.co/gdq8PKg/pexels-tom-fisk-1692693.jpg" alt="병원이미지" height="150" width="150" border="0">
 														</c:otherwise>
 													</c:choose>
-	                                                  	<div class="col-md-8 border border-dark">
+	                                                  	<div class="col-md-8 border">
 	                                                        <div class="card-body">
 	                                                            <p class="card-text">병원명 : </p>
 	                                                            <p class="card-text">리 뷰 : </p>
-	                                                            <a href="hospitals/hospital?hid=${hospital.hid}" class="btn btn-success border rounded-pill" style="font-size: 75%; height: 10%; width: 40%;"> 상세보기</a>
+	                                                            <a href="hospitals/hospital?hid=${hospital.hid}" class="btn btn-outline-primary btn-sm rounded-pill" style="font-size: 75%; height: 10%; width: 40%;"> 상세보기</a>
 	                                                        </div>
 		                                                 </div>
 	                                                </div>
@@ -169,7 +168,7 @@
                                             
                                             <c:forEach items="${hospitals}" var="hospital">
 	                                            <div class="card col-md-12 no-gutters" style="max-width: 540px;">
-	                                                <div class="col-md-12 row no-gutters border border-dark">
+	                                                <div class="col-md-12 row no-gutters border">
 													<c:choose>
 													   <c:when test="${not empty hospital.image}">
 														   <img class="col-md-4" src="<c:url value='/resources/images/${hospital.image}'/>" height="150" width="150" alt="병원이미지">
@@ -178,11 +177,11 @@
 														    <img class="col-md-4" src="https://i.ibb.co/gdq8PKg/pexels-tom-fisk-1692693.jpg" alt="병원이미지" height="150" width="150" border="0">
 														</c:otherwise>
 													</c:choose>
-	                                                  	<div class="col-md-8 border border-dark">
+	                                                  	<div class="col-md-8 border">
 	                                                        <div class="card-body">
 	                                                            <p class="card-text">병원명 : </p>
 	                                                            <p class="card-text">리 뷰 : </p>
-	                                                            <a href="hospitals/hospital?hid=${hospital.hid}" class="btn btn-success border rounded-pill" style="font-size: 75%; height: 10%; width: 40%;"> 상세보기</a>
+	                                                            <a href="hospitals/hospital?hid=${hospital.hid}" class="btn btn-outline-primary btn-sm rounded-pill" style="font-size: 75%; height: 10%; width: 40%;"> 상세보기</a>
 	                                                        </div>
 		                                                 </div>
 	                                                </div>
@@ -208,11 +207,11 @@
             </div>
             <c:if test="${type == checktype}">
             <div class="justify-content-end">
-                <a href="hospitals/create" class="btn btn-success ">병원 추가</a>
-                <a href="hospitals/manageapps" class="btn btn-success">모든신청보기</a>
+                <a href="hospitals/create" class="btn btn-primary ">병원 추가</a>
+                <a href="hospitals/manageapps" class="btn btn-primary">모든신청보기</a>
             </c:if>
             <c:if test="${loginId != null && type!=checktype}">
-            	<a href="hospitals/mybookList?personId=${loginId}" class="btn btn-success">내 예약 보기</a>            
+            	<a href="hospitals/mybookList?personId=${loginId}" class="btn btn-primary">내 예약 보기</a>            
             </c:if>
             </div>
         </div>
@@ -240,7 +239,7 @@
         <br>
         <form action="/123team/hospitals/selectbytitle" class="form-inline my-2 justify-content-center ">
             <input type="text" name="title" placeholder="병원 이름 입력" class="form-control mr-3" />
-            <button type="submit" class="btn btn-success">검색</button>
+            <button type="submit" class="btn btn-primary">검색</button>
         </form>
  -->
 
