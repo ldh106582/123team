@@ -32,114 +32,129 @@
 </head>
 <body>
 
- <%@  include file="../module/header.jsp" %> 
-     <!-- partial -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="./resources/js/refreshing.js"></script>
+
+<div id="header">
+		<%@  include file="../module/header.jsp" %>
+	</div>
+
     <div class="container-fluid page-body-wrapper">
-      <!-- partial -->
-      <!-- partial:partials/_sidebar.html -->
-      <nav class="sidebar sidebar-offcanvas" id="sidebar">
-        <ul class="nav">
-          <li class="nav-item">
-            <a class="nav-link" href="/123team/hospitals">
-              <i class="fa-solid fa-hospital"></i>
-              <span class="menu-title ml-3">반려동물 병원</span>
-               <i class="menu-arrow"></i>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="/123team/products" aria-expanded="false" aria-controls="ui-basic">
-              <i class="fa-solid fa-gift"></i>
-              <span class="menu-title ml-3">반려동물 상품</span>
-              <i class="menu-arrow"></i>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
-              <i class="fa-solid fa-cart-shopping"></i>
-              <span class="menu-title ml-3">장바구니</span>
-              <i class="menu-arrow"></i>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="/123team/ENboards" aria-expanded="false" aria-controls="charts">
-              <i class="fa-solid fa-dog"></i>
-              <span class="menu-title ml-3">체험단</span>
-              <i class="menu-arrow"></i>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="/123team/Fboards" aria-expanded="false" aria-controls="tables">
-              <i class="fa-solid fa-clipboard-question"></i>
-              <span class="menu-title ml-3">자유게시판</span>
-              <i class="menu-arrow"></i>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
-              <i class="fa-solid fa-user"></i>
-              <span class="menu-title  ml-3">My Pages</span>
-              <i class="menu-arrow"></i>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="/123team/Nboards" aria-expanded="false" aria-controls="error">
-              <i class="fa-solid fa-clipboard"></i>
-              <span class="menu-title ml-3">공지사항</span>
-              <i class="menu-arrow"></i>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/123team/login">
-              <i class="fa-solid fa-key"></i>
-              <span class="menu-title ml-3">로그인</span>
-              <i class="menu-arrow"></i>
-            
-              <i class="fa-solid fa-right-from-bracket"></i>
-              <span class="menu-title ml-3">로그아웃</span>
-              <i class="menu-arrow"></i>
-            </a>
-          </li>
-        </ul>
-      </nav>
-     
-         <!-- partial -->
-      <div class="main-panel">
-        <div class="content-wrapper">
-          <div class="row">
-            <div class="col-md-12 grid-margin">
-              <div class="row">
-                <div class="col-12 col-xl-8 mb-4 mb-xl-0">
-                  <h3 class="font-weight-bold"> </h3>
-                  <h6 class="font-weight-normal mb-0"></h6>
+
+      <%@  include file="../module/leftheader.jsp" %> 
+      
+         <div class="content-wrapper">
+            <div class="row">
+               <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">장바구니</h4>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="table-responsive">
+                                        <div id="example_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                    <table id="example" class="display expandable-table dataTable no-footer" style="width: 100%;" role="grid">
+                                                        <thead>
+                                                            <tr role="row">
+                                                                <th class="sorting_disabled text-center" rowspan="1" aria-label="Quote#" style="width: 153px;">
+                                                                    카테고리
+                                                                </th>
+                                                                <th class="text-center" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Product: activate to sort column descending" aria-sort="ascending" style="width: 177px;">
+                                                                    이미지
+                                                                </th>
+                                                                <th class="text-center" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Policy holder: activate to sort column ascending" style="width: 200px;">
+                                                                    상품명
+                                                                </th>
+                                                                <th class="text-center" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Premium: activate to sort column ascending" style="width: 149px;">
+                                                                    수량
+                                                                </th>
+                                                                <th class="text-center" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 149px;">
+                                                                    단가
+                                                                </th>
+                                                                <th class="text-center" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 149px;">
+                                                                    총금액
+                                                                </th>
+                                                                <th class="text-center" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 149px;">
+                                                                    삭제
+                                                                </th>
+                                                            </tr>
+                                                        </thead>
+    
+                                                        <tr>
+    
+        
+                                                                <c:forEach items="${shoppingCart}" var="cart" varStatus="status">
+                                                                    <form id="form" action="/123team/orders/o_create" method="post">
+                                                                    <input type="hidden" name="shoppingCartId" value="${cart.shoppingCartId}"> <!-- 카트 넘버 -->
+                                                                    <input type="hidden" name="productId" value="${cart.productId}"> <!-- 상품 아이디 -->
+                                                                    <input type="hidden" name="productName" value="${cart.productName}"> <!-- 상품이름 -->
+                                                                    <input type="hidden" name="amount" value="${cart.amount}"> <!-- 상품 양 -->
+                                                                    <input type="hidden" name="productPrice" value="${cart.productPrice}"> <!-- 상품 가격 -->
+                                                                    <input type="hidden" name="personId" value="${cart.personId}"> <!-- 주문자 아이디 -->
+                                                                <div class="float-right mb-2">
+                                                                    <input class="btn btn-info btn-sm mr-4" type="submit" value="주문하기"></input>
+                                                                </div>
+                                                                <div>
+                                                                    <a href="/123team/products/alldelete?personId=${shoppingCart.get(0).personId}" class="btn border border-dark ml-5 btn-sm" id="alldelete" >전체삭제</a>
+                                                                </div>
+
+                                                            <td class="text-center">
+                                                                ${cart.productCategory}
+                                                            </td>
+
+                                                            <td class="text-center">
+	                                                             <c:choose>
+												                    <c:when test="${not empty cart.image}">
+												                      <img class="col-md-12" src="<c:url value='/resources/images/${cart.productImage}'/>" height="500" width="150" alt="병원이미지">
+												                    </c:when>
+												                    <c:otherwise>
+												                        <img class="col-md-12" src="https://i.ibb.co/VDkQhqH/pexels-mart-production-8434641.jpg" alt="pexels-mart-production-8434641" height="500" width="150" border="0">
+												                    </c:otherwise>
+												                  </c:choose>                        
+                                                            </td>
+                                                            
+                                                            <td class="text-center">
+                                                                ${cart.productName}
+                                                            </td>
+                                                            
+                                                            <td class="text-center">
+                                                                <input id="amount_${status.index}" class="form-group col-sm-12" type="number" name="amount" value="${cart.amount}">
+                                                            </td>
+
+                                                            <td class="text-center">
+                                                                ${cart.productPrice} 원
+                                                            </td>
+        
+                                                            <td class=" no-gutters p-0 text-center">
+                                                                ${cart.amount * cart.productPrice} 원
+                                                            </td>
+
+                                                            <td class=" no-gutters p-0 text-center">
+                                                                <a class="btn btn-danger btn-sm" href="/123team/products/cartdelete?shoppingCartId=${cart.shoppingCartId}&personId=${cart.personId}">삭제하기</a>
+                                                            </td>
+    
+                                                        </c:forEach>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-12 col-xl-4">
-                 <div class="justify-content-end d-flex">
-                  <div class="dropdown flex-md-grow-1 flex-xl-grow-0">
-                  </div>
-                 </div>
-                </div>
-              </div>
             </div>
-          </div>
-          
-        <footer class="footer">
-          <div class="d-sm-flex justify-content-center justify-content-sm-between">
-            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2021.  Premium <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap admin template</a> from BootstrapDash. All rights reserved.</span>
-            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="ti-heart text-danger ml-1"></i></span>
-          </div>
-          <div class="d-sm-flex justify-content-center justify-content-sm-between">
-            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Distributed by <a href="https://www.themewagon.com/" target="_blank">Themewagon</a></span> 
-          </div>
-        </footer> 
-        <!-- partial -->
-      </div>
-      <!-- main-panel ends -->
-    </div>   
-    <!-- page-body-wrapper ends -->
-  </div>
-  <!-- container-scroller -->
+        </div>
+     </div>
+      
+      
+     	<%@ include file="../module/footer.jsp" %>
  
-	<div class="jumbotron">
+<!-- 	<div class="jumbotron">
 		<div class="contianer">
 			<h2 class="dislpay-2"> <i class="fa-solid fa-truck-fast"></i> 내 장바구니 목록</h2>
 		</div>
@@ -205,9 +220,9 @@
 				<tr>
 			</table>
 		</div>
-	</div>
+	</div> -->
 	
-	<%@ include file="../module/footer.jsp" %>
+
 </body>
 
 <script>

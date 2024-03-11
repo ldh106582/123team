@@ -19,7 +19,12 @@
 		int size = (Integer) request.getAttribute("size");
 		request.setAttribute("sise", size);
 	%>   
- <%@ include file="../module/header.jsp" %>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="./resources/js/refreshing.js"></script>
+
+<div id="header">
+		<%@  include file="../module/header.jsp" %>
+	</div>
 		<div class="container-fluid page-body-wrapper">
 	 		<%@  include file="../module/leftheader.jsp" %>
 			<div class="content-wrapper">
@@ -29,10 +34,14 @@
 		                    <div class="card-body">
 		                        <p class="card-title">체험단 게시판</p>
 		                        <div class="d-flex justify-content-between mb-3">
-		                            <div></div>
+		                            <div>
+			                            <c:if test="${type eq 'e' }">
+			                            	<a href="ENboards/manageapps" class="btn btn-primary mr-2">신청 관리</a>
+			                            </c:if>
+		                            </div>
 		                            <div>
 		                                <c:if test="${loginId != null}">
-		                                    <a href="ENboards?myId=${loginId}" class="btn btn-primary">내 게시글만 보기</a>
+		                                	<a href="/123team/ENboards/applist" class="btn btn-primary">내 체험단 신청 목록</a>
 		                                    <a href="ENboards/add" class="btn btn-primary">게시글 작성</a>
 		                                </c:if>
 		                            </div>

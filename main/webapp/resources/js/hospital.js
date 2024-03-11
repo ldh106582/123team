@@ -20,4 +20,5 @@ review.addEventListener("click", function(){
     parkmap.style.display = "none";
     reviews.style.display = "block";
     reviews1.style.display = "block";
+
 });

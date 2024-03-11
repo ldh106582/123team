@@ -12,9 +12,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
-    
-<script type="text/javascript" src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpClientId=peaxg064t9"></script>
-<title>병원 상세보기 페이지</title>
+    <title>병원 상세보기 페이지</title>
 </head>
 <body>
 	<%
@@ -22,7 +20,11 @@
 	request.setAttribute("checktype", "h");
 
 	%>
-	<%@  include file="../module/header.jsp"%>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="./resources/js/refreshing.js"></script>
+	<div id="header">
+		<%@  include file="../module/header.jsp" %>
+	</div>
     <div class="container-fluid page-body-wrapper">
 			<%@  include file="../module/leftheader.jsp"%>
 		<div class="content-wrapper"> <!-- ddd -->
@@ -66,7 +68,7 @@
 				<h2 class="col-md-12 no-gutters">지도 띄우기</h2>
 			<div id="map" style="width:100%;height:400px;"></div>
 					
-					
+					<script type="text/javascript" src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpClientId=peaxg064t9"></script>
 					<script>
 					var hospital = new naver.maps.LatLng(${hospital.y}, ${hospital.x}),
 				    map = new naver.maps.Map('map', {

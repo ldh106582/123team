@@ -29,8 +29,8 @@ public class BookingRepositoryImp implements BookingRepository{
 	}
 	@Override
 	public void addbook(HospitalBooking booking) {
-		SQL = "insert into HApllication values(?,?,?,?,?,?,?,?,?)";
-		template.update(SQL,booking.getRegistDay(),booking.getPersonId(),getBid(),booking.getMid(),booking.getHospitalName(),booking.getHid(),booking.getPetId(),booking.getContext(),"처리중");
+		SQL = "insert into HApllication values(?,?,?,?,?,?,?,?,?,?)";
+		template.update(SQL,booking.getRegistDay(),booking.getPersonId(),getBid(),booking.getMid(),booking.getHospitalName(),booking.getHid(),booking.getPetId(),booking.getContext(),"처리중","before");
 		
 	}
 	private String getBid() {

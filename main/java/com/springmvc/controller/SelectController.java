@@ -36,6 +36,6 @@ public class SelectController {
 		System.out.println(2);
 		model.addAttribute("Products", productService.getProductByName(context));
 		
-		return "member/Mypage";
+		return "home";
 	}
 }

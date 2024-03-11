@@ -13,7 +13,12 @@
 </head>
 <body>
 
-<%@  include file="../module/header.jsp" %>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="./resources/js/refreshing.js"></script>
+
+<div id="header">
+		<%@  include file="../module/header.jsp" %>
+	</div>
  	<%
 		List<Pet> petlist = (List<Pet>) session.getAttribute("petName");
 	%>
@@ -34,7 +39,7 @@
                             <input type="hidden" name="mid" value="${hospital.personId}">
                             <div class="form-group">
                                 <h2 class="col-md-12 p-0" style="color: rgb(140, 58, 179);">예약가능시간 </h2>  
-                                <form:input class="form-control form-control-lg" type="text" path="registDay" value="${hospital.runtime}"  />
+                                ${hospital.runtime}
                             </div>
                             <div class="form-group">
                                 <h2 class="col-md-12 p-0" style="color: rgb(140, 58, 179);">진료예약시간 </h2>   
@@ -52,6 +57,7 @@
                                         request.setAttribute("petId", petlist.get(i).getPetId());
                                         %>
                                         ${name} <form:checkbox value="${petId}" path="petId"/>
+                                        ${petId}
                                 <%
                                     }
                                 %>

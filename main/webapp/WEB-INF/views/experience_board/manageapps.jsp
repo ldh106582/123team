@@ -10,114 +10,53 @@
 </head>
 <body>
 
- <%@  include file="../module/header.jsp" %>
- 
-    <!-- partial -->
-    <div class="container-fluid page-body-wrapper">
-      <!-- partial -->
-      <!-- partial:partials/_sidebar.html -->
-      <nav class="sidebar sidebar-offcanvas" id="sidebar">
-        <ul class="nav">
-          <li class="nav-item">
-            <a class="nav-link" href="/123team/hospitals">
-              <i class="fa-solid fa-hospital"></i>
-              <span class="menu-title ml-3">반려동물 병원</span>
-               <i class="menu-arrow"></i>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="/123team/products" aria-expanded="false" aria-controls="ui-basic">
-              <i class="fa-solid fa-gift"></i>
-              <span class="menu-title ml-3">반려동물 상품</span>
-              <i class="menu-arrow"></i>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
-              <i class="fa-solid fa-cart-shopping"></i>
-              <span class="menu-title ml-3">장바구니</span>
-              <i class="menu-arrow"></i>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="/123team/ENboards" aria-expanded="false" aria-controls="charts">
-              <i class="fa-solid fa-dog"></i>
-              <span class="menu-title ml-3">체험단</span>
-              <i class="menu-arrow"></i>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="/123team/Fboards" aria-expanded="false" aria-controls="tables">
-              <i class="fa-solid fa-clipboard-question"></i>
-              <span class="menu-title ml-3">자유게시판</span>
-              <i class="menu-arrow"></i>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
-              <i class="fa-solid fa-user"></i>
-              <span class="menu-title  ml-3">My Pages</span>
-              <i class="menu-arrow"></i>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="/123team/Nboards" aria-expanded="false" aria-controls="error">
-              <i class="fa-solid fa-clipboard"></i>
-              <span class="menu-title ml-3">공지사항</span>
-              <i class="menu-arrow"></i>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/123team/login">
-              <i class="fa-solid fa-key"></i>
-              <span class="menu-title ml-3">로그인</span>
-              <i class="menu-arrow"></i>
-            
-              <i class="fa-solid fa-right-from-bracket"></i>
-              <span class="menu-title ml-3">로그아웃</span>
-              <i class="menu-arrow"></i>
-            </a>
-          </li>
-        </ul>
-      </nav>
-     
-         <!-- partial -->
-      <div class="main-panel">
-        <div class="content-wrapper">
-          <div class="row">
-            <div class="col-md-12 grid-margin">
-              <div class="row">
-                <div class="col-12 col-xl-8 mb-4 mb-xl-0">
-                  <h3 class="font-weight-bold"> </h3>
-                  <h6 class="font-weight-normal mb-0"></h6>
-                </div>
-                <div class="col-12 col-xl-4">
-                 <div class="justify-content-end d-flex">
-                  <div class="dropdown flex-md-grow-1 flex-xl-grow-0">
-                  </div>
-                 </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-        <footer class="footer">
-          <div class="d-sm-flex justify-content-center justify-content-sm-between">
-            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2021.  Premium <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap admin template</a> from BootstrapDash. All rights reserved.</span>
-            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="ti-heart text-danger ml-1"></i></span>
-          </div>
-          <div class="d-sm-flex justify-content-center justify-content-sm-between">
-            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Distributed by <a href="https://www.themewagon.com/" target="_blank">Themewagon</a></span> 
-          </div>
-        </footer> 
-        <!-- partial -->
-      </div>
-      <!-- main-panel ends -->
-    </div>   
-    <!-- page-body-wrapper ends -->
-  </div>
-  <!-- container-scroller -->
- 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="./resources/js/refreshing.js"></script>
+
+<div id="header">
+		<%@  include file="../module/header.jsp" %>
+	</div>
+		<div class="container-fluid page-body-wrapper">
+	 		<%@  include file="../module/leftheader.jsp" %>
+	 		<div class="content-wrapper">
+			    <div class="card">
+			        <div class="card-body ">
+			            <p class="card-title">체험단 신청 목록</p>
+			            <a href="/123team/ENboards" class="btn btn-primary">체험단 공고글 목록으로 돌아가기</a>
+			            <div class="table-responsive">
+			                <table class="table table-striped table-borderless">
+			                    <thead>
+			                    <tr>
+			                        <th>체험명</th>
+			                        <th>신청자 ID</th>
+			                        <th>동물</th>
+			                        <th>예약일</th>
+			                        <th>승인</th>
+			                        <th>거절</th>
+			                    </tr>  
+			                    </thead>
+			                    <tbody>
+			                        <c:forEach items="${applists}" var="app">
+			                            <tr>
+			                                <td class="font-weight-bold"><a href="/123team/ENboards/ENboard?boardId=${app.boardId}">${app.experience}</a></td>
+			                                <td class="font-weight-bold"><p class="card-text">${app.personId}</p></td>
+			                                <td class="font-weight-bold"><p class="card-text">${app.animal}</p></td>
+			                                <td class="font-weight-bold"><p class="card-text" id="willdelete${app.eid}"><span>${app.registDay}</span></p></td>
+			                                <td class="font-weight-medium"><a href="decision?dec=승인&eid=${app.eid}"class="badge badge-success">승인</a>
+											<td class="font-weight-medium"><a href="decision?dec=거부&eid=${app.eid}"class="badge badge-danger">거부</a></td>
+			                            </tr>
+			                        </c:forEach>
+			                    </tbody>
+			                </table>
+			            </div>
+			        </div>
+			    </div>
+			</div>
+		</div>
+	</div>		
+	
+	<%@ include file="../module/footer.jsp" %>
+	<%-- 
  	<div class="container my-3">
         <h1>체험 신청관리 페이지</h1>
         <c:forEach items="${applists}" var="app">
@@ -142,7 +81,7 @@
 	</div>
  	
  	<%@ include file="../module/footer.jsp" %>
- 	
+ 	 --%>
  	<%-- 
 	<h2>체험 신청관리 페이지</h2>
 	<c:forEach items="${applists}" var="app">

@@ -64,13 +64,18 @@ function cancelForm() {
 <title>Insert title here</title>
 </head>
 <body>
- <%@  include file="../module/header.jsp" %>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="./resources/js/refreshing.js"></script>
+
+<div id="header">
+		<%@  include file="../module/header.jsp" %>
+	</div>
     <div class="container-fluid page-body-wrapper">
       
      <%@  include file="../module/leftheader.jsp" %>
       <!-- partial -->
       <!-- partial:partials/_sidebar.html -->
-
+  <c:set var="petId" value="${app.petId}" />
      
         <div class="content-wrapper">
             <div class="row">
@@ -110,12 +115,12 @@ function cancelForm() {
                                                                 </th>
                                                             </tr>
                                                         </thead>
-
-                                                        <tr> ${nothing}
-
+																			
+                                                        <tr>
+                                                        <c:forEach items="${applists}" var="app">
                                                             <td class="text-center m-0">    
-                                                                <c:forEach items="${applists}" var="app">
-                                                                <p class="useid m-0">${ id.personId }</p>
+                                                                
+                                                                <p class="useid m-0">${ book.biD }</p>
                                                             </td>
                                                         
                                                         <td class="text-center">
@@ -130,16 +135,12 @@ function cancelForm() {
                                                             ${book.context}
                                                         </td>
 
-                                                        <td class=" no-gutters p-0 text-center">
-                                                           
-                                                        </td>
 
                                                         <td class="text-center">
                                                             <button onclick="changed('${book.bid}','${book.registDay}')" id="addp${book.bid}" class="btn btn-danger" style="margin: 0% 6.5% 0% 0% ;">날짜 변경</button>
                                                         </td>
 
-                                                                </c:forEach>
-                                                        <c:set var="petId" value="${app.petId}" />
+                                                        </c:forEach>                                                   
                                                         <% 
                                                             String petId = (String)pageContext.getAttribute("petId");
                                                             String[] petnamelist = petId.split(",");
@@ -157,6 +158,8 @@ function cancelForm() {
                                                         %>
                                                         </tr>
                                                     </table>
+                                                    
+                                                     ${nothing}
                                                 </div>
                                             </div>
                                         </div>
