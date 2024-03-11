@@ -10,7 +10,12 @@
 </head>
 <body>
 
- <%@  include file="../module/header.jsp" %>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="./resources/js/refreshing.js"></script>
+
+<div id="header">
+		<%@  include file="../module/header.jsp" %>
+	</div>
 
     <div class="container-fluid page-body-wrapper">
  <%@  include file="../module/leftheader.jsp" %>
@@ -73,6 +78,28 @@
   <!-- container-scroller -->
   
    <%@ include file="../module/footer.jsp" %>
+   
+<!--  <h1>상품 수정페이지</h1>
+
+<form:form modelAttribute="product">
+	<input type="hidden" value="${aproduct.productId}"/>  
+	상품명 : <form:input path="productName" value="${aproduct.productName}"/>
+	<p>
+	카테고리 : <form:input path="productCategory" value="${aproduct.productCategory}"/>
+	<p>
+	가격 : <form:input path="productPrice" value="${aproduct.productPrice}"/>
+	<p>
+	상품설명 : <form:input path="productDescribe" value="${aproduct.productDescribe}"/>
+	<p>
+	재고수 : <form:input path="productUnitStock" value="${aproduct.productUnitStock}"/>
+	<p>
+
+	상품사진 : <form:input path="productImage" value="${aproduct.productImage}"/>
+	<input type="submit" value="수정하기">
+</form:form>
+	 -->
+
+
    
 <!--  <h1>상품 수정페이지</h1>
 

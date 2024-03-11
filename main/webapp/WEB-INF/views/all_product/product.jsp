@@ -17,7 +17,12 @@
 		request.setAttribute("type", session.getAttribute("type"));
 		request.setAttribute("checktype", "p");
 	%>
- <%@  include file="../module/header.jsp" %> 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="./resources/js/refreshing.js"></script>
+
+<div id="header">
+		<%@  include file="../module/header.jsp" %>
+	</div>
  
     <div class="container-fluid page-body-wrapper">
  <%@  include file="../module/leftheader.jsp" %>
@@ -144,7 +149,11 @@
                     </c:forEach>
 
                         <div class="col-md-12 text-center">
+<<<<<<< HEAD
                             <a href="">1</a>
+=======
+                            <a herf="">1</a>
+>>>>>>> origin/hanui
                         </div>
         
                         <table class="col-md-12 text-center border p-0">

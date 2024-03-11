@@ -21,6 +21,8 @@ public class EApplicationRowMapper implements RowMapper<EApplication>{
 		application.setEid(rs.getString(7));
 		application.setMid(rs.getString(8));
 		application.setBoardId(rs.getString(9));
+		application.setAlarm(rs.getString(10));
+
 		return application;
 	}
 	

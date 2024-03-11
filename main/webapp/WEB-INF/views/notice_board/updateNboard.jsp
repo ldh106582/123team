@@ -10,7 +10,13 @@
 </head>
 <body>
 
-	<%@ include file="../module/header.jsp" %>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="./resources/js/refreshing.js"></script>
+
+<div id="header">
+		<%@  include file="../module/header.jsp" %>
+	</div>
+
 		<div class="container-fluid page-body-wrapper">
 	 		<%@  include file="../module/leftheader.jsp" %>
 		 		<div class="content-wrapper">

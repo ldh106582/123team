@@ -11,7 +11,9 @@ public class EApplication {
 	private String eid;
 	private String mid;
 	private String boardId;
-	
+	private String alarm;
+
+
 	public String getExperience() {
 		return experience;
 	}
@@ -67,5 +69,11 @@ public class EApplication {
 	}
 	public void setBoardId(String boardId) {
 		this.boardId = boardId;
+	}
+	public String getAlarm() {
+		return alarm;
+	}
+	public void setAlarm(String alarm) {
+		this.alarm = alarm;
 	}
 }

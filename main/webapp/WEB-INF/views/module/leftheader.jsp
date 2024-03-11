@@ -36,7 +36,6 @@
 </style>
 </head>
 <body>
-
         <!-- partial -->
         <nav class="sidebar sidebar-offcanvas" id="sidebar">
             <ul class="nav">
@@ -54,6 +53,7 @@
                         <i class="menu-arrow"></i>
                     </a>
                 </li>
+                <c:if test="${loginId != null}">
                 <li class="nav-item">
                     <a class="nav-link" data-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
                         <i class="fa-solid fa-cart-shopping"></i>
@@ -61,6 +61,7 @@
                         <i class="menu-arrow"></i>
                     </a>
                 </li>
+                </c:if>
                 <li class="nav-item">
                     <a class="nav-link" data-toggle="collapse" href="/123team/ENboards" aria-expanded="false" aria-controls="charts">
                         <i class="fa-solid fa-dog"></i>
@@ -75,6 +76,7 @@
                         <i class="menu-arrow"></i>
                     </a>
                 </li>
+                <c:if test="${loginId != null}">
                 <li class="nav-item">
                     <a class="nav-link" data-toggle="collapse" href="/123team/login/mypage" aria-expanded="false" aria-controls="auth">
                         <i class="fa-solid fa-user"></i>
@@ -82,6 +84,7 @@
                         <i class="menu-arrow"></i>
                     </a>
                 </li>
+                </c:if>
                 <li class="nav-item">
                     <a class="nav-link" data-toggle="collapse" href="/123team/Nboards" aria-expanded="false" aria-controls="error">
                         <i class="fa-solid fa-clipboard"></i>
@@ -89,6 +92,7 @@
                         <i class="menu-arrow"></i>
                     </a>
                 </li>
+<<<<<<< HEAD
                 <li class="nav-item">
                     <a class="nav-link" href="/123team/login">
                         <i class="fa-solid fa-key"></i>
@@ -103,6 +107,28 @@
                         <i class="menu-arrow"></i>
                     </a>
                 </li>
+=======
+                <c:choose>
+                	<c:when test="${loginId == null}">
+	                <li class="nav-item">
+	                    <a class="nav-link" href="/123team/login">
+	                        <i class="fa-solid fa-key"></i>
+	                        <span class="menu-title ml-3">로그인</span>
+	                        <i class="menu-arrow"></i>
+	                    </a>
+	                </li>
+                	</c:when>
+                	<c:otherwise>
+	                <li class="nav-item">
+	                    <a class="nav-link" href="/123team/login/logout">
+	                        <i class="fa-solid fa-right-from-bracket"></i>
+	                        <span class="menu-title ml-3">로그아웃</span>
+	                        <i class="menu-arrow"></i>
+	                    </a>
+	                </li>
+	                </c:otherwise>
+                </c:choose>
+>>>>>>> origin/hanui
             </ul>
         </nav>
 

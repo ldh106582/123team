@@ -15,7 +15,8 @@ public class HospitalBooking {
 	private String context; // 진료받을내용 + 요청사항
 	private String registDay;
 	private String state;
-	
+	private String alarm;
+	 
 	public String getBid() {
 		return bid;
 	}
@@ -70,6 +71,12 @@ public class HospitalBooking {
 	}
 	public void setPetId(String petId) {
 		this.petId = petId;
+	}
+	public String getAlarm() {
+		return alarm;
+	}
+	public void setAlarm(String alarm) {
+		this.alarm = alarm;
 	}
 	
 	
