@@ -24,8 +24,8 @@
 <%@ include file="../module/header.jsp"%>
 <div class="container-fluid page-body-wrapper">
     <%@ include file="../module/leftheader.jsp"%>
-    <div class="content-wrapper border border-dark">
-        <div class="card mx-auto col-md-12 border border-dark" style="width: 80rem;">
+    <div class="content-wrapper">
+        <div class="card mx-auto col-md-12" style="width: 80rem;">
 			<c:choose>
 			    <c:when test="${not empty hospital.image}">
 			        <img class="col-md-12 mt-2 rounded-lg"" src="/your-context-path/resources/images/${hospital.image}" height="200" width="150" alt="병원이미지">
@@ -44,25 +44,29 @@
                 <p class="card-text" style="font-size: 1vw;">${hospital.number}</p>
                 <p class="card-text" style="font-size: 1vw;"> ${hospital.addr}</p>
                 
-	          <div class="">
-	            <div class="col-md-12 row p-0"> 
+	          <div class="col-md-12 row">
+	            <div class="col-md-6 row "> 
 	              <a href="addbook?hid=${hospital.hid}" class="btn btn-primary ">예약하기</a>
 	              </div>
 	              <c:if test="${loginId ==  hospital.personId}">
-	                <div class="row d-flex justify-content-end">
-	                  <a class="btn btn-outline-success" href="update?hid=${hospital.hid}">병원수정</a>
+	                <div class="row d-flex justify-content-end col-md-6">
+	                  <a class="btn btn-outline-success mr-2" href="update?hid=${hospital.hid}">병원수정</a>
 	                  <a class="btn btn-outline-danger" href="delete?hid=${hospital.hid}">병원삭제</a>
 	                </div>
 	             </c:if>
 	           </div> 
                 
                 
-                <c:if test="${loginId ==  hospital.personId}">
-                    <a class="btn btn-outline-info  btn-sm mt-2" href="addreview?hid=${hospital.hid}">리뷰작성</a>
-                </c:if>
+
+                
              	<div class="col-md-12 mt-5 p-0 row" style="justify-content: center;">
-             	   <div class="col-md-12 p-0 row" >
-             	   	  <h3 class="col-md-12">병원 리뷰</h3>
+             	   <div class="col-md-12 row" >
+             	   	  <h3 class="col-md-12 p-0">병원 리뷰</h3>
+             	   	  <c:if test="${loginId ==  hospital.personId}">
+	                    <div class="p-0 col-md-12 mt-3">
+	                    	<a class="btn btn-outline-info  btn-sm mt-2" href="addreview?hid=${hospital.hid}">리뷰작성</a>
+	                    </div>
+                		</c:if>
                       <c:forEach items="${reviews}" var="review">
 
                         <%
