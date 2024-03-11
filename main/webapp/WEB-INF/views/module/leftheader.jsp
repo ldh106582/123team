@@ -55,7 +55,7 @@
                 </li>
                 <c:if test="${loginId != null}">
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
+                    <a class="nav-link" data-toggle="collapse" href="/123team/products/readcart" aria-expanded="false" aria-controls="form-elements">
                         <i class="fa-solid fa-cart-shopping"></i>
                         <span class="menu-title ml-3">장바구니</span>
                         <i class="menu-arrow"></i>
@@ -92,22 +92,7 @@
                         <i class="menu-arrow"></i>
                     </a>
                 </li>
-<<<<<<< HEAD
-                <li class="nav-item">
-                    <a class="nav-link" href="/123team/login">
-                        <i class="fa-solid fa-key"></i>
-                        <span class="menu-title ml-3">로그인</span>
-                        <i class="menu-arrow"></i>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/123team/login/logout">
-                        <i class="fa-solid fa-right-from-bracket"></i>
-                        <span class="menu-title ml-3">로그아웃</span>
-                        <i class="menu-arrow"></i>
-                    </a>
-                </li>
-=======
+
                 <c:choose>
                 	<c:when test="${loginId == null}">
 	                <li class="nav-item">
@@ -128,7 +113,6 @@
 	                </li>
 	                </c:otherwise>
                 </c:choose>
->>>>>>> origin/hanui
             </ul>
         </nav>
 

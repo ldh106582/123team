@@ -82,24 +82,23 @@
                                                                 </th>
                                                             </tr>
                                                         </thead>
-    
+                                                      <c:forEach items="${shoppingCart}" var="cart" varStatus="status">
                                                         <tr>
-    
-        
-                                                                <c:forEach items="${shoppingCart}" var="cart" varStatus="status">
-                                                                    <form id="form" action="/123team/orders/o_create" method="post">
-                                                                    <input type="hidden" name="shoppingCartId" value="${cart.shoppingCartId}"> <!-- 카트 넘버 -->
-                                                                    <input type="hidden" name="productId" value="${cart.productId}"> <!-- 상품 아이디 -->
-                                                                    <input type="hidden" name="productName" value="${cart.productName}"> <!-- 상품이름 -->
-                                                                    <input type="hidden" name="amount" value="${cart.amount}"> <!-- 상품 양 -->
-                                                                    <input type="hidden" name="productPrice" value="${cart.productPrice}"> <!-- 상품 가격 -->
-                                                                    <input type="hidden" name="personId" value="${cart.personId}"> <!-- 주문자 아이디 -->
-                                                                <div class="float-right mb-2">
-                                                                    <input class="btn btn-info btn-sm mr-4" type="submit" value="주문하기"></input>
-                                                                </div>
-                                                                <div>
-                                                                    <a href="/123team/products/alldelete?personId=${shoppingCart.get(0).personId}" class="btn border border-dark ml-5 btn-sm" id="alldelete" >전체삭제</a>
-                                                                </div>
+
+                                                           <form id="form" action="/123team/orders/o_create" method="post">
+                                                                <input type="hidden" name="shoppingCartId" value="${cart.shoppingCartId}"> <!-- 카트 넘버 -->
+                                                                <input type="hidden" name="productId" value="${cart.productId}"> <!-- 상품 아이디 -->
+                                                                <input type="hidden" name="productName" value="${cart.productName}"> <!-- 상품이름 -->
+                                                                <input type="hidden" name="amount" value="${cart.amount}"> <!-- 상품 양 -->
+                                                                <input type="hidden" name="productPrice" value="${cart.productPrice}"> <!-- 상품 가격 -->
+                                                                <input type="hidden" name="personId" value="${cart.personId}"> <!-- 주문자 아이디 -->
+                                                            <div class="float-right mb-2">
+                                                                <input class="btn btn-info btn-sm mr-4" type="submit" value="주문하기"></input>
+                                                            </div>
+                                                            </form>
+                                                            <div>
+                                                                <a href="/123team/products/alldelete?personId=${shoppingCart.get(0).personId}" class="btn border border-dark ml-5 btn-sm" id="alldelete" >전체삭제</a>
+                                                            </div>
 
                                                             <td class="text-center">
                                                                 ${cart.productCategory}
@@ -107,11 +106,11 @@
 
                                                             <td class="text-center">
 	                                                             <c:choose>
-												                    <c:when test="${not empty cart.image}">
-												                      <img class="col-md-12" src="<c:url value='/resources/images/${cart.productImage}'/>" height="500" width="150" alt="병원이미지">
+												                    <c:when test="${not empty cart.productImage}">
+												                      <img class="col-md-12" src="<c:url value='/resources/images/${cart.productImage}'/>" height="150" width="150" alt="병원이미지">
 												                    </c:when>
 												                    <c:otherwise>
-												                        <img class="col-md-12" src="https://i.ibb.co/VDkQhqH/pexels-mart-production-8434641.jpg" alt="pexels-mart-production-8434641" height="500" width="150" border="0">
+												                        <img class="col-md-12" src="https://i.ibb.co/VDkQhqH/pexels-mart-production-8434641.jpg" alt="pexels-mart-production-8434641" height="100" width="200" border="0">
 												                    </c:otherwise>
 												                  </c:choose>                        
                                                             </td>
@@ -136,9 +135,11 @@
                                                                 <a class="btn btn-danger btn-sm" href="/123team/products/cartdelete?shoppingCartId=${cart.shoppingCartId}&personId=${cart.personId}">삭제하기</a>
                                                             </td>
     
-                                                        </c:forEach>
+ 
                                                         </tr>
+                                                        </c:forEach>
                                                     </table>
+                                                    
                                                 </div>
                                             </div>
                                         </div>
