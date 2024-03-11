@@ -101,8 +101,8 @@ public class ENBoardRepositoryImpl implements ENBoardRepository{
 // 체험단 예약
 	@Override
 	public void addbook(EApplication application,String personId) {
-		String SQL = "insert into EApllication values(?,?,?,?,?,?,?,?)";
-		template.update(SQL,application.getExperience(),application.getAnimal(),application.getRegistDay(),"처리중",application.getTitle(),personId,CreateEId(),application.getMid());
+		String SQL = "insert into EApllication values(?,?,?,?,?,?,?,?,?)";
+		template.update(SQL,application.getExperience(),application.getAnimal(),application.getRegistDay(),"처리중",application.getTitle(),personId,CreateEId(),application.getMid(),application.getBoardId());
 	}
 	
 //	체험단Id 생성

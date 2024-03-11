@@ -76,7 +76,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
+                    <a class="nav-link" data-toggle="collapse" href="/123team/login/mypage" aria-expanded="false" aria-controls="auth">
                         <i class="fa-solid fa-user"></i>
                         <span class="menu-title  ml-3">My Pages</span>
                         <i class="menu-arrow"></i>
@@ -97,7 +97,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/123team/login">
+                    <a class="nav-link" href="/123team/login/logout">
                         <i class="fa-solid fa-right-from-bracket"></i>
                         <span class="menu-title ml-3">로그아웃</span>
                         <i class="menu-arrow"></i>
@@ -106,7 +106,5 @@
             </ul>
         </nav>
 
-            
-     
 </body>
 </html>

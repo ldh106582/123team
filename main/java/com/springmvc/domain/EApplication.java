@@ -10,6 +10,7 @@ public class EApplication {
 	private String title;
 	private String eid;
 	private String mid;
+	private String boardId;
 	
 	public String getExperience() {
 		return experience;
@@ -60,5 +61,11 @@ public class EApplication {
 	}
 	public void setMid(String mid) {
 		this.mid = mid;
+	}
+	public String getBoardId() {
+		return boardId;
+	}
+	public void setBoardId(String boardId) {
+		this.boardId = boardId;
 	}
 }

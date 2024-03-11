@@ -28,7 +28,6 @@
 		                            <div></div>
 		                            <div>
 		                                <c:if test="${loginId != null}">
-		                                    <a href="Nboards?myId=${loginId}" class="btn btn-primary">내 게시글만 보기</a>
 		                                    <a href="Nboards/add" class="btn btn-primary">게시글 작성</a>
 		                                </c:if>
 		                            </div>
@@ -83,7 +82,7 @@
 													                    <tr>
 													                        <th scope="row">${pagenum}</th>
 													                        <td class="col-7"><a href="/123team/Nboards/Nboard?boardId=${nboard.boardId}">${nboard.title}</a></td>
-													                        <td>${nboard.boardId}</td>
+													                        <td>${nboard.personId}</td>
 													                        <td>${nboard.registDay}</td>
 													                        <td>${nboard.hit}</td>
 													                    </tr>
