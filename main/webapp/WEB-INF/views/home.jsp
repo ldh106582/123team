@@ -425,3 +425,4 @@
 </body>
 <script src="/resources/js/hospitals.js"></script>
 </html>
+<!-- 2024-03-11  merge 완료 -->
