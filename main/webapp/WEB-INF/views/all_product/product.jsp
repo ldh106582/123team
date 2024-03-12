@@ -99,8 +99,8 @@
                                         </div>
                                         <div class="col-md-12 px-0">
                                             <c:if test="${loginId ==  review.personId}">
-                                                <a class="btn btn-outline-info btn-sm mr-1" href="editreview?reviewId=${review.reviewId}">리뷰수정</a> 
-                                                <a class="btn btn-outline-info btn-sm mr-1" href="deletereview?reviewId=${review.reviewId}">리뷰삭제</a>
+                                                <a class="btn btn-outline-info btn-sm mr-1" href="u_review?personId=${review.personId}&reviewId=${review.reviewId}">리뷰수정</a> 
+                                                <a class="btn btn-outline-info btn-sm mr-1" href="d_review?reviewId=${review.reviewId}">리뷰삭제</a>
                                             </c:if>
                                         </div>
                                     </div>
@@ -131,8 +131,8 @@
                                         </div>
                                         <div class="col-md-12 px-0">
                                             <c:if test="${loginId ==  review.personId}">
-                                                <a class="btn btn-outline-info btn-sm mr-1" href="editreview?reviewId=${review.reviewId}">리뷰수정</a> 
-                                                <a class="btn btn-outline-info btn-sm mr-1" href="deletereview?reviewId=${review.reviewId}">리뷰삭제</a>
+                                                <a class="btn btn-outline-info btn-sm mr-1" href="u_review?personId=${review.personId}&reviewId=${review.reviewId}">리뷰수정</a> 
+                                                <a class="btn btn-outline-info btn-sm mr-1" href="d_review?reviewId=${review.reviewId}">리뷰삭제</a>
                                             </c:if>
                                         </div>
                                     </div>
@@ -176,7 +176,7 @@
 
 
 
-
+	<%@ include file="../module/footer.jsp" %>
 
 
 
@@ -227,6 +227,6 @@
 	<a class="btn btn-success" aria-labelledby="exampleModalLabel" href="/123team/products/p_review?personId=${product.personId}">리뷰쓰기</a>
 	</c:if>
 	 -->
-	<%@ include file="../module/footer.jsp" %>
+
 </body>
 </html>

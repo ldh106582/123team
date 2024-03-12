@@ -34,10 +34,33 @@ public class HospitalRepositoryImp implements HospitalRepository{
 	 }
 	 
 	@Override
-	public List<Hospital> getAllhospitals() {
+	public List<Hospital> getAllhospitals(int page) {
+		int limit = 3;
+		int start = (page - 1) * limit;
+		int index = start + 1;
+		
+		if(page == 1) 
+		{
+			
+			String SQL = "Select * from hospital limit 3";
+			List<Hospital> list = template.query(SQL, new HospitalRowMapper());
+			return list;		
+		}
+		else 
+		{
+			String SQL = "select * from hospital limit ? , ?";
+			List<Hospital> list = template.query(SQL, new Object[] {start, index} ,new HospitalRowMapper());
+			return list;	
+		}
+		
+	}
+
+	@Override
+	public List<Hospital> getCount() {
 		String SQL = "Select * from hospital";
-		List<Hospital> list = template.query(SQL, new HospitalRowMapper());
-		return list;
+		List<Hospital> listOfCount = template.query(SQL, new HospitalRowMapper());
+
+		return listOfCount;
 	}
 
 	@Override

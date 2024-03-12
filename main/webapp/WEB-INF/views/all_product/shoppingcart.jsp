@@ -107,10 +107,10 @@
                                                             <td class="text-center">
 	                                                             <c:choose>
 												                    <c:when test="${not empty cart.productImage}">
-												                      <img class="col-md-12" src="<c:url value='/resources/images/${cart.productImage}'/>" height="150" width="150" alt="병원이미지">
+												                      <img class="col-md-12" src="<c:url value='/resources/images/${cart.productImage}'/>" height="150" width="150" alt="상품이미지">
 												                    </c:when>
 												                    <c:otherwise>
-												                        <img class="col-md-12" src="https://i.ibb.co/VDkQhqH/pexels-mart-production-8434641.jpg" alt="pexels-mart-production-8434641" height="100" width="200" border="0">
+												                        <img class="col-md-12" src="https://i.ibb.co/VDkQhqH/pexels-mart-production-8434641.jpg" alt="상품이미지" height="150" width="150" border="0">
 												                    </c:otherwise>
 												                  </c:choose>                        
                                                             </td>
@@ -120,7 +120,7 @@
                                                             </td>
                                                             
                                                             <td class="text-center">
-                                                                <input id="amount_${status.index}" class="form-group col-sm-12" type="number" name="amount" value="${cart.amount}">
+                                                                <input id="amount_${status.index}" class="form-group col-sm-12 m-0" type="number" name="amount" value="${cart.amount}">
                                                             </td>
 
                                                             <td class="text-center">
@@ -134,10 +134,13 @@
                                                             <td class=" no-gutters p-0 text-center">
                                                                 <a class="btn btn-danger btn-sm" href="/123team/products/cartdelete?shoppingCartId=${cart.shoppingCartId}&personId=${cart.personId}">삭제하기</a>
                                                             </td>
-    
  
                                                         </tr>
                                                         </c:forEach>
+                                                        <tr>
+                                                            <td colspan="5" class="text-center" style="border-top: 1px solid silver;">총금액( 배송비 2,500원 포함)</td>
+                                                            <td colspan="2" class="text-center" style="border-top: 1px solid silver; border-left: 1px solid silver;">${allprice}</td>
+                                                        </tr>
                                                     </table>
                                                     
                                                 </div>
@@ -179,13 +182,13 @@
 			    <c:forEach items="${shoppingCart}" var="cart" varStatus="status">
    				<form id="form" action="/123team/orders/o_create" method="post">
 	   				<input type="hidden" name="shoppingCartId" value="${cart.shoppingCartId}"> <!-- 카트 넘버 -->
-			        <input type="hidden" name="productId" value="${cart.productId}"> <!-- 상품 아이디 -->
-			        <input type="hidden" name="productName" value="${cart.productName}"> <!-- 상품이름 -->
-			        <input type="hidden" name="amount" value="${cart.amount}"> <!-- 상품 양 -->
-   		            <input type="hidden" name="productPrice" value="${cart.productPrice}"> <!-- 상품 가격 -->
-			        <input type="hidden" name="personId" value="${cart.personId}"> <!-- 주문자 아이디 -->
+			      <!--  <input type="hidden" name="productId" value="${cart.productId}"> <!-- 상품 아이디 -->
+			     <!--    <input type="hidden" name="productName" value="${cart.productName}"> <!-- 상품이름 -->
+			    <!--     <input type="hidden" name="amount" value="${cart.amount}"> <!-- 상품 양 -->
+   		      <!--       <input type="hidden" name="productPrice" value="${cart.productPrice}"> <!-- 상품 가격 -->
+			    <!--     <input type="hidden" name="personId" value="${cart.personId}"> <!-- 주문자 아이디 -->
 					<!-- 여기 버튼을 눌러서 제출 -->
-					<div class="float-right mb-2">
+			<!-- 		<div class="float-right mb-2">
 						<input class="btn btn-info btn-sm mr-4" type="submit" value="주문하기"></input>
 					</div>
 					<div>

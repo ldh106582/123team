@@ -21,7 +21,7 @@ public class BookingRowMapper implements RowMapper<HospitalBooking>{
 		booking.setPetId(rs.getString(7));
 		booking.setContext(rs.getString(8));
 		booking.setState(rs.getString(9));
-		booking.setAlarm(rs.getString(10));
+		//booking.setAlarm(rs.getString(10));
 		return booking;
 	}
 }
