@@ -41,38 +41,25 @@
  <%@  include file="./module/leftheader.jsp" %>
   
    		          <div class="main-panel">
-                    <div class="content-wrapper">
-                        <div class="row">
+                    <div class="content-wrapper mx-0">
+                        <div class="row mx-auto">
                             <!--여기서 복붙 시작-->
-                            <div  class="show-gird no-gutters col-md-12">
-                                <div id="wrap" class="col-md-12 no-gutters">
-                                
-                                <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-								  <div class="carousel-inner">
-								    <div class="carousel-item active">
-								      <img src="./resources/images/hospital01.jpg" class="d-block w-100" alt="...">
-								    </div>
-								    <div class="carousel-item">
-								      <img src="./resources/images/hospital02.jpg" class="d-block w-100" alt="...">
-								    </div>
-								    <div class="carousel-item">
-								      <img src="./resources/images/hospital03.jpg" class="d-block w-100" alt="...">
-								    </div>
-								  </div>
-								  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-								    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-								    <span class="sr-only">Previous</span>
-								  </a>
-								  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-								    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-								    <span class="sr-only">Next</span>
-								  </a>
-								</div>
-								                                	
-                                    <div class="col-md-12 row no-gutters" style="margin: 0 auto;">
-                                        <div class="col-md-9 ">
+							    <div class="slider mx-0 mx-auto">
+							        <div class="slide">
+							            <img src="https://i.ibb.co/gdq8PKg/pexels-tom-fisk-1692693.jpg" width="100%" height="100%" alt="병원이미지01" />
+							        </div>
+							        <div class="slide">
+							            <img src="https://i.ibb.co/gdq8PKg/pexels-tom-fisk-1692693.jpg"width="100%" height="100%" alt="병원이미지02" />
+							        </div>
+							        <div class="slide">
+							            <img src="https://i.ibb.co/gdq8PKg/pexels-tom-fisk-1692693.jpg"width="100%" height="100%" alt="병원이미지03" />
+							        </div>
+							    </div>
+										
+                                	
+                                    <div class="center col-md-12 row no-gutters mx-0 mx-auto">
+                                        <div class="col-md-7 mx-0 mx-auto">
                                             <div style="border-left: 3px solid red;"> <h4 style="margin-left: 2%;"> 우리 홈페이지 현황</h4>
-
                                             </div>
                                             <br>
                                             
@@ -152,7 +139,7 @@
                     						  	</div>
                                         </div>
                         
-                                        <div class="col-md-3 no-gutters">
+                                        <div class="col-md-5">
                                             <div class="no-gutters col-md-12" style="border-left: 3px solid red;"><h4 class="ml-3" >공지사항 </h4>    
                                             </div>
                                             <br>   
@@ -183,8 +170,7 @@
                             <!--여기서 복붙 끝-->
                         </div>
                     </div>
-                </div>
-             </div>
+     
                         
    <!--끝 -->
 	 

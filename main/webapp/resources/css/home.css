@@ -1,88 +1,50 @@
-@charset "UTF-8";
 
-* {
-    margin:0;
-    padding:0;
+.slider{
+	position: relative;
+	overflow: hidden;
+	width: 1600px;
+	height: 500px;
+	
+	margin-bottom: 2%;
+}
+
+.slide{
+	position: absolute;
+	width: 1600px;
+	height: 500px;
+	
+	animation: slider 7.5s infinite linear;
+}
+.slide:nth-child(1) {
+  background-image: url(img1.jpg);
+  animation-delay: 0;
+}
+.slide:nth-child(2) {
+  background-image: url(img2.jpg);
+  animation-delay: -2.5s;
+}
+.slide:nth-child(3) {
+  background-image: url(img3.jpg);
+  animation-delay: -5s;
+}
+
+@keyframes slider {
+  0% {
+    transform: translateX(0);
   }
-  
-  ul {
-    list-style:none;
+
+  26% {
+    transform: translateX(0);
   }
-  
-  #wrap {
-    position:relative;
-    overflow:hidden;
+  33% {
+    transform: translateX(-100%);
+    animation-timing-function: step-end;
   }
-  
-  #slider {
-    text-align:center;
-    color:#fff;
-    margin-left:0;
-    -webkit-animation:slide1 3s ease-out infinite;
+  93% {
+    transform: translateX(100%);
   }
-  
-  #slider li {
-    float:left;
+
+  100% {
+    transform: translateX(0);
   }
-  
-  
-  @-webkit-keyframes slide1 {
-    0% { margin-left:0;}
-    23% { margin-left:0;}
-    33% { margin-left: -2000px;}
-    56% { margin-left:-2000px;}
-    66% { margin-left:-4000px;}
-    90% { margin-left:-4000px;}
-    100% {margin-left:0;}
-  }
-  
-  @-webkit-keyframes slide2 {
-    0% { margin-left:-2000px;}
-    23% { margin-left:-2000px;}
-    33% { margin-left:-4000px;}
-    56% { margin-left:-4000px;}
-    66% { margin-left:0;}
-    90% { margin-left:0;}
-    100% {margin-left:-200px;}
-  }
-  
-  @-webkit-keyframes slide3 {
-    0% { margin-left:-4000px;}
-    23% { margin-left:-4000px;}
-    33% { margin-left:0;}
-    56% { margin-left:0;}
-    66% { margin-left:-2000px;}
-    90% { margin-left:-2000px;}
-    100% {margin-left:-4000px;}
-  }
-  
-  
-  #l01:checked ~ #wrap #slider {
-    -webkit-animation-name:slide1;
-  }
-  
-  #l02:checked ~ #wrap #slider {
-    -webkit-animation-name:slide2;
-  }
-  
-  #l03:checked ~ #wrap #slider {
-    -webkit-animation-name:slide3;
-  }
-  
-  
-  #l01:active ~ #wrap #slider {
-    -webkit-animation-name:none;
-    margin-left:0;
-  }
-  
-  #l02:active ~ #wrap #slider {
-    -webkit-animation-name:none;
-    margin-left:-1200px;
-  }
-  
-  #l03:active ~ #wrap #slider {
-    -webkit-animation-name:none;
-    margin-left:-2400px;
-  }
-  
-  
+}
