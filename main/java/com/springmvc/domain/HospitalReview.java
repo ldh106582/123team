@@ -14,8 +14,6 @@ public class HospitalReview {
 	private int reviewScore;
 	private String reviewImage;
 	private String reviewId;
-
-
 	
 	
 	public int getReviewScore() {
@@ -67,6 +65,4 @@ public class HospitalReview {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	
-	
 }

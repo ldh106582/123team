@@ -123,7 +123,11 @@ function cancelForm() {
                                                             </td>
                                                         
                                                         <td class="text-center">
+<<<<<<< HEAD
                                                             ${booklist.hospitalName}
+=======
+                                                            ${booklist.hospitalName}<a href="deletebook?bid=${booklist.bid}">예약취소</a>
+>>>>>>> origin/hanui
                                                         </td>
                                                         
                                                         <td class="text-center">
@@ -133,12 +137,12 @@ function cancelForm() {
                                                         <td class="text-center">
                                                             ${booklist.context}
                                                         </td>
-
+														
 
                                                         <td class="text-center">
                                                             <button onclick="changed('${booklist.bid}','${booklist.registDay}')" id="addp${booklist.bid}" class="btn btn-danger" style="margin: 0% 6.5% 0% 0% ;">날짜 변경</button>
                                                         </td>
-
+         							 					
                                                         </c:forEach>                                                   
                                                          <% 
                                                             /*String petId = (String)pageContext.getAttribute("petId");
@@ -152,6 +156,10 @@ function cancelForm() {
                                                         <td class="text-center">
                                                             <a href="/123team/login/petcard?petid=${petId}">${petlist.petId}</a>   
                                                         </td>
+<<<<<<< HEAD
+=======
+                                                        
+>>>>>>> origin/hanui
  														  </c:forEach>  
                                                         <%
                                                            // }
@@ -172,7 +180,7 @@ function cancelForm() {
             </div>
         </div>
     </div>
-          
+
 <%@  include file="../module/footer.jsp" %>
 <%-- 	
 	<a href="/123team/hospitals">병원목록으로 돌아가기</a>

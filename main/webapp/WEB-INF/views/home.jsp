@@ -41,8 +41,13 @@
  <%@  include file="./module/leftheader.jsp" %>
   
    		          <div class="main-panel">
+<<<<<<< HEAD
                     <div class="content-wrapper mx-0">
                         <div class="row mx-auto">
+=======
+                    <div class="content-wrapper">
+                        <div class="row">
+>>>>>>> origin/hanui
                             <!--여기서 복붙 시작-->
 							    <div class="slider mx-0 mx-auto">
 							        <div class="slide">

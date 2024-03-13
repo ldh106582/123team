@@ -38,7 +38,7 @@
                 </div>
               </div>
 
-            <div class="col-md-7 p-0 mr-3">
+            <div class="col-md-9 p-0">
               <div class="p-0" style="border-left: 3px solid red;" > <h4 style="margin-left: 2%;"> 123 상점 판매</h4>
               </div>
               <br>
@@ -46,14 +46,14 @@
               <h5 style="border-left: 3px solid #FF7EA0; margin-bottom: 3%;"><span class="ml-4">강아지 상품</span></h5>
               <div class="col-md-12 row card-group no-gutters p-0" style="margin-bottom: 3%;">
                 <c:forEach items="${productList}" var="productList">
-                  <div class="col-md-4 row no-gutters mr-1 card mb-1">
+                  <div class="col-md-4 row no-gutters mr-1 card mb-1 p-0">
                     <div class="col-md-12 card-body no-gutters">
                     <c:choose>
                         <c:when test="${not empty productList.productImage}">
-                            <img class="col-md-12" src="<c:url value='/resources/images/${productList.productImage}'/>" height="300" width="200" alt="상품이미지">
+                            <img class="col-md-12 p-0" src="<c:url value='/resources/images/${productList.productImage}'/>" height="300" width="200" alt="상품이미지">
                         </c:when>
                         <c:otherwise>
-                            <img class="col-md-12 " src="https://i.ibb.co/gdq8PKg/pexels-tom-fisk-1692693.jpg" alt="상품이미지" height="400" width="200" border="0">
+                            <img class="col-md-12 p-0" src="https://i.ibb.co/gdq8PKg/pexels-tom-fisk-1692693.jpg" alt="상품이미지" height="400" width="200" border="0">
                         </c:otherwise>
                     </c:choose>
                       <p class="card-title" style="margin-top: 7%;">상품명 : ${productList.productName}</p>
@@ -72,10 +72,10 @@
               <div class="col-md-12 card-body no-gutters">
               <c:choose>
                 <c:when test="${not empty productList.productImage}">
-                  <img class="col-md-12" src="<c:url value='/resources/images/${productList.productImage}'/>" height="300" width="150" alt="고양이상품">
+                  <img class="col-md-12 p-0" src="<c:url value='/resources/images/${productList.productImage}'/>" height="300" width="150" alt="고양이상품">
                 </c:when>
                 <c:otherwise>
-                  <img class="col-md-12" src="https://i.ibb.co/gdq8PKg/pexels-tom-fisk-1692693.jpg" alt="고양이상품" height="300" width="150" border="0">
+                  <img class="col-md-12 p-0" src="https://i.ibb.co/gdq8PKg/pexels-tom-fisk-1692693.jpg" alt="고양이상품" height="300" width="150" border="0">
                 </c:otherwise>
               </c:choose>
                 <p class="card-title" style="margin-top: 7%;">상품명 : ${productList.productName}</p>
@@ -90,14 +90,14 @@
           <h5 style="border-left: 3px solid #FFCD63; margin-bottom: 3%;"> <span class="ml-4">토끼용품</span></h5>
           <div class="col-md-12 row card-group no-gutters p-0" style="margin-bottom: 3%;">
             <c:forEach items="${productList}" var="productList">   
-            <div class="col-md-4 row no-gutters mr-1 card mb-1">
+            <div class="col-md-4 row no-gutters mr-1 card mb-1 p-0">
               <div class="col-md-12 card-body no-gutters">
               <c:choose>
                 <c:when test="${not empty productList.productImage}">
-                  <img class="col-md-12" src="<c:url value='/resources/images/${productList.productImage}'/>" height="300" width="150" alt="토끼상품">
+                  <img class="col-md-12 p-0" src="<c:url value='/resources/images/${productList.productImage}'/>" height="300" width="150" alt="토끼상품">
                 </c:when>
                 <c:otherwise>
-                  <img class="col-md-12" src="https://i.ibb.co/gdq8PKg/pexels-tom-fisk-1692693.jpg" alt="토끼상품" height="300" width="150" border="0">
+                  <img class="col-md-12 p-0" src="https://i.ibb.co/gdq8PKg/pexels-tom-fisk-1692693.jpg" alt="토끼상품" height="300" width="150" border="0">
                 </c:otherwise>
               </c:choose>
                 <p class="card-title" style="margin-top: 7%;">상품명 : ${productList.productName}</p>
@@ -116,10 +116,10 @@
               <div class="col-md-12 card-body no-gutters">
               <c:choose>
                 <c:when test="${not empty productList.productImage}">
-                  <img class="col-md-12" src="<c:url value='/resources/images/${productList.productImage}'/>" height="300" width="150" alt="파충류상품">
+                  <img class="col-md-12 p-0" src="<c:url value='/resources/images/${productList.productImage}'/>" height="300" width="150" alt="파충류상품">
                 </c:when>
                 <c:otherwise>
-                  <img class="col-md-12" src="https://i.ibb.co/gdq8PKg/pexels-tom-fisk-1692693.jpg" alt="파충류상품" height="300" width="150" border="0">
+                  <img class="col-md-12 p-0" src="https://i.ibb.co/gdq8PKg/pexels-tom-fisk-1692693.jpg" alt="파충류상품" height="300" width="150" border="0">
                 </c:otherwise>
               </c:choose>
                 <p class="card-title" style="margin-top: 7%;">상품명 : ${productList.productName}</p>
@@ -138,10 +138,10 @@
               <div class="col-md-12 card-body no-gutters">
               <c:choose>
                 <c:when test="${not empty productList.productImage}">
-                  <img class="col-md-12" src="<c:url value='/resources/images/${productList.productImage}'/>" height="300" width="150" alt="기타상품">
+                  <img class="col-md-12 p-0" src="<c:url value='/resources/images/${productList.productImage}'/>" height="300" width="150" alt="기타상품">
                 </c:when>
                 <c:otherwise>
-                  <img class="col-md-12" src="https://i.ibb.co/gdq8PKg/pexels-tom-fisk-1692693.jpg" alt="기타상품" height="300" width="150" border="0">
+                  <img class="col-md-12 p-0" src="https://i.ibb.co/gdq8PKg/pexels-tom-fisk-1692693.jpg" alt="기타상품" height="300" width="150" border="0">
                 </c:otherwise>
               </c:choose>
                 <p class="card-title" style="margin-top: 7%;">상품명 : ${productList.productName}</p>
@@ -161,17 +161,17 @@
             
             <h5 style="border-left: 3px solid red; margin-bottom: 3%;"> <span class="ml-4 mt-3 mb-2">별점 5점(강아지)</span></h5>           
               <c:forEach items="${productList}" var="productList">
-              <div class="card col-md-12 mb-3" style="max-width: 540px; ">
-                <div class="col-md-12 d-flex">
+              <div class="card col-md-12 no-gutters mt-2" style="max-width: 540px; ">
+                <div class="col-md-12 p-0 d-flex p-0">
                   <c:choose>
                     <c:when test="${not empty productList.productImage}">
-                      <img style="border-radius: 12% ; height: 80%" class="col-md-5 align-self-center" src="<c:url value='/resources/images/${productList.productImage}'/>.jpg" alt="강아지상품">
+                      <img class="col-md-4 p-0r" src="<c:url value='/resources/images/${productList.productImage}'/>.jpg" alt="강아지상품">
                     </c:when>
                     <c:otherwise>
-                        <img style="border-radius: 12% ; height: 80%" class="col-md-5 align-self-center" src="https://i.ibb.co/CKyMy7Y/22.jpg" alt="강아지상품" border="0">
+                        <img class="col-md-4 p-0" src="https://i.ibb.co/CKyMy7Y/22.jpg" alt="강아지상품" border="0">
                     </c:otherwise>
                   </c:choose>
-                  <div class="col-md-7  p-0" style="border-left: 1px solid silver">
+                  <div class="col-md-8  p-0">
                     <div class="card-body">
                       <p class="card-text">상품명 : ${productList.productName} </p>
                       <p class="card-text">리 뷰 : </p>
@@ -183,10 +183,10 @@
             </c:forEach>
             <br>
                                   
-            <h5 style="border-left: 3px solid red; margin-bottom: 3%; margin-top: 8%;"> <span class="ml-4">별점 5점(고양이)</span></h5>           
+            <h5 style="border-left: 3px solid red; margin-bottom: 3%;"> <span class="ml-4">별점 5점(고양이)</span></h5>           
               <c:forEach items="${productList}" var="productList">
-              <div class="card col-md-12 no-gutters mb-3" style="max-width: 540px; ">
-                <div class="col-md-12 d-flex ">
+              <div class="card col-md-12 no-gutters mt-2" style="max-width: 540px; ">
+                <div class="col-md-12 p-0 d-flex p-0">
                   <c:choose>
                     <c:when test="${not empty productList.productImage}">
                       <img class="col-md-4 p-0" src="<c:url value='/resources/images/${productList.productImage}'/>" alt="고양이상품">
@@ -195,7 +195,7 @@
                         <img class="col-md-4 p-0" src="https://i.ibb.co/gdq8PKg/pexels-tom-fisk-1692693.jpg" alt="고양이상품" border="0">
                     </c:otherwise>
                   </c:choose>
-                  <div class="col-md-7 p-0">
+                  <div class="col-md-8 p-0">
                     <div class="card-body">
                       <p class="card-text">상품명 : ${productList.productName} </p>
                       <p class="card-text">리 뷰 : </p>
@@ -205,11 +205,12 @@
                 </div>
               </div>
             </c:forEach>
+			<br>
 			
-          <h5 style="border-left: 3px solid red; margin-bottom: 3%;" class="mb-4"> <span class="ml-4"> <span class="ml-4">별점 5점(토끼)</span></h5>        
+          <h5 style="border-left: 3px solid red; margin-bottom: 3%;"> <span class="ml-4">별점 5점(토끼)</span></h5>        
                         <c:forEach items="${productList}" var="productList">
-              <div class="card col-md-12 mb-3" style="max-width: 540px; ">
-                <div class="col-md-12 d-flex">
+              <div class="card col-md-12 no-gutters mt-2" style="max-width: 540px; ">
+                <div class="col-md-12 p-0 d-flex p-0">
                   <c:choose>
                     <c:when test="${not empty productList.productImage}">
                       <img class="col-md-4 p-0" src="<c:url value='/resources/images/${productList.productImage}'/>" alt="토끼상품">
@@ -218,7 +219,7 @@
                         <img class="col-md-4 p-0" src="https://i.ibb.co/gdq8PKg/pexels-tom-fisk-1692693.jpg" alt="토끼상품" border="0">
                     </c:otherwise>
                   </c:choose>
-                  <div class="col-md-7 p-0">
+                  <div class="col-md-8 p-0">
                     <div class="card-body">
                       <p class="card-text">상품명 : ${productList.productName} </p>
                       <p class="card-text">리 뷰 : </p>
@@ -228,11 +229,12 @@
                 </div>
               </div>
             </c:forEach>
+             <br>
   		
-          <h5 style="border-left: 3px solid red; margin-bottom: 3%;" class="mb-4"> <span class="ml-4"> <span class="ml-4">별점 5점(파충류)</span></h5>        
-                        <c:forEach items="${productList}" var="productList">
-              <div class="card col-md-12 mb-3" style="max-width: 540px; ">
-                <div class="col-md-12 d-flex">
+        <h5 style="border-left: 3px solid red; margin-bottom: 3%;"> <span class="ml-4">별점 5점(파충류)</span></h5>           
+          <c:forEach items="${productList}" var="productList">
+              <div class="card col-md-12 no-gutters mt-2" style="max-width: 540px; ">
+                <div class="col-md-12 p-0 d-flex p-0">
                   <c:choose>
                     <c:when test="${not empty productList.productImage}">
                       <img class="col-md-4 p-0" src="<c:url value='/resources/images/${productList.productImage}'/>" alt="파충류상품">
@@ -241,7 +243,7 @@
                         <img class="col-md-4 p-0" src="https://i.ibb.co/gdq8PKg/pexels-tom-fisk-1692693.jpg" alt="파충류상품"  border="0">
                     </c:otherwise>
                   </c:choose>
-                  <div class="col-md-7 p-0">
+                  <div class="col-md-8 p-0">
                     <div class="card-body">
                       <p class="card-text">상품명 : ${productList.productName} </p>
                       <p class="card-text">리 뷰 : </p>
@@ -251,29 +253,31 @@
                 </div>
               </div>
             </c:forEach>
+		<br>
 		
-          <h5 style="border-left: 3px solid red; margin-bottom: 3%;" class="mb-4"> <span class="ml-4"> <span class="ml-4">별점 5점(기타)</span></h5>        
-                        <c:forEach items="${productList}" var="productList">
-              <div class="card col-md-12 mb-3" style="max-width: 540px; ">
-                <div class="col-md-12 d-flex">
-                  <c:choose>
-                    <c:when test="${not empty productList.productImage}">
-                      <img class="col-md-4 p-0" src="<c:url value='/resources/images/${productList.productImage}'/>" alt="기타상품">
-                    </c:when>
-                    <c:otherwise>
-                        <img class="col-md-4 p-0" src="https://i.ibb.co/gdq8PKg/pexels-tom-fisk-1692693.jpg" alt="기타상품"  border="0">
-                    </c:otherwise>
-                  </c:choose>
-                  <div class="col-md-7 p-0">
-                    <div class="card-body">
-                      <p class="card-text">상품명 : ${productList.productName} </p>
-                      <p class="card-text">리 뷰 : </p>
-                      <a href="products/product?productId=${productList.productId}" class="btn btn-outline-primary btn-sm rounded-pill" style="font-size: 75%; height: 10%; width: 40%;"> 상세보기</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </c:forEach>
+	      <h5 style="border-left: 3px solid red; margin-bottom: 3%;"> <span class="ml-4">별점 5점(기타)</span></h5>           
+	         <c:forEach items="${productList}" var="productList">
+	              <div class="card col-md-12 no-gutters mt-2" style="max-width: 540px; ">
+	                <div class="col-md-12 p-0 d-flex p-0">
+	                  <c:choose>
+	                    <c:when test="${not empty productList.productImage}">
+	                      <img class="col-md-4 p-0" src="<c:url value='/resources/images/${productList.productImage}'/>" alt="기타상품">
+	                    </c:when>
+	                    <c:otherwise>
+	                        <img class="col-md-4 p-0" src="https://i.ibb.co/gdq8PKg/pexels-tom-fisk-1692693.jpg" alt="기타상품"  border="0">
+	                    </c:otherwise>
+	                  </c:choose>
+	                  <div class="col-md-8 p-0">
+	                    <div class="card-body">
+	                      <p class="card-text">상품명 : ${productList.productName} </p>
+	                      <p class="card-text">리 뷰 : </p>
+	                      <a href="products/product?productId=${productList.productId}" class="btn btn-outline-primary btn-sm rounded-pill" style="font-size: 75%; height: 10%; width: 40%;"> 상세보기</a>
+	                    </div>
+	                  </div>
+	                </div>
+	              </div>
+	            </c:forEach>
+	            <br>
 	        </div>
 	      </div>
 	    </div>

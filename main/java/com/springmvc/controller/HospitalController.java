@@ -64,6 +64,10 @@ public class HospitalController {
 			List<Hospital> hospitals = hospitalService.getAllhospitals(page);
 			model.addAttribute("hospitals", hospitals);
 		}
+		
+		model.addAttribute("fiveScore", reviewService.get5scoreReview());
+		model.addAttribute("fourScore", reviewService.get4scoreReview());
+		model.addAttribute("threeScore", reviewService.get3scoreReview());
 		return "all_Hospital/hospitals";
 	}
 
@@ -124,8 +128,9 @@ public class HospitalController {
 		String personId = (String) session.getAttribute("personId");
 		review.setPersonId(personId);
 		review.setHid(hid);
+		System.out.println(hid);
 		reviewService.addreview(review);
-		
+		hospitalService.gethosptialByhId(hid);
 		return "redirect:/hospitals/hospital?hid="+hid;
 	}
 //	리뷰수정
@@ -203,6 +208,7 @@ public class HospitalController {
 	public String deletebook(@RequestParam("bid") String bid,HttpSession session) 
 	{
 		String personId = (String) session.getAttribute("personId");
+		System.out.println("=================================="+bid);
 		bookingService.deletebook(bid);
 		return "redirect:/hospitals/mybookList?personId="+personId;
 	}

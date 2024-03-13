@@ -2,6 +2,7 @@ package com.springmvc.service;
 
 import java.util.List;
 
+import com.springmvc.domain.Hospital;
 import com.springmvc.domain.HospitalReview;
 
 public interface HospitalReviewService {
@@ -15,5 +16,11 @@ public interface HospitalReviewService {
 	void updatereview(HospitalReview review, String reviewid);
 
 	void deletereview(String reviewId);
+
+	List<Hospital> get5scoreReview();
+
+	List<Hospital> get4scoreReview();
+
+	List<Hospital> get3scoreReview();
 
 }
