@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@page import="com.springmvc.domain.*"%>
@@ -263,57 +262,8 @@
 	 --%>
 			
 </body>
-=======
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@page import="com.springmvc.domain.*"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-				<script type="text/javascript">
-					function editform(comment,commentId){
-						
-						var container = document.getElementById(commentId);
-						console.log(commentId);
-						var dew = "willdelete"+commentId;
-						var willdelete = document.getElementById(dew);
-						console.log(dew);
-						container.removeChild(willdelete);
-						
-						var form = document.createElement("form");
-						form.setAttribute("action","/123team/Nboards/updatecomment");
-						form.setAttribute("method","POST");
-						
-						var inputh = document.createElement("input");
-						inputh.setAttribute("type","hidden");
-						inputh.setAttribute("name","commentId");
-						inputh.setAttribute("value",commentId);
-						
-						var inputt = document.createElement("input");
-						inputt.setAttribute("type","text");
-						inputt.setAttribute("name","comment");
-						inputt.setAttribute("value",comment);
-						
-						var inputs = document.createElement("input");
-						inputs.setAttribute("type","submit");
-						inputs.setAttribute("value","수정하기");
-						
-						form.appendChild(inputh);
-						form.appendChild(inputt);
-						form.appendChild(inputs);
-						
-						container.appendChild(form);
-						
-						
-					}
-				</script>
- 	
+	
 <%-- 	
  			
 	<div class="container my-3">

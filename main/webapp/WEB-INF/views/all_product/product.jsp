@@ -148,24 +148,32 @@
                         <div class="col-md-12 text-center">
                             <a href="">1</a>
                         </div>
-        
+        				<a href="qa?productId=${product.productId}&personId=${product.personId}">Q&A</a>
                         <table class="col-md-12 text-center border p-0">
                             <thead>
                                 <td class="col-md-12 row">
-                                    <th class="border col-md-2">번호</th>
+                                    <th class="border col-md-2">답변현황</th>
                                     <th class="border col-md-6">제목</th>
+                                    <th class="border col-md-6">내용</th>
                                     <th class="border col-md-2">작성자</th>
                                     <th class="border col-md-2">작성일</th>
+                                    <th class="border col-md-2">수정</th>
+                                    <th class="border col-md-2">삭제</th>
                                 </td>
                             </thead>
-                            <tbody>
-                                <td>
-                                    <td class="border col-md-2">1</td>
-                                    <td class="border col-md-6">이게 궁금합니다.</td>
-                                    <td class="border col-md-2">이도현</td>
-                                    <td class="border col-md-2">2024-03-10</td>
-                                </td>
-                            </tbody>
+                            <c:forEach items="${listofQnA}" var="qna">
+	                            <tbody>
+	                                <td>
+	                                    <td class="border col-md-2">답변</td>
+	                                    <td class="border col-md-6">${qna.title}</td>
+	                                    <th class="border col-md-6">${qna.context}</th>
+	                                    <td class="border col-md-2">${qna.personId}</td>
+	                                    <td class="border col-md-2">${qna.registDay}</td>
+	                                    <td class="border col-md-2"><a href="u_qna?QnAId=${qna.qnaId}&productId=${qna.productId}">수정</a></td>
+	                                    <td class="border col-md-2"><a href="d_qna?QnAId=${qna.qnaId}&productId=${qna.productId}">삭제</a></td>
+	                                </td>
+	                            </tbody>
+                            </c:forEach>
                         </table>
                         
                     </div>
