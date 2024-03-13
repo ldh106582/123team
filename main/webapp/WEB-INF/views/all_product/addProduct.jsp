@@ -29,7 +29,7 @@
                         <div class="card">
                           <div class="card-body">
                              <h4 class="card-title">상품등록</h4>
-                             <form:form modelAttribute="booking" method="POST" enctype="multipart/form-data">
+                             <form:form modelAttribute="product" method="POST" enctype="multipart/form-data">
                                 <div class="form-group">
                                     <h4 class="col-md-12 p-0" style="color: rgb(140, 58, 179);">상품명 </h4>  
                                     <form:input class="form-control form-control-lg" type="text" path="productName" />
@@ -67,6 +67,7 @@
                </div>
             </div>
         </div>
+    </div>
  <%@ include file="../module/footer.jsp" %>
 <!--  <h1>상품추가 페이지</h1>
  <form:form modelAttribute="product" method="POST" enctype="multipart/form-data">

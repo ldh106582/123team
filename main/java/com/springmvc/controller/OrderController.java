@@ -74,6 +74,7 @@ public class OrderController {
 		
 		HttpSession session = request.getSession();
 		Order order = (Order) session.getAttribute("order");
+		System.out.println("order 넘버 : " + order.getOderNum());
 		session.setAttribute("order", order);
 		
 		String productId = (String) order.getProductId();

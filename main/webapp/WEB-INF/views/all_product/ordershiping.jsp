@@ -43,7 +43,7 @@
                             <div class="card">
                                 <div class="card-body">
                                     <h4 class="card-title">상품등록</h4>
-                                    <form modelAttribute="booking" method="POST" enctype="multipart/form-data">
+                                    <form action="/123team/orders/o_complete" method="POST" enctype="multipart/form-data">
                                     <input type="hidden" name="personId" value="${person.personId }"/>
                                     <input type="hidden" name="personName" value="${person.personName}"/> <!-- 이름 -->
                                     <input type="hidden" name="personPhone" value="${person.personPhone}"/> <!-- 연락처 -->

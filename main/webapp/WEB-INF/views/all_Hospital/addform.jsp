@@ -21,7 +21,7 @@
 	
 	 <%@  include file="../module/leftheader.jsp" %>
       
-        <div class="content-wrapper d-flex align-items-center auth px-0">
+        <div class="content-wrapper d-flex auth px-0">
             <div class="row w-100 mx-0">
                   <div class="col-lg-6 mx-auto">
                        <div class="auth-form-light text-left py-5 px-4 px-sm-5">

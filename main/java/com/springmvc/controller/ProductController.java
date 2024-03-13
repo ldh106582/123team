@@ -58,7 +58,7 @@ public class ProductController {
 	
 	@PostMapping("add")
 	public String addProductProccess(@ModelAttribute("product") Product product, HttpServletRequest request,
-									 @RequestParam("p_image") MultipartFile productImage, Model model) {
+									 @RequestParam("s_file") MultipartFile productImage, Model model) {
 		String imageName = productImage.getOriginalFilename();
 		String imagePatn = request.getSession().getServletContext().getRealPath("/resources/images");
 		System.out.println("이미지 경로 : " + imagePatn);

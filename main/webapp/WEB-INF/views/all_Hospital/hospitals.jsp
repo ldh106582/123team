@@ -59,6 +59,7 @@ img{
                     <div class="p-0" style="border-left: 3px solid red;" > <h4 style="margin-left: 2%;"> 우리 병원 현황</h4>
                     </div>
                     <br>
+                    
                     <h5 style="border-left: 3px solid #FF7EA0; margin-bottom: 3%;"><span class="ml-4">가장 가까운 병원</span></h5>
                     <div class="col-md-12 row card-group no-gutters p-0" style="margin-bottom: 3%;">
                       <c:forEach items="${hospitals}" var="hospital">
