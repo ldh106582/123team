@@ -12,6 +12,7 @@
 <!-- css -->
 <link href="<c:url value="/resources/css/index.css"/>" rel="stylesheet">
 <link href="<c:url value="/resources/pet/"/>" rel="stylesheet">
+<link href="<c:url value="/resources/css/home.css"/>" rel="stylesheet">
 <!-- Required meta tags -->
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Skydash Admin</title>
@@ -43,17 +44,31 @@
                     <div class="content-wrapper">
                         <div class="row">
                             <!--여기서 복붙 시작-->
-                            <div class="show-gird no-gutters col-md-12">
-                                <div class="col-md-12 no-gutters">
-                                    <div  id="slider" class="col-md-12 no-gutters" style="margin: 0 auto; width: 100%; height: 400px; display: flex; margin-bottom: 2%;;">
-                                    	<img src="./resources/images/hospital01.jpg" style="width: 100%"; alt="병원이미지01"/>
-                                        <img src="./resources/images/hospital02.jpg" style="width: 100%"; alt="병원이미지01"/>
-                                        <img src="./resources/images/hospital03.jpg" style="width: 100%"; alt="병원이미지01"/>
-                                        <img src="./resources/images/hospital04.jpg" style="width: 100%"; alt="병원이미지01"/>
-                                        <img src="./resources/images/hospital05.jpg" style="width: 100%"; alt="병원이미지01"/>
-                                        
-                                    </div>
-                                    
+                            <div  class="show-gird no-gutters col-md-12">
+                                <div id="wrap" class="col-md-12 no-gutters">
+                                
+                                <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+								  <div class="carousel-inner">
+								    <div class="carousel-item active">
+								      <img src="./resources/images/hospital01.jpg" class="d-block w-100" alt="...">
+								    </div>
+								    <div class="carousel-item">
+								      <img src="./resources/images/hospital02.jpg" class="d-block w-100" alt="...">
+								    </div>
+								    <div class="carousel-item">
+								      <img src="./resources/images/hospital03.jpg" class="d-block w-100" alt="...">
+								    </div>
+								  </div>
+								  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+								    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+								    <span class="sr-only">Previous</span>
+								  </a>
+								  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+								    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+								    <span class="sr-only">Next</span>
+								  </a>
+								</div>
+								                                	
                                     <div class="col-md-12 row no-gutters" style="margin: 0 auto;">
                                         <div class="col-md-9 ">
                                             <div style="border-left: 3px solid red;"> <h4 style="margin-left: 2%;"> 우리 홈페이지 현황</h4>
