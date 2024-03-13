@@ -42,7 +42,8 @@
   
    		          <div class="main-panel">
                     <div class="content-wrapper mx-0">
-                        <div class="row mx-auto">   <!--여기서 복붙 시작-->
+                        <div class="row mx-auto">
+                            <!--여기서 복붙 시작-->
 							    <div class="slider mx-0 mx-auto">
 							        <div class="slide">
 							            <img src="https://i.ibb.co/gdq8PKg/pexels-tom-fisk-1692693.jpg" width="100%" height="100%" alt="병원이미지01" />
@@ -142,26 +143,66 @@
                                             <div class="no-gutters col-md-12" style="border-left: 3px solid red;"><h4 class="ml-3" >공지사항 </h4>    
                                             </div>
                                             <br>   
-                                            <c:forEach items="${hospitals}" var="hospital">
 	                                            <div class="card col-md-12 no-gutters" style="max-width: 540px;">
-	                                                <div class="col-md-12 row no-gutters border border-dark">
-													<c:choose>
-													   <c:when test="${not empty hospital.image}">
-														   <img class="col-md-4" src="<c:url value='/resources/images/${hospital.image}'/>" height="150" width="150" alt="병원이미지">
-													    </c:when>
-														<c:otherwise>
-														    <img class="col-md-4" src="https://i.ibb.co/gdq8PKg/pexels-tom-fisk-1692693.jpg" alt="병원이미지" height="150" width="150" border="0">
-														</c:otherwise>
-													</c:choose>
-	                                                  	<div class="col-md-8 border border-dark">
-	                                                        <div class="card-body">
-	                                                            <p class="card-text">공지사항 제목 : </p>
-	                                                            <a href="hospitals/hospital?hid=${hospital.hid}" class="btn btn-success border rounded-pill" style="font-size: 75%; height: 10%; width: 40%;"> 상세보기</a>
-	                                                        </div>
-		                                                 </div>
-	                                                </div>
+											<%
+												Connection conn = null;
+											   	Statement stmt = null;
+											  	ResultSet rs = null;
+											   
+											   try {
+											      // JDBC 드라이버를 로드합니다.
+											      Class.forName("com.mysql.jdbc.Driver");
+											      
+											      // DB에 연결합니다.
+											      String url = "jdbc:mysql://localhost:3306/123team_db";
+											      String username = "root";
+											      String password = "1234";
+											      conn = DriverManager.getConnection(url, username, password);
+											      
+											      // SQL 쿼리를 실행합니다.
+											      String sql = "SELECT * FROM NBoard";
+											      stmt = conn.createStatement();
+											      rs = stmt.executeQuery(sql);
+											      int i = 1;
+											      // 결과를 처리합니다.
+											      while (rs.next()) {
+											         // 각 행의 데이터를 가져옵니다.
+											         
+											         String title = rs.getString(3);
+											         int hit = rs.getInt(4);
+											         String registDay = rs.getString(5);
+											         String boardId = rs.getString(6);
+											         
+											         request.setAttribute("title", title);
+											         request.setAttribute("hit", hit);
+											         request.setAttribute("registDay", registDay);
+											         request.setAttribute("boardId", boardId);
+											         request.setAttribute("num", i);
+											         i++;
+											         if(i==7){
+											        	 break;
+											         } 
+											 %>
+											 			<a href="Nboards/Nboard?boardId=${boardId}">${num} 제목 : ${title} 조회수 : ${hit} 등록일 : ${registDay}</a>
+											<%
+		
+						    }
+						   } catch (Exception e) {
+						      e.printStackTrace();
+						   } finally {
+						      // 사용한 자원을 정리합니다.
+						      if (rs != null) {
+						         try { rs.close(); } catch (SQLException e) { }
+						      }
+						      if (stmt != null) {
+						         try { stmt.close(); } catch (SQLException e) { }
+						      }
+						      if (conn != null) {
+						         try { conn.close(); } catch (SQLException e) { }
+						      }
+						   }
+						%>  
 	                                            </div>
-	                                        </c:forEach> 
                                         </div>
                                     </div>
                                 </div>
@@ -196,67 +237,6 @@
   <script src="js/dashboard.js"></script>
   <script src="js/Chart.roundedBarCharts.js"></script>
   <!-- End custom js for this page-->
-
-						<%
-							Connection conn = null;
-						   	Statement stmt = null;
-						  	ResultSet rs = null;
-						   
-						   try {
-						      // JDBC 드라이버를 로드합니다.
-						      Class.forName("com.mysql.jdbc.Driver");
-						      
-						      // DB에 연결합니다.
-						      String url = "jdbc:mysql://localhost:3306/123team_db";
-						      String username = "root";
-						      String password = "1234";
-						      conn = DriverManager.getConnection(url, username, password);
-						      
-						      // SQL 쿼리를 실행합니다.
-						      String sql = "SELECT * FROM NBoard";
-						      stmt = conn.createStatement();
-						      rs = stmt.executeQuery(sql);
-						      int i = 1;
-						      // 결과를 처리합니다.
-						      while (rs.next()) {
-						         // 각 행의 데이터를 가져옵니다.
-						         
-						         String title = rs.getString(3);
-						         int hit = rs.getInt(4);
-						         String registDay = rs.getString(5);
-						         String boardId = rs.getString(6);
-						         
-						         request.setAttribute("title", title);
-						         request.setAttribute("hit", hit);
-						         request.setAttribute("registDay", registDay);
-						         request.setAttribute("boardId", boardId);
-						         request.setAttribute("num", i);
-						         i++;
-						         if(i==7){
-						        	 break;
-						         } 
-						 %>
-						 		<div class="border border-dark" >
-						 			<a href="Nboards/Nboard?boardId=${boardId}">${num} 제목 : ${title} 조회수 : ${hit} 등록일 : ${registDay}</a>
-						 		</div>
-						<%
-		
-						    }
-						   } catch (Exception e) {
-						      e.printStackTrace();
-						   } finally {
-						      // 사용한 자원을 정리합니다.
-						      if (rs != null) {
-						         try { rs.close(); } catch (SQLException e) { }
-						      }
-						      if (stmt != null) {
-						         try { stmt.close(); } catch (SQLException e) { }
-						      }
-						      if (conn != null) {
-						         try { conn.close(); } catch (SQLException e) { }
-						      }
-						   }
-						%>  
 </body>
 <script src="/resources/js/hospitals.js"></script>
 </html>
