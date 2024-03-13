@@ -59,10 +59,6 @@ img{
                     <div class="p-0" style="border-left: 3px solid red;" > <h4 style="margin-left: 2%;"> 우리 병원 현황</h4>
                     </div>
                     <br>
-<<<<<<< HEAD
-                    
-=======
->>>>>>> origin/hanui
                     <h5 style="border-left: 3px solid #FF7EA0; margin-bottom: 3%;"><span class="ml-4">가장 가까운 병원</span></h5>
                     <div class="col-md-12 row card-group no-gutters p-0" style="margin-bottom: 3%;">
                       <c:forEach items="${hospitals}" var="hospital">
@@ -134,19 +130,11 @@ img{
                 </div>
 
                   <div class="col-md-4 no-gutters ml-4">
-<<<<<<< HEAD
-                    <div class="no-gutters col-md-12 p-0" style="border-left: 3px solid red;"><h4 class="ml-3" >best 리뷰 </h4>    
-                    </div>
-                    <br>
-                    <h5 style="border-left: 3px solid red; margin-bottom: 3%;" class="mb-4"> <span class="ml-4">별점 5점</span></h5>           
-                      <c:forEach items="${hospitals}" var="hospital">
-=======
                     <div class="no-gutters col-md-12 p-0" style="border-left: 3px solid red;"><h4 class="ml-3" >best 별점 </h4>    
                     </div>
                     <br>
                     <h5 style="border-left: 3px solid red; margin-bottom: 3%;" class="mb-4"> <span class="ml-4">별점 4.5점 이상</span></h5>           
                       <c:forEach items="${fiveScore}" var="hospital">
->>>>>>> origin/hanui
                       <div class="card col-md-12 mb-3" style="max-width: 540px; ">
                         <div class="col-md-12 d-flex">
                           <c:choose>
@@ -159,13 +147,8 @@ img{
                           </c:choose>
                           <div class="col-md-7 p-0" style="border-left: 1px solid silver">
                             <div class="card-body">
-<<<<<<< HEAD
-                              <p class="card-text">병원명 : </p>
-                              <p class="card-text">리 뷰 : </p>
-=======
                               <p class="card-text">병원명 : ${hospital.name}</p>
                               <p class="card-text">주소 : ${hospital.addr}</p>
->>>>>>> origin/hanui
                               <a href="hospitals/hospital?hid=${hospital.hid}" class="btn btn-outline-primary btn-sm rounded-pill" style="font-size: 75%; height: 10%; width: 40%;"> 상세보기</a>
                             </div>
                           </div>
@@ -173,13 +156,8 @@ img{
                       </div>
                     </c:forEach>
                                           
-<<<<<<< HEAD
-                    <h5 style="border-left: 3px solid red; margin-bottom: 3%; margin-top: 8%;" class="mb-4 mt-5"> <span class="ml-4">별점 4점</span></h5>           
-                      <c:forEach items="${hospitals}" var="hospital">
-=======
                     <h5 style="border-left: 3px solid red; margin-bottom: 3%; margin-top: 8%;" class="mb-4 mt-5"> <span class="ml-4">별점 4점 이상</span></h5>           
                       <c:forEach items="${fourScore}" var="hospital">
->>>>>>> origin/hanui
                       <div class="card col-md-12 mb-3" style="max-width: 540px; ">
                         <div class="col-md-12 d-flex">
                           <c:choose>
@@ -192,13 +170,8 @@ img{
                           </c:choose>
                           <div class="col-md-7 p-0" style="border-left: 1px solid silver">
                             <div class="card-body">
-<<<<<<< HEAD
-                              <p class="card-text">병원명 : </p>
-                              <p class="card-text">리 뷰 : </p>
-=======
                               <p class="card-text">병원명 : ${hospital.name}</p>
                               <p class="card-text">주소 : ${hospital.addr}</p>
->>>>>>> origin/hanui
                               <a href="hospitals/hospital?hid=${hospital.hid}" class="btn btn-outline-primary btn-sm rounded-pill" style="font-size: 75%; height: 10%; width: 40%;"> 상세보기</a>
                             </div>
                           </div>
@@ -206,13 +179,8 @@ img{
                       </div>
                     </c:forEach>
 
-<<<<<<< HEAD
-                    <h5 style="border-left: 3px solid red; margin-bottom: 3%; margin-top: 8%;" class="mb-4 "> <span class="ml-4">별점 3점</span></h5>           
-                      <c:forEach items="${hospitals}" var="hospital">
-=======
                     <h5 style="border-left: 3px solid red; margin-bottom: 3%; margin-top: 8%;" class="mb-4 "> <span class="ml-4">별점 3점 이상</span></h5>           
                       <c:forEach items="${threeScore}" var="hospital">
->>>>>>> origin/hanui
                       <div class="card col-md-12 mb-3" style="max-width: 540px; ">
                         <div class="col-md-12 d-flex">
                           <c:choose>
@@ -225,13 +193,8 @@ img{
                           </c:choose>
                           <div class="col-md-7 p-0" style="border-left: 1px solid silver">
                             <div class="card-body">
-<<<<<<< HEAD
-                              <p class="card-text">병원명 : </p>
-                              <p class="card-text">리 뷰 : </p>
-=======
                               <p class="card-text">병원명 : ${hospital.name}</p>
                               <p class="card-text">주소 : ${hospital.addr}</p>
->>>>>>> origin/hanui
                               <a href="hospitals/hospital?hid=${hospital.hid}" class="btn btn-outline-primary btn-sm rounded-pill" style="font-size: 75%; height: 10%; width: 40%;"> 상세보기</a>
                             </div>
                           </div>
