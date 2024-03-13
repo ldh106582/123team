@@ -47,7 +47,7 @@
                     <p class="card-text" style="font-size: 1vw;"> ${product.productUnitStock}</p>
                     <p class="card-text" style="font-size: 1vw;"> ${product.productDescribe}</p>
 
-                    <div class="col-md-12 row p-0">
+
 					<form:form modelAttribute="product" action="/123team/products/creatCart" method="post" enctype="Multipart/form-data">
 		            <input type="hidden" name="productId"  value="${product.productId}">
 		            <input type="hidden" name="productName" value="${product.productName}" >
@@ -55,22 +55,25 @@
 		            <input type="hidden" name="productCategory" value="${product.productCategory}" >
 		            <input type="hidden" name="productImage" value="${product.productImage}" >
 
-                     <div class="col-md-6 p-0"> 
-                         <input type="submit" class="btn btn-outline-primary m-0" value="장바구니추가"/>
+                     <div class="show-grid col-md-12 row">
+                         <div class="col-md-6 p-0"> 
+                             <input type="submit" class="btn btn-outline-primary m-0" value="장바구니추가"/>
+                         </div>
+                     	</form:form>
+                     
+                         <div class="col-md-6 p-0">
+                             <c:if test="${loginId == product.personId}">
+                                 <div class="col-md-12 p-0 d-flex" style="justify-content: flex-end;">
+                                     <a href="update?productId=${product.productId}" class="btn btn-outline-info mr-1">상품수정</a>
+                                     <a href="delete?productId=${product.productId}" class="btn btn-outline-danger ">상품삭제</a>
+                                 </div>
+                             </c:if>
+                         </div>
                      </div>
-                    </form:form>
-                    
-                        <c:if test="${loginId == product.personId}">
-                            <div class="col-md-6 row p-0 " style="  justify-content: flex-end;">
-                                <a href="update?productId=${product.productId}" class="btn btn-outline-info mr-1">상품수정</a>
-                                <a href="delete?productId=${product.productId}" class="btn btn-outline-danger ">상품삭제</a>
-                            </div>
-                        </c:if>
-
-                    </div>
-
                     <c:if test="${loginId ==  product.personId}">
-                        <a class="btn btn-outline-info btn-sm float-right border border-dark mt-3" href="/123team/products/p_review?personId=${product.personId}">리뷰작성</a>
+                    	<div class="mb-2 ml-2">
+                        	<a class="btn btn-outline-info btn-sm border border-dark mt-3" href="/123team/products/p_review?personId=${product.personId}">리뷰작성</a>
+                 		</div>
                  	</c:if>
                  	   <div class="col-md-12 row mt-5 p-0" style="justify-content: center;">
                         <c:forEach items="${listOfProductReview}" var="review">
@@ -166,7 +169,7 @@
 	                                <td>
 	                                    <td class="border col-md-2">답변</td>
 	                                    <td class="border col-md-6">${qna.title}</td>
-	                                    <th class="border col-md-6">${qna.context}</th>
+	                                    <td class="border col-md-6">${qna.context}</td>
 	                                    <td class="border col-md-2">${qna.personId}</td>
 	                                    <td class="border col-md-2">${qna.registDay}</td>
 	                                    <td class="border col-md-2"><a href="u_qna?QnAId=${qna.qnaId}&productId=${qna.productId}">수정</a></td>
@@ -175,15 +178,11 @@
 	                            </tbody>
                             </c:forEach>
                         </table>
-                        
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-
-
-
+         </div>
 	<%@ include file="../module/footer.jsp" %>
 
 

@@ -34,14 +34,15 @@ public class AjaxController {
 	// 소비자 아이디확인 함수
 	@GetMapping(value="/login/join/memberid", produces="application/json")
 	@ResponseBody
-	public String Member(@RequestParam("userId") String userId) {
-	    System.out.println("소비자 ajax도착");
+	public String checkMemberId(@RequestParam("userId") String userId) {
+	    System.out.println("소비자 ajax 도착");
 	    if(ajaxService.member(userId)){
 	        return "true";
 	    } else {
 	        return "false";
 	    }
 	}
+
 	
 	// 로그인 성공 실패를 알려주는 함수
 	@PostMapping(value="/confirm", produces="application/json")
