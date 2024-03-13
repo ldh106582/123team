@@ -38,12 +38,14 @@ public class ProductController {
 //	R
 	@RequestMapping
 	public String getProductList(Model model) {
+		
 		model.addAttribute("productList",productService.getProductsList());
 		return "all_product/products";
 	}
 	
 	@GetMapping("/product")
-	public String getProduct(@RequestParam("productId") String productId,Model model) {
+	public String getProduct(@RequestParam("productId") String productId,Model model, HttpServletRequest request) 
+	{
 		//QnA 내용
 		List<QnA> listofQnA = QnAService.getAllQnAList(productId);
 		System.out.println(listofQnA);
@@ -55,7 +57,12 @@ public class ProductController {
 		
 		List<ProductReview> listOfProductReview = productService.getp_Orderdate(productId);
 		model.addAttribute("listOfProductReview", listOfProductReview);
-		model.addAttribute("product",productService.getProductById(productId));
+		
+		String personId = (String) request.getSession().getAttribute("personId");
+		System.out.println(personId);
+		Product product = productService.getProductById(productId);
+		product.setPersonId(personId);
+		model.addAttribute("product", product);
 		
 		return "all_product/product";
 	}

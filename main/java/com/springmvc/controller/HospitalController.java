@@ -1,5 +1,6 @@
 package com.springmvc.controller;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +15,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+
 import com.mysql.cj.Session;
 import com.springmvc.domain.ENBoard;
 import com.springmvc.domain.Hospital;
@@ -87,8 +90,20 @@ public class HospitalController {
 	}
 	
 	@PostMapping("/create")
-	public String hospitalcreate(@ModelAttribute("hospital")Hospital hospital,HttpSession session,Model model, HttpServletRequest request) 
+	public String hospitalcreate(@ModelAttribute("hospital")Hospital hospital,HttpSession session,Model model, HttpServletRequest request,
+								MultipartFile s_file) 
 	{
+		String filename = s_file.getOriginalFilename();
+		String filePath = request.getSession().getServletContext().getRealPath("/resources/images");
+		File file = new File(filePath, filename);
+		
+		try {
+			s_file.transferTo(file);
+			hospital.setImage(filename);
+		}catch(Exception e) {
+			System.out.println("파일을 입력하지 않았습니다." + e);
+		}
+		
 		String personId = (String) session.getAttribute("personId");
 		hospital.setPersonId(personId);
 		String realpath = request.getSession().getServletContext().getRealPath("/resources/images");

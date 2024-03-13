@@ -61,6 +61,7 @@
                       <p class="card-text" style="margin-top: 4%;">상품설명 : ${productList.productDescribe}</p>
                     </div>
                       <a href="products/product?productId=${productList.productId}" class="btn btn-outline-primary" >상세보기</a>
+                      
                   </div>
                 </c:forEach>
             </div>
