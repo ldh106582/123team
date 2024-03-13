@@ -17,6 +17,7 @@ public class HospitalBooking {
 	private String state;
 	private String alarm;
 	 
+	
 	public String getBid() {
 		return bid;
 	}

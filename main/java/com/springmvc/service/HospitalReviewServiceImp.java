@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.springmvc.domain.Hospital;
 import com.springmvc.domain.HospitalReview;
 import com.springmvc.repository.HospitalReviewRepository;
 
@@ -39,6 +40,24 @@ public class HospitalReviewServiceImp implements HospitalReviewService{
 	public void deletereview(String reviewId) {
 		hospitalReviewRepository.deletereview(reviewId);
 		
+	}
+
+	@Override
+	public List<Hospital> get5scoreReview() {
+		// TODO Auto-generated method stub
+		return hospitalReviewRepository.get5scoreReview();
+	}
+
+	@Override
+	public List<Hospital> get4scoreReview() {
+		// TODO Auto-generated method stub
+		return hospitalReviewRepository.get4scoreReview();
+	}
+
+	@Override
+	public List<Hospital> get3scoreReview() {
+		// TODO Auto-generated method stub
+		return hospitalReviewRepository.get3scoreReview();
 	}
 
 }

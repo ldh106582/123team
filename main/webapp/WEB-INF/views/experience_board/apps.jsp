@@ -282,5 +282,88 @@
 	</c:forEach>
 	 --%>
 	
+
+<%--  
+ <div class="container">
+    <h2 class="my-3">내 체험단 예약현황</h2>
+    <a href="/123team/ENboards" class="btn btn-primary mb-3">체험단 공고글 목록으로 돌아가기</a>
+
+    <c:forEach items="${applist}" var="app">
+        <div class="card mb-3">
+            <div class="card-body" id="container${app.eid}">
+                <h5 class="card-title">${app.title}</h5>
+                <p class="card-text">${app.experience}</p>
+                <p class="card-text">${app.animal}</p>
+                <p class="card-text">${app.state}</p>
+                <p class="card-text" id="willdelete${app.eid}">예약일 : <span >${app.registDay}</span></p>
+              	<button class="btn btn-primary" onclick="changed('${app.eid}','${app.registDay}')" id="addp${app.eid}" >날짜 변경</button>
+            </div>
+            <div class="card-body" >
+            <a href="deleteapp?eid=${app.eid}" class="btn btn-danger">예약 삭제</a>
+            </div>
+            
+        </div>
+    </c:forEach>
+</div>
+
+	<%@ include file="../module/footer.jsp" %> --%>
+ <%-- 
+=======
+   <nav class="navbar navbar-expand navbar-dark bg-success">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/123team">Home</a>
+            </div>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link" href="/123team/hospital">병원</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/123team/products">동물상품</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/123team/Fboards">게시판</a>
+                </li>
+ 				<c:choose>             
+	            <c:when test="${not empty managerId }">
+	                	
+	                <li class="nav-item">
+	                  <a class="nav-link" href="/123team/managerlogin/manager_page?personId=${managerId.personId}">마이페이지</a>
+	                </li>
+	                
+	            </c:when>
+	               	<c:otherwise>
+		                <li class="nav-item">
+		                  <a class="nav-link" href="/123team/login">로그인</a>
+		                </li>
+	                </c:otherwise>
+                </c:choose>
+>>>>>>> fa9e400f8ceb5c1826ec622c185d981968432be3
+	<h2>내 체험단 예약현황</h2>
+	<a href="/123team/ENboards">체험단 공고글 목록으로 돌아가기</a>
+	<p>
+	-------------------------------------------------------------------------------
+	<c:forEach items="${applist}" var="app">
+			<p>
+			체험 제목 :${app.title}
+			<p>
+			체험 :${app.experience}
+			<p>
+			동물 :${app.animal}
+			<p>
+			처리상태 :${app.state}
+			
+		<div id="container">
+			<b id="willdelete${app.eid}">예약일 : ${app.registDay}</b>
+			<button onclick="changed('${app.eid}','${app.registDay}')" id="addp${app.eid}" >날짜 변경</button>
+		</div>
+		<p>
+		<a href="deleteapp?eid=${app.eid}"><button>예약 삭제</button></a>
+		<p>
+		-------------------------------------------------------------------------------
+	</c:forEach>
+	 --%>
+	
 </body>
 </html>

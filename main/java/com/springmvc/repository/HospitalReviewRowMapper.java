@@ -20,7 +20,6 @@ public class HospitalReviewRowMapper implements RowMapper<HospitalReview>{
 		reviews.setReviewImage(rs.getString(6));
 		reviews.setRegistDay(rs.getString(7));
 		reviews.setReviewId(rs.getString(8));
-		
 		return reviews;
 	}
 	
