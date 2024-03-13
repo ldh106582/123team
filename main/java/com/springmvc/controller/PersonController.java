@@ -58,7 +58,9 @@ public class PersonController {
       HttpSession session = request.getSession();
       String type = (String)session.getAttribute("type");
       System.out.println("add post : " + type);
+      System.out.println("주소 test : " + person.getPersonAddress());
       person.setType(type);
+      
       
       // 회원가입 시 db에 넣어주는 함수
       personService.setCreatPerson(person);
