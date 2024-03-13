@@ -53,9 +53,6 @@
                 
 	          <div class="col-md-12 row">
 	            <div class="col-md-6 row "> 
-<<<<<<< HEAD
-	              <a href="addbook?hid=${hospital.hid}" class="btn btn-primary ">예약하기</a>
-=======
 			<%
 				List<Pet> petlist = (List<Pet>) session.getAttribute("petName");
 			            request.setAttribute("petlist", petlist);
@@ -63,7 +60,6 @@
 				  <c:if test="${loginId !=  hospital.personId && loginId != null && petlist != null}">
 	              	<a href="addbook?hid=${hospital.hid}" class="btn btn-primary ">예약하기</a>
 	              </c:if>
->>>>>>> origin/hanui
 	              </div>
 	              <c:if test="${loginId ==  hospital.personId}">
 	                <div class="row d-flex justify-content-end col-md-6">
@@ -79,15 +75,13 @@
              	<div class="col-md-12 mt-5 p-0 row" style="justify-content: center;">
              	   <div class="col-md-12 row" >
              	   	  <h3 class="col-md-12 p-0">병원 리뷰</h3>
-<<<<<<< HEAD
-             	   	  <c:if test="${loginId ==  hospital.personId}">
-=======
              	   	  리뷰평점 : ${hospital.reviewScore }
              	   	  리뷰수 : ${hospital.reviewCount }
               	   	  <c:if test="${loginId ==  hospital.personId}">
->>>>>>> origin/hanui
 	                    <div class="p-0 col-md-12 mt-3">
-	                    	<a class="btn btn-outline-info  btn-sm mt-2" href="addreview?hid=${hospital.hid}">리뷰작성</a>
+	                    	<div class="mb-2 ml-2">
+	                    		<a class="btn btn-outline-info  btn-sm mt-2" href="addreview?hid=${hospital.hid}">리뷰작성</a>
+	                    	</div>
 	                    </div>
                 		</c:if>
                       <c:forEach items="${reviews}" var="review">

@@ -41,14 +41,8 @@
  <%@  include file="./module/leftheader.jsp" %>
   
    		          <div class="main-panel">
-<<<<<<< HEAD
                     <div class="content-wrapper mx-0">
-                        <div class="row mx-auto">
-=======
-                    <div class="content-wrapper">
-                        <div class="row">
->>>>>>> origin/hanui
-                            <!--여기서 복붙 시작-->
+                        <div class="row mx-auto">   <!--여기서 복붙 시작-->
 							    <div class="slider mx-0 mx-auto">
 							        <div class="slide">
 							            <img src="https://i.ibb.co/gdq8PKg/pexels-tom-fisk-1692693.jpg" width="100%" height="100%" alt="병원이미지01" />

@@ -20,7 +20,9 @@ import com.springmvc.domain.Order;
 import com.springmvc.domain.Person;
 import com.springmvc.domain.Product;
 import com.springmvc.domain.ProductReview;
+import com.springmvc.domain.QnA;
 import com.springmvc.service.ProductService;
+import com.springmvc.service.QnAService;
 
 
 @Controller
@@ -29,6 +31,9 @@ public class ProductController {
 	
 	@Autowired
 	ProductService productService;
+
+	@Autowired
+	QnAService QnAService;
 	
 //	R
 	@RequestMapping
@@ -39,12 +44,17 @@ public class ProductController {
 	
 	@GetMapping("/product")
 	public String getProduct(@RequestParam("productId") String productId,Model model) {
+		//QnA 내용
+		List<QnA> listofQnA = QnAService.getAllQnAList(productId);
+		System.out.println(listofQnA);
+		
+		model.addAttribute("listofQnA", listofQnA);
+		
 		// 리뷰에 대한 내용을 가져옴
 		System.out.println("여긴 product 상품 id : "+ productId);
 		
 		List<ProductReview> listOfProductReview = productService.getp_Orderdate(productId);
 		model.addAttribute("listOfProductReview", listOfProductReview);
-		
 		model.addAttribute("product",productService.getProductById(productId));
 		
 		return "all_product/product";
@@ -165,4 +175,5 @@ public class ProductController {
 		
 		return "redirect:/products/product?productId=" + productId;
 	}
+	
 }
