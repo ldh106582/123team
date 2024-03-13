@@ -6,8 +6,11 @@ import com.springmvc.domain.Hospital;
 
 public interface HospitalRepository {
 
-	List<Hospital> getAllhospitals();
+	List<Hospital> getAllhospitals(int page);
 
+	// 전체 페이지를 가져오는 함수
+	List<Hospital> getCount();
+	
 	Hospital gethosptialByhId(String hid);
 
 	void addhospital(Hospital hospital, String realpath);

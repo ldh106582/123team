@@ -15,9 +15,19 @@ public class HospitalServiceImp implements HospitalService{
 	HospitalRepository hospitalRepository;
 
 	@Override
-	public List<Hospital> getAllhospitals() {
-		return hospitalRepository.getAllhospitals();
+	public List<Hospital> getAllhospitals(int page) {
+		return hospitalRepository.getAllhospitals(page);
 	}
+	
+	
+	// 전체 페이지를 가져오는 함수
+	@Override
+	public List<Hospital> getCount() {
+		// TODO Auto-generated method stub
+		return hospitalRepository.getCount();
+	}
+
+
 
 	@Override
 	public Hospital gethosptialByhId(String hid) {
