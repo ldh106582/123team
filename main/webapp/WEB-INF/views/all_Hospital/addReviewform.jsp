@@ -22,12 +22,11 @@
     
  	<%@  include file="../module/leftheader.jsp" %>
      
-         <!-- partial -->
           <div class="content-wrapper d-flex align-items-center auth px-0">
 		      <div class="row w-100 mx-0">
 		        <div class="col-lg-6 mx-auto">
 		          <div class="col-md-7 no-gutters" style="margin-left: 25%;">
-		            <h1 class="col-md-12 text-center mb-5" style="color: rgb(140, 58, 179);">리뷰 등록</h1>
+		            <p class="col-md-12 card-title">리뷰 등록</p>
 		            <div class="show-gird col-md-12 mb-4">
 						 <form:form modelAttribute="review" method="POST" enctype="multipart/form-data">
 						    <div class="rating text-center col-md-12 mb-2">
@@ -55,7 +54,6 @@
 						        <input type="file" class="col-md-12 p-1 form-control form-control-lg " name="s_file"/>
 						    </div>
 						    <div class="col-md-12 mt-3 p-0">
-						        <form:hidden path="hid" value="${hid}"/>
 						        <input class="btn btn col-md-12 p-2" type="submit" value="작성완료" style="background-color: blueviolet; color: white;">
 						    </div>
 						</form:form>

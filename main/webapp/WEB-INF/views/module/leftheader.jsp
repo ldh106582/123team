@@ -55,7 +55,7 @@
                 </li>
                 <c:if test="${loginId != null}">
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
+                    <a class="nav-link" data-toggle="collapse" href="/123team/products/readcart" aria-expanded="false" aria-controls="form-elements">
                         <i class="fa-solid fa-cart-shopping"></i>
                         <span class="menu-title ml-3">장바구니</span>
                         <i class="menu-arrow"></i>
@@ -92,6 +92,7 @@
                         <i class="menu-arrow"></i>
                     </a>
                 </li>
+
                 <c:choose>
                 	<c:when test="${loginId == null}">
 	                <li class="nav-item">

@@ -12,7 +12,8 @@ public class EApplication {
 	private String mid;
 	private String boardId;
 	private String alarm;
-	
+
+
 	public String getExperience() {
 		return experience;
 	}

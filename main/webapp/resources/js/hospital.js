@@ -1,3 +1,4 @@
+
 var park = document.getElementById("park");
 var review = document.getElementById("review");
 
@@ -22,3 +23,4 @@ review.addEventListener("click", function(){
     reviews1.style.display = "block";
 
 });
+

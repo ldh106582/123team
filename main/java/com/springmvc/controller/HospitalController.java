@@ -38,9 +38,36 @@ public class HospitalController {
 	BookingService bookingService;
 	
 	@GetMapping
-	public String getAllhospitals(Model model) 
+	public String getAllhospitals(Model model, @RequestParam(defaultValue = "1") int page)
 	{
-		model.addAttribute("hospitals",hospitalService.getAllhospitals());
+
+		 List<Hospital> listOfCount = hospitalService.getCount();
+
+		    int totalCount = listOfCount.size(); // 전체 항목 수
+		    int pageSize = 3; // 한 페이지에 표시할 항목 수
+		    int pageCount = (totalCount + pageSize - 1) / pageSize; // 페이지 수 계산
+
+		    // 페이지 번호 범위 생성
+		    List<Integer> pageNumbers = new ArrayList<Integer>();
+		    for (int i = 1; i <= pageCount; i++) {
+		        pageNumbers.add(i);
+		    }
+		    model.addAttribute("pageNumbers", pageNumbers);
+
+		if(page == 1) 
+		{
+			List<Hospital> hospitals = hospitalService.getAllhospitals(page);
+			model.addAttribute("hospitals", hospitals);
+		}
+		else
+		{
+			List<Hospital> hospitals = hospitalService.getAllhospitals(page);
+			model.addAttribute("hospitals", hospitals);
+		}
+		
+		model.addAttribute("fiveScore", reviewService.get5scoreReview());
+		model.addAttribute("fourScore", reviewService.get4scoreReview());
+		model.addAttribute("threeScore", reviewService.get3scoreReview());
 		return "all_Hospital/hospitals";
 	}
 
@@ -101,8 +128,9 @@ public class HospitalController {
 		String personId = (String) session.getAttribute("personId");
 		review.setPersonId(personId);
 		review.setHid(hid);
+		System.out.println(hid);
 		reviewService.addreview(review);
-		
+		hospitalService.gethosptialByhId(hid);
 		return "redirect:/hospitals/hospital?hid="+hid;
 	}
 //	리뷰수정
@@ -180,6 +208,7 @@ public class HospitalController {
 	public String deletebook(@RequestParam("bid") String bid,HttpSession session) 
 	{
 		String personId = (String) session.getAttribute("personId");
+		System.out.println("=================================="+bid);
 		bookingService.deletebook(bid);
 		return "redirect:/hospitals/mybookList?personId="+personId;
 	}

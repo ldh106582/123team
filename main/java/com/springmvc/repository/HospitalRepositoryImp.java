@@ -34,10 +34,33 @@ public class HospitalRepositoryImp implements HospitalRepository{
 	 }
 	 
 	@Override
-	public List<Hospital> getAllhospitals() {
+	public List<Hospital> getAllhospitals(int page) {
+		int limit = 3;
+		int start = (page - 1) * limit;
+		int index = start + 1;
+		
+		if(page == 1) 
+		{
+			
+			String SQL = "Select * from hospital limit 3";
+			List<Hospital> list = template.query(SQL, new HospitalRowMapper());
+			return list;		
+		}
+		else 
+		{
+			String SQL = "select * from hospital limit ? , ?";
+			List<Hospital> list = template.query(SQL, new Object[] {start, index} ,new HospitalRowMapper());
+			return list;	
+		}
+		
+	}
+
+	@Override
+	public List<Hospital> getCount() {
 		String SQL = "Select * from hospital";
-		List<Hospital> list = template.query(SQL, new HospitalRowMapper());
-		return list;
+		List<Hospital> listOfCount = template.query(SQL, new HospitalRowMapper());
+
+		return listOfCount;
 	}
 
 	@Override
@@ -53,17 +76,24 @@ public class HospitalRepositoryImp implements HospitalRepository{
 		}
 		return hospital;
 	}
+	
 	String client_id = "peaxg064t9";
 	 String client_secret ="8cU8yVtzZkXZkvHrHNryQCuOH3c1IWU626zy4pYi";
 	 
 	 
 	@Override
 	public void addhospital(Hospital hospital, String realpath) {
-		String SQL = "insert into hospital values(?,?,?,?,?,?,?,?,?,?,?)";
+		String SQL = "insert into hospital values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		String hid =getHid();
 		String[] xy = getxy(hospital, realpath, hid);
 		System.out.println("x값"+xy[0]+" y값"+xy[1]);
-		template.update(SQL,hospital.getName(),hospital.getAddr(),hospital.getNumber(),hospital.getRuntime(),hid,hospital.getParking(),hospital.getDescription(),hospital.getPersonId(),hospital.getImage(),xy[0],xy[1]);
+		String SQL2 = "select avg(reviewScore) from HospitalReview where hid='"+hid+"'";
+		Double avg = template.queryForObject(SQL2, Double.class);
+		
+		String SQL3 = "select count(*) from HospitalReview where hid='"+hid+"'";
+		float count = template.queryForObject(SQL3, int.class);
+		template.update(SQL,hospital.getName(),hospital.getAddr(),hospital.getNumber(),hospital.getRuntime(),hid,hospital.getParking(),hospital.getDescription(),hospital.getPersonId(),hospital.getImage(),xy[0],xy[1],avg,count);
+		
 
 	}
 

@@ -103,6 +103,7 @@ public class ENBoardRepositoryImpl implements ENBoardRepository{
 	public void addbook(EApplication application,String personId) {
 		String SQL = "insert into EApllication values(?,?,?,?,?,?,?,?,?)";
 		template.update(SQL,application.getExperience(),application.getAnimal(),application.getRegistDay(),"처리중",personId,application.getTitle(),CreateEId(),application.getMid(),application.getBoardId(),"before");
+
 	}
 	
 //	체험단Id 생성

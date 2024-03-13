@@ -28,19 +28,19 @@
                               <div class="brand-logo">
                                   <img src="resources/images/logo.jpg" alt="logo">
                               </div>
-                              <h1 class="col-md-12 text-center mb-5" style="color: rgb(140, 58, 179);">병원 정보 수정</h1>
-                           		<form:form modelAttribute="hospital"method="POST" enctype="multipart/form-data">
+                              <p class="card-title">병원정보 수정</p>
+                           		<form:form modelAttribute="hospital" method="POST" enctype="multipart/form-data">
                                   <div class="form-group">
                                      <label for="exampleInputUsername1">병원명</label>
                                       <form:input class="form-control form-control-lg" type="text" path="name" value="${hospital.name}" />
                                   </div>
                                   <div class="form-group">
                                      <label for="exampleInputUsername1">병원주소</label>
-                                      <form:input class="form-control form-control-lg" type="password" path="addr"  value="${hospital.addr}" />
+                                      <form:input class="form-control form-control-lg" type="text" path="addr"  value="${hospital.addr}" />
                                   </div>
                                   <div class="form-group">
                                      <label for="exampleInputUsername1">진료시간</label>
-                                      <form:input class="form-control form-control-lg" type="email" path="runtime" value="${hospital.runtime}"/>
+                                      <form:input class="form-control form-control-lg" type="registDay" path="runtime" value="${hospital.runtime}"/>
                                   </div>
                                   <div class="form-group">
                                      <label for="exampleInputUsername1">전화번호</label>
@@ -62,7 +62,7 @@
                                     </div>
                                  </div>
                                   <div class="mt-3">
-                                      <input type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" value="회원가입" />
+                                      <input type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" value="병원정보수정" />
                                   </div>
                               </form:form>
                           </div>

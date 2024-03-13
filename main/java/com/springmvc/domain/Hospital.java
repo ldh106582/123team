@@ -13,7 +13,24 @@ public class Hospital {
 	String personId; //병원관리자 ID
 	String x;
 	String y;
+	float  reviewScore;
+	int reviewCount;
 	
+	public float getReviewScore() {
+		return reviewScore;
+	}
+
+	public void setReviewScore(float reviewScore) {
+		this.reviewScore = reviewScore;
+	}
+
+	public int getReviewCount() {
+		return reviewCount;
+	}
+
+	public void setReviewCount(int reviewCount) {
+		this.reviewCount = reviewCount;
+	}
 
 	public String getX() {
 		return x;

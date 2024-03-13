@@ -60,6 +60,7 @@
 							</div>
 							<div class="text-center mt-4 font-weight-light">
 								<a href="./login/Allmember" class="text-primary">회원가입</a>
+							</div>
 						</form:form>
 					</div>
 				</div>
@@ -67,14 +68,8 @@
 		</div>
     </div>
 
-          
-        <!-- partial -->
-      </div>
-      <!-- main-panel ends -->
-    </div>   
-    <!-- page-body-wrapper ends -->
-  </div>
-  <!-- container-scroller -->
+     
+  	<%@  include file="./module/footer.jsp" %>
 <%--  
 	<div class="jumbotron">
 		<div class="container">
@@ -112,8 +107,9 @@
 	</div>
  --%>
 
-	<%@  include file="./module/footer.jsp" %>
+
 </body>
 <!-- js -->
 <script src="./resources/js/Login.js"></script>
 </html>
+<!-- 2024-03-12 -->

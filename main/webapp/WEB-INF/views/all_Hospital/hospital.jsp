@@ -1,3 +1,5 @@
+<%@page import="com.springmvc.domain.Pet"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -12,7 +14,9 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
-    <title>병원 상세보기 페이지</title>
+
+<title>병원 상세보기 페이지</title>
+
 </head>
 <body>
 	<%
@@ -20,127 +24,193 @@
 	request.setAttribute("checktype", "h");
 
 	%>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="./resources/js/refreshing.js"></script>
 	<div id="header">
 		<%@  include file="../module/header.jsp" %>
 	</div>
-    <div class="container-fluid page-body-wrapper">
-			<%@  include file="../module/leftheader.jsp"%>
-		<div class="content-wrapper"> <!-- ddd -->
-			<div class="row no-gutters">
-				<div class="show-gird col-md-12 row no-gutters">
-					<div class="col-md-6">
-						<c:choose>
-							<c:when test="${not empty hospital.image}">
-								<img class="col-md-12"
-									src="<c:url value='/resources/images/${hospital.image}'/>"
-									height="200" width="150" alt="병원이미지">
-							</c:when>
-							<c:otherwise>
-								<img class="col-md-12"
-									src="https://i.ibb.co/gdq8PKg/pexels-tom-fisk-1692693.jpg"
-									alt="병원이미지" height="250" width="150" border="0">
-							</c:otherwise>
-						</c:choose>
-					</div>
-					<div class="col-md-6  no-gutters ">
-						<h4 class="mt-5 col-md-12 ">병원명 : ${hospital.name}</h4>
-						<p class="col-md-12">병원주소 : ${hospital.addr}</p>
-						<p class="col-md-12">진료시간 : ${hospital.runtime}</p>
-						<p class="col-md-12">전화번호 : ${hospital.number}</p>
-						<p class="col-md-12">주차정보 : ${hospital.parking}</p>
-					</div>
-				</div>
-	
-				<div class="col-md-12 no-gutters row mt-2" style="display: flex;">
-					
-					<div class="col-md-4 mt-2 text-center">
-						<p id="review" style="font-size: 20px;">리뷰보기</p>
-					</div>
-						<a class="col-md-4 text-center mt-1" href="/123team/hospitals/addbook?hid=${hospital.hid}" style="font-size: 20px;">예약하기</a>
-				</div>
-			</div>
+<div class="container-fluid page-body-wrapper">
+    <%@ include file="../module/leftheader.jsp"%>
+    <div class="content-wrapper">
+        <div class="card mx-auto col-md-12" style="width: 80rem;">
+			<c:choose>
+			    <c:when test="${not empty hospital.image}">
+			        <img class="col-md-12 mt-2 rounded-lg"" src="/your-context-path/resources/images/${hospital.image}" height="200" width="150" alt="병원이미지">
+			    </c:when>
+			    <c:otherwise>
+			        <img class="col-md-12 mt-2 rounded-lg"
+                           src="https://i.ibb.co/gdq8PKg/pexels-tom-fisk-1692693.jpg"
+                           alt="병원이미지" height="200" width="150" border="0">
+			    </c:otherwise>
+			</c:choose>
 
-		<div class="col-md-12 row no-gutters show-gird mt-5">
-			<!--병원 지도이미지 가져오기-->
-			<div id="parkmap"  class="col-md-12 no-gutters">
-				<h2 class="col-md-12 no-gutters">지도 띄우기</h2>
-			<div id="map" style="width:100%;height:400px;"></div>
-					
-					<script type="text/javascript" src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpClientId=peaxg064t9"></script>
-					<script>
-					var hospital = new naver.maps.LatLng(${hospital.y}, ${hospital.x}),
-				    map = new naver.maps.Map('map', {
-				        center: hospital.destinationPoint(0, 500),
-				        zoom: 15
-				    }),
-				    marker = new naver.maps.Marker({
-				        map: map,
-				        position: hospital
-				    });
-					var contentString = [
-				        '<div class="iw_inner">',
-				        '   <h3>${hospital.name}',
-				        '   <p>${hospital.addr}<br />',
-				        '       <a href="hospital?hid=${hospital.hid}">상세보기</a>',
-				        '   </p>',
-				        '</div>'
-				    ].join('');
-	
-					var infowindow = new naver.maps.InfoWindow({
-					    content: contentString
-					});
-	
-					naver.maps.Event.addListener(marker, "click", function(e) {
-					    if (infowindow.getMap()) {
-					        infowindow.close();
-					    } else {
-					        infowindow.open(map, marker);
-					    }
-					});
-					infowindow.open(map, marker);
-					</script>
-			</div>
-			<c:forEach items="${reviews}" var="review">
-			<div id="reviewadd" class="col-md-6 mt-2">
-				<c:choose>
-					<c:when test="${not empty hospital.image}">
-						<img class="col-md-12"
-							src="<c:url value='/resources/images/${hospital.image}'/>"
-							height="200" width="150" alt="리뷰이미지">
-					</c:when>
-					<c:otherwise>
-						<img class="col-md-12"  src="https://i.ibb.co/wRMh3Nd/pexels-tranmautritam-2194261.jpg" height="300" width="300" alt="리뷰이미지" alt="pexels-tranmautritam-2194261" border="0">
-					</c:otherwise>
-				</c:choose>
-			</div>
-			
-			<div id="reviewadd1" class="col-md-6 no-gutters" style="margin: 0 auto">
-				<h5 class="mt-4">제목 : ${review.title}</h5>
-				<p>리뷰 점수 : ${review.reviewScore}
-				<p>내용 : ${review.context}
-				<p>등록일 : ${review.registDay}
-					<!-- 이부분 재확인 필요 -->
-				<div class="col-md-12">
-					<c:choose>
-						<c:when test="${loginId != null}">
-							<a href="addreview?hid=${hospital.hid}" style="font-size: 20px;">리뷰작성</a>
-						</c:when>
-					</c:choose>
-					
-					<c:if test="${loginId ==  review.personId}">
-						<a href="editreview?reviewId=${review.reviewId}">리뷰수정</a> || 
-						<a href="deletereview?reviewId=${review.reviewId}">리뷰삭제</a>
-					</c:if>
-					</c:forEach>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
+            <div class="card-body col-md-12">
+                <h5 class="card-title col-md-12 p-0" style="font-size: 2vw;">${hospital.name}</h5>
+                <p class="card-text" style="font-size: 1vw;"> ${hospital.description}</p>
+                <p class="card-text" style="font-size: 1vw;">${hospital.runtime}</p>
+                <p class="card-text" style="font-size: 1vw;">${hospital.number}</p>
+                <p class="card-text" style="font-size: 1vw;"> ${hospital.addr}</p>
+                
+	          <div class="col-md-12 row">
+	            <div class="col-md-6 row "> 
+			<%
+				List<Pet> petlist = (List<Pet>) session.getAttribute("petName");
+			            request.setAttribute("petlist", petlist);
+			%>
+				  <c:if test="${loginId !=  hospital.personId && loginId != null && petlist != null}">
+	              	<a href="addbook?hid=${hospital.hid}" class="btn btn-primary ">예약하기</a>
+	              </c:if>
+	              </div>
+	              <c:if test="${loginId ==  hospital.personId}">
+	                <div class="row d-flex justify-content-end col-md-6">
+	                  <a class="btn btn-outline-success mr-2" href="update?hid=${hospital.hid}">병원수정</a>
+	                  <a class="btn btn-outline-danger" href="delete?hid=${hospital.hid}">병원삭제</a>
+	                </div>
+	             </c:if>
+	           </div> 
+                
+                
 
-<%@  include file="../module/footer.jsp" %>
+                
+             	<div class="col-md-12 mt-5 p-0 row" style="justify-content: center;">
+             	   <div class="col-md-12 row" >
+             	   	  <h3 class="col-md-12 p-0">병원 리뷰</h3>
+             	   	  리뷰평점 : ${hospital.reviewScore }
+             	   	  리뷰수 : ${hospital.reviewCount }
+              	   	  <c:if test="${loginId ==  hospital.personId}">
+	                    <div class="p-0 col-md-12 mt-3">
+	                    	<a class="btn btn-outline-info  btn-sm mt-2" href="addreview?hid=${hospital.hid}">리뷰작성</a>
+	                    </div>
+                		</c:if>
+                      <c:forEach items="${reviews}" var="review">
+
+                        <%
+                            int i = 0;
+                        if(i%2==0){
+                        %>
+
+                        <div class="col-md-6 p-0 ">
+							<div class="review1 card mb-3" style="max-width: 540px;">
+					          	<div class="row no-gutters form-group">
+					          		<div class="col-md-4">	
+						                <c:choose>
+						                  <c:when test="${not empty review.reviewImage}">
+						                    <img class="col-md-12 rounded-lg" src="<c:url value='/resources/images/${review.reviewImage}'/>" height="120"  alt="리뷰이미지">
+						                  </c:when>
+						                  <c:otherwise>
+						                    <img class="col-md-12  rounded-lg" src="https://i.ibb.co/wyMqmJp/pexels-980859.jpg" alt="리뷰이미지" border="0" alt="리뷰이미지" height="160" border="0">
+						                  </c:otherwise>
+						                </c:choose>
+					             	</div>
+					             	<div class="col-md-8">
+						                <div class="card-body ">
+						                  <h5 class="card-title">${review.title}</h5>
+						                  <p class="card-text">${review.context}</p>
+						                  <p class="card-text">${review.registDay}</p>
+						                  <p class="card-text text-muted"> ${review.reviewScore}</p>
+						                </div>
+						                <div class="col-md-12 px-0">
+						                  <c:if test="${loginId ==  review.personId}">
+						                    <a class="btn btn-outline-info btn-sm mr-1" href="editreview?reviewId=${review.reviewId}">리뷰수정</a> 
+						                    <a class="btn btn-outline-info btn-sm mr-1" href="deletereview?reviewId=${review.reviewId}">리뷰삭제</a>
+						                  </c:if>
+		                               </div>
+		                            </div>
+                             	 </div>
+                               </div>
+							</div>
+							
+	                       <%
+	                        }else {
+	                        %>
+	                        <div class="col-md-6 p-0">
+								<div class="review1 card mb-3" style="max-width: 540px;">
+						          	<div class="row no-gutters form-group">
+						          		<div class="col-md-4">	
+							                <c:choose>
+							                  <c:when test="${not empty review.reviewImage}">
+							                    <img class="col-md-12 rounded-lg" src="<c:url value='/resources/images/${review.reviewImage}'/>" height="120"  alt="리뷰이미지">
+							                  </c:when>
+							                  <c:otherwise>
+							                    <img class="col-md-12  rounded-lg" src="https://i.ibb.co/wyMqmJp/pexels-980859.jpg" alt="리뷰이미지" border="0" alt="리뷰이미지" height="160" border="0">
+							                  </c:otherwise>
+							                </c:choose>
+						             	</div>
+						             	<div class="col-md-8">
+							                <div class="card-body ">
+							                  <h5 class="card-title">${review.title}</h5>
+							                  <p class="card-text">${review.context}</p>
+							                  <p class="card-text">${review.registDay}</p>
+							                  <p class="card-text text-muted"> ${review.reviewScore}</p>
+							                </div>
+							                <div class="col-md-12 px-0">
+							                  <c:if test="${loginId ==  review.personId}">
+							                    <a class="btn btn-outline-info btn-sm mr-1" href="editreview?reviewId=${review.reviewId}">리뷰수정</a> 
+							                    <a class="btn btn-outline-info btn-sm mr-1" href="deletereview?reviewId=${review.reviewId}">리뷰삭제</a>
+							                  </c:if>
+			                               </div>
+			                            </div>
+	                             	 </div>
+	                               </div>
+								</div>
+	                        <%
+	                        i++;
+	                        }
+	                        %>
+                           </c:forEach>
+	                        <div class="text-center col-md-12">
+			           			<a href="">1</a>
+			        		</div>
+	        				<div class="col-md-12 row no-gutters show-gird mt-5">
+							<!--병원 지도이미지 가져오기-->
+								<div id="parkmap"  class="col-md-12 no-gutters">
+									<h3 class="col-md-12 no-gutters">지도 띄우기</h3>
+									<div id="map" style="width:100%;height:400px;">
+										${hospital.y}, ${hospital.x}
+				        			</div>
+				        			<script type="text/javascript" src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpClientId=peaxg064t9"></script>
+									<script>
+										var hospital = new naver.maps.LatLng(${hospital.y}, ${hospital.x}),
+									    map = new naver.maps.Map('map', {
+									        center: hospital.destinationPoint(0, 500),
+									        zoom: 15
+									    }),
+									    marker = new naver.maps.Marker({
+									        map: map,
+									        position: hospital
+									    });
+										var contentString = [
+									        '<div class="iw_inner">',
+									        '   <h3>${hospital.name}',
+									        '   <p>${hospital.addr}<br />',
+									        '       <a href="hospital?hid=${hospital.hid}">상세보기</a>',
+									        '   </p>',
+									        '</div>'
+									    ].join('');
+								
+										var infowindow = new naver.maps.InfoWindow({
+										    content: contentString
+										});
+								
+										naver.maps.Event.addListener(marker, "click", function(e) {
+										    if (infowindow.getMap()) {
+										        infowindow.close();
+										    } else {
+										        infowindow.open(map, marker);
+										    }
+										});
+										infowindow.open(map, marker);
+										</script>
+									</div>
+				            	</div>
+	                     	</div>
+			           </div>
+	             	</div>
+		 		</div>
+			</div>
+	    </div>
+	 <%@  include file="../module/footer.jsp" %>
+
 	<%-- 
 <c:if test="${loginId ==  hospital.personId}">
 
@@ -250,5 +320,5 @@
  --%>
 
 </body>
-<script src="../resources/js/hospital.js"></script>
+
 </html>

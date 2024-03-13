@@ -78,10 +78,14 @@ public class ShoppingCartController {
 		System.out.println("allprice : " + allprice);
 		model.addAttribute("allprice", allprice);
 		
-		if(shoppingCart.isEmpty()) {
+		if(shoppingCart.isEmpty()) 
+		{
 			System.out.println("값이 존재하지 않습니다.");
+			request.setAttribute("notThing", "값이 존재하지 않습니다." );
 		return "all_product/shoppingcart";
-		} else {
+		} 
+		else 
+		{
 			System.out.println(shoppingCart.get(0).getAmount());
 			// 장바구니를 model에 담음 view에 보여주기 위함
 			model.addAttribute("shoppingCart", shoppingCart);

@@ -17,6 +17,7 @@
 <div id="header">
 		<%@  include file="../module/header.jsp" %>
 	</div>
+
 		<div class="container-fluid page-body-wrapper">
 	 		<%@  include file="../module/leftheader.jsp" %>
 		 		<div class="content-wrapper">

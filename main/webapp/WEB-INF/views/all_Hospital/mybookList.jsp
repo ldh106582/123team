@@ -73,8 +73,7 @@ function cancelForm() {
     <div class="container-fluid page-body-wrapper">
       
      <%@  include file="../module/leftheader.jsp" %>
-      <!-- partial -->
-      <!-- partial:partials/_sidebar.html -->
+
   <c:set var="petId" value="${app.petId}" />
      
         <div class="content-wrapper">
@@ -82,7 +81,7 @@ function cancelForm() {
                <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
-                            <h1 class="col-md-12 text-center mb-5" style="color: rgb(140, 58, 179);">예약자 정보 확인</h1>
+                            <h1 class="col-md-12 card-title">예약자 정보 확인</h1>
                             <div class="row">
                                 <div class="col-12">
                                     <div class="table-responsive">
@@ -117,44 +116,46 @@ function cancelForm() {
                                                         </thead>
 																			
                                                         <tr>
-                                                        <c:forEach items="${applists}" var="app">
+                                                        <c:forEach items="${booklist}" var="booklist">
                                                             <td class="text-center m-0">    
                                                                 
-                                                                <p class="useid m-0">${ book.biD }</p>
+                                                                <p class="useid m-0">${ booklist.bid }</p>
                                                             </td>
                                                         
                                                         <td class="text-center">
-                                                            ${book.hospitalName}
+                                                            ${booklist.hospitalName}<a href="deletebook?bid=${booklist.bid}">예약취소</a>
                                                         </td>
                                                         
                                                         <td class="text-center">
-                                                            ${book.registDay}
+                                                            ${booklist.registDay}
                                                         </td>
                                                         
                                                         <td class="text-center">
-                                                            ${book.context}
+                                                            ${booklist.context}
                                                         </td>
-
+														
 
                                                         <td class="text-center">
-                                                            <button onclick="changed('${book.bid}','${book.registDay}')" id="addp${book.bid}" class="btn btn-danger" style="margin: 0% 6.5% 0% 0% ;">날짜 변경</button>
+                                                            <button onclick="changed('${booklist.bid}','${booklist.registDay}')" id="addp${booklist.bid}" class="btn btn-danger" style="margin: 0% 6.5% 0% 0% ;">날짜 변경</button>
                                                         </td>
-
+         							 					
                                                         </c:forEach>                                                   
-                                                        <% 
-                                                            String petId = (String)pageContext.getAttribute("petId");
+                                                         <% 
+                                                            /*String petId = (String)pageContext.getAttribute("petId");
                                                             String[] petnamelist = petId.split(",");
                                                             for(int i=0;i<petnamelist.length;i++)
                                                             {
-                                                                request.setAttribute("pet", petnamelist[i]);
-                                                        %>
+                                                                request.setAttribute("pet", petnamelist[i]);*/
+                                                        %> 
+                                                        <c:forEach items="${petlist}" var="petlist">
 
                                                         <td class="text-center">
-                                                            <a href="/123team/login/petcard?petid=${pet}">${book.petId}</a>   
+                                                            <a href="/123team/login/petcard?petid=${petId}">${petlist.petId}</a>   
                                                         </td>
-
+                                                        
+ 														  </c:forEach>  
                                                         <%
-                                                            }
+                                                           // }
                                                         %>
                                                         </tr>
                                                     </table>
@@ -172,7 +173,7 @@ function cancelForm() {
             </div>
         </div>
     </div>
-          
+
 <%@  include file="../module/footer.jsp" %>
 <%-- 	
 	<a href="/123team/hospitals">병원목록으로 돌아가기</a>

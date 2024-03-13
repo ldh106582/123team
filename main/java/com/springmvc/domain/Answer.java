@@ -4,7 +4,7 @@ public class Answer {
 	String name; // 작성자 이름
 	String context; // 댓글내용
 	String registday; // 작성일
-	
+
 	public Answer() {
 		// TODO Auto-generated constructor stub
 	}
