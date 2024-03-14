@@ -28,4 +28,9 @@ public class QnAServiceImp implements QnAService{
 	public void updateQnA(QnA QnA , String QnAId) {
 		QnARepository.updateQnA(QnA,QnAId);
 	}
+	@Override
+	public void deleteQnA(String QnAId) {
+		QnARepository.deleteQnA(QnAId);
+		
+	}
 }

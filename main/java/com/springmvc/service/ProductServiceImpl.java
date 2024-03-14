@@ -91,6 +91,42 @@ public class ProductServiceImpl implements ProductService{
 		return productRepository.getProductByName(context);
 		
 	}
+
+	@Override
+	public long getSales(String personId) {
+		// TODO Auto-generated method stub
+		return productRepository.getSales(personId);
+	}
+
+	@Override
+	public int getOrders(String personId) {
+		// TODO Auto-generated method stub
+		return productRepository.getOrders(personId);
+	}
+
+	@Override
+	public int getNumOfProduct(String personId) {
+		// TODO Auto-generated method stub
+		return productRepository.getNumOfProduct(personId);
+	}
+
+	@Override
+	public List<Order> getPermissionList(String personId) {
+		// TODO Auto-generated method stub
+		return productRepository.getPermissionList(personId);
+	}
+
+	@Override
+	public void setdecission(String dec, String num) {
+		// TODO Auto-generated method stub
+		productRepository.setdecission(dec,num);
+	}
+
+	@Override
+	public List<Order> getorderList(String personId) {
+		// TODO Auto-generated method stub
+		return productRepository.getorderList(personId);
+	}
 	
 	
 	

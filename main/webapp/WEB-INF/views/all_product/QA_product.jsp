@@ -32,13 +32,21 @@
                         </div>
                         <div class="col-md-12 p-0 mb-3">
                             <h4 class=" col-md-12 p-0" style="color: rgb(140, 58, 179);">사진첨부</h4>
+<<<<<<< HEAD
+                            <input type="file" class="col-md-12 p-1  form-control form-control-lg " name="s_image" />
+=======
                             <input type="file" class="col-md-12 p-1  form-control form-control-lg " name="s_file" />
+>>>>>>> origin/hanui
                         </div>
                       <div class="col-md-12 mt-3 p-0">
                           <input class="btn btn col-md-12 p-2" type="submit" value="질문하기" style="background-color: blueviolet; color: white;">
                       </div>
                       <input type="hidden" name="productId" value="${productId}"/>
                       <input type="hidden" name="personId" value="${personId}"/>
+<<<<<<< HEAD
+					  <input type="hidden" name="s_image"/>
+=======
+>>>>>>> origin/hanui
                   </form:form>
               </div>
             </div>

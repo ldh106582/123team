@@ -180,5 +180,34 @@ public class ProductController {
 		
 		return "redirect:/products/product?productId=" + productId;
 	}
-	
+
+//	상품관리자 페이지
+	@GetMapping("manager")
+	public String managerpage(Model model, HttpSession session,HttpServletRequest request) {
+		String personId = (String) session.getAttribute("personId");
+		
+		model.addAttribute("sales", productService.getSales(personId));
+		model.addAttribute("orders", productService.getOrders(personId));
+		model.addAttribute("numofproduct", productService.getNumOfProduct(personId));
+		List<Order> list = productService.getPermissionList(personId);
+		if(list.isEmpty()) {
+			request.setAttribute("nothing", "주문목록이 없어요ㅠ");
+		}
+		model.addAttribute("permissionlist", list);
+		return "/member/ProductManagerPage";
+	}
+	@GetMapping("permit")
+	public String permit(@RequestParam("dec")String dec,@RequestParam("num")String num){
+		System.out.println("도착");
+		productService.setdecission(dec,num);
+		return "redirect:/products/manager";
+	}
+	@GetMapping("myorderList")
+	public String getorderList(HttpSession session,Model model) {
+		String personId = (String) session.getAttribute("personId");
+		model.addAttribute("mylist",productService.getorderList(personId));
+		
+		System.out.println(productService.getorderList(personId).get(0).getState());
+		return "/all_product/myOderList";
+	}
 }

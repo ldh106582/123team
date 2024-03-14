@@ -30,4 +30,19 @@ public class AjaxServiceImpl implements AjaxService {
 		return false;
 	}
   }
+	// hospital manager 아이디 확인하는 함수
+	@Override
+	public boolean h_managerId(String userId) 
+	{
+		if(ajaxRepository.h_managerId(userId))
+		{
+			return true;
+		}
+		else 
+		{
+			return false;			
+		}
+	}
+	
+	
 }

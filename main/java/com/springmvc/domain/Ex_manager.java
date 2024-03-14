@@ -17,6 +17,7 @@ public class Ex_manager {
 	   private String ex_Address;
 	   private String ex_Phone;
 	   private String s_image; // 사업자등록증
+	   private String c_image; // 프로필사진
 	   private String type;
 	public Ex_manager() {
 		super();
@@ -100,6 +101,12 @@ public class Ex_manager {
 	}
 	public void setPersonSex(String personSex) {
 		this.personSex = personSex;
+	}
+	public String getC_image() {
+		return c_image;
+	}
+	public void setC_image(String c_image) {
+		this.c_image = c_image;
 	}
 	
 	

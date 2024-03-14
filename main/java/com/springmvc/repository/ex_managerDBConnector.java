@@ -17,6 +17,7 @@ public class ex_managerDBConnector implements RowMapper<Ex_manager>{
 		ex_manager.setEx_Phone(rs.getString("ex_Phone"));
 		ex_manager.setEx_Address(rs.getString("ex_Address"));
 		ex_manager.setS_image(rs.getString("s_image"));
+		ex_manager.setC_image(rs.getString("c_image"));
 		ex_manager.setType(rs.getString("type"));
 		return ex_manager;
 	}

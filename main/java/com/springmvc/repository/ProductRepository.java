@@ -34,4 +34,16 @@ public interface ProductRepository {
 	void setdeleteReview(int reviewId);
 
 	List<Product> getProductByName(String context);
+
+	long getSales(String personId);
+
+	int getOrders(String personId);
+
+	int getNumOfProduct(String personId);
+
+	List<Order> getPermissionList(String personId);
+
+	void setdecission(String dec, String num);
+
+	List<Order> getorderList(String personId);
 }
