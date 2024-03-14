@@ -69,6 +69,21 @@ public class AjaxRepositoryImpl implements AjaxRepository{
 			return true;			
 		}
 	}
-	
+	// 체험단 manager 아이디 확인하는 함수
+	@Override
+	public boolean Ex_mangerId(String userId) 
+	{
+		String SQL = "select count(*) from person where PersonId = ?";
+		int id =template.queryForObject(SQL, Integer.class, userId);
+		
+		if("1".equals(id) || 1 == id) 
+		{
+			return false;
+		}
+		else 
+		{
+			return true;	
+		}
+	}
 	
 }

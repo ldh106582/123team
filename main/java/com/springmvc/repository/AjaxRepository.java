@@ -10,4 +10,8 @@ public interface AjaxRepository {
 	
 	// hospital manager 아이디 확인하는 함수
 	boolean h_managerId(String userId);
+	
+	// 체험단 manager 아이디 확인하는 함수
+	boolean Ex_mangerId(String userId);
+
 }

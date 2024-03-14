@@ -31,18 +31,12 @@
 		     				<form:form modelAttribute="productMember" action="./productmanager?${ _csrf.parameterName }=${ _csrf.token }" method="post" enctype="multipart/form-data">
 		                     <input type="hidden" name="personAddress" id="fullAddr">
 		                     <input type="hidden" name="companyAddress" id="h_fullAddr">
-<<<<<<< HEAD
 		                     <input type="hidden" name="s_file" >
 		                     <input type="hidden" name="c_file" >
 		                          
 		                        <div class="form-group d-flex">
 		                        	<form:input id="personId" class="form-control form-control-lg col-md-8" type="text" path="personId" placeholder="아이디" />
-=======
-		                          <input type="hidden" name="s_file" >
-		                          
-		                        <div class="form-group d-flex">
-		                        <form:input id="personId" class="form-control form-control-lg col-md-8" type="text" path="personId" placeholder="아이디" />
->>>>>>> origin/hanui
+		                          	<input type="hidden" name="s_file" >
 									<a id="userId" onclick="idDuplicateCheck(event)" class="btn btn-outline-primary col-md-3 auth-form-btn text-center ml-2">중복확인</a>
 		                        </div>
 		                        <div class="form-group">
@@ -116,12 +110,7 @@
 			                    <div class="form-group">
 			                      <label>사업자 등록증</label>
 			                      <div class="input-group col-xs-12">
-<<<<<<< HEAD
 			                      	<input type="file" name="s_file" class="form-control file-upload-info">
-=======
-			                      	<input type="file" name="s_file" class="file-upload-default">
-			                        <input type="file" class="form-control file-upload-info" placeholder="Upload Image" required>
->>>>>>> origin/hanui
 			                       </div>
 			                    </div>
 		                        <div class="mt-3">

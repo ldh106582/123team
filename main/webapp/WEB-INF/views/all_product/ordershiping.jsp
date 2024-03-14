@@ -36,7 +36,7 @@
 	  %>
      <div class="content-wrapper d-flex align-items-center auth px-0">
         <div class="row w-100 mx-0">
-           <div class="col-lg-6 mx-auto">
+           <div class="col-lg-8 mx-auto">
                 <div class="auth-form-light text-left py-5 px-4 px-sm-5">
                     <div class="content-wrapper">
                         <div class="col-12 grid-margin stretch-card">
@@ -47,7 +47,8 @@
                                     <input type="hidden" name="personId" value="${person.personId }"/>
                                     <input type="hidden" name="personName" value="${person.personName}"/> <!-- 이름 -->
                                     <input type="hidden" name="personPhone" value="${person.personPhone}"/> <!-- 연락처 -->
-                                    <input type="hidden" name="personAddress" value="${person.personAddress}"/> <!-- 주소 -->
+                                    <input type="hidden" name="addr" id="fullAddr"/> <!-- 주소 -->
+                                    
                                     <div class="form-group">
                                         <h4 class="col-md-12 p-0" style="color: rgb(140, 58, 179);">성명 </h4>  
                                         <input class="form-control form-control-lg" type="text" value="${person.personName}"/>
@@ -64,13 +65,20 @@
                                         <h4 class="col-md-12 p-0" style="color: rgb(140, 58, 179);">배송예정 </h4>  
                                         <input type="text" class="form-control form-control-lg" value="<%= newDate %>" />
                                     </div>
-                                    <div class="form-group">
-                                        <h4 class="col-md-12 p-0" style="color: rgb(140, 58, 179);">배송지 </h4>  
-                                        <input type="text" class="form-control form-control-lg"  value="${person.personAddress}" />
-                                    </div>
+									<div class="form-group show-grid r d-flex">
+										<input type="text" id="post" class="form-control form-control-lg col-md-8 mr-3" placeholder="우편번호">
+										<input type="button" onclick="execDaumPostcode()" value="우편번호" class="btn btn-outline-primary col-md-3 font-weight-medium auth-form-btn text-center">
+									</div>	
+									<div class="form-group">
+										<input type="text" id="roadAddress" class="form-control form-control-lg col-md-12" placeholder="도로명주소">
+									</div>	
+											
+									<div class="form-group">
+									<input type="text" id="detailAddress" class="form-control form-control-lg col-md-12" placeholder="상세주소">
+									</div>
 
                                     <div class="mt-3">
-                                        <input type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn mt-3" value="주문완료"/>
+                                        <input onclick="combineAddr()" type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn mt-3" value="주문완료"/>
                                     </div>
                                     </form>
                                  </div>
@@ -97,8 +105,8 @@
         <form action="/123team/orders/o_complete" class="form-horizontal" method="post">
         <input type="hidden" name="personId" value="${person.personId }"/>
         <input type="hidden" name="personName" value="${person.personName}"/> <!-- 이름 -->
-        <input type="hidden" name="personPhone" value="${person.personPhone}"/> <!-- 연락처 -->
-        <input type="hidden" name="personAddress" value="${person.personAddress}"/> <!-- 주소 -->
+    <!--    <input type="hidden" name="personPhone" value="${person.personPhone}"/> 연락처 
+        <input type="hidden" name="personAddress" value="${person.personAddress}"/> <!-- 주소 -
             <div class="form-group row">
                 <label class="col-sm-2"> <i class="fa-solid fa-user col-sm-1"></i> 성명</label>
                 <div class="col-sm-3">
@@ -143,4 +151,6 @@
 	  </div> -->
 	  
 </body>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="../resources/js/orderShippng.js"></script>
 </html>
