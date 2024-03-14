@@ -1,36 +1,35 @@
-var Idcheck = false;
+var IdCheck = false;
 
 function idDuplicateCheck(event){
 	event.preventDefault();
-	
-	var userId = document.getElementById("personId").value;
-	
-	if(userId === "" ){
-		alert("아이디 값을 입력해주세요");
-		return;
-	}
-	
-	$.ajax({
-		type: 'get',
-		url: '/123team/login/managerId?userId=' +  encodeURIComponent(userId),
-		contentType: 'apllication/json',
-		dataType: 'text',
-		success: function(result)
+
+var userId = document.getElementById("personId").value;
+
+if(userId === ""){
+	alert("아이디를 입력해주세요");
+	return;
+}
+
+$.ajax({
+	type: 'get',
+	url: '/123team/loign/h_ManagerId?userId=' + encodeURIComponent(userId),
+	contentType: 'application/json',
+	dataType: 'text',
+	success: function(result)
+	{
+		if(result == "true")
 		{
-			if(result == "true")
-			{
-				alert('사용할 수 있는 아이디입니다.');	
-			}
-			else
-			{
-				alert('이미 사용중인 아이디 입니다.');
-			}
-		},
-		 error: function(request, status, error )
-		 {
-			 console.log(request);
-		 }
-		
+				alert('사용 가능한 아이디입니다.');
+		}
+		else
+		{
+		alert('이미 사용중인 아이디입니다.');
+		}
+	},
+		error: function(request, status, error)
+		{
+			console.log(request);
+		}
 	});
 }
 
@@ -62,7 +61,7 @@ function execDaumPostcode() {
             // 우편번호와 주소 정보를 해당 필드에 넣는다.
             document.getElementById('post').value = data.zonecode;
             document.getElementById("roadAddress").value = roadAddr;
-            document.getElementById("jibunAddress").value = data.jibunAddress;
+            document.getElementById("detailAddress").value = data.jibunAddress;
             
             // 참고항목 문자열이 있을 경우 해당 필드에 넣는다.
             if(roadAddr !== ''){
@@ -90,6 +89,7 @@ function execDaumPostcode() {
     }).open();
 }
 
+//본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
 function h_execDaumPostcode() {
     new daum.Postcode({
         oncomplete: function(data) {
@@ -117,13 +117,13 @@ function h_execDaumPostcode() {
             // 우편번호와 주소 정보를 해당 필드에 넣는다.
             document.getElementById('h_post').value = data.zonecode;
             document.getElementById("h_roadAddress").value = roadAddr;
-            document.getElementById("h_jibunAddress").value = data.jibunAddress;
+            document.getElementById("h_detailAddress").value = data.jibunAddress;
             
             // 참고항목 문자열이 있을 경우 해당 필드에 넣는다.
             if(roadAddr !== ''){
-                document.getElementById("h_extraAddress").value = extraRoadAddr;
+                document.getElementById("extraAddress").value = extraRoadAddr;
             } else {
-                document.getElementById("h_extraAddress").value = '';
+                document.getElementById("extraAddress").value = '';
             }
 
             var guideTextBox = document.getElementById("guide");
@@ -152,7 +152,7 @@ function combineAddr(){
 	
 	var fullAddr = post + '' + roadAddress + '' + detailAddress;
 	
-	document.getElementById("fullAddr").value = fullAddr;
+	document.getElementById("fullAddress").value = fullAddr;
 	
 	var h_post = document.getElementById("h_post").value;
 	var h_roadAddress = document.getElementById("h_roadAddress").value;
@@ -160,5 +160,6 @@ function combineAddr(){
 	
 	var h_fullAddr = h_post + '' + h_roadAddress + '' + h_detailAddress;
 	
-	document.getElementById("h_fullAddr").value = h_fullAddr;
+	document.getElementById("h_fullAddress").value = h_fullAddr;
 }
+

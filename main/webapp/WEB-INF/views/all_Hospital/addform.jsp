@@ -25,9 +25,9 @@
             <div class="row w-100 mx-0">
                   <div class="col-lg-6 mx-auto">
                        <div class="auth-form-light text-left py-5 px-4 px-sm-5">
-                           <div class="brand-logo">
-                               <img src="resources/images/logo.jpg" alt="logo">
-                           </div>
+		                    <div class="card mb-2">
+		                        <p class="card-title"><b>병원 추가하기</b></p>
+		                    </div>
                         <form:form modelAttribute="hospital" method="POST" enctype="multipart/form-data">
                                <div class="form-group">
                                   <label for="exampleInputUsername1">병원명</label>

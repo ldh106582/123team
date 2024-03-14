@@ -43,6 +43,23 @@ public class AjaxController {
 		}
 	}
 	
+	// hospital manager 아이디 확인하는 함수
+	@GetMapping(value="/loign/h_ManagerId", produces="application/json")
+	@ResponseBody
+	public  String H_mangerId(@RequestParam("userId") String userId) {
+		System.out.println("hopital 아작스 도착");
+		
+		if(ajaxService.h_managerId(userId)) 
+		{
+			return "true";
+		}
+		else 
+		{
+			return "false";			
+		}
+
+	}
+	
 	// 로그인 성공 실패를 알려주는 함수
 	@PostMapping(value="/confirm", produces="application/json")
 	@ResponseBody

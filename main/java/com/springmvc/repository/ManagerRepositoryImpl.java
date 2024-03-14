@@ -33,7 +33,7 @@ public class ManagerRepositoryImpl implements ManagerRepository {
 	@Override
 	public void getaddProductManager(ProductMember productMember) 
 	{
-		String SQL = "insert into ProductMember(PersonId, PersonPw, PersonEmail, PersonAddress, PersonName, PersonBirth, PersonSex  ,PersonPhone, CompanyName, CompanyAddress, CompanyPhone, image, Type)" + "values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		String SQL = "insert into ProductMember(PersonId, PersonPw, PersonEmail, PersonAddress, PersonName, PersonBirth, PersonSex  ,PersonPhone, CompanyName, CompanyAddress, CompanyPhone, s_image, Type)" + "values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		template.update(SQL, new Object[] {productMember.getPersonId(), productMember.getPersonPw(), productMember.getPersonEmail(), productMember.getPersonAddress(),
 						productMember.getPersonName(), productMember.getPersonBirth(), productMember.getPersonSex() ,productMember.getPersonPhone(), productMember.getCompanyName(), productMember.getCompanyAddress(),
 						productMember.getCompanyPhone(), productMember.getS_image(), productMember.getType()});
@@ -43,9 +43,9 @@ public class ManagerRepositoryImpl implements ManagerRepository {
 	@Override
 	public void setAllMember(ProductMember productMember) 
 	{
-		String SQL = "insert into Person values(?,?,?,?,?,?,?,?,?)";
+		String SQL = "insert into Person values(?,?,?,?,?,?,?,?,?,?)";
 		template.update(SQL, productMember.getPersonId(), productMember.getPersonPw(), productMember.getPersonEmail(), productMember.getPersonAddress(),
-				productMember.getPersonName(), productMember.getPersonBirth(), productMember.getPersonSex(), productMember.getPersonPhone(), productMember.getType());
+				productMember.getPersonName(), productMember.getPersonBirth(), productMember.getPersonSex(), productMember.getPersonPhone(), productMember.getType(), productMember.getC_image());
 	}
 
 	@Override
@@ -162,18 +162,18 @@ public class ManagerRepositoryImpl implements ManagerRepository {
 	    // 전체 db에 데이터를 넣어주는 함수
 	   @Override
 	   public void H_setAllMember(HospitalMember hospitalMember) {
-	      String SQL = "insert into Person values(?,?,?,?,?,?,?,?,?)";
+	      String SQL = "insert into Person values(?,?,?,?,?,?,?,?,?,?)";
 	      template.update(SQL, hospitalMember.getPersonId(), hospitalMember.getPersonPw(), hospitalMember.getPersonEmail(), hospitalMember.getPersonAddress(),
-	            hospitalMember.getPersonName(), hospitalMember.getPersonBirth(), hospitalMember.getPersonSex(), hospitalMember.getPersonPhone(),hospitalMember.getType());
+	            hospitalMember.getPersonName(), hospitalMember.getPersonBirth(), hospitalMember.getPersonSex(), hospitalMember.getPersonPhone(),hospitalMember.getType(),hospitalMember.getImage());
 	   }
 
 
 	   // 체험단 manager 회원가입 하는 함수
 	@Override
 	public void addEx_Manager(Ex_manager ex_manager) {
-		 String SQL = "insert into Ex_Manager values(?,?,?,?,?,?,?)";
+		 String SQL = "insert into Ex_Manager values(?,?,?,?,?,?,?,?)";
 		 template.update(SQL,ex_manager.getPersonId(), ex_manager.getPersonPw(), ex_manager.getS_image(), ex_manager.getEx_Name(), ex_manager.getEx_Phone(),
-				 ex_manager.getEx_Address(), ex_manager.getType());
+				 ex_manager.getEx_Address(), ex_manager.getType() );
 		
 	}
 	 // 전체 db에 데이터를 넣어주는 함수

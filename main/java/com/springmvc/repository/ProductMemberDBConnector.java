@@ -22,6 +22,7 @@ public class ProductMemberDBConnector implements RowMapper<ProductMember>{
 	    productMember.setCompanyPhone(rs.getString("companyPhone"));
 	    productMember.setS_image(rs.getString("s_image"));
 	    productMember.setType(rs.getString("type"));
+	    productMember.setC_image(rs.getString("c_image"));
 	    return productMember;
 	}
 

@@ -21,11 +21,14 @@
             <div class="col-lg-6 mx-auto">
                 <div class="auth-form-light text-left py-5 px-4 px-sm-5">
                     <div class="brand-logo">
-                        <img src="resources/images/logo.jpg" alt="logo">
+                        <p class="card-title"><b>체험단 관리자 회원가입</b></p>
                     </div>
      				<form:form modelAttribute="ex_member" action="./productmanager?${ _csrf.parameterName }=${ _csrf.token }" method="post" enctype="multipart/form-data">
-                        <div class="form-group">
-                            <form:input class="form-control form-control-lg" type="text" path="personId"  placeholder="아이디" />
+                        <input type="hidden" name="c_file"/>
+                        <input type="hidden" name="s_file"/>
+                        <div class="form-group d-flex">
+                            <form:input id="personId" class="form-control form-control-lg col-md-8" type="text" path="personId"  placeholder="아이디" />
+                            <a id="userId" onclick="idDuplicateCheck(event)" class="btn btn-outline-primary col-md-3 auth-form-btn text-center ml-2">중복확인</a>
                         </div>
                         <div class="form-group">
                             <form:input class="form-control form-control-lg" type="password" path="personPw"  placeholder="비밀번호"/>
@@ -50,6 +53,12 @@
 				            <form:radiobutton path="personSex" value="여자" class="col-sm-1"/>여성
                         </div>
                         <div class="form-group">
+	                      <label>프로필 이미지</label>
+	                      <div class="input-group col-xs-12">
+	                        <input type="file" name="c_file" class="form-control file-upload-info">
+	                       </div>
+	                    </div>
+                        <div class="form-group">
                             <form:input class="form-control form-control-lg" type="text" path="ex_Name" placeholder="체험단 명"/>
                         </div>
                         <div class="form-group">
@@ -61,12 +70,11 @@
                         <div class="form-group">
 	                      <label>사업자 등록증</label>
 	                      <div class="input-group col-xs-12">
-	                      	<input type="file" name="s_file" class="file-upload-default">
-	                        <input type="file" class="form-control file-upload-info" placeholder="Upload Image">
+	                        <input type="file" name="s_file" class="form-control file-upload-info">
 	                       </div>
 	                    </div>
                         <div class="mt-3">
-                            <input type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" value="회원가입" />
+                            <input type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" id="storeAddr" onclick="combineAddr()"  value="회원가입" />
                         </div>
                     </form:form>
 		                </div>
@@ -180,40 +188,9 @@
     
     
 </body>
-<script>
-function idDuplicateCheck(event){
-	 event.preventDefault();
-	 
-	var userId = document.getElementById("userId").value;
-	console.log("userId");
-	
-	if(userId === "") {
-		alert("아이디를 입력해주세요");
-		return;
-	}
-	
-	$.ajax({
-		type: 'get',
-		url: '/123team/managerlogin',
-		contentType: 'application/json;',
-		dataType: 'text',
-		data: {
-			"userId":userId, 
-		},
-		success : function(result) {
-			if(result === "true"){
-			isIdCheck = true;
-			alert("사용 가능한 아이디 입니다.")
-			} else {
-				isIdCheck = false;
-				alert("이미 사용중인 아이디 입니다.")
-			}
-		},
-		error : function(request, status, error){
-			console.log(request);
-		}
-	});
-}
-</script>
+<!-- js -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="../resources/js/ex_manager.js"></script>
 
 </html>
