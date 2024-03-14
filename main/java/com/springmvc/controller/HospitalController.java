@@ -266,4 +266,18 @@ public class HospitalController {
 			model.addAttribute("hospitals",hospitallist);
 			return "all_Hospital/hospitals";
 		}
+//		병원관리자페이지
+		@GetMapping("manager")
+		public String hospitalMangerPage(Model model,HttpSession session) {
+			String personId = (String) session.getAttribute("personId");
+			int count = hospitalService.myhospitalList(personId);
+			List<HospitalBooking> todaybooklist = hospitalService.todaybookList(personId);
+			List<HospitalBooking> allbooklist = hospitalService.allbooklist(personId);
+			
+			model.addAttribute("count",count);
+			model.addAttribute("todaybooklist",todaybooklist);
+			model.addAttribute("allbooklist",allbooklist);
+			
+			return "member/HospitalManagerPage";
+		}
 }

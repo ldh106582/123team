@@ -9,6 +9,8 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 import javax.net.ssl.HttpsURLConnection;
@@ -23,6 +25,7 @@ import org.springframework.stereotype.Repository;
 
 import com.springmvc.domain.ENBoard;
 import com.springmvc.domain.Hospital;
+import com.springmvc.domain.HospitalBooking;
 
 @Repository
 public class HospitalRepositoryImp implements HospitalRepository{
@@ -180,6 +183,43 @@ public class HospitalRepositoryImp implements HospitalRepository{
 	    }
 
 		
+	}
+
+	@Override
+	public int myhospitalList(String personId) {
+		String SQL = "select count(*) from hospital where personId='"+personId+"'";
+		int num = template.queryForObject(SQL, Integer.class);
+		return num;
+	}
+
+	@Override
+	public List<HospitalBooking> todaybookList(String personId) {
+		String SQL = "select * from HApllication where mid='"+personId+"'";
+		List<HospitalBooking> list = template.query(SQL, new BookingRowMapper());
+		if(list.isEmpty()) {
+			return null;
+		}
+		List<HospitalBooking> newlist = null;
+		HospitalBooking booking = null;
+		String date = null;
+		String today = LocalDate.now().toString();
+		int count= 0;
+		for(int i=0;i<list.size();i++) {
+			booking=list.get(i);
+			date = booking.getRegistDay();
+			String[] splitdate = date.split(" ");
+			if(splitdate[0].equals(today)) {
+				newlist.set(count, booking);
+				count++;
+			}
+		}
+		return newlist;
+	}
+
+	@Override
+	public List<HospitalBooking> allbooklist(String personId) {
+		String SQL = "select * from HApllication where mid='"+personId+"'";
+		return template.query(SQL, new BookingRowMapper());
 	}
 	
 }

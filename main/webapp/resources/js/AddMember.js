@@ -101,4 +101,3 @@ console.log(sample4_detailAddress);
 document.getElementById("fullAddr").value = fullAddr;
 
 }
-

@@ -14,18 +14,24 @@
 <body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="./resources/js/refreshing.js"></script>
+<<<<<<< HEAD
 
 	<%	
 		String type = (String) session.getAttribute("type");
 		request.setAttribute("type", type);	
 	%>
 
+=======
+>>>>>>> origin/hanui
 <div id="header">
 		<%@  include file="../module/header.jsp" %>
 	</div>
 	<div class="container-fluid page-body-wrapper">
  		<%@  include file="../module/leftheader.jsp" %>
+<<<<<<< HEAD
  
+=======
+>>>>>>> origin/hanui
 			<div id="container" class="container wrap naverid">
 				<header class="header" role="banner">
 		            <div class="header_home">
@@ -77,6 +83,7 @@
 		                </ul>
 		            </div>
 		        </header>
+<<<<<<< HEAD
 		        <c:choose>
 		        	<c:when test="${type eq 'e' }" >
 		        		<div id="content" class="content">
@@ -527,6 +534,109 @@
 			        	</div>
 		        	</c:otherwise>
 		        </c:choose>
+=======
+				<div id="content" class="content">
+		            <div class="subindex_wrap" role="main">
+		                <div id="headerTop" class="path_area" aria-hidden="false"></div>
+		            </div>                        
+	            <div class="subindex_item">
+	                <div class="head_title">
+	                    <h2 class="subindex_title">내 정보 수정</h3>
+	                </div>
+	                <div class="subindex_greenbox">
+	                    <ul class="subindex_row">
+	                        <li>
+	                            <div class="row_item other">
+	                                <a href="/123team/login/update?id=${ id.personId }" class="text-decoration-none"><span class="item_text">내 정보 수정</span></a>
+	                            </div>
+	                        </li>
+	                        <li>
+	                            <div class="row_item other">
+	                                <a href="/123team/login/delete?id=${ id.personId }" class="text-decoration-none" id="delete"><span class="item_text">회원 탈퇴</span></a>
+	                            </div>
+	                        </li>
+	                    </ul>
+	                </div>
+	            </div>
+	            <!--병원 예약 정보-->
+	            <div class="subindex_item">
+	                <div class="head_title">
+	                    <h2 class="subindex_title">병원 예약 정보</h2>
+	                    <a href="/123team/hospitals/manager">예약리스트보기</a>
+	                </div>
+	                <div class="subindex_greenbox">
+	                    <ul class="subindex_row">
+	                        <li>
+	                            <div class="row_item other">
+	                                <a href="/123team/hospitals/mybookList?personId=${loginId}" class="text-decoration-none"><span class="item_text">예약 확인</span></a>
+	                            </div>
+	                        </li>
+	                    </ul>
+	                </div>
+	            </div>
+	            <!--주문 정보-->
+	            <div class="subindex_item">
+	                <div class="head_title">
+	                    <h2 class="subindex_title">주문목록</h2>
+	                    <a href="/123team/products/manager">예약리스트보기</a>
+	                </div>
+	                <div class="subindex_greenbox">
+	                    <ul class="subindex_row">
+	                        <li>
+	                            <div class="row_item other">
+	                                <a href="/123team/products/myorderList" class="text-decoration-none"><span class="item_text">주문 내역 확인</span></a>
+	                            </div>
+	                        </li>
+	                    </ul>
+	                </div>
+	            </div>
+	            <!--게시판-->
+	            <div class="subindex_item">
+	                <div class="head_title">
+	                    <h2 class="subindex_title">게시판</h2>
+	                </div>
+	                <div class="subindex_greenbox">
+	                    <ul class="subindex_row">
+	                        <li>
+	                            <div class="row_item other">
+	                            <a href="/123team/Fboards?myId=${id.personId}" class="text-decoration-none"><span class="item_text">작성 글 확인</span></a>
+	                            </div>
+	                        </li>
+	                    </ul>
+	                </div>
+	            </div>
+	            <!--Q&A-->
+	            <div class="subindex_item">
+	                <div class="head_title">
+	                    <h2 class="subindex_title">Q&A</h2>
+	                </div>
+	                <div class="subindex_greenbox">
+	                    <ul class="subindex_row">
+	                        <li>
+	                            <div class="row_item other">
+	                                <a href="" class="text-decoration-none"><span class="item_text">작성 Q&A 확인</span></a>
+	                            </div>
+	                        </li>
+	                    </ul>
+	                </div>
+	            </div>
+	            <!--체험단-->
+	            <div class="subindex_item">
+	                <div class="head_title">
+	                    <h2 class="subindex_title">체험단</h2>
+	                </div>
+	                <div class="subindex_greenbox">
+	                    <ul class="subindex_row">
+	                        <li>
+	                            <div class="row_item other">
+	                                <a href="/123team/ENboards/applist" class="text-decoration-none"><span class="item_text">체험 신청 글 확인</span></a>
+	                            </div>
+	                        </li>
+	                    </ul>
+	                </div>
+	            </div>
+	        </div>
+>>>>>>> origin/hanui
 		</div>
 	</div>
 	

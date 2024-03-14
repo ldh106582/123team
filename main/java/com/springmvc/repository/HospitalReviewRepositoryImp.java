@@ -81,17 +81,20 @@ public class HospitalReviewRepositoryImp implements HospitalReviewRepository{
 
 	@Override
 	public void updatereview(HospitalReview review,String reviewid) {
+		HospitalReview Nreview = getReviewByID(reviewid);
+		
 		String SQL = "update HospitalReview set title=?,context=?,reviewScore=?,reviewImage=? where ReviewId='"+reviewid+"'";
 		template.update(SQL,review.getTitle(),review.getContext(),review.getReviewScore(),review.getReviewImage());
 		
-		Hospital hospital = hospitalService.gethosptialByhId(review.getHid());
+		Hospital hospital = hospitalService.gethosptialByhId(Nreview.getHid());
 		String hid = hospital.getHid();
 //		리뷰평균
 		String SQL2 = "select avg(reviewScore) from HospitalReview where hid='"+hid+"'";
 		Double avg = template.queryForObject(SQL2, Double.class);
 //		리뷰개수
 		String SQL3 = "select count(*) from HospitalReview where hid='"+hid+"'";
-		float count = template.queryForObject(SQL3, int.class);
+		int count = template.queryForObject(SQL3, int.class);
+		System.out.println(count);
 //		업데이트
 		String SQL4 = "update hospital set reviewScore=?,reviewCount=? where hid=?";
 		template.update(SQL4,avg,count,hid);
@@ -99,11 +102,11 @@ public class HospitalReviewRepositoryImp implements HospitalReviewRepository{
 
 	@Override
 	public void deletereview(String reviewId) {
-		String SQL = "delete from HospitalReview where ReviewId='"+reviewId+"'";
+		HospitalReview review = getReviewByID(reviewId);
 		
+		String SQL = "delete from HospitalReview where ReviewId='"+reviewId+"'";
 		template.update(SQL);
 		
-		HospitalReview review = getReviewByID(reviewId);
 		Hospital hospital = hospitalService.gethosptialByhId(review.getHid());
 		String hid = hospital.getHid();
 //		리뷰평균
@@ -111,7 +114,8 @@ public class HospitalReviewRepositoryImp implements HospitalReviewRepository{
 		Double avg = template.queryForObject(SQL2, Double.class);
 //		리뷰개수
 		String SQL3 = "select count(*) from HospitalReview where hid='"+hid+"'";
-		float count = template.queryForObject(SQL3, int.class);
+		int count = template.queryForObject(SQL3, int.class);
+		System.out.println(count);
 //		업데이트
 		String SQL4 = "update hospital set reviewScore=?,reviewCount=? where hid=?";
 		template.update(SQL4,avg,count,hid);
