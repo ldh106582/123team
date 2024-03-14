@@ -16,10 +16,9 @@ public class QnArowMapper implements RowMapper<QnA>{
 		QnA.setProductId(rs.getString(2));
 		QnA.setTitle(rs.getString(3));
 		QnA.setContext(rs.getString(4));
-		QnA.setHit(rs.getInt(5));
-		QnA.setRegistDay(rs.getString(6));
-		QnA.setImage(rs.getString(7));
-		QnA.setQnaId(rs.getString(8));
+		QnA.setRegistDay(rs.getString(5));
+		QnA.setImage(rs.getString(6));
+		QnA.setQnaId(rs.getString(7));
 		return QnA;
 	}
 	
