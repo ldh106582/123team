@@ -9,12 +9,12 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="../resources/css/petcard.css">
-<!-- 부트스트랩 -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <!-- 폰트어썸 -->
 <script src="https://kit.fontawesome.com/ddd0a6fba1.js" crossorigin="anonymous"></script>
 <!-- js -->
 <link href="<c:url value="/resources/js/petcard.js"/>" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<link rel="stylesheet" href="/123team/resources/css/mypage.css">
 <title>나의 동물 현황</title>
 </head>
 <body>
@@ -28,314 +28,227 @@
 	<div class="container-fluid page-body-wrapper">
  		<%@  include file="../module/leftheader.jsp" %>
  
-         <!-- partial -->
-      <div class="main-panel">
-        <div class="content-wrapper">
-          <div class="row">
-            <div class="col-md-12 grid-margin">
-              <div class="row">
-                <div class="col-12 col-xl-8 mb-4 mb-xl-0">
-                  <h3 class="font-weight-bold"> </h3>
-                  <h6 class="font-weight-normal mb-0"></h6>
-                  
-                </div>
-                <div class="col-12 col-xl-4">
-                 <div class="justify-content-end d-flex">
-                  <div class="dropdown flex-md-grow-1 flex-xl-grow-0">
-                  </div>
-                 </div>
-                </div>
-              </div>
-            </div>
-          </div>
-         </div>
-       </div>
-	 </div>
-          
-        <footer class="footer">
-          <div class="d-sm-flex justify-content-center justify-content-sm-between">
-            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2021.  Premium <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap admin template</a> from BootstrapDash. All rights reserved.</span>
-            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="ti-heart text-danger ml-1"></i></span>
-          </div>
-          <div class="d-sm-flex justify-content-center justify-content-sm-between">
-            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Distributed by <a href="https://www.themewagon.com/" target="_blank">Themewagon</a></span> 
-          </div>
-        </footer> 
 
- 	
-    <div id="wrap" class="wrap naverid ">
-        <header class="header" role="banner">
-            <div class="header_subindex">
-                <!--로고/Mypage-->
-                <div class="gnb_area">
-                    <a href="#" class="text-decoration-none" >
-                        <h1 class="">Petcard</h2>
+    <div id="container" class="container wrap naverid">
+    <header class="header" role="banner">
+        <div class="header_home">
+        <div class="gnb_area"></div>
+        <div class="profile_area">
+            <div class="profile_inner">
+              <c:choose>
+                <c:when test="${not empty id.image}">
+                    <img src="<c:url value='/resources/images/${id.image}'/>" width="84" height="84" alt="프로필 이미지">
+                </c:when>
+                <c:otherwise>
+                    <img src="https://static.nid.naver.com/images/web/user/default.png" width="84" height="84" alt="프로필 이미지">
+                </c:otherwise>
+            </c:choose>
+                
+                <div class="profile">
+                    <p class="useid">${id.personId}</p> 
+                    <p class="usemail">${id.personEmail}</p>
+                </div>
+            </div>
+        </div>
+        <div id="headerLeft" class="header_left" aria-hidden="false">
+            <ul class="left_menu" role="menu">
+                <li>
+                    <a href="/user2/help/myInfoV2?m=viewProfile&amp;lang=ko_KR" class="left_item" role="menuitem" onclick="nclk(this,'lnb.info','','',event)" aria-current="">
+                        <div class="menu_text ">내프로필</div>
                     </a>
-                </div>
-            </div>
-            <!--프로필-->
-            <div class="profile_area">
-                <div class="profile_inner">
-                    <div class="profile">
-                        <p class="useid">${ id.personId }</p>
-		                <p class="usemail">${id.personEmail }</p>
-                    </div>
-                </div>
-            </div>
-            <div id="headerLeft" class="header_left" aria-hidden="false">
-                <ul class="left_menu" role="menu">
-                    <li>
-                        <a href="" class="left_item" role="menuitem">
-                            <div class="menu_text on">내정보</div>
+                </li>
+                <li>
+                    <a href="./pet/creatpet?id=${ id.personId }" class="left_item" role="menuitem" >
+                        <div class="menu_text ">반려동물 회원가입</div>
+                    </a>
+                 </li>
+                 <li>
+                    <a href="/123team/login/logout" class="left_item" role="menuitem" >
+                        <div class="menu_text ">로그아웃</div>
+                    </a>
+                 </li>
+                 <li>
+                   <div class="left_item" role="menuitem" >
+                       <div class="menu_text ">펫 카드</div>	
+                   </div>
+                    <c:forEach items="${petName}" var="petName">
+                        <a href="./login/petcard?petid=${petName.petId}" class="left_item" role="menuitem">
+                            <div>${petName.petName }</div>
                         </a>
+                    </c:forEach>
+                </li>
+            </ul>
+        </div>
+    </header>
+    <div id="content" class="content">
+    <div class="subindex_wrap" role="main">
+        <div id="headerTop" class="path_area" aria-hidden="false"></div>
+    </div>                        
+    <div class="subindex_item">
+        <div class="head_title">
+            <h2 class="subindex_title">동물 정보</h2>
+            <div class="title_link">
+                <a href="" ><span class="text">수정하기</span></a>
+            </div>  
+        </div>
+    
+        <div class="subindex_greenbox">
+            <div class="myprofile">
+                <ul class="myinfo_area">
+                    <li>
+                        <div class="myphoto">
+                            <img id="petImage" src="https://static.nid.naver.com/images/web/user/default.png" width="56" height="56" alt="내 프로필 이미지">
+                        </div>
+                    </li>
+                    <li>
+                        <div class="myaccount">
+                            <div class="myname">
+                                <div class="name_text">
+                                    <p>펫이름 : ${petid.petName}</p>
+                                </div>
+                            </div>
+                        </div>
                     </li>
                 </ul>
             </div>
-        </header>
-        
-        <div id="container" class="container ">
-            <!-- container -->
-            <div id="content" class="content">
-                <div class="subindex_wrap" role="main">
-                    <div id="headerTop" class="path_area" aria-hidden="false"></div>
-                </div>
-                <div class="subindex_item">
-
-	                <div class="head_title">
-	                    <h2 class="subindex_title">동물 정보</h2>
-
-                        <div class="title_link">
-                            <a href="" ><span class="text">추가하기</span></a>
-                            <a href="/123team/pet/petread?petId=${petid.petId}" ><span class="text">수정하기</span></a>
-                        </div>  
-
-	                </div>
-                    
-	                <div class="subindex_greenbox">
-
-                   </div>
-                    
-                   <div class="subindex_greenbox">
-                        <div class="myprofile">
-                            <ul class="myinfo_area">
-                                <li>
-                                <c:choose>
-	                                <c:when test="${petid.getPetImage() == null }">
-	                                    <div class="myphoto">
-	                                        <img src="https://static.nid.naver.com/images/web/user/default.png" width="100" height="56" alt="내 프로필 이미지">
-	                                    </div>
-                                    </c:when>
-                                   <c:otherwise>
-	                                    <div class="myphoto">
-	                                        <img src="<c:url value="/resources/images/${ petid.petImage }"/>" height="56" alt="내 프로필 이미지">
-	                                    </div>
-                                   </c:otherwise>
-	                            </c:choose>
-                                </li>
-                                <li>
-                                    <div class="myaccount">
-                                        <div class="myname">
-                                            <div class="name_text"><p><span>이름 : ${petid.petName}</span> </p></div>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        </ul>
-
-                       <ul class="subindex_row">
-                           <li>
-                               <div class="row_item other">
-                                   <p> 종 : ${petid.petVarity} </p>
-                               </div>
-                           </li>
-                           <li>
-                           		<%
-                           		
-								String age = (String)request.getAttribute("ageString");
-                           		System.out.println("birthday : jasp" + age);
-                           		%>
-                           
-                               <div class="row_item other">
-                                   <p id="petbirth"> 생년월일 : ${petid.petBirth} (나이 :<%= age %>)</p>
-                               </div>
-                           </li>
-                            <li>
-                               <div class="row_item other">
-                                   <p> 몸무게 기록 </p>
-                               </div>
-                               <button class="bg-info text-white rounded m-2" id="ChartButton0" onclick="toggleDisplay('ChartDetails0', 'ChartButton0')">펼치기</button>
-                               <div id="ChartDetails0"  style="display: none;">  
-                                 <c:forEach items="${listOfPetWeight}" var="petcard" >
-                                     <div class="border m-2" style=" position: relative;">
-                                         <p class="mt-2"> 몸무게일자 : ${petcard.petWeightDate}</p> 
-                                         <input class="ml-2" id="editDateField0" type="date" name="petChartDate;" style="display: none;"/>
-                                         <p class="mt-0"> 몸무게 : ${petcard.petWeight}</p>
-                                         <input class="m-2" id="editName0" type="text" name="petChart;" style="display: none;"/> 
-                                         <div class="update">
-                                             <a id="Before0" onclick="toggleDisplay('Before0', 'After0','editDateField0', 'editName0', 'editContentField0')" href="${pageContext.request.contextPath}/login/petcardupdate?petId=${petid.petId}&petWeightNum=${petcard.petWeightNum}" class="col-2 m-1 p-1 border text-white btn btn-success">수정하기</a>
-                                             <a id="After0" onclick="toggleDisplay('Before0', 'After0','editDateField0', 'editName0', 'editContentField0')"  href="${pageContext.request.contextPath}/login/deletetPetChart?petId=${petid.petId}&petWeightNum=${petcard.petWeightNum}"  class="col-2 m-1 p-1 border text-white btn btn-success" style="display: none;">수정완료</a>
-                                         </div>
-                                         <div class="col-sm-1" style="position: absolute; top: 45%; transform: translateX(980%);">
-                                             <a href="${pageContext.request.contextPath}/login/deleteWeghit?petId=${petid.petId}&petWeightNum=${petcard.petWeightNum}" class="p-3 border text-secondary" ><i class="fa-solid fa-trash-can"></i></a>
-                                         </div>  
-                                     </div>
-                                   </c:forEach>
-                                   <form action="${pageContext.request.contextPath}/login/petcard?petid=${petid.petId}" method="post">
-	                                <input type="hidden" name="petId" value="petid"/>      
-	                                       <p class="m-2"> 일 자  : <input type="date" name="petWeightDate" /></p>
-	                                       <p class="m-2"> 몸무게 : <input type="text" name="petWeight"/></p>
-                                       <input class="bg-warning rounded m-2" type="submit" value="몸무게기록" />
-                                    </form>
-                                  </div>
-                           	  </li>
-	                       </ul>
-	                   </div>
-	               </div>
-
-                <div class="subindex_item">
-                    <div class="head_title">
-                        <h2 class="subindex_title">동물 진찰 기록부</h2>
+            <ul class="subindex_row">
+                <li>
+                    <div class="row_item other">
+                        <p> 종 : ${petid.petVarity}</p>
                     </div>
-                     <div class="subindex_greenbox">
-                       <ul class="subindex_row">
-                           <table class="table">
-                                <tbody> 
-                                    <tr>
-                                        <td>
-                                            <h4 class="d-flex align-self-center" id="ChartName">진료</h4>
-                                            <button class="bg-info text-white rounded" id="ChartButton1" onclick="toggleDisplay('ChartDetails1', 'ChartButton1')">펼치기</button>
-                                            <div id="ChartDetails1"  style="display: none;">  
-                                                <c:forEach items="${listOfPetChard}" var="petcard" >
-                                                    <div class="border m-2" style=" position: relative;">
-                                                        <p class="mt-2"> 진료일자 : ${petcard.petChartDate}</p> 
-                                                        <input class="ml-2" id="editDateField2" type="date" name="petChartDate;" style="display: none;"/>
-                                                        <p class="mt-0"> 진료명 : ${petcard.petChart}</p>
-                                                        <input class="m-2" id="editName2" type="text" name="petChart;" style="display: none;"/>
-                                                        <p class="mt-0"> 진료내용 : ${petcard.petChartContent}</p>
-                                                        <input class="m-2" id="editContentField2" type="text" name="petChartContent;" style="display: none;"/>
-                                                            
-                                                        <div class="update">
-                                                            <a id="Before2" onclick="toggleDisplay('Before2', 'After2','editDateField2', 'editName2', 'editContentField2')" href="${pageContext.request.contextPath}/login/petcardupdate?petid=${petid.petId}&petChartNum=${petcard.petChartNum}" class="col-2 m-1 p-1 border text-white btn btn-success">수정하기</a>
-                                                            <a id="After2" onclick="toggleDisplay('Before2', 'After2','editDateField2', 'editName2', 'editContentField2')"  href="${pageContext.request.contextPath}/login/deletetPetChart?petId=${petid.petId}&petChartNum=${petcard.petChartNum}"  class="col-2 m-1 p-1 border text-white btn btn-success" style="display: none;">수정완료</a>
-                                                        </div>
-                                                        <div class="col-sm-1" style="position: absolute; top: 45%; transform: translateX(980%);">
-                                                            <a href="${pageContext.request.contextPath}/login/deletetPetChart?petId=${petid.petId}&petChartNum=${petcard.petChartNum}" class="p-3 border text-secondary" ><i class="fa-solid fa-trash-can"></i></a>
-                                                        </div>  
-                                                    </div>
-                                                </c:forEach>
-                                                 <form action="${pageContext.request.contextPath}/login/petcard?petid=${petid.petId}" method="post">
-	                                			 <input type="hidden" name="petId" value="petid"/>   
-                                                    <p class="m-2"> 진료일자 : <input type="date" name="petChartDate" /></p>
-                                                    <p class="m-2"> 진료명 : <input type="text" name="petChart"/></p>
-                                                    <p class="m-2"> 진료내용 : <input type="text" name="petChartContent" placeholder="진료 내용을 입력해주세요"/></p>
-                                                    <input class="bg-warning rounded m-2" type="submit" value="진료기록제출" />
-                                                </form>
+                </li>
+                <li>
+                    <div class="row_item other">
+                        <p id="petbirth"> 생년월일 : ${petid.petBirth} (나이 : <b id="petAge"> </b>)</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="row_item other">
+                        <p> 몸무게 : ${petWeight.petWeight} </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="subindex_item">
+        <div class="head_title">
+            <h2 class="subindex_title">동물 진찰 기록부</h2>
+        </div>
+           <div class="subindex_greenbox">
+            <ul class="subindex_row"> 
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <h4 class="d-flex align-self-center" id="ChartName">나의 동물 몸무게</h4>
+                                <button type="button" class="bg-info text-white rounded p-1" id="ChartButton0" onclick="toggleDisplay('ChartDetails0', 'ChartButton0')">펼치기</button>
+                                <div id="ChartDetails0"  style="display: none;">
+                                    <c:forEach items="${listOfPetWeight}" var="petWeight">
+                                        <form action="/123team/login/petcardupdate?num=${petWeight.petWeightNum}&petId=${petWeight.petId}" method="post" >
+                                            <input type="hidden" name="type" value="weight" />
+                                            <div class="border m-2" style=" position: relative;">
+                                                <input type="hidden" name="petId" value="${pet.petId}" />
+                                                <p class="m-2"> 몸무게 기록 : <input type="date" name="petWeightDate" value="${petWeight.petWeightDate}" /></p> 
+                                                <p class="m-2"> 몸무게 : <input type="text" name="petWeight" value="${petWeight.petWeight}" maxlength="3" /> </p> 
                                             </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <h4 class="d-flex align-self-center" id="Vaccination">예방접종</h4>
-                                            <button class="bg-info text-white rounded" id="ChartButton2" onclick="toggleDisplay('ChartDetails2', 'ChartButton2')">펼치기</button>
-                                            <div id="ChartDetails2" style="display: none;">
-                                                <c:forEach items="${listOfpetVaccination}" var="petcard">
-                                                    <div class="border m-2"  style=" position: relative;">
-                                                        <p class="mt-2"> 예방접종일자 : ${petcard.petVaccinationDate}
-                                                        <input class="ml-2" id="editDateField3" type="date" name="petVaccinationDate" style="display: none;"/>
-                                                        <p> 예방접종명 : ${petcard.petVaccination}
-                                                        <input class="m-2" id="editName3" type="text" name="petVaccination" style="display: none;"/>
-                                                        <p> 예방접종내용 : ${petcard.petVaccinationCotent}
-                                                            <input class="m-2" id="editContentField3" type="text" name="petVaccinationCotent" style="display: none;"/>
-                                                        <div class="update">
-                                                            <a  id="Before3" onclick="toggleDisplay('Before3', 'After3','editDateField3', 'editName3', 'editContentField3')" href="${pageContext.request.contextPath}/login/petcardupdate?petId=${petid.petId}&petVaccinationNum=${petcard.petVaccinationNum}" class="col-2 m-1 p-1 border text-white btn btn-success">수정하기</a>
-                                                            <a id="After3" onclick="toggleDisplay('Before3', 'After3','editDateField3', 'editName3', 'editContentField3')" href="${pageContext.request.contextPath}/login/deleteVaccination?petId=${petid.petId}&petVaccinationNum=${petcard.petVaccinationNum}" class="col-2 m-1 p-1 border text-white btn btn-success" style="display: none;">수정완료</a>
-                                                        </div>
-                                                        <div class="col-sm-1" style="position: absolute; top: 45%; transform: translateX(950%);">
-                                                            <a href="${pageContext.request.contextPath}/login/deleteVaccination?petId=${petid.petId}&petVaccinationNum=${petcard.petVaccinationNum}" class="p-3 border text-secondary"><i class="fa-solid fa-trash-can"></i></a>
-                                                        </div>
-                                                    </div>
-                                                </c:forEach>
-                                                 <form action="${pageContext.request.contextPath}/login/petcard?petid=${petid.petId}" method="post">
-	                          				     <input type="hidden" name="petId" value="petid"/>   
-                                                    <p class="m-2"> 예방접종일자 : <input type="date" name="petVaccinationDate"/></p> 
-                                                    <p class="m-2"> 예방접종명: <input type="text" name="petVaccination"/></p>
-                                                    <p class="m-2"> 예방접종내용: <input type="text" name="petVaccinationCotent" placeholder="특이사항을 입력해주세요"/></p>
-                                                    <input class="bg-warning rounded" type="submit" value="예방접종 기록 제출" />
-                                                </form>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <h4 class="d-flex align-self-center" id="Surgery">수술</h4>
-                                            <button class="bg-info text-white rounded" id="ChartButton3" onclick="toggleDisplay('ChartDetails3', 'ChartButton3')">펼치기</button>
-                                            <div id="ChartDetails3"  style="display: none;">
-                                                <c:forEach items="${listOfPetSurgery}" var="petcard">
-                                                    <div class="border m-2" style=" position: relative;">
-                                                        <p class="mt-2"> 수술일자 : ${petcard.petSurgeryDate}</p>
-                                                        <input class="ml-2" id="editDateField4" type="date" name="PetSurgeryDate" style="display: none;"/>
-                                                        <p> 수술명 : ${petcard.petSurgeryName}</p>
-                                                        <input class="m-2" id="editName4" type="text" name="petSurgeryName" style="display: none;"/>
-                                                        <p> 수술내용 : ${petcard.petSurgeryContent}</p>
-                                                        <input class="m-2" id="editContentField4" type="text" name="PetSurgeryContent" style="display: none;"/>       
-                                                        <div class="update">
-                                                            <a id="Before4" onclick="toggleDisplay('Before4', 'After4','editDateField4', 'editName4', 'editContentField4')"  href="${pageContext.request.contextPath}/login/petcardupdate?petId=${petid.petId}&petSurgeryNum=${petcard.petSurgeryNum}" class="col-2 m-1 p-1 border text-white btn btn-success">수정하기</a>
-                                                            <a id="After4" onclick="toggleDisplay('Before4', 'After4','editDateField4', 'editName4', 'editContentField4')"  href="${pageContext.request.contextPath}/login/deletetSurgery?petId=${petid.petId}&petSurgeryNum=${petcard.petSurgeryNum}" class="col-2 m-1 p-1 border text-white btn btn-success" style="display: none;">수정완료</a>
-                                                        </div>
-                                                        <div class="col-sm-1" style="position: absolute; top: 45%; transform: translateX(980%);">
-                                                            <a id="After4" href="${pageContext.request.contextPath}/login/deletetSurgery?petId=${petid.petId}&petSurgeryNum=${petcard.petSurgeryNum}" class="p-3 border text-secondary"><i class="fa-solid fa-trash-can"></i></a>
-                                                        </div>
-                                                    </div>
-                                                </c:forEach>
-												<form action="${pageContext.request.contextPath}/login/petcard?petid=${petid.petId}" method="post">
-											    <input type="hidden" name="petId" value="petid"/>   
-                                                    <p class="m-2"> 수술일자 : <input type="date" name="petSurgeryDate"></p>
-                                                    <p class="m-2"> 수술명 : <input type="text" name="petSurgeryName"></p>
-                                                    <p class="m-2"> 수술내용: <input type="text" name="petSurgeryContent" placeholder="수술 중 특이사항을 입력해주세요"></p>
-                                                    <input class="bg-warning rounded" type="submit" value="수술 기록 제출" />
-                                                </form>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <h4 class="d-flex align-self-center" id="SurgeryAfter">수술경과</h4>
-                                            <button class="bg-info text-white rounded" id="ChartButton4" onclick="toggleDisplay('ChartDetails4', 'ChartButton4')">펼치기</button>
-                                            <div id="ChartDetails4"  style="display: none;">   
-                                                <c:forEach items="${listOfPetSurgeryAfter}" var="petcard">
-                                                    <div class="border" style=" position: relative;">
-                                                        <p class="mt-2"> 수술 후 기록일자  : ${petcard.petSurgeryAfterDate }</p>
-                                                        <input class="ml-2" id="editDateField5" type="date" name="petSurgeryDateAfter" style="display: none;"/>
-                                                        <p> 수술 후 진료내용 : ${petcard.petSurgeryAfterContent }</p>
-                                                        <input class="m-2" id="editContentField5" type="text" name="petSurgeryContentAfter" style="display: none;"/>
-                                                        <div class="update">
-
-                                                            <a  id="Before5" onclick="toggleDisplay('Before5', 'After5','editDateField5', 'editContentField5')"  href="${pageContext.request.contextPath}/login/petcardupdate?petId=${petid.petId}&petSurgeryAfterNum=${petcard.petSurgeryAfterNum}" class="col-2 m-1 p-1 border text-white btn btn-success">수정하기</a>
-                                                            <a id="After5" onclick="toggleDisplay('Before5', 'After5','editDateField5', 'editContentField5')"  href="${pageContext.request.contextPath}/login/deletetSurgeryAfter?petId=${petid.petId}&petSurgeryAfterNum=${petcard.petSurgeryAfterNum}" class="col-2 m-1 p-1 border text-white btn btn-success" style="display: none;">수정완료</a>
-                                                        </div>
-                                                        <div class="col-sm-1" style="position: absolute; top: 45%; transform: translateX(980%);">
-                                                            <a href="${pageContext.request.contextPath}/login/deletetSurgeryAfter?petId=${petid.petId}&petSurgeryAfterNum=${petcard.petSurgeryAfterNum}" class="p-3 border text-secondary"><i class="fa-solid fa-trash-can"></i></a>
-                                                        </div>
-                                                    </div>
-                                                </c:forEach>
-                                                <form action="${pageContext.request.contextPath}/login/petcard?petid=${petid.petId}" method="post">
-	                               			    <input type="hidden" name="petId" value="petid"/>   
-                                                    <p class="m-2"> 수술 후 기록일자 : <input type="date" name="petSurgeryDateAfter"></p>
-                                                    <p class="m-2"> 수술 후 진료내용 :  <input type="text" name="petSurgeryContentAfter" placeholder="수술 후 진료 사항을 작성해주세요"></p>
-                                                    <input class="bg-warning rounded" type="submit" value="입원 기록 제출" />
-                                                </form>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-	                    </ul>
-              		</div>
-            	</div>
-	        </div> 
-        </div>	
-	</div>
+                                            <input class="btn btn-success border-3 border-dark mt-2 mb-2" type="submit" value="수정완료"/>
+                                        </form>
+                                        <div class="col-sm-1" style="position: absolute; top: 35%; transform: translateX(980%);">
+                                            <a href="${pageContext.request.contextPath}/login/deleteWeghit?petId=${petid.petId}&petWeightNum=${petWeight.petWeightNum}" class="p-3 border text-secondary"> <i class="fa-solid fa-trash-can"></i> </a>
+                                        </div>
+                                    </c:forEach>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                            <h4 class="d-flex align-self-center" id="ChartName">진료</h4>
+                            <button type="button" class="bg-info text-white rounded p-1" id="ChartButton1" onclick="toggleDisplay('ChartDetails1', 'ChartButton1')">펼치기</button>
+                            <div id="ChartDetails1" style="display: none;">
+                                    <c:forEach items="${listOfPetChard}" var="petcard" varStatus="status">
+                                    <form action="/123team/login/petcardupdate?num=${petcard.petChartNum}&petId=${petcard.petId}" method="post" >
+                                        <div class="border m-2" style=" position: relative;">
+                                                <input type="hidden" name="type" value="chart" />
+                                                <p>진료일자: <input id="editDateField${status.index}" type="date" name="petChartDate" value="${petcard.petChartDate}"/> 
+                                                <p>진료명: <input id="editName${status.index}" type="text" name="petChart" value="${petcard.petChart}"/> </p>
+                                                <p>진료내용: <input id="editContentField${status.index}" type="text" name="petChartContent" value="${petcard.petChartContent}"/></p>
+                                        </div>
+                                        <input class="btn btn-success border-3 border-dark mt-2 mb-2" type="submit" value="수정완료"/>
+                                    </form>
+                                    <div class="col-sm-1" style="position: absolute; top: 35%; transform: translateX(980%);">
+                                        <a href="${pageContext.request.contextPath}/login/deletetPetChart?petId=${petid.petId}&petChartNum=${petcard.petChartNum}" class="p-3 border text-secondary" ><i class="fa-solid fa-trash-can"></i></a>
+                                    </div>
+                                    </c:forEach>
+                            </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                            <h4 class="d-flex align-self-center" id="Vaccination">예방접종</h4>
+                            <button type="button" class="bg-info text-white rounded p-1" id="ChartButton2" onclick="toggleDisplay('ChartDetails2', 'ChartButton2')">펼치기</button>
+                            
+                            <div id="ChartDetails2" style="display: none;">
+                                <c:forEach items="${listOfpetVaccination}" var="petcard" varStatus="status">
+                                    <form action="/123team/login/petcardupdate?num=${petcard.petVaccinationNum}&petId=${petcard.petId}" method="post" >
+                                    <div class="border m-2"  style="position: relative;">
+                                        <input type="hidden" name="type" value="vaccin" />
+                                        <p>예방접종일자: <input id="editDateField${status.index}" type="date" name="petVaccinationDate" value="${petcard.petVaccinationDate}"/> </p>
+                                        <p>예방접종명: <input id="editName${status.index}" type="text" name="petVaccination" value="${petcard.petVaccination}"/> </p>
+                                        <p>예방접종내용: <input id="editContentField${status.index}" type="text" name="petVaccinationCotent" value="${petcard.petVaccinationCotent}"/> </p>
+                                    </div>
+                                    <input class="btn btn-success border-3 border-dark mt-2 mb-2" type="submit" value="수정완료"/>
+                                    </form>
+                                    
+                                </c:forEach>
+                            </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h4 class="d-flex align-self-center" id="Surgery">수술</h4>
+                                <button type="button" class="bg-info text-white rounded p-1" id="ChartButton3" onclick="toggleDisplay('ChartDetails3', 'ChartButton3')">펼치기</button>
+                                
+                                <div id="ChartDetails3" style="display: none;">
+                                    <c:forEach items="${listOfPetSurgery}" var="petcard" varStatus="status">
+                                        <form action="/123team/login/petcardupdate?num=${petcard.petSurgeryNum}&petId=${petcard.petId}" method="post" >
+                                        <div class="border m-2" style=" position: relative;">
+                                            <input type="hidden" name="type" value="surgery" />
+                                            <p>수술날짜: <input id="editDateField4${status.index}" type="date" name="petSurgeryDate" value="${petcard.petSurgeryDate}"/> </p>
+                                            <p>수술명: <input id="editName4${status.index}" type="text" name="petSurgeryName" value="${petcard.petSurgeryName}"/> </p>
+                                            <p>수술내용: <input id="editContentField4${status.index}" type="text" name="petSurgeryContent" value="${petcard.petSurgeryContent}"/> </p>
+                                        </div>
+                                        <input class="btn btn-success border-3 border-dark mt-2 mb-2" type="submit" value="수정완료"/>
+                                        </form>
+                                    </c:forEach>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h4 class="d-flex align-self-center" id="SurgeryAfter">수술경과</h4>
+                            <button type="button" class="bg-info text-white rounded p-1" id="ChartButton4" onclick="toggleDisplay('ChartDetails4', 'ChartButton4')">펼치기</button>
+                            
+                            <div id="ChartDetails4" style="display: none;">
+                                <c:forEach items="${listOfPetSurgeryAfter}" var="petcard" varStatus="status">
+                                    <form action="/123team/login/petcardupdate?num=${petcard.petSurgeryAfterNum}&petId=${petcard.petId}" method="post" >
+                                    <div class="border" style=" position: relative;">
+                                        <input type="hidden" name="type" value="sergeryAfter" />
+                                        <p class="mt-2">수술 후 기록일자: <input id="editDateField5${status.index}" type="date" name="petSurgeryAfterDate" value="${petcard.petSurgeryAfterDate}"/> </p>
+                                        <p>수술 후 진료내용: <input id="editContentField5${status.index}" type="text" name="petSurgeryAfterContent" value="${petcard.petSurgeryAfterContent}"/> </p>
+                                    </div>
+                                    <input class="btn btn-success border-3 border-dark m-2" type="submit" value="수정완료"/>
+                                    </form>
+                                </c:forEach>
+                            </div>
+                        </tr>
+                    </tbody>
+                </table>
+            </ul>
+          </div>
+    </div>
+</div>
+</div>
+</div> 
 	
 	<%@  include file="../module/footer.jsp" %> 
 </body>

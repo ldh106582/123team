@@ -65,7 +65,7 @@
 				                   <div class="menu_text ">펫 카드</div>
 				               </div>
 								<c:forEach items="${petName}" var="petName">
-									<a href="./login/petcard?petid=${petName.petId}" class="left_item" role="menuitem">
+									<a href="/123team/login/petcard?petid=${petName.petId}" class="left_item" role="menuitem">
 										<div>${petName.petName }</div>
 									</a>
 								</c:forEach>
@@ -74,9 +74,9 @@
 		            </div>
 		        </header>
 				<div id="content" class="content">
-	            <div class="subindex_wrap" role="main">
-	                <div id="headerTop" class="path_area" aria-hidden="false"></div>
-	            </div>                        
+		            <div class="subindex_wrap" role="main">
+		                <div id="headerTop" class="path_area" aria-hidden="false"></div>
+		            </div>                        
 	            <div class="subindex_item">
 	                <div class="head_title">
 	                    <h2 class="subindex_title">내 정보 수정</h3>
