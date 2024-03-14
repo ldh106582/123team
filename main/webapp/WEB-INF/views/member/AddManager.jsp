@@ -25,13 +25,17 @@
 				<div class="row w-100 mx-0">
 		            <div class="col-lg-6 mx-auto">
 		                <div class="auth-form-light text-left py-5 px-4 px-sm-5">
-		                    <div class="brand-logo">
-		                        <img src="resources/images/logo.jpg" alt="logo">
+		                    <div class="card mb-2">
+		                        <p class="card-title"><b>상품관리자 회원가입</b></p>
 		                    </div>
 		     				<form:form modelAttribute="productMember" action="./productmanager?${ _csrf.parameterName }=${ _csrf.token }" method="post" enctype="multipart/form-data">
-		                        <div class="form-group">
-		                        	<label for="exampleInputUsername1">아이디</label>
-		                            <form:input class="form-control form-control-lg" type="text" path="personId"  placeholder="아이디" />
+		                     <input type="hidden" name="personAddress" id="fullAddr">
+		                     <input type="hidden" name="companyAddress" id="h_fullAddr">
+		                          <input type="hidden" name="s_file" >
+		                          
+		                        <div class="form-group d-flex">
+		                        <form:input id="personId" class="form-control form-control-lg col-md-8" type="text" path="personId" placeholder="아이디" />
+									<a id="userId" onclick="idDuplicateCheck(event)" class="btn btn-outline-primary col-md-3 auth-form-btn text-center ml-2">중복확인</a>
 		                        </div>
 		                        <div class="form-group">
 		                        	<label for="exampleInputUsername1">비밀번호</label>
@@ -49,10 +53,19 @@
 		                        	<label for="exampleInputUsername1">생년월일</label>
 		                            <form:input class="form-control form-control-lg" type="text" path="personBirth"  placeholder="생년월일"/>
 		                        </div>
+		                        
+		                        <div class="form-group show-grid r d-flex">
+		                           <input type="text" id="post" class="form-control form-control-lg col-md-8 mr-3" placeholder="우편번호">
+		                           <input type="button" onclick="execDaumPostcode()" value="우편번호" class="btn btn-outline-primary col-md-3 font-weight-medium auth-form-btn text-center">
+		                        </div>	
 		                        <div class="form-group">
-		                        	<label for="exampleInputUsername1">주소</label>
-		                            <form:input class="form-control form-control-lg" type="text" path="personAddress" placeholder="주소"/>
-		                        </div>
+		                            <input type="text" id="roadAddress" class="form-control form-control-lg col-md-12" placeholder="도로명주소">
+		                         </div>	
+		
+		                         <div class="form-group">
+		                            <input type="text" id="detailAddress" class="form-control form-control-lg col-md-12" placeholder="상세주소">
+		                         </div>	
+		                         
 		                        <div class="form-group">
 		                        	<label for="exampleInputUsername1">전화번호</label>
 		                            <form:input class="form-control form-control-lg" type="text" path="personPhone" placeholder="전화번호"/>
@@ -66,23 +79,33 @@
 		                        	<label for="exampleInputUsername1">회사명</label>
 		                            <form:input class="form-control form-control-lg" type="text" path="companyName" placeholder="회사명"/>
 		                        </div>
+		                        
+		                        <div class="form-group show-grid r d-flex">
+		                           <input type="text" id="h_post" class="form-control form-control-lg col-md-8 mr-3" placeholder="우편번호">
+		                           <input type="button" onclick="h_execDaumPostcode()" value="우편번호" class="btn btn-outline-primary col-md-3 font-weight-medium auth-form-btn text-center">
+		                        </div>	
 		                        <div class="form-group">
-		                        	<label for="exampleInputUsername1">회사주소</label>
-		                            <form:input class="form-control form-control-lg" type="text" path="companyAddress" placeholder="회사주소"/>
-		                        </div>
+		                            <input type="text" id="h_roadAddress" class="form-control form-control-lg col-md-12" placeholder="도로명주소">
+		                         </div>	
+		
+		                         <div class="form-group">
+		                            <input type="text" id="h_detailAddress" class="form-control form-control-lg col-md-12" placeholder="상세주소">
+		                         </div>	
+		                         
 		                        <div class="form-group">
 		                        	<label for="exampleInputUsername1">회사번호</label>
 		                   	    	<form:input class="form-control form-control-lg" type="text" path="companyPhone" placeholder="회사번호"/>
 		                        </div>
+		                        
 			                    <div class="form-group">
 			                      <label>사업자 등록증</label>
 			                      <div class="input-group col-xs-12">
-			                      	<input type="file" name="img[]" class="file-upload-default">
-			                        <input type="file" class="form-control file-upload-info" placeholder="Upload Image">
+			                      	<input type="file" name="s_file" class="file-upload-default">
+			                        <input type="file" class="form-control file-upload-info" placeholder="Upload Image" required>
 			                       </div>
 			                    </div>
 		                        <div class="mt-3">
-		                            <input type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" value="회원가입" />
+		                            <input type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" id="storeAddr" onclick="combineAddr()" value="회원가입"/>
 		                        </div>
 		                    </form:form>
 		                </div>
@@ -199,40 +222,8 @@
 </body>
 <!-- js -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script>
-function idDuplicateCheck(event){
-	 event.preventDefault();
-	 
-	var userId = document.getElementById("userId").value;
-	console.log("userId");
-	
-	if(userId === "") {
-		alert("아이디를 입력해주세요");
-		return;
-	}
-	
-	$.ajax({
-		type: 'get',
-		url: '/123team/managerlogin',
-		contentType: 'application/json;',
-		dataType: 'text',
-		data: {
-			"userId":userId, 
-		},
-		success : function(result) {
-			if(result === "true"){
-			isIdCheck = true;
-			alert("사용 가능한 아이디 입니다.")
-			} else {
-				isIdCheck = false;
-				alert("이미 사용중인 아이디 입니다.")
-			}
-		},
-		error : function(request, status, error){
-			console.log(request);
-		}
-	});
-}
-</script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="../resources/js/AddManager.js"></script>
+
 
 </html>

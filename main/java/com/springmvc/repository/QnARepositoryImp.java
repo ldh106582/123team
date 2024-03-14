@@ -33,8 +33,8 @@ public class QnARepositoryImp implements QnARepository{
 	//Create
 	@Override
 	public void addQnA(QnA QnA) {
-		String SQL = "insert into QnA values(?,?,?,?,?,?,?,?)";
-		template.update(SQL,QnA.getPersonId(),QnA.getProductId(),QnA.getTitle(),QnA.getContext(),QnA.getHit(),getRegistDay(),QnA.getImage(), createQnAID());
+		String SQL = "insert into QnA values(?,?,?,?,?,?,?)";
+		template.update(SQL,QnA.getPersonId(),QnA.getProductId(),QnA.getTitle(),QnA.getContext(),getRegistDay(),QnA.getImage(), createQnAID());
 	}
 	//Update 
 	@Override
@@ -42,6 +42,13 @@ public class QnARepositoryImp implements QnARepository{
 		
 		String SQL = "update QnA set title=?, context=?, image=? where QnAId='" + QnAId + "'";
 		template.update(SQL,QnA.getTitle(),QnA.getContext(),QnA.getImage());
+		
+	}
+	//Delete
+	@Override
+	public void deleteQnA(String QnAId) {
+		String SQL = "delete from QnA where QnAId="+QnAId;
+		template.update(SQL);
 		
 	}
 	
@@ -56,4 +63,6 @@ public class QnARepositoryImp implements QnARepository{
 		String id =  Long.toString(System.currentTimeMillis()) ;
 		return id;
 	}
+	
+	
 }

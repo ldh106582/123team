@@ -35,10 +35,29 @@
                                     <form:input class="form-control form-control-lg" type="text" path="productName" />
                                 </div>
                                 
-                                <div class="form-group">
-                                    <h4 class="col-md-12 p-0" style="color: rgb(140, 58, 179);">카테고리 </h4>
-                                    <form:input class="form-control form-control-lg" type="text" path="productCategory"/>
+                               <div class="form-group">
+                                   <h4 class="col-md-6 p-0" style="color: rgb(140, 58, 179);"> 상품카테고리 </h4>
+                                  <form:select class="col-6" style="height: 50px;" id="petVarity" path="productCategory">
+                                      <form:option id="a_food" value="dog">사료</form:option>
+                                      <form:option id="a_snack" value="cat">간식</form:option>
+                                      <form:option id="a_house" value="bird">집</form:option>
+                                      <form:option id="a_chew" value="rabbit">껌</form:option>
+                                      <form:option id="a_toy" value="guineapig">장난감</form:option>
+                                      <form:option id="a_Etc" value="reptile">기타</form:option>
+                                  </form:select>
+
+                                  <h4 class="col-md-6 p-0" style="color: rgb(140, 58, 179);"> 동물카테고리 </h4>
+                                  <form:select class="col-6" style="height: 50px;" id="petVarity" path="animalCategory">
+                                      <form:option id="dog" value="dog">강아지</form:option>
+                                      <form:option id="cat" value="cat">고양이</form:option>
+                                      <form:option id="bird" value="bird">새</form:option>
+                                      <form:option id="rabbit" value="rabbit">토끼</form:option>
+                                      <form:option id="guineapig" value="guineapig">기니피그</form:option>
+                                      <form:option id="reptile" value="reptile">파충류</form:option>
+                                      <form:option id="Etc" value="reptile">기타</form:option>
+                                  </form:select>
                                 </div>
+                                
                                 <div class="form-group">
                                   <h4 class="col-md-12 p-0" style="color: rgb(140, 58, 179);">상품가격 </h4>  
                                   <form:input type="text" path="productPrice" class="form-control form-control-lg" />
@@ -51,6 +70,8 @@
                                     <h4 class="col-md-12 p-0" style="color: rgb(140, 58, 179);">상품재고수 </h4>  
                                     <form:input type="text" path="productUnitStock" class="form-control form-control-lg" />
                                 </div>
+
+                                
                                 <div class="form-group">
                                     <h4 class="col-md-12 p-0" style="color: rgb(140, 58, 179);">이미지 </h4>  
                                     <input type="file" name="s_file" class="form-control form-control-lg" />

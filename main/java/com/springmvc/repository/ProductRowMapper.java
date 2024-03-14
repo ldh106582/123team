@@ -20,6 +20,7 @@ public class ProductRowMapper implements RowMapper<Product> {
 		p.setProductUnitStock(rs.getInt(7));
 		p.setProductImage(rs.getString(8));
 		p.setPersonId(rs.getString(9));
+		p.setAnimalCategory(rs.getString(10));
 		
 		return p;
 	}

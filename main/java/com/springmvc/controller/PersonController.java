@@ -194,7 +194,7 @@ public class PersonController {
           System.out.println("로그인 조회 성공");
           
           
-          return "redirect:/Fboards";
+          return "redirect:/ENboards";
       }
       if("c".equals(type)) 
       {

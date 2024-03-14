@@ -27,7 +27,7 @@
                     <div class="card mb-2">
                         <p class="card-title"><b>일반 회원가입</b></p>
                     </div>
-                    <form:form modelAttribute="Newmember" action="./add?${ _csrf.parameterName }=${ _csrf.token }" method="post">
+                    <form:form modelAttribute="Newmember" action="./add?${ _csrf.parameterName }=${ _csrf.token }" method="post" encType="multipart/form-data">
                         <input type="hidden" name="personAddress" id="fullAddr">
                         <div class="form-group d-flex">
                         <form:input id="personId" class="form-control form-control-lg col-md-8" type="text" path="personId" placeholder="아이디" />

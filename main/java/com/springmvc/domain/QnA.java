@@ -5,7 +5,6 @@ public class QnA {
 	private String productId; // 상품Id
 	private String title; // 제목
 	private String context; // 내용
-	private int hit; // 조회수
 	private String registDay; // 작성일
 	private String comment; // 댓글
 	private String image; // 이미지 파일
@@ -42,14 +41,6 @@ public class QnA {
 
 	public void setContext(String context) {
 		this.context = context;
-	}
-
-	public int getHit() {
-		return hit;
-	}
-
-	public void setHit(int hit) {
-		this.hit = hit;
 	}
 
 	public String getRegistDay() {

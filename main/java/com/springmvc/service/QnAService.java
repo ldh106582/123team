@@ -8,4 +8,5 @@ public interface QnAService {
 	List<QnA> getAllQnAList(String productId);
 	void addQnA(QnA QnA);
 	void updateQnA(QnA QnA,String QnAId);
+	void deleteQnA(String QnAId);
 }

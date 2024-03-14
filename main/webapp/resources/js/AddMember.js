@@ -101,7 +101,6 @@ console.log(sample4_roadAddress);
 console.log(sample4_detailAddress);
 
 document.getElementById("fullAddr").value = fullAddr;
- document.getElementById("myForm").submit();
 
 }
 

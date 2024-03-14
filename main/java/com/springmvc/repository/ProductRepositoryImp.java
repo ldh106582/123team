@@ -48,9 +48,9 @@ public class ProductRepositoryImp implements ProductRepository{
 
 	@Override
 	public void addProduct(Product product) {
-		String SQL = "insert into Product values(?,?,?,?,?,?,?,?,?)";
+		String SQL = "insert into Product values(?,?,?,?,?,?,?,?,?,?)";
 		
-		template.update(SQL,getProductId(),  product.getProductName(), product.getProductPrice(), product.getProductCategory(), product.getProductDescribe(), getReleaseDate(), product.getProductUnitStock(),product.getProductImage(), product.getPersonId());
+		template.update(SQL,getProductId(),  product.getProductName(), product.getProductPrice(), product.getProductCategory(), product.getProductDescribe(), getReleaseDate(), product.getProductUnitStock(),product.getProductImage() ,product.getPersonId(), product.getAnimalCategory());
 	}
 
 //	날짜받기
@@ -67,7 +67,7 @@ public class ProductRepositoryImp implements ProductRepository{
 	@Override
 	public void updateProduct(Product product, String productId) {
 		String SQL = "update Product set ProductName=?,ProductPrice=?,ProductCategory=?,ProductDscription=?,ProductUnitStock=?,ProductImage=? where ProductId='"+productId+"'";
-		template.update(SQL,product.getProductName(),product.getProductPrice(),product.getProductCategory(),product.getProductCategory(),product.getProductUnitStock(),product.getProductImage());
+		template.update(SQL,product.getProductName(),product.getProductPrice(),product.getProductCategory(),product.getProductCategory(),product.getProductUnitStock(),product.getProductImage(),product.getAnimalCategory());
 	}
 
 	@Override
