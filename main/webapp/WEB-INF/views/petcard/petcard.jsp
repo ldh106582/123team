@@ -122,11 +122,6 @@
                         <p id="petbirth"> 생년월일 : ${petid.petBirth} (나이 : <b id="petAge"> </b>)</p>
                     </div>
                 </li>
-                <li>
-                    <div class="row_item other">
-                        <p> 몸무게 : ${petWeight.petWeight} </p>
-                    </div>
-                </li>
             </ul>
         </div>
     </div>

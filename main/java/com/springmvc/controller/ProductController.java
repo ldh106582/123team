@@ -54,14 +54,12 @@ public class ProductController {
 		
 		// 리뷰에 대한 내용을 가져옴
 		System.out.println("여긴 product 상품 id : "+ productId);
-		
 		List<ProductReview> listOfProductReview = productService.getp_Orderdate(productId);
 		model.addAttribute("listOfProductReview", listOfProductReview);
 		
-		String personId = (String) request.getSession().getAttribute("personId");
-		System.out.println(personId);
+
 		Product product = productService.getProductById(productId);
-		product.setPersonId(personId);
+		System.out.println(product.getPersonId());
 		model.addAttribute("product", product);
 		
 		return "all_product/product";
@@ -80,7 +78,7 @@ public class ProductController {
 		String imagePatn = request.getSession().getServletContext().getRealPath("/resources/images");
 		System.out.println("이미지 경로 : " + imagePatn);
 		File file = new File(imagePatn, imageName);
-		
+		String personId = (String) request.getSession().getAttribute("personId");
 		try 
 		{
 			productImage.transferTo(file);
@@ -90,7 +88,7 @@ public class ProductController {
 		{
 			System.out.println("이미지 파일이 존재하지 않습니다." + e);
 		}
-		
+		product.setPersonId(personId);
 		productService.addProduct(product);
 		
 		
