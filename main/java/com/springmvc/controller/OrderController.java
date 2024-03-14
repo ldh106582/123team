@@ -19,9 +19,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.springmvc.domain.type;
 import com.springmvc.domain.Order;
 import com.springmvc.domain.Person;
+import com.springmvc.domain.Product;
 import com.springmvc.domain.ProductMember;
 import com.springmvc.domain.ShoppingCart;
 import com.springmvc.service.OrderSerivce;
+import com.springmvc.service.ProductService;
 
 @Controller
 @RequestMapping("/orders")
@@ -29,6 +31,9 @@ public class OrderController {
 
 	@Autowired
 	private OrderSerivce orderSerivce;
+	
+	@Autowired 
+	ProductService productService;
 	
 	// 배송정보 확인 페이지
 	@PostMapping("/o_create")
@@ -56,6 +61,9 @@ public class OrderController {
 		order.setTotalPrice(totalprice);
 		order.setPersonId(personId);
 		order.setOrderDate(currentDate);
+		Product product=productService.getProductById(productId);
+		order.setManagerId(product.getPersonId());
+		order.setState("처리중");
 		
 		HttpSession session = request.getSession();
 		session.setAttribute("order", order);

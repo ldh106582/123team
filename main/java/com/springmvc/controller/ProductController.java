@@ -20,7 +20,9 @@ import com.springmvc.domain.Order;
 import com.springmvc.domain.Person;
 import com.springmvc.domain.Product;
 import com.springmvc.domain.ProductReview;
+import com.springmvc.domain.QnA;
 import com.springmvc.service.ProductService;
+import com.springmvc.service.QnAService;
 
 
 @Controller
@@ -29,23 +31,36 @@ public class ProductController {
 	
 	@Autowired
 	ProductService productService;
+
+	@Autowired
+	QnAService QnAService;
 	
 //	R
 	@RequestMapping
 	public String getProductList(Model model) {
+		
 		model.addAttribute("productList",productService.getProductsList());
 		return "all_product/products";
 	}
 	
 	@GetMapping("/product")
-	public String getProduct(@RequestParam("productId") String productId,Model model) {
+	public String getProduct(@RequestParam("productId") String productId,Model model, HttpServletRequest request) 
+	{
+		//QnA 내용
+		List<QnA> listofQnA = QnAService.getAllQnAList(productId);
+		System.out.println(listofQnA);
+		
+		model.addAttribute("listofQnA", listofQnA);
+		
 		// 리뷰에 대한 내용을 가져옴
 		System.out.println("여긴 product 상품 id : "+ productId);
-		
 		List<ProductReview> listOfProductReview = productService.getp_Orderdate(productId);
 		model.addAttribute("listOfProductReview", listOfProductReview);
 		
-		model.addAttribute("product",productService.getProductById(productId));
+
+		Product product = productService.getProductById(productId);
+		System.out.println(product.getPersonId());
+		model.addAttribute("product", product);
 		
 		return "all_product/product";
 	}
@@ -63,7 +78,7 @@ public class ProductController {
 		String imagePatn = request.getSession().getServletContext().getRealPath("/resources/images");
 		System.out.println("이미지 경로 : " + imagePatn);
 		File file = new File(imagePatn, imageName);
-		
+		String personId = (String) request.getSession().getAttribute("personId");
 		try 
 		{
 			productImage.transferTo(file);
@@ -73,7 +88,7 @@ public class ProductController {
 		{
 			System.out.println("이미지 파일이 존재하지 않습니다." + e);
 		}
-		
+		product.setPersonId(personId);
 		productService.addProduct(product);
 		
 		
@@ -164,5 +179,34 @@ public class ProductController {
 		productService.setdeleteReview(reviewId);
 		
 		return "redirect:/products/product?productId=" + productId;
+	}
+//	상품관리자 페이지
+	@GetMapping("manager")
+	public String managerpage(Model model, HttpSession session,HttpServletRequest request) {
+		String personId = (String) session.getAttribute("personId");
+		
+		model.addAttribute("sales", productService.getSales(personId));
+		model.addAttribute("orders", productService.getOrders(personId));
+		model.addAttribute("numofproduct", productService.getNumOfProduct(personId));
+		List<Order> list = productService.getPermissionList(personId);
+		if(list.isEmpty()) {
+			request.setAttribute("nothing", "주문목록이 없어요ㅠ");
+		}
+		model.addAttribute("permissionlist", list);
+		return "/member/ProductManagerPage";
+	}
+	@GetMapping("permit")
+	public String permit(@RequestParam("dec")String dec,@RequestParam("num")String num){
+		System.out.println("도착");
+		productService.setdecission(dec,num);
+		return "redirect:/products/manager";
+	}
+	@GetMapping("myorderList")
+	public String getorderList(HttpSession session,Model model) {
+		String personId = (String) session.getAttribute("personId");
+		model.addAttribute("mylist",productService.getorderList(personId));
+		
+		System.out.println(productService.getorderList(personId).get(0).getState());
+		return "/all_product/myOderList";
 	}
 }

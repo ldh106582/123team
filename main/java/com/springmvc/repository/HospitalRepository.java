@@ -3,6 +3,7 @@ package com.springmvc.repository;
 import java.util.List;
 
 import com.springmvc.domain.Hospital;
+import com.springmvc.domain.HospitalBooking;
 
 public interface HospitalRepository {
 
@@ -20,5 +21,11 @@ public interface HospitalRepository {
 	void deleteHospital(String hid);
 
 	List<Hospital> gethospitalsByTitle(String title);
+
+	int myhospitalList(String personId);
+
+	List<HospitalBooking> todaybookList(String personId);
+
+	List<HospitalBooking> allbooklist(String personId);
 
 }

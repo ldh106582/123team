@@ -17,30 +17,30 @@ public class AjaxController {
 	
 	@Autowired
 	AjaxService ajaxService;
-	
-	// product 관리자 아이디확인 함수
-	@GetMapping(value="/managerlogin", produces="application/json")
-	@ResponseBody
-	public String ProductMemberajax(@RequestParam("userId") String userId) {
-			System.out.println("product ajax도착");
-			System.out.println("userId도착 : " + userId);
-	        if(ajaxService.productManager(userId)) {
-	            return "true"; // 아이디가 중복되면 true 반환
-	        } else {
-	            return "false"; // 중복되지 않으면 false 반환
-	        }
-	    }
+
 
 	// 소비자 아이디확인 함수
 	@GetMapping(value="/login/join/memberid", produces="application/json")
 	@ResponseBody
-	public String Member(@RequestParam("userId") String userId) {
-	    System.out.println("소비자 ajax도착");
+	public String checkMemberId(@RequestParam("userId") String userId) {
+	    System.out.println("소비자 ajax 도착");
 	    if(ajaxService.member(userId)){
 	        return "true";
 	    } else {
 	        return "false";
 	    }
+	}
+	
+	// productmanager 아이디 확인하는 함수
+	@GetMapping(value="/login/managerId", produces="application/json")
+	@ResponseBody
+	public String managerId(@RequestParam("userId") String userId) {
+		System.out.println("product 아작스 도착");
+		if(ajaxService.productManager(userId)) {
+			return "true";
+		} else {
+			return "false";
+		}
 	}
 	
 	// 로그인 성공 실패를 알려주는 함수

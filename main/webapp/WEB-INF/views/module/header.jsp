@@ -131,9 +131,16 @@
             </div>
           </li>
           <li class="nav-item nav-profile dropdown">
-            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-         	  <img src="https://static.nid.naver.com/images/web/user/default.png" width="40" height="40" alt="프로필 이미지">
-            </a>
+          
+	        <c:choose>
+			    <c:when test="${not empty id.image}">
+			        <img src="<c:url value='/resources/images/${id.image}'/>" width="40" height="40" alt="프로필 이미지">
+			    </c:when>
+			    <c:otherwise>
+			        <img src="https://static.nid.naver.com/images/web/user/default.png" width="40" height="40" alt="프로필 이미지">
+			    </c:otherwise>
+			</c:choose>
+			
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
               <a class="dropdown-item">
                 <i class="ti-settings text-primary"></i>

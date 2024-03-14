@@ -79,7 +79,9 @@
              	   	  리뷰수 : ${hospital.reviewCount }
               	   	  <c:if test="${loginId ==  hospital.personId}">
 	                    <div class="p-0 col-md-12 mt-3">
-	                    	<a class="btn btn-outline-info  btn-sm mt-2" href="addreview?hid=${hospital.hid}">리뷰작성</a>
+	                    	<div class="mb-2 ml-2">
+	                    		<a class="btn btn-outline-info  btn-sm mt-2" href="addreview?hid=${hospital.hid}">리뷰작성</a>
+	                    	</div>
 	                    </div>
                 		</c:if>
                       <c:forEach items="${reviews}" var="review">

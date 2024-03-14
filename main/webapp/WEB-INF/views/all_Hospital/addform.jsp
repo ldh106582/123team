@@ -56,7 +56,7 @@
                               <div class="form-group">
                                 <label>병원이미지</label>
                                 <div class="input-group col-xs-12">
-                                   <input type="file" name="img[]" class="file-upload-default">
+                                   <input type="file" name="s_file" class="file-upload-default">
                                   <input type="file" class="form-control file-upload-info" placeholder="Upload Image">
                                  </div>
                               </div>
