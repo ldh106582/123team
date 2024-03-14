@@ -48,6 +48,7 @@
 						<div class="brand-logo">
 						    <img src="resources/images/logo.jpg" alt="logo">
 						</div>
+						${noId}
 						<form:form id="loginForm" class="pt-3" modelAttribute="success" method="POST">
 							<div class="form-group">
 								<form:input class="form-control form-control-lg" type="text" path="personId" id="id" placeholder="아이디" />

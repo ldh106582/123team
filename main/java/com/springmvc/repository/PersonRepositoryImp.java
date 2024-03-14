@@ -43,9 +43,9 @@ public class PersonRepositoryImp implements  PersonRepository{
 	{
 		System.out.println("personrepository");
 		
-		String SQL = "INSERT INTO Person(PersonId, PersonPw, PersonEmail, PersonAddress, PersonName, PersonBirth,PersonSex, PersonPhone, Type)" + "VALUES(?,?,?,?,?,?,?,?,?)";
+		String SQL = "INSERT INTO Person(PersonId, PersonPw, PersonEmail, PersonAddress, PersonName, PersonBirth,PersonSex, PersonPhone, Type, image)" + "VALUES(?,?,?,?,?,?,?,?,?,?)";
 		template.update(SQL, person.getPersonId(), person.getPersonPw(), person.getPersonEmail(), person.getPersonAddress(),
-						person.getPersonName(), person.getPersonBirth(),  person.getPersonSex(), person.getPersonPhone(), person.getType());
+						person.getPersonName(), person.getPersonBirth(),  person.getPersonSex(), person.getPersonPhone(), person.getType(), person.getImage());
 	}
 
 	//update전 person 데이터를 보여줌
@@ -69,9 +69,9 @@ public class PersonRepositoryImp implements  PersonRepository{
 	@Override
 	public void SetUpdatePerson(Person person) {
 		if(person.getPersonId()!=null) {
-			 String SQL = "update Person set personId = ?, personPw = ?, personEmail = ?, personAddress = ?, personName = ?, personBirth = ?, personSex = ?,  personPhone = ?, Type=? where personId = ?";
-		     template.update(SQL, person.getPersonId(), person.getPersonPw(), person.getPersonEmail(), person.getPersonAddress(),
-		    		 			person.getPersonName(), person.getPersonBirth(), person.getPersonSex(), person.getPersonPhone(), person.getType());
+			 String SQL = "update Person set personPw = ?, personEmail = ?, personAddress = ?, personName = ?, personBirth = ?, personSex = ?,  personPhone = ?, image=? where personId = ?";
+		     template.update(SQL, person.getPersonPw(), person.getPersonEmail(), person.getPersonAddress(),
+		    		 			person.getPersonName(), person.getPersonBirth(), person.getPersonSex(), person.getPersonPhone(), person.getImage(), person.getPersonId());
 		}else {
 				System.out.println("person 아이디가 없습니다.");
 		}
@@ -187,9 +187,9 @@ public class PersonRepositoryImp implements  PersonRepository{
 	@Override
 	public void SetUpdatePM(ProductMember productMember) {
 
-			 String SQL = "update person set PersonPw=?, PersonEmail=?, PersonAddress=? ,PersonName=?, PersonBirth=?, PersonSex=?, PersonPhone=?, Type=?  where PersonId=?";
+			 String SQL = "update person set PersonPw=?, PersonEmail=?, PersonAddress=? ,PersonName=?, PersonBirth=?, PersonSex=?, PersonPhone=?, s_image=?  where PersonId=?";
 	         template.update(SQL, productMember.getPersonPw(), productMember.getPersonEmail(), productMember.getPersonAddress(), productMember.getPersonName(),
-	        		 		productMember.getPersonBirth(), productMember.getPersonSex(), productMember.getPersonPhone(), productMember.getType(),productMember.getPersonId());
+	        		 		productMember.getPersonBirth(), productMember.getPersonSex(), productMember.getPersonPhone(), productMember.getS_image(),productMember.getPersonId());
 	}
 	
 	 // hospital manager 테이블을 수정하는 곳
@@ -204,9 +204,9 @@ public class PersonRepositoryImp implements  PersonRepository{
 	@Override
 	public void SetUpdatePH(HospitalMember hospitalMembers) {
 		if(hospitalMembers.getPersonId()!=null) {
-			  String SQL = "update person set PersonPw=?, PersonEmail=?, PersonAddress=? ,PersonName=?, PersonBirth=?, PersonSex=?, PersonPhone=?, Type=?  where PersonId=?";
+			  String SQL = "update person set PersonPw=?, PersonEmail=?, PersonAddress=? ,PersonName=?, PersonBirth=?, PersonSex=?, PersonPhone=?, s_image=?  where PersonId=?";
 	          template.update(SQL, hospitalMembers.getPersonPw(), hospitalMembers.getPersonEmail(), hospitalMembers.getPersonAddress(), hospitalMembers.getPersonName(),
-	                  hospitalMembers.getPersonBirth(), hospitalMembers.getPersonSex(), hospitalMembers.getPersonPhone(), hospitalMembers.getType(),hospitalMembers.getPersonId());
+	                  hospitalMembers.getPersonBirth(), hospitalMembers.getPersonSex(), hospitalMembers.getPersonPhone(), hospitalMembers.getS_image() ,hospitalMembers.getPersonId());
 		}
 		System.out.println("null?");
 		

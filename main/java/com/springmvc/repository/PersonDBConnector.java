@@ -19,6 +19,7 @@ public class PersonDBConnector implements RowMapper<Person>, Serializable{
 	        person.setPersonSex(rs.getString(7));        // PersonSex
 	        person.setPersonPhone(rs.getString(8));      // PersonPhone
 	        person.setType(rs.getString(9));
+	        person.setImage(rs.getString(10));
 	        return person;
 	}
 }

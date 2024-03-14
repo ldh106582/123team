@@ -31,7 +31,7 @@
                         <input type="hidden" name="personAddress" id="fullAddr">
                         <div class="form-group d-flex">
                         <form:input id="personId" class="form-control form-control-lg col-md-8" type="text" path="personId" placeholder="아이디" />
-<a id="userId" onclick="idDuplicateCheck(event)" class="btn btn-outline-primary col-md-3 font-weight-medium auth-form-btn text-center ml-2">중복확인</a>
+							<a id="userId" onclick="idDuplicateCheck(event)" class="btn btn-outline-primary col-md-3 font-weight-medium auth-form-btn text-center ml-2">중복확인</a>
                         </div>
                         <div class="form-group">
                             <form:input class="form-control form-control-lg" type="password" path="personPw"  placeholder="비밀번호"/>
@@ -64,6 +64,7 @@
                             <form:radiobutton path="personSex" value="남자" class="col-sm-1"/>남성
 				            <form:radiobutton path="personSex" value="여자" class="col-sm-1"/>여성
                         </div>
+                        
                         <div class="mt-3">
                             <input type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" id="storeAddr" onclick="combineAddr()" value="회원가입"  />
                         </div>

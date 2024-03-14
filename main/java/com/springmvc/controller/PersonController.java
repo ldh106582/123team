@@ -54,13 +54,25 @@ public class PersonController {
    
    // 회원가입 파라미터 값 받아옴
    @PostMapping("/add")
-   public String SetCreatePerson(@ModelAttribute("Newmember")Person person, Model model, HttpServletRequest request) {
+   public String SetCreatePerson(@ModelAttribute("Newmember")Person person, Model model, HttpServletRequest request, MultipartFile s_image) {
       HttpSession session = request.getSession();
       String type = (String)session.getAttribute("type");
       System.out.println("add post : " + type);
       System.out.println("주소 test : " + person.getPersonAddress());
       person.setType(type);
       
+      String o_image = s_image.getOriginalFilename();
+      String imagePAth = request.getSession().getServletContext().getRealPath("/resources/images");
+      File file = new File(imagePAth, o_image);
+      
+      try 
+      {
+    	  s_image.transferTo(file);
+    	  person.setImage(o_image);
+      }catch(Exception e) 
+      {
+    	  System.out.println("이미지를 등록하지 않았습니다. " + e);
+      }
       
       // 회원가입 시 db에 넣어주는 함수
       personService.setCreatPerson(person);
@@ -276,12 +288,13 @@ public class PersonController {
 		                         @RequestParam(value = "s_file", required=false) MultipartFile s_file,
                                  HttpServletRequest request) {
        
-      System.out.println("사용자 ID: " + person.getPersonId());
-
+	   System.out.println("사용자 ID: " + person.getPersonId());
+	   System.out.println("s_file : " + s_file);
        HttpSession session  = request.getSession();
        String type = (String) session.getAttribute("type");
        System.out.println("type : " + type);
        System.out.println(hospitalMember.getPersonEmail());
+       
        
        if("p".equals(type)) 
        { 
@@ -341,6 +354,18 @@ public class PersonController {
        }
        else 
        {
+    	   String imageName  = s_file.getOriginalFilename();
+    	   String imagePath = request.getSession().getServletContext().getRealPath("/resources/images");
+    	   System.out.println("이미지 경로 : " + imagePath);
+    	   File file = new File(imagePath, imageName);
+    	   try 
+    	   {
+    		   s_file.transferTo(file);
+    		   person.setImage(imageName);
+    	   }catch(Exception e) 
+    	   {
+    		   System.out.println("등록된 이미지가 없습니다." + e);
+    	   }
           personService.SetUpdatePerson(person);
        }
        

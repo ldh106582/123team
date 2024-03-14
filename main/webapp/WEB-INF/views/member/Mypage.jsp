@@ -22,15 +22,21 @@
 	</div>
 	<div class="container-fluid page-body-wrapper">
  		<%@  include file="../module/leftheader.jsp" %>
-			<div id="container" class="container wrap naverid"">
+			<div id="container" class="container wrap naverid">
 				<header class="header" role="banner">
 		            <div class="header_home">
 		            <div class="gnb_area"></div>
 		            <div class="profile_area">
 		                <div class="profile_inner">
-		                    <a href="#" onclick="changeImage()" class="photo">
-		                        <img src="https://static.nid.naver.com/images/web/user/default.png" width="84" height="84" alt="프로필 이미지">
-		                    </a>
+          				<c:choose>
+						    <c:when test="${not empty id.image}">
+						        <img src="<c:url value='/resources/images/${id.image}'/>" width="84" height="84" alt="프로필 이미지">
+						    </c:when>
+						    <c:otherwise>
+						        <img src="https://static.nid.naver.com/images/web/user/default.png" width="84" height="84" alt="프로필 이미지">
+						    </c:otherwise>
+						</c:choose>
+							
 		                    <div class="profile">
 		                        <p class="useid">${id.personId}</p> 
 		                        <p class="usemail">${id.personEmail}</p>
@@ -54,6 +60,16 @@
 		                            <div class="menu_text ">로그아웃</div>
 		                        </a>
 		                     </li>
+		                     <li>
+				               <div class="left_item" role="menuitem" >
+				                   <div class="menu_text ">펫 카드</div>
+				               </div>
+								<c:forEach items="${petName}" var="petName">
+									<a href="./login/petcard?petid=${petName.petId}" class="left_item" role="menuitem">
+										<div>${petName.petName }</div>
+									</a>
+								</c:forEach>
+				            </li>
 		                </ul>
 		            </div>
 		        </header>
@@ -69,7 +85,7 @@
 	                    <ul class="subindex_row">
 	                        <li>
 	                            <div class="row_item other">
-	                                <a href="./login/update?id=${ id.personId }" class="text-decoration-none"><span class="item_text">내 정보 수정</span></a>
+	                                <a href="/123team/login/update?id=${ id.personId }" class="text-decoration-none"><span class="item_text">내 정보 수정</span></a>
 	                            </div>
 	                        </li>
 	                        <li>

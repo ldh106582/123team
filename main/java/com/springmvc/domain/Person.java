@@ -18,6 +18,7 @@ public class Person implements Serializable{
 	   private String personSex;
 	   private String personPhone;
 	   private String type;
+	   private String image;
 	  
 	public Person() {
 		super();
@@ -98,6 +99,16 @@ public class Person implements Serializable{
 
 	public void setType(String type) {
 		this.type = type;
+	}
+
+
+	public String getImage() {
+		return image;
+	}
+
+
+	public void setImage(String image) {
+		this.image = image;
 	}
 
 
