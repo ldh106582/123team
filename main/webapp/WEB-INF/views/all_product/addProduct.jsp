@@ -34,8 +34,9 @@
                                     <h4 class="col-md-12 p-0" style="color: rgb(140, 58, 179);">상품명 </h4>  
                                     <form:input class="form-control form-control-lg" type="text" path="productName" />
                                 </div>
+                                
                                 <div class="form-group">
-                                    <h4 class="col-md-12 p-0" style="color: rgb(140, 58, 179);">카테고리 </h4>   
+                                    <h4 class="col-md-12 p-0" style="color: rgb(140, 58, 179);">카테고리 </h4>
                                     <form:input class="form-control form-control-lg" type="text" path="productCategory"/>
                                 </div>
                                 <div class="form-group">

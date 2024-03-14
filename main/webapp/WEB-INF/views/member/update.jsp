@@ -22,17 +22,20 @@
 	<div class="container-fluid page-body-wrapper">
  		<%@  include file="../module/leftheader.jsp" %>
      
-	          <div class="content-wrapper d-flex align-items-center auth px-0">
+	          <div class="content-wrapper d-flex auth px-0">
 				<div class="row w-100 mx-0">
 		            <div class="col-lg-6 mx-auto">
 		                <div class="auth-form-light text-left py-5 px-4 px-sm-5">
 		                    <div class="brand-logo">
-		                        <img src="resources/images/logo.jpg" alt="logo">
+		                        <div class="card-title"><b>회원수정 페이지</b></div>
 		                    </div>
-		     				<form:form modelAttribute="addmemberupdate" action="/123team/login/update" method="post">
+		     				<form:form modelAttribute="addmemberupdate" action="/123team/login/update" method="post" encType="multipart/form-data">
 		     					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+		     					<input type="hidden" name="personId" value="${u_person.personId}"/>
+		     					<input type="hidden" name="s_file" value="s_file"/>
+		     					
 		                        <div class="form-group">
-		                            <form:input class="form-control form-control-lg" type="text" path="personId"  value="${u_person.personId}"/>
+		                            <div class="form-control form-control-lg" >${u_person.personId}</div>
 		                        </div>
 		                        <div class="form-group">
 		                            <form:input class="form-control form-control-lg" type="password" path="personPw"  placeholder="비밀번호"/>
@@ -55,6 +58,9 @@
 		                        <div class="form-group">
 		                            <form:radiobutton path="personSex" value="남자" class="col-sm-1"/>남성
 						            <form:radiobutton path="personSex" value="여자" class="col-sm-1"/>여성
+		                        </div>
+		                        <div class="form-group">
+		                            <input class="form-control form-control-lg" type="file" name="s_file" placeholder="[선택] 반려동물 사진을 첨부해주세요."/>
 		                        </div>
 		                        <div class="mt-3">
 		                            <input type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" value="수정" />

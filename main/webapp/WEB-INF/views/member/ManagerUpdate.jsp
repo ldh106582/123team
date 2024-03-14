@@ -31,13 +31,10 @@
 						<div class="row w-100 mx-0">
 				            <div class="col-lg-6 mx-auto">
 				                <div class="auth-form-light text-left py-5 px-4 px-sm-5">
-				                    <div class="brand-logo">
-				                        <img src="resources/images/logo.jpg" alt="logo">
-				                    </div>
 				     				<form:form modelAttribute="managerupdate" action="/123team/login/update" method="post" enctype="Multipart/form-data">
 				     					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 				                        <div class="form-group">
-				                            <form:input class="form-control form-control-lg" type="text" path="personId"  value="${u_productMember.personId}"/>
+				                            <div class="form-control form-control-lg" >${u_productMember.personId}</div>
 				                        </div>
 				                        <div class="form-group">
 				                            <form:input class="form-control form-control-lg" type="password" path="personPw"  value="${u_productMember.personPw}"/>
