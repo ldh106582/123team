@@ -43,9 +43,13 @@ public class OrderController {
 			
 		String shoppingCartId = request.getParameter("shoppingCartId");
 		String productId = request.getParameter("productId");
+		System.out.println(productId);
 		String productName = request.getParameter("productName");
+		System.out.println(productName);
 		String amounts = request.getParameter("amount");
 		String productPrices = request.getParameter("productPrice");
+		String addr = request.getParameter("Addr");
+		System.out.println(addr);
 		
 		int amount = Integer.parseInt(amounts);
 		int productPrice = Integer.parseInt(productPrices);
@@ -63,6 +67,7 @@ public class OrderController {
 		order.setOrderDate(currentDate);
 		Product product=productService.getProductById(productId);
 		order.setManagerId(product.getPersonId());
+		order.setAddr(addr);
 		order.setState("처리중");
 		
 		HttpSession session = request.getSession();
@@ -78,18 +83,33 @@ public class OrderController {
 	}
 	// 주문완료페이지
 	@PostMapping("/o_complete")
-	public String completeOrder(@RequestParam("personId") String personId, HttpServletRequest request) {
+	public String completeOrder(@RequestParam("personId") String personId, HttpServletRequest request, Model model) {
+		System.out.println("==========================");
 		
 		HttpSession session = request.getSession();
 		Order order = (Order) session.getAttribute("order");
+		String addr = request.getParameter("addr");
+		order.setAddr(addr);
+		System.out.println("order 주소 : " + addr);
 		System.out.println("order 넘버 : " + order.getOderNum());
+		System.out.println("order 넘버 : " + order.getAmount());
+		System.out.println("order 넘버 : " + order.getManagerId());
+		System.out.println("order 넘버 : " + order.getPrice());
+		System.out.println("order 이름  : " + order.getProductName());
+		
+		
+		
+		System.out.println(order.getAddr());
 		session.setAttribute("order", order);
 		
 		String productId = (String) order.getProductId();
 		int productUnitStock = order.getAmount();
 		// product테이블 재고를 관리하는 함수
 		orderSerivce.SetminusProduct(productId, productUnitStock, personId);
+		System.out.println("order 넘버 : " + order.getPrice());
+		System.out.println("order 이름  : " + order.getProductName());
 		
+		model.addAttribute("order", order);
 		return "/all_product/Order";
 	}
 	

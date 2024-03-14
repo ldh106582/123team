@@ -171,7 +171,7 @@ public class ManagerRepositoryImpl implements ManagerRepository {
 	   // 체험단 manager 회원가입 하는 함수
 	@Override
 	public void addEx_Manager(Ex_manager ex_manager) {
-		 String SQL = "insert into Ex_Manager values(?,?,?,?,?,?,?,?)";
+		 String SQL = "insert into Ex_Manager values(?,?,?,?,?,?,?)";
 		 template.update(SQL,ex_manager.getPersonId(), ex_manager.getPersonPw(), ex_manager.getS_image(), ex_manager.getEx_Name(), ex_manager.getEx_Phone(),
 				 ex_manager.getEx_Address(), ex_manager.getType() );
 		
@@ -179,9 +179,9 @@ public class ManagerRepositoryImpl implements ManagerRepository {
 	 // 전체 db에 데이터를 넣어주는 함수
 	@Override
 	public void setEx_AllMember(Ex_manager ex_manager) {
-		 String SQL = "insert into Person values(?,?,?,?,?,?,?,?,?)";
+		 String SQL = "insert into Person values(?,?,?,?,?,?,?,?,?,?)";
 		 template.update(SQL,ex_manager.getPersonId(), ex_manager.getPersonPw(), ex_manager.getPersonEmail(), ex_manager.getPersonAddress(), ex_manager.getPersonName(),
-				 ex_manager.getPersonBirth(), ex_manager.getPersonSex(), ex_manager.getPersonPhone(), ex_manager.getType());
+				 ex_manager.getPersonBirth(), ex_manager.getPersonSex(), ex_manager.getPersonPhone(), ex_manager.getType(), ex_manager.getC_image());
 	}
 
 

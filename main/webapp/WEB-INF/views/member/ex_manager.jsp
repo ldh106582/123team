@@ -26,6 +26,9 @@
      				<form:form modelAttribute="ex_member" action="./productmanager?${ _csrf.parameterName }=${ _csrf.token }" method="post" enctype="multipart/form-data">
                         <input type="hidden" name="c_file"/>
                         <input type="hidden" name="s_file"/>
+						<input type="hidden" name="personAddress" id="fullAddr"/>
+						<input type="hidden" name="ex_Address" id="ex_fullAddr"/>
+
                         <div class="form-group d-flex">
                             <form:input id="personId" class="form-control form-control-lg col-md-8" type="text" path="personId"  placeholder="아이디" />
                             <a id="userId" onclick="idDuplicateCheck(event)" class="btn btn-outline-primary col-md-3 auth-form-btn text-center ml-2">중복확인</a>
@@ -42,9 +45,20 @@
                         <div class="form-group">
                             <form:input class="form-control form-control-lg" type="text" path="personBirth"  placeholder="생년월일"/>
                         </div>
+                        
+                        <div class="form-group show-grid r d-flex">
+                           <input type="text" id="post" class="form-control form-control-lg col-md-8 mr-3" placeholder="우편번호">
+                           <input type="button" onclick="execDaumPostcode()" value="우편번호" class="btn btn-outline-primary col-md-3 font-weight-medium auth-form-btn text-center">
+                        </div>	
                         <div class="form-group">
-                            <form:input class="form-control form-control-lg" type="text" path="personAddress" placeholder="주소"/>
-                        </div>
+                            <input type="text" id="roadAddress" class="form-control form-control-lg col-md-12" placeholder="도로명주소">
+                         </div>	
+
+                         <div class="form-group">
+                            <input type="text" id="detailAddress" class="form-control form-control-lg col-md-12" placeholder="상세주소">
+                         </div>	
+                        
+
                         <div class="form-group">
                             <form:input class="form-control form-control-lg" type="text" path="personPhone" placeholder="전화번호"/>
                         </div>
@@ -61,9 +75,19 @@
                         <div class="form-group">
                             <form:input class="form-control form-control-lg" type="text" path="ex_Name" placeholder="체험단 명"/>
                         </div>
+                        
+                         <div class="form-group show-grid r d-flex">
+                           <input type="text" id="ex_post" class="form-control form-control-lg col-md-8 mr-3" placeholder="우편번호">
+                           <input type="button" onclick="ex_execDaumPostcode()" value="우편번호" class="btn-sm btn btn-outline-primary col-md-3 auth-form-btn text-center">
+                        </div>	
                         <div class="form-group">
-                            <form:input class="form-control form-control-lg" type="text" path="ex_Address" placeholder="체험단주소"/>
-                        </div>
+                            <input type="text" id="ex_roadAddress" class="form-control form-control-lg col-md-12" placeholder="도로명주소">
+                         </div>	
+
+                         <div class="form-group">
+                            <input type="text" id="ex_detailAddress" class="form-control form-control-lg col-md-12" placeholder="상세주소">
+                         </div>	
+                        
                         <div class="form-group">
                    	    	<form:input class="form-control form-control-lg" type="text" path="ex_Phone" placeholder="체험단 번호"/>
                         </div>

@@ -43,6 +43,22 @@ public class AjaxServiceImpl implements AjaxService {
 			return false;			
 		}
 	}
+	// 체험단 manager 아이디 확인하는 함수
+	@Override
+	public boolean Ex_mangerId(String userId) 
+	{
+		if(ajaxRepository.Ex_mangerId(userId))
+		{
+			return true;
+		}
+		else 
+		{
+			return false;
+		}
+
+	}
+	
+	
 	
 	
 }
