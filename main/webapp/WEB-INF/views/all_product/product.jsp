@@ -57,7 +57,7 @@
 
                      <div class="show-grid col-md-12 row">
                          <div class="col-md-6 p-0"> 
-                             <input type="submit" class="btn btn-outline-primary m-0" value="장바구니추가"/>
+                             <input type="submit" class="btn btn-outline-primary m-0" value="장바구니추가" onclick="alert('장바구니 추가 완료')">/>
                          </div>
                      	</form:form>
                      

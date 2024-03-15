@@ -203,14 +203,12 @@ public class HospitalRepositoryImp implements HospitalRepository{
 		HospitalBooking booking = null;
 		String date = null;
 		String today = LocalDate.now().toString();
-		int count= 0;
 		for(int i=0;i<list.size();i++) {
 			booking=list.get(i);
 			date = booking.getRegistDay();
 			String[] splitdate = date.split(" ");
 			if(splitdate[0].equals(today)) {
-				newlist.set(count, booking);
-				count++;
+				newlist.add(booking);
 			}
 		}
 		return newlist;

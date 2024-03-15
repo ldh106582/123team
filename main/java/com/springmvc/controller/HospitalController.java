@@ -268,14 +268,24 @@ public class HospitalController {
 		}
 //		병원관리자페이지
 		@GetMapping("manager")
-		public String hospitalMangerPage(Model model,HttpSession session) {
+		public String hospitalMangerPage(Model model,HttpSession session,HttpServletRequest request) {
 			String personId = (String) session.getAttribute("personId");
 			int count = hospitalService.myhospitalList(personId);
 			List<HospitalBooking> todaybooklist = hospitalService.todaybookList(personId);
 			List<HospitalBooking> allbooklist = hospitalService.allbooklist(personId);
-			
+			if(count == 0) {
+				request.setAttribute("donthavehospital", "등록된 병원이 없어요");
+			}
 			model.addAttribute("count",count);
+			
+			if(todaybooklist == null) {
+				request.setAttribute("donthavetoday", "오늘 예약이 없어요");
+			}
 			model.addAttribute("todaybooklist",todaybooklist);
+			
+			if(todaybooklist == null) {
+				request.setAttribute("donthavebooklist", "진료 내역이 없어요");
+			}
 			model.addAttribute("allbooklist",allbooklist);
 			
 			return "member/HospitalManagerPage";
