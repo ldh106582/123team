@@ -16,7 +16,8 @@ public class Product implements Serializable{
 	private String productImage;
 	private int productUnitStock;
 	private String animalCategory;
-	
+	private float  reviewScore;
+	private int reviewCount;
 	public Product() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -83,6 +84,18 @@ public class Product implements Serializable{
 	}
 	public void setAnimalCategory(String animalCategory) {
 		this.animalCategory = animalCategory;
+	}
+	public float getReviewScore() {
+		return reviewScore;
+	}
+	public void setReviewScore(float reviewScore) {
+		this.reviewScore = reviewScore;
+	}
+	public int getReviewCount() {
+		return reviewCount;
+	}
+	public void setReviewCount(int reviewCount) {
+		this.reviewCount = reviewCount;
 	}
 	
 	

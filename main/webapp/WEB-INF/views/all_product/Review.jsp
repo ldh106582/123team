@@ -54,7 +54,7 @@
                                         <input type="file" class="col-md-12 p-1 form-control form-control-lg " name="s_file"/>
                                     </div>
                                     <div class="col-md-12 mt-3 p-0">
-                                        <form:hidden path="hid" value="${hid}"/>
+                                        <form:hidden path="productId" value="${productId}"/>
                                         <input class="btn btn col-md-12 p-2" type="submit" value="작성완료" style="background-color: blueviolet; color: white;">
                                     </div>
                                 </form:form>

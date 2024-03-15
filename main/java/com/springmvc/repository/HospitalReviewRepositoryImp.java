@@ -47,7 +47,7 @@ public class HospitalReviewRepositoryImp implements HospitalReviewRepository{
 		String SQL2 = "select avg(reviewScore) from HospitalReview where hid='"+hid+"'";
 		Double avg = template.queryForObject(SQL2, Double.class);
 //		리뷰개수
-		String SQL3 = "select count(*) from HospitalReview where hid='"+hid+"'";
+		String SQL3 = "select coproductunt(*) from HospitalReview where hid='"+hid+"'";
 		float count = template.queryForObject(SQL3, int.class);
 //		업데이트
 		String SQL4 = "update hospital set reviewScore=?,reviewCount=? where hid=?";

@@ -57,7 +57,7 @@
 
                      <div class="show-grid col-md-12 row">
                          <div class="col-md-6 p-0"> 
-                             <input type="submit" class="btn btn-outline-primary m-0" value="장바구니추가" onclick="alert('장바구니 추가 완료')">/>
+                             <input type="submit" class="btn btn-outline-primary m-0" value="장바구니추가" onclick="alert('장바구니 추가 완료')">
                          </div>
                      	</form:form>
                      
@@ -70,8 +70,14 @@
                              </c:if>
                          </div>
                      </div>
+                     <br>
+                     리뷰 수 : ${product.reviewCount}
+                     평점 : ${product.reviewScore}
                     <c:if test="${loginId ==  product.personId}">
+                    
                     	<div class="mb-2 ml-2">
+                    	
+                    	
                         	<a class="btn btn-outline-info btn-sm border border-dark mt-3" href="/123team/products/p_review?personId=${product.personId}">리뷰작성</a>
                  		</div>
                  	</c:if>

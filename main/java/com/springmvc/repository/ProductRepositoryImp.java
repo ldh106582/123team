@@ -9,17 +9,22 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.springmvc.domain.ENBoard;
+import com.springmvc.domain.Hospital;
 import com.springmvc.domain.Order;
 import com.springmvc.domain.Person;
 import com.springmvc.domain.Product;
 import com.springmvc.domain.ProductReview;
+import com.springmvc.service.ProductService;
 
 
 @Repository
 public class ProductRepositoryImp implements ProductRepository{
 	
+	@Autowired
+	ProductService productService;
+	
 	 private JdbcTemplate template;
-
+	 
 	 @Autowired
 	 public void setJdbctemplate(DataSource dataSource) {
 		 this.template = new JdbcTemplate(dataSource);
@@ -48,9 +53,9 @@ public class ProductRepositoryImp implements ProductRepository{
 
 	@Override
 	public void addProduct(Product product) {
-		String SQL = "insert into Product values(?,?,?,?,?,?,?,?,?,?)";
+		String SQL = "insert into Product values(?,?,?,?,?,?,?,?,?,?,?,?)";
 		
-		template.update(SQL,getProductId(),  product.getProductName(), product.getProductPrice(), product.getProductCategory(), product.getProductDescribe(), getReleaseDate(), product.getProductUnitStock(),product.getProductImage() ,product.getPersonId(), product.getAnimalCategory());
+		template.update(SQL,getProductId(),  product.getProductName(), product.getProductPrice(), product.getProductCategory(), product.getProductDescribe(), getReleaseDate(), product.getProductUnitStock(),product.getProductImage() ,product.getPersonId(), product.getAnimalCategory(),0,0);
 	}
 
 //	날짜받기
@@ -99,6 +104,18 @@ public class ProductRepositoryImp implements ProductRepository{
 		String SQL = "insert into ProductReview (context, ReviewScore, purchaseTime, title, productId, personId, reviewImage) values(?,?,?,?,?,?,?)";
 		template.update(SQL, productReview.getContext(), productReview.getReviewScore(), productReview.getPurchaseTime(), productReview.getTitle(),
 				productReview.getProductId(), productReview.getPersonId(), productReview.getReviewImage());
+		
+		Product product = productService.getProductById(productReview.getProductId());
+		String productId = product.getProductId();
+//		리뷰평균
+		String SQL2 = "select avg(reviewScore) from ProductReview where productId='"+productId+"'";
+		Double avg = template.queryForObject(SQL2, Double.class);
+//		리뷰개수
+		String SQL3 = "select count(*) from ProductReview where productId='"+productId+"'";
+		float count = template.queryForObject(SQL3, int.class);
+//		업데이트
+		String SQL4 = "update Product set reviewScore=?,reviewCount=? where productId=?";
+		template.update(SQL4,avg,count,productId);
 	}
 	// 상품을 작성했던 리뷰 내용을 수정하는 함수
 	@Override
@@ -108,18 +125,53 @@ public class ProductRepositoryImp implements ProductRepository{
 		productReview = template.queryForObject(SQL, new Object[] {personId, reviewId}, new ProductReviewDBConnector());
 		return productReview;
 	}
+	
+	public ProductReview getReviewById(int reviewId) {
+		ProductReview productReview = null;
+		String SQL = "select * from ProductReview where reviewId=?";
+		productReview = template.queryForObject(SQL, new Object[] {reviewId}, new ProductReviewDBConnector());
+		return productReview;
+	}
+	
 	// 상품을 작성했던 리뷰 내용을 수정하는 함수
 	@Override
 	public void setUpdateReview(ProductReview productReview, int reviewId) {
-		
+		ProductReview Nreview = getReviewById(reviewId);
 		String SQL = "UPDATE ProductReview SET title=?, ReviewScore=?, context=? where reviewId=?";
 		template.update(SQL, productReview.getTitle(), productReview.getReviewScore(), productReview.getContext(), productReview.getReviewId());
+		
+
+		Product product = productService.getProductById(Nreview.getProductId());
+		String productId = product.getProductId();
+//		리뷰평균
+		String SQL2 = "select avg(reviewScore) from ProductReview where productId='"+productId+"'";
+		Double avg = template.queryForObject(SQL2, Double.class);
+//		리뷰개수
+		String SQL3 = "select count(*) from ProductReview where productId='"+productId+"'";
+		float count = template.queryForObject(SQL3, int.class);
+//		업데이트
+		String SQL4 = "update Product set reviewScore=?,reviewCount=? where productId=?";
+		template.update(SQL4,avg,count,productId);
 	}
 	// 리뷰를 삭제하는 함수
 	@Override
 	public void setdeleteReview(int reviewId) {
+		ProductReview Nreview = getReviewById(reviewId);
+		
 		String SQL = "delete from ProductReview where reviewId=?";
 		template.update(SQL, reviewId);
+		
+		Product product = productService.getProductById(Nreview.getProductId());
+		String productId = product.getProductId();
+//		리뷰평균
+		String SQL2 = "select avg(reviewScore) from ProductReview where productId='"+productId+"'";
+		Double avg = template.queryForObject(SQL2, Double.class);
+//		리뷰개수
+		String SQL3 = "select count(*) from ProductReview where productId='"+productId+"'";
+		float count = template.queryForObject(SQL3, int.class);
+//		업데이트
+		String SQL4 = "update Product set reviewScore=?,reviewCount=? where productId=?";
+		template.update(SQL4,avg,count,productId);
 	}
 
 	@Override
@@ -175,7 +227,6 @@ public class ProductRepositoryImp implements ProductRepository{
 	public void setdecission(String dec, String num) {
 		String SQL = "update Ordertable set state = ? where orderNum=?";
 		template.update(SQL,dec,num);
-		
 	}
 
 	@Override
