@@ -3,6 +3,7 @@ package com.springmvc.repository;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
@@ -23,9 +24,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.springmvc.domain.AddressDTO;
 import com.springmvc.domain.ENBoard;
 import com.springmvc.domain.Hospital;
 import com.springmvc.domain.HospitalBooking;
+import com.springmvc.domain.Person;
 
 @Repository
 public class HospitalRepositoryImp implements HospitalRepository{
@@ -221,5 +224,75 @@ public class HospitalRepositoryImp implements HospitalRepository{
 		String SQL = "select * from HApllication where mid='"+personId+"'";
 		return template.query(SQL, new BookingRowMapper());
 	}
+
+	@Override
+	public AddressDTO h_rest(String personId) {
+		System.out.println("restAPI : " + personId);
+		String SQL = "select * from person where personId=?";
+		Person person = template.queryForObject(SQL, new Object[] {personId},new PersonDBConnector());
+		String personAddr = person.getPersonAddress();
+		System.out.println(personAddr);
+		
+		AddressDTO adress = new AddressDTO();
 	
+			
+		try {
+			String API_key = "21a8b551d1be7416798b5c64bbb1bc8a";
+			String url = "https://dapi.kakao.com/v2/local/search/address.json?query=" + URLEncoder.encode(personAddr, "UTF-8");
+			
+			URL s_url = new URL(url);
+			HttpURLConnection con = (HttpURLConnection) s_url.openConnection();
+			con.setRequestProperty("Authorization", "KakaoAK " + API_key);
+			con.setRequestMethod("GET");
+			
+			BufferedReader br;
+			int responseCode = con.getResponseCode();
+			
+			if(responseCode == 200)
+			{
+				br=new BufferedReader(new InputStreamReader(con.getInputStream(), "UTF-8"));
+			}
+			else
+			{
+				br = new BufferedReader(new InputStreamReader(con.getErrorStream()));
+			}
+			
+			String line;
+			StringBuffer response = new StringBuffer();
+			
+			while((line=br.readLine())!=null) 
+			{
+				response.append(line);
+			}
+			
+			br.close();
+			System.out.println(response);
+			
+			JSONTokener tokener = new JSONTokener(response.toString());
+			JSONObject obejct = new JSONObject(tokener);
+			System.out.println("이 값을 알고 싶어 : " + obejct.toString());
+			
+			JSONArray arr = obejct.getJSONArray("documents");
+			
+			 System.out.println("왜없지 ? :" + arr);
+			    if(arr.length() > 0) 
+			    {
+			        JSONObject temp = arr.getJSONObject(0);
+			        double x = temp.getDouble("x");
+			        double y = temp.getDouble("y");
+			        System.out.println("x : " + x);
+			        System.out.println("y : " + y);
+			        adress.setX(x);
+			        adress.setY(y);
+			        System.out.println(adress.getX());
+				 	return adress; 
+			    }
+			 
+			}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		return adress;
+	}
 }

@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.mysql.cj.Session;
+import com.springmvc.domain.AddressDTO;
 import com.springmvc.domain.ENBoard;
 import com.springmvc.domain.Hospital;
 import com.springmvc.domain.HospitalBooking;
@@ -280,4 +281,15 @@ public class HospitalController {
 			
 			return "member/HospitalManagerPage";
 		}
+		
+		@GetMapping("witch")
+		public String H_rest(@RequestParam("personId") String personId, Model model) {
+			System.out.println("api도착");
+			AddressDTO address = hospitalService.h_rest(personId);
+			
+			model.addAttribute("address", address);
+			
+			return "home";
+		}
+		
 }
