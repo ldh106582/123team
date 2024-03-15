@@ -10,6 +10,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -199,7 +200,7 @@ public class HospitalRepositoryImp implements HospitalRepository{
 		if(list.isEmpty()) {
 			return null;
 		}
-		List<HospitalBooking> newlist = null;
+		List<HospitalBooking> newlist = new ArrayList<HospitalBooking>();
 		HospitalBooking booking = null;
 		String date = null;
 		String today = LocalDate.now().toString();
