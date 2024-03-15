@@ -11,6 +11,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -202,18 +203,16 @@ public class HospitalRepositoryImp implements HospitalRepository{
 		if(list.isEmpty()) {
 			return null;
 		}
-		List<HospitalBooking> newlist = null;
+		List<HospitalBooking> newlist = new ArrayList<HospitalBooking>();
 		HospitalBooking booking = null;
 		String date = null;
 		String today = LocalDate.now().toString();
-		int count= 0;
 		for(int i=0;i<list.size();i++) {
 			booking=list.get(i);
 			date = booking.getRegistDay();
 			String[] splitdate = date.split(" ");
 			if(splitdate[0].equals(today)) {
-				newlist.set(count, booking);
-				count++;
+				newlist.add(booking);
 			}
 		}
 		return newlist;

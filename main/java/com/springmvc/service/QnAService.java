@@ -3,6 +3,7 @@ package com.springmvc.service;
 import java.util.List;
 
 import com.springmvc.domain.QnA;
+import com.springmvc.domain.QnAComment;
 
 public interface QnAService {
 	List<QnA> getAllQnAList(String productId);

@@ -206,8 +206,6 @@ public class ProductController {
 	public String getorderList(HttpSession session,Model model) {
 		String personId = (String) session.getAttribute("personId");
 		model.addAttribute("mylist",productService.getorderList(personId));
-		
-		System.out.println(productService.getorderList(personId).get(0).getState());
 		return "/all_product/myOderList";
 	}
 }
