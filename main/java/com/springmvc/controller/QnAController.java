@@ -3,6 +3,7 @@ package com.springmvc.controller;
 import java.io.File;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.mysql.cj.Session;
 import com.springmvc.domain.QnA;
 import com.springmvc.service.QnAService;
+import com.springmvc.service.QnAcommentservice;
 
 @Controller
 @RequestMapping("/products")
@@ -24,6 +26,9 @@ public class QnAController {
 	
 	@Autowired
 	QnAService QnAservice;
+	
+	@Autowired
+	QnAcommentservice QnAcommentservice;
 	
 	//Create
 	@GetMapping("qa")
@@ -107,7 +112,16 @@ public class QnAController {
 	}
 	
 	
-	
+	@PostMapping("/a_comment")
+	public String addcomment(Model model, HttpServletRequest request, HttpSession session) 
+	{
+		System.out.println("댓글 add 도착");
+		
+		String personId = (String) session.getAttribute("personId");
+		
+		
+		return "redirect:/products/product/productId=";
+	}
 	
 	
 }

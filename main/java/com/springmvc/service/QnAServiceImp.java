@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.springmvc.domain.QnA;
+import com.springmvc.domain.QnAComment;
 import com.springmvc.repository.QnARepository;
 
 @Service
@@ -13,6 +14,7 @@ public class QnAServiceImp implements QnAService{
 	
 	@Autowired
 	QnARepository QnARepository;
+	
 
 	@Override
 	public List<QnA> getAllQnAList(String productId) {
