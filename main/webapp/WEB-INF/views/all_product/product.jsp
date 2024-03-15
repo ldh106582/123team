@@ -187,6 +187,14 @@
 	                            </tbody>
                             </c:forEach>
                         </table>
+                        <form action="a_comment" method="post">
+                        	<input type="hidden" name="productId" value="${product.productId}">
+                        	<input type="hidden" name="qnaId" value="${qna.qnaId}">
+                        	<div>
+                        		<textarea rows="2" name="comment"></textarea>
+                        		<button type="submit" class="btn btn-primary btn-sm">댓글작성</button>
+                        	</div>
+                        </form>
                         </div>
                     </div>
                 </div>

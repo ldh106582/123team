@@ -209,7 +209,7 @@
 					                </ul>
 					            </div>
 				        	</div>
-					        <!--병원 예약 정보-->
+					        <!--상품 예약 정보-->
 					        <div class="subindex_item">
 					            <div class="head_title">
 					                <h2 class="subindex_title">상품 관리</h2>
@@ -218,17 +218,7 @@
 					                <ul class="subindex_row">
 					                    <li>
 					                        <div class="row_item other">
-					                            <a href="" class="text-decoration-none"><span class="item_text">상품 등록 정보</span></a>
-					                        </div>
-					                    </li>
-			                            <li>
-					                        <div class="row_item other">
-					                            <a href="" class="text-decoration-none"><span class="item_text">상품 판매 내역</span></a>
-					                        </div>
-					                    </li>
-			                            <li>
-					                        <div class="row_item other">
-					                            <a href="" class="text-decoration-none"><span class="item_text">상품 주문 내역</span></a>
+					                            <a href="/123team/products/manager" class="text-decoration-none"><span class="item_text">상품 관리</span></a>
 					                        </div>
 					                    </li>
 					                </ul>
@@ -325,6 +315,21 @@
 				                    </ul>
 				                </div>
 				            </div>
+				            <!--병원 관리-->
+				            <div class="subindex_item">
+				                <div class="head_title">
+				                    <h2 class="subindex_title">내 병원 관리</h2>
+				                </div>
+				                <div class="subindex_greenbox">
+				                    <ul class="subindex_row">
+				                        <li>
+				                            <div class="row_item other">
+				                                <a href="/123team/hospitals/manager" class="text-decoration-none"><span class="item_text">예약 리스트 보기</span></a>
+				                            </div>
+				                        </li>
+				                    </ul>
+				                </div>
+				            </div>
 				           	<!--병원 예약 정보-->
 				            <div class="subindex_item">
 				                <div class="head_title">
@@ -402,7 +407,6 @@
 				            </div>
 				        </div>
 		        	</c:when>
-		        	
 		        	<c:otherwise>
 		        		<div id="content" class="content">
 				            <div class="subindex_wrap" role="main">
