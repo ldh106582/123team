@@ -19,10 +19,10 @@ public class HospitalMember implements Serializable {
 	private String hospitalAddress;
 	private String hospitalPhone;
 	private String s_image; // 사업자등록증
-	private MultipartFile ms_image;// 사업자등록증 Multi
 	private String type;
 	private String h_image; // 병원자격증
-	private MultipartFile hs_image; // 병원자격증 Multi
+	private String image;
+	
 	public HospitalMember() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -99,12 +99,6 @@ public class HospitalMember implements Serializable {
 	public void setS_image(String s_image) {
 		this.s_image = s_image;
 	}
-	public MultipartFile getMs_image() {
-		return ms_image;
-	}
-	public void setMs_image(MultipartFile ms_image) {
-		this.ms_image = ms_image;
-	}
 	public String getType() {
 		return type;
 	}
@@ -117,12 +111,12 @@ public class HospitalMember implements Serializable {
 	public void setH_image(String h_image) {
 		this.h_image = h_image;
 	}
-	public MultipartFile getHs_image() {
-		return hs_image;
+	public String getImage() {
+		return image;
 	}
-	public void setHs_image(MultipartFile hs_image) {
-		this.hs_image = hs_image;
+	public void setImage(String image) {
+		this.image = image;
 	}
-	
+
 
 }

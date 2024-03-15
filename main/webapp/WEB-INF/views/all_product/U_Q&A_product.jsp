@@ -24,15 +24,15 @@
                    <form:form modelAttribute="qna" method="POST" enctype="multipart/form-data">
                         <div class="col-md-12 p-0 mb-3">
                             <h4 class="col-md-12 p-0" style="color: rgb(140, 58, 179);">제목</h4>
-                            <form:input class="form-control form-control-lg col-md-12" style="justify-content: center;" path="title"/>
+                            <form:input class="form-control form-control-lg col-md-12" style="justify-content: center;" path="title" value="${qna.title}"/>
                         </div>
                         <div class="col-md-12 no-gutters p-0 mb-3">
                             <h4 class=" col-md-12 p-0" style="color: rgb(140, 58, 179);">내용</h4>
-                            <form:input class="form-control form-control-lg col-md-12" path="context" />
+                            <form:input class="form-control form-control-lg col-md-12" path="context" value="${qna.context}"/>
                         </div>
                         <div class="col-md-12 p-0 mb-3">
                             <h4 class=" col-md-12 p-0" style="color: rgb(140, 58, 179);">사진첨부</h4>
-                            <input type="file" class="col-md-12 p-1  form-control form-control-lg " name="s_file"/>
+                            <input type="file" class="col-md-12 p-1  form-control form-control-lg " name="s_image" value="${qna.image}"/>
                         </div>
                       <div class="col-md-12 mt-3 p-0">
                           <input class="btn btn col-md-12 p-2" type="submit" value="질문하기" style="background-color: blueviolet; color: white;">

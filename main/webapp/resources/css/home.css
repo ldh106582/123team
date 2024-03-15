@@ -2,7 +2,7 @@
 .slider{
 	position: relative;
 	overflow: hidden;
-	width: 1600px;
+	width: 1000px;
 	height: 500px;
 	
 	margin-bottom: 2%;
@@ -10,7 +10,7 @@
 
 .slide{
 	position: absolute;
-	width: 1600px;
+	width: 1000px;
 	height: 500px;
 	
 	animation: slider 7.5s infinite linear;

@@ -31,7 +31,8 @@ public class ManagerController
 								 @RequestParam("type") String type, HttpServletRequest request) {
 	
 	System.out.println("Member 페이지 요청 도착 : " + type);
-
+	System.out.println(hospitalMember.getPersonAddress());
+	System.out.println(hospitalMember.getHospitalAddress());
 	
 	HttpSession session = request.getSession();
 	if(type == "p" || "p".equals(type)) {
@@ -43,6 +44,7 @@ public class ManagerController
 		return "/member/Hospitalmanager";
 		
 	} else if(type == "e" || "e".equals(type)) {
+		session.setAttribute("type", type);
 		return "/member/ex_manager";
 	}else {
 		return "/member/Allmember";
@@ -54,6 +56,7 @@ public class ManagerController
 			public String GetaddProductManager(@ModelAttribute("productMember") ProductMember productMember,
 											   @ModelAttribute("hospitalMember") HospitalMember hospitalMember,
 											   @ModelAttribute("ex_member") Ex_manager ex_manager,
+											   @RequestParam(value="c_file", required=false) MultipartFile c_file,
 											   @RequestParam(value="s_file", required=false) MultipartFile s_file,
 											   @RequestParam(value="h_file", required=false) MultipartFile h_file,
 												HttpServletRequest request) 
@@ -62,6 +65,7 @@ public class ManagerController
 				HttpSession session = request.getSession();
 				String type = (String)session.getAttribute("type");
 				System.out.println("세션에서 가져온 값 : " + type);
+				System.out.println(productMember.getPersonAddress());
 				
 				System.out.println("s_file이름 : " + s_file);
 				System.out.println("h_file이름 : " + h_file);
@@ -71,10 +75,27 @@ public class ManagerController
 					
 				productMember.setType(type);
 					
+				// 프로필 사진을 받아주는 함수
+				String o_image = c_file.getOriginalFilename();
+				String o_imagePath = request.getSession().getServletContext().getRealPath("/resources/images");
+				
+				File file = new File(o_imagePath, o_image);
+				
+				try 
+				{
+					c_file.transferTo(file);
+					productMember.setC_image(o_image);
+				}
+				catch(Exception e)
+				{
+					System.out.println("프로필 이미지가 존재하지 않습니다." + e);
+				}
+				
 			    // 사업자등록증을 받아주는 함수
+			    String saves_image = s_file.getOriginalFilename();
 			    String s_imagePath  = request.getSession().getServletContext().getRealPath("/resources/images");
 			    System.out.println(s_imagePath);
-			    String saves_image = s_file.getOriginalFilename();
+
 			    
 			    File saveimage = new File(s_imagePath, saves_image);
 
@@ -101,6 +122,23 @@ public class ManagerController
 					hospitalMember.setType(type);
 					
 					System.out.println("여긴 병원 회원가입 : " + type);
+					// 프로필 사진을 받아주는 함수
+					String o_image = c_file.getOriginalFilename();
+					String o_imagePath = request.getSession().getServletContext().getRealPath("/resources/images");
+					
+					File file = new File(o_imagePath, o_image);
+					
+					try 
+					{
+						c_file.transferTo(file);
+						hospitalMember.setImage(o_image);
+					}
+					catch(Exception e)
+					{
+						System.out.println("프로필 이미지가 존재하지 않습니다." + e);
+					}
+					
+					
 					// 사업자등록증을 받아주는 함수
 					
 				    String s_imageName = s_file.getOriginalFilename();
@@ -145,19 +183,41 @@ public class ManagerController
 				    return "redirect:/login";
 				    
 				//체험단 매니저 회원가입하는 함수
-				}else if("e".equals(type)){
+				}
+				else if("e".equals(type))
+				{
 					ex_manager.setType(type);
 					
 					System.out.println("여기 체험단 타입 : " + type);
+					// 프로필 사진을 받아주는 함수
+					String o_image = c_file.getOriginalFilename();
+					String o_imagePath = request.getSession().getServletContext().getRealPath("/resources/images");
+					
+					File file = new File(o_imagePath, o_image);
+					
+					try 
+					{
+						c_file.transferTo(file);
+						hospitalMember.setImage(o_image);
+					}
+					catch(Exception e)
+					{
+						System.out.println("프로필 이미지가 존재하지 않습니다." + e);
+					}
+					
 					String s_imageName = s_file.getOriginalFilename();
 					String s_imagePath  = request.getSession().getServletContext().getRealPath("/resources/images");
 					File saveimage = new File(s_imagePath, s_imageName);
 						
 					
-				    try {
+				    try 
+				    {
 				    	s_file.transferTo(saveimage);
 				    	ex_manager.setS_image(s_imageName);
-				    } catch (Exception e) {
+				    } 
+				    catch (Exception e) 
+				    {
+				    	
 				    	throw new RuntimeException("사업자등록증 업로드를 실패했습니다.", e);
 				    }
 				    

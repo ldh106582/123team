@@ -17,13 +17,13 @@ function idDuplicateCheck(event){
 		dataType: 'text',
 		success: function(result)
 		{
-			if(result == true)
+			if(result == "true")
 			{
-				alert('이미 사용중인 아이디 입니다.');
+				alert('사용할 수 있는 아이디입니다.');	
 			}
 			else
 			{
-				alert('사용할 수 있는 아이디입니다.');
+				alert('이미 사용중인 아이디 입니다.');
 			}
 		},
 		 error: function(request, status, error )

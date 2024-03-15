@@ -20,7 +20,7 @@ public class ProductMember implements Serializable {
 	private String companyPhone;
 	private String s_image;  // 사업자등록증
 	private String type;
-	private MultipartFile ms_image; // 사업자등록증 Multi
+	private String c_image;  // 사업자등록증
 	
 	public ProductMember() {
 		super();
@@ -131,13 +131,15 @@ public class ProductMember implements Serializable {
 		this.type = type;
 	}
 
-	public MultipartFile getMs_image() {
-		return ms_image;
+	public String getC_image() {
+		return c_image;
 	}
 
-	public void setMs_image(MultipartFile ms_image) {
-		this.ms_image = ms_image;
+	public void setC_image(String c_image) {
+		this.c_image = c_image;
 	}
+
+
 
 	
 	

@@ -49,16 +49,16 @@
 							            <img src="https://i.ibb.co/gdq8PKg/pexels-tom-fisk-1692693.jpg" width="100%" height="100%" alt="병원이미지01" />
 							        </div>
 							        <div class="slide">
-							            <img src="https://i.ibb.co/gdq8PKg/pexels-tom-fisk-1692693.jpg"width="100%" height="100%" alt="병원이미지02" />
+							        	<img src="https://i.ibb.co/TB696jj/pexels-mikhail-nilov-7469213.jpg" width="100%" height="100%" alt="병원이미지02" border="0">
 							        </div>
 							        <div class="slide">
-							            <img src="https://i.ibb.co/gdq8PKg/pexels-tom-fisk-1692693.jpg"width="100%" height="100%" alt="병원이미지03" />
+							        	<img src="https://i.ibb.co/c1F1kf8/pexels-karolina-grabowska-4386495.jpg" width="100%" height="100%" alt="병원이미지03">
 							        </div>
 							    </div>
 										
                                 	
                                     <div class="center col-md-12 row no-gutters mx-0 mx-auto">
-                                        <div class="col-md-7 mx-0 mx-auto">
+                                        <div class="col-md-9 mx-0 mx-auto">
                                             <div style="border-left: 3px solid red;"> <h4 style="margin-left: 2%;"> 우리 홈페이지 현황</h4>
                                             </div>
                                             <br>
@@ -138,10 +138,86 @@
 	                                            
                     						  	</div>
                                         </div>
-                        
-                                        <div class="col-md-5">
+                        				<div class="col-md-3 stretch-card grid-margin">
+							              <div class="card">
+							                <div class="card-body">
+							                  <p class="card-title">공지사항</p>
+							                  <%
+												Connection conn = null;
+											   	Statement stmt = null;
+											  	ResultSet rs = null;
+											   
+											   try {
+											      // JDBC 드라이버를 로드합니다.
+											      Class.forName("com.mysql.jdbc.Driver");
+											      
+											      // DB에 연결합니다.
+											      String url = "jdbc:mysql://localhost:3306/123team_db";
+											      String username = "root";
+											      String password = "1234";
+											      conn = DriverManager.getConnection(url, username, password);
+											      
+											      // SQL 쿼리를 실행합니다.
+											      String sql = "SELECT * FROM NBoard";
+											      stmt = conn.createStatement();
+											      rs = stmt.executeQuery(sql);
+											      int i = 1;
+											      // 결과를 처리합니다.
+											      while (rs.next()) {
+											         // 각 행의 데이터를 가져옵니다.
+											         String context = rs.getString(2);
+											         String title = rs.getString(3);
+											         int hit = rs.getInt(4);
+											         String registDay = rs.getString(5);
+											         String boardId = rs.getString(6);
+											         
+											         request.setAttribute("context", context);
+											         request.setAttribute("title", title);
+											         request.setAttribute("hit", hit);
+											         request.setAttribute("registDay", registDay);
+											         request.setAttribute("boardId", boardId);
+											         request.setAttribute("num", i);
+											         i++;
+											         if(i==7){
+											        	 break;
+											         } 
+											 %>
+							                  <ul class="icon-data-list d-block border-top">
+							                    <li>
+							                      <div class="">
+							                        <div>
+							                          <a href="Nboards/Nboard?boardId=${boardId}"><p class="text-info mb-1">${title}</p></a>
+							                          <p class="mb-0">${context}</p>
+							                          <small>${registDay}</small>
+							                        </div>
+							                      </div>
+							                    </li>
+							                  </ul>
+							                  <%
+											    }
+											   } catch (Exception e) {
+											      e.printStackTrace();
+											   } finally {
+											      // 사용한 자원을 정리합니다.
+											      if (rs != null) {
+											         try { rs.close(); } catch (SQLException e) { }
+											      }
+											      if (stmt != null) {
+											         try { stmt.close(); } catch (SQLException e) { }
+											      }
+											      if (conn != null) {
+											         try { conn.close(); } catch (SQLException e) { }
+											      }
+											   }
+											%> 
+							                </div>
+							              </div>
+							            </div>
+							          </div>
+							          
+                                      <%-- <div class="col-md-5">
                                             <div class="no-gutters col-md-12" style="border-left: 3px solid red;"><h4 class="ml-3" >공지사항 </h4>    
-                                            </div>
+                                            </div>	
                                             <br>   
 	                                            <div class="card col-md-12 no-gutters" style="max-width: 540px;">
 											<%
@@ -185,25 +261,24 @@
 											 %>
 											 			<a href="Nboards/Nboard?boardId=${boardId}">${num} 제목 : ${title} 조회수 : ${hit} 등록일 : ${registDay}</a>
 											<%
-		
-						    }
-						   } catch (Exception e) {
-						      e.printStackTrace();
-						   } finally {
-						      // 사용한 자원을 정리합니다.
-						      if (rs != null) {
-						         try { rs.close(); } catch (SQLException e) { }
-						      }
-						      if (stmt != null) {
-						         try { stmt.close(); } catch (SQLException e) { }
-						      }
-						      if (conn != null) {
-						         try { conn.close(); } catch (SQLException e) { }
-						      }
-						   }
-						%>  
-	                                            </div>
-                                        </div>
+											    }
+											   } catch (Exception e) {
+											      e.printStackTrace();
+											   } finally {
+											      // 사용한 자원을 정리합니다.
+											      if (rs != null) {
+											         try { rs.close(); } catch (SQLException e) { }
+											      }
+											      if (stmt != null) {
+											         try { stmt.close(); } catch (SQLException e) { }
+											      }
+											      if (conn != null) {
+											         try { conn.close(); } catch (SQLException e) { }
+											      }
+											   }
+											%>  
+	                                         </div>
+                                        </div> --%>
                                     </div>
                                 </div>
                             </div>

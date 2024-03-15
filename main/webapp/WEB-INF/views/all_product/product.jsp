@@ -155,25 +155,34 @@
                         <table class="col-md-12 text-center border p-0">
                             <thead>
                                 <td class="col-md-12 row">
-                                    <th class="border col-md-2">답변현황</th>
-                                    <th class="border col-md-6">제목</th>
-                                    <th class="border col-md-6">내용</th>
-                                    <th class="border col-md-2">작성자</th>
+                                    <th class="border col-md-1">답변현황</th>
+                                    <th class="border col-md-2">제목</th>
+                                    <th class="border col-md-2">내용</th>
+                                    <th class="border col-md-2">이미지</th>
+                                    <th class="border col-md-1">작성자</th>
                                     <th class="border col-md-2">작성일</th>
-                                    <th class="border col-md-2">수정</th>
-                                    <th class="border col-md-2">삭제</th>
+                                    <th class="border col-md-1">수정</th>
+                                    <th class="border col-md-1">삭제</th>
                                 </td>
                             </thead>
                             <c:forEach items="${listofQnA}" var="qna">
 	                            <tbody>
 	                                <td>
-	                                    <td class="border col-md-2">답변</td>
-	                                    <td class="border col-md-6">${qna.title}</td>
-	                                    <td class="border col-md-6">${qna.context}</td>
-	                                    <td class="border col-md-2">${qna.personId}</td>
+	                                    <td class="border col-md-1">답변</td>
+	                                    <td class="border col-md-2">${qna.title}</td>
+	                                    <td class="border col-md-2">${qna.context}</td>
+	                                    <td class="border col-md-2">
+	                                    <c:choose>
+                                            <c:when test="${not empty qna.image}">
+                                              <img class="col-md-6  rounded-lg" src="<c:url value='/resources/images/${qna.image}'/>" width="100px;"  alt="리뷰이미지">
+                                            </c:when>
+                                            <c:otherwise></c:otherwise>
+                                        </c:choose>
+	                                    </td>
+	                                    <td class="border col-md-1">${qna.personId}</td>
 	                                    <td class="border col-md-2">${qna.registDay}</td>
-	                                    <td class="border col-md-2"><a href="u_qna?QnAId=${qna.qnaId}&productId=${qna.productId}">수정</a></td>
-	                                    <td class="border col-md-2"><a href="d_qna?QnAId=${qna.qnaId}&productId=${qna.productId}">삭제</a></td>
+	                                    <td class="border col-md-1"><a href="u_qna?QnAId=${qna.qnaId}&productId=${qna.productId}">수정</a></td>
+	                                    <td class="border col-md-1"><a href="d_qna?QnAId=${qna.qnaId}&productId=${qna.productId}">삭제</a></td>
 	                                </td>
 	                            </tbody>
                             </c:forEach>

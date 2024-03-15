@@ -24,6 +24,7 @@ public class HospitalManagerDBConnector implements RowMapper<HospitalMember> {
 		hospitalManager.setS_image(rs.getString("s_image"));
 		hospitalManager.setH_image(rs.getString("h_image"));
 		hospitalManager.setType(rs.getString("type"));
+		hospitalManager.setImage(rs.getString("image"));
 		return hospitalManager;
 	}
 

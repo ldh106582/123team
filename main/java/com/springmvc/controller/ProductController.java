@@ -180,6 +180,7 @@ public class ProductController {
 		
 		return "redirect:/products/product?productId=" + productId;
 	}
+
 //	상품관리자 페이지
 	@GetMapping("manager")
 	public String managerpage(Model model, HttpSession session,HttpServletRequest request) {
