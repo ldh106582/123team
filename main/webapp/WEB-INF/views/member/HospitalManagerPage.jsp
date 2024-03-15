@@ -18,10 +18,10 @@
 	</div>
 <div class="container-fluid page-body-wrapper">
  		<%@  include file="../module/leftheader.jsp" %> --%>
- 		내 병원 수 : ${count}
+ 		내 병원 수 : ${count} ${donthavehospital}
  		<br>
  		${nothing}
-		오늘 예약자 :
+		오늘 예약자 : ${donthavetoday}
 		<c:forEach items="${todaybooklist}" var="list">
 		<br>
 		병원 이름 : ${list.hospitalName}
@@ -46,7 +46,7 @@
 		<a href="decision?dec=거절&num=${list.bid}">거절</a>
 	</c:forEach>
 	<br>
-	전체 진료 내역
+	전체 진료 내역 : ${donthavebooklist}
 	<c:forEach items="${allbooklist}" var="list">
 		<br>
 		예약 시간 : ${list.registDay}

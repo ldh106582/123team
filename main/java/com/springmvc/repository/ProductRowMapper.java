@@ -21,7 +21,8 @@ public class ProductRowMapper implements RowMapper<Product> {
 		p.setProductImage(rs.getString(8));
 		p.setPersonId(rs.getString(9));
 		p.setAnimalCategory(rs.getString(10));
-		
+		p.setReviewScore(rs.getFloat(11));
+		p.setReviewCount(rs.getInt(12));
 		return p;
 	}
 

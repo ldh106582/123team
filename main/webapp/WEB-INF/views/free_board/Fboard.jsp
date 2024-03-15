@@ -20,7 +20,7 @@
 						container.removeChild(willdelete);
 						
 						var form = document.createElement("form");
-						form.setAttribute("action","/123team/ENboards/updatecomment");
+						form.setAttribute("action","/123team/Fboards/updatecomment");
 						form.setAttribute("method","POST");
 						
 						var inputh = document.createElement("input");
@@ -126,7 +126,7 @@
 	</div>		
 	<%@ include file="../module/footer.jsp" %>
 
-		 
+<%-- 		 
     <div class="container my-3">
         <h1>게시글 상세 페이지</h1>
         <a href="/123team/Fboards">돌아가기</a>
@@ -179,7 +179,7 @@
 	</div>
     
     
-    <%@ include file="../module/footer.jsp" %>
+    <%@ include file="../module/footer.jsp" %> --%>
 			
     <%--  참고용 주석
 			<a href="update?boardId=${board.boardId}">게시글 수정</a>

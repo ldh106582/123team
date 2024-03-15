@@ -81,6 +81,13 @@
                                         <input onclick="combineAddr()" type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn mt-3" value="주문완료"/>
                                     </div>
                                     </form>
+                                    <button onclick="goBack()">주문취소</button>
+									
+									<script>
+									function goBack() {
+									  history.back();
+									}
+									</script>
                                  </div>
                             </div>
                         </div>

@@ -69,9 +69,10 @@ public class OrderRepositoryImp implements OrderRepository{
 	// 장바구니에서 받아온 데이터를 order db에 넣음
 	@Override
 	public void Ordercreate(Order order) {
-		String SQL = "insert into Ordertable (ProductId, ProductName, Amount, Price, OrderDate, TotalPrice, PersonId,managerId,state,addr) values(?,?,?,?,?,?,?,?,?,?)";
+		String SQL = "insert into Ordertable (ProductId, ProductName, Amount, Price, OrderDate, TotalPrice, PersonId,managerId,state) values(?,?,?,?,?,?,?,?,?)";
+		
 		template.update(SQL, order.getProductId(), order.getProductName(), order.getAmount(), order.getPrice(),
-				order.getOrderDate(), order.getTotalPrice(), order.getPersonId(),order.getManagerId(),order.getState(),order.getAddr());
+				order.getOrderDate(), order.getTotalPrice(), order.getPersonId(),order.getManagerId(),order.getState());
 	}
 	
 	//장바구니에 있는 데이터를 가져오는 함수
