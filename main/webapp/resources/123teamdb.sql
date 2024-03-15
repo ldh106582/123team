@@ -11,19 +11,20 @@ create table if not exists Person
     PersonBirth date not null,
     PersonSex varchar(2) not null,
     PersonPhone varchar(15) not null,
-   Type varchar(3) not null
+   Type varchar(3) not null,
+       Image varchar(100)
     
 )default charset=utf8 ;
 
 insert into person values("ehgus190", "1234", "ehgus190@naver.com", "김해시", "이도현", "1993-08-26", "남", "010", "c");
-insert into person values("ehgus191", "1234", "ehgus190@naver.com", "김해시", "이도현", "1993-08-26", "남", "010", "p");
+insert into person values("ehgus191", "1234", "ehgus190@naver.com", "김해시", "이도현", "1993-08-26", "남", "010", "p", "dog.jpg");
 insert into person values("hanui", "1234", "hanui@naver.com", "김해시", "김한의사", "2007-02-22", "남", "010", "h");
 select * from Person;
-delete from person where personId="hanui";
-update Person set Type="c" where PersonId="ehgus190";
+delete from person where personId="ehgus19";
+update Person set Type="c" where PersonId="ehgus193";
 alter table Person modify column PersonAddress varchar(100);
 alter table person modify column PersonEmail varchar(50) not null;
-drop table Person;
+alter table person add column image varchar(100);
 
 create table if not exists Pet
 (
@@ -46,7 +47,7 @@ insert into Pet values("forme1", "포미1", "강아지", "포메라니안", "여
 select * from Pet;
 drop table pet;
 delete from pet where petId="forme";
-alter table pet  add petimage varchar(100);
+select * from pet;
 
 create table if not exists PetWeight(
    PetWeightNum int auto_increment primary key,
@@ -132,7 +133,7 @@ create table if not exists ProductMember(
 )default charset=utf8;
 insert into ProductMember VALUES("ehgus191", "1234", "ehgus190@naver.com", "김해시","이도현", "1993-08-26", "남","010", "네번째기차", "창원시", "055", "registration", "P");
 select * from ProductMember;
-delete from ProductMember where PersonId ="ehgus191";
+delete from ProductMember where PersonId ="ehgus19";
 drop table ProductMember;
 
 create table if not exists ShoppingCart(
@@ -154,17 +155,24 @@ drop table ShoppingCart;
 -- 주문 db
 CREATE TABLE IF NOT EXISTS Ordertable (
     orderNum INT AUTO_INCREMENT PRIMARY KEY, --
-    productId VARCHAR(10) NOT NULL, --
+    productId VARCHAR(100) NOT NULL, --
     productName VARCHAR(100) NOT NULL, --
     amount INT NOT NULL, --
     price INT NOT NULL, --
     orderDate DATE NOT NULL, --
     totalPrice INT NOT NULL, --
-    personId VARCHAR(100) NOT NULL --
+    personId VARCHAR(100) NOT NULL,
+    managerId VARCHAR(100) NOT NULL,
+    state varchar(10) NOT null,
+    addr varchar(100) not null
+    
 ) DEFAULT CHARSET=utf8;
 
 select * from Ordertable;
 insert into Ordertable value("1","prodcut01","강아지 배변패드","1","15000","2024-02-29","15000","ehgus191");
+alter table ordertable add column managerId  VARCHAR(100) NOT NULL;
+alter table ordertable add column   state varchar(10) NOT NULL;
+alter table ordertable modify column productId varchar(100); 
 drop table Ordertable;
 
 create table if not exists HospitalMember(
@@ -188,7 +196,8 @@ create table if not exists HospitalMember(
 insert into HospitalMember value("ehgus198", "1234", "fadsf@adsf",  "Yeorae-ri, Jinyoung-eup, Gimhae-si, Gyeongnam.", "doyheon", "010" ,"2024-02-28","남자", "ㅁㅇㄹ", "Yeorae-ri, Jinyoung-eup, Gimhae-si, Gyeongnam.","01093341065", "img1", "img2", "h");
 select * from HospitalMember;
 drop table HospitalMember;
-update HospitalMember set PersonSex="남자" where personId="ehgus198";
+update HospitalMember set personPhone="010" where personId="ehgus198";
+delete from HospitalMember where personId ="ehgus19";
 
 -- 체험단 manager
 create table if not exists Ex_Manager(
@@ -202,7 +211,7 @@ create table if not exists Ex_Manager(
     
 )default charset=utf8;
 
-insert into Ex_Manager value("ehgus194","1234","image","행복한체험단","010","김해시", e);
+insert into Ex_Manager value("ehgus194","1234","image","행복한체험단","010","김해시", "e");
 select * from Ex_Manager;
 drop table Ex_Manager;
 
@@ -312,34 +321,46 @@ create table if not exists Product(
     ProductId varchar(100) primary key not null,
     ProductName varchar(50) not null,
     ProductPrice int not null,
-    ProductCategory varchar(10) not null,
+    ProductCategory varchar(10) not null, -- 껌 간식 등
     ProductDscription text null,
     ReleaseDate date not null,
     ProductUnitStock int not null,
     ProductImage varchar(100) null,
     
-    PersonId varchar(10)
-    
+    PersonId varchar(10),
+    AnimalCategory varchar(10) not null -- 강아지, 고양이, 파충류 등
 )default charset=utf8;
-insert into Product values("product01", "강아지 배변패드" , "15000",  "강아지", "강아지 용품", "2022-02-19", "10", "Productdog1", "ehgus191");
-insert into Product values("product02", "강아지 배변패드" , "15000",  "강아지", "강아지 용품", "2022-02-19", "10", "Productdog1", "");
-
+insert into Product values("product01", "강아지 배변패드" , "15000",  "강아지", "강아지 용품", "2022-02-19", "10", "Productdog1", "ehgus191", "강아지") ;
+insert into Product values("product02", "강아지 배변패드" , "15000",  "강아지", "강아지 용품", "2022-02-19", "10", "Productdog1", "ehgus191", "고양이");
 select * from Product;
-delete from Product where personId;
+delete from Product where personId="cat";
+drop table product;
 
 create table hospital(
    name varchar(30) not null,
     addr varchar(30) not null,
     number varchar(30) not null,
     runtime text not null,
-    hid varchar(30) not null,
+    
+    hid varchar(30) not null primary key,
     parking text not null,
     description text not null,
     personId varchar(30) not null,
-    image text null
+    
+    image text null,
+    x varchar(20) not null,
+    y varchar(20) not null,
+    reviewScore float,
+    reviewCount int
 )default charset=utf8;
-insert into hospital values("개병원","창원시어딘가","010-1001-1011","매주 주말 휴무,평일 아침9시 ~ 밤10시","id1","시장에주차 ㄱㄱ","잡병원","hanui","");
+insert into hospital values("개병원","창
+원시어딘가","010-1001-1011","매주 주말 휴무,평일 아침9시 ~ 밤10시","병원아이디1","시장에주차 ㄱㄱ","잡병원","hanui","id1","x","y","0","0");
+insert into hospital values("개병원","창
+원시어딘가","010-1001-1011","매주 주말 휴무,평일 아침9시 ~ 밤10시","병원아이디2","시장에주차 ㄱㄱ","잡병원","hanui","id1","x","y","0","0");
+insert into hospital values("개병원","창
+원시어딘가","010-1001-1011","매주 주말 휴무,평일 아침9시 ~ 밤10시","병원아이디3","시장에주차 ㄱㄱ","잡병원","hanui","id1","x","y","0","0");
 select * from hospital;
+drop table hospital;
 
 
 create table HApllication(
@@ -352,13 +373,14 @@ create table HApllication(
     hid varchar(20) not null, -- 예약하는 병원 ID
     petId varchar(50) not null, -- 동물 이름
     context varchar(20) null,
-    state varchar(10) not null
+    state varchar(10) not null,
+    alarm varchar(20)
     
 )default charset=utf8;
 select * from HApllication;
-insert into HospitalReview values();
-
 drop  table HApllication;
+insert into HApllication value("2024-03-06", "ehgus190", "01", "ehgus199", "개병원", "병원아이디1", "forme", "dadfadsfasdf", "ddddddasdf","");
+
 drop  table HospitalReview;
 create table HospitalReview(
    hid varchar(20) not null,
@@ -370,7 +392,34 @@ create table HospitalReview(
     
     RegistDay date not null,
     ReviewId varchar(50) primary key
-    
 )default charset=utf8;
-insert into HospitalReview values("병원아이디1","리뷰작성자아이디","제목1","내용1","1","사진","2000-01-01","리뷰고유아이디");
+
+insert into HospitalReview values("병원아이디1","리뷰작성자아이디","제목1","내용1","5","사진","2000-01-01","리뷰고유아이디1");
+insert into HospitalReview values("병원아이디1","리뷰작성자아이디","제목1","내용1","5","사진","2000-01-01","리뷰고유아이디2");
+insert into HospitalReview values("병원아이디1","리뷰작성자아이디","제목1","내용1","5","사진","2000-01-01","리뷰고유아이디3");
+insert into HospitalReview values("병원아이디1","리뷰작성자아이디","제목1","내용1","5","사진","2000-01-01","리뷰고유아이디4");
+insert into HospitalReview values("병원아이디1","리뷰작성자아이디","제목1","내용1","7","사진","2000-01-01","리뷰고유아이디13");
+
+insert into HospitalReview values("병원아이디2","리뷰작성자아이디","제목1","내용1","4","사진","2000-01-01","리뷰고유아이디5");
+insert into HospitalReview values("병원아이디2","리뷰작성자아이디","제목1","내용1","4","사진","2000-01-01","리뷰고유아이디6");
+insert into HospitalReview values("병원아이디2","리뷰작성자아이디","제목1","내용1","4","사진","2000-01-01","리뷰고유아이디7");
+insert into HospitalReview values("병원아이디2","리뷰작성자아이디","제목1","내용1","4","사진","2000-01-01","리뷰고유아이디8");
+
+insert into HospitalReview values("병원아이디3","리뷰작성자아이디","제목1","내용1","3","사진","2000-01-01","리뷰고유아이디9");
+insert into HospitalReview values("병원아이디3","리뷰작성자아이디","제목1","내용1","3","사진","2000-01-01","리뷰고유아이디10");
+insert into HospitalReview values("병원아이디3","리뷰작성자아이디","제목1","내용1","3","사진","2000-01-01","리뷰고유아이디11");
+insert into HospitalReview values("병원아이디3","리뷰작성자아이디","제목1","내용1","3","사진","2000-01-01","리뷰고유아이디12");
 select * from HospitalReview; 
+drop table HospitalReview;
+
+create table QnA
+(
+   personId varchar(20) not null,
+    productId varchar(20) not null,
+    Title varchar(30) not null,
+    Context text not null,
+    Hit int,
+    RegistDay date not null,
+    image text default null,
+    QnAId varchar(50) not null primary key
+)default charset=utf8;

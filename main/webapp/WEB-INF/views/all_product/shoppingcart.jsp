@@ -230,32 +230,4 @@
 
 </body>
 
-<script>
-function redirectToOrder(index, productId, productName, amount, productPrice, personId) {
-    var formData = {
-        index: index,
-        productId: productId,
-        productName: productName,
-        amount: amount,
-        productPrice: productPrice,
-        personId: personId
-    };
-    	    	$.ajax({
-    	    		url : "/123team/orders/o_reading?",
-    	    		type : "post",
-    	    		data: formData
-    	    		success: function(response){
-    	    			consol.log("값입력", response);
-    	    		},
-    	    		error: function(xhr, status, error){
-    	    			console.error("ajax요청", error);
-    	    		}
-    	    		
-    	    	});
-    	    });
-    	});
-    	
-    
-</script>
-
 </html>

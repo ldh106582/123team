@@ -33,6 +33,7 @@
                         <h4 clss="alert alert-danger">주문해 주셔서 감사합니다.</h4>
                         <p>소중한 상품 안전하게 배송해 드리겠습니다.</p>
                         <p>주문 번호 : ${order.oderNum}
+                        <p>배송지 : ${order.addr}
                         <div class="row">
                             <div class="col-12">
                                 <div class="table-responsive">
@@ -63,28 +64,24 @@
                                                     <tr>
 
                                                         <td class="text-center m-0">    
-                                                          <!--   <c:forEach items="${applists}" var="app">  -->
                                                             <p class="useid m-0">${order.productName}</p>
                                                         </td>
                                                     
-                                                    <td class="text-center">
-                                                        ${order.amount}
-                                                    </td>
-                                                    
-                                                    <td class="text-center">
-                                                        ${order.price}
-                                                    </td>
-                                                    
-                                                    <td class="text-center">
-                                                        ${order.totalPrice}
-                                                    </td>
-
-                                                    <td class=" no-gutters p-0 text-center">
-                                                        
-                                                    </td>
-
-
-                                                   <!--  </c:forEach> -->
+	                                                    <td class="text-center">
+	                                                        ${order.amount}
+	                                                    </td>
+	                                                    
+	                                                    <td class="text-center">
+	                                                        ${order.price}
+	                                                    </td>
+	                                                    
+	                                                    <td class="text-center">
+	                                                        ${order.totalPrice}
+	                                                    </td>
+	
+	                                                    <td class=" no-gutters p-0 text-center">
+	                                                        
+	                                                    </td>
                                                     </tr>
                                                 </table>
                                             </div>

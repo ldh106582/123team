@@ -18,7 +18,9 @@ public class OrderDBConnector implements RowMapper<Order>{
 		order.setOrderDate(rs.getObject("orderDate", LocalDate.class));
 		order.setTotalPrice(rs.getInt("totalPrice"));
 		order.setPersonId(rs.getString("personId"));
-		
+		order.setManagerId(rs.getString("managerId"));
+		order.setState(rs.getString("state"));
+		order.setAddr(rs.getString("addr"));
 		return order;
 	}
 }

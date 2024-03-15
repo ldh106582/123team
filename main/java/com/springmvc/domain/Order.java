@@ -18,6 +18,9 @@ public class Order implements Serializable
 	private String personName;
 	private String personPhone;
 	private String personAddress;
+	private String managerId;
+	private String state;
+	private String addr;
 	
 	public Order() 
 	{
@@ -173,6 +176,48 @@ public class Order implements Serializable
 
 	public void setPersonAddress(String personAddress) {
 		this.personAddress = personAddress;
+	}
+
+
+
+
+	public String getManagerId() {
+		return managerId;
+	}
+
+
+
+
+	public void setManagerId(String managerId) {
+		this.managerId = managerId;
+	}
+
+
+
+
+	public String getState() {
+		return state;
+	}
+
+
+
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+
+
+
+	public String getAddr() {
+		return addr;
+	}
+
+
+
+
+	public void setAddr(String addr) {
+		this.addr = addr;
 	}
 
 	

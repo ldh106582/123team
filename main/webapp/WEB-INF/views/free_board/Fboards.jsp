@@ -43,6 +43,10 @@
 		                        <div class="d-flex justify-content-between mb-3">
 		                            <div></div>
 		                            <div>
+		                            <form action="/123team/Fboards/selectbytitle" class="form-inline my-2 justify-content-center ">
+							            <input type="text" name="title" placeholder="제목입력" class="form-control mr-3" />
+							            <button type="submit" class="btn btn-success">검색</button>
+							        </form>
 		                                <c:if test="${loginId != null}">
 		                                    <a href="Fboards?myId=${loginId}" class="btn btn-primary">내 게시글만 보기</a>
 		                                    <a href="Fboards/add" class="btn btn-primary">게시글 작성</a>
@@ -220,10 +224,7 @@
             </ul>
         </div>
         
-        <form action="/123team/Fboards/selectbytitle" class="form-inline my-2 justify-content-center ">
-            <input type="text" name="title" placeholder="제목입력" class="form-control mr-3" />
-            <button type="submit" class="btn btn-success">검색</button>
-        </form>
+        
     </div>
 	 --%>
 	

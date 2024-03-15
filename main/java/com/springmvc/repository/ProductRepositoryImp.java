@@ -139,9 +139,50 @@ public class ProductRepositoryImp implements ProductRepository{
 	    }
 		
 	}
-	
-	
-	
-	
+
+	@Override
+	public long getSales(String personId) {
+		String SQL = "select sum(totalPrice) from Ordertable where managerId='"+personId+"'";
+		long sale = template.queryForObject(SQL, Long.class);
+		System.out.println(sale);
+		return sale;
+	}
+
+	@Override
+	public int getOrders(String personId) {
+		String SQL = "select count(*) from Ordertable where managerId='"+personId+"'";
+		int orders = template.queryForObject(SQL, Integer.class);
+		System.out.println(orders);
+		return orders;
+	}
+
+	@Override
+	public int getNumOfProduct(String personId) {
+		String SQL = "select count(*) from Product where PersonId='"+personId+"'";
+		int num = template.queryForObject(SQL, Integer.class);
+		
+		return num;
+	}
+
+	@Override
+	public List<Order> getPermissionList(String personId) {
+		String SQL = "select * from Ordertable where managerId='"+personId+"' and state='처리중'";
+		List<Order> list = template.query(SQL, new OrderDBConnector());
+		return list;
+	}
+
+	@Override
+	public void setdecission(String dec, String num) {
+		String SQL = "update Ordertable set state = ? where orderNum=?";
+		template.update(SQL,dec,num);
+		
+	}
+
+	@Override
+	public List<Order> getorderList(String personId) {
+		String SQL = "select * from Ordertable where personId='"+personId+"'";
+		 List<Order> list =template.query(SQL, new OrderDBConnector());
+		return list;
+	}
 	
 }

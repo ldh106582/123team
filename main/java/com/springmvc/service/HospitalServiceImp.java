@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.springmvc.domain.Hospital;
+import com.springmvc.domain.HospitalBooking;
 import com.springmvc.domain.HospitalMember;
 import com.springmvc.repository.HospitalRepository;
 
@@ -53,6 +54,27 @@ public class HospitalServiceImp implements HospitalService{
 	@Override
 	public List<Hospital> gethospitalsByTitle(String title) {
 		return hospitalRepository.gethospitalsByTitle(title);
+	}
+
+
+	@Override
+	public int myhospitalList(String personId) {
+		// TODO Auto-generated method stub
+		return hospitalRepository.myhospitalList(personId);
+	}
+
+
+	@Override
+	public List<HospitalBooking> todaybookList(String personId) {
+		// TODO Auto-generated method stub
+		return hospitalRepository.todaybookList(personId);
+	}
+
+
+	@Override
+	public List<HospitalBooking> allbooklist(String personId) {
+		// TODO Auto-generated method stub
+		return hospitalRepository.allbooklist(personId);
 	}
 	
 	

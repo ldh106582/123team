@@ -24,12 +24,19 @@
         <div class="row w-100 mx-0">
             <div class="col-lg-6 mx-auto">
                 <div class="auth-form-light text-left py-5 px-4 px-sm-5">
-                    <div class="brand-logo">
-                        <img src="resources/images/logo.jpg" alt="logo">
+                    <div class="card mb-2">
+                        <p class="card-title"><b>병원관리자 회원가입</b></p>
                     </div>
-     				<form:form modelAttribute="ex_member" action="./productmanager?${ _csrf.parameterName }=${ _csrf.token }" method="post" enctype="multipart/form-data">
-                        <div class="form-group">
-                            <form:input class="form-control form-control-lg" type="text" path="personId"  placeholder="아이디" />
+     				<form:form modelAttribute="hospitalMember" action="./productmanager?${ _csrf.parameterName }=${ _csrf.token }" method="post" enctype="multipart/form-data">
+                     <input type="hidden" name="personAddress" id="fullAddress" />
+                     <input type="hidden" name="hospitalAddress"  id="h_fullAddress"/>
+                     <input type="hidden" name="s_file" />
+					 <input type="hidden" name="h_file" />
+                     <input type="hidden" name="c_file" />
+                     
+                        <div class="form-group d-flex">
+                            <form:input id="personId" class="form-control form-control-lg col-md-8" type="text" path="personId"  placeholder="아이디" />
+                            <a id="userId" onclick="idDuplicateCheck(event)" class="btn btn-outline-primary col-md-3 auth-form-btn text-center ml-2">중복확인</a>
                         </div>
                         <div class="form-group">
                             <form:input class="form-control form-control-lg" type="password" path="personPw"  placeholder="비밀번호"/>
@@ -43,9 +50,18 @@
                         <div class="form-group">
                             <form:input class="form-control form-control-lg" type="text" path="personBirth"  placeholder="생년월일"/>
                         </div>
+                        
+                     	<div class="form-group show-grid r d-flex">
+                          <input type="text" id="post" class="form-control form-control-lg col-md-8 mr-3" placeholder="우편번호">
+                          <input type="button" onclick="execDaumPostcode()" value="우편번호" class="btn btn-outline-primary col-md-3 font-weight-medium auth-form-btn text-center">
+                       </div>	
+                       <div class="form-group">
+                           <input type="text" id="roadAddress" class="form-control form-control-lg col-md-12" placeholder="도로명주소">
+                        </div>	
                         <div class="form-group">
-                            <form:input class="form-control form-control-lg" type="text" path="personAddress" placeholder="주소"/>
-                        </div>
+                           <input type="text" id="detailAddress" class="form-control form-control-lg col-md-12" placeholder="상세주소">
+                        </div>	
+                        
                         <div class="form-group">
                             <form:input class="form-control form-control-lg" type="text" path="personPhone" placeholder="전화번호"/>
                         </div>
@@ -53,31 +69,45 @@
                             <form:radiobutton path="personSex" value="남자" class="col-sm-1"/>남성
 				            <form:radiobutton path="personSex" value="여자" class="col-sm-1"/>여성
                         </div>
+                         <div class="form-group">
+	                      <label>프로필사진</label>
+	                      <div class="input-group col-xs-12">
+	                        <input type="file" name="c_file" class="form-control file-upload-info" placeholder="Upload Image">
+	                       </div>
+	                    </div>
+                        
                         <div class="form-group">
-                            <form:input class="form-control form-control-lg" type="text" path="ex_Name" placeholder="병원명"/>
+                            <form:input class="form-control form-control-lg" type="text" path="hospitalName" placeholder="병원명"/>
                         </div>
+                        
+                       	<div class="form-group show-grid r d-flex">
+                          <input type="text" id="h_post" class="form-control form-control-lg col-md-8 mr-3" placeholder="우편번호">
+                          <input type="button" onclick="h_execDaumPostcode()" value="우편번호" class="btn btn-outline-primary col-md-3 font-weight-medium auth-form-btn text-center">
+                       </div>	
+                       <div class="form-group">
+                           <input type="text" id="h_roadAddress" class="form-control form-control-lg col-md-12" placeholder="도로명주소">
+                        </div>	
                         <div class="form-group">
-                            <form:input class="form-control form-control-lg" type="text" path="ex_Address" placeholder="병원주소"/>
-                        </div>
+                           <input type="text" id="h_detailAddress" class="form-control form-control-lg col-md-12" placeholder="상세주소">
+                        </div>	
+                        
                         <div class="form-group">
-                   	    	<form:input class="form-control form-control-lg" type="text" path="ex_Phone" placeholder="병원번호"/>
+                   	    	<form:input class="form-control form-control-lg" type="text" path="hospitalPhone" placeholder="병원번호"/>
                         </div>
                         <div class="form-group">
 	                      <label>사업자 등록증</label>
 	                      <div class="input-group col-xs-12">
-	                      	<input type="file" name="s_file" class="file-upload-default">
-	                        <input type="file" class="form-control file-upload-info" placeholder="Upload Image">
+	                        <input type="file" name="s_file" class="form-control file-upload-info" placeholder="Upload Image">
 	                       </div>
 	                    </div>
                         <div class="form-group">
 	                      <label>의사면허증</label>
 	                      <div class="input-group col-xs-12">
-	                      	<input type="file" name="h_file" class="file-upload-default">
-	                        <input type="file" class="form-control file-upload-info" placeholder="Upload Image">
+	                        <input type="file" name="h_file" class="form-control file-upload-info" placeholder="Upload Image">
 	                       </div>
 	                    </div>
                         <div class="mt-3">
-                            <input type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" value="회원가입" />
+                            <input  id="storeAddr" onclick="combineAddr()" type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" value="회원가입" />
                         </div>
                     </form:form>
 		                </div>
@@ -197,39 +227,8 @@
      --%>
     <%@ include file="../module/footer.jsp" %>
 </body>
-<script>
-function idDuplicateCheck(event){
-	 event.preventDefault();
-	 
-	var userId = document.getElementById("userId").value;
-	console.log("userId");
-	
-	if(userId === "") {
-		alert("아이디를 입력해주세요");
-		return;
-	}
-	
-	$.ajax({
-		type: 'get',
-		url: '/123team/managerlogin',
-		contentType: 'application/json;',
-		dataType: 'text',
-		data: {
-			"userId":userId, 
-		},
-		success : function(result) {
-			if(result === "true"){
-			isIdCheck = true;
-			alert("사용 가능한 아이디 입니다.")
-			} else {
-				isIdCheck = false;
-				alert("이미 사용중인 아이디 입니다.")
-			}
-		},
-		error : function(request, status, error){
-			console.log(request);
-		}
-	});
-}
-</script>
+<!-- js -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="../resources/js/Hospitalmanager.js"></script>
 </html>

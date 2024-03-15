@@ -103,7 +103,7 @@
  	상품설명 : <form:input path="productDescribe"/>
  	<p>
  	<!-- 멀티파츠 추가해야함 -->
- 	상품사진 : <form:input path="productImage"/>
+ 	<!-- 상품사진 : <form:input path="productImage"/>
  	<p>
  	상품재고수 : <form:input path="productUnitStock"/>
  	<p>

@@ -49,16 +49,16 @@
 							            <img src="https://i.ibb.co/gdq8PKg/pexels-tom-fisk-1692693.jpg" width="100%" height="100%" alt="병원이미지01" />
 							        </div>
 							        <div class="slide">
-							            <img src="https://i.ibb.co/gdq8PKg/pexels-tom-fisk-1692693.jpg"width="100%" height="100%" alt="병원이미지02" />
+							        	<img src="https://i.ibb.co/TB696jj/pexels-mikhail-nilov-7469213.jpg" width="100%" height="100%" alt="병원이미지02" border="0">
 							        </div>
 							        <div class="slide">
-							            <img src="https://i.ibb.co/gdq8PKg/pexels-tom-fisk-1692693.jpg"width="100%" height="100%" alt="병원이미지03" />
+							        	<img src="https://i.ibb.co/c1F1kf8/pexels-karolina-grabowska-4386495.jpg" width="100%" height="100%" alt="병원이미지03">
 							        </div>
 							    </div>
 										
                                 	
                                     <div class="center col-md-12 row no-gutters mx-0 mx-auto">
-                                        <div class="col-md-7 mx-0 mx-auto">
+                                        <div class="col-md-9 mx-0 mx-auto">
                                             <div style="border-left: 3px solid red;"> <h4 style="margin-left: 2%;"> 우리 홈페이지 현황</h4>
                                             </div>
                                             <br>
