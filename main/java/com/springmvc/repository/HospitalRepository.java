@@ -1,7 +1,9 @@
 package com.springmvc.repository;
 
+import java.io.IOException;
 import java.util.List;
 
+import com.springmvc.domain.AddressDTO;
 import com.springmvc.domain.Hospital;
 import com.springmvc.domain.HospitalBooking;
 
@@ -27,5 +29,6 @@ public interface HospitalRepository {
 	List<HospitalBooking> todaybookList(String personId);
 
 	List<HospitalBooking> allbooklist(String personId);
-
+	
+	AddressDTO h_rest(String personId) ;
 }

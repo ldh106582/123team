@@ -17,7 +17,6 @@ public class HospitalManagerDBConnector implements RowMapper<HospitalMember> {
 		hospitalManager.setPersonPhone(rs.getString("personPhone"));		
 		hospitalManager.setPersonBirth(rs.getDate("personBirth"));
 		hospitalManager.setPersonSex(rs.getString("personSex"));
-
 		hospitalManager.setHospitalName(rs.getString("hospitalName"));
 		hospitalManager.setHospitalAddress(rs.getString("hospitalAddress"));
 		hospitalManager.setHospitalPhone(rs.getString("hospitalPhone"));

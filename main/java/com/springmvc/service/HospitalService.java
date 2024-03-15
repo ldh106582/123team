@@ -2,6 +2,7 @@ package com.springmvc.service;
 
 import java.util.List;
 
+import com.springmvc.domain.AddressDTO;
 import com.springmvc.domain.Hospital;
 import com.springmvc.domain.HospitalBooking;
 
@@ -27,5 +28,7 @@ public interface HospitalService {
 	List<HospitalBooking> todaybookList(String personId);
 
 	List<HospitalBooking> allbooklist(String personId);
+	
+	AddressDTO h_rest(String personId);
 
 }

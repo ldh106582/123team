@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.springmvc.domain.AddressDTO;
 import com.springmvc.domain.Hospital;
 import com.springmvc.domain.HospitalBooking;
 import com.springmvc.domain.HospitalMember;
@@ -75,6 +76,13 @@ public class HospitalServiceImp implements HospitalService{
 	public List<HospitalBooking> allbooklist(String personId) {
 		// TODO Auto-generated method stub
 		return hospitalRepository.allbooklist(personId);
+	}
+
+
+	@Override
+	public AddressDTO h_rest(String personId) {
+		// TODO Auto-generated method stub
+		return hospitalRepository.h_rest(personId);
 	}
 	
 	

@@ -285,34 +285,62 @@
                             <!--여기서 복붙 끝-->
                         </div>
                     </div>
+
+<a href="/123team/hospitals/witch?personId=${loginId}">주소를 가져오자</a>
+<div id="map" style="width:100%;height:350px;"></div>    
+<p><em>마커를 드래그 해주세요!</em></p>
      
-                        
-   <!--끝 -->
+   
 	 
 	<%@ include file="./module/footer.jsp" %> 
   
-  <!-- plugins:js -->
   <script src="vendors/js/vendor.bundle.base.js"></script>
-  <!-- endinject -->
-  <!-- Plugin js for this page -->
   <script src="vendors/chart.js/Chart.min.js"></script>
   <script src="vendors/datatables.net/jquery.dataTables.js"></script>
   <script src="vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
   <script src="js/dataTables.select.min.js"></script>
-
-  <!-- End plugin js for this page -->
-  <!-- inject:js -->
   <script src="js/off-canvas.js"></script>
   <script src="js/hoverable-collapse.js"></script>
   <script src="js/template.js"></script>
   <script src="js/settings.js"></script>
   <script src="js/todolist.js"></script>
-  <!-- endinject -->
-  <!-- Custom js for this page-->
   <script src="js/dashboard.js"></script>
   <script src="js/Chart.roundedBarCharts.js"></script>
-  <!-- End custom js for this page-->
 </body>
 <script src="/resources/js/hospitals.js"></script>
+
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=592be4544ce185645da2a6d134bfcf15"></script>
+<script>
+// 사용자의 위치에 파란색 마커 표시
+var userMarker = new kakao.maps.Marker({
+    map: map,
+    position: new kakao.maps.LatLng(${address.y}, ${address.x}), 
+    image: {
+        src: 'http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png', // 파란색 마커 이미지 URL
+        size: new kakao.maps.Size(24, 35), // 마커 이미지 크기
+        alt: '사용자 위치' // 대체 텍스트
+    }
+});
+
+//키워드로 장소 검색 (동물병원)
+ps.keywordSearch('동물병원', placesSearchCB);
+
+// 키워드 검색 완료 시 호출되는 콜백함수
+function placesSearchCB(data, status, pagination) {
+    if (status === kakao.maps.services.Status.OK) {
+    	console.log(status);
+        // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해 LatLngBounds 객체에 좌표를 추가
+        var bounds = new kakao.maps.LatLngBounds();
+        for (var i = 0; i < data.length; i++) {
+            // 검색된 장소 표시 (빨간색 마커 사용)
+            displayMarker(data[i]);
+            // LatLngBounds 객체에 좌표 추가
+            bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
+        }
+        // 검색된 장소 위치를 기준으로 지도 범위를 재설정
+        map.setBounds(bounds);
+    }
+}
+</script> 
 </html>
 <!-- 2024-03-11  merge 완료 -->
