@@ -137,7 +137,7 @@ public class NBoardContoller {
 		  String boardId = comment.getBoardId(); 
 		  comment.setComment(request.getParameter("comment").toString());
 		  boardCommentService.updateComment(comment);
-		  return "redirect:/Nboards/Nboard?boardId="+boardId; 
+		  return "redirect:/Nboards/Nboard?boardId="+boardId;
 	  }
 		 
 	 
