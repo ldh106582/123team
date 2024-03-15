@@ -325,43 +325,21 @@
 				                    </ul>
 				                </div>
 				            </div>
-				            <!--병원 예약 정보-->
-				            <c:forEach items="${booklist}" var="book">            
-				                <!--병원 예약 정보-->
-				                <div class="subindex_item">
-				                    <div class="head_title">
-				                        <h2 class="subindex_title">${book.hospitalName}</h2>
-				                    </div>
-				                    <div class="title_link">
-				                        <a href="deletebook?bid=${book.bid}"><span class="text">예약취소</span></a>
-				                        <a href="" ><span class="text">수정하기</span></a>
-				                    </div>  
-				                    <div class="subindex_greenbox">
-				                        <ul class="subindex_row">
-				                            <li>
-				                                <div class="row_item other">
-				                                    <a href="" class="text-decoration-none"><span class="item_text">${book.registDay}</span></a>
-				                                </div>  
-				                            </li>
-				                            <li>
-				                                <div class="row_item other">
-				                                    <a href="" class="text-decoration-none"><span class="item_text">${book.petName}</span></a>
-				                                </div>  
-				                            </li>
-				                            <li>
-				                                <div class="row_item other">
-				                                    <a href="" class="text-decoration-none"><span class="item_text">${book.personId}</span></a>
-				                                </div>  
-				                            </li>
-				                            <li>
-				                                <div class="row_item other">
-				                                    <a href="" class="text-decoration-none"><span class="item_text">${book.context}</span></a>
-				                                </div>  
-				                            </li>
-				                        </ul>
-				                    </div>
+				           	<!--병원 예약 정보-->
+				            <div class="subindex_item">
+				                <div class="head_title">
+				                    <h2 class="subindex_title">병원 예약 정보</h2>
 				                </div>
-				            </c:forEach>
+				                <div class="subindex_greenbox">
+				                    <ul class="subindex_row">
+				                        <li>
+				                            <div class="row_item other">
+				                                <a href="" class="text-decoration-none"><span class="item_text">예약 확인</span></a>
+				                            </div>
+				                        </li>
+				                    </ul>
+				                </div>
+				            </div>
 				            <!--주문 정보-->
 				            <div class="subindex_item">
 				                <div class="head_title">

@@ -191,7 +191,7 @@
                     </div>
                 </div>
             </div>
-         </div>
+    	</div>
 	<%@ include file="../module/footer.jsp" %>
 
 
