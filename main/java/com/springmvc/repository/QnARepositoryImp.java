@@ -47,10 +47,11 @@ public class QnARepositoryImp implements QnARepository{
 	//Delete
 	@Override
 	public void deleteQnA(String QnAId) {
-		String SQL = "delete from QnA where QnAId="+QnAId;
+		String SQL = "delete from QnA where QnAId="+QnAId;	
 		template.update(SQL);
 		
 	}
+
 	
 	//registday
 	public LocalDate getRegistDay()

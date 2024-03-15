@@ -1,5 +1,7 @@
 package com.springmvc.domain;
 
+import java.util.List;
+
 public class QnA {
 	private String personId; // 작성자Id
 	private String productId; // 상품Id
@@ -9,7 +11,7 @@ public class QnA {
 	private String comment; // 댓글
 	private String image; // 이미지 파일
 	private String qnaId;
-	
+	private List<QnAComment> commentlist;
 	public QnA() {
 		// TODO Auto-generated constructor stub
 	}
@@ -70,5 +72,13 @@ public class QnA {
 	}
 	public void setQnaId(String qnaId) {
 		this.qnaId = qnaId;
+	}
+
+	public List<QnAComment> getCommentlist() {
+		return commentlist;
+	}
+
+	public void setCommentlist(List<QnAComment> commentlist) {
+		this.commentlist = commentlist;
 	}
 }
