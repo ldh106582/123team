@@ -17,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.mysql.cj.Session;
 import com.springmvc.domain.QnA;
+import com.springmvc.domain.QnAComment;
 import com.springmvc.service.QnAService;
 import com.springmvc.service.QnAcommentservice;
 
@@ -111,17 +112,47 @@ public class QnAController {
 		return "redirect:/products/product?productId="+productId;
 	}
 	
-	
+	//comment Create
 	@PostMapping("/a_comment")
 	public String addcomment(Model model, HttpServletRequest request, HttpSession session) 
 	{
 		System.out.println("댓글 add 도착");
 		
 		String personId = (String) session.getAttribute("personId");
+		System.out.println(personId);
+		String qnaId = request.getParameter("qnaId").toString();
+		String comment = request.getParameter("comment").toString();
+		String productId = request.getParameter("productId").toString();
 		
+		QnAcommentservice.addcomment(qnaId,comment,personId);
 		
-		return "redirect:/products/product/productId=";
+		return "redirect:/products/product?productId="+productId;
 	}
+	
+	//comment update
+	@PostMapping("u_comment")
+	public String updatecomment(@RequestParam("commentId") String commentId,@RequestParam("comment") String comment,@RequestParam("productId") String productId)
+	{
+		System.out.println("u_comment 도착");
+		QnAComment qnacomment = QnAcommentservice.getcommentBycommentId(commentId);
+		System.out.println(qnacomment);
+		System.out.println(comment);
+		System.out.println(commentId);
+		QnAcommentservice.updatecomment(qnacomment,comment,commentId);
+		
+		return "redirect:/products/product?productId="+productId;
+	}
+	
+	//comment delete
+	@GetMapping("d_comment")
+	public String deletecomment(@RequestParam("commentId") String commentId, @RequestParam("productId") String productId) 
+	{
+		System.out.println("d_comment 도착");
+		QnAcommentservice.deletecomment(commentId);
+		return "redirect:/products/product?productId="+productId;
+		
+	}
+	
 	
 	
 }
