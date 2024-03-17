@@ -1,7 +1,8 @@
 package com.springmvc.controller;
 
 import java.io.File;
-
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-
 import com.springmvc.domain.Person;
 import com.springmvc.domain.Pet;
 import com.springmvc.service.PetService;
@@ -36,7 +36,8 @@ public class PetController
 	@PostMapping("/creatpet")
 	public String SetCreatePet(@ModelAttribute("pet_create") Pet pet, 
 							   @RequestParam("id") String personId, 
-							   @RequestParam("pet_Image") MultipartFile petImage, Model model, HttpServletRequest request) {
+							   @RequestParam(value="s_image", required=false) MultipartFile petImage, 
+							   Model model, HttpServletRequest request) {
 		
 		System.out.println("여기 도착하나??");
 		System.out.println("PetId : "+pet.getPetId());
@@ -48,8 +49,13 @@ public class PetController
 		System.out.println("PersonId : "+ personId.length());
 		System.out.println("petImage : " + petImage);
 		
-		String filename = petImage.getOriginalFilename();
+		Date date = new Date();
+		SimpleDateFormat simpleDateFormat =  new SimpleDateFormat("yyyy-MM-dd");
+		
+		String filename = pet.getPetId() + "-" + "-" + simpleDateFormat.format(date) + petImage.getOriginalFilename();
 		String filepath = request.getSession().getServletContext().getRealPath("/resources/images");
+		System.out.println(filename);
+		System.out.println(filepath);
 		File file = new File(filepath, filename);
 		
 		try 
@@ -77,9 +83,11 @@ public class PetController
 	// pet update 로 이동하기 
 	@GetMapping("/petread")
 	public String GetUpdatePet(@RequestParam("petId") String pet, Model model, 
-							   @ModelAttribute("pet") Pet updatepet, HttpServletRequest request) {
+							   @ModelAttribute("pet_create") Pet updatepet, HttpServletRequest request) {
 		System.out.println("petupodate GET 도착");
+		System.out.println("수정 페이지 petId : " + pet);
 		Pet petId = petService.getUpdatePet(pet);
+		System.out.println(petId.getPetBirth());
 		model.addAttribute("petId", petId);
 		
 		HttpSession session = request.getSession();
@@ -90,9 +98,9 @@ public class PetController
 	
 	//pet update 값 받아오기
 	@PostMapping("/petread")
-	public String SetUpdatePet(@ModelAttribute("pet") Pet updatepet, Model model, 
+	public String SetUpdatePet(@ModelAttribute("pet_create") Pet updatepet, Model model, 
 							   @RequestParam("personId") String personId, HttpServletRequest request,
-							   @RequestParam("pet_Image") MultipartFile pet_Image) 
+							   @RequestParam("s_image") MultipartFile pet_Image) 
 	{
 		System.out.println("petupodate Post 도착");
 		System.out.println(updatepet.getPetId());
@@ -105,8 +113,10 @@ public class PetController
 		System.out.println(personId);
 
 		System.out.println("pet_Image : " + pet_Image);
-	
-		String imageName = pet_Image.getOriginalFilename();
+		
+		Date date = new Date();
+		SimpleDateFormat simpleDateTime = new SimpleDateFormat("yyyy-MM-dd");
+		String imageName = updatepet.getPetId() + "-" + simpleDateTime.format(date) + "-" + "수정 : " +  pet_Image.getOriginalFilename();
 		System.out.println(imageName);
 		String imagePath = request.getSession().getServletContext().getRealPath("/resources/images");
 		File file = new File(imagePath, imageName);

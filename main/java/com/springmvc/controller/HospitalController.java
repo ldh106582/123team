@@ -3,8 +3,6 @@ package com.springmvc.controller;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,10 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-
-import com.mysql.cj.Session;
 import com.springmvc.domain.AddressDTO;
-import com.springmvc.domain.ENBoard;
 import com.springmvc.domain.Hospital;
 import com.springmvc.domain.HospitalBooking;
 import com.springmvc.domain.HospitalReview;
@@ -50,10 +45,14 @@ public class HospitalController {
 		    int totalCount = listOfCount.size(); // 전체 항목 수
 		    int pageSize = 3; // 한 페이지에 표시할 항목 수
 		    int pageCount = (totalCount + pageSize - 1) / pageSize; // 페이지 수 계산
-
+		    if(pageCount % 3 != 0) {
+		    	pageCount++;
+		    }
+		    
 		    // 페이지 번호 범위 생성
 		    List<Integer> pageNumbers = new ArrayList<Integer>();
-		    for (int i = 1; i <= pageCount; i++) {
+		    for (int i = 1; i <= pageCount; i++) 
+		    {	
 		        pageNumbers.add(i);
 		    }
 		    model.addAttribute("pageNumbers", pageNumbers);
@@ -176,8 +175,10 @@ public class HospitalController {
 //	예약조회
 	@GetMapping("mybookList")
 	public String mybookList(@RequestParam("personId") String personId,Model model,HttpSession session) {
+		
 		model.addAttribute("booklist", bookingService.getMyBookList(personId));
 		List<Pet> list = (List<Pet>) session.getAttribute("petId");
+		System.out.println();
 		model.addAttribute("petlist",list);
 		return "all_Hospital/mybookList";
 	}
@@ -235,7 +236,10 @@ public class HospitalController {
 		System.out.println("======================="); 
 		String personId = (String) session.getAttribute("personId");
 		System.out.println("=======================1");
+		System.out.println(personId);
 		 List<HospitalBooking> list = bookingService.getPermisionList(personId);
+		 System.out.println(list);
+		 
 		 model.addAttribute("applists",list);
 		 if(list.isEmpty()) {
 			 request.setAttribute("nothing", "승인할 것이 없어요");
@@ -300,6 +304,13 @@ public class HospitalController {
 			model.addAttribute("address", address);
 			
 			return "home";
+		}
+		
+		@GetMapping("save")
+		public String PublicAPI() {
+			System.out.println("여기는 save");
+			hospitalService.publicAPI();
+			return null;
 		}
 		
 }

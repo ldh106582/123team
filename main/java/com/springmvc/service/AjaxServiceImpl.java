@@ -58,7 +58,16 @@ public class AjaxServiceImpl implements AjaxService {
 
 	}
 	
-	
-	
+	// pet 아이디 확인하는 함수
+	@Override
+	public boolean petId(String userId) {
+		if(ajaxRepository.petId(userId)) 
+		{
+			return true;
+		} else 
+		{
+		return false;
+		}
+	}
 	
 }

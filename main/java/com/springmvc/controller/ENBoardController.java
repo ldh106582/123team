@@ -197,6 +197,7 @@ public class ENBoardController {
 	 public String manageapps(Model model,HttpServletRequest request,HttpSession session) {
 		 String personId = (String) session.getAttribute("personId");
 		 model.addAttribute("applists",enboardService.getPermisionList(personId));
+		 
 		 if(enboardService.getPermisionList(personId).isEmpty()) {
 			 request.setAttribute("nothing", "승인할 것이 없어요");
 		 }

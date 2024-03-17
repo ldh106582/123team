@@ -15,8 +15,8 @@
 
 <div id="header">
 		<%@  include file="../module/header.jsp" %>
-	</div>
-       <!-- partial -->
+</div>
+       <div class="container-fluid page-body-wrapper">
        
      <%@  include file="../module/leftheader.jsp" %>
     
@@ -62,11 +62,11 @@
                                         </th>
                                     </tr>
                                 </thead>
-
-                                <tr class="odd"> ${nothing}
+                                ${nothing}
+                         		
+                         		<c:forEach items="${applists}" var="app">
+                                <tr class="odd"> 
                                     <td class=" select-checkbox">
-                                        
-                                <c:forEach items="${applists}" var="app">
                                         <p class="useid">${ id.personId }</p>
                                     </td>
                                     <td class="sorting_1">
@@ -84,22 +84,14 @@
                                     <td>
                                         <a href="decision?dec=거부&bid=${app.bid}"class="btn btn-danger">거부</a>
                                     </td>
-                                </c:forEach>
-                                    <c:set var="petId" value="${app.petId}" />
-                                    <% 
-                                        String petId = (String)pageContext.getAttribute("petId");
-                                        String[] petnamelist = petId.split(",");
-                                        for(int i=0;i<petnamelist.length;i++)
-                                        {
-                                            request.setAttribute("pet", petnamelist[i]);
-                                    %>
+
+
                                     <td>
                                         <a href="/123team/login/petcard?petid=${pet}">${pet} 정보 보기</a>   
                                     </td>
-                                    <%
-                                        }
-                                    %>
+
                                 </tr>
+                           	 </c:forEach>
                             </table>
                         </div>
                     </div>
@@ -107,7 +99,7 @@
             </div>
         </div>
     </div>
- 	
+ </div>
  	<%@ include file="../module/footer.jsp" %>
 	
 </body>

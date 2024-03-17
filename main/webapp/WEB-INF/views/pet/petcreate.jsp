@@ -14,13 +14,12 @@
 <body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="./resources/js/refreshing.js"></script>
-
 <div id="header">
 		<%@  include file="../module/header.jsp" %>
 	</div>
 	<div class="container-fluid page-body-wrapper">
  		<%@  include file="../module/leftheader.jsp" %>	
-      <div class="content-wrapper d-flex align-items-center auth px-0">
+      <div class="content-wrapper d-flex auth px-0">
         <div class="row w-100 mx-0">
             <div class="col-lg-6 mx-auto">
                 <div class="auth-form-light text-left py-5 px-4 px-sm-5">
@@ -29,26 +28,31 @@
                     </div>
                     	<form:form modelAttribute="pet_create" action="./creatpet?id=${id.personId}" method="POST" enctype="multipart/form-data">
 						<form:hidden path="personId" value="${id}"/>
-						<form:hidden path="personId" value="petImage"/>
+						<form:hidden path="petImage" value="petImage"/>
 						
-                        <div class="form-group d-flex">
-                        	<form:input id="personId" class="form-control form-control-lg col-md-8" type="text" path="petId" placeholder="아이디" />
-							<a id="userId" onclick="idDuplicateCheck(event)" class="btn btn-outline-primary col-md-3 font-weight-medium auth-form-btn text-center ml-2">중복확인</a>
-                        </div>
+						<div class="row mb-3">
+						    <div class="col-md-8">
+						        <form:input id="petId" class="form-control form-control-lg" type="text" path="petId" placeholder="아이디"  required="required"/>
+						    </div>
+						    <div class="col-md-4">
+						        <a id="userId" onclick="idDuplicateCheck(event)" class="btn btn-outline-primary btn-block">중복확인</a>
+						    </div>
+						</div>
+
                         
                         <div class="form-group">
-                            <form:input class="form-control form-control-lg" type="text" path="petName"  placeholder="동물의 이름"/>
+                            <form:input class="form-control form-control-lg" type="text" path="petName"  placeholder="동물의 이름" required="required"/>
                         </div>
                         
                         <div class="form-group">
 		                    <form:select class="col-12" style="height: 50px;" id="petVarity" path="petType">
-		                        <form:option id="dog" value="dog">강아지</form:option>
-		                        <form:option id="cat" value="cat">고양이</form:option>
-		                        <form:option id="bird" value="bird">새</form:option>
-		                        <form:option id="rabbit" value="rabbit">토끼</form:option>
-		                        <form:option id="guineapig" value="guineapig">기니피그</form:option>
-		                        <form:option id="reptile" value="reptile">파충류</form:option>
-		                        <form:option id="Etc" value="reptile">기타</form:option>
+		                        <form:option value="dog">강아지</form:option>
+		                        <form:option value="cat">고양이</form:option>
+		                        <form:option value="bird">새</form:option>
+		                        <form:option value="rabbit">토끼</form:option>
+		                        <form:option value="guineapig">기니피그</form:option>
+		                        <form:option value="reptile">파충류</form:option>
+		                        <form:option value="reptile">기타</form:option>
 		                    </form:select>
                         </div>
                         
@@ -57,7 +61,7 @@
                         </div>
 
                         <div class="form-group">
-                            <form:input class="form-control form-control-lg" type="date" path="petBirth"  placeholder="생년월일"/>
+                            <form:input class="form-control form-control-lg" type="text" path="petBirth"  placeholder="0000-00-00 양식으로 입력해주세요" required="required"/>
                         </div>
                        
                         <div class="form-group">
@@ -65,12 +69,12 @@
                         </div>
                         
                         <div class="form-group">
-						    <form:radiobutton class="col-3" path="petSex" value="남자"/>남자
+						    <form:radiobutton class="col-3" path="petSex" value="남자" required="required"/>남자
 		                    <form:radiobutton class="col-3" path="petSex" value="여자"/>여자
                         </div>
                         
                         <div class="mt-3">
-                            <input type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" id="storeAddr" onclick="combineAddr()" value="회원가입"  />
+                            <input type="submit" class="pt-2 btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" id="storeAddr" onclick="combineAddr(event)" value="회원가입"  />
                         </div>
                         
                     </form:form>
@@ -85,7 +89,7 @@
  	
 
 
-  /*  <div class="container">
+  <!--   <div class="container">
 		<form:form modelAttribute="pet_create" action="./creatpet?id=${id.personId}" method="POST" enctype="multipart/form-data">
 		<form:hidden path="personId" value="${id}"/>
 		<form:hidden path="personId" value="petImage"/>
@@ -147,74 +151,8 @@
 		</form:form>
     </div>
 
-</body>
-<script type="text/javascript">
-window.onload = function(){
-    document.getElementById('dogtype').style.display = "none";
-    document.getElementById('cattype').style.display = "none";
-    document.getElementById('birdtype').style.display = "none";
-    document.getElementById('rabbittype').style.display = "none";
-    document.getElementById('guineapigtype').style.display = "none";
-    document.getElementById('reptiletype').style.display = "none";
-};
-
-document.getElementById('petVarity').addEventListener("click", function(){
-    var petVarity = this.value;
-
-        if(petVarity == 'dog')
-        {
-            document.getElementById('dogtype').style.display = "block";
-            document.getElementById('cattype').style.display = "none";
-            document.getElementById('birdtype').style.display = "none";
-            document.getElementById('rabbittype').style.display = "none";
-            document.getElementById('guineapigtype').style.display = "none";
-            document.getElementById('reptiletype').style.display = "none";
-        }
-        else if(petVarity == 'cat')
-        {
-            document.getElementById('dogtype').style.display = "none";
-            document.getElementById('cattype').style.display = "block";
-            document.getElementById('birdtype').style.display = "none";
-            document.getElementById('rabbittype').style.display = "none";
-            document.getElementById('guineapigtype').style.display = "none";
-            document.getElementById('reptiletype').style.display = "none";
-        }
-        else if(petVarity == 'bird')
-        {
-            document.getElementById('dogtype').style.display = "none";
-            document.getElementById('cattype').style.display = "none";
-            document.getElementById('birdtype').style.display = "block";
-            document.getElementById('rabbittype').style.display = "none";
-            document.getElementById('guineapigtype').style.display = "none";
-            document.getElementById('reptiletype').style.display = "none";
-        }
-        else if(petVarity == 'rabbit')
-        {
-            document.getElementById('dogtype').style.display = "none";
-            document.getElementById('cattype').style.display = "none";
-            document.getElementById('birdtype').style.display = "none";
-            document.getElementById('rabbittype').style.display = "block";
-            document.getElementById('guineapigtype').style.display = "none";
-            document.getElementById('reptiletype').style.display = "none";
-        }
-        else if(petVarity == 'guineapig')
-        {
-            document.getElementById('dogtype').style.display = "none";
-            document.getElementById('cattype').style.display = "none";
-            document.getElementById('birdtype').style.display = "none";
-            document.getElementById('rabbittype').style.display = "none";
-            document.getElementById('guineapigtype').style.display = "block";
-            document.getElementById('reptiletype').style.display = "none";
-        }
-        else if(petVarity == 'reptile')
-        {
-            document.getElementById('dogtype').style.display = "none";
-            document.getElementById('cattype').style.display = "none";
-            document.getElementById('birdtype').style.display = "none";
-            document.getElementById('rabbittype').style.display = "none";
-            document.getElementById('guineapigtype').style.display = "none";
-            document.getElementById('reptiletype').style.display = "block";
-        }
-});
-</script>
+</body> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="../resources/js/petcreate.js"></script>
 </html>

@@ -60,4 +60,7 @@ public interface PersonRepository {
 	  //체험단 manager 테이블 데이터를 삭제하는 함수
 	  //person 테이블 데이터를 삭제하는 함수
 	void EM(String personId);
+	
+	  // mypage수정시  redirect 하는 함수
+	Person getMypage(String personId);
 }

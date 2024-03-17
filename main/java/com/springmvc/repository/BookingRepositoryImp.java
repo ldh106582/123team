@@ -25,6 +25,9 @@ public class BookingRepositoryImp implements BookingRepository{
 	public List<HospitalBooking> getMyBookList(String personId) {
 		SQL = "select * from HApllication where personId='"+personId+"'";
 		List<HospitalBooking> list = template.query(SQL, new BookingRowMapper());
+		for(int i = 0; i < list.size(); i++) {
+			System.out.println(list.get(i));
+		}
 		return list;
 	}
 	@Override

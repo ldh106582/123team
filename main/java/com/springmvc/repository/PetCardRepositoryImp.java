@@ -40,6 +40,7 @@ public class PetCardRepositoryImp implements PetCardRepository{
       
       String SQL = "select * from Pet where PetId=?";
       Pet petName = template.queryForObject(SQL, new Object[] {petId}, new PetDBConnector());
+      System.out.println("확인 : " + petName.getPetImage());
       System.out.println("petName : " + petName);
       return petName;
    }

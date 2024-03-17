@@ -16,9 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-
 import com.springmvc.domain.Order;
-import com.springmvc.domain.Person;
 import com.springmvc.domain.Product;
 import com.springmvc.domain.ProductReview;
 import com.springmvc.domain.QnA;
@@ -43,7 +41,7 @@ public class ProductController {
 //	R
 	@RequestMapping
 	public String getProductList(Model model) {
-		
+		System.out.println("prodcut 오류 확인중");
 		model.addAttribute("productList",productService.getProductsList());
 		return "all_product/products";
 	}
@@ -226,6 +224,7 @@ public class ProductController {
 		productService.setdecission(dec,num);
 		return "redirect:/products/manager";
 	}
+	
 	@GetMapping("myorderList")
 	public String getorderList(HttpSession session,Model model) {
 		String personId = (String) session.getAttribute("personId");

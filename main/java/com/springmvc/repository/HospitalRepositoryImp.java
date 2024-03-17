@@ -14,18 +14,17 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
 import javax.net.ssl.HttpsURLConnection;
 import javax.sql.DataSource;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONTokener;
+import org.json.XML;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
-
 import com.springmvc.domain.AddressDTO;
+import com.springmvc.domain.AnimalHopital;
 import com.springmvc.domain.ENBoard;
 import com.springmvc.domain.Hospital;
 import com.springmvc.domain.HospitalBooking;
@@ -44,7 +43,7 @@ public class HospitalRepositoryImp implements HospitalRepository{
 	public List<Hospital> getAllhospitals(int page) {
 		int limit = 3;
 		int start = (page - 1) * limit;
-		int index = start + 1;
+		int index = start + 2;
 		
 		if(page == 1) 
 		{
@@ -293,5 +292,60 @@ public class HospitalRepositoryImp implements HospitalRepository{
 			e.printStackTrace();
 		}
 		return adress;
+	}
+
+	@Override
+	public void publicAPI() {
+	    System.out.println("ddds");
+	    String key = "6SSihIOiLvtoN4Ov+cME/ZolzUd08COnp0X3j9Zu+Sor8dNfCM7u5Iyy/naB4Q5VsT27bE490/DOXsE/GUdjmQ==";
+	    String result = "https://api.odcloud.kr/api/15044802/v1/uddi:46506e2c-4557-4e99-a4fd-939b1004d34c?page=10&perPage=10&returnType=json&serviceKey=";
+	    System.out.println("ddds : " + result);
+
+	    try {
+		    String encodedKey = URLEncoder.encode(key, "UTF-8");
+	        URL url = new URL(result + encodedKey);
+	        
+	        System.out.println("url : " + url);
+	        HttpURLConnection con = (HttpURLConnection) url.openConnection();
+	        System.out.println("con : " + con);
+	        con.setRequestMethod("GET");
+	        int responseCode = con.getResponseCode();
+	        System.out.println("responseCode : " + responseCode);
+	        
+	        BufferedReader br;
+	        if(responseCode == 200) 
+	        {
+	        	br = new BufferedReader(new InputStreamReader(con.getInputStream(), "UTF-8"));
+	        }
+	        else
+	        {
+	        	br = new BufferedReader(new InputStreamReader(con.getInputStream(), "UTF-8"));	        	
+	        }
+	        StringBuilder response = new StringBuilder();
+	        String line;
+	        while ((line = br.readLine()) != null) {
+	            response.append(line);
+	        }
+	        br.close();
+	        System.out.println("result : " + result);
+	        System.out.println("==================================");
+	        JSONObject jsonObject = new JSONObject(response.toString());
+	        System.out.println("jsonObject : " + jsonObject);
+	        
+	        JSONArray data = jsonObject.getJSONArray("data");
+	        System.out.println("body : " + data);
+	        
+	     
+	        for(int i = 0; i < data.length(); i++) {
+	            JSONObject item = data.getJSONObject(i);
+	            System.out.println("item : " + item);
+	            String name = item.getString("소재지");
+	            System.out.println("========================");
+	            System.out.println("name: " + name);
+	        }
+	    }catch (Exception e) {
+	    	
+	    }
+	       
 	}
 }

@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
@@ -12,10 +13,8 @@
 </head>
 <body>
 <%
-		
-	String type = (String) session.getAttribute("type");
-	request.setAttribute("type", type);
-		
+String type = (String) session.getAttribute("type");
+request.setAttribute("type", type);
 %>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="./resources/js/refreshing.js"></script>
@@ -31,13 +30,21 @@
 						<div class="row w-100 mx-0">
 				            <div class="col-lg-6 mx-auto">
 				                <div class="auth-form-light text-left py-5 px-4 px-sm-5">
+										<div class="card mb-2">
+										    <p class="card-title"><b>상품관리자 회원수정</b></p>
+										</div>
 				     				<form:form modelAttribute="managerupdate" action="/123team/login/update" method="post" enctype="Multipart/form-data">
 				     					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+				     					<input type="hidden" name="personId" value="${u_productMember.personId}"/>
+				                        <input type="hidden" name="s_file">
+				                        <input type="hidden" name="c_file">
+				                        <input type="hidden" name="h_file">
+				                        
 				                        <div class="form-group">
 				                            <div class="form-control form-control-lg" >${u_productMember.personId}</div>
 				                        </div>
 				                        <div class="form-group">
-				                            <form:input class="form-control form-control-lg" type="password" path="personPw"  value="${u_productMember.personPw}"/>
+				                            <form:input class="form-control form-control-lg" type="password" path="personPw" />
 				                        </div>
 				                        <div class="form-group">
 				                            <form:input class="form-control form-control-lg" type="email" path="personEmail" value="${u_productMember.personEmail}"/>
@@ -52,12 +59,18 @@
 				                            <form:input class="form-control form-control-lg" type="text" path="personAddress" value="${u_productMember.personAddress}"/>
 				                        </div>
 				                        <div class="form-group">
-				                            <form:input class="form-control form-control-lg" type="text" path="personPhone" value=" ${u_productMember.personPhone}"/>
+				                            <form:input class="form-control form-control-lg" type="text" path="personPhone" value="${u_productMember.personPhone}"/>
 				                        </div>
 				                        <div class="form-group">
-				                            <form:radiobutton path="personSex" value="남자" class="col-sm-1"/>남성
+				                            <form:radiobutton path="personSex" value="남자" class="col-sm-1" required="required"/>남성
 								            <form:radiobutton path="personSex" value="여자" class="col-sm-1"/>여성
 				                        </div>
+				                        <div class="form-group">
+										  <label>[선택] 프로필 사진등록</label>
+										  <div class="input-group col-xs-12">
+										  	<input type="file" name="s_file" class="form-control file-upload-info">
+										   </div>
+										</div>
 				                        <div class="form-group">
 				                            <form:input class="form-control form-control-lg" type="text" path="companyName" value="${u_productMember.companyName}"/>
 				                        </div>
@@ -66,13 +79,18 @@
 				                        </div>
 				                        <div class="form-group">
 				                            <form:input class="form-control form-control-lg" type="text" path="companyPhone" value="${u_productMember.companyPhone}"/>
-				                        </div>
+				                        </div>	
 				                        <div class="form-group">
-											<input class="border border-success rounded" type="file" name="s_file" />
-				                        </div>
+										  <label>[변경] 사업자등록증</label>
+										  <div class="input-group col-xs-12">
+										  	<input type="file" name="c_file" class="form-control file-upload-info">
+										   </div>
+										</div>
+										                        
 				                        <div class="mt-3">
 				                            <input type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" value="수정" />
 				                        </div>
+
 				                    </form:form>
 				                </div>
 				            </div>
@@ -83,17 +101,18 @@
 					<div class="content-wrapper d-flex align-items-center auth px-0">
 						<div class="row w-100 mx-0">
 				            <div class="col-lg-6 mx-auto">
-				                <div class="auth-form-light text-left py-5 px-4 px-sm-5">
-				                    <div class="brand-logo">
-				                        <img src="resources/images/logo.jpg" alt="logo">
-				                    </div>
+								<div class="card mb-2">
+								    <p class="card-title"><b>체험단관리자 회원수정</b></p>
+								</div>
 				     				<form:form modelAttribute="ex_manager" action="/123team/login/update" method="post" enctype="Multipart/form-data">
 				     					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+				                        <input type="hidden" name="personId" value="${ex_person.personId}"/>
+				                        <input type="hidden" name="s_file" />
 				                        <div class="form-group">
-				                            <form:input class="form-control form-control-lg" type="text" path="personId"  value="${ex_person.personId}"/>
+				                            <div class="form-control form-control-lg" >${ex_person.personId}</div>
 				                        </div>
 				                        <div class="form-group">
-				                            <form:input class="form-control form-control-lg" type="password"path="personPw" value="${ex_person.personPw}"/>
+				                            <form:input class="form-control form-control-lg" type="password" path="personPw"/>
 				                        </div>
 				                        <div class="form-group">
 				                            <form:input class="form-control form-control-lg" type="email" path="personEmail" value="${ex_person.personEmail}"/>
@@ -102,7 +121,7 @@
 				                            <form:input class="form-control form-control-lg" type="text" path="personName" value="${ex_person.personName}"/>
 				                        </div>
 				                        <div class="form-group">
-				                            <form:input class="form-control form-control-lg" type="text" path="personBirth"  value=" ${ex_person.personBirth}"/>
+				                            <form:input class="form-control form-control-lg" type="text" path="personBirth"  value="${ex_person.personBirth}"/>
 				                        </div>
 				                        <div class="form-group">
 				                            <form:input class="form-control form-control-lg" type="text" path="personAddress" value="${ex_person.personAddress}"/>
@@ -111,9 +130,17 @@
 				                            <form:input class="form-control form-control-lg" type="text" path="personPhone"  value="${ex_person.personPhone}"/>
 				                        </div>
 				                        <div class="form-group">
-				                            <form:radiobutton path="personSex" value="남자" class="col-sm-1"/>남성
+				                            <form:radiobutton path="personSex" value="남자" class="col-sm-1" required="requried"/>남성
 								            <form:radiobutton path="personSex" value="여자" class="col-sm-1"/>여성
 				                        </div>
+				                  
+				                        <div class="form-group">
+										  <label>[선택] 프로필 사진등록</label>
+										  <div class="input-group col-xs-12">
+										  	<input type="file" name="s_file" class="form-control file-upload-info">
+										   </div>
+										</div>
+										
 				                        <div class="form-group">
 				                            <form:input class="form-control form-control-lg" type="text" path="ex_Name" value="${ex_Manager.ex_Name}"/>
 				                        </div>
@@ -121,11 +148,14 @@
 				                            <form:input class="form-control form-control-lg" type="text" path="ex_Address" value="${ex_Manager.ex_Address}"/>
 				                        </div>
 				                        <div class="form-group">
-				                            <form:input class="form-control form-control-lg" type="text" path="companyPhone" path="ex_Phone" value="${ex_Manager.ex_Phone}"/>
+				                            <form:input class="form-control form-control-lg" type="text" path="ex_Phone" value="${ex_Manager.ex_Phone}"/>
 				                        </div>
 				                        <div class="form-group">
-											<input class="border border-success rounded" type="file" name="s_file" />
-				                        </div>
+										  <label>[변경] 사업자등록증</label>
+										  <div class="input-group col-xs-12">
+										  	<input type="file" name="c_file" class="form-control file-upload-info">
+										   </div>
+										</div>
 				                        <div class="mt-3">
 				                            <input type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" value="수정" />
 				                        </div>
@@ -140,25 +170,32 @@
 						<div class="row w-100 mx-0">
 				            <div class="col-lg-6 mx-auto">
 				                <div class="auth-form-light text-left py-5 px-4 px-sm-5">
-				                    <div class="brand-logo">
-				                        <img src="resources/images/logo.jpg" alt="logo">
-				                    </div>
+										<div class="card mb-2">
+										    <p class="card-title"><b>병원관리자 회원수정</b></p>
+										</div>
 				     				<form:form modelAttribute="hospitalupdate" action="/123team/login/update" method="post" enctype="Multipart/form-data">
 				     					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+				     					<input type="hidden" name="personId" value="${u_hospitalMember.personId}"/>
+				                        <input type="hidden" name="s_file" />
+				                        <input type="hidden" name="c_file" />
+				                        
 				                        <div class="form-group">
-				                            <form:input class="form-control form-control-lg" type="text" path="personId" value="${u_hospitalMember.personId}"/>
+				                            <div class="form-control form-control-lg">${u_hospitalMember.personId}</div>
 				                        </div>
 				                        <div class="form-group">
-				                            <form:input class="form-control form-control-lg" type="password" path="personPw" value="${u_hospitalMember.personPw}"/>
+				                            <form:input class="form-control form-control-lg" type="password" path="personPw"/>
 				                        </div>
 				                        <div class="form-group">
 				                            <form:input class="form-control form-control-lg" type="email" path="personEmail" value="${u_hospitalMember.personEmail}"/>
+				                        </div>
+				 	  				    <div class="form-group">
+				                            <form:input class="form-control form-control-lg" type="text" path="personName"  value="${u_hospitalMember.personName}"/>
 				                        </div>
 				                        <div class="form-group">
 				                            <form:input class="form-control form-control-lg" type="text" path="personAddress" value="${u_hospitalMember.personAddress}"/>
 				                        </div>
 				                        <div class="form-group">
-				                            <form:input class="form-control form-control-lg" type="text" path="personBirth"  value=" ${u_hospitalMember.personBirth}"/>
+				                            <form:input class="form-control form-control-lg" type="text" path="personBirth"  value="${u_hospitalMember.personBirth}"/>
 				                        </div>
 				                        <div class="form-group">
 				                            <form:input class="form-control form-control-lg" type="text" path="personAddress" value="${u_hospitalMember.personAddress}"/>
@@ -167,9 +204,17 @@
 				                            <form:input class="form-control form-control-lg" type="text" path="personPhone"  value="${u_hospitalMember.personPhone}"/>
 				                        </div>
 				                        <div class="form-group">
-				                            <form:radiobutton path="personSex" value="남자" class="col-sm-1"/>남성
+				                            <form:radiobutton path="personSex" value="남자" class="col-sm-1" required="required"/>남성
 								            <form:radiobutton path="personSex" value="여자" class="col-sm-1"/>여성
 				                        </div>
+				                        
+										<div class="form-group">
+										  <label>[선택] 프로필 사진등록</label>
+										  <div class="input-group col-xs-12">
+										  	<input type="file" name="s_file" class="form-control file-upload-info">
+										   </div>
+										</div>
+										
 				                        <div class="form-group">
 				                            <form:input class="form-control form-control-lg" type="text" path="hospitalName" value="${u_hospitalMember.hospitalName}"/>
 				                        </div>
@@ -179,12 +224,13 @@
 				                        <div class="form-group">
 				                            <form:input class="form-control form-control-lg" type="text" path="hospitalPhone" value="${u_hospitalMember.hospitalPhone}"/>
 				                        </div>
-				                        <div class="form-group">
-											<input class="border border-success rounded" type="file" name="s_file" />
-				                        </div>
-				                        <div class="form-group">
-											<input class="border border-success rounded" type="file" name="s_file" />
-				                        </div>
+										<div class="form-group">
+										  <label>[변경] 사업자등록증</label>
+										  <div class="input-group col-xs-12">
+										  	<input type="file" name="c_file" class="form-control file-upload-info">
+										   </div>
+										</div>
+				                        
 				                        <div class="mt-3">
 				                            <input type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" value="수정" />
 				                        </div>

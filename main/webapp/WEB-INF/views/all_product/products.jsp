@@ -39,7 +39,7 @@
               </div>
 
             <div class="col-md-9 p-0">
-              <div class="p-0" style="border-left: 3px solid red;" > <h4 style="margin-left: 2%;"> 123 상점 판매</h4>
+              <div class="p-0" style="border-left: 3px solid red;" > <h3 style="margin-left: 2%;"> 123 상점 판매</h3>
               </div>
               <br>
 

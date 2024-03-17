@@ -34,7 +34,7 @@ public class PersonServciceImp implements PersonService{
 	@Override
 	public Person loginSucess(Person person) {
 		
-		return psersonRepository.loginSucess(person);
+		return psersonRepository.loginSucess (person);
 	}
 
 	@Override
@@ -173,6 +173,12 @@ public class PersonServciceImp implements PersonService{
 	public void EM(String personId) {
 		// TODO Auto-generated method stub
 		psersonRepository.EM(personId);
+	}
+	  // mypage수정시  redirect 하는 함수
+	@Override
+	public Person getMypage(String personId) {
+		// TODO Auto-generated method stub
+		return psersonRepository.getMypage(personId);
 	}
 
 	

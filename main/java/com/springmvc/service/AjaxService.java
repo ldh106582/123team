@@ -11,5 +11,8 @@ public interface AjaxService {
 	
 	// 체험단 manager 아이디 확인하는 함수
 	boolean Ex_mangerId(String userId);
+	
+	// pet 아이디 확인하는 함수
+	boolean petId(String userId);
 }
 
