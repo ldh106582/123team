@@ -19,7 +19,8 @@ function idDuplicateCheck(event){
 		{
 			if(result == "true")
 			{
-				alert('사용할 수 있는 아이디입니다.');	
+				alert('사용할 수 있는 아이디입니다.');
+				Idcheck = true;	
 			}
 			else
 			{
@@ -145,7 +146,15 @@ function h_execDaumPostcode() {
     }).open();
 }
 
-function combineAddr(){
+function combineAddr(event)
+{
+	if(Idcheck === false)
+	{
+		alert("아이디 중복 확인이 필요합니다.");
+		event.preventDefault();
+		return;
+	}
+	
 	var post = document.getElementById("post").value;
 	var roadAddress = document.getElementById("roadAddress").value;
 	var detailAddress = document.getElementById("detailAddress").value;

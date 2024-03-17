@@ -84,9 +84,12 @@ public class HospitalServiceImp implements HospitalService{
 		// TODO Auto-generated method stub
 		return hospitalRepository.h_rest(personId);
 	}
-	
-	
 
-	
+
+	@Override
+	public void publicAPI() {
+		// TODO Auto-generated method stub
+		hospitalRepository.publicAPI();
+	}
 	
 }

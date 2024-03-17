@@ -22,4 +22,6 @@ public interface OrderRepository {
 	Person GetOrdercreate(String personId);
 	// product테이블 재고를 관리하는 함수
 	void SetminusProduct(String productId, int productUnitStock, String personId);
+
+	
 }

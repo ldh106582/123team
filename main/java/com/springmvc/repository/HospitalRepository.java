@@ -31,4 +31,6 @@ public interface HospitalRepository {
 	List<HospitalBooking> allbooklist(String personId);
 	
 	AddressDTO h_rest(String personId) ;
+	
+	void publicAPI();
 }

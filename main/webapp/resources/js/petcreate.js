@@ -1,38 +1,50 @@
+var Idcheck = false;
 
-	window.onload = function() {
-	    document.getElementById('cat').style.display = "none";
-	    document.getElementById('bird').style.display = "none";
-	    document.getElementById('rabbit').style.display = "none";
-	    document.getElementById('guineapig').style.display = "none";
-	    document.getElementById('reptile').style.display = "none";
-    }
-    
-    document.getElementById('pet').addEventListener('change', function(){
-        document.getElementById('dog').style.display = "none";
-        document.getElementById('cat').style.display = "none";
-        document.getElementById('bird').style.display = "none";
-        document.getElementById('rabbit').style.display = "none";
-        document.getElementById('guineapig').style.display = "none";
-        document.getElementById('reptile').style.display = "none";
+function idDuplicateCheck(event)
+{
+	event.preventDefault();
+	
+	var userId = document.getElementById("petId").value;
 
-    if (this.value == "dog") {
-        document.getElementById('dog').style.display = "block";
-    } else if(this.value == "cat"){
-        document.getElementById('cat').style.display = "block";
-    } else if(this.value == "bird") {
-        document.getElementById('bird').style.display = "block";
-    } else if (this.value == "rabbit"){
-        document.getElementById('rabbit').style.display = "block";
-    } else if(this.value == "guineapig"){
-        document.getElementById('guineapig').style.display = "block";
-    } else if(this.value == "reptile") {
-        document.getElementById('reptile').style.display = "block";
-    }
-});
-    
-    document.getElementById('pet').addEventListener('change', function () {
-        ['dog', 'cat', 'bird', 'rabbit', 'guineapig', 'reptile'].forEach(function(id) {
-            document.getElementById(id).style.display = 'none';
-        });
-        document.getElementById(this.value).style.display = 'block';
-    });
+	if(userId === "")
+	{
+		alert("아이디를 입력해주세요");
+		return;
+	}
+	
+	$.ajax({
+		type: "get",
+		url: "/123team/petId/p_userId?userId=" + encodeURIComponent(userId),
+		contentType: 'applicate/json',
+		success: function(result)
+		{
+			if(result === true)
+			{
+				alert("사용할 수 있는 아이디입니다.");	
+				Idcheck = true;
+			}
+			else
+			{
+				alert("이미 사용중인 아이디입니다.");				
+			}
+		},
+		error: function(request, status, error)
+		{
+			console.log(request);	
+		}
+	});
+}
+
+function combineAddr(event){
+	
+	if(Idcheck === true)
+	{
+		alert("회원가입 되었습니다.");
+	} 
+	else
+	{
+		alert("아이디 중복체크를 해주세요");
+		event.preventDefault();
+	}
+}
+

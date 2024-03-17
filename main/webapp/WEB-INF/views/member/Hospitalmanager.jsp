@@ -34,27 +34,38 @@
 					 <input type="hidden" name="h_file" />
                      <input type="hidden" name="c_file" />
                      
-                        <div class="form-group d-flex">
-                            <form:input id="personId" class="form-control form-control-lg col-md-8" type="text" path="personId"  placeholder="아이디" />
-                            <a id="userId" onclick="idDuplicateCheck(event)" class="btn btn-outline-primary col-md-3 auth-form-btn text-center ml-2">중복확인</a>
-                        </div>
+						<div class="row mb-3">
+						    <div class="col-md-8">
+						        <form:input id="personId" class="form-control form-control-lg" type="text" path="personId" placeholder="아이디" />
+						    </div>
+						    <div class="col-md-4">
+						        <a id="userId" onclick="idDuplicateCheck(event)" class="btn btn-outline-primary btn-block">중복확인</a>
+						    </div>
+						</div>
+						
+						
                         <div class="form-group">
-                            <form:input class="form-control form-control-lg" type="password" path="personPw"  placeholder="비밀번호"/>
+                            <form:input class="form-control form-control-lg" type="password" path="personPw"  placeholder="비밀번호" required="required"/>
                         </div>
                         <div class="form-group">
                             <form:input class="form-control form-control-lg" type="email" path="personEmail"  placeholder="이메일"/>
                         </div>
                         <div class="form-group">
-                            <form:input class="form-control form-control-lg" type="text" path="personName"  placeholder="이름"/>
+                            <form:input class="form-control form-control-lg" type="text" path="personName"  placeholder="이름" required="required"/>
                         </div>
                         <div class="form-group">
-                            <form:input class="form-control form-control-lg" type="text" path="personBirth"  placeholder="생년월일"/>
+                            <form:input class="form-control form-control-lg" type="text" path="personBirth"  placeholder="생년월일 0000-00-00으로 입력해주세요" required="required"/>
                         </div>
-                        
-                     	<div class="form-group show-grid r d-flex">
-                          <input type="text" id="post" class="form-control form-control-lg col-md-8 mr-3" placeholder="우편번호">
-                          <input type="button" onclick="execDaumPostcode()" value="우편번호" class="btn btn-outline-primary col-md-3 font-weight-medium auth-form-btn text-center">
-                       </div>	
+                       
+						<div class="row mb-3">
+							<div class="col-md-8">
+							    <input type="text" id="post"  class="form-control form-control-lg" placeholder="우편번호"/>
+							</div>
+							<div class="col-md-4 p-0">
+						    	<input type="button" onclick="execDaumPostcode()" value="우편번호" class="btn btn-outline-primary btn-block text-center">
+						    </div>
+						</div>
+						                       
                        <div class="form-group">
                            <input type="text" id="roadAddress" class="form-control form-control-lg col-md-12" placeholder="도로명주소">
                         </div>	
@@ -66,9 +77,10 @@
                             <form:input class="form-control form-control-lg" type="text" path="personPhone" placeholder="전화번호"/>
                         </div>
                         <div class="form-group">
-                            <form:radiobutton path="personSex" value="남자" class="col-sm-1"/>남성
+                            <form:radiobutton path="personSex" value="남자" class="col-sm-1" required="required"/>남성
 				            <form:radiobutton path="personSex" value="여자" class="col-sm-1"/>여성
                         </div>
+                        
                          <div class="form-group">
 	                      <label>프로필사진</label>
 	                      <div class="input-group col-xs-12">
@@ -77,13 +89,18 @@
 	                    </div>
                         
                         <div class="form-group">
-                            <form:input class="form-control form-control-lg" type="text" path="hospitalName" placeholder="병원명"/>
+                            <form:input class="form-control form-control-lg" type="text" path="hospitalName" placeholder="병원명" required="required"/>
                         </div>
-                        
-                       	<div class="form-group show-grid r d-flex">
-                          <input type="text" id="h_post" class="form-control form-control-lg col-md-8 mr-3" placeholder="우편번호">
-                          <input type="button" onclick="h_execDaumPostcode()" value="우편번호" class="btn btn-outline-primary col-md-3 font-weight-medium auth-form-btn text-center">
-                       </div>	
+                               
+                       	<div class="row mb-3">
+							<div class="col-md-8">
+							    <input type="text" id="h_post"  class="form-control form-control-lg" placeholder="우편번호"/>
+							</div>
+							<div class="col-md-4 p-0">
+						    	<input type="button" onclick="h_execDaumPostcode()" value="우편번호" class="btn btn-outline-primary btn-block text-center">
+						    </div>
+						</div>
+						
                        <div class="form-group">
                            <input type="text" id="h_roadAddress" class="form-control form-control-lg col-md-12" placeholder="도로명주소">
                         </div>	
@@ -97,17 +114,17 @@
                         <div class="form-group">
 	                      <label>사업자 등록증</label>
 	                      <div class="input-group col-xs-12">
-	                        <input type="file" name="s_file" class="form-control file-upload-info" placeholder="Upload Image">
+	                        <input type="file" name="s_file" class="form-control file-upload-info" placeholder="Upload Image" required="required"/>
 	                       </div>
 	                    </div>
                         <div class="form-group">
 	                      <label>의사면허증</label>
 	                      <div class="input-group col-xs-12">
-	                        <input type="file" name="h_file" class="form-control file-upload-info" placeholder="Upload Image">
+	                        <input type="file" name="h_file" class="form-control file-upload-info" placeholder="Upload Image" required="required"/>
 	                       </div>
 	                    </div>
                         <div class="mt-3">
-                            <input  id="storeAddr" onclick="combineAddr()" type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" value="회원가입" />
+                            <input  id="storeAddr" onclick="combineAddr(event)" type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" value="회원가입" />
                         </div>
                     </form:form>
 		                </div>
@@ -225,7 +242,7 @@
     </fieldset>
     </form:form>
      --%>
-    <%@ include file="../module/footer.jsp" %>
+
 </body>
 <!-- js -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

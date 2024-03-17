@@ -77,6 +77,23 @@ public class AjaxController {
 		  }
 	}
 	
+	// pet 아이디 확인하는 함수
+	@GetMapping(value="petId/p_userId", produces="application/json")
+	@ResponseBody
+	public String PetId(@RequestParam("userId") String userId) {
+		System.out.println("펫 아작스 도착");
+		System.out.println("펫 : " + userId);
+		if(ajaxService.petId(userId)) 
+		{
+			return "true";
+		}
+		else
+		{
+		
+			return "false";
+		}
+	}
+	
 	
 	// 로그인 성공 실패를 알려주는 함수
 	@PostMapping(value="/confirm", produces="application/json")

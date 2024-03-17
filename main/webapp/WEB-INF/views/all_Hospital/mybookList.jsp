@@ -81,9 +81,10 @@ function cancelForm() {
                <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
-                            <h1 class="col-md-12 card-title">예약자 정보 확인</h1>
+                            <h1 class="col-md-12 card-title">예약자 확인</h1>
                             <div class="row">
                                 <div class="col-12">
+
                                     <div class="table-responsive">
                                         <div id="example_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
                                             <div class="row">
@@ -104,70 +105,38 @@ function cancelForm() {
                                                                     진료 내용
                                                                 </th>
                                                                 <th class="text-center" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Premium: activate to sort column ascending" style="width: 149px;">
-                                                                    비고
+                                                                    예약취소
                                                                 </th>
                                                                 <th class="text-center" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 149px;">
                                                                     처리 상태
                                                                 </th>
-                                                                <th class="text-center" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Updated at: activate to sort column ascending" style="width: 177px;">
-                                                                    예약 펫
-                                                                </th>
                                                             </tr>
                                                         </thead>
-																			
+												 <c:forEach items="${booklist}" var="book">			
                                                         <tr>
-                                                        <c:forEach items="${booklist}" var="booklist">
-                                                            <td class="text-center m-0">    
-                                                                
-                                                                <p class="useid m-0">${ booklist.bid }</p>
-                                                            </td>
-                                                        
-                                                        <td class="text-center">
-<<<<<<< HEAD
-                                                            ${booklist.hospitalName}
-=======
-                                                            ${booklist.hospitalName}<a href="deletebook?bid=${booklist.bid}">예약취소</a>
->>>>>>> origin/hanui
-                                                        </td>
-                                                        
-                                                        <td class="text-center">
-                                                            ${booklist.registDay}
-                                                        </td>
-                                                        
-                                                        <td class="text-center">
-                                                            ${booklist.context}
-                                                        </td>
-														
 
-                                                        <td class="text-center">
-                                                            <button onclick="changed('${booklist.bid}','${booklist.registDay}')" id="addp${booklist.bid}" class="btn btn-danger" style="margin: 0% 6.5% 0% 0% ;">날짜 변경</button>
-                                                        </td>
-         							 					
-                                                        </c:forEach>                                                   
-                                                         <% 
-                                                            /*String petId = (String)pageContext.getAttribute("petId");
-                                                            String[] petnamelist = petId.split(",");
-                                                            for(int i=0;i<petnamelist.length;i++)
-                                                            {
-                                                                request.setAttribute("pet", petnamelist[i]);*/
-                                                        %> 
-                                                        <c:forEach items="${petlist}" var="petlist">
-
-                                                        <td class="text-center">
-                                                            <a href="/123team/login/petcard?petid=${petId}">${petlist.petId}</a>   
-                                                        </td>
-<<<<<<< HEAD
-=======
-                                                        
->>>>>>> origin/hanui
- 														  </c:forEach>  
-                                                        <%
-                                                           // }
-                                                        %>
+													        <td class="text-center m-0">    
+													            <p class="useid m-0">${book.bid}</p>
+													        </td>
+													        <td class="text-center">
+													            ${book.hospitalName}
+													        </td>
+													        <td class="text-center">
+													            ${book.registDay}
+													            <button onclick="changed('${book.bid}','${book.registDay}')" id="addp${book.bid}" class="btn btn-outline-primary mr-2" style="margin: 0% 6.5% 0% 0%;">날짜 변경</button>
+													        </td>
+													        <td class="text-center">
+													            ${book.context}
+													        </td>
+													        <td class="text-center">
+													            <a class="btn btn-outline-danger" href="deletebook?bid=${book.bid}">예약취소</a>
+													        </td>
+													        <td class="text-center">
+													            ${book.state}
+													        </td>                                   
                                                         </tr>
+                                                  </c:forEach>   
                                                     </table>
-                                                    
-                                                     ${nothing}
                                                 </div>
                                             </div>
                                         </div>

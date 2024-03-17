@@ -45,7 +45,7 @@
 		                            <div>
 		                            <form action="/123team/Fboards/selectbytitle" class="form-inline my-2 justify-content-center ">
 							            <input type="text" name="title" placeholder="제목입력" class="form-control mr-3" />
-							            <button type="submit" class="btn btn-success">검색</button>
+							            <button type="submit" class="btn btn-outline-primary">검색</button>
 							        </form>
 		                                <c:if test="${loginId != null}">
 		                                    <a href="Fboards?myId=${loginId}" class="btn btn-primary">내 게시글만 보기</a>

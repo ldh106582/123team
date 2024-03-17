@@ -52,17 +52,26 @@ public class PersonRepositoryImp implements  PersonRepository{
 	@Override
 	public Person loginSucess(Person person) {
 		Person personID = null;
+		
 		String SQL =  "select count(*) from Person where PersonId=?";
 		int rowNum = template.queryForObject(SQL, Integer.class, person.getPersonId());
 		System.out.println("personUpdate : " + rowNum);
+		
 		if(rowNum != 0) {
 			SQL = "select * from Person where PersonId=?";
 			personID = template.queryForObject(SQL, new Object[] {person.getPersonId()}, new PersonDBConnector());
-		}
+		} 
+		
 		if(personID == null) {
-			System.out.println("아이디가 없습니다.");
+			System.out.println("여기에는 도착하는가?");
+			String persnId = null;
+			return personID;
+			
+		} else 
+		
+		{
+			return personID;			
 		}
-		return personID;
 	}
 
 	// update 수정한 값을 db에 넣음
@@ -173,21 +182,25 @@ public class PersonRepositoryImp implements  PersonRepository{
 	}
 	
 	
-	// product manager 마이페이지를 수정하는 곳
+	// product manager 테이블을 수정하는 곳
 	@Override
 	public void SetUpdatePr(ProductMember productMember) {
+		System.out.println(" ㅇㅇㅇㅇㅇ");
+		System.out.println("여기는 productMember : " + productMember.getPersonId());
+		System.out.println("여기는 productMember s_image : " + productMember.getS_image());
 		if(productMember.getPersonId()!=null) {
-			 String SQL = "update person set PersonPw=?, PersonEmail=?, PersonAddress=? ,PersonName=?, PersonBirth=?, PersonSex=? , PersonPhone=?, CompanyName=?, CompanyAddress=?, CompanyPhone=?, s_image=? where personId=?";
+			 String SQL = "update ProductMember set PersonPw=?, PersonEmail=?, PersonAddress=? ,PersonName=?, PersonBirth=?, PersonSex=? , PersonPhone=?, CompanyName=?, CompanyAddress=?, CompanyPhone=?, s_image=?, c_image=? where personId=?";
 			 template.update(SQL, productMember.getPersonPw(), productMember.getPersonEmail(), productMember.getPersonAddress(), productMember.getPersonName(),
-					 productMember.getPersonBirth(), productMember.getPersonSex(), productMember.getPersonPhone(), productMember.getCompanyName(), productMember.getCompanyAddress(), productMember.getCompanyPhone() ,productMember.getS_image(), productMember.getPersonId());
+					 productMember.getPersonBirth(), productMember.getPersonSex(), productMember.getPersonPhone(),
+					 productMember.getCompanyName(), productMember.getCompanyAddress(),productMember.getCompanyPhone(),
+					 productMember.getS_image(), productMember.getC_image(), productMember.getPersonId());
 		}
-		
 	}
 	// productMember manager person을 수정하는 곳
 	@Override
 	public void SetUpdatePM(ProductMember productMember) {
 
-			 String SQL = "update person set PersonPw=?, PersonEmail=?, PersonAddress=? ,PersonName=?, PersonBirth=?, PersonSex=?, PersonPhone=?, s_image=?  where PersonId=?";
+			 String SQL = "update person set PersonPw=?, PersonEmail=?, PersonAddress=? ,PersonName=?, PersonBirth=?, PersonSex=?, PersonPhone=?, image=?  where PersonId=?";
 	         template.update(SQL, productMember.getPersonPw(), productMember.getPersonEmail(), productMember.getPersonAddress(), productMember.getPersonName(),
 	        		 		productMember.getPersonBirth(), productMember.getPersonSex(), productMember.getPersonPhone(), productMember.getS_image(),productMember.getPersonId());
 	}
@@ -204,7 +217,7 @@ public class PersonRepositoryImp implements  PersonRepository{
 	@Override
 	public void SetUpdatePH(HospitalMember hospitalMembers) {
 		if(hospitalMembers.getPersonId()!=null) {
-			  String SQL = "update person set PersonPw=?, PersonEmail=?, PersonAddress=? ,PersonName=?, PersonBirth=?, PersonSex=?, PersonPhone=?, s_image=?  where PersonId=?";
+			  String SQL = "update person set PersonPw=?, PersonEmail=?, PersonAddress=? ,PersonName=?, PersonBirth=?, PersonSex=?, PersonPhone=?, image=?  where PersonId=?";
 	          template.update(SQL, hospitalMembers.getPersonPw(), hospitalMembers.getPersonEmail(), hospitalMembers.getPersonAddress(), hospitalMembers.getPersonName(),
 	                  hospitalMembers.getPersonBirth(), hospitalMembers.getPersonSex(), hospitalMembers.getPersonPhone(), hospitalMembers.getS_image() ,hospitalMembers.getPersonId());
 		}
@@ -320,6 +333,27 @@ public class PersonRepositoryImp implements  PersonRepository{
 			template.update(SQL1, new Object[] {personId}, new ex_managerDBConnector());
 		}
 		
+	}
+	  // mypage수정시  redirect 하는 함수
+	@Override
+	public Person getMypage(String personId) {
+		String SQL = "select * from person where personId=?";
+		int rowNum = template.queryForObject(SQL, Integer.class, personId);
+		
+		Person person;
+		if(rowNum != 0) {
+			person = template.queryForObject(SQL, new Object[] {personId}, new PersonDBConnector());
+			System.out.println(person.getImage());
+			System.out.println(person.getPersonId());
+			System.out.println(person.getPersonEmail());
+			System.out.println(person.getPersonName());
+			System.out.println(person.getPersonPhone());
+			System.out.println(person.getPersonPw());
+			return person;
+		} else {
+			System.out.println("해당하는 아이디가 없습니다.");
+			return null;
+		}
 	}
 	
 

@@ -1,38 +1,3 @@
-var IdCheck = false;
-
-function idDuplicateCheck(event){
-	event.preventDefault();
-
-var userId = document.getElementById("personId").value;
-
-if(userId === ""){
-	alert("아이디를 입력해주세요");
-	return;
-}
-
-$.ajax({
-	type: 'get',
-	url: '/123team/loign/h_ManagerId?userId=' + encodeURIComponent(userId),
-	contentType: 'application/json',
-	dataType: 'text',
-	success: function(result)
-	{
-		if(result == "true")
-		{
-				alert('사용 가능한 아이디입니다.');
-		}
-		else
-		{
-		alert('이미 사용중인 아이디입니다.');
-		}
-	},
-		error: function(request, status, error)
-		{
-			console.log(request);
-		}
-	});
-}
-
 //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
 function execDaumPostcode() {
     new daum.Postcode({
@@ -145,7 +110,51 @@ function h_execDaumPostcode() {
     }).open();
 }
 
-function combineAddr(){
+var IdCheck = false;
+
+function idDuplicateCheck(event){
+	event.preventDefault();
+
+	var userId = document.getElementById("personId").value;
+	
+	if(userId === ""){
+		alert("아이디를 입력해주세요");
+		return;
+	}
+
+	$.ajax({
+		type: 'get',
+		url: '/123team/loign/h_ManagerId?userId=' + encodeURIComponent(userId),
+		contentType: 'application/json',
+		dataType: 'text',
+		success: function(result)
+		{
+			if(result == "true")
+			{
+				alert('사용 가능한 아이디입니다.');
+				IdCheck = true;
+			}
+			else
+			{
+				alert('이미 사용중인 아이디입니다.');
+			}
+		},
+			error: function(request, status, error)
+			{
+				console.log(request);
+			}
+		});
+	}	
+
+function combineAddr(event)
+{
+	if(IdCheck === false)
+	{
+		alert("아이디 중복 확인이 필요합니다.");
+		event.preventDefault();
+		return;
+	}
+	
 	var post = document.getElementById("post").value;
 	var roadAddress = document.getElementById("roadAddress").value;
 	var detailAddress = document.getElementById("detailAddress").value;

@@ -7,11 +7,7 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
-
-import com.springmvc.domain.ENBoard;
-import com.springmvc.domain.Hospital;
 import com.springmvc.domain.Order;
-import com.springmvc.domain.Person;
 import com.springmvc.domain.Product;
 import com.springmvc.domain.ProductReview;
 import com.springmvc.service.ProductService;
@@ -32,8 +28,15 @@ public class ProductRepositoryImp implements ProductRepository{
 
 	@Override
 	public List<Product> getProductsList() {
+		System.out.println("product 오류 호가인 32");
 		String SQL = "select * from Product";
+		System.out.println("product 오류 호가인 33");
 		List<Product> list = template.query(SQL, new ProductRowMapper());
+		System.out.println("product 오류 호가인 34");
+		for(int i = 0; i < list.size(); i++) 
+		{
+			System.out.println(i);
+		}
 		return list;
 	}
 
@@ -56,6 +59,7 @@ public class ProductRepositoryImp implements ProductRepository{
 		String SQL = "insert into Product values(?,?,?,?,?,?,?,?,?,?,?,?)";
 		
 		template.update(SQL,getProductId(),  product.getProductName(), product.getProductPrice(), product.getProductCategory(), product.getProductDescribe(), getReleaseDate(), product.getProductUnitStock(),product.getProductImage() ,product.getPersonId(), product.getAnimalCategory(),0,0);
+		
 	}
 
 //	날짜받기

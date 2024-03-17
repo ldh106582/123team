@@ -49,11 +49,9 @@
 <body>
 	<%
 		String personId = (String) session.getAttribute("personId");
-		request.setAttribute("loginId", personId);
+		request.setAttribute("loginId", personId);	
 	%>
 
-		
-	    <!-- partial:partials/_navbar.html -->
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
         <a class="navbar-brand brand-logo mr-5" href="/123team"><img src="https://i.ibb.co/wYH8Zqk/001-1.jpg" border="0" class="mr-2" alt="logo"/></a>

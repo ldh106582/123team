@@ -85,5 +85,24 @@ public class AjaxRepositoryImpl implements AjaxRepository{
 			return true;	
 		}
 	}
+
+	@Override
+	public boolean petId(String userId) 
+	{
+		String SQL = "select count(*) from Pet where PetId = ?";
+		int id = template.queryForObject(SQL, Integer.class, userId);
+		System.out.println(id);
+		if("1".equals(id) || 1 == id) 
+		{
+			return false;			
+		}
+		else
+		{
+			return true;
+		}
+
+	}
+	
+	
 	
 }

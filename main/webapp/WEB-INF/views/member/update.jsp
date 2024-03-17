@@ -47,7 +47,7 @@
 		                            <form:input class="form-control form-control-lg" type="text" path="personName"  value="${fn:trim(u_person.personName)}"/>
 		                        </div>
 		                        <div class="form-group">
-		                            <form:input class="form-control form-control-lg" type="text" path="personBirth"  value=" ${fn:trim(u_person.personBirth)}"/>
+		                            <form:input class="form-control form-control-lg" type="text" path="personBirth"  value="${fn:trim(u_person.personBirth)}"/>
 		                        </div>
 		                        <div class="form-group">
 		                            <form:input class="form-control form-control-lg" type="text" path="personAddress" value="${fn:trim(u_person.personAddress)}"/>
@@ -59,9 +59,14 @@
 		                            <form:radiobutton path="personSex" value="남자" class="col-sm-1"/>남성
 						            <form:radiobutton path="personSex" value="여자" class="col-sm-1"/>여성
 		                        </div>
-		                        <div class="form-group">
-		                            <input class="form-control form-control-lg" type="file" name="s_file" placeholder="[선택] 반려동물 사진을 첨부해주세요."/>
-		                        </div>
+		                        
+		                       <div class="form-group">
+			                      <label>프로필사진</label>
+			                      <div class="input-group col-xs-12">
+			                      	<input type="file" name="s_file" class="form-control file-upload-info">
+			                       </div>
+			                    </div>
+			                    
 		                        <div class="mt-3">
 		                            <input type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" value="수정" />
 		                        </div>

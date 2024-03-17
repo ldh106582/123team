@@ -42,7 +42,7 @@ public class PetCardController {
 		Pet petid = petCardService.getPetRead(petId);
 		LocalDate birthday = (LocalDate) petid.getPetBirth();
 		System.out.println("birthday : " + birthday);
-
+		System.out.println(petid.getPetImage());
 		// 현재 날짜 가져오기
 		LocalDate currentDate = LocalDate.now();
 
@@ -354,56 +354,60 @@ public class PetCardController {
 									    PetChart petChart, PetWeight petWeight, PetVaccination petVaccination,
 									    PetSurgery petSurgery,PetSurgeryAfter petSurgeryAfter
 									    ) {
+		
 		System.out.println("업데이트 실행");
+		System.out.println(num);
+		System.out.println(petId);
 		HttpSession session = request.getSession();
-		String petid = (String) session.getAttribute("petId");
+		
 		System.out.println("type : " + type);
+		
 		
 		// 동물의 몸무게 기록을 수정하는 함수
 		if(type.equals("weight")) {
 			
-			petWeight.setPetId(petid);
+			petWeight.setPetId(petId);
 			petWeight.setPetWeightNum(Integer.parseInt(num));
 			petCardService.setUpdateWeightPetCard(petWeight);
 			
 			session.setAttribute("petWeightNum", num);
 			
-			return "redirect:/login/petcardupdate?petId=" + petid + "&" + "petWeightNum=" + num;
+			return "redirect:/login/petcardupdate?petId=" + petId + "&" + "petWeightNum=" + num;
 		
 			// 동물의 진료 기록을 수정하는 함수
 		} else if(type.equals("chart")){
 			
-			petChart.setPetId(petid);
+			petChart.setPetId(petId);
 			petChart.setPetChartNum(Integer.parseInt(num));
 			petCardService.setUpdateChartPetCard(petChart);
 			
 			session.setAttribute("petChartNum", num);
 			
-			return "redirect:/login/petcardupdate?petId=" + petid + "&" + "petChartNum=" + num;
+			return "redirect:/login/petcardupdate?petId=" + petId + "&" + "petChartNum=" + num;
 		
 			//  동물의 예방접종 기록을 수정하는 함수
 		} else if (type.equals("vaccin")) {
 			System.out.println("백신도착");
 			
-			petVaccination.setPetId(petid);
+			petVaccination.setPetId(petId);
 			petVaccination.setPetVaccinationNum(Integer.parseInt(num));
 
 			petCardService.setUpdateVaccinationPetCard(petVaccination);
 			
 			session.setAttribute("petVaccinationNum", num);
 		                        	
-			return "redirect:/login/petcardupdate?petId=" + petid + "&" + "petVaccinationNum=" + num;
+			return "redirect:/login/petcardupdate?petId=" + petId + "&" + "petVaccinationNum=" + num;
 			
 		}else if (type.equals("surgery")){
-			petSurgery.setPetId(petid);
+			petSurgery.setPetId(petId);
 			petSurgery.setPetSurgeryNum(Integer.parseInt(num));
 			
 			petCardService.setUpdateSergeryionPetCard(petSurgery);
 			
-			return "redirect:/login/petcardupdate?petId=" + petid + "&" + "petSergeryNum=" + num;
+			return "redirect:/login/petcardupdate?petId=" + petId + "&" + "petSergeryNum=" + num;
 			
 		} else if (type.equals("sergeryAfter")) {
-			petSurgeryAfter.setPetId(petid);
+			petSurgeryAfter.setPetId(petId);
 			petSurgeryAfter.setPetSurgeryAfterNum(Integer.parseInt(num));
 			
 			String petSurgeryDateAfter = request.getParameter("petSurgeryDateAfter");
@@ -414,7 +418,7 @@ public class PetCardController {
 			System.out.println("petSurgeryAfter : " + petSurgeryAfter.getPetSurgeryAfterContent());
 			
 			petCardService.setUpdateSergeryAfterPetCard(petSurgeryAfter);
-			return "redirect:/login/petcardupdate?petId=" + petid + "&" + "petSurgeryDateAfter=" + num;
+			return "redirect:/login/petcardupdate?petId=" + petId + "&" + "petSurgeryDateAfter=" + num;
 		}
 		
 	    return "/login";
@@ -442,7 +446,12 @@ public class PetCardController {
 		List<PetSurgeryAfter> listOfPetSurgeryAfter = petCardService.petcardSurgeryAfterback(petid);
 		model.addAttribute("listOfPetSurgeryAfter", listOfPetSurgeryAfter);
 		
-		return "/petcard/petcard";
+		return "redirect:/login/petcard?petid=" + petid;
 	}
-
+	
+	@GetMapping("/r_petcard")
+	public String R_petcard(@RequestParam("petid") String petid) {
+		System.out.println("petid : 클릭시 이동하는 페이지" + petid);
+		return "redirect:/login/petcard?petid=" + petid;
+	}
 }
