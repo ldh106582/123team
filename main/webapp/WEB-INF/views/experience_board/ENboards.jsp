@@ -44,8 +44,10 @@
 							            <input type="text" name="title" placeholder="제목입력" class="form-control mr-3" />
 							            <button type="submit" class="btn btn-outline-primary">검색</button>
 							        </form>
-		                                <c:if test="${loginId != null}">
-		                                	<a href="/123team/ENboards/applist" class="btn btn-primary">내 체험단 신청 목록</a>
+							        	<c:if test="${loginId != null}">
+							        		<a href="/123team/ENboards/applist" class="btn btn-primary">내 체험단 신청 목록</a>
+							        	</c:if>
+		                                <c:if test="${type == 'e' || type == 'h'}">
 		                                    <a href="ENboards/add" class="btn btn-primary">게시글 작성</a>
 		                                </c:if>
 		                            </div>

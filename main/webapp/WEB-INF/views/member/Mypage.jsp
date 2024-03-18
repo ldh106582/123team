@@ -53,7 +53,7 @@
 		            <div id="headerLeft" class="header_left" aria-hidden="false">
 		                <ul class="left_menu" role="menu">
 		                    <li>
-		                        <a href="./pet/creatpet?id=${ id.personId }" class="left_item" role="menuitem" >
+		                        <a href="/123team/pet/creatpet?id=${ id.personId }" class="left_item" role="menuitem" >
 		                            <div class="menu_text ">반려동물 회원가입</div>
 		                        </a>
 		                     </li>

@@ -20,7 +20,7 @@
 		${hospital.image}
 		${hospital.reviewScore}
 		${hospital.reviewCount}
-		<a href="/123team/hospitals/update?hid=${hospital.hid}"">병원 수정</a> <a href="/123team/hospitals/delete?hid=${hospital.hid}" onclick="alert('정말 삭제하시겠습니까?')">병원 삭제</a> 
+		<a href="/123team/hospitals/update?hid=${hospital.hid}"">병원 수정</a> <a href="/123team/hospitals/delete?hid=${hospital.hid}" onclick="alert('정말 삭제 하시겠습니까?')">병원 삭제</a> 
 		<br>
 	</c:forEach>
 	
