@@ -19,19 +19,19 @@
      <%@  include file="../module/leftheader.jsp" %>
      
            <div class="content-wrapper">
-            <div class="row">
-               <div class="col-lg-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <h1 class="col-md-12 card-title">나의 주문 내역</h1>
-                            <div class="row">
-                                <div class="col-12">
+            	<div class="row">
+               		<div class="col-lg-12">
+                    	<div class="card">
+                        	<div class="card-body">
+                            	<h1 class="col-md-12 card-title">나의 주문 내역</h1>
+                            	<div class="row">
+                                	<div class="col-12">
 
-                                    <div class="table-responsive">
-                                        <div id="example_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <table id="example" class="display expandable-table dataTable no-footer" style="width: 100%;" role="grid">
+                                    	<div class="table-responsive">
+                                        	<div id="example_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                                            	<div class="row">
+                                                	<div class="col-sm-12">
+                                                    	<table id="example" class="display expandable-table dataTable no-footer" style="width: 100%;" role="grid">
                                                         <thead>
                                                             <tr role="row">
                                                                 <th class="sorting_disabled text-center" rowspan="1" aria-label="Quote#" style="width: 153px;">
@@ -58,9 +58,8 @@
                                                             </tr>
                                                         </thead>
                                                         
-												 	<c:forEach items="${mylist}" var="list">		
+												 		<c:forEach items="${mylist}" var="list">		
                                                         <tr>
-
 													        <td class="text-center m-0">    
 													            <p class="useid m-0">${list.productName}</p>
 													        </td>

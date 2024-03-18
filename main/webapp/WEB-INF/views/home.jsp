@@ -32,6 +32,8 @@
 <link rel="shortcut icon" href="images/favicon.png" />
 </head>
 <body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="./resources/js/refreshing.js"></script>
 
  <div id="header">
 	<%@  include file="./module/header.jsp" %>
@@ -63,7 +65,7 @@
                     <br>
 
                     <h5 style="border-left: 3px solid #FF7EA0; margin-bottom: 3%;"><span class="ml-4">best 별점 병원</span></h5>
-                     <div class="col-md-12 row card-group no-gutters border p-0" style="margin-bottom: 3%;">
+                     <div class="col-md-12 row card-group no-gutters p-0" style="margin-bottom: 3%;">
                        <div class="col-md-12  card-group no-gutters p-0 d-felx">
 	                       <%
 							Connection conn = null;
@@ -142,7 +144,7 @@
 					%> 
       			  </div>
              			               
-                   <h5 style="border-left: 3px solid #FFA07A; margin-bottom: 3%;" class="col-md-12"><span >best 별점 상품</span></h5>
+                   <h5 style="border-left: 3px solid #FFA07A; margin-bottom: 3%;" class="col-md-12"><span class="ml-4" >best 별점 상품</span></h5>
 					 <div class="col-md-12  card-group no-gutters p-0 d-felx">
 	                       <%
 							

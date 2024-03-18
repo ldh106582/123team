@@ -74,6 +74,13 @@ public class HospitalController {
 		return "all_Hospital/hospitals";
 	}
 
+	@GetMapping("getmyhospitals")
+	public String getmyhospitals(HttpSession session,Model model) {
+		String personId = (String) session.getAttribute("personId");
+		model.addAttribute("hospitals", hospitalService.getMyhospitalList(personId));
+		return "all_Hospital/myhospitals";
+	}
+	
 	@GetMapping("hospital")
 	public String hospital(@RequestParam("hid") String hid,Model model,HttpSession session,HttpServletRequest request)
 	{
@@ -131,7 +138,7 @@ public class HospitalController {
 	@GetMapping("delete")
 	public String hospitaldelete(@RequestParam("hid")String hid) {
 		hospitalService.deleteHospital(hid);
-		return "redirect:/hospitals";
+		return "redirect:/hospitals/getmyhospitals";
 	}
 	
 //	리뷰작성

@@ -36,9 +36,11 @@ public class QnAServiceImp implements QnAService{
 		QnARepository.deleteQnA(QnAId);
 		
 	}
+
 	@Override
 	public List<QnA> getMyList(String personId) {
 		return QnARepository.getMyList(personId);
 	}
+
 	
 }

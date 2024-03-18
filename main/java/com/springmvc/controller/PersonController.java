@@ -24,13 +24,11 @@ import org.springframework.web.multipart.MultipartFile;
 import com.springmvc.domain.EApplication;
 import com.springmvc.domain.Ex_manager;
 import com.springmvc.domain.Hospital;
-import com.springmvc.domain.HospitalBooking;
 import com.springmvc.domain.HospitalMember;
 import com.springmvc.domain.Person;
 import com.springmvc.domain.Pet;
 import com.springmvc.domain.Product;
 import com.springmvc.domain.ProductMember;
-import com.springmvc.service.BookingService;
 import com.springmvc.service.PersonService;
 
 @Controller
@@ -39,6 +37,7 @@ public class PersonController {
    
    @Autowired
    private PersonService personService;
+   
    
    // 통합 회원가입페이지로 이동
    @GetMapping("/Allmember")
@@ -110,7 +109,6 @@ public class PersonController {
       // update에서 db로 가져가 조회할 session
       // 1. 조원들에게 넘겨줄 객체 2. personId와 pw를 가져옴
       Person id = personService.loginSucess(person) ;
-      
       if(id == null)
       {
     	  String faild = "회원가입이 되어 있지 않은 회원입니다.";
@@ -125,11 +123,11 @@ public class PersonController {
       
       String type = (String) id.getType();
       session.setAttribute("type", id.getType());
-
       System.out.println("로그인 타입 : " + type);
       String personId = (String)person.getPersonId();
       System.out.println("personId : " + personId);
       
+
     	 System.out.println("여기는 type을 확인하는 곳");
     	 
 	      if("p".equals(type)) 

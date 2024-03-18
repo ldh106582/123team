@@ -33,4 +33,6 @@ public interface HospitalService {
 	
 	void publicAPI();
 
+	List<Hospital> getMyhospitalList(String personId);
+
 }

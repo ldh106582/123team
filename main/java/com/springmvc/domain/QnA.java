@@ -13,6 +13,7 @@ public class QnA {
 	private String qnaId;
 	private List<QnAComment> commentlist;
 	private String productname;
+
 	public QnA() {
 		// TODO Auto-generated constructor stub
 	}
@@ -82,6 +83,7 @@ public class QnA {
 	public void setCommentlist(List<QnAComment> commentlist) {
 		this.commentlist = commentlist;
 	}
+
 
 	public String getProductname() {
 		return productname;

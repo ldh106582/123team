@@ -256,9 +256,7 @@ public class ManagerController
 	@GetMapping("/ManagerDelete")
 	public String ManagerDelete(@RequestParam("managerid") String managerId, HttpServletRequest request) {
 		// System.out.println("managerId : " + managerId);
-		
-		
-		
+
 		// 전체 id db 데이터를 삭제하는 함수
 		managerService.AllmanagerDelete(managerId);
 		// productMember 데이터를 삭제하는 함수

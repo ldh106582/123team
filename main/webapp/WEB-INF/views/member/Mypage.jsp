@@ -30,24 +30,26 @@
 			<div id="container" class="container wrap naverid">
 				<header class="header" role="banner">
 		            <div class="header_home">
-		            <div class="gnb_area"></div>
-		            <div class="profile_area">
-		                <div class="profile_inner">
-          				<c:choose>
-						    <c:when test="${not empty id.image}">
-						        <img src="<c:url value='/resources/images/${id.image}'/>" width="84" height="84" alt="프로필 이미지">
-						    </c:when>
-						    <c:otherwise>
-						        <img src="https://static.nid.naver.com/images/web/user/default.png" width="84" height="84" alt="프로필 이미지">
-						    </c:otherwise>
-						</c:choose>
-							
-		                    <div class="profile">
-		                        <p class="useid">${id.personId}</p> 
-		                        <p class="usemail">${id.personEmail}</p>
-		                    </div>
-		                </div>
-		            </div>
+			            <div class="gnb_area"></div>            
+					      <div class="profile_area">
+				            <div class="profile_inner">
+				                <a onclick="changeImage()" class="photo">
+				                   	<c:choose>
+									<c:when test="${not empty id.image}">
+									  <img src="<c:url value='/resources/images/${id.image}'/>" width="84" height="84" alt="프로필 이미지">
+									</c:when>
+									<c:otherwise>
+									  <img src="https://static.nid.naver.com/images/web/user/default.png" width="84" height="84" alt="프로필 이미지">
+									</c:otherwise>
+									</c:choose>
+				                    <span class="photo_edit"></span>
+				                </a>
+				                <div class="profile">
+				                    <p class="useid">${ id.personId } 님 </p>
+				                    <p class="usemail">${id.personEmail } 사장님 입니다. </p>
+				                </div>
+				            </div>
+				        </div>
 		            <div id="headerLeft" class="header_left" aria-hidden="false">
 		                <ul class="left_menu" role="menu">
 		                    <li>
@@ -80,6 +82,26 @@
 				                <div id="headerTop" class="path_area" aria-hidden="false"></div>
 				            </div>                        
 				            <div class="subindex_item">
+					              <!--체험단-->
+					            <div class="subindex_item">
+					                <div class="head_title">
+					                    <h2 class="subindex_title">체험단 관리</h2>
+					                </div>
+					                <div class="subindex_greenbox">
+					                    <ul class="subindex_row">
+					                        <li>
+					                            <div class="row_item other">
+					                                <a href="/123team/ENboards/applist" class="text-decoration-none"><span class="item_text">체험단 신청 확인</span></a>
+					                            </div>
+					                        </li>
+					                        <li>
+					                            <div class="row_item other">
+					                                <a href="/123team/ENboards/manageapps" class="text-decoration-none"><span class="item_text">체험단 신청 내역</span></a>
+					                            </div>
+					                        </li>
+					                    </ul>
+					                </div>
+					            </div>
 				                <div class="head_title">
 				                    <h2 class="subindex_title">정보 수정</h3>
 				                </div>
@@ -98,26 +120,6 @@
 				                    </ul>
 				                </div>
 				            </div>
-				            <!--체험단-->
-				            <div class="subindex_item">
-				                <div class="head_title">
-				                    <h2 class="subindex_title">체험단 관리</h2>
-				                </div>
-				                <div class="subindex_greenbox">
-				                    <ul class="subindex_row">
-				                        <li>
-				                            <div class="row_item other">
-				                                <a href="" class="text-decoration-none"><span class="item_text">체험단 신청 확인</span></a>
-				                            </div>
-				                        </li>
-				                        <li>
-				                            <div class="row_item other">
-				                                <a href="" class="text-decoration-none"><span class="item_text">체험단 신청 내역</span></a>
-				                            </div>
-				                        </li>
-				                    </ul>
-				                </div>
-				            </div>
 				            <!--병원 예약 정보-->
 				            <div class="subindex_item">
 				                <div class="head_title">
@@ -127,7 +129,7 @@
 				                    <ul class="subindex_row">
 				                        <li>
 				                            <div class="row_item other">
-				                                <a href="" class="text-decoration-none"><span class="item_text">예약 확인</span></a>
+				                                <a href="/123team/hospitals/mybookList" class="text-decoration-none"><span class="item_text">예약 확인</span></a>
 				                            </div>
 				                        </li>
 				                    </ul>
@@ -185,27 +187,8 @@
 		        		<div id="content" class="content">
 				            <div class="subindex_wrap" role="main">
 				                <div id="headerTop" class="path_area" aria-hidden="false"></div>
-				            </div>                        
-				            <div class="subindex_item">
-				                <div class="head_title">
-				                    <h2 class="subindex_title">내 정보 수정</h3>
-				                </div>
-					            <div class="subindex_greenbox">
-					                <ul class="subindex_row">
-					                    <li>
-					                        <div class="row_item other">
-					                            <a href="/123team/login/update?id=${ id.personId }" class="text-decoration-none"><span class="item_text">내 정보 수정</span></a>
-					                        </div>
-					                    </li>
-					                    <li>
-					                        <div class="row_item other">
-					                            <a href="./login/delete?id=${ id }" class="text-decoration-none" id="delete"><span class="item_text">회원 탈퇴</span></a>
-					                        </div>
-					                    </li>
-					                </ul>
-					            </div>
-				        	</div>
-					        <!--상품 예약 정보-->
+				            </div>	
+				            <!--상품 예약 정보-->
 					        <div class="subindex_item">
 					            <div class="head_title">
 					                <h2 class="subindex_title">상품 관리</h2>
@@ -219,7 +202,26 @@
 					                    </li>
 					                </ul>
 					            </div>
-					        </div>
+					        </div>                
+				            <div class="subindex_item">
+				                <div class="head_title">
+				                    <h3 class="subindex_title">내 정보 수정</h3>
+				                </div>
+					            <div class="subindex_greenbox">
+					                <ul class="subindex_row">
+					                    <li>
+					                        <div class="row_item other">
+					                            <a href="/123team/login/update?id=${ id.personId }" class="text-decoration-none"><span class="item_text">내 정보 수정</span></a>
+					                        </div>
+					                    </li>
+					                    <li>
+					                        <div class="row_item other">
+					                            <a href="/123team/login/delete?id=${ id.personId }" class="text-decoration-none" id="delete"><span class="item_text">회원 탈퇴</span></a>
+					                        </div>
+					                    </li>
+					                </ul>
+					            </div>
+				        	</div>
 							<!--게시판-->
 					        <div class="subindex_item">
 					            <div class="head_title">
@@ -286,7 +288,22 @@
 		        		<div id="content" class="content">
 				            <div class="subindex_wrap" role="main">
 				                <div id="headerTop" class="path_area" aria-hidden="false"></div>
-				            </div>                        
+				            </div>
+				             <!--병원 관리-->
+				            <div class="subindex_item">
+				                <div class="head_title">
+				                    <h2 class="subindex_title">내 병원 관리</h2>
+				                </div>
+				                <div class="subindex_greenbox">
+				                    <ul class="subindex_row">
+				                        <li>
+				                            <div class="row_item other">
+				                                <a href="/123team/hospitals/manager" class="text-decoration-none"><span class="item_text">병원 전체 관리</span></a>
+				                            </div>
+				                        </li>
+				                    </ul>
+				                </div>
+				            </div>                 
 				            <div class="subindex_item">
 				                <div class="head_title">
 				                    <h3 class="subindex_title">정보 수정</h3>
@@ -298,46 +315,13 @@
 				                                <a href="/123team/login/update?id=${id.personId}" class="text-decoration-none"><span class="item_text">내 정보 수정</span></a>
 				                            </div>
 				                        </li>
-				                        <li>
-				                            <div class="row_item other">
-				                                <a href="./hospitals/update?id=${ id.personId }" class="text-decoration-none" id="update"><span class="item_text">병원 정보 수정</span></a>
-				                            </div>
-				                        </li>
+				                        
 				                        <li>
 				                            <div class="row_item other">
 				                                <a href="/123team/login/delete?id=${ id.personId }" class="text-decoration-none" id="delete"><span class="item_text">회원 탈퇴</span></a>
 				                            </div>
 				                        </li>
-				                    </ul>
-				                </div>
-				            </div>
-				            <!--병원 관리-->
-				            <div class="subindex_item">
-				                <div class="head_title">
-				                    <h2 class="subindex_title">내 병원 관리</h2>
-				                </div>
-				                <div class="subindex_greenbox">
-				                    <ul class="subindex_row">
-				                        <li>
-				                            <div class="row_item other">
-				                                <a href="/123team/hospitals/manager" class="text-decoration-none"><span class="item_text">예약 리스트 보기</span></a>
-				                            </div>
-				                        </li>
-				                    </ul>
-				                </div>
-				            </div>
-				           	<!--병원 예약 정보-->
-				            <div class="subindex_item">
-				                <div class="head_title">
-				                    <h2 class="subindex_title">병원 예약 정보</h2>
-				                </div>
-				                <div class="subindex_greenbox">
-				                    <ul class="subindex_row">
-				                        <li>
-				                            <div class="row_item other">
-				                                <a href="" class="text-decoration-none"><span class="item_text">예약 확인</span></a>
-				                            </div>
-				                        </li>
+				                        
 				                    </ul>
 				                </div>
 				            </div>

@@ -11,5 +11,6 @@ public interface QnAService {
 	void updateQnA(QnA QnA,String QnAId);
 	void deleteQnA(String QnAId);
 	List<QnA> getMyList(String personId);
+
 	
 }

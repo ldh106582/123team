@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.springmvc.domain.QnA;
 import com.springmvc.domain.QnAComment;
 
 public interface QnAcommentservice {
