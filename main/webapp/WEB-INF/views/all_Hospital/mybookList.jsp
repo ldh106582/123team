@@ -129,7 +129,7 @@ function cancelForm() {
 													            ${book.context}
 													        </td>
 													        <td class="text-center">
-													            <a class="btn btn-outline-danger" href="deletebook?bid=${book.bid}">예약취소</a>
+													            <a class="btn btn-outline-danger" href="deletebook?bid=${book.bid}" onclick="alert('정말 취소 하시겠습니까?')">예약취소</a>
 													        </td>
 													        <td class="text-center">
 													            ${book.state}

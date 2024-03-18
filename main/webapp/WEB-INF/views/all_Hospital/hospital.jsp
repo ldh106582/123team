@@ -64,7 +64,7 @@
 	              <c:if test="${loginId ==  hospital.personId}">
 	                <div class="row d-flex justify-content-end col-md-6">
 	                  <a class="btn btn-outline-success mr-2" href="update?hid=${hospital.hid}">병원수정</a>
-	                  <a class="btn btn-outline-danger" href="delete?hid=${hospital.hid}">병원삭제</a>
+	                  <a class="btn btn-outline-danger" href="delete?hid=${hospital.hid}" onclick="alert('정말 삭제하시겠습니까?')">병원삭제</a>
 	                </div>
 	             </c:if>
 	           </div> 
@@ -115,7 +115,7 @@
 						                <div class="col-md-12 px-0">
 						                  <c:if test="${loginId ==  review.personId}">
 						                    <a class="btn btn-outline-info btn-sm mr-1" href="editreview?reviewId=${review.reviewId}">리뷰수정</a> 
-						                    <a class="btn btn-outline-info btn-sm mr-1" href="deletereview?reviewId=${review.reviewId}">리뷰삭제</a>
+						                    <a class="btn btn-outline-info btn-sm mr-1" href="deletereview?reviewId=${review.reviewId} onclick="alert('정말 삭제하시겠습니까?')"">리뷰삭제</a>
 						                  </c:if>
 		                               </div>
 		                            </div>
@@ -149,7 +149,7 @@
 							                <div class="col-md-12 px-0">
 							                  <c:if test="${loginId ==  review.personId}">
 							                    <a class="btn btn-outline-info btn-sm mr-1" href="editreview?reviewId=${review.reviewId}">리뷰수정</a> 
-							                    <a class="btn btn-outline-info btn-sm mr-1" href="deletereview?reviewId=${review.reviewId}">리뷰삭제</a>
+							                    <a class="btn btn-outline-info btn-sm mr-1" href="deletereview?reviewId=${review.reviewId}" onclick="alert('정말 삭제하시겠습니까?')">리뷰삭제</a>
 							                  </c:if>
 			                               </div>
 			                            </div>

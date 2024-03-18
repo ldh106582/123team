@@ -101,9 +101,10 @@ request.setAttribute("type", type);
 					<div class="content-wrapper d-flex align-items-center auth px-0">
 						<div class="row w-100 mx-0">
 				            <div class="col-lg-6 mx-auto">
-								<div class="card mb-2">
-								    <p class="card-title"><b>체험단관리자 회원수정</b></p>
-								</div>
+				            	<div class="auth-form-light text-left py-5 px-4 px-sm-5">
+									<div class="card mb-2">
+								    	<p class="card-title"><b>체험단관리자 회원수정</b></p>
+									</div>
 				     				<form:form modelAttribute="ex_manager" action="/123team/login/update" method="post" enctype="Multipart/form-data">
 				     					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 				                        <input type="hidden" name="personId" value="${ex_person.personId}"/>
@@ -163,7 +164,7 @@ request.setAttribute("type", type);
 				                </div>
 				            </div>
 				        </div>
-					</div>
+				        </div>
 				</c:when>
 				<c:otherwise>
 					<div class="content-wrapper d-flex align-items-center auth px-0">

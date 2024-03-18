@@ -81,7 +81,7 @@
 										<a href="/123team/ENboards" class="btn btn-primary btn-sm">돌아가기</a>
 						                <c:if test="${loginId == board.personId}">
 							                <a href="update?boardId=${board.boardId}"class="btn btn-primary btn-sm">수정하기</a>
-							                <a href="delete?boardId=${board.boardId}"class="btn btn-danger btn-sm">삭제하기</a>
+							                <a href="delete?boardId=${board.boardId}"class="btn btn-danger btn-sm" onclick="alert('정말 삭제 하시겠습니까?')">삭제하기</a>
 						                </c:if>
 					                </div>
 								</div>			
@@ -113,7 +113,7 @@
 						             </div>
 						            <c:if test="${comments.personId == loginId}">
 						                <button class="btn btn-primary btn-sm" onclick="editform('${comments.comment}','${comments.commentId}')">댓글 수정</button>
-						                <a href="deletecoment?commentId=${comments.commentId}&boardId=${board.boardId}" class="btn btn-danger btn-sm">댓글 삭제</a>
+						                <a href="deletecoment?commentId=${comments.commentId}&boardId=${board.boardId}" class="btn btn-danger btn-sm" onclick="alert('정말 삭제 하시겠습니까?')">댓글 삭제</a>
 						            </c:if>
 						        </div>
 						    </c:forEach>

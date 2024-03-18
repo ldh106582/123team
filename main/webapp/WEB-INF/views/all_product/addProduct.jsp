@@ -36,8 +36,8 @@
                                 </div>
                                 
                                <div class="form-group">
-                                   <h4 class="col-md-6 p-0" style="color: rgb(140, 58, 179);"> 상품카테고리 </h4>
-                                  <form:select class="col-6" style="height: 50px;" id="petVarity" path="productCategory">
+                                   <h4 class="col-md-12 p-0" style="color: rgb(140, 58, 179);"> 상품카테고리 </h4>
+                                  <form:select class="col-12" style="height: 50px;" id="petVarity" path="productCategory">
                                       <form:option id="a_food" value="dog">사료</form:option>
                                       <form:option id="a_snack" value="cat">간식</form:option>
                                       <form:option id="a_house" value="bird">집</form:option>
@@ -46,8 +46,8 @@
                                       <form:option id="a_Etc" value="reptile">기타</form:option>
                                   </form:select>
 
-                                  <h4 class="col-md-6 p-0" style="color: rgb(140, 58, 179);"> 동물카테고리 </h4>
-                                  <form:select class="col-6" style="height: 50px;" id="petVarity" path="animalCategory">
+                                  <h4 class="col-md-12 p-0 mt-3" style="color: rgb(140, 58, 179);"> 동물카테고리 </h4>
+                                  <form:select class="col-12 " style="height: 50px;" id="petVarity" path="animalCategory">
                                       <form:option id="dog" value="dog">강아지</form:option>
                                       <form:option id="cat" value="cat">고양이</form:option>
                                       <form:option id="bird" value="bird">새</form:option>

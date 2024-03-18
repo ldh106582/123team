@@ -348,4 +348,11 @@ public class HospitalRepositoryImp implements HospitalRepository{
 	    }
 	       
 	}
+
+	@Override
+	public List<Hospital> getMyhospitalList(String personId) {
+		String SQL = "select * from hospital where personId='"+personId+"'";
+		
+		return template.query(SQL, new HospitalRowMapper());
+	}
 }

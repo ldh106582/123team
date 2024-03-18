@@ -220,6 +220,15 @@ public class ProductController {
 		model.addAttribute("numofproduct", productService.getNumOfProduct(personId));
 		System.out.println("numofproduct도착");
 		
+		List<Product> listOfproduct = productService.getProduct(personId);
+		if(listOfproduct != null) 
+		{
+			model.addAttribute("listOfproduct", listOfproduct);
+		}
+		else 
+		{
+			model.addAttribute("nothing", "등록된 상품이 없습니다.");
+		}
 
 		return "/member/ProductManagerPage";
 	}
@@ -251,5 +260,25 @@ public class ProductController {
 		}
 		model.addAttribute("permissionlist", list);
 		return "/all_product/myordercheck";
+	}
+	// 매출 페이지로 이동하는 함수
+	@GetMapping("sales")
+	public String Getsalse(HttpServletRequest request, Model model) {
+		HttpSession session = request.getSession();
+		String personId = (String) session.getAttribute("personId");
+		System.out.println("매출 확인" + personId);
+		
+		List<Order> listOfOrder = productService.getsalse(personId);
+		
+		if(listOfOrder != null) 
+		{
+			model.addAttribute("listOfOrder", listOfOrder);
+		}
+		else 
+		{
+			model.addAttribute("nothing", "아직 주문된 상품이 없습니다.");
+		}
+		
+		return "/all_product/salse";
 	}
 }

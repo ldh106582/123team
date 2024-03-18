@@ -91,9 +91,11 @@
     <div class="subindex_item">
         <div class="head_title">
             <h2 class="subindex_title">동물 정보</h2>
-            <div class="title_link">
-                <a href="/123team/login/petcardupdate?petId=${petid.petId}"><span class="text">수정하기</span></a>
-            </div> 
+            <c:if test="${type eq p }">
+	            <div class="title_link">
+	                <a href="/123team/login/petcardupdate?petId=${petid.petId}"><span class="text">수정하기</span></a>
+	            </div> 
+            </c:if>
         </div>
     
         <div class="subindex_greenbox">
@@ -161,8 +163,7 @@
                                         <p class="m-2"> 몸무게 기록 : ${petWeight.petWeightDate} </p> 
                                         <p class="m-2"> 몸무게 : ${petWeight.petWeight} </p> 
                                     </div>
-                                    </c:forEach>
-                                    
+                                    </c:forEach>                                    
                                 </div>
                             </td>
                         </tr>

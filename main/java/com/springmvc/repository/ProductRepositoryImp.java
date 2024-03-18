@@ -251,5 +251,23 @@ public class ProductRepositoryImp implements ProductRepository{
 		 List<Order> list =template.query(SQL, new OrderDBConnector());
 		return list;
 	}
+
+	@Override
+	public List<Order> getsalse(String personId) {
+		String SQL = "select * from Ordertable where personId='"+personId+"'";
+		 List<Order> listOfOrder =template.query(SQL, new OrderDBConnector());
+		return listOfOrder;
+	}
+
+	@Override
+	public List<Product> getProduct(String personId) {
+		String SQL = "select * from Product where personId='"+personId+"'";
+		List<Product> listOfproduct = template.query(SQL, new ProductRowMapper());
+		return listOfproduct;
+	}
+	
+	
+	
+	
 	
 }

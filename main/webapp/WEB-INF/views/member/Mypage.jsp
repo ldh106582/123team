@@ -53,7 +53,7 @@
 		            <div id="headerLeft" class="header_left" aria-hidden="false">
 		                <ul class="left_menu" role="menu">
 		                    <li>
-		                        <a href="./pet/creatpet?id=${ id.personId }" class="left_item" role="menuitem" >
+		                        <a href="/123team/pet/creatpet?id=${ id.personId }" class="left_item" role="menuitem" >
 		                            <div class="menu_text ">반려동물 회원가입</div>
 		                        </a>
 		                     </li>
@@ -91,12 +91,12 @@
 					                    <ul class="subindex_row">
 					                        <li>
 					                            <div class="row_item other">
-					                                <a href="" class="text-decoration-none"><span class="item_text">체험단 신청 확인</span></a>
+					                                <a href="/123team/ENboards/applist" class="text-decoration-none"><span class="item_text">체험단 신청 확인</span></a>
 					                            </div>
 					                        </li>
 					                        <li>
 					                            <div class="row_item other">
-					                                <a href="" class="text-decoration-none"><span class="item_text">체험단 신청 내역</span></a>
+					                                <a href="/123team/ENboards/manageapps" class="text-decoration-none"><span class="item_text">체험단 신청 내역</span></a>
 					                            </div>
 					                        </li>
 					                    </ul>
@@ -129,7 +129,7 @@
 				                    <ul class="subindex_row">
 				                        <li>
 				                            <div class="row_item other">
-				                                <a href="" class="text-decoration-none"><span class="item_text">예약 확인</span></a>
+				                                <a href="/123team/hospitals/mybookList" class="text-decoration-none"><span class="item_text">예약 확인</span></a>
 				                            </div>
 				                        </li>
 				                    </ul>
@@ -299,11 +299,6 @@
 				                        <li>
 				                            <div class="row_item other">
 				                                <a href="/123team/hospitals/manager" class="text-decoration-none"><span class="item_text">병원 전체 관리</span></a>
-				                            </div>
-				                        </li>
-				                        <li>
-				                            <div class="row_item other">
-				                                <a href="/123team/hospitals/update?id=${ id.personId }" class="text-decoration-none" id="update"><span class="item_text">병원 정보 수정</span></a>
 				                            </div>
 				                        </li>
 				                    </ul>

@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="/123team/resources/css/mypage.css">
 <title>Insert title here</title>
 </head>
-<body>
+<body style="font-family: KCC-Ganpan;">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="./resources/js/refreshing.js"></script>
 
@@ -20,62 +20,62 @@
 	
 <div class="container-fluid page-body-wrapper">
 <%@  include file="../module/leftheader.jsp" %>
-
-	<div id="wrap" class="wrap naverid ">
-	    <header class="header" role="banner">
-	        <div class="header_subindex">
-	            <!--로고/Mypage-->
-	            <div class="gnb_area">
-	                <a href="#" class="text-decoration-none" >
-	                    <h2 class="col-8" style="fontsize: 11px;">Hospital</h2>
-	                </a>
-	            </div>
-	        </div>
-	        <!--프로필-->
-		      <div class="profile_area">
-	            <div class="profile_inner">
-	                <a onclick="changeImage()" class="photo">
-	                   	<c:choose>
-						<c:when test="${not empty id.image}">
-						  <img src="<c:url value='/resources/images/${id.image}'/>" width="84" height="84" alt="프로필 이미지">
-						</c:when>
-						<c:otherwise>
-						  <img src="https://static.nid.naver.com/images/web/user/default.png" width="84" height="84" alt="프로필 이미지">
-						</c:otherwise>
-						</c:choose>
-	                    <span class="photo_edit"></span>
-	                </a>
-	                <div class="profile">
-	                    <p class="useid">${ id.personId } 사장님 </p>
-	                    <p class="usemail">${id.personEmail } 입니다. </p>
-	                </div>
-	            </div>
-	        </div>
-	        <div id="headerLeft" class="header_left" aria-hidden="false">
-               <ul class="left_menu" role="menu">
-                   <li>
-                       <a href="./pet/creatpet?id=${ id.personId }" class="left_item" role="menuitem" >
-                           <div class="menu_text ">반려동물 회원가입</div>
-                       </a>
-                    </li>
-                    <li>
-                       <a href="/123team/login/logout" class="left_item" role="menuitem" >
-                           <div class="menu_text ">로그아웃</div>
-                       </a>
-                    </li>
-                    <li>
-		               <div class="left_item" role="menuitem" >
-		                   <div class="menu_text ">펫 카드</div>
-		               </div>
-						<c:forEach items="${petName}" var="petName">
-							<a href="/123team/login/petcard?petid=${petName.petId}" class="left_item" role="menuitem">
-							<div>${petName.petName }</div>
-							</a>
-						</c:forEach>
-	            	</li>
-               </ul>
-	        </div>
-	    </header>
+	<div id="container" class="container wrap naverid" style="height: 1100px">	
+		<div id="wrap" class="wrap naverid ">
+		    <header class="header" role="banner">
+		        <div class="header_subindex">
+		            <!--로고/Mypage-->
+		            <div class="gnb_area">
+		                <a href="#" class="text-decoration-none" >
+		                    <h2 class="col-8" style="fontsize: 11px;">Hospital</h2>
+		                </a>
+		            </div>
+		        </div>
+		        <!--프로필-->
+			      <div class="profile_area">
+		            <div class="profile_inner">
+		                <a onclick="changeImage()" class="photo">
+		                   	<c:choose>
+							<c:when test="${not empty id.image}">
+							  <img src="<c:url value='/resources/images/${id.image}'/>" width="84" height="84" alt="프로필 이미지">
+							</c:when>
+							<c:otherwise>
+							  <img src="https://static.nid.naver.com/images/web/user/default.png" width="84" height="84" alt="프로필 이미지">
+							</c:otherwise>
+							</c:choose>
+		                    <span class="photo_edit"></span>
+		                </a>
+		                <div class="profile">
+		                    <p class="useid">${ id.personId } 사장님 </p>
+		                    <p class="usemail">${id.personEmail } 입니다. </p>
+		                </div>
+		            </div>
+		        </div>
+		        <div id="headerLeft" class="header_left" aria-hidden="false">
+	               <ul class="left_menu" role="menu">
+	                   <li>
+	                       <a href="./pet/creatpet?id=${ id.personId }" class="left_item" role="menuitem" >
+	                           <div class="menu_text ">반려동물 회원가입</div>
+	                       </a>
+	                    </li>
+	                    <li>
+	                       <a href="/123team/login/logout" class="left_item" role="menuitem" >
+	                           <div class="menu_text ">로그아웃</div>
+	                       </a>
+	                    </li>
+	                    <li>
+			               <div class="left_item" role="menuitem" >
+			                   <div class="menu_text ">펫 카드</div>
+			               </div>
+							<c:forEach items="${petName}" var="petName">
+								<a href="/123team/login/petcard?petid=${petName.petId}" class="left_item" role="menuitem">
+								<div>${petName.petName }</div>
+								</a>
+							</c:forEach>
+		            	</li>
+	               </ul>
+		        </div>
+		    </header>
 	    
 	        <div id="container" class="container ">
 	            <!-- container -->
@@ -88,7 +88,7 @@
 	                        <div class="row">
 	                            <div class="col-md-6 stretch-card transparent">
 	                                <div class="card card-tale">
-	                                    <div class="card-body">
+	                                    <div class="card-body"  onclick="location.href='getmyhospitals'">
 	                                        <p class="mb-4">내 병원 수</p>
 	                                        <p class="fs-30 mb-2">${count}</p>
 	                                         <p class="fs-28">병원 내역 / 수정 </p>
@@ -251,7 +251,9 @@
 	    	</div>
 	    </div>
 	</div>
- </div>		
+ </div>
+ </div>
+     <%@ include file="../module/footer.jsp" %>
 </body>
 </html>
 

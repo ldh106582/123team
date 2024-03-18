@@ -20,5 +20,4 @@ public class AddressDTO {
 		this.y = y;
 	}
 
-
 }

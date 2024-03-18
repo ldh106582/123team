@@ -1,33 +1,26 @@
 package com.springmvc.controller;
 
 import java.time.LocalDate;
-import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.springmvc.domain.Pet;
 import com.springmvc.domain.PetChart;
 import com.springmvc.domain.PetSurgery;
 import com.springmvc.domain.PetVaccination;
 import com.springmvc.domain.PetWeight;
-import com.springmvc.repository.PetDBConnector;
 import com.springmvc.repository.PetSurgeryAfter;
 import com.springmvc.service.PetCardService;
-import com.springmvc.service.PetService;
+
 
 @Controller
 @RequestMapping("/login")
@@ -37,7 +30,9 @@ public class PetCardController {
 	PetCardService petCardService;
 	
 	@GetMapping("/petcard")
-	public String SetCreatPetCard(@RequestParam("petid") String petId, HttpServletRequest request, Model model) {
+	public String SetCreatPetCard(@RequestParam("petid") String petId, 
+								 HttpServletRequest request, Model model) {
+	
 		// 반려동물의 정보를 가져오는 함수
 		Pet petid = petCardService.getPetRead(petId);
 		LocalDate birthday = (LocalDate) petid.getPetBirth();
@@ -45,35 +40,35 @@ public class PetCardController {
 		System.out.println(petid.getPetImage());
 		// 현재 날짜 가져오기
 		LocalDate currentDate = LocalDate.now();
-
 		// 나이 계산
 		int age = currentDate.getYear() - birthday.getYear();
 		System.out.println("petAge: " + age);
 		String ageString = String.valueOf(age);
-
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		String birthdayString = birthday.format(formatter);
 		System.out.println("ageString : " + ageString);
-
 		// request에 나이 값 추가
 		request.setAttribute("ageString", ageString);
 		model.addAttribute("petid", petid);
-
 		
-		// 폼 데이터를 바인딩하는 데 사용되는 객체를 생성하고 모델에 추가
-		PetWeight petWeight = new PetWeight();
-		model.addAttribute("petWeight", petWeight);
-
 		// 몸무게 데이터를 보여주는 함수
 		System.out.println("몸무게 실행 함수");
 		List<PetWeight> listOfPetWeight = petCardService.getWeghitPetCard(petId);
-		System.out.println("listOfPetWeight : " + listOfPetWeight + "controller");
-		model.addAttribute("listOfPetWeight", listOfPetWeight);
+		
 
+		
+
+		
+			model.addAttribute("listOfPetWeight", listOfPetWeight);	
+
+
+		
 		// 진료 기록을 보여주는 함수
 		List<PetChart> listOfPetChard = petCardService.getChartPetCard(petId);
-		model.addAttribute("listOfPetChard", listOfPetChard);
 
+			model.addAttribute("listOfPetChard", listOfPetChard);
+		
+		
 		// 예방접종 기록을 보여주는 함수
 		List<PetVaccination> listOfpetVaccination = petCardService.getVaccinationPetCard(petId);
 		model.addAttribute("listOfpetVaccination", listOfpetVaccination);

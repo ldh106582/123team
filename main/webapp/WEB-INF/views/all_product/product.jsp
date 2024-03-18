@@ -105,7 +105,7 @@
                              <c:if test="${loginId == product.personId}">
                                  <div class="col-md-12 p-0 d-flex" style="justify-content: flex-end;">
                                      <a href="update?productId=${product.productId}" class="btn btn-outline-info mr-1">상품수정</a>
-                                     <a href="delete?productId=${product.productId}" class="btn btn-outline-danger ">상품삭제</a>
+                                     <a href="delete?productId=${product.productId}" class="btn btn-outline-danger " onclick="alert('정말 삭제 하시겠습니까?')">상품삭제</a>
                                  </div>
                              </c:if>
                          </div>
@@ -149,7 +149,7 @@
                                         <div class="col-md-12 px-0">
                                             <c:if test="${loginId ==  review.personId}">
                                                 <a class="btn btn-outline-info btn-sm mr-1" href="u_review?personId=${review.personId}&reviewId=${review.reviewId}">리뷰수정</a> 
-                                                <a class="btn btn-outline-info btn-sm mr-1" href="d_review?reviewId=${review.reviewId}">리뷰삭제</a>
+                                                <a class="btn btn-outline-info btn-sm mr-1" href="d_review?reviewId=${review.reviewId}" onclick="alert('정말 삭제 하시겠습니까?')">리뷰삭제</a>
                                             </c:if>
                                         </div>
                                     </div>
@@ -181,7 +181,7 @@
                                         <div class="col-md-12 px-0">
                                             <c:if test="${loginId ==  review.personId}">
                                                 <a class="btn btn-outline-info btn-sm mr-1" href="u_review?personId=${review.personId}&reviewId=${review.reviewId}">리뷰수정</a> 
-                                                <a class="btn btn-outline-info btn-sm mr-1" href="d_review?reviewId=${review.reviewId}">리뷰삭제</a>
+                                                <a class="btn btn-outline-info btn-sm mr-1" href="d_review?reviewId=${review.reviewId}" onclick="alert('정말 삭제 하시겠습니까?')">리뷰삭제</a>
                                             </c:if>
                                         </div>
                                     </div>
@@ -222,7 +222,7 @@
 					                        <div></div>
 					                        <div>
 				                                <a href="u_qna?QnAId=${qna.qnaId}&productId=${qna.productId}"class="btn btn-primary btn-sm">수정하기</a>
-				                                <a href="d_qna?QnAId=${qna.qnaId}&productId=${qna.productId}"class="btn btn-danger btn-sm">삭제하기</a>
+				                                <a href="d_qna?QnAId=${qna.qnaId}&productId=${qna.productId}"class="btn btn-danger btn-sm" onclick="alert('정말 삭제 하시겠습니까?')">삭제하기</a>
 					                        </div>
 					                    </div>			
 					                    <hr>
@@ -252,7 +252,7 @@
 					                         </div>
 					                        <c:if test="${commentlist.personId == loginId}">
 					                            <button class="btn btn-primary btn-sm" onclick="editform('${commentlist.comment}','${commentlist.commentId}','${qna.productId}')">댓글 수정</button>
-					                            <a href="d_comment?commentId=${commentlist.commentId}&productId=${qna.productId}" class="btn btn-danger btn-sm">댓글 삭제</a>
+					                            <a href="d_comment?commentId=${commentlist.commentId}&productId=${qna.productId}" class="btn btn-danger btn-sm" onclick="alert('정말 삭제 하시겠습니까?')">댓글 삭제</a>
 					                        </c:if>
 					                    </div>
 					                </c:forEach>

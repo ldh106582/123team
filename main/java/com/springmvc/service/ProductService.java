@@ -47,4 +47,7 @@ public interface ProductService {
 
 	List<Order> getorderList(String personId);
 	
+	List<Order> getsalse(String personId);
+	
+	List<Product> getProduct(String personId);
 }

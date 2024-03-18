@@ -33,4 +33,6 @@ public interface HospitalRepository {
 	AddressDTO h_rest(String personId) ;
 	
 	void publicAPI();
+
+	List<Hospital> getMyhospitalList(String personId);
 }
