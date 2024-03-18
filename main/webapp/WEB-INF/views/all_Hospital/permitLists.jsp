@@ -85,11 +85,11 @@
                                         <a href="decision?dec=거부&bid=${app.bid}"class="btn btn-danger">거부</a>
                                     </td>
 
-
+                  					<c:forEach items="${pet}" var="pet">
                                     <td>
                                         <a href="/123team/login/petcard?petid=${pet}">${pet} 정보 보기</a>   
                                     </td>
-
+ 									</c:forEach>
                                 </tr>
                            	 </c:forEach>
                             </table>

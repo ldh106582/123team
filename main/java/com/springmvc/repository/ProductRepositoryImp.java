@@ -198,10 +198,22 @@ public class ProductRepositoryImp implements ProductRepository{
 
 	@Override
 	public long getSales(String personId) {
+		System.out.println("salse도착 rr");
 		String SQL = "select sum(totalPrice) from Ordertable where managerId='"+personId+"'";
-		long sale = template.queryForObject(SQL, Long.class);
-		System.out.println(sale);
-		return sale;
+		System.out.println("salse도착 r2");
+		Long sale = template.queryForObject(SQL, Long.class);
+	    System.out.println("rowNum : " + sale);;
+	    if(sale != null) 
+	    {
+		    return sale;
+	    }
+	    else 
+	    {
+	    	sale = (long) 0;
+	    	return sale;
+	    }
+      
+
 	}
 
 	@Override
