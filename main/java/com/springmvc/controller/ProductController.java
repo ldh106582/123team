@@ -64,6 +64,7 @@ public class ProductController {
 			qnaId = qna.getQnaId();
 			System.out.println(qnaId);
 			System.out.println("=======================================");
+
 			commentlist = QnAcommentservice.getcommentbyId(qnaId);
 			System.out.println(commentlist.size());
 			qna.setCommentlist(commentlist);
@@ -206,16 +207,20 @@ public class ProductController {
 //	상품관리자 페이지
 	@GetMapping("manager")
 	public String managerpage(Model model, HttpSession session,HttpServletRequest request) {
+		System.out.println("상품관리자");
 		String personId = (String) session.getAttribute("personId");
+		System.out.println(personId);
 		
 		model.addAttribute("sales", productService.getSales(personId));
+		System.out.println("sales도착");
+		
 		model.addAttribute("orders", productService.getOrders(personId));
+		System.out.println("orders도착");
+		
 		model.addAttribute("numofproduct", productService.getNumOfProduct(personId));
-		List<Order> list = productService.getPermissionList(personId);
-		if(list.isEmpty()) {
-			request.setAttribute("nothing", "주문목록이 없어요ㅠ");
-		}
-		model.addAttribute("permissionlist", list);
+		System.out.println("numofproduct도착");
+		
+
 		return "/member/ProductManagerPage";
 	}
 	@GetMapping("permit")
@@ -230,5 +235,21 @@ public class ProductController {
 		String personId = (String) session.getAttribute("personId");
 		model.addAttribute("mylist",productService.getorderList(personId));
 		return "/all_product/myOderList";
+	}
+	
+	@GetMapping("myordercheck")
+	public String Getmyordercheck(HttpServletRequest request, Model model) {
+		System.out.println("myordercheck");
+		HttpSession session = request.getSession();
+		
+		String personId = (String) session.getAttribute("personId");
+		
+		List<Order> list = productService.getPermissionList(personId);
+		System.out.println(list);
+		if(list.isEmpty()) {
+			request.setAttribute("nothing", " 주문이 없습니다.");
+		}
+		model.addAttribute("permissionlist", list);
+		return "/all_product/myordercheck";
 	}
 }

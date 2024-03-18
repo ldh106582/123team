@@ -1,6 +1,8 @@
 package com.springmvc.controller;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -18,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.mysql.cj.Session;
 import com.springmvc.domain.QnA;
 import com.springmvc.domain.QnAComment;
+import com.springmvc.service.ProductService;
 import com.springmvc.service.QnAService;
 import com.springmvc.service.QnAcommentservice;
 
@@ -31,6 +34,8 @@ public class QnAController {
 	@Autowired
 	QnAcommentservice QnAcommentservice;
 	
+	@Autowired
+	ProductService productService;
 	//Create
 	@GetMapping("qa")
 	public String QnAform(@ModelAttribute("qna") QnA QnA,@RequestParam("productId") String productId,@RequestParam("personId") String personId,HttpServletRequest request)
@@ -153,6 +158,37 @@ public class QnAController {
 		
 	}
 	
-	
-	
+	@GetMapping("my_QNAList")
+	public String my_QNAList(Model model,HttpSession session,HttpServletRequest request) {
+		String personId = (String) session.getAttribute("personId");
+		List<QnA> list = QnAservice.getMyList(personId);
+		
+		if(list.isEmpty() || list == null) {
+			request.setAttribute("nothing", "작성한 QnA가 없어요");
+		}
+		
+		List<QnA> NlistofQnA = new ArrayList<QnA>();
+		QnA qna = null;
+		String qnaId = null;
+		List<QnAComment> commentlist = new ArrayList<QnAComment>();
+		
+		
+		for(int i=0; i<list.size(); i++) {
+			qna = list.get(i);
+			qna.setProductname(productService.getProductById(qna.getProductId()).getProductName());
+			qnaId = qna.getQnaId();
+			System.out.println(qnaId);
+			commentlist = QnAcommentservice.getcommentbyId(qnaId);
+			if(commentlist == null) {
+				request.setAttribute("nothing"+i, "아직 답변이 없어요");
+			}
+			qna.setCommentlist(commentlist);
+			NlistofQnA.add(qna);
+		}
+		
+		model.addAttribute("QNA", NlistofQnA);
+		
+		
+		return "member/myQnA_list";
+	}
 }

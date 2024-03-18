@@ -64,6 +64,13 @@ public class QnARepositoryImp implements QnARepository{
 		String id =  Long.toString(System.currentTimeMillis()) ;
 		return id;
 	}
+
+	@Override
+	public List<QnA> getMyList(String personId) {
+		String SQL = "Select * from QnA where personId='"+personId+"'";
+		
+		return template.query(SQL, new QnArowMapper());
+	}
 	
 	
 }

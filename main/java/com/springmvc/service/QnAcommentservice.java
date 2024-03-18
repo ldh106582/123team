@@ -13,4 +13,5 @@ public interface QnAcommentservice {
 	void updatecomment(QnAComment qnacomment,String comment,String commentId);
 	void deletecomment(String commentId);
 	QnAComment getcommentBycommentId(String commentId);
+
 }

@@ -19,6 +19,8 @@ public interface BookingService {
 	void updateState(String dec, String bid);
 
 	HospitalBooking getbookById(String bid);
+
+	boolean CheckVisitHistory(String personId, String hid);
 	
 	
 }
