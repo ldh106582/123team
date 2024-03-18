@@ -40,14 +40,12 @@ public class HospitalController {
 	public String getAllhospitals(Model model, @RequestParam(defaultValue = "1") int page)
 	{
 
-		 List<Hospital> listOfCount = hospitalService.getCount();
+		 	List<Hospital> listOfCount = hospitalService.getCount();
 
 		    int totalCount = listOfCount.size(); // 전체 항목 수
 		    int pageSize = 3; // 한 페이지에 표시할 항목 수
 		    int pageCount = (totalCount + pageSize - 1) / pageSize; // 페이지 수 계산
-		    if(pageCount % 3 != 0) {
-		    	pageCount++;
-		    }
+
 		    
 		    // 페이지 번호 범위 생성
 		    List<Integer> pageNumbers = new ArrayList<Integer>();
@@ -74,6 +72,13 @@ public class HospitalController {
 		return "all_Hospital/hospitals";
 	}
 
+	@GetMapping("getmyhospitals")
+	public String getmyhospitals(HttpSession session,Model model) {
+		String personId = (String) session.getAttribute("personId");
+		model.addAttribute("hospitals", hospitalService.getMyhospitalList(personId));
+		return "all_Hospital/myhospitals";
+	}
+	
 	@GetMapping("hospital")
 	public String hospital(@RequestParam("hid") String hid,Model model,HttpSession session,HttpServletRequest request)
 	{
@@ -131,7 +136,7 @@ public class HospitalController {
 	@GetMapping("delete")
 	public String hospitaldelete(@RequestParam("hid")String hid) {
 		hospitalService.deleteHospital(hid);
-		return "redirect:/hospitals";
+		return "redirect:/hospitals/getmyhospitals";
 	}
 	
 //	리뷰작성

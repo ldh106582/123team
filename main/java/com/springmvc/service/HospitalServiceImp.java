@@ -91,5 +91,11 @@ public class HospitalServiceImp implements HospitalService{
 		// TODO Auto-generated method stub
 		hospitalRepository.publicAPI();
 	}
+
+
+	@Override
+	public List<Hospital> getMyhospitalList(String personId) {
+		return hospitalRepository.getMyhospitalList(personId);
+	}
 	
 }

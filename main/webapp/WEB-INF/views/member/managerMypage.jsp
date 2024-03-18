@@ -322,5 +322,4 @@
 </body>
 <!-- js -->
 <script src="../resources/js/Mypage.js"></script>
-
 </html>

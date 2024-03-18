@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -90,6 +89,6 @@
     </div>
 
 <%@  include file="../module/footer.jsp" %>
-     
+
 </body>
 </html>

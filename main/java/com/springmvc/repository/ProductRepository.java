@@ -46,4 +46,8 @@ public interface ProductRepository {
 	void setdecission(String dec, String num);
 
 	List<Order> getorderList(String personId);
+	
+	List<Order> getsalse(String personId);
+	
+	List<Product> getProduct(String personId);
 }

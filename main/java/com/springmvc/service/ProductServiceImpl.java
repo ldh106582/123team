@@ -127,6 +127,18 @@ public class ProductServiceImpl implements ProductService{
 		// TODO Auto-generated method stub
 		return productRepository.getorderList(personId);
 	}
+
+	@Override
+	public List<Order> getsalse(String personId) {
+		// TODO Auto-generated method stub
+		return productRepository.getsalse(personId);
+	}
+
+	@Override
+	public List<Product> getProduct(String personId) {
+		// TODO Auto-generated method stub
+		return productRepository.getProduct(personId);
+	}
 	
 	
 	

@@ -33,7 +33,7 @@
               <div class="col-md-12 row no-gutters" style="margin: 0 auto;">
                 <div class="justify-content-end col-md-12">
                   	<c:if test="${type == checktype }">
-						<a href="products/add">상품추가</a>
+						<a href="products/add" class="btn btn-outline-primary mb-2 float-right mr-5">상품추가</a>
 					</c:if>
                 </div>
               </div>
