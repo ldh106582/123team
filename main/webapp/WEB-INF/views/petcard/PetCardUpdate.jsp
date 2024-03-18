@@ -141,33 +141,37 @@
                                                 <p class="m-2"> 몸무게 : <input type="text" name="petWeight" value="${petWeight.petWeight}" maxlength="3" /> </p> 
                                             </div>
                                             <input class="btn btn-success btn-sm border-3 border-dark mt-2 mb-2" type="submit" value="수정완료"/>
+                              			        <div class="col-sm-1" style="position: absolute; top: ${35 + status.index}%; left: ${75 + status.index}%;">
+	                                        	 <a  href="${pageContext.request.contextPath}/login/deleteWeghit?petId=${petWeight.petId}&petWeightNum=${petWeight.petWeightNum}" style="position: absolute; top: 51%; left: 85%" class="p-3 border text-secondary">
+	                                            	<i class="fa-solid fa-trash-can"></i>
+	                                            </a>
+                                            </div>
                                         </form>
-                                        <div class="col-sm-1" style="position: absolute; top: 35%; transform: translateX(980%);">
-                                            <a href="${pageContext.request.contextPath}/login/deleteWeghit?petId=${pet.petId}&petWeightNum=${petWeight.petWeightNum}" class="p-3 border text-secondary"> <i class="fa-solid fa-trash-can"></i> </a>
-                                        </div>
+                                        
+                        
+
+                                       
                                     </c:forEach>
                                 </div>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                            <h4 class="d-flex align-self-center" id="ChartName">진료</h4>
+                            <h4 class="d-flex align-self-center" id="ChartName" style="position: relative;">진료</h4>
                             <button type="button" class="bg-info text-white rounded p-1" id="ChartButton1" onclick="toggleDisplay('ChartDetails1', 'ChartButton1')">펼치기</button>
-                            <div id="ChartDetails1" style="display: none;">
-                                    <c:forEach items="${listOfPetChard}" var="petcard" varStatus="status">
-                                    <form action="/123team/login/petcardupdate?num=${petcard.petChartNum}&petId=${petcard.petId}" method="post" >
-                                        <div class="border m-2" style=" position: relative;">
-                                                <input type="hidden" name="type" value="chart" />
-                                                <p>진료일자: <input id="editDateField${status.index}" type="date" name="petChartDate" value="${petcard.petChartDate}"/> 
-                                                <p>진료명: <input id="editName${status.index}" type="text" name="petChart" value="${petcard.petChart}"/> </p>
-                                                <p>진료내용: <input id="editContentField${status.index}" type="text" name="petChartContent" value="${petcard.petChartContent}"/></p>
-                                        </div>
-                                        <input class="btn btn-success btn-sm border-3 border-dark mt-2 mb-2" type="submit" value="수정완료"/>
-                                    </form>
-                                    <div class="col-sm-1" style="position: absolute; top: 35%; transform: translateX(980%);">
-                                        <a href="${pageContext.request.contextPath}/login/deletetPetChart?petId=${petid.petId}&petChartNum=${petcard.petChartNum}" class="p-3 border text-secondary" ><i class="fa-solid fa-trash-can"></i></a>
-                                    </div>
-                                    </c:forEach>
+                            <div id="ChartDetails1" class=" col-md-12 border" style="display: none;">
+							<c:forEach items="${listOfPetChard}" var="petcard" varStatus="status">
+							    <div class="border m-2" style="position: relative;">
+							        <input type="hidden" name="type" value="chart" />
+							        <p>진료일자: <input id="editDateField${status.index}" type="date" name="petChartDate" value="${petcard.petChartDate}"/> </p>
+							        <p>진료명: <input id="editName${status.index}" type="text" name="petChart" value="${petcard.petChart}"/> </p>
+							        <p>진료내용: <input id="editContentField${status.index}" type="text" name="petChartContent" value="${petcard.petChartContent}"/></p>
+							        <input class="btn btn-success btn-sm border-3 border-dark mt-2 mb-2" type="submit" value="수정완료"/>
+							        <div class="col-sm-1" style="position: absolute; top: ${35 + status.index}%; left: ${75 + status.index}%;">
+							            <a href="${pageContext.request.contextPath}/login/deletetPetChart?petId=${petcard.petId}&petChartNum=${petcard.petChartNum}" class="p-3 border-danger text-secondary" > <i class="fa-solid fa-trash-can"></i> </a>
+							        </div>
+							    </div>
+							</c:forEach>
                             </div>
                             </td>
                         </tr>
@@ -187,7 +191,9 @@
                                     </div>
                                     <input class="btn btn-success btn-sm border-3 border-dark mt-2 mb-2" type="submit" value="수정완료"/>
                                     </form>
-                                    
+							       <div class="col-sm-1" style="position: absolute; top: ${35 + status.index}%; left: ${75 + status.index}%;">
+                                        <a href="${pageContext.request.contextPath}/login/deleteVaccination?petId=${petid.petId}&petVaccinationNum=${petcard.petVaccinationNum}" class="p-3 border-danger text-secondary" ><i class="fa-solid fa-trash-can"></i></a>
+                                    </div>
                                 </c:forEach>
                             </div>
                             </td>
@@ -207,7 +213,10 @@
                                             <p>수술내용: <input id="editContentField4${status.index}" type="text" name="petSurgeryContent" value="${petcard.petSurgeryContent}"/> </p>
                                         </div>
                                         <input class="btn btn-success btn-sm border-3 border-dark mt-2 mb-2" type="submit" value="수정완료"/>
-                                        </form>
+                        			 	</form>
+                			        <div class="col-sm-1" style="position: absolute; top: ${35 + status.index}%; left: ${75 + status.index}%;">
+                                        <a href="${pageContext.request.contextPath}/login/deletetSurgery?petId=${petid.petId}&petSurgeryNum=${petcard.petSurgeryNum}" class="p-3 border-danger text-secondary" ><i class="fa-solid fa-trash-can"></i></a>
+                                    </div>
                                     </c:forEach>
                                 </div>
                             </td>
@@ -227,6 +236,9 @@
                                     </div>
                                     <input class="btn btn-success btn-sm border-3 border-dark m-2" type="submit" value="수정완료"/>
                                     </form>
+                          	        <div class="col-sm-1" style="position: absolute; top: ${35 + status.index}%; left: ${75 + status.index}%;">
+                                        <a href="${pageContext.request.contextPath}/login/deletetSurgeryAfter?petId=${petid.petId}&petSurgeryAfterNum=${petcard.petSurgeryAfterNum}" class="p-3 border-danger text-secondary" ><i class="fa-solid fa-trash-can"></i></a>
+                                    </div>
                                 </c:forEach>
                             </div>
                         </tr>
@@ -266,5 +278,12 @@ function toggleDisplay(contentId, buttonId) {
 	       button.innerText = '펼치기';
 	   }
 	}
+	
+var leftPosition = 85; // 기본 가정치
+var topPosition = 51; // 기본 가정치
+
+// 인덱스나 다른 값에 따라 leftPosition과 topPosition을 조정합니다.
+leftPosition += status.index * someValue; // someValue는 조정값입니다.
+topPosition += status.index * someOtherValue; // someOtherValue는 다른 조정값입니다.
 </script>
 </html>

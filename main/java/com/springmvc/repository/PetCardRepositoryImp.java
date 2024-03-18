@@ -67,6 +67,7 @@ public class PetCardRepositoryImp implements PetCardRepository{
    public List<PetChart> getChartPetCard(String petId) {
       String SQL = "select * from PetChart where PetId=?";
       List<PetChart> listOfPetChart = template.query(SQL, new Object[] {petId}, new PetChartDBConnector());
+      System.out.println("차트 출력확인 : " + listOfPetChart);
       return listOfPetChart;
    }
    

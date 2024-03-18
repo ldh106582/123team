@@ -91,7 +91,7 @@ public class PetCardController {
 
 	// petcard 예방접종 create
 	@PostMapping("/petcard")
-	public String GetWeghitPetCard(@RequestParam("petid") String petId, HttpServletRequest request) {
+	public String GetWeghitPetCard(@RequestParam("petId") String petId, HttpServletRequest request) {
 		
 		System.out.println("petcard 도착");
 		
@@ -123,6 +123,9 @@ public class PetCardController {
 		String petChartContent = request.getParameter("petChartContent");
 		String petChartDate = request.getParameter("petChartDate");
 		System.out.println("차트 : " + petId);
+		System.out.println("진료명 : " + petChartstr);
+		System.out.println("진료내용 : " + petChartContent);
+		System.out.println("진료일자 : " + petChartDate);
 
 		// 예방접종의 값을 넣어줌
 		String petVaccinationDate = request.getParameter("petVaccinationDate");
@@ -147,15 +150,15 @@ public class PetCardController {
 		 */
 
 		// 입원 기록의 값을 넣어줌
-		String petSurgeryDateAfter = request.getParameter("petSurgeryDateAfter");
-		String petSurgeryContentAfter = request.getParameter("petSurgeryContentAfter");
+		String petSurgeryDateAfter = request.getParameter("petSurgeryAfterDate");
+		String petSurgeryContentAfter = request.getParameter("petSurgeryAfterContent");
 		String pet_SurgeryAfter = request.getParameter("petId");
 
-		/*
-		 * System.out.println(petSurgeryDateAfter);
-		 * System.out.println(petSurgeryContentAfter);
-		 * System.out.println(pet_SurgeryAfter);
-		 */
+		
+		 System.out.println("입원날자 : " + petSurgeryDateAfter);
+		 System.out.println("입원가록 : " +petSurgeryContentAfter);
+		 System.out.println(pet_SurgeryAfter);
+
 
 		// 몸무게의 값을 넣어줌(조건문)
 		if (petId != null && petWeightDateStr != null && petWeightStr != null) {

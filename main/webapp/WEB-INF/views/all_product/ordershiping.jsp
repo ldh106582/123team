@@ -98,7 +98,7 @@
     </div>
 </div>
      
-
+ <%@ include file="../module/footer.jsp" %>
            
 	<!--   <div class="jumbotron">
 		  <div class="contianer">
