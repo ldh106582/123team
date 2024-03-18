@@ -64,6 +64,7 @@ public class ProductController {
 			qnaId = qna.getQnaId();
 			System.out.println(qnaId);
 			System.out.println("=======================================");
+
 			commentlist = QnAcommentservice.getcommentbyId(qnaId);
 			System.out.println(commentlist.size());
 			qna.setCommentlist(commentlist);

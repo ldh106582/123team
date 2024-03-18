@@ -72,5 +72,14 @@ public class BookingRepositoryImp implements BookingRepository{
 		booking = list.get(0);
 		return booking;
 	}
+	@Override
+	public boolean CheckVisitHistory(String personId, String hid) {
+		SQL = "select * from HApllication where hid='"+hid+"' and personId='"+personId+"'";
+		List<HospitalBooking> list = template.query(SQL, new BookingRowMapper());
+		if(list == null || list.isEmpty()) {
+			return false;
+		}
+		return true;
+	}
 	
 }

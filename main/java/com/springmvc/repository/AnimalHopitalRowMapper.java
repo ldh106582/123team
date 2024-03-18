@@ -7,6 +7,7 @@ import org.springframework.jdbc.core.RowMapper;
 import com.springmvc.domain.AnimalHopital;
 import com.springmvc.domain.BoardComment;
 
+
 public class AnimalHopitalRowMapper implements RowMapper<AnimalHopital>
 {
 	@Override

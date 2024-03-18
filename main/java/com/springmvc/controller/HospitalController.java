@@ -75,10 +75,13 @@ public class HospitalController {
 	}
 
 	@GetMapping("hospital")
-	public String hospital(@RequestParam("hid") String hid,Model model)
+	public String hospital(@RequestParam("hid") String hid,Model model,HttpSession session,HttpServletRequest request)
 	{
 		model.addAttribute("hospital",hospitalService.gethosptialByhId(hid));
 //		병원리뷰
+		String personId = (String) session.getAttribute("personId");
+		request.setAttribute("visited", bookingService.CheckVisitHistory(personId,hid));
+		
 		model.addAttribute("reviews",reviewService.getAllReviews(hid));
 		return "all_Hospital/hospital";
 	}
