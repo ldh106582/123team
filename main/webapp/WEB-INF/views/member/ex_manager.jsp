@@ -29,27 +29,37 @@
 						<input type="hidden" name="personAddress" id="fullAddr"/>
 						<input type="hidden" name="ex_Address" id="ex_fullAddr"/>
 
-                        <div class="form-group d-flex">
-                            <form:input id="personId" class="form-control form-control-lg col-md-8" type="text" path="personId"  placeholder="아이디" />
-                            <a id="userId" onclick="idDuplicateCheck(event)" class="btn btn-outline-primary col-md-3 auth-form-btn text-center ml-2">중복확인</a>
-                        </div>
+						<div class="row mb-3">
+						    <div class="col-md-8">
+						        <form:input id="personId" class="form-control form-control-lg" type="text" path="personId" placeholder="아이디" />
+						    </div>
+						    <div class="col-md-4">
+						        <a id="userId" onclick="idDuplicateCheck(event)" class="btn btn-outline-primary btn-block">중복확인</a>
+						    </div>
+						</div>
+						
                         <div class="form-group">
-                            <form:input class="form-control form-control-lg" type="password" path="personPw"  placeholder="비밀번호"/>
+                            <form:input class="form-control form-control-lg" type="password" path="personPw"  placeholder="비밀번호" required="required"/>
                         </div>
                         <div class="form-group">
                             <form:input class="form-control form-control-lg" type="email" path="personEmail"  placeholder="이메일"/>
                         </div>
                         <div class="form-group">
-                            <form:input class="form-control form-control-lg" type="text" path="personName"  placeholder="이름"/>
+                            <form:input class="form-control form-control-lg" type="text" path="personName"  placeholder="이름" required="required"/>
                         </div>
                         <div class="form-group">
-                            <form:input class="form-control form-control-lg" type="text" path="personBirth"  placeholder="생년월일"/>
+                            <form:input class="form-control form-control-lg" type="text" path="personBirth"  placeholder="생년월일 0000-00-00으로 입력해주세요" required="required"/>
                         </div>
                         
-                        <div class="form-group show-grid r d-flex">
-                           <input type="text" id="post" class="form-control form-control-lg col-md-8 mr-3" placeholder="우편번호">
-                           <input type="button" onclick="execDaumPostcode()" value="우편번호" class="btn btn-outline-primary col-md-3 font-weight-medium auth-form-btn text-center">
-                        </div>	
+						<div class="row mb-3">
+							<div class="col-md-8">
+							    <input type="text" id="post" class="form-control form-control-lg"  placeholder="우편번호" />
+							</div>
+							<div class="col-md-4 p-0">
+						   		<input  type="button" onclick="execDaumPostcode()" value="우편번호" class="btn btn-outline-primary btn-block"></input>
+						    </div>
+						</div>
+                        
                         <div class="form-group">
                             <input type="text" id="roadAddress" class="form-control form-control-lg col-md-12" placeholder="도로명주소">
                          </div>	
@@ -63,7 +73,7 @@
                             <form:input class="form-control form-control-lg" type="text" path="personPhone" placeholder="전화번호"/>
                         </div>
                         <div class="form-group">
-                            <form:radiobutton path="personSex" value="남자" class="col-sm-1"/>남성
+                            <form:radiobutton path="personSex" value="남자" class="col-sm-1" required="required"/>남성
 				            <form:radiobutton path="personSex" value="여자" class="col-sm-1"/>여성
                         </div>
                         <div class="form-group">
@@ -73,13 +83,18 @@
 	                       </div>
 	                    </div>
                         <div class="form-group">
-                            <form:input class="form-control form-control-lg" type="text" path="ex_Name" placeholder="체험단 명"/>
+                            <form:input class="form-control form-control-lg" type="text" path="ex_Name" placeholder="체험단 명" required="required"/>
                         </div>
                         
-                         <div class="form-group show-grid r d-flex">
-                           <input type="text" id="ex_post" class="form-control form-control-lg col-md-8 mr-3" placeholder="우편번호">
-                           <input type="button" onclick="ex_execDaumPostcode()" value="우편번호" class="btn-sm btn btn-outline-primary col-md-3 auth-form-btn text-center">
-                        </div>	
+						<div class="row mb-3">
+							<div class="col-md-8">
+							    <input type="text" id="ex_post" class="form-control form-control-lg"  placeholder="우편번호" />
+							</div>
+							<div class="col-md-4 p-0">
+						  		<input  type="button" onclick="ex_execDaumPostcode()" value="우편번호" class="btn btn-outline-primary btn-block"></input>
+						    </div>
+						</div>
+						
                         <div class="form-group">
                             <input type="text" id="ex_roadAddress" class="form-control form-control-lg col-md-12" placeholder="도로명주소">
                          </div>	
@@ -94,11 +109,11 @@
                         <div class="form-group">
 	                      <label>사업자 등록증</label>
 	                      <div class="input-group col-xs-12">
-	                        <input type="file" name="s_file" class="form-control file-upload-info">
+	                        <input type="file" name="s_file" class="form-control file-upload-info required="required"">
 	                       </div>
 	                    </div>
                         <div class="mt-3">
-                            <input type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" id="storeAddr" onclick="combineAddr()"  value="회원가입" />
+                            <input type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" id="storeAddr" onclick="combineAddr(event)"  value="회원가입" />
                         </div>
                     </form:form>
 		                </div>

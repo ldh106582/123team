@@ -1,6 +1,7 @@
 package com.springmvc.controller;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,14 +16,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-
 import com.springmvc.domain.Order;
-import com.springmvc.domain.Person;
 import com.springmvc.domain.Product;
 import com.springmvc.domain.ProductReview;
 import com.springmvc.domain.QnA;
+import com.springmvc.domain.QnAComment;
 import com.springmvc.service.ProductService;
 import com.springmvc.service.QnAService;
+import com.springmvc.service.QnAcommentservice;
 
 
 @Controller
@@ -35,10 +36,12 @@ public class ProductController {
 	@Autowired
 	QnAService QnAService;
 	
+	@Autowired
+	QnAcommentservice QnAcommentservice;
 //	R
 	@RequestMapping
 	public String getProductList(Model model) {
-		
+		System.out.println("prodcut 오류 확인중");
 		model.addAttribute("productList",productService.getProductsList());
 		return "all_product/products";
 	}
@@ -48,9 +51,28 @@ public class ProductController {
 	{
 		//QnA 내용
 		List<QnA> listofQnA = QnAService.getAllQnAList(productId);
+		List<QnA> NlistofQnA = new ArrayList<QnA>();
 		System.out.println(listofQnA);
 		
-		model.addAttribute("listofQnA", listofQnA);
+		QnA qna = null;
+		String qnaId = null;
+		List<QnAComment> commentlist = new ArrayList<QnAComment>();
+		
+		
+		for(int i=0; i<listofQnA.size(); i++) {
+			qna = listofQnA.get(i);
+			qnaId = qna.getQnaId();
+			System.out.println(qnaId);
+
+			commentlist = QnAcommentservice.getcommentbyId(qnaId);
+			System.out.println(commentlist.size());
+			qna.setCommentlist(commentlist);
+			NlistofQnA.add(qna);
+		}
+
+		model.addAttribute("listofQnA", NlistofQnA);
+		
+
 		
 		// 리뷰에 대한 내용을 가져옴
 		System.out.println("여긴 product 상품 id : "+ productId);
@@ -202,6 +224,7 @@ public class ProductController {
 		productService.setdecission(dec,num);
 		return "redirect:/products/manager";
 	}
+	
 	@GetMapping("myorderList")
 	public String getorderList(HttpSession session,Model model) {
 		String personId = (String) session.getAttribute("personId");

@@ -55,12 +55,7 @@ public class Product implements Serializable{
 	public void setReleaseDate(Date releaseDate) {
 		this.releaseDate = releaseDate;
 	}
-	public String getProductDescribe() {
-		return productDescribe;
-	}
-	public void setProductDescribe(String productDescribe) {
-		this.productDescribe = productDescribe;
-	}
+
 	public String getProductImage() {
 		return productImage;
 	}
@@ -97,6 +92,13 @@ public class Product implements Serializable{
 	public void setReviewCount(int reviewCount) {
 		this.reviewCount = reviewCount;
 	}
+	public String getProductDescribe() {
+		return productDescribe;
+	}
+	public void setProductDescribe(String productDescribe) {
+		this.productDescribe = productDescribe;
+	}
+
 	
 	
 	

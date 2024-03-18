@@ -1,35 +1,3 @@
-var IdCheck = false;
-
-function idDuplicateCheck(event) {
-    event.preventDefault(); // 이벤트의 기본 행동을 방지
-
-    // personId라는 ID를 가진 input 태그의 값을 가져옵니다.
-    var userId = document.getElementById("personId").value;
-    
-    if (userId === "") {
-        alert("아이디를 입력해주세요.");
-        return;
-    }
-
-    // AJAX 요청
-    $.ajax({
-        type: 'get',
-        url: '/123team/login/join/memberid?userId=' + encodeURIComponent(userId), // URL에 userId 변수 값을 포함
-        contentType: 'application/json',
-        dataType: 'text',
-        success: function (result) {
-            if (result == "true") {
-                alert("사용 가능한 아이디 입니다.");
-            } else {
-                alert("이미 사용중인 아이디입니다.");
-            }
-        },
-        error: function (request, status, error) {
-            console.log(request);
-        }
-    });
-}
-
 //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
 function sample4_execDaumPostcode() {
     new daum.Postcode({
@@ -86,18 +54,54 @@ function sample4_execDaumPostcode() {
     }).open();
 }
 
-function combineAddr() {
+// 여기서 부터 절차 확인
 
-var sample4_postcode = document.getElementById('sample4_postcode').value;
-var sample4_roadAddress = document.getElementById('sample4_roadAddress').value;
-var sample4_detailAddress = document.getElementById('sample4_detailAddress').value;
+var IdCheck = false;
 
-var fullAddr = sample4_postcode + ' ' + sample4_roadAddress + ' ' + sample4_detailAddress;
-console.log(fullAddr);
-console.log(sample4_postcode);
-console.log(sample4_roadAddress);
-console.log(sample4_detailAddress);
+function idDuplicateCheck(event) {
+    event.preventDefault(); // 이벤트의 기본 행동을 방지
 
-document.getElementById("fullAddr").value = fullAddr;
+    // personId라는 ID를 가진 input 태그의 값을 가져옵니다.
+    var userId = document.getElementById("personId").value;
+    
+    if (userId === "") {
+        alert("아이디를 입력해주세요.");
+        return;
+    }
+   
 
+    // AJAX 요청
+    $.ajax({
+        type: 'get',
+        url: '/123team/login/join/memberid?userId=' + encodeURIComponent(userId), // URL에 userId 변수 값을 포함
+        contentType: 'application/json',
+        dataType: 'text',
+        success: function (result) {
+            if (result == "true") {
+                alert("사용 가능한 아이디 입니다.");
+                IdCheck = true;
+                combineAddr(event); // combineAddr 함수 호출
+            } else {
+                alert("이미 사용중인 아이디입니다.");
+            }
+        },
+        error: function (request, status, error) {
+            console.log(request);
+        }
+    });
+}
+
+function combineAddr(event) {
+    if (IdCheck === false) {
+        alert("아이디 중복 확인이 필요합니다.");
+        event.preventDefault();
+        return;
+    }
+
+    var sample4_postcode = document.getElementById('sample4_postcode').value;
+    var sample4_roadAddress = document.getElementById('sample4_roadAddress').value;
+    var sample4_detailAddress = document.getElementById('sample4_detailAddress').value;
+
+    var fullAddr = sample4_postcode + ' ' + sample4_roadAddress + ' ' + sample4_detailAddress;
+    document.getElementById("fullAddr").value = fullAddr;
 }

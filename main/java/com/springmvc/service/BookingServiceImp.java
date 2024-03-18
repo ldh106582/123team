@@ -53,5 +53,11 @@ public class BookingServiceImp implements BookingService{
 		return bookingrepository.getbookById(bid);
 	}
 
+	@Override
+	public boolean CheckVisitHistory(String personId, String hid) {
+		// TODO Auto-generated method stub
+		return bookingrepository.CheckVisitHistory(personId,hid);
+	}
+
 
 }

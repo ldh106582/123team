@@ -18,6 +18,7 @@
 	<%	
 		String type = (String) session.getAttribute("type");
 		request.setAttribute("type", type);	
+		System.out.println("type : " + type);
 	%>
 
 <div id="header">
@@ -49,11 +50,6 @@
 		            </div>
 		            <div id="headerLeft" class="header_left" aria-hidden="false">
 		                <ul class="left_menu" role="menu">
-		                    <li>
-		                        <a href="/user2/help/myInfoV2?m=viewProfile&amp;lang=ko_KR" class="left_item" role="menuitem" onclick="nclk(this,'lnb.info','','',event)" aria-current="">
-		                            <div class="menu_text ">내프로필</div>
-		                        </a>
-		                    </li>
 		                    <li>
 		                        <a href="./pet/creatpet?id=${ id.personId }" class="left_item" role="menuitem" >
 		                            <div class="menu_text ">반려동물 회원가입</div>
@@ -91,7 +87,7 @@
 				                    <ul class="subindex_row">
 				                        <li>
 				                            <div class="row_item other">
-				                                <a href="./login/update?id=${ id.personId }" class="text-decoration-none"><span class="item_text">내 정보 수정</span></a>
+				                                <a href="/123team/login/update?id=${ id.personId }" class="text-decoration-none"><span class="item_text">내 정보 수정</span></a>
 				                            </div>
 				                        </li>
 				                        <li>
@@ -146,7 +142,7 @@
 				                    <ul class="subindex_row">
 				                        <li>
 				                            <div class="row_item other">
-				                                <a href="" class="text-decoration-none"><span class="item_text">주문 내역 확인</span></a>
+				                                <a href="/123team/products/myorderList"  class="text-decoration-none"><span class="item_text">주문 내역 확인</span></a>
 				                            </div>
 				                        </li>
 				        
@@ -177,7 +173,7 @@
 				                    <ul class="subindex_row">
 				                        <li>
 				                            <div class="row_item other">
-				                                <a href="" class="text-decoration-none"><span class="item_text">작성 Q&A 확인</span></a>
+				                                <a href="/123team/products/my_QNAList" class="text-decoration-none"><span class="item_text">작성 Q&A 확인</span></a>
 				                            </div>
 				                        </li>
 				                    </ul>
@@ -198,7 +194,7 @@
 					                <ul class="subindex_row">
 					                    <li>
 					                        <div class="row_item other">
-					                            <a href="./login/update?id=${ id.personId }" class="text-decoration-none"><span class="item_text">내 정보 수정</span></a>
+					                            <a href="/123team/login/update?id=${ id.personId }" class="text-decoration-none"><span class="item_text">내 정보 수정</span></a>
 					                        </div>
 					                    </li>
 					                    <li>
@@ -263,7 +259,7 @@
 					                <ul class="subindex_row">
 					                    <li>
 					                        <div class="row_item other">
-					                            <a href="" class="text-decoration-none"><span class="item_text">작성 Q&A 확인</span></a>
+					                            <a href="/123team/products/my_QNAList" class="text-decoration-none"><span class="item_text">작성 Q&A 확인</span></a>
 					                        </div>
 					                    </li>
 					                </ul>
@@ -293,13 +289,13 @@
 				            </div>                        
 				            <div class="subindex_item">
 				                <div class="head_title">
-				                    <h2 class="subindex_title">정보 수정</h3>
+				                    <h3 class="subindex_title">정보 수정</h3>
 				                </div>
 				                <div class="subindex_greenbox">
 				                    <ul class="subindex_row">
 				                        <li>
 				                            <div class="row_item other">
-				                                <a href="./login/update?id=${ id.personId }" class="text-decoration-none"><span class="item_text">내 정보 수정</span></a>
+				                                <a href="/123team/login/update?id=${id.personId}" class="text-decoration-none"><span class="item_text">내 정보 수정</span></a>
 				                            </div>
 				                        </li>
 				                        <li>
@@ -354,7 +350,7 @@
 				                    <ul class="subindex_row">
 				                        <li>
 				                            <div class="row_item other">
-				                                <a href="" class="text-decoration-none"><span class="item_text">주문 내역 확인</span></a>
+				                                <a href="/123team/products/myorderList" class="text-decoration-none"><span class="item_text">주문 내역 확인</span></a>
 				                            </div>
 				                        </li>
 				                    </ul>
@@ -384,7 +380,7 @@
 				                    <ul class="subindex_row">
 				                        <li>
 				                            <div class="row_item other">
-				                                <a href="" class="text-decoration-none"><span class="item_text">작성 Q&A 확인</span></a>
+				                                <a href="/123team/products/my_QNAList" class="text-decoration-none"><span class="item_text">작성 Q&A 확인</span></a>
 				                            </div>
 				                        </li>
 				                    </ul>
@@ -455,7 +451,7 @@
 				                    <ul class="subindex_row">
 				                        <li>
 				                            <div class="row_item other">
-				                                <a href="" class="text-decoration-none"><span class="item_text">주문 내역 확인</span></a>
+				                                <a href="/123team/products/myorderList"  class="text-decoration-none"><span class="item_text">주문 내역 확인</span></a>
 				                            </div>
 				                        </li>
 				                    </ul>
@@ -485,7 +481,7 @@
 				                    <ul class="subindex_row">
 				                        <li>
 				                            <div class="row_item other">
-				                                <a href="" class="text-decoration-none"><span class="item_text">작성 Q&A 확인</span></a>
+				                                <a href="/123team/products/my_QNAList" class="text-decoration-none"><span class="item_text">작성 Q&A 확인</span></a>
 				                            </div>
 				                        </li>
 				                    </ul>

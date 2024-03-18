@@ -34,7 +34,7 @@
 		                            <div>
                                     <form action="/123team/Nboards/selectbytitle" class="form-inline my-2 justify-content-center ">
 							            <input type="text" name="title" placeholder="제목입력" class="form-control mr-3" />
-							            <button type="submit" class="btn btn-success">검색</button>
+							            <button type="submit" class="btn btn-outline-primary">검색</button>
 							        </form>
 		                                <c:if test="${loginId != null}">
 		                                    <a href="Nboards/add" class="btn btn-primary">게시글 작성</a>

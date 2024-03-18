@@ -25,6 +25,9 @@ public class BookingRepositoryImp implements BookingRepository{
 	public List<HospitalBooking> getMyBookList(String personId) {
 		SQL = "select * from HApllication where personId='"+personId+"'";
 		List<HospitalBooking> list = template.query(SQL, new BookingRowMapper());
+		for(int i = 0; i < list.size(); i++) {
+			System.out.println(list.get(i));
+		}
 		return list;
 	}
 	@Override
@@ -68,6 +71,15 @@ public class BookingRepositoryImp implements BookingRepository{
 		List<HospitalBooking> list = template.query(SQL, new BookingRowMapper());
 		booking = list.get(0);
 		return booking;
+	}
+	@Override
+	public boolean CheckVisitHistory(String personId, String hid) {
+		SQL = "select * from HApllication where hid='"+hid+"' and personId='"+personId+"'";
+		List<HospitalBooking> list = template.query(SQL, new BookingRowMapper());
+		if(list == null || list.isEmpty()) {
+			return false;
+		}
+		return true;
 	}
 	
 }

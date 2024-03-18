@@ -1,87 +1,24 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-<link rel="stylesheet" href="/123team/resources/css/Mypage.css">
 <head>
-<script type="text/javascript">
-function changed(bid,registday) {
-	var container = document.getElementById("container"+bid);
-	var delp = document.getElementById("willdelete"+bid);
-	var addp = document.getElementById("addp"+bid);
-	
-	console.log(bid);
-	container.removeChild(delp);
-	container.removeChild(addp);
-	
-	var form = document.createElement("form");
-	form.setAttribute("action","/123team/hospitals/editbook");
-	form.setAttribute("method","POST");
-	
-	var inputT = document.createElement("input");
-	inputT.setAttribute("type","hidden");
-	inputT.setAttribute("name","bid");
-	inputT.setAttribute("value",bid);
-	
-	var inputD = document.createElement("input");
-	inputD.setAttribute("type","datetime-local");
-	inputD.setAttribute("name","registDay");
-	inputD.setAttribute("value",registday);
-	
-	var inputO = document.createElement("input");
-	inputO.setAttribute("type","hidden");
-	inputO.setAttribute("name","originday");
-	inputO.setAttribute("value",registday);
-	
-	var inputs = document.createElement("input");
-	inputs.setAttribute("type","submit");
-	inputs.setAttribute("value","변경완료");
-	
-	var button = document.createElement("button");
-	button.setAttribute("onclick",cancelForm());
-	var buttonText = document.createTextNode("취소");
-	button.appendChild(buttonText);
-	
-	form.appendChild(inputT);
-	form.appendChild(inputD);
-	form.appendChild(inputs);
-	form.appendChild(inputO);
-	form.appendChild(button);
-	
-	container.appendChild(form);
-}
-function cancelForm() {
-    var form = document.querySelector("form");
-    if (form) {
-        form.remove();
-    }
-}
-</script>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>나의 전체 주문내역 페이지</title>
 </head>
 <body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="./resources/js/refreshing.js"></script>
-
-<div id="header">
+	<div id="header">
 		<%@  include file="../module/header.jsp" %>
 	</div>
     <div class="container-fluid page-body-wrapper">
       
      <%@  include file="../module/leftheader.jsp" %>
-
-  <c:set var="petId" value="${app.petId}" />
      
-        <div class="content-wrapper">
+           <div class="content-wrapper">
             <div class="row">
                <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
-                            <h1 class="col-md-12 card-title">예약자 확인</h1>
+                            <h1 class="col-md-12 card-title">나의 주문 내역</h1>
                             <div class="row">
                                 <div class="col-12">
 
@@ -93,25 +30,26 @@ function cancelForm() {
                                                         <thead>
                                                             <tr role="row">
                                                                 <th class="sorting_disabled text-center" rowspan="1" aria-label="Quote#" style="width: 153px;">
-                                                                    예약번호
+                                                                    주문상품
                                                                 </th>
                                                                 <th class="text-center" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Product: activate to sort column descending" aria-sort="ascending" style="width: 177px;">
-                                                                    병원이름
+                                                                    상품이미지
                                                                 </th>
                                                                 <th class="text-center" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Business type: activate to sort column ascending" style="width: 210px;">
-                                                                    예약일자
+                                                                    주문일자
                                                                 </th>
                                                                 <th class="text-center" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Policy holder: activate to sort column ascending" style="width: 200px;">
-                                                                    진료 내용
+                                                                    주문수량
                                                                 </th>
                                                                 <th class="text-center" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Premium: activate to sort column ascending" style="width: 149px;">
-                                                                    예약취소
+                                                                    상품단가
                                                                 </th>
                                                                 <th class="text-center" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 149px;">
-                                                                    처리 상태
+                                                                    주문금액
                                                                 </th>
                                                             </tr>
                                                         </thead>
+                                                        
 												 <c:forEach items="${booklist}" var="book">			
                                                         <tr>
 
@@ -151,23 +89,6 @@ function cancelForm() {
     </div>
 
 <%@  include file="../module/footer.jsp" %>
-<%-- 	
-	<a href="/123team/hospitals">병원목록으로 돌아가기</a>
- <c:forEach items="${booklist}" var="book">
- <div id="container${book.bid}">
- <p>
- 	병원이름 : ${book.hospitalName}
- 	<p>
- 	동물 : ${book.petId}
- 	<p>
- 	진료내용 : ${book.context}
- 	<p>
- 	처리 상태 : ${book.state}
- 	<p id="willdelete${book.bid}">예약일 : ${book.registDay}</p>
- 	<button onclick="changed('${book.bid}','${book.registDay}')" id="addp${book.bid}" >날짜 변경</button>
- </div>
- 	<a href="deletebook?bid=${book.bid}">예약취소</a>
- </c:forEach>
-  --%>      
+     
 </body>
 </html>

@@ -8,9 +8,49 @@
 <meta charset="UTF-8">
 <title>상품 상세정보 페이지</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-<script>
-
-</script>
+<script type="text/javascript">
+				
+					function editform(comment,commentId,productId){
+						
+						var container = document.getElementById(commentId);
+						console.log(commentId);
+						var dew = "willdelete"+commentId;
+						var willdelete = document.getElementById(dew);
+						console.log(dew);
+						container.removeChild(willdelete);
+						
+						var form = document.createElement("form");
+						form.setAttribute("action","/123team/products/u_comment");
+						form.setAttribute("method","POST");
+						
+						var inputh = document.createElement("input");
+						inputh.setAttribute("type","hidden");
+						inputh.setAttribute("name","commentId");
+						inputh.setAttribute("value",commentId);
+						
+						var inputg = document.createElement("input");
+						inputg.setAttribute("type","hidden");
+						inputg.setAttribute("name","productId");
+						inputg.setAttribute("value",productId);
+						
+						var inputt = document.createElement("input");
+						inputt.setAttribute("type","text");
+						inputt.setAttribute("name","comment");
+						inputt.setAttribute("value",comment);
+						
+						var inputs = document.createElement("input");
+						inputs.setAttribute("type","submit");
+						inputs.setAttribute("value","수정하기");
+						
+						form.appendChild(inputh);
+						form.appendChild(inputg);
+						form.appendChild(inputt);
+						form.appendChild(inputs);
+						
+						container.appendChild(form);
+						
+					}
+</script>	
 </head>
 <body>
 	<%
@@ -157,7 +197,74 @@
                         <div class="col-md-12 text-center">
                             <a href="">1</a>
                         </div>
-        				<a href="qa?productId=${product.productId}&personId=${product.personId}">Q&A</a>
+                        <a href="qa?productId=${product.productId}&personId=${product.personId}">Q&A</a>
+                        <div class="card">
+                        	<c:forEach items="${listofQnA}" var="qna">
+					        <div class="container my-3">
+					            <div class="row">
+					                <div class="col-md-12">
+					                    <h1 class="mt-4 font-weight-bold">${qna.title}</h1>
+					                    <hr>
+					                    <div class="col-md-12">
+					                        <h5 class="font-weight-bold"> ${qna.personId} &emsp;|&emsp; ${qna.registDay} </h5>
+					                    </div>
+					                    <hr>
+					                    <div class="col-md-12" style="height: 200px;">
+					                        <p>${qna.context}</p>
+					                        <c:choose>
+					                            <c:when test="${not empty qna.image}">
+					                                <img class="col-md-6  rounded-lg" src="<c:url value='/resources/images/${qna.image}'/>" width="100px;"  alt="리뷰이미지">
+					                            </c:when>
+					                            <c:otherwise></c:otherwise>
+					                        </c:choose>
+					                    </div>
+					                    <div class="d-flex justify-content-between">
+					                        <div></div>
+					                        <div>
+				                                <a href="u_qna?QnAId=${qna.qnaId}&productId=${qna.productId}"class="btn btn-primary btn-sm">수정하기</a>
+				                                <a href="d_qna?QnAId=${qna.qnaId}&productId=${qna.productId}"class="btn btn-danger btn-sm">삭제하기</a>
+					                        </div>
+					                    </div>			
+					                    <hr>
+					                </div>
+					            </div>
+					            <hr>
+					            <div class="list-group">
+					                <c:if test="${loginId != null}">
+					                    <h5 class="mb-3">댓글</h5>
+					                    <form action="a_comment" method="POST" class="mb-3">
+					                        <input type="hidden" name="productId" value="${product.productId}">
+		                        			<input type="hidden" name="qnaId" value="${qna.qnaId}">
+					                        <div class="form-inline">
+					                            <textarea class="form-control mb-2 mr-sm-2" name="comment" style="width: 89%;" rows="2"></textarea>
+					                            <button type="submit" class="btn btn-primary">댓글 작성</button>
+					                        </div>
+					                    </form>
+					                </c:if>
+					                <c:forEach items="${qna.commentlist}" var="commentlist">
+					                    <div class="list-group-item">
+					                        <div class="d-flex w-100 justify-content-between">
+					                            <h5 class="mb-1">${commentlist.personId}</h5>
+					                            <small>${commentlist.registDay}</small>
+					                        </div>
+					                        <div class="d-flex w-100 justify-content-between" id="${commentlist.commentId}">
+					                        <p class="mb-1" id="willdelete${commentlist.commentId}">${commentlist.comment}</p>
+					                         </div>
+					                        <c:if test="${commentlist.personId == loginId}">
+					                            <button class="btn btn-primary btn-sm" onclick="editform('${commentlist.comment}','${commentlist.commentId}','${qna.productId}')">댓글 수정</button>
+					                            <a href="d_comment?commentId=${commentlist.commentId}&productId=${qna.productId}" class="btn btn-danger btn-sm">댓글 삭제</a>
+					                        </c:if>
+					                    </div>
+					                </c:forEach>
+					               </div>
+					               </c:forEach> 
+					            </div>
+					        </div>
+					    </div>
+					    
+        				<%-- <a href="qa?productId=${product.productId}&personId=${product.personId}">Q&A</a>
+        				
+        				
                         <table class="col-md-12 text-center border p-0">
                             <thead>
                                 <td class="col-md-12 row">
@@ -178,6 +285,13 @@
 	                                    <td class="border col-md-2">${qna.title}</td>
 	                                    <td class="border col-md-2">${qna.context}</td>
 	                                    <td class="border col-md-2">
+	                                    <c:forEach items="${qna.commentlist}" var="commentlist">
+	                                    	${commentlist.qnaId}
+                                    		${commentlist.comment}
+	                                    	${commentlist.registDay}
+	                                    	${commentlist.personId}
+	                                    	${commentlist.commentId} 
+	                                    </c:forEach>
 	                                    <c:choose>
                                             <c:when test="${not empty qna.image}">
                                               <img class="col-md-6  rounded-lg" src="<c:url value='/resources/images/${qna.image}'/>" width="100px;"  alt="리뷰이미지">
@@ -191,16 +305,16 @@
 	                                    <td class="border col-md-1"><a href="d_qna?QnAId=${qna.qnaId}&productId=${qna.productId}">삭제</a></td>
 	                                </td>
 	                            </tbody>
+	                            <form action="a_comment" method="post">
+		                        	<input type="hidden" name="productId" value="${product.productId}">
+		                        	<input type="hidden" name="qnaId" value="${qna.qnaId}">
+		                        	<div>
+		                        		<textarea rows="2" name="comment"></textarea>
+		                        		<button type="submit" class="btn btn-primary btn-sm">댓글작성</button>
+		                        	</div>
+		                        </form>
                             </c:forEach>
-                        </table>
-                        <form action="a_comment" method="post">
-                        	<input type="hidden" name="productId" value="${product.productId}">
-                        	<input type="hidden" name="qnaId" value="${qna.qnaId}">
-                        	<div>
-                        		<textarea rows="2" name="comment"></textarea>
-                        		<button type="submit" class="btn btn-primary btn-sm">댓글작성</button>
-                        	</div>
-                        </form>
+                        </table> --%>
                         </div>
                     </div>
                 </div>

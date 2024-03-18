@@ -49,6 +49,7 @@
 						    <img src="resources/images/logo.jpg" alt="logo">
 						</div>
 						${noId}
+						${faild}
 						<form:form id="loginForm" class="pt-3" modelAttribute="success" method="POST">
 							<div class="form-group">
 								<form:input class="form-control form-control-lg" type="text" path="personId" id="id" placeholder="아이디" />
@@ -57,7 +58,7 @@
 								<form:input class="form-control form-control-lg" type="password" path="personPw" id="pw" placeholder="비밀번호"/>
 							</div>
 							<div class="mt-3">
-								<input type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" value="로그인" id="login"/>
+								<input onclick="idDuplicateCheck(event)" type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" value="로그인" id="login"/>
 							</div>
 							<div class="text-center mt-4 font-weight-light">
 								<a href="./login/Allmember" class="text-primary">회원가입</a>
@@ -120,3 +121,4 @@
 <!-- 2024-03-14 -->
 <!-- 2024-03-14(2) -->
 <!-- 2024-03-15(1) -->
+<!-- 2024-03-17 -->

@@ -47,10 +47,11 @@ public class QnARepositoryImp implements QnARepository{
 	//Delete
 	@Override
 	public void deleteQnA(String QnAId) {
-		String SQL = "delete from QnA where QnAId="+QnAId;
+		String SQL = "delete from QnA where QnAId="+QnAId;	
 		template.update(SQL);
 		
 	}
+
 	
 	//registday
 	public LocalDate getRegistDay()
@@ -62,6 +63,13 @@ public class QnARepositoryImp implements QnARepository{
 	{
 		String id =  Long.toString(System.currentTimeMillis()) ;
 		return id;
+	}
+
+	@Override
+	public List<QnA> getMyList(String personId) {
+		String SQL = "Select * from QnA where personId='"+personId+"'";
+		
+		return template.query(SQL, new QnArowMapper());
 	}
 	
 	

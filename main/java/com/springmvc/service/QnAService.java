@@ -10,4 +10,6 @@ public interface QnAService {
 	void addQnA(QnA QnA);
 	void updateQnA(QnA QnA,String QnAId);
 	void deleteQnA(String QnAId);
+	List<QnA> getMyList(String personId);
+	
 }

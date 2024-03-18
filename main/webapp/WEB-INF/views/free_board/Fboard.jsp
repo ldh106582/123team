@@ -44,7 +44,7 @@
 						container.appendChild(form);
 						
 					}
-					</script>			
+</script>			
 </head>
 <body>		
 		

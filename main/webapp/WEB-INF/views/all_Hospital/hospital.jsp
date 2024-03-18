@@ -77,13 +77,14 @@
              	   	  <h3 class="col-md-12 p-0">병원 리뷰</h3>
              	   	  리뷰평점 : ${hospital.reviewScore }
              	   	  리뷰수 : ${hospital.reviewCount }
-              	   	  <c:if test="${loginId ==  hospital.personId}">
+              	   	  <c:if test="${visited == true}">
 	                    <div class="p-0 col-md-12 mt-3">
 	                    	<div class="mb-2 ml-2">
 	                    		<a class="btn btn-outline-info  btn-sm mt-2" href="addreview?hid=${hospital.hid}">리뷰작성</a>
 	                    	</div>
 	                    </div>
                 		</c:if>
+                	</div>
                       <c:forEach items="${reviews}" var="review">
 
                         <%
@@ -205,12 +206,11 @@
 										</script>
 									</div>
 				            	</div>
-	                     	</div>
-			           </div>
-	             	</div>
-		 		</div>
-			</div>
-	    </div>
+				           </div>
+		             	</div>
+			 		</div>
+				</div>
+		    </div>
 	 <%@  include file="../module/footer.jsp" %>
 
 	<%-- 

@@ -19,8 +19,9 @@
 </head>
 <body>
 	
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="./resources/js/refreshing.js"></script>
+
 
 <div id="header">
 		<%@  include file="../module/header.jsp" %>
@@ -53,8 +54,8 @@
         <div id="headerLeft" class="header_left" aria-hidden="false">
             <ul class="left_menu" role="menu">
                 <li>
-                    <a href="/user2/help/myInfoV2?m=viewProfile&amp;lang=ko_KR" class="left_item" role="menuitem" onclick="nclk(this,'lnb.info','','',event)" aria-current="">
-                        <div class="menu_text ">내프로필</div>
+                    <a href="/123team/pet/petread?petId=${ petid.petId }" class="left_item" role="menuitem" onclick="nclk(this,'lnb.info','','',event)" aria-current="">
+                        <div class="menu_text ">반려동물 정보수정</div>
                     </a>
                 </li>
                 <li>
@@ -72,8 +73,10 @@
                        <div class="menu_text ">펫 카드</div>	
                    </div>
                     <c:forEach items="${petName}" var="petName">
-                        <a href="./login/petcard?petid=${petName.petId}" class="left_item" role="menuitem">
-                            <div>${petName.petName }</div>
+                        <a href="/123team/login/r_petcard?petid=${petName.petId}" class="left_item" role="menuitem">
+                            <div>
+                            	${petName.petName }
+                            </div>
                         </a>
                     </c:forEach>
                 </li>
@@ -88,17 +91,22 @@
         <div class="head_title">
             <h2 class="subindex_title">동물 정보</h2>
             <div class="title_link">
-                <a href="" ><span class="text">수정하기</span></a>
-            </div>  
+                <a href="/123team/login/petcardupdate?petId=${petid.petId}" ><span class="text">수정하기</span></a>
+            </div> 
         </div>
     
         <div class="subindex_greenbox">
             <div class="myprofile">
-                <ul class="myinfo_area">
+                <ul class="myinfo_area ml-4">
                     <li>
-                        <div class="myphoto">
-                            <img id="petImage" src="https://static.nid.naver.com/images/web/user/default.png" width="56" height="56" alt="내 프로필 이미지">
-                        </div>
+	                  <c:choose>
+		                <c:when test="${not empty petid.petImage}">
+		                    <img src="<c:url value='/resources/images/${petid.petImage}'/>" width="56" height="56" alt="프로필 이미지">
+		                </c:when>
+		                <c:otherwise>
+		                    <img id="petImage" src="https://static.nid.naver.com/images/web/user/default.png" width="56" height="56" alt="내 프로필 이미지">
+		                </c:otherwise>
+		            </c:choose>
                     </li>
                     <li>
                         <div class="myaccount">
@@ -111,7 +119,7 @@
                     </li>
                 </ul>
             </div>
-            <ul class="subindex_row">
+            <ul class="subindex_row px-0">
                 <li>
                     <div class="row_item other">
                         <p> 종 : ${petid.petVarity}</p>
@@ -119,18 +127,19 @@
                 </li>
                 <li>
                     <div class="row_item other">
-                        <p id="petbirth"> 생년월일 : ${petid.petBirth} (나이 : <b id="petAge"> </b>)</p>
+                        <p id="petbirth"> 생년월일 : ${petid.petBirth} (나이 : <b> ${ageString} </b> )</p>
                     </div>
                 </li>
             </ul>
         </div>
     </div>
+    
     <div class="subindex_item">
         <div class="head_title">
             <h2 class="subindex_title">동물 진찰 기록부</h2>
         </div>
            <div class="subindex_greenbox">
-            <ul class="subindex_row"> 
+            <ul class="subindex_row p-0"> 
                 <table class="table">
                     <tbody>
                         <tr>
@@ -140,13 +149,12 @@
                                 <div id="ChartDetails0"  style="display: none;">
                                     <c:forEach items="${listOfPetWeight}" var="petWeight">
                                         <form action="/123team/login/petcardupdate?num=${petWeight.petWeightNum}&petId=${petWeight.petId}" method="post" >
-                                            <input type="hidden" name="type" value="weight" />
+                                            <input type="hidden" name="petWeight" value="weight" />
                                             <div class="border m-2" style=" position: relative;">
                                                 <input type="hidden" name="petId" value="${pet.petId}" />
                                                 <p class="m-2"> 몸무게 기록 : <input type="date" name="petWeightDate" value="${petWeight.petWeightDate}" /></p> 
                                                 <p class="m-2"> 몸무게 : <input type="text" name="petWeight" value="${petWeight.petWeight}" maxlength="3" /> </p> 
                                             </div>
-                                            <input class="btn btn-success border-3 border-dark mt-2 mb-2" type="submit" value="수정완료"/>
                                         </form>
                                         <div class="col-sm-1" style="position: absolute; top: 35%; transform: translateX(980%);">
                                             <a href="${pageContext.request.contextPath}/login/deleteWeghit?petId=${petid.petId}&petWeightNum=${petWeight.petWeightNum}" class="p-3 border text-secondary"> <i class="fa-solid fa-trash-can"></i> </a>
@@ -168,7 +176,6 @@
                                                 <p>진료명: <input id="editName${status.index}" type="text" name="petChart" value="${petcard.petChart}"/> </p>
                                                 <p>진료내용: <input id="editContentField${status.index}" type="text" name="petChartContent" value="${petcard.petChartContent}"/></p>
                                         </div>
-                                        <input class="btn btn-success border-3 border-dark mt-2 mb-2" type="submit" value="수정완료"/>
                                     </form>
                                     <div class="col-sm-1" style="position: absolute; top: 35%; transform: translateX(980%);">
                                         <a href="${pageContext.request.contextPath}/login/deletetPetChart?petId=${petid.petId}&petChartNum=${petcard.petChartNum}" class="p-3 border text-secondary" ><i class="fa-solid fa-trash-can"></i></a>
@@ -191,7 +198,6 @@
                                         <p>예방접종명: <input id="editName${status.index}" type="text" name="petVaccination" value="${petcard.petVaccination}"/> </p>
                                         <p>예방접종내용: <input id="editContentField${status.index}" type="text" name="petVaccinationCotent" value="${petcard.petVaccinationCotent}"/> </p>
                                     </div>
-                                    <input class="btn btn-success border-3 border-dark mt-2 mb-2" type="submit" value="수정완료"/>
                                     </form>
                                     
                                 </c:forEach>
@@ -212,7 +218,6 @@
                                             <p>수술명: <input id="editName4${status.index}" type="text" name="petSurgeryName" value="${petcard.petSurgeryName}"/> </p>
                                             <p>수술내용: <input id="editContentField4${status.index}" type="text" name="petSurgeryContent" value="${petcard.petSurgeryContent}"/> </p>
                                         </div>
-                                        <input class="btn btn-success border-3 border-dark mt-2 mb-2" type="submit" value="수정완료"/>
                                         </form>
                                     </c:forEach>
                                 </div>
@@ -230,19 +235,18 @@
                                         <input type="hidden" name="type" value="sergeryAfter" />
                                         <p class="mt-2">수술 후 기록일자: <input id="editDateField5${status.index}" type="date" name="petSurgeryAfterDate" value="${petcard.petSurgeryAfterDate}"/> </p>
                                         <p>수술 후 진료내용: <input id="editContentField5${status.index}" type="text" name="petSurgeryAfterContent" value="${petcard.petSurgeryAfterContent}"/> </p>
-                                    </div>
-                                    <input class="btn btn-success border-3 border-dark m-2" type="submit" value="수정완료"/>
+                                    </div>   
                                     </form>
                                 </c:forEach>
                             </div>
                         </tr>
                     </tbody>
-                </table>
-            </ul>
-          </div>
-    </div>
-</div>
-</div>
+                 </table>
+            	</ul>
+          	</div>
+    	  </div>
+	   </div>
+	</div>
 </div> 
 	
 	<%@  include file="../module/footer.jsp" %> 

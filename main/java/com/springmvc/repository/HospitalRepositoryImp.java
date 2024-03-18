@@ -3,6 +3,7 @@ package com.springmvc.repository;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
@@ -13,20 +14,21 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
 import javax.net.ssl.HttpsURLConnection;
 import javax.sql.DataSource;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONTokener;
+import org.json.XML;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
-
+import com.springmvc.domain.AddressDTO;
+import com.springmvc.domain.AnimalHopital;
 import com.springmvc.domain.ENBoard;
 import com.springmvc.domain.Hospital;
 import com.springmvc.domain.HospitalBooking;
+import com.springmvc.domain.Person;
 
 @Repository
 public class HospitalRepositoryImp implements HospitalRepository{
@@ -41,7 +43,7 @@ public class HospitalRepositoryImp implements HospitalRepository{
 	public List<Hospital> getAllhospitals(int page) {
 		int limit = 3;
 		int start = (page - 1) * limit;
-		int index = start + 1;
+		int index = start + 2;
 		
 		if(page == 1) 
 		{
@@ -220,5 +222,130 @@ public class HospitalRepositoryImp implements HospitalRepository{
 		String SQL = "select * from HApllication where mid='"+personId+"'";
 		return template.query(SQL, new BookingRowMapper());
 	}
+
+	@Override
+	public AddressDTO h_rest(String personId) {
+		System.out.println("restAPI : " + personId);
+		String SQL = "select * from person where personId=?";
+		Person person = template.queryForObject(SQL, new Object[] {personId},new PersonDBConnector());
+		String personAddr = person.getPersonAddress();
+		System.out.println(personAddr);
+		
+		AddressDTO adress = new AddressDTO();
 	
+			
+		try {
+			String API_key = "21a8b551d1be7416798b5c64bbb1bc8a";
+			String url = "https://dapi.kakao.com/v2/local/search/address.json?query=" + URLEncoder.encode(personAddr, "UTF-8");
+			
+			URL s_url = new URL(url);
+			HttpURLConnection con = (HttpURLConnection) s_url.openConnection();
+			con.setRequestProperty("Authorization", "KakaoAK " + API_key);
+			con.setRequestMethod("GET");
+			
+			BufferedReader br;
+			int responseCode = con.getResponseCode();
+			
+			if(responseCode == 200)
+			{
+				br=new BufferedReader(new InputStreamReader(con.getInputStream(), "UTF-8"));
+			}
+			else
+			{
+				br = new BufferedReader(new InputStreamReader(con.getErrorStream()));
+			}
+			
+			String line;
+			StringBuffer response = new StringBuffer();
+			
+			while((line=br.readLine())!=null) 
+			{
+				response.append(line);
+			}
+			
+			br.close();
+			System.out.println(response);
+			
+			JSONTokener tokener = new JSONTokener(response.toString());
+			JSONObject obejct = new JSONObject(tokener);
+			System.out.println("이 값을 알고 싶어 : " + obejct.toString());
+			
+			JSONArray arr = obejct.getJSONArray("documents");
+			
+			 System.out.println("왜없지 ? :" + arr);
+			    if(arr.length() > 0) 
+			    {
+			        JSONObject temp = arr.getJSONObject(0);
+			        double x = temp.getDouble("x");
+			        double y = temp.getDouble("y");
+			        System.out.println("x : " + x);
+			        System.out.println("y : " + y);
+			        adress.setX(x);
+			        adress.setY(y);
+			        System.out.println(adress.getX());
+				 	return adress; 
+			    }
+			 
+			}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		return adress;
+	}
+
+	@Override
+	public void publicAPI() {
+	    System.out.println("ddds");
+	    String key = "6SSihIOiLvtoN4Ov+cME/ZolzUd08COnp0X3j9Zu+Sor8dNfCM7u5Iyy/naB4Q5VsT27bE490/DOXsE/GUdjmQ==";
+	    String result = "https://api.odcloud.kr/api/15044802/v1/uddi:46506e2c-4557-4e99-a4fd-939b1004d34c?page=10&perPage=10&returnType=json&serviceKey=";
+	    System.out.println("ddds : " + result);
+
+	    try {
+		    String encodedKey = URLEncoder.encode(key, "UTF-8");
+	        URL url = new URL(result + encodedKey);
+	        
+	        System.out.println("url : " + url);
+	        HttpURLConnection con = (HttpURLConnection) url.openConnection();
+	        System.out.println("con : " + con);
+	        con.setRequestMethod("GET");
+	        int responseCode = con.getResponseCode();
+	        System.out.println("responseCode : " + responseCode);
+	        
+	        BufferedReader br;
+	        if(responseCode == 200) 
+	        {
+	        	br = new BufferedReader(new InputStreamReader(con.getInputStream(), "UTF-8"));
+	        }
+	        else
+	        {
+	        	br = new BufferedReader(new InputStreamReader(con.getInputStream(), "UTF-8"));	        	
+	        }
+	        StringBuilder response = new StringBuilder();
+	        String line;
+	        while ((line = br.readLine()) != null) {
+	            response.append(line);
+	        }
+	        br.close();
+	        System.out.println("result : " + result);
+	        System.out.println("==================================");
+	        JSONObject jsonObject = new JSONObject(response.toString());
+	        System.out.println("jsonObject : " + jsonObject);
+	        
+	        JSONArray data = jsonObject.getJSONArray("data");
+	        System.out.println("body : " + data);
+	        
+	     
+	        for(int i = 0; i < data.length(); i++) {
+	            JSONObject item = data.getJSONObject(i);
+	            System.out.println("item : " + item);
+	            String name = item.getString("소재지");
+	            System.out.println("========================");
+	            System.out.println("name: " + name);
+	        }
+	    }catch (Exception e) {
+	    	
+	    }
+	       
+	}
 }

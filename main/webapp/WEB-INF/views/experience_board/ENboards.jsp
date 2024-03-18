@@ -42,7 +42,7 @@
 		                            <div>   
 									<form action="/123team/ENboards/selectbytitle" class="form-inline my-2 justify-content-center ">
 							            <input type="text" name="title" placeholder="제목입력" class="form-control mr-3" />
-							            <button type="submit" class="btn btn-success">검색</button>
+							            <button type="submit" class="btn btn-outline-primary">검색</button>
 							        </form>
 		                                <c:if test="${loginId != null}">
 		                                	<a href="/123team/ENboards/applist" class="btn btn-primary">내 체험단 신청 목록</a>

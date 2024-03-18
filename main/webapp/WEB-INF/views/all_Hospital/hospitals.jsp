@@ -46,7 +46,7 @@ img{
                       <div class="justify-content-end col-md-12">
                         <c:if test="${type == checktype}">
                           <a href="hospitals/create" class="btn btn-outline-primary float-right mr-2 btn-sm">병원 추가</a>
-                          <a href="hospitals/manageapps" class="btn btn-outline-primary float-right mr-3 btn-sm">모든신청보기</a>
+                          <a href="hospitals/manageapps?personId=${loginId}" class="btn btn-outline-primary float-right mr-3 btn-sm">모든예약보기</a>
                         </c:if>
                         <c:if test="${loginId != null && type!=checktype}">
                           <a href="hospitals/mybookList?personId=${loginId} " class="btn btn-outline-primary float-right mr-3 btn-sm">내 예약 보기</a>            
@@ -56,7 +56,7 @@ img{
                   </div>
 
                   <div class="col-md-7 p-0 mr-3">
-                    <div class="p-0" style="border-left: 3px solid red;" > <h4 style="margin-left: 2%;"> 우리 병원 현황</h4>
+                    <div class="p-0" style="border-left: 3px solid red;" > <h3 style="margin-left: 2%;"> 우리 병원 현황</h3>
                     </div>
                     <br>
                     <h5 style="border-left: 3px solid #FF7EA0; margin-bottom: 3%;"><span class="ml-4">가장 가까운 병원</span></h5>

@@ -1,6 +1,9 @@
 package com.springmvc.controller;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -74,9 +77,13 @@ public class ManagerController
 				if("p".equals(type)) {
 					
 				productMember.setType(type);
-					
+				
+				Date date = new Date();
+				SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+				
 				// 프로필 사진을 받아주는 함수
-				String o_image = c_file.getOriginalFilename();
+				String o_image = productMember.getPersonId() + "-" + simpleDateFormat.format(date) + "-" + c_file.getOriginalFilename();
+				System.out.println(o_image);
 				String o_imagePath = request.getSession().getServletContext().getRealPath("/resources/images");
 				
 				File file = new File(o_imagePath, o_image);
@@ -91,12 +98,12 @@ public class ManagerController
 					System.out.println("프로필 이미지가 존재하지 않습니다." + e);
 				}
 				
+				
 			    // 사업자등록증을 받아주는 함수
-			    String saves_image = s_file.getOriginalFilename();
+			    String saves_image = productMember.getCompanyName() + "-" + simpleDateFormat.format(date) + "-" + s_file.getOriginalFilename();
 			    String s_imagePath  = request.getSession().getServletContext().getRealPath("/resources/images");
 			    System.out.println(s_imagePath);
 
-			    
 			    File saveimage = new File(s_imagePath, saves_image);
 
 			    try {
@@ -122,8 +129,11 @@ public class ManagerController
 					hospitalMember.setType(type);
 					
 					System.out.println("여긴 병원 회원가입 : " + type);
+					
+					Date date = new Date();
+					SimpleDateFormat simpledateFormat = new SimpleDateFormat("yyyy-MM-dd"); 
 					// 프로필 사진을 받아주는 함수
-					String o_image = c_file.getOriginalFilename();
+					String o_image = hospitalMember.getPersonId() + "-" + simpledateFormat.format(date) + "-" + c_file.getOriginalFilename();
 					String o_imagePath = request.getSession().getServletContext().getRealPath("/resources/images");
 					
 					File file = new File(o_imagePath, o_image);
@@ -141,7 +151,7 @@ public class ManagerController
 					
 					// 사업자등록증을 받아주는 함수
 					
-				    String s_imageName = s_file.getOriginalFilename();
+				    String s_imageName = hospitalMember.getPersonId() + "-" + simpledateFormat.format(date) + "-" + s_file.getOriginalFilename();
 				    System.out.println("hospitalregistrationName : " + s_imageName);
 				    
 				    String s_imagePath  = request.getSession().getServletContext().getRealPath("/resources/images");
@@ -161,7 +171,7 @@ public class ManagerController
 				    System.out.println("사옵자 끝");
 				    
 					// 의사 자격증을 받아주는 함수
-				    String h_imageName = h_file.getOriginalFilename();
+				    String h_imageName = hospitalMember.getPersonId() + "-" + simpledateFormat.format(date) + "-" + h_file.getOriginalFilename();
 				    String h_imagePath  = request.getSession().getServletContext().getRealPath("/resources/images");
 				    File saveh_image = new File(h_imagePath, h_imageName);
 					
@@ -189,8 +199,11 @@ public class ManagerController
 					ex_manager.setType(type);
 					
 					System.out.println("여기 체험단 타입 : " + type);
+					
+					Date date = new Date();
+					SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
 					// 프로필 사진을 받아주는 함수
-					String o_image = c_file.getOriginalFilename();
+					String o_image = ex_manager.getPersonId() + "-" + simpleDateFormat.format(date) + "-" + c_file.getOriginalFilename();
 					String o_imagePath = request.getSession().getServletContext().getRealPath("/resources/images");
 					
 					File file = new File(o_imagePath, o_image);
@@ -205,11 +218,10 @@ public class ManagerController
 						System.out.println("프로필 이미지가 존재하지 않습니다." + e);
 					}
 					
-					String s_imageName = s_file.getOriginalFilename();
+					String s_imageName = ex_manager.getEx_Name() + "-" + simpleDateFormat.format(date) + "-" + s_file.getOriginalFilename();
 					String s_imagePath  = request.getSession().getServletContext().getRealPath("/resources/images");
 					File saveimage = new File(s_imagePath, s_imageName);
 						
-					
 				    try 
 				    {
 				    	s_file.transferTo(saveimage);
